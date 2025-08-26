@@ -1,0 +1,98 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{a8e44315-6475-417c-8adf-5204f9360132}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="BC Projects\UFC.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="COM\Lib\SpeedyAPILib.cbproj">
+				<Dependencies>BC Projects\UFC.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="StarWaveAPILib\StarWaveAPILib.cbproj">
+				<Dependencies>BC Projects\UFC.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="MDComponent\vcl\MDComponent.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="VCL\MBusComponent.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="MDComponent\MarketDataComponent\MarketDataComponent.cbproj">
+				<Dependencies>COM\Lib\SpeedyAPILib.cbproj;StarWaveAPILib\StarWaveAPILib.cbproj</Dependencies>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<BorlandProject>
+					<Default.Personality/>
+				</BorlandProject>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="UFC">
+			<MSBuild Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Clean">
+			<MSBuild Targets="Clean" Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Make">
+			<MSBuild Targets="Make" Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC" Name="SpeedyAPILib">
+			<MSBuild Projects="COM\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean" Name="SpeedyAPILib:Clean">
+			<MSBuild Targets="Clean" Projects="COM\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make" Name="SpeedyAPILib:Make">
+			<MSBuild Targets="Make" Projects="COM\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC" Name="StarWaveAPILib">
+			<MSBuild Projects="StarWaveAPILib\StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean" Name="StarWaveAPILib:Clean">
+			<MSBuild Targets="Clean" Projects="StarWaveAPILib\StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make" Name="StarWaveAPILib:Make">
+			<MSBuild Targets="Make" Projects="StarWaveAPILib\StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target Name="MDComponent">
+			<MSBuild Projects="MDComponent\vcl\MDComponent.cbproj"/>
+		</Target>
+		<Target Name="MDComponent:Clean">
+			<MSBuild Targets="Clean" Projects="MDComponent\vcl\MDComponent.cbproj"/>
+		</Target>
+		<Target Name="MDComponent:Make">
+			<MSBuild Targets="Make" Projects="MDComponent\vcl\MDComponent.cbproj"/>
+		</Target>
+		<Target Name="MBusComponent">
+			<MSBuild Projects="VCL\MBusComponent.cbproj"/>
+		</Target>
+		<Target Name="MBusComponent:Clean">
+			<MSBuild Targets="Clean" Projects="VCL\MBusComponent.cbproj"/>
+		</Target>
+		<Target Name="MBusComponent:Make">
+			<MSBuild Targets="Make" Projects="VCL\MBusComponent.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib;StarWaveAPILib" Name="MarketDataComponent">
+			<MSBuild Projects="MDComponent\MarketDataComponent\MarketDataComponent.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib:Clean;StarWaveAPILib:Clean" Name="MarketDataComponent:Clean">
+			<MSBuild Targets="Clean" Projects="MDComponent\MarketDataComponent\MarketDataComponent.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib:Make;StarWaveAPILib:Make" Name="MarketDataComponent:Make">
+			<MSBuild Targets="Make" Projects="MDComponent\MarketDataComponent\MarketDataComponent.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="UFC;SpeedyAPILib;StarWaveAPILib;MDComponent;MBusComponent;MarketDataComponent"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="UFC:Clean;SpeedyAPILib:Clean;StarWaveAPILib:Clean;MDComponent:Clean;MBusComponent:Clean;MarketDataComponent:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="UFC:Make;SpeedyAPILib:Make;StarWaveAPILib:Make;MDComponent:Make;MBusComponent:Make;MarketDataComponent:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

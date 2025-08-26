@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{65952F31-2674-405F-84E2-19B5121CB044}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\BC Projects\UFC.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="LibTMP\SpeedyAPITMPLib.cbproj">
+				<Dependencies>..\BC Projects\UFC.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="TMPOrderConnection\TMPOrderConnection.cbproj">
+				<Dependencies>LibTMP\SpeedyAPITMPLib.cbproj</Dependencies>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="UFC">
+			<MSBuild Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Clean">
+			<MSBuild Targets="Clean" Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Make">
+			<MSBuild Targets="Make" Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC" Name="SpeedyAPITMPLib">
+			<MSBuild Projects="LibTMP\SpeedyAPITMPLib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean" Name="SpeedyAPITMPLib:Clean">
+			<MSBuild Targets="Clean" Projects="LibTMP\SpeedyAPITMPLib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make" Name="SpeedyAPITMPLib:Make">
+			<MSBuild Targets="Make" Projects="LibTMP\SpeedyAPITMPLib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPITMPLib" Name="TMPOrderConnection">
+			<MSBuild Projects="TMPOrderConnection\TMPOrderConnection.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPITMPLib:Clean" Name="TMPOrderConnection:Clean">
+			<MSBuild Targets="Clean" Projects="TMPOrderConnection\TMPOrderConnection.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPITMPLib:Make" Name="TMPOrderConnection:Make">
+			<MSBuild Targets="Make" Projects="TMPOrderConnection\TMPOrderConnection.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="UFC;SpeedyAPITMPLib;TMPOrderConnection"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="UFC:Clean;SpeedyAPITMPLib:Clean;TMPOrderConnection:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="UFC:Make;SpeedyAPITMPLib:Make;TMPOrderConnection:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

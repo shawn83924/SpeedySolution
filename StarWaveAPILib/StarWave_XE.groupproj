@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{708B5884-5E18-4531-AA6F-A1E89E077280}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="StarWaveAPILib_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="COM_XE7\StarWaveAPI.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7">
+        <MSBuild Projects="StarWaveAPILib_XE7.cbproj"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Clean">
+        <MSBuild Projects="StarWaveAPILib_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Make">
+        <MSBuild Projects="StarWaveAPILib_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="StarWaveAPI">
+        <MSBuild Projects="COM_XE7\StarWaveAPI.cbproj"/>
+    </Target>
+    <Target Name="StarWaveAPI:Clean">
+        <MSBuild Projects="COM_XE7\StarWaveAPI.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StarWaveAPI:Make">
+        <MSBuild Projects="COM_XE7\StarWaveAPI.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;StarWaveAPILib_XE7;StarWaveAPI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;StarWaveAPILib_XE7:Clean;StarWaveAPI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;StarWaveAPILib_XE7:Make;StarWaveAPI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,646 @@
+[OPTIONS]
+Binary Index=No
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=StarWaveAPI.chm
+Contents file=StarWaveAPI.hhc
+Default Window=Default
+Default topic=EnumMarket.html
+Display compile progress=No
+Full text search stop list file=0
+Full-text search=Yes
+Language=0x409 英文 (美國)
+
+[WINDOWS]
+Default="StarWaveAPI Object Library 2.0.0.16","StarWaveAPI.hhc",,"index.html","index.html",,,,,0x60520,,0x100e,[0,0,450,350],0x10830000,,,,,,0
+
+
+[FILES]
+EnumMarket.html
+EnumCallPut.html
+UnderlyingIndex_Market.html
+UnderlyingIndex_IndexValue.html
+UnderlyingIndex_IndexTime.html
+UnderlyingIndex_IndexKind.html
+UnderlyingIndex_Exchange.html
+UnderlyingIndex.html
+TotalVolume_TotalMatchVolume.html
+TotalVolume_Symbol.html
+TotalVolume_SellMatchCount.html
+TotalVolume_Market.html
+TotalVolume_Exchange.html
+TotalVolume_BuyMatchCount.html
+TotalVolume.html
+TickInfoList_Items.html
+TickInfoList_Count.html
+TickInfoList.html
+TickInfo_Time.html
+TickInfo_Seq.html
+TickInfo_SellPx.html
+TickInfo_ID.html
+TickInfo_FillQty.html
+TickInfo_FillPx.html
+TickInfo_BuyPx.html
+TickInfo.html
+SumOfOrder_Symbol.html
+SumOfOrder_SellOrderQty.html
+SumOfOrder_SellOrderCount.html
+SumOfOrder_Market.html
+SumOfOrder_Exchange.html
+SumOfOrder_BuyOrderQty.html
+SumOfOrder_BuyOrderCount.html
+SumOfOrder.html
+StarWaveConnection_Port.html
+StarWaveConnection_IP.html
+StarWaveConnection_AppName.html
+StarWaveConnection_UnsubscribeAll.html
+StarWaveConnection_Unsubscribe.html
+StarWaveConnection_SymbolCount.html
+StarWaveConnection_Subscribe.html
+StarWaveConnection_Init.html
+StarWaveConnection_GetSymbol.html
+StarWaveConnection_GetSecurityDefinitionByIndex.html
+StarWaveConnection_GetSecurityDefinition.html
+StarWaveConnection_GetExchange.html
+StarWaveConnection_DownloadContract.html
+StarWaveConnection_Disconnect.html
+StarWaveConnection_Destroy.html
+StarWaveConnection_Connect.html
+StarWaveConnection_OnUnderlyingIndex.html
+StarWaveConnection_OnTotalMatch.html
+StarWaveConnection_OnSumOfOrder.html
+StarWaveConnection_OnRecover.html
+StarWaveConnection_OnOrderBookData.html
+StarWaveConnection_OnOpeningInfo.html
+StarWaveConnection_OnNews.html
+StarWaveConnection_OnMatchInfo.html
+StarWaveConnection_OnDisconnected.html
+StarWaveConnection_OnDayHighLow.html
+StarWaveConnection_OnContractDownloadCompleted.html
+StarWaveConnection_OnConnected.html
+StarWaveConnection_OnClosingMarketData.html
+StarWaveConnection.html
+SecurityDefinition_Underlying.html
+SecurityDefinition_TradeUnit.html
+SecurityDefinition_TradeSymbol.html
+SecurityDefinition_TradeFlag.html
+SecurityDefinition_Tick.html
+SecurityDefinition_Symbol.html
+SecurityDefinition_StrikePx.html
+SecurityDefinition_Shares.html
+SecurityDefinition_RefPx.html
+SecurityDefinition_ProductID.html
+SecurityDefinition_MaturityDate2.html
+SecurityDefinition_MaturityDate.html
+SecurityDefinition_Market.html
+SecurityDefinition_LastTradeDate.html
+SecurityDefinition_IsWarrant.html
+SecurityDefinition_IsMultileg.html
+SecurityDefinition_ExecuteRate.html
+SecurityDefinition_ExecuteQty.html
+SecurityDefinition_Exchange.html
+SecurityDefinition_EndDate.html
+SecurityDefinition_Digit.html
+SecurityDefinition_DecimalLocator.html
+SecurityDefinition_Currency.html
+SecurityDefinition_ContractMultiplier.html
+SecurityDefinition_ChineseName.html
+SecurityDefinition_CancelQty.html
+SecurityDefinition_CallPut.html
+SecurityDefinition_BullPx.html
+SecurityDefinition_BearPx.html
+SecurityDefinition.html
+Recover_TotalVolume.html
+Recover_Symbol.html
+Recover_SettlementPx.html
+Recover_SellQty.html
+Recover_SellPx.html
+Recover_SellOrderQty.html
+Recover_SellOrderCount.html
+Recover_PreClosePx.html
+Recover_OpenInterest.html
+Recover_OpeningPx.html
+Recover_MatchTime.html
+Recover_MatchQty.html
+Recover_MatchPx.html
+Recover_Market.html
+Recover_Exchange.html
+Recover_DerivedSellQty.html
+Recover_DerivedSellPx.html
+Recover_DerivedFlag.html
+Recover_DerivedBuyQty.html
+Recover_DerivedBuyPx.html
+Recover_DayLowPx.html
+Recover_DayHighPx.html
+Recover_ClosingPx.html
+Recover_BuyQty.html
+Recover_BuyPx.html
+Recover_BuyOrderQty.html
+Recover_BuyOrderCount.html
+Recover.html
+OrderBook_Symbol.html
+OrderBook_SellQty.html
+OrderBook_SellPx.html
+OrderBook_Market.html
+OrderBook_Exchange.html
+OrderBook_DerivedSellQty.html
+OrderBook_DerivedSellPx.html
+OrderBook_DerivedFlag.html
+OrderBook_DerivedBuyQty.html
+OrderBook_DerivedBuyPx.html
+OrderBook_BuyQty.html
+OrderBook_BuyPx.html
+OrderBook.html
+OpenInfo_Symbol.html
+OpenInfo_OpeningTime.html
+OpenInfo_OpeningQty.html
+OpenInfo_OpeningPx.html
+OpenInfo_Market.html
+OpenInfo_Exchange.html
+OpenInfo.html
+News_Key.html
+News_Data.html
+News.html
+MinuteKInfoList_Items.html
+MinuteKInfoList_Count.html
+MinuteKInfoList.html
+MinuteKInfo_Qty.html
+MinuteKInfo_OpenPx.html
+MinuteKInfo_Minutes.html
+MinuteKInfo_MinPx.html
+MinuteKInfo_MaxPx.html
+MinuteKInfo_Hour.html
+MinuteKInfo_ClosePx.html
+MinuteKInfo.html
+Match_Symbol.html
+Match_MatchTime.html
+Match_MatchQty.html
+Match_MatchPx.html
+Match_Market.html
+Match_Exchange.html
+Match.html
+DayHighLow_Symbol.html
+DayHighLow_Market.html
+DayHighLow_Exchange.html
+DayHighLow_DayLowPx.html
+DayHighLow_DayHighPx.html
+DayHighLow.html
+CloseMarketData_TotalQty.html
+CloseMarketData_TotalCount.html
+CloseMarketData_TermLowPx.html
+CloseMarketData_TermHighPx.html
+CloseMarketData_Symbol.html
+CloseMarketData_SettlementPx.html
+CloseMarketData_SellQtyTotal.html
+CloseMarketData_SellPx.html
+CloseMarketData_SellCountTotal.html
+CloseMarketData_OpenPx.html
+CloseMarketData_OpenInterest.html
+CloseMarketData_Market.html
+CloseMarketData_Exchange.html
+CloseMarketData_DayLowPx.html
+CloseMarketData_DayHighPx.html
+CloseMarketData_ClosePx.html
+CloseMarketData_BuyQtyTotal.html
+CloseMarketData_BuyPx.html
+CloseMarketData_BuyCountTotal.html
+CloseMarketData.html
+ChartServerConnection_Port.html
+ChartServerConnection_IP.html
+ChartServerConnection_Unsubscribe.html
+ChartServerConnection_Subscribe.html
+ChartServerConnection_RequestTicks.html
+ChartServerConnection_Disconnect.html
+ChartServerConnection_Destroy.html
+ChartServerConnection_Create.html
+ChartServerConnection_Connect.html
+ChartServerConnection_OnRecoverTicks.html
+ChartServerConnection_OnRecoverKBars.html
+ChartServerConnection_OnLastTick.html
+ChartServerConnection_OnLastKBar.html
+ChartServerConnection_OnDisconnected.html
+ChartServerConnection_OnDayKBars.html
+ChartServerConnection_OnConnected.html
+ChartServerConnection.html
+index.html
+
+[ALIAS]
+IDH_ID53=EnumMarket.html
+IDH_ID52=EnumCallPut.html
+IDH_ID230=UnderlyingIndex_Market.html
+IDH_ID229=UnderlyingIndex_IndexValue.html
+IDH_ID228=UnderlyingIndex_IndexTime.html
+IDH_ID227=UnderlyingIndex_IndexKind.html
+IDH_ID226=UnderlyingIndex_Exchange.html
+IDH_ID224=UnderlyingIndex.html
+IDH_ID223=TotalVolume_TotalMatchVolume.html
+IDH_ID222=TotalVolume_Symbol.html
+IDH_ID221=TotalVolume_SellMatchCount.html
+IDH_ID220=TotalVolume_Market.html
+IDH_ID219=TotalVolume_Exchange.html
+IDH_ID218=TotalVolume_BuyMatchCount.html
+IDH_ID216=TotalVolume.html
+IDH_ID215=TickInfoList_Items.html
+IDH_ID214=TickInfoList_Count.html
+IDH_ID212=TickInfoList.html
+IDH_ID211=TickInfo_Time.html
+IDH_ID210=TickInfo_Seq.html
+IDH_ID209=TickInfo_SellPx.html
+IDH_ID208=TickInfo_ID.html
+IDH_ID207=TickInfo_FillQty.html
+IDH_ID206=TickInfo_FillPx.html
+IDH_ID205=TickInfo_BuyPx.html
+IDH_ID203=TickInfo.html
+IDH_ID202=SumOfOrder_Symbol.html
+IDH_ID201=SumOfOrder_SellOrderQty.html
+IDH_ID200=SumOfOrder_SellOrderCount.html
+IDH_ID199=SumOfOrder_Market.html
+IDH_ID198=SumOfOrder_Exchange.html
+IDH_ID197=SumOfOrder_BuyOrderQty.html
+IDH_ID196=SumOfOrder_BuyOrderCount.html
+IDH_ID194=SumOfOrder.html
+IDH_ID193=StarWaveConnection_Port.html
+IDH_ID192=StarWaveConnection_IP.html
+IDH_ID191=StarWaveConnection_AppName.html
+IDH_ID189=StarWaveConnection_UnsubscribeAll.html
+IDH_ID188=StarWaveConnection_Unsubscribe.html
+IDH_ID187=StarWaveConnection_SymbolCount.html
+IDH_ID186=StarWaveConnection_Subscribe.html
+IDH_ID185=StarWaveConnection_Init.html
+IDH_ID184=StarWaveConnection_GetSymbol.html
+IDH_ID183=StarWaveConnection_GetSecurityDefinitionByIndex.html
+IDH_ID182=StarWaveConnection_GetSecurityDefinition.html
+IDH_ID181=StarWaveConnection_GetExchange.html
+IDH_ID180=StarWaveConnection_DownloadContract.html
+IDH_ID179=StarWaveConnection_Disconnect.html
+IDH_ID178=StarWaveConnection_Destroy.html
+IDH_ID177=StarWaveConnection_Connect.html
+IDH_ID175=StarWaveConnection_OnUnderlyingIndex.html
+IDH_ID174=StarWaveConnection_OnTotalMatch.html
+IDH_ID173=StarWaveConnection_OnSumOfOrder.html
+IDH_ID172=StarWaveConnection_OnRecover.html
+IDH_ID171=StarWaveConnection_OnOrderBookData.html
+IDH_ID170=StarWaveConnection_OnOpeningInfo.html
+IDH_ID169=StarWaveConnection_OnNews.html
+IDH_ID168=StarWaveConnection_OnMatchInfo.html
+IDH_ID167=StarWaveConnection_OnDisconnected.html
+IDH_ID166=StarWaveConnection_OnDayHighLow.html
+IDH_ID165=StarWaveConnection_OnContractDownloadCompleted.html
+IDH_ID164=StarWaveConnection_OnConnected.html
+IDH_ID163=StarWaveConnection_OnClosingMarketData.html
+IDH_ID161=StarWaveConnection.html
+IDH_ID160=SecurityDefinition_Underlying.html
+IDH_ID159=SecurityDefinition_TradeUnit.html
+IDH_ID158=SecurityDefinition_TradeSymbol.html
+IDH_ID157=SecurityDefinition_TradeFlag.html
+IDH_ID156=SecurityDefinition_Tick.html
+IDH_ID155=SecurityDefinition_Symbol.html
+IDH_ID154=SecurityDefinition_StrikePx.html
+IDH_ID153=SecurityDefinition_Shares.html
+IDH_ID152=SecurityDefinition_RefPx.html
+IDH_ID151=SecurityDefinition_ProductID.html
+IDH_ID150=SecurityDefinition_MaturityDate2.html
+IDH_ID149=SecurityDefinition_MaturityDate.html
+IDH_ID148=SecurityDefinition_Market.html
+IDH_ID147=SecurityDefinition_LastTradeDate.html
+IDH_ID146=SecurityDefinition_IsWarrant.html
+IDH_ID145=SecurityDefinition_IsMultileg.html
+IDH_ID144=SecurityDefinition_ExecuteRate.html
+IDH_ID143=SecurityDefinition_ExecuteQty.html
+IDH_ID142=SecurityDefinition_Exchange.html
+IDH_ID141=SecurityDefinition_EndDate.html
+IDH_ID140=SecurityDefinition_Digit.html
+IDH_ID139=SecurityDefinition_DecimalLocator.html
+IDH_ID138=SecurityDefinition_Currency.html
+IDH_ID137=SecurityDefinition_ContractMultiplier.html
+IDH_ID136=SecurityDefinition_ChineseName.html
+IDH_ID135=SecurityDefinition_CancelQty.html
+IDH_ID134=SecurityDefinition_CallPut.html
+IDH_ID133=SecurityDefinition_BullPx.html
+IDH_ID132=SecurityDefinition_BearPx.html
+IDH_ID130=SecurityDefinition.html
+IDH_ID129=Recover_TotalVolume.html
+IDH_ID128=Recover_Symbol.html
+IDH_ID127=Recover_SettlementPx.html
+IDH_ID126=Recover_SellQty.html
+IDH_ID125=Recover_SellPx.html
+IDH_ID124=Recover_SellOrderQty.html
+IDH_ID123=Recover_SellOrderCount.html
+IDH_ID122=Recover_PreClosePx.html
+IDH_ID121=Recover_OpenInterest.html
+IDH_ID120=Recover_OpeningPx.html
+IDH_ID119=Recover_MatchTime.html
+IDH_ID118=Recover_MatchQty.html
+IDH_ID117=Recover_MatchPx.html
+IDH_ID116=Recover_Market.html
+IDH_ID115=Recover_Exchange.html
+IDH_ID114=Recover_DerivedSellQty.html
+IDH_ID113=Recover_DerivedSellPx.html
+IDH_ID112=Recover_DerivedFlag.html
+IDH_ID111=Recover_DerivedBuyQty.html
+IDH_ID110=Recover_DerivedBuyPx.html
+IDH_ID109=Recover_DayLowPx.html
+IDH_ID108=Recover_DayHighPx.html
+IDH_ID107=Recover_ClosingPx.html
+IDH_ID106=Recover_BuyQty.html
+IDH_ID105=Recover_BuyPx.html
+IDH_ID104=Recover_BuyOrderQty.html
+IDH_ID103=Recover_BuyOrderCount.html
+IDH_ID101=Recover.html
+IDH_ID100=OrderBook_Symbol.html
+IDH_ID99=OrderBook_SellQty.html
+IDH_ID98=OrderBook_SellPx.html
+IDH_ID97=OrderBook_Market.html
+IDH_ID96=OrderBook_Exchange.html
+IDH_ID95=OrderBook_DerivedSellQty.html
+IDH_ID94=OrderBook_DerivedSellPx.html
+IDH_ID93=OrderBook_DerivedFlag.html
+IDH_ID92=OrderBook_DerivedBuyQty.html
+IDH_ID91=OrderBook_DerivedBuyPx.html
+IDH_ID90=OrderBook_BuyQty.html
+IDH_ID89=OrderBook_BuyPx.html
+IDH_ID87=OrderBook.html
+IDH_ID86=OpenInfo_Symbol.html
+IDH_ID85=OpenInfo_OpeningTime.html
+IDH_ID84=OpenInfo_OpeningQty.html
+IDH_ID83=OpenInfo_OpeningPx.html
+IDH_ID82=OpenInfo_Market.html
+IDH_ID81=OpenInfo_Exchange.html
+IDH_ID79=OpenInfo.html
+IDH_ID78=News_Key.html
+IDH_ID77=News_Data.html
+IDH_ID75=News.html
+IDH_ID74=MinuteKInfoList_Items.html
+IDH_ID73=MinuteKInfoList_Count.html
+IDH_ID71=MinuteKInfoList.html
+IDH_ID70=MinuteKInfo_Qty.html
+IDH_ID69=MinuteKInfo_OpenPx.html
+IDH_ID68=MinuteKInfo_Minutes.html
+IDH_ID67=MinuteKInfo_MinPx.html
+IDH_ID66=MinuteKInfo_MaxPx.html
+IDH_ID65=MinuteKInfo_Hour.html
+IDH_ID64=MinuteKInfo_ClosePx.html
+IDH_ID62=MinuteKInfo.html
+IDH_ID61=Match_Symbol.html
+IDH_ID60=Match_MatchTime.html
+IDH_ID59=Match_MatchQty.html
+IDH_ID58=Match_MatchPx.html
+IDH_ID57=Match_Market.html
+IDH_ID56=Match_Exchange.html
+IDH_ID54=Match.html
+IDH_ID50=DayHighLow_Symbol.html
+IDH_ID49=DayHighLow_Market.html
+IDH_ID48=DayHighLow_Exchange.html
+IDH_ID47=DayHighLow_DayLowPx.html
+IDH_ID46=DayHighLow_DayHighPx.html
+IDH_ID44=DayHighLow.html
+IDH_ID43=CloseMarketData_TotalQty.html
+IDH_ID42=CloseMarketData_TotalCount.html
+IDH_ID41=CloseMarketData_TermLowPx.html
+IDH_ID40=CloseMarketData_TermHighPx.html
+IDH_ID39=CloseMarketData_Symbol.html
+IDH_ID38=CloseMarketData_SettlementPx.html
+IDH_ID37=CloseMarketData_SellQtyTotal.html
+IDH_ID36=CloseMarketData_SellPx.html
+IDH_ID35=CloseMarketData_SellCountTotal.html
+IDH_ID34=CloseMarketData_OpenPx.html
+IDH_ID33=CloseMarketData_OpenInterest.html
+IDH_ID32=CloseMarketData_Market.html
+IDH_ID31=CloseMarketData_Exchange.html
+IDH_ID30=CloseMarketData_DayLowPx.html
+IDH_ID29=CloseMarketData_DayHighPx.html
+IDH_ID28=CloseMarketData_ClosePx.html
+IDH_ID27=CloseMarketData_BuyQtyTotal.html
+IDH_ID26=CloseMarketData_BuyPx.html
+IDH_ID25=CloseMarketData_BuyCountTotal.html
+IDH_ID23=CloseMarketData.html
+IDH_ID22=ChartServerConnection_Port.html
+IDH_ID21=ChartServerConnection_IP.html
+IDH_ID19=ChartServerConnection_Unsubscribe.html
+IDH_ID18=ChartServerConnection_Subscribe.html
+IDH_ID17=ChartServerConnection_RequestTicks.html
+IDH_ID16=ChartServerConnection_Disconnect.html
+IDH_ID15=ChartServerConnection_Destroy.html
+IDH_ID14=ChartServerConnection_Create.html
+IDH_ID13=ChartServerConnection_Connect.html
+IDH_ID11=ChartServerConnection_OnRecoverTicks.html
+IDH_ID10=ChartServerConnection_OnRecoverKBars.html
+IDH_ID9=ChartServerConnection_OnLastTick.html
+IDH_ID8=ChartServerConnection_OnLastKBar.html
+IDH_ID7=ChartServerConnection_OnDisconnected.html
+IDH_ID6=ChartServerConnection_OnDayKBars.html
+IDH_ID5=ChartServerConnection_OnConnected.html
+IDH_ID3=ChartServerConnection.html
+IDH_ID1=index.html
+
+[MAP]
+#define IDH_ID53 53
+#define IDH_ID52 52
+#define IDH_ID230 230
+#define IDH_ID229 229
+#define IDH_ID228 228
+#define IDH_ID227 227
+#define IDH_ID226 226
+#define IDH_ID224 224
+#define IDH_ID223 223
+#define IDH_ID222 222
+#define IDH_ID221 221
+#define IDH_ID220 220
+#define IDH_ID219 219
+#define IDH_ID218 218
+#define IDH_ID216 216
+#define IDH_ID215 215
+#define IDH_ID214 214
+#define IDH_ID212 212
+#define IDH_ID211 211
+#define IDH_ID210 210
+#define IDH_ID209 209
+#define IDH_ID208 208
+#define IDH_ID207 207
+#define IDH_ID206 206
+#define IDH_ID205 205
+#define IDH_ID203 203
+#define IDH_ID202 202
+#define IDH_ID201 201
+#define IDH_ID200 200
+#define IDH_ID199 199
+#define IDH_ID198 198
+#define IDH_ID197 197
+#define IDH_ID196 196
+#define IDH_ID194 194
+#define IDH_ID193 193
+#define IDH_ID192 192
+#define IDH_ID191 191
+#define IDH_ID189 189
+#define IDH_ID188 188
+#define IDH_ID187 187
+#define IDH_ID186 186
+#define IDH_ID185 185
+#define IDH_ID184 184
+#define IDH_ID183 183
+#define IDH_ID182 182
+#define IDH_ID181 181
+#define IDH_ID180 180
+#define IDH_ID179 179
+#define IDH_ID178 178
+#define IDH_ID177 177
+#define IDH_ID175 175
+#define IDH_ID174 174
+#define IDH_ID173 173
+#define IDH_ID172 172
+#define IDH_ID171 171
+#define IDH_ID170 170
+#define IDH_ID169 169
+#define IDH_ID168 168
+#define IDH_ID167 167
+#define IDH_ID166 166
+#define IDH_ID165 165
+#define IDH_ID164 164
+#define IDH_ID163 163
+#define IDH_ID161 161
+#define IDH_ID160 160
+#define IDH_ID159 159
+#define IDH_ID158 158
+#define IDH_ID157 157
+#define IDH_ID156 156
+#define IDH_ID155 155
+#define IDH_ID154 154
+#define IDH_ID153 153
+#define IDH_ID152 152
+#define IDH_ID151 151
+#define IDH_ID150 150
+#define IDH_ID149 149
+#define IDH_ID148 148
+#define IDH_ID147 147
+#define IDH_ID146 146
+#define IDH_ID145 145
+#define IDH_ID144 144
+#define IDH_ID143 143
+#define IDH_ID142 142
+#define IDH_ID141 141
+#define IDH_ID140 140
+#define IDH_ID139 139
+#define IDH_ID138 138
+#define IDH_ID137 137
+#define IDH_ID136 136
+#define IDH_ID135 135
+#define IDH_ID134 134
+#define IDH_ID133 133
+#define IDH_ID132 132
+#define IDH_ID130 130
+#define IDH_ID129 129
+#define IDH_ID128 128
+#define IDH_ID127 127
+#define IDH_ID126 126
+#define IDH_ID125 125
+#define IDH_ID124 124
+#define IDH_ID123 123
+#define IDH_ID122 122
+#define IDH_ID121 121
+#define IDH_ID120 120
+#define IDH_ID119 119
+#define IDH_ID118 118
+#define IDH_ID117 117
+#define IDH_ID116 116
+#define IDH_ID115 115
+#define IDH_ID114 114
+#define IDH_ID113 113
+#define IDH_ID112 112
+#define IDH_ID111 111
+#define IDH_ID110 110
+#define IDH_ID109 109
+#define IDH_ID108 108
+#define IDH_ID107 107
+#define IDH_ID106 106
+#define IDH_ID105 105
+#define IDH_ID104 104
+#define IDH_ID103 103
+#define IDH_ID101 101
+#define IDH_ID100 100
+#define IDH_ID99 99
+#define IDH_ID98 98
+#define IDH_ID97 97
+#define IDH_ID96 96
+#define IDH_ID95 95
+#define IDH_ID94 94
+#define IDH_ID93 93
+#define IDH_ID92 92
+#define IDH_ID91 91
+#define IDH_ID90 90
+#define IDH_ID89 89
+#define IDH_ID87 87
+#define IDH_ID86 86
+#define IDH_ID85 85
+#define IDH_ID84 84
+#define IDH_ID83 83
+#define IDH_ID82 82
+#define IDH_ID81 81
+#define IDH_ID79 79
+#define IDH_ID78 78
+#define IDH_ID77 77
+#define IDH_ID75 75
+#define IDH_ID74 74
+#define IDH_ID73 73
+#define IDH_ID71 71
+#define IDH_ID70 70
+#define IDH_ID69 69
+#define IDH_ID68 68
+#define IDH_ID67 67
+#define IDH_ID66 66
+#define IDH_ID65 65
+#define IDH_ID64 64
+#define IDH_ID62 62
+#define IDH_ID61 61
+#define IDH_ID60 60
+#define IDH_ID59 59
+#define IDH_ID58 58
+#define IDH_ID57 57
+#define IDH_ID56 56
+#define IDH_ID54 54
+#define IDH_ID50 50
+#define IDH_ID49 49
+#define IDH_ID48 48
+#define IDH_ID47 47
+#define IDH_ID46 46
+#define IDH_ID44 44
+#define IDH_ID43 43
+#define IDH_ID42 42
+#define IDH_ID41 41
+#define IDH_ID40 40
+#define IDH_ID39 39
+#define IDH_ID38 38
+#define IDH_ID37 37
+#define IDH_ID36 36
+#define IDH_ID35 35
+#define IDH_ID34 34
+#define IDH_ID33 33
+#define IDH_ID32 32
+#define IDH_ID31 31
+#define IDH_ID30 30
+#define IDH_ID29 29
+#define IDH_ID28 28
+#define IDH_ID27 27
+#define IDH_ID26 26
+#define IDH_ID25 25
+#define IDH_ID23 23
+#define IDH_ID22 22
+#define IDH_ID21 21
+#define IDH_ID19 19
+#define IDH_ID18 18
+#define IDH_ID17 17
+#define IDH_ID16 16
+#define IDH_ID15 15
+#define IDH_ID14 14
+#define IDH_ID13 13
+#define IDH_ID11 11
+#define IDH_ID10 10
+#define IDH_ID9 9
+#define IDH_ID8 8
+#define IDH_ID7 7
+#define IDH_ID6 6
+#define IDH_ID5 5
+#define IDH_ID3 3
+#define IDH_ID1 1
+
+[INFOTYPES]
+

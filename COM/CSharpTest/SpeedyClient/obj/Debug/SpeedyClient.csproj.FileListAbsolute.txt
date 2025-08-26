@@ -1,0 +1,50 @@
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Interop.OrderConnection.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Interop.OrderMessage.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Interop.StarWaveAPI.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\SpeedyClient.csproj.ResolveComReference.cache
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\SpeedyClient.exe
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\SpeedyClient.pdb
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.ContractsForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.SettingForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.LogonForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\SpeedyClient.Properties.Resources.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.TOrderForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.TReplaceForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.TSelectColForm.resources
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\GenerateResource-ResGen.read.4.tlog
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\ResGen.read.1.tlog
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\ResGen.write.1.tlog
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\SpeedyClient.exe.licenses
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\SpeedyClient.exe
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\SpeedyClient.pdb
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\C1.Win.C1FlexGrid.2.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\Interop.OrderConnection.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\Interop.OrderMessage.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\Debug\Interop.StarWaveAPI.dll
+C:\Users\zhenfan\Documents\Visual Studio 2010\Projects\SpeedyClient\obj\Debug\Test1.Flash10.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\ResolveAssemblyReference.cache
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Interop.OrderConnection.dll
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Interop.OrderMessage.dll
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Interop.StarWaveAPI.dll
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\SpeedyClient.csproj.ResolveComReference.cache
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.Flash10.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.ContractsForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.SettingForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.LogonForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\SpeedyClient.Properties.Resources.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.TOrderForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.TReplaceForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.TSelectColForm.resources
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\GenerateResource.read.1.tlog
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\GenerateResource.write.1.tlog
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\SpeedyClient.exe.licenses
+C:\src\COM\CSharpTest\SpeedyClient\Debug\SpeedyClient.exe.config
+C:\src\COM\CSharpTest\SpeedyClient\Debug\SpeedyClient.exe
+C:\src\COM\CSharpTest\SpeedyClient\Debug\SpeedyClient.pdb
+C:\src\COM\CSharpTest\SpeedyClient\Debug\C1.Win.C1FlexGrid.2.dll
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\SpeedyClient.exe
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\SpeedyClient.pdb
+C:\src\COM\CSharpTest\SpeedyClient\obj\Debug\Test1.ChartForm.resources

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>CancelOrderConnection.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>CancelOrderConnection.cpp</itemPath>
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-Wno-deprecated -pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyEmergencyCancel</output>
+          <linkerLibItems>
+            <linkerLibLibItem>rt</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="CancelOrderConnection.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="CancelOrderConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+    </conf>
+    <conf name="Solaris_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU-4.3.2Sun|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-Wno-deprecated -fPIC -fast</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyEmergencyCancel</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibStdlibItem>SocketsNetworkServices</linkerLibStdlibItem>
+            <linkerLibLibItem>rt</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="Solaris_GCC4.3.2_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=Solaris_GCC4.3.2_Release"
+                            CC="${MAKE}  -f Makefile CONF=Solaris_GCC4.3.2_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="Solaris_GCC4.3.2_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=Solaris_GCC4.3.2_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=Solaris_GCC4.3.2_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="CancelOrderConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CancelOrderConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

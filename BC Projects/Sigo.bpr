@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="\MBus\lib\Sigo.lib"/>
+    <OBJFILES value="..\Sigo\Sigo.obj"/>
+    <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;..\Sigo"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="_RTLDLL;NO_STRICT"/>
+    <MAINSOURCE value="Sigo.bpf"/>
+    <INCLUDEPATH value="..\Sigo;UFC;Migo;Sigo;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\Sigo;Sigo;.;..;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <LISTFILE value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-IUFC -IMigo -ISigo -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp 
+      -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value=""/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="Sigo.bpf" FORMNAME="" UNITNAME="Sigo" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\Sigo\Sigo.cpp" FORMNAME="" UNITNAME="Sigo.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1028
+CodePage=950
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=19
+Item0=..\Sigo;UFC;Migo;Sigo;$(BCB)\include;$(BCB)\include\vcl
+Item1=UFC;Migo;Sigo;$(BCB)\include;$(BCB)\include\vcl
+Item2=UFC;..\Migo;Sigo;$(BCB)\include;$(BCB)\include\vcl
+Item3=Sigo;.;..\UFC;..\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item4=.;..\UFC;..\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item5=.;.\UFC;.\Migo;.\Sigo;$(BCB)\include;$(BCB)\include\vcl
+Item6=Sigo;.;.\UFC;.\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item7=.;.\UFC;.\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item8=Sigo;.\UFC;.\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item9=Sigo;..\UFC;..\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item10=Sigo;..\UFC;Migo;$(BCB)\include;$(BCB)\include\vcl
+Item11=Sigo;Migo;$(BCB)\include;$(BCB)\include\vcl
+Item12=Sigo;..\Migo;$(BCB)\include;$(BCB)\include\vcl
+Item13=..\Migo;Sigo;$(BCB)\include;$(BCB)\include\vcl
+Item14=Sigo;$(BCB)\include;$(BCB)\include\vcl;..\Migo
+Item15=Sigo;$(BCB)\include;$(BCB)\include\vcl;C:\Documents and Settings\Administrator\My Documents\SimTAIFEX\Migo
+Item16=Sigo;$(BCB)\include;$(BCB)\include\vcl;.\..\Migo
+Item17=Sigo;$(BCB)\include;$(BCB)\include\vcl;../Migo
+Item18=Sigo;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=4
+Item0=..\Sigo;Sigo;.;..;$(BCB)\lib\obj;$(BCB)\lib
+Item1=Sigo;.;..;$(BCB)\lib\obj;$(BCB)\lib
+Item2=.;..\;$(BCB)\lib\obj;$(BCB)\lib
+Item3=Sigo;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[HistoryLists\hlFinalOutputDir]
+Count=1
+Item0=\MBus\lib
+
+[HistoryLists\hlTlibPageSize]
+Count=1
+Item0=0x0010
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

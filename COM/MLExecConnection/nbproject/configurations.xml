@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>MLExecConnection.h</itemPath>
+      <itemPath>MultilegSymbol.h</itemPath>
+      <itemPath>TUserData.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>/Speedy/cfg/MLExecConnection.cfg</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>MLExecConnection.cpp</itemPath>
+      <itemPath>Main.cpp</itemPath>
+      <itemPath>MultilegSymbol.cpp</itemPath>
+      <itemPath>TUserData.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/MLExecConnection</output>
+          <linkerAddLib>
+            <pElem>.</pElem>
+            <pElem>../Lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../TAIFEXLib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../TAIFEXLib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="../../lib/TAIFEXLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="AIX_Release" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>R_6</Elem>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibFileItem>../Lib/UFC.a</linkerLibFileItem>
+            <linkerLibFileItem>../Lib/MessageDeliver_Lib.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="LINUX_Release_dynamic" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>dist/LINUX_Release/GNU-Linux-x86/speedyorderconnection</output>
+          <linkerAddLib>
+            <pElem>.</pElem>
+            <pElem>../Lib</pElem>
+            <pElem>/MBus/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibFileItem>/MBus/lib/libSpeedyAPI.so</linkerLibFileItem>
+            <linkerLibFileItem>/MBus/lib/libUFC.so</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="LINUX_Debug" type="1">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/MLExecConnection</output>
+          <linkerAddLib>
+            <pElem>.</pElem>
+            <pElem>../Lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug clean"
+                            OP="/MBus/lib/libUFC_Debug.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

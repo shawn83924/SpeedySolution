@@ -1,0 +1,1159 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{fc70f171-d79e-47a6-8fb8-2895fa540857}</ProjectGuid>
+        <ProjectType>CppVCLApplication</ProjectType>
+        <MainSource>SpeedyCenter.cpp</MainSource>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <ProjectVersion>18.4</ProjectVersion>
+        <Base>True</Base>
+        <TargetedPlatforms>1</TargetedPlatforms>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
+        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <_TCHARMapping>char</_TCHARMapping>
+        <VCL_Custom_Styles>&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\SapphireKamri.vsf&quot;</VCL_Custom_Styles>
+        <VerInfo_MinorVer>2</VerInfo_MinorVer>
+        <VerInfo_MajorVer>2</VerInfo_MajorVer>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Build>25</VerInfo_Build>
+        <OutputExt>exe</OutputExt>
+        <VerInfo_Release>2</VerInfo_Release>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <SanitizedProjectName>SpeedyCenter</SanitizedProjectName>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
+        <Icon_MainIcon>SpeedyCenter_Icon1.ico</Icon_MainIcon>
+        <VerInfo_Keys>CompanyName=MDBS;FileDescription=Monitoring program for Speedy Solution;FileVersion=2.2.2.25;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=2.2.2.25;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave</VerInfo_Keys>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <ILINK_GenerateDRC>True</ILINK_GenerateDRC>
+        <BCC_wpar>false</BCC_wpar>
+        <LinkPackageStatics>vcl.lib;rtl.lib;dbrtl.lib;vcldb.lib;bcbsmp.lib;vclx.lib;bcbie.lib;MDComponent_XE7.lib</LinkPackageStatics>
+        <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+        <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+        <DCC_ObjPath>..\..\OrderTest;$(DCC_ObjPath)</DCC_ObjPath>
+        <OptPCH>&quot;vcl.h&quot;=&quot;vcl4.h&quot;</OptPCH>
+        <ILINK_AppType>Windows</ILINK_AppType>
+        <DCC_DebugInformation>false</DCC_DebugInformation>
+        <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+        <ILINK_ObjectSearchPath>..\..\OrderTest;C:\Users\yuan\Documents\RAD Studio\Projects;$(ILINK_ObjectSearchPath)</ILINK_ObjectSearchPath>
+        <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+        <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+        <TASM_AdditionalSwitches> /w2</TASM_AdditionalSwitches>
+        <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;bcbsmp.bpi;dbrtl.bpi;adortl.bpi;vcldb.bpi;bdertl.bpi;vcldbx.bpi;dsnap.bpi;dsnap.bpi;dsnapcon.bpi;teeui.bpi;teedb.bpi;tee.bpi;ibxpress.bpi;vclie.bpi;xmlrtl.bpi;inet.bpi;inetdbbde.bpi;inetdbxpress.bpi;inetdb.bpi;bcbie.bpi;soaprtl.bpi;dbexpress.bpi;dbxcds.bpi;indycore.bpi;indysystem.bpi;bcboffice2k.bpi;dclusr.bpi;MDComponent_XE7.bpi;$(PackageImports)</PackageImports>
+        <DCC_UnitSearchPath>..\..\OrderTest;.\;$(BDS)\lib;$(BDS)\lib\obj;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+        <BRCC_UserSuppliedOptions> -I..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;$(BDS)\include;$(BDS)\include\vcl;C:\PowerBox\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+        <IncludePath>..\VCL\;..\MDComponent\vcl;..\VCL;$(IncludePath)</IncludePath>
+        <BCC_PCHCache>true</BCC_PCHCache>
+        <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+        <BCC_IncludePath>..\Migo;$(BDS)\include;$(BCC_IncludePath)</BCC_IncludePath>
+        <DCC_IncludePath>..\..\OrderTest;.\;$(BDS)\lib;$(BDS)\lib\obj;$(DCC_IncludePath)</DCC_IncludePath>
+        <TASM_IncludePath>..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BDS)\include;$(BDS)\include\vcl;C:\PowerBox\vcl;$(TASM_IncludePath)</TASM_IncludePath>
+        <AllPackageLibs>vcl.lib;rtl.lib;dbrtl.lib;vcldb.lib;bcbsmp.lib;vclx.lib;bcbie.lib;MDComponent_XE7.lib;MBusComponent_XE7.lib</AllPackageLibs>
+        <BRCC_IncludePath>..\..\OrderTest;..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BDS)\include;$(BDS)\include\vcl;C:\PowerBox\vcl;$(BRCC_IncludePath)</BRCC_IncludePath>
+        <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+        <ILINK_LibraryPath>..\VCL\;$(BDS)\lib\obj;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <Multithreaded>true</Multithreaded>
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <TASM_Debugging>None</TASM_Debugging>
+        <DCC_ResourcePath>..\..\OrderTest;$(DCC_ResourcePath)</DCC_ResourcePath>
+        <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+        <Custom_Styles>&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\SapphireKamri.vsf&quot;</Custom_Styles>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <PackageImports>bindcomp;bindcompdbx;bindengine;$(PackageImports)</PackageImports>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <VerInfo_Release>0</VerInfo_Release>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Build>0</VerInfo_Build>
+        <VerInfo_MinorVer>0</VerInfo_MinorVer>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <PackageImports>bindcomp;bindcompdbx;bindengine;$(PackageImports)</PackageImports>
+        <Icon_MainIcon>SpeedyCenter_Icon1.ico</Icon_MainIcon>
+        <IncludePath>$(BDSINCLUDE)\windows\vcl;$(IncludePath)</IncludePath>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
+        <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
+        <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <FinalOutputDir>Debug</FinalOutputDir>
+        <Defines>_DEBUG;$(Defines)</Defines>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+        <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+        <DCC_DebugInformation>true</DCC_DebugInformation>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <IntermediateOutputDir>Debug_obj</IntermediateOutputDir>
+        <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+        <BCC_StackFrames>true</BCC_StackFrames>
+        <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+        <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <TASM_Debugging>Full</TASM_Debugging>
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
+        <ILINK_StackReserveSize>0x00200000</ILINK_StackReserveSize>
+        <LinkPackageStatics>vcl.lib;rtl.lib;dbrtl.lib;vcldb.lib;bcbsmp.lib;vclx.lib;bcbie.lib;MDComponent_XE7.lib;MBusComponent_XE7.lib</LinkPackageStatics>
+        <VerInfo_MinorVer>0</VerInfo_MinorVer>
+        <VerInfo_Release>0</VerInfo_Release>
+        <ILINK_LibraryPath>C:\MBus\lib\Win32\;C:\Users\Public\Documents\Embarcadero\Studio\15.0\DCP\;C:\src\VCL;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <VerInfo_Build>72</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileDescription=Monitoring program for Speedy Solution;FileVersion=3.0.0.72;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=3.0.0.72;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_MajorVer>3</VerInfo_MajorVer>
+        <BT_BuildType>Debug</BT_BuildType>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <FinalOutputDir>Release</FinalOutputDir>
+        <Defines>NDEBUG;$(Defines)</Defines>
+        <IntermediateOutputDir>Release_obj</IntermediateOutputDir>
+        <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <ILINK_LibraryPath>C:\MBus\lib\Win32\;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+        <LinkPackageStatics>vcl.lib;rtl.lib;dbrtl.lib;vcldb.lib;bcbsmp.lib;vclx.lib;bcbie.lib;MDComponent_XE7.lib;MBusComponent_XE7.lib</LinkPackageStatics>
+        <VerInfo_MinorVer>0</VerInfo_MinorVer>
+        <VerInfo_MajorVer>1</VerInfo_MajorVer>
+        <VerInfo_Release>0</VerInfo_Release>
+        <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+        <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Build>0</VerInfo_Build>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    </PropertyGroup>
+    <ProjectExtensions>
+        <Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+        <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+        <BorlandProject>
+            <CPlusPlusBuilder.Personality>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+                    <VersionInfo Name="MajorVer">2</VersionInfo>
+                    <VersionInfo Name="MinorVer">2</VersionInfo>
+                    <VersionInfo Name="Release">2</VersionInfo>
+                    <VersionInfo Name="Build">25</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1033</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName">MDBS</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileDescription">Monitoring program for Speedy Solution</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileVersion">2.2.2.25</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName">Speedy Center</VersionInfoKeys>
+                    <VersionInfoKeys Name="LegalCopyright">MDBS Development Inc.,</VersionInfoKeys>
+                    <VersionInfoKeys Name="LegalTrademarks">MDBS Speedy</VersionInfoKeys>
+                    <VersionInfoKeys Name="OriginalFilename">Speedy Center</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductName">Speedy Solution</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductVersion">2.2.2.25</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments">for TWSE,OTC,TAIFEX,PATS,FIX and StarWave</VersionInfoKeys>
+                </VersionInfoKeys>
+                <HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Count">11</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item0">C:\Users\yuan\Documents\RAD Studio\Projects</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item1">..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl;C:\PowerBox\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item2">..\..\OrderTest;..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl;C:\PowerBox\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item3">..\TAIFEXLib;..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl;C:\PowerBox\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item4">TFXMsg;..\Simulator\TAIFEXLib;..\Simulator\VCL;..\Simulator\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl;C:\PowerBox\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item5">TFXMsg;..\Simulator\TAIFEXLib;..\Simulator\VCL;..\Simulator\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item6">TFXMsg;..\Simulator\TAIFEXLib;c:\sourcecode\simtaifex\vcl;..\Simulator\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item7">c:\sourcecode\simtaifex\vcl;..\Simulator\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item8">c:\sourcecode\simtaifex\vcl;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item9">c:\sourcecode\simtaifex\vcl;..\LineManager;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                    <HistoryLists_hlIncludePath Name="Item10">C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+                </HistoryLists_hlIncludePath>
+                <HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Count">7</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item0">..\VCL;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item1">..\..\OrderTest;..\VCL;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item2">..\VCL;..\TAIFEXLib;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item3">..\Simulator\VCL;TFXMsg;..\Simulator\TAIFEXLib;c:\sourcecode\simtaifex\vcl;..\LineManager;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item4">TFXMsg;..\Simulator\TAIFEXLib;c:\sourcecode\simtaifex\vcl;..\LineManager;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item5">c:\sourcecode\simtaifex\vcl;..\LineManager;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                    <HistoryLists_hlLibraryPath Name="Item6">C:\Program Files\Borland\CBuilder6\Projects;C:\TAIFEX Source\Client;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+                </HistoryLists_hlLibraryPath>
+                <HistoryLists_hlDebugSourcePath>
+                    <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+                    <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+                </HistoryLists_hlDebugSourcePath>
+                <HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Count">1</HistoryLists_hlConditionals>
+                    <HistoryLists_hlConditionals Name="Item0">_DEBUG</HistoryLists_hlConditionals>
+                </HistoryLists_hlConditionals>
+                <HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Count">7</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item0">C:\Speedy\bin_win32\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item1">C:\Speedy\bin_win32</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item2">C:\Speedy\bin\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item3">C:\Speedy\bin</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item4">..\Build\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item5">..\Simulator\Build\</HistoryLists_hlFinalOutputDir>
+                    <HistoryLists_hlFinalOutputDir Name="Item6">..\Simulator\Build</HistoryLists_hlFinalOutputDir>
+                </HistoryLists_hlFinalOutputDir>
+                <Debugging>
+                    <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+                </Debugging>
+                <Parameters>
+                    <Parameters Name="RunParams"/>
+                    <Parameters Name="Launcher"/>
+                    <Parameters Name="UseLauncher">False</Parameters>
+                    <Parameters Name="DebugCWD"/>
+                    <Parameters Name="HostApplication"/>
+                    <Parameters Name="RemoteHost"/>
+                    <Parameters Name="RemotePath"/>
+                    <Parameters Name="RemoteParams"/>
+                    <Parameters Name="RemoteLauncher"/>
+                    <Parameters Name="UseRemoteLauncher">False</Parameters>
+                    <Parameters Name="RemoteCWD"/>
+                    <Parameters Name="RemoteDebug">False</Parameters>
+                    <Parameters Name="Debug Symbols Search Path"/>
+                    <Parameters Name="LoadAllSymbols">True</Parameters>
+                    <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+                </Parameters>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                </Excluded_Packages>
+                <Linker>
+                    <Linker Name="LibPrefix"/>
+                    <Linker Name="LibSuffix"/>
+                    <Linker Name="LibVersion"/>
+                </Linker>
+                <ProjectProperties>
+                    <ProjectProperties Name="AutoShowDeps">True</ProjectProperties>
+                    <ProjectProperties Name="ManagePaths">True</ProjectProperties>
+                    <ProjectProperties Name="VerifyPackages">True</ProjectProperties>
+                    <ProjectProperties Name="IndexFiles">False</ProjectProperties>
+                </ProjectProperties>
+                <Source>
+                    <Source Name="MainSource">SpeedyCenter.cpp</Source>
+                </Source>
+                <HistoryLists_hlILINK_LibraryPath>
+                    <HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath>
+                    <HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\release;..\..\OrderTest;..\VCL;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\Components\Yuans;$(BDS)\lib\obj;$(BDS)\lib;C:\Users\yuan\Documents\RAD Studio\Projects</HistoryLists_hlILINK_LibraryPath>
+                </HistoryLists_hlILINK_LibraryPath>
+                <HistoryLists_hlIntermediateOutputDir>
+                    <HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir>
+                    <HistoryLists_hlIntermediateOutputDir Name="Item0">Release_Build</HistoryLists_hlIntermediateOutputDir>
+                </HistoryLists_hlIntermediateOutputDir>
+                <HistoryLists_hlBCC_MaxIdentifierLength>
+                    <HistoryLists_hlBCC_MaxIdentifierLength Name="Count">1</HistoryLists_hlBCC_MaxIdentifierLength>
+                    <HistoryLists_hlBCC_MaxIdentifierLength Name="Item0">250</HistoryLists_hlBCC_MaxIdentifierLength>
+                </HistoryLists_hlBCC_MaxIdentifierLength>
+                <HistoryLists_hlBCC_IncludePath>
+                    <HistoryLists_hlBCC_IncludePath Name="Count">1</HistoryLists_hlBCC_IncludePath>
+                    <HistoryLists_hlBCC_IncludePath Name="Item0">..\..\OrderTest;..\VCL;..\Migo;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;C:\Program Files\Borland\CBuilder6\Projects;$(BDS)\include;$(BDS)\include\vcl;C:\PowerBox\vcl;$(BDS)\include\dinkumware</HistoryLists_hlBCC_IncludePath>
+                </HistoryLists_hlBCC_IncludePath>
+                <HistoryLists_hlBCC_Defines>
+                    <HistoryLists_hlBCC_Defines Name="Count">1</HistoryLists_hlBCC_Defines>
+                    <HistoryLists_hlBCC_Defines Name="Item0">NDEBUG;NO_STRICT</HistoryLists_hlBCC_Defines>
+                </HistoryLists_hlBCC_Defines>
+                <HistoryLists_hlILINK_MaxErrors>
+                    <HistoryLists_hlILINK_MaxErrors Name="Count">1</HistoryLists_hlILINK_MaxErrors>
+                    <HistoryLists_hlILINK_MaxErrors Name="Item0">0</HistoryLists_hlILINK_MaxErrors>
+                </HistoryLists_hlILINK_MaxErrors>
+                <HistoryLists_hlILINK_FileAlignment>
+                    <HistoryLists_hlILINK_FileAlignment Name="Count">1</HistoryLists_hlILINK_FileAlignment>
+                    <HistoryLists_hlILINK_FileAlignment Name="Item0">0x200</HistoryLists_hlILINK_FileAlignment>
+                </HistoryLists_hlILINK_FileAlignment>
+                <HistoryLists_hlILINK_ObjectAlignment>
+                    <HistoryLists_hlILINK_ObjectAlignment Name="Count">1</HistoryLists_hlILINK_ObjectAlignment>
+                    <HistoryLists_hlILINK_ObjectAlignment Name="Item0">4096</HistoryLists_hlILINK_ObjectAlignment>
+                </HistoryLists_hlILINK_ObjectAlignment>
+                <HistoryLists_hlILINK_BaseAddress>
+                    <HistoryLists_hlILINK_BaseAddress Name="Count">1</HistoryLists_hlILINK_BaseAddress>
+                    <HistoryLists_hlILINK_BaseAddress Name="Item0">0x00400000</HistoryLists_hlILINK_BaseAddress>
+                </HistoryLists_hlILINK_BaseAddress>
+                <HistoryLists_hlILINK_HeapCommitSize>
+                    <HistoryLists_hlILINK_HeapCommitSize Name="Count">1</HistoryLists_hlILINK_HeapCommitSize>
+                    <HistoryLists_hlILINK_HeapCommitSize Name="Item0">0x00001000</HistoryLists_hlILINK_HeapCommitSize>
+                </HistoryLists_hlILINK_HeapCommitSize>
+                <HistoryLists_hlILINK_HeapReserveSize>
+                    <HistoryLists_hlILINK_HeapReserveSize Name="Count">1</HistoryLists_hlILINK_HeapReserveSize>
+                    <HistoryLists_hlILINK_HeapReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_HeapReserveSize>
+                </HistoryLists_hlILINK_HeapReserveSize>
+                <HistoryLists_hlILINK_StackCommitSize>
+                    <HistoryLists_hlILINK_StackCommitSize Name="Count">1</HistoryLists_hlILINK_StackCommitSize>
+                    <HistoryLists_hlILINK_StackCommitSize Name="Item0">0x00002000</HistoryLists_hlILINK_StackCommitSize>
+                </HistoryLists_hlILINK_StackCommitSize>
+                <HistoryLists_hlILINK_StackReserveSize>
+                    <HistoryLists_hlILINK_StackReserveSize Name="Count">1</HistoryLists_hlILINK_StackReserveSize>
+                    <HistoryLists_hlILINK_StackReserveSize Name="Item0">0x00100000</HistoryLists_hlILINK_StackReserveSize>
+                </HistoryLists_hlILINK_StackReserveSize>
+                <VFOLDERS>
+                    <VFOLDER ID="{384E6038-E387-420E-9A78-C6289B472497}" name="Multilang"/>
+                </VFOLDERS>
+                <Language>
+                    <Language Name="ProjectLang">$00000404</Language>
+                    <Language Name="ActiveLang">ENU</Language>
+                </Language>
+                <Resource_DLL_Projects>
+                    <Resource_DLL_Projects Name="Item0">中文 (簡體，中國)*$00000804*CHS*CHS</Resource_DLL_Projects>
+                    <Resource_DLL_Projects Name="Item1">中文 (繁體，台灣)*$00000404*CHT*CHT</Resource_DLL_Projects>
+                    <Resource_DLL_Projects Name="Item2">英文 (美國)*$00000409*ENU*ENU</Resource_DLL_Projects>
+                </Resource_DLL_Projects>
+                <RDP_Source_Files>
+                    <RDP_Source_Files Name="Item0">SpeedyCenter.drc</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item1">Release\SpeedyCenter.drc</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item2">SeqSettingForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item3">SettingForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item4">SimTFXMain.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item5">ProfileGraph.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item6">SearchSpeedyForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item7">SelChannelForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item8">TerminalForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item9">ThroughputLimit.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item10">VersionUnit.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item11">WarningDialog.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item12">..\VCL\NewValueForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item13">SpeedyServerForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item14">StarWaveFrame.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item15">SystemInfoForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item16">TagViewer.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item17">ExceptionProd.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item18">ExecptionAccount.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item19">FormAbout.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item20">GroupServer.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item21">ItemListForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item22">AccountInput.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item23">AlarmForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item24">AppInfo.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item25">ChangeSessionStatus.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item26">EventViewer.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item27">NewAccountForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item28">NewSession.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item29">NewUser.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item30">PATSFrame.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item31">PrcoessSettingForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item32">LineEditForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item33">LinkFrame.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item34">Login.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item35">MDIMain.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item36">MessageDialog.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item37">Debug\SpeedyCenter.drc</RDP_Source_Files>
+                </RDP_Source_Files>
+            </CPlusPlusBuilder.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+            <Deployment Version="3">
+                <DeployFile LocalName="SpeedyCenter.res" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin64\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgcrtl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(UsingDelphiRTL)'=='true'" LocalName="$(BDS)\bin\borlndmm.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32160mt.dll" Class="DependencyModule"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true'" LocalName="$(BDS)\Redist\osx32\libcgstl.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32c250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="SpeedyCenter.otares" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32160.dll" Class="DependencyModule"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64250mt.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Debug\SpeedyCenter.exe" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="Debug\SpeedyCenter.tds" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64160.dll" Class="DependencyModule"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64160mt.dll" Class="DependencyModule"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployClass Name="AdditionalDebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidClassesDexFile">
+                    <Platform Name="Android">
+                        <RemoteDir>classes</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeArmeabiFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidServiceOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashImageDef">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_DefaultAppIcon">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon36">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon48">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon96">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage426">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-small</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-normal</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage640">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-large</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage960">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xlarge</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DebugSymbols">
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="DependencyPackage">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="File">
+                    <Platform Name="Android">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1024">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch1536">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch768">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch320">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectAndroidManifest">
+                    <Platform Name="Android">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSEntitlements">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSInfoPList">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectiOSResource">
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements">
+                    <Platform Name="OSX32">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXResource">
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Required="true" Name="ProjectOutput">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Linux64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectUWPManifest">
+                    <Platform Name="Win32">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo150">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="UWP_CppLogo44">
+                    <Platform Name="Win32">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win64">
+                        <RemoteDir>Assets</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+            </Deployment>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+    <ItemGroup>
+        <CppCompile Include="AccountInput.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>AccountInputForm</Form>
+            <DependentOn>AccountInput.h</DependentOn>
+            <BuildOrder>17</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="AlarmForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>AlarmSettingForm</Form>
+            <DependentOn>AlarmForm.h</DependentOn>
+            <BuildOrder>18</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="AppInfo.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>AppInfoForm</Form>
+            <DependentOn>AppInfo.h</DependentOn>
+            <BuildOrder>15</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ChangeSessionStatus.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ChangeSessionStatusForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ChangeSessionStatus.h</DependentOn>
+            <BuildOrder>32</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="EventViewer.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>EventForm</Form>
+            <DependentOn>EventViewer.h</DependentOn>
+            <BuildOrder>11</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ExceptionProd.cpp">
+            <Form>ExceptionProdForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ExceptionProd.h</DependentOn>
+            <BuildOrder>37</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ExecptionAccount.cpp">
+            <Form>ExceptionAccForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ExecptionAccount.h</DependentOn>
+            <BuildOrder>36</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="FormAbout.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>AboutForm</Form>
+            <DependentOn>FormAbout.h</DependentOn>
+            <BuildOrder>12</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="GroupServer.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ServerGroupForm</Form>
+            <DependentOn>GroupServer.h</DependentOn>
+            <BuildOrder>30</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ItemListForm.cpp">
+            <Form>ItemsForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ItemListForm.h</DependentOn>
+            <BuildOrder>35</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="LineEditForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>PVCSettingForm</Form>
+            <DependentOn>LineEditForm.h</DependentOn>
+            <BuildOrder>6</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="LinkFrame.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <DependentOn>LinkFrame.h</DependentOn>
+            <BuildOrder>2</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="Login.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>LoginForm</Form>
+            <DependentOn>Login.h</DependentOn>
+            <BuildOrder>3</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="MDIMain.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>MDIForm</Form>
+            <DependentOn>MDIMain.h</DependentOn>
+            <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="MessageDialog.cpp">
+            <Form>MessageForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>MessageDialog.h</DependentOn>
+            <BuildOrder>38</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="NewAccountForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>AccountForm</Form>
+            <DependentOn>NewAccountForm.h</DependentOn>
+            <BuildOrder>16</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="NewSession.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SessionForm</Form>
+            <DependentOn>NewSession.h</DependentOn>
+            <BuildOrder>7</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="NewUser.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>NewUserForm</Form>
+            <DependentOn>NewUser.h</DependentOn>
+            <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="PATSFrame.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ConnectionFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>PATSFrame.h</DependentOn>
+            <BuildOrder>29</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="PrcoessSettingForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ProcessForm</Form>
+            <DependentOn>PrcoessSettingForm.h</DependentOn>
+            <BuildOrder>14</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ProfileGraph.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ProfileFrame</Form>
+            <DependentOn>ProfileGraph.h</DependentOn>
+            <BuildOrder>20</BuildOrder>
+        </CppCompile>
+        <DelphiCompile Include="reinit.pas">
+            <BuildOrder>26</BuildOrder>
+        </DelphiCompile>
+        <DelphiCompile Include="SCStrings.pas">
+            <BuildOrder>27</BuildOrder>
+        </DelphiCompile>
+        <CppCompile Include="SearchSpeedyForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SearchForm</Form>
+            <DependentOn>SearchSpeedyForm.h</DependentOn>
+            <BuildOrder>5</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SelChannelForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ChannelForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>SelChannelForm.h</DependentOn>
+            <BuildOrder>34</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SeqSettingForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SequenceForm</Form>
+            <DependentOn>SeqSettingForm.h</DependentOn>
+            <BuildOrder>8</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SettingForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>FormSetting</Form>
+            <DependentOn>SettingForm.h</DependentOn>
+            <BuildOrder>9</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SimTFXMain.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SimTFXForm</Form>
+            <DependentOn>SimTFXMain.h</DependentOn>
+            <BuildOrder>0</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SpeedyCenter.cpp">
+            <BuildOrder>22</BuildOrder>
+        </CppCompile>
+        <None Include="SpeedyCenter.otares"/>
+        <ResFiles Include="SpeedyCenter.res">
+            <BuildOrder>1</BuildOrder>
+        </ResFiles>
+        <CppCompile Include="SpeedyServerForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>ServerForm</Form>
+            <DependentOn>SpeedyServerForm.h</DependentOn>
+            <BuildOrder>23</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="StarWaveFrame.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SWFrame</Form>
+            <DesignClass>TFrame</DesignClass>
+            <DependentOn>StarWaveFrame.h</DependentOn>
+            <BuildOrder>28</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SystemInfoForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>SystemForm</Form>
+            <DependentOn>SystemInfoForm.h</DependentOn>
+            <BuildOrder>25</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="TagViewer.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>TagForm</Form>
+            <DependentOn>TagViewer.h</DependentOn>
+            <BuildOrder>13</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="TerminalForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>TermForm</Form>
+            <DependentOn>TerminalForm.h</DependentOn>
+            <BuildOrder>19</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="ThroughputLimit.cpp">
+            <Form>ThroughputForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>ThroughputLimit.h</DependentOn>
+            <BuildOrder>39</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="VersionUnit.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>VersionForm</Form>
+            <DependentOn>VersionUnit.h</DependentOn>
+            <BuildOrder>24</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="WarningDialog.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>WarningForm</Form>
+            <DependentOn>WarningDialog.h</DependentOn>
+            <BuildOrder>10</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="..\VCL\NewValueForm.cpp">
+            <Form>AddValueForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>..\VCL\NewValueForm.h</DependentOn>
+            <BuildOrder>33</BuildOrder>
+        </CppCompile>
+        <FormResources Include="SeqSettingForm.dfm"/>
+        <FormResources Include="SettingForm.dfm"/>
+        <FormResources Include="SimTFXMain.dfm"/>
+        <FormResources Include="ProfileGraph.dfm"/>
+        <FormResources Include="SearchSpeedyForm.dfm"/>
+        <FormResources Include="SelChannelForm.dfm"/>
+        <FormResources Include="TerminalForm.dfm"/>
+        <FormResources Include="ThroughputLimit.dfm"/>
+        <FormResources Include="VersionUnit.dfm"/>
+        <FormResources Include="WarningDialog.dfm"/>
+        <FormResources Include="..\VCL\NewValueForm.dfm"/>
+        <FormResources Include="SpeedyServerForm.dfm"/>
+        <FormResources Include="StarWaveFrame.dfm"/>
+        <FormResources Include="SystemInfoForm.dfm"/>
+        <FormResources Include="TagViewer.dfm"/>
+        <FormResources Include="ExceptionProd.dfm"/>
+        <FormResources Include="ExecptionAccount.dfm"/>
+        <FormResources Include="FormAbout.dfm"/>
+        <FormResources Include="GroupServer.dfm"/>
+        <FormResources Include="ItemListForm.dfm"/>
+        <FormResources Include="AccountInput.dfm"/>
+        <FormResources Include="AlarmForm.dfm"/>
+        <FormResources Include="AppInfo.dfm"/>
+        <FormResources Include="ChangeSessionStatus.dfm"/>
+        <FormResources Include="EventViewer.dfm"/>
+        <FormResources Include="NewAccountForm.dfm"/>
+        <FormResources Include="NewSession.dfm"/>
+        <FormResources Include="NewUser.dfm"/>
+        <FormResources Include="PATSFrame.dfm"/>
+        <FormResources Include="PrcoessSettingForm.dfm"/>
+        <FormResources Include="LineEditForm.dfm"/>
+        <FormResources Include="Login.dfm"/>
+        <FormResources Include="MDIMain.dfm"/>
+        <FormResources Include="MessageDialog.dfm"/>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+    <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>
+    <Import Project="$(MSBuildProjectName).deployproj" Condition="Exists('$(MSBuildProjectName).deployproj')"/>
+</Project>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="31">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Subscriber.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <defaultConf>3</defaultConf>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>1</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+          </includeDirectories>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/MBus/Tools/Subscriber</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>SocketsNetworkServices</linkerLibStdlibItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../Migo"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../Migo"
+                            BC="${MAKE} -f Makefile_Migo.mk CONF=Debug"
+                            CC="${MAKE} -f Makefile_Migo.mk CONF=Debug clean"
+                            OP="/MBus/lib/Migo.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=Debug"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=Debug clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthreads</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Subscriber.cpp">
+        <itemTool>1</itemTool>
+        <ccCompilerTool>
+        </ccCompilerTool>
+      </item>
+    </conf>
+    <conf name="Solaris_Release" type="1">
+      <toolsSet>
+        <compilerSet>1</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+          </includeDirectories>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/MBus/Tools/Subscriber</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>SocketsNetworkServices</linkerLibStdlibItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../Migo"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../Migo"
+                            BC="${MAKE} -f Makefile_Migo.mk CONF=Release"
+                            CC="${MAKE} -f Makefile_Migo.mk CONF=Release clean"
+                            OP="/MBus/lib/Migo.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=Release"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthreads</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Subscriber.cpp">
+        <itemTool>1</itemTool>
+        <ccCompilerTool>
+        </ccCompilerTool>
+      </item>
+    </conf>
+    <conf name="Linux_Debug" type="1">
+      <toolsSet>
+        <compilerSet>1</compilerSet>
+        <platform>2</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+          </includeDirectories>
+          <commandLine>-pthread</commandLine>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/MBus/Tools/Subscriber</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../Migo"
+                            CT="3"
+                            CN="LINUX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../Migo"
+                            BC="${MAKE} -f Makefile_Migo.mk CONF=LINUX_Debug"
+                            CC="${MAKE} -f Makefile_Migo.mk CONF=LINUX_Debug clean"
+                            OP="/MBus/lib/Migo.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=LINUX_Debug"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=LINUX_Debug clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Subscriber.cpp">
+        <itemTool>1</itemTool>
+        <ccCompilerTool>
+        </ccCompilerTool>
+      </item>
+    </conf>
+    <conf name="AIX_Debug" type="1">
+      <toolsSet>
+        <compilerSet>1</compilerSet>
+        <platform>4</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+          </includeDirectories>
+          <commandLine>-pthread</commandLine>
+          <preprocessor>__AIX</preprocessor>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <fortranCompilerTool>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/MBus/Tools/Subscriber</output>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../Migo"
+                            CT="3"
+                            CN="AIX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../../Migo"
+                            BC="${MAKE} -f Makefile_Migo.mk CONF=AIX_Debug"
+                            CC="${MAKE} -f Makefile_Migo.mk CONF=AIX_Debug clean"
+                            OP="/MBus/lib/Migo.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Debug"
+                            AC="false"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=AIX_Debug"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=AIX_Debug clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Subscriber.cpp">
+        <itemTool>1</itemTool>
+        <ccCompilerTool>
+        </ccCompilerTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

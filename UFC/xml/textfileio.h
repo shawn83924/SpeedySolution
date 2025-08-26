@@ -1,0 +1,28 @@
+//////////////////////////////////////////////////////////
+// File Name: textfileio.h
+//
+// Author : Jerry Chio
+// Created: 2013/4/8
+//
+//////////////////////////////////////////////////////////
+
+#ifndef __TEXTFILEIO_H__
+#define __TEXTFILEIO_H__
+
+#include "tchars.h"
+#include <stdio.h>
+
+/*
+//////////////////////////////////////////////////////////////////////////
+ class TextFileIO: Text file reader/writer, handling UTF-8, UCS and MBS
+/////////////////////////////////////////////////////////////////////////
+*/
+class TextFileIO
+{
+public:
+
+	static bool Load(FILE *fp, StdString &buf);
+	static void Save(FILE *fp, const StdString &buf, bool bUnicode);
+};
+
+#endif

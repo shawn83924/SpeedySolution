@@ -1,0 +1,70 @@
+object SortForm: TSortForm
+  Left = 0
+  Top = 0
+  BorderStyle = bsDialog
+  Caption = #21830#21697#25490#24207
+  ClientHeight = 302
+  ClientWidth = 420
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  PixelsPerInch = 120
+  TextHeight = 13
+  object ListBox1: TListBox
+    Left = 0
+    Top = 0
+    Width = 329
+    Height = 302
+    Align = alLeft
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ItemHeight = 23
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 335
+    Top = 24
+    Width = 75
+    Height = 25
+    Caption = #19978#31227
+    TabOrder = 1
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 337
+    Top = 72
+    Width = 75
+    Height = 25
+    Caption = #19979#31227
+    TabOrder = 2
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 333
+    Top = 219
+    Width = 75
+    Height = 25
+    Caption = #30906#23450
+    TabOrder = 3
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Left = 333
+    Top = 259
+    Width = 75
+    Height = 25
+    Caption = #21462#28040
+    TabOrder = 4
+    OnClick = Button4Click
+  end
+end

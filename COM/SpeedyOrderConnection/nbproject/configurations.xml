@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>SpeedyOrderConnection.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Main.cpp</itemPath>
+      <itemPath>SpeedyOrderConnection.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release_64" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread -std=c++0x</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <architecture>2</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>dist/LINUX_Release_64/GNU-Linux-x86/SpeedyOrderConnection</output>
+          <linkerAddLib>
+            <pElem>.</pElem>
+            <pElem>../Lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libSpeedyAPI_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libUFC_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread -lrt</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread -Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <stripSymbols>true</stripSymbols>
+          <architecture>1</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>dist/LINUX_Release/GNU-Linux-x86/SpeedyOrderConnection</output>
+          <linkerAddLib>
+            <pElem>.</pElem>
+            <pElem>../Lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibFileItem>../Lib/libSpeedyAPI.a</linkerLibFileItem>
+            <linkerLibFileItem>../Lib/libUFC.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

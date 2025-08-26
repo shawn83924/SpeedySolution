@@ -1,0 +1,50 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{51a27b44-a8e0-47bf-a74f-849c0cbdfe1f}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\Lib\SpeedyAPILib.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="OrderMessage.cbproj">
+				<Dependencies>..\Lib\SpeedyAPILib.cbproj</Dependencies>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<BorlandProject>
+					<Default.Personality/>
+				</BorlandProject>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="SpeedyAPILib">
+			<MSBuild Projects="..\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target Name="SpeedyAPILib:Clean">
+			<MSBuild Targets="Clean" Projects="..\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target Name="SpeedyAPILib:Make">
+			<MSBuild Targets="Make" Projects="..\Lib\SpeedyAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib" Name="OrderMessage">
+			<MSBuild Projects="OrderMessage.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib:Clean" Name="OrderMessage:Clean">
+			<MSBuild Targets="Clean" Projects="OrderMessage.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="SpeedyAPILib:Make" Name="OrderMessage:Make">
+			<MSBuild Targets="Make" Projects="OrderMessage.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="SpeedyAPILib;OrderMessage"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="SpeedyAPILib:Clean;OrderMessage:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="SpeedyAPILib:Make;OrderMessage:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

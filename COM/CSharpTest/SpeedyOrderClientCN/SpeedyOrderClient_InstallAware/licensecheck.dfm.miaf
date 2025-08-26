@@ -1,0 +1,2 @@
+IF (Accept.Checked = True)  THEN  Continue.Enabled := True;
+IF (Accept.Checked = False)  THEN  Continue.Enabled := False;

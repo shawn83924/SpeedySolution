@@ -1,0 +1,461 @@
+﻿// CodeGear C++Builder
+// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
+// All rights reserved
+
+// (DO NOT EDIT: machine generated header) 'MDComponentStrings.pas' rev: 32.00 (Windows)
+
+#ifndef MdcomponentstringsHPP
+#define MdcomponentstringsHPP
+
+#pragma delphiheader begin
+#pragma option push
+#pragma option -w-      // All warnings off
+#pragma option -Vx      // Zero-length empty class member 
+#pragma pack(push,8)
+#include <System.hpp>
+#include <SysInit.hpp>
+#include <Winapi.Windows.hpp>
+
+//-- user supplied -----------------------------------------------------------
+
+namespace Mdcomponentstrings
+{
+//-- forward type declarations -----------------------------------------------
+//-- type declarations -------------------------------------------------------
+//-- var, const, procedure ---------------------------------------------------
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL;
+#define Mdcomponentstrings_MD_CANDEL_FILL System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_FILL)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL_EMPTY;
+#define Mdcomponentstrings_MD_CANDEL_FILL_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_FILL_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_HIGH_LOW;
+#define Mdcomponentstrings_MD_CANDEL_HIGH_LOW System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_HIGH_LOW)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_HIGH_LOW_EMPTY;
+#define Mdcomponentstrings_MD_CANDEL_HIGH_LOW_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_HIGH_LOW_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_QTY;
+#define Mdcomponentstrings_MD_CANDEL_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_QTY_EMPTY;
+#define Mdcomponentstrings_MD_CANDEL_QTY_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_QTY_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_TIME;
+#define Mdcomponentstrings_MD_CANDEL_TIME System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_TIME)
+extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_TIME_EMPTY;
+#define Mdcomponentstrings_MD_CANDEL_TIME_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_TIME_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_TAIFEX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_TAIFEX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_TAIFEX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_TWSE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_TWSE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_TWSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_OTC;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_OTC System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_OTC)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_SGX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_SGX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_SGX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_CME;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_CME System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_CME)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_CBOT;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_CBOT System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_CBOT)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_NYMEX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_NYMEX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_NYMEX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_NYBOT;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_NYBOT System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_NYBOT)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_LIF;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_LIF System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_LIF)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_LME;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_LME System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_LME)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_EUX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_EUX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_EUX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_HKEX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_HKEX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_HKEX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_SHFE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_SHFE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_SHFE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_CFFEX;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_CFFEX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_CFFEX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_CZCE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_CZCE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_CZCE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_DCE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_DCE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_DCE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_SSE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_SSE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_SSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_TOCOM;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_TOCOM System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_TOCOM)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_OSE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_OSE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_OSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_TGE;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_TGE System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_TGE)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHNAGE_KRX;
+#define Mdcomponentstrings_MD_STORE_EXCHNAGE_KRX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHNAGE_KRX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHNAGE_TFX;
+#define Mdcomponentstrings_MD_STORE_EXCHNAGE_TFX System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHNAGE_TFX)
+extern DELPHI_PACKAGE System::ResourceString _MD_STORE_EXCHANGE_BMD;
+#define Mdcomponentstrings_MD_STORE_EXCHANGE_BMD System::LoadResourceString(&Mdcomponentstrings::_MD_STORE_EXCHANGE_BMD)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_OPEN_PX_EMPTY;
+#define Mdcomponentstrings_MD_CHART_OPEN_PX_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_OPEN_PX_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_HIGH_PX_EMPTY;
+#define Mdcomponentstrings_MD_CHART_HIGH_PX_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_HIGH_PX_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_LOW_PX_EMPTY;
+#define Mdcomponentstrings_MD_CHART_LOW_PX_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_LOW_PX_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_CLOSE_PX_EMPTY;
+#define Mdcomponentstrings_MD_CHART_CLOSE_PX_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_CLOSE_PX_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_FILL_QTY_EMPTY;
+#define Mdcomponentstrings_MD_CHART_FILL_QTY_EMPTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_FILL_QTY_EMPTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_TIME;
+#define Mdcomponentstrings_MD_CHART_TIME System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_TIME)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_OPEN_PX;
+#define Mdcomponentstrings_MD_CHART_OPEN_PX System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_OPEN_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_HIGH_PX;
+#define Mdcomponentstrings_MD_CHART_HIGH_PX System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_HIGH_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_LOW_PX;
+#define Mdcomponentstrings_MD_CHART_LOW_PX System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_LOW_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_CLOSE_PX;
+#define Mdcomponentstrings_MD_CHART_CLOSE_PX System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_CLOSE_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_CHART_FILL_QTY;
+#define Mdcomponentstrings_MD_CHART_FILL_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_CHART_FILL_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_CALL;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_CALL System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_CALL)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_PUT;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_PUT System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_PUT)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_BIDPX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_BIDPX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_BIDPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_ASKPX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_ASKPX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_ASKPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_FILLPX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_FILLPX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_FILLPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_UPDOWNPX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_UPDOWNPX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_UPDOWNPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_QTY;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_TOTALQTY;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_TOTALQTY System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_TOTALQTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_HIGH;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_HIGH System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_HIGH)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_LOW;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_LOW System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_LOW)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_STRIKEPX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_STRIKEPX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_STRIKEPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_SETTLEMENT_PX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_SETTLEMENT_PX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_SETTLEMENT_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_OPEN_INTEREST;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_OPEN_INTEREST System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_OPEN_INTEREST)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_DELTA;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_DELTA System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_DELTA)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_GAMMA;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_GAMMA System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_GAMMA)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_THETA;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_THETA System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_THETA)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_VEGA;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_VEGA System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_VEGA)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_RHO;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_RHO System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_RHO)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_DIFF_OI;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_DIFF_OI System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_DIFF_OI)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_BUY_QTY;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_BUY_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_BUY_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_SELL_QTY;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_SELL_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_SELL_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_IMP_VAR;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_IMP_VAR System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_IMP_VAR)
+extern DELPHI_PACKAGE System::ResourceString _MD_OPTIONS_TBAR_THEORY_PX;
+#define Mdcomponentstrings_MD_OPTIONS_TBAR_THEORY_PX System::LoadResourceString(&Mdcomponentstrings::_MD_OPTIONS_TBAR_THEORY_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_SYMBOL;
+#define Mdcomponentstrings_MD_MDLIST_SYMBOL System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_SYMBOL)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_BID_QTY;
+#define Mdcomponentstrings_MD_MDLIST_BID_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_BID_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_ASK_QTY;
+#define Mdcomponentstrings_MD_MDLIST_ASK_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_ASK_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_BID_TOTAL_QTY;
+#define Mdcomponentstrings_MD_MDLIST_BID_TOTAL_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_BID_TOTAL_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_ASK_TOTAL_QTY;
+#define Mdcomponentstrings_MD_MDLIST_ASK_TOTAL_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_ASK_TOTAL_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_OPEN_PX;
+#define Mdcomponentstrings_MD_MDLIST_OPEN_PX System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_OPEN_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_OPEN_INTEREST;
+#define Mdcomponentstrings_MD_MDLIST_OPEN_INTEREST System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_OPEN_INTEREST)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_SETTLEMENT_PX;
+#define Mdcomponentstrings_MD_MDLIST_SETTLEMENT_PX System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_SETTLEMENT_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_PREV_CLOSE_PX;
+#define Mdcomponentstrings_MD_MDLIST_PREV_CLOSE_PX System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_PREV_CLOSE_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_UP_DOWN;
+#define Mdcomponentstrings_MD_MDLIST_UP_DOWN System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_UP_DOWN)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_UP_DOWN_RATE;
+#define Mdcomponentstrings_MD_MDLIST_UP_DOWN_RATE System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_UP_DOWN_RATE)
+extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_FILL_TIME;
+#define Mdcomponentstrings_MD_MDLIST_FILL_TIME System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_FILL_TIME)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_BUY;
+#define Mdcomponentstrings_MD_ORDERBOOK_FILL_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_FILL_BUY)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_SELL;
+#define Mdcomponentstrings_MD_ORDERBOOK_FILL_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_FILL_SELL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_STOPPX;
+#define Mdcomponentstrings_MD_ORDERBOOK_STOPPX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_STOPPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_CANCEL;
+#define Mdcomponentstrings_MD_ORDERBOOK_CANCEL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_CANCEL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_ORDER;
+#define Mdcomponentstrings_MD_ORDERBOOK_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_MARKET;
+#define Mdcomponentstrings_MD_ORDERBOOK_MARKET System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_MARKET)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_BUY;
+#define Mdcomponentstrings_MD_ORDERBOOK_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_BUY)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_SELL;
+#define Mdcomponentstrings_MD_ORDERBOOK_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_SELL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CANCELALL;
+#define Mdcomponentstrings_MD_ORDERLIST_CANCELALL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CANCELALL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_TIME;
+#define Mdcomponentstrings_MD_ORDERLIST_TIME System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_TIME)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ORDERID;
+#define Mdcomponentstrings_MD_ORDERLIST_ORDERID System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ORDERID)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_NAME;
+#define Mdcomponentstrings_MD_ORDERLIST_NAME System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_NAME)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SYMBOL;
+#define Mdcomponentstrings_MD_ORDERLIST_SYMBOL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SYMBOL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_DATE;
+#define Mdcomponentstrings_MD_ORDERLIST_DATE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_DATE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CALL_PUT;
+#define Mdcomponentstrings_MD_ORDERLIST_CALL_PUT System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CALL_PUT)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STRIKE_PX;
+#define Mdcomponentstrings_MD_ORDERLIST_STRIKE_PX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STRIKE_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SYM_LEG1;
+#define Mdcomponentstrings_MD_ORDERLIST_SYM_LEG1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SYM_LEG1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_DATE_LEG1;
+#define Mdcomponentstrings_MD_ORDERLIST_DATE_LEG1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_DATE_LEG1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CALL_PUT1;
+#define Mdcomponentstrings_MD_ORDERLIST_CALL_PUT1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CALL_PUT1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STRIKE_PX1;
+#define Mdcomponentstrings_MD_ORDERLIST_STRIKE_PX1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STRIKE_PX1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SYM_LEG2;
+#define Mdcomponentstrings_MD_ORDERLIST_SYM_LEG2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SYM_LEG2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_DATE_LEG2;
+#define Mdcomponentstrings_MD_ORDERLIST_DATE_LEG2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_DATE_LEG2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CALL_PUT2;
+#define Mdcomponentstrings_MD_ORDERLIST_CALL_PUT2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CALL_PUT2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STRIKE_PX2;
+#define Mdcomponentstrings_MD_ORDERLIST_STRIKE_PX2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STRIKE_PX2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SIDE;
+#define Mdcomponentstrings_MD_ORDERLIST_SIDE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SIDE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SIDE_LEG1;
+#define Mdcomponentstrings_MD_ORDERLIST_SIDE_LEG1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SIDE_LEG1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_SIDE_LEG2;
+#define Mdcomponentstrings_MD_ORDERLIST_SIDE_LEG2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_SIDE_LEG2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_PRICE;
+#define Mdcomponentstrings_MD_ORDERLIST_PRICE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_PRICE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_AVG_PX;
+#define Mdcomponentstrings_MD_ORDERLIST_AVG_PX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_AVG_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_FILL_PX;
+#define Mdcomponentstrings_MD_ORDERLIST_FILL_PX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_FILL_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_FILL_PX1;
+#define Mdcomponentstrings_MD_ORDERLIST_FILL_PX1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_FILL_PX1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_FILL_PX2;
+#define Mdcomponentstrings_MD_ORDERLIST_FILL_PX2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_FILL_PX2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STATUS;
+#define Mdcomponentstrings_MD_ORDERLIST_STATUS System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STATUS)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ST_NEW;
+#define Mdcomponentstrings_MD_ORDERLIST_ST_NEW System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ST_NEW)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ST_FILLED;
+#define Mdcomponentstrings_MD_ORDERLIST_ST_FILLED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ST_FILLED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_LEAVES_QTY;
+#define Mdcomponentstrings_MD_ORDERLIST_LEAVES_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_LEAVES_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_OPEN_CLOSE;
+#define Mdcomponentstrings_MD_ORDERLIST_OPEN_CLOSE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_OPEN_CLOSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ORDER_TYPE;
+#define Mdcomponentstrings_MD_ORDERLIST_ORDER_TYPE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ORDER_TYPE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ORDER_COND;
+#define Mdcomponentstrings_MD_ORDERLIST_ORDER_COND System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ORDER_COND)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_ERROR_CODE;
+#define Mdcomponentstrings_MD_ORDERLIST_ERROR_CODE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_ERROR_CODE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STRATEGY_NAME;
+#define Mdcomponentstrings_MD_ORDERLIST_STRATEGY_NAME System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STRATEGY_NAME)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_MESSGAE;
+#define Mdcomponentstrings_MD_ORDERLIST_MESSGAE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_MESSGAE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_STOP_PX;
+#define Mdcomponentstrings_MD_ORDERLIST_STOP_PX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_STOP_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CONFIRM_DELETE;
+#define Mdcomponentstrings_MD_ORDERLIST_CONFIRM_DELETE System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CONFIRM_DELETE)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CONFIRM_DELETE_ALL_STOP_ORDER;
+#define Mdcomponentstrings_MD_ORDERLIST_CONFIRM_DELETE_ALL_STOP_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CONFIRM_DELETE_ALL_STOP_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CONFIRM_DELETE_ALL_ACTIVE_ORDER;
+#define Mdcomponentstrings_MD_ORDERLIST_CONFIRM_DELETE_ALL_ACTIVE_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CONFIRM_DELETE_ALL_ACTIVE_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CONFIRM_UP_ARROW;
+#define Mdcomponentstrings_MD_ORDERLIST_CONFIRM_UP_ARROW System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CONFIRM_UP_ARROW)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CONFIRM_DOWN_ARROW;
+#define Mdcomponentstrings_MD_ORDERLIST_CONFIRM_DOWN_ARROW System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CONFIRM_DOWN_ARROW)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_CONNECTION_NOT_EXIST_EXCEPTION;
+#define Mdcomponentstrings_MD_ORDERSTORE_CONNECTION_NOT_EXIST_EXCEPTION System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_CONNECTION_NOT_EXIST_EXCEPTION)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_CONNECTION_NOT_CONNECTED;
+#define Mdcomponentstrings_MD_ORDERSTORE_CONNECTION_NOT_CONNECTED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_CONNECTION_NOT_CONNECTED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_CONNECTION_NOT_LOGON;
+#define Mdcomponentstrings_MD_ORDERSTORE_CONNECTION_NOT_LOGON System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_CONNECTION_NOT_LOGON)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_NEW_ORDER_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_NEW_ORDER_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_NEW_ORDER_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_CANCEL_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_CANCEL_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_CANCEL_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_AMEND_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_AMEND_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_AMEND_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_REPLACE_PRICE_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_REPLACE_PRICE_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_REPLACE_PRICE_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_FEE_NO_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_FEE_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_FEE_NO_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_FEE_NO_FEE_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_FEE_NO_FEE_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_FEE_NO_FEE_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_FEE_FAILED_PREFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_FEE_FAILED_PREFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_FEE_FAILED_PREFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_FEE_FAILED;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_FEE_FAILED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_FEE_FAILED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAX_NO_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAX_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAX_NO_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAX_NO_TAX_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAX_NO_TAX_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAX_NO_TAX_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAX_FAILED_PREFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAX_FAILED_PREFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAX_FAILED_PREFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAX_FAILED;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAX_FAILED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAX_FAILED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_FEE_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_FEE_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_NO_FEE_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED_PREFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED_PREFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED_PREFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_FEE_FAILED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE1;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE2;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_BUY_STOP_PRICE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE1;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE2;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_BUY_ORDER_PRICE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE1;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE2;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_SELL_STOP_PRICE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE1;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE2;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_SELL_ORDER_PRICE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_SUFFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_SUFFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_SUFFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_TEXT1;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT1 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT1)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_TEXT2;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT2 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT2)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_ORDER_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_ORDER_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_ORDER_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED_PREFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED_PREFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED_PREFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAIFEX_OI_FAILED)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_ORDER_DATA;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_ORDER_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_OI_NO_ORDER_DATA)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED_PREFIX;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED_PREFIX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED_PREFIX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED;
+#define Mdcomponentstrings_MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_OVERSEAS_OI_FAILED)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_PENDING;
+#define Mdcomponentstrings_MD_EXECUTION_PENDING System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_PENDING)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_NEW;
+#define Mdcomponentstrings_MD_EXECUTION_NEW System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_NEW)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_REPLACE_QTY;
+#define Mdcomponentstrings_MD_EXECUTION_REPLACE_QTY System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_REPLACE_QTY)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_REPLACE_PX;
+#define Mdcomponentstrings_MD_EXECUTION_REPLACE_PX System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_REPLACE_PX)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_CANCEL;
+#define Mdcomponentstrings_MD_EXECUTION_CANCEL System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_CANCEL)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_FILL;
+#define Mdcomponentstrings_MD_EXECUTION_FILL System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_FILL)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_REJECT;
+#define Mdcomponentstrings_MD_EXECUTION_REJECT System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_REJECT)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_STATUS;
+#define Mdcomponentstrings_MD_EXECUTION_STATUS System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_STATUS)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_FUTURES;
+#define Mdcomponentstrings_MD_EXECUTION_FUTURES System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_FUTURES)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_OPTIONS;
+#define Mdcomponentstrings_MD_EXECUTION_OPTIONS System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_OPTIONS)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_POSITION_EFFECT_OPEN;
+#define Mdcomponentstrings_MD_EXECUTION_POSITION_EFFECT_OPEN System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_POSITION_EFFECT_OPEN)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_POSITION_EFFECT_CLOSE;
+#define Mdcomponentstrings_MD_EXECUTION_POSITION_EFFECT_CLOSE System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_POSITION_EFFECT_CLOSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_POSITION_EFFECT_ROLLED;
+#define Mdcomponentstrings_MD_EXECUTION_POSITION_EFFECT_ROLLED System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_POSITION_EFFECT_ROLLED)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_POSITION_EFFECT_DAY_TRADE;
+#define Mdcomponentstrings_MD_EXECUTION_POSITION_EFFECT_DAY_TRADE System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_POSITION_EFFECT_DAY_TRADE)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_POSITION_EFFECT_MARKET_MAKER;
+#define Mdcomponentstrings_MD_EXECUTION_POSITION_EFFECT_MARKET_MAKER System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_POSITION_EFFECT_MARKET_MAKER)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_ORDER_TYPE_MARKET;
+#define Mdcomponentstrings_MD_EXECUTION_ORDER_TYPE_MARKET System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_ORDER_TYPE_MARKET)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_ORDER_TYPE_LIMIT;
+#define Mdcomponentstrings_MD_EXECUTION_ORDER_TYPE_LIMIT System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_ORDER_TYPE_LIMIT)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_ORDER_TYPE_STOP;
+#define Mdcomponentstrings_MD_EXECUTION_ORDER_TYPE_STOP System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_ORDER_TYPE_STOP)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_ORDER_TYPE_STOP_LIMIT;
+#define Mdcomponentstrings_MD_EXECUTION_ORDER_TYPE_STOP_LIMIT System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_ORDER_TYPE_STOP_LIMIT)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_BUY;
+#define Mdcomponentstrings_MD_EXECUTION_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_BUY)
+extern DELPHI_PACKAGE System::ResourceString _MD_EXECUTION_SELL;
+#define Mdcomponentstrings_MD_EXECUTION_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_EXECUTION_SELL)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_BUY;
+#define Mdcomponentstrings_MD_SG_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_SG_BUY)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_SELL;
+#define Mdcomponentstrings_MD_SG_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_SG_SELL)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_OPEN;
+#define Mdcomponentstrings_MD_SG_OPEN System::LoadResourceString(&Mdcomponentstrings::_MD_SG_OPEN)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_CLOSE;
+#define Mdcomponentstrings_MD_SG_CLOSE System::LoadResourceString(&Mdcomponentstrings::_MD_SG_CLOSE)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_CLOSE_TODAY;
+#define Mdcomponentstrings_MD_SG_CLOSE_TODAY System::LoadResourceString(&Mdcomponentstrings::_MD_SG_CLOSE_TODAY)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_SPECULATE;
+#define Mdcomponentstrings_MD_SG_SPECULATE System::LoadResourceString(&Mdcomponentstrings::_MD_SG_SPECULATE)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_HEDGE;
+#define Mdcomponentstrings_MD_SG_HEDGE System::LoadResourceString(&Mdcomponentstrings::_MD_SG_HEDGE)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_WAITING;
+#define Mdcomponentstrings_MD_SG_WAITING System::LoadResourceString(&Mdcomponentstrings::_MD_SG_WAITING)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_BAODANING;
+#define Mdcomponentstrings_MD_SG_BAODANING System::LoadResourceString(&Mdcomponentstrings::_MD_SG_BAODANING)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_ALREADY_BAODANED;
+#define Mdcomponentstrings_MD_SG_ALREADY_BAODANED System::LoadResourceString(&Mdcomponentstrings::_MD_SG_ALREADY_BAODANED)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_PARTIAL_COMPLETED;
+#define Mdcomponentstrings_MD_SG_PARTIAL_COMPLETED System::LoadResourceString(&Mdcomponentstrings::_MD_SG_PARTIAL_COMPLETED)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_COMPLETED;
+#define Mdcomponentstrings_MD_SG_COMPLETED System::LoadResourceString(&Mdcomponentstrings::_MD_SG_COMPLETED)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_DELETEING;
+#define Mdcomponentstrings_MD_SG_DELETEING System::LoadResourceString(&Mdcomponentstrings::_MD_SG_DELETEING)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_ERROR_ORDER;
+#define Mdcomponentstrings_MD_SG_ERROR_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_SG_ERROR_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_SYSTEM_DISABLE;
+#define Mdcomponentstrings_MD_SG_SYSTEM_DISABLE System::LoadResourceString(&Mdcomponentstrings::_MD_SG_SYSTEM_DISABLE)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_TOTAL_DELETED;
+#define Mdcomponentstrings_MD_SG_TOTAL_DELETED System::LoadResourceString(&Mdcomponentstrings::_MD_SG_TOTAL_DELETED)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_PARTIAL_COMPLETED_AND_DELETED;
+#define Mdcomponentstrings_MD_SG_PARTIAL_COMPLETED_AND_DELETED System::LoadResourceString(&Mdcomponentstrings::_MD_SG_PARTIAL_COMPLETED_AND_DELETED)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_LIMIT;
+#define Mdcomponentstrings_MD_SG_LIMIT System::LoadResourceString(&Mdcomponentstrings::_MD_SG_LIMIT)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_MARKET;
+#define Mdcomponentstrings_MD_SG_MARKET System::LoadResourceString(&Mdcomponentstrings::_MD_SG_MARKET)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_AT_BEST;
+#define Mdcomponentstrings_MD_SG_AT_BEST System::LoadResourceString(&Mdcomponentstrings::_MD_SG_AT_BEST)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_STOP_LOSS;
+#define Mdcomponentstrings_MD_SG_STOP_LOSS System::LoadResourceString(&Mdcomponentstrings::_MD_SG_STOP_LOSS)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_TAKE_PROFIT;
+#define Mdcomponentstrings_MD_SG_TAKE_PROFIT System::LoadResourceString(&Mdcomponentstrings::_MD_SG_TAKE_PROFIT)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_STOP_LIMIT_LOSS;
+#define Mdcomponentstrings_MD_SG_STOP_LIMIT_LOSS System::LoadResourceString(&Mdcomponentstrings::_MD_SG_STOP_LIMIT_LOSS)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_TAKE_LIMIT_PROFIT;
+#define Mdcomponentstrings_MD_SG_TAKE_LIMIT_PROFIT System::LoadResourceString(&Mdcomponentstrings::_MD_SG_TAKE_LIMIT_PROFIT)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_GFD;
+#define Mdcomponentstrings_MD_SG_GFD System::LoadResourceString(&Mdcomponentstrings::_MD_SG_GFD)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_FOK;
+#define Mdcomponentstrings_MD_SG_FOK System::LoadResourceString(&Mdcomponentstrings::_MD_SG_FOK)
+extern DELPHI_PACKAGE System::ResourceString _MD_SG_FAK;
+#define Mdcomponentstrings_MD_SG_FAK System::LoadResourceString(&Mdcomponentstrings::_MD_SG_FAK)
+}	/* namespace Mdcomponentstrings */
+#if !defined(DELPHIHEADER_NO_IMPLICIT_NAMESPACE_USE) && !defined(NO_USING_NAMESPACE_MDCOMPONENTSTRINGS)
+using namespace Mdcomponentstrings;
+#endif
+#pragma pack(pop)
+#pragma option pop
+
+#pragma delphiheader end.
+//-- end unit ----------------------------------------------------------------
+#endif	// MdcomponentstringsHPP

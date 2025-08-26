@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/09/03 16:08:51.000.218,C:\src\StarWaveAPILib\StarWaveAPI_XE7_Group.groupproj=C:\Users\Administrator\Documents\Embarcadero\Studio\Projects\ProjectGroup1.groupproj</Transaction>
+    <Transaction>2015/11/13 16:49:40.000.557,C:\src\StarWaveAPILib\StarWaveAPI_XE7_Group.groupproj=C:\src\StarWaveAPILib\StarWaveOCXAPI_XE7_Group.groupproj</Transaction>
+  </Transactions>
+	<Default.Personality>
+		<Projects ActiveProject="C:\src\StarWaveAPILib\OCX\StarWaveOCXAPI.cbproj"/>
+	</Default.Personality>
+</BorlandProject>

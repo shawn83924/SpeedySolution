@@ -1,0 +1,44 @@
+13:56:05:259 ____________________________________________
+13:56:05:259                                             
+13:56:05:259    MBus daemon startup  Ver:1.0.0           
+13:56:05:259    Build Date:Jul  8 2005
+13:56:05:259 ____________________________________________
+13:56:05:259 mdd Server: OnListen
+13:56:05:269 Find a new server IP:10.0.96.78
+13:56:05:469 Find a new server IP:10.0.3.98
+13:56:05:469 Remote Server IP:10.0.3.98 Connected.
+13:56:06:190 Find a new server IP:10.0.95.125
+13:56:06:190 Remote Server IP:10.0.95.125 Connected.
+13:56:06:270 mdd Server:10.0.95.125 Startup!
+13:56:06:270 mdd Server:10.0.3.98 Startup!
+13:56:06:270 Local Client FD:3600 Connected.
+13:56:06:270 mdd Server:10.0.96.78 Startup!
+13:56:22:283 Local Client FD:3480 Connected.
+13:56:22:764 Local Client FD:3464 Connected.
+13:56:22:864 ### OnClientWrite return false ### - RemoveConnection
+13:56:22:864 App SigoPublisher startup
+13:56:26:960 OnClientWrite threw exception:RecvBuffer failed. Error code:10054
+13:56:26:960 ### OnClientWrite return false ### - RemoveConnection
+13:56:26:960 App SigoPublisher disconnected, FD:3480
+13:56:28:462 Local Client FD:3452 Connected.
+13:56:28:582 Local Client FD:3424 Connected.
+13:56:28:873 ### OnClientWrite return false ### - RemoveConnection
+13:56:28:873 App WinPublisher startup
+13:56:36:003 Send heartbeat to 10.0.95.125(fd:3640)
+13:56:36:003 Receive heartbeat confirm from 10.0.95.125 (fd:3660)
+13:56:41:250 OnClientWrite threw exception:Client request disconnect
+13:56:41:250 ### OnClientWrite return false ### - RemoveConnection
+13:56:41:250 App WinPublisher disconnected, FD:3452
+13:57:06:627 Send heartbeat to 10.0.95.125(fd:3640)
+13:57:06:627 Receive heartbeat confirm from 10.0.95.125 (fd:3660)
+13:57:12:025 Send heartbeat to 10.0.96.78(fd:3608)
+13:57:12:025 Reply heartbeat confirm to 10.0.96.78(fd:3608)
+13:57:12:025 Receive heartbeat confirm from 10.0.96.78 (fd:3600)
+13:57:12:625 Reply heartbeat confirm to 10.0.3.98(fd:3624)
+13:57:36:610 Send heartbeat to 10.0.95.125(fd:3640)
+13:57:36:610 Reply heartbeat confirm to 10.0.95.125(fd:3640)
+13:57:37:291 Receive heartbeat confirm from 10.0.95.125 (fd:3660)
+13:57:42:639 Send heartbeat to 10.0.96.78(fd:3608)
+13:57:42:639 Reply heartbeat confirm to 10.0.96.78(fd:3608)
+13:57:42:639 Receive heartbeat confirm from 10.0.96.78 (fd:3600)
+13:57:44:461 Reply heartbeat confirm to 10.0.3.98(fd:3624)

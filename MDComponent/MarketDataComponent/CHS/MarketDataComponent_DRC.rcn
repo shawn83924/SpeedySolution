@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\Users\yuan\AppData\Local\Temp\BFB2.tmp" source-language="zh-TW" target-language="zh-CN" datatype="cpp" tool="ETM v10.0" ts="C:\Users\yuan\AppData\Local\Temp\BFB2.tmp">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">40423.9527777778</prop>
+        <prop prop-type="OrigDateTime">40423.9528009259</prop>
+        <prop prop-type="XlatDateTime">40423.923587963</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">8</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_FILL" resname="Mdcomponentstrings_MD_CANDEL_FILL">
+        <source>"成交:%5.*f"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.9235689005</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_FILL_EMPTY" resname="Mdcomponentstrings_MD_CANDEL_FILL_EMPTY">
+        <source>"成交:-----"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_HIGH_LOW" resname="Mdcomponentstrings_MD_CANDEL_HIGH_LOW">
+        <source>"漲跌:%.2f"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_HIGH_LOW_EMPTY" resname="Mdcomponentstrings_MD_CANDEL_HIGH_LOW_EMPTY">
+        <source>"漲跌:-----"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_QTY" resname="Mdcomponentstrings_MD_CANDEL_QTY">
+        <source>"成交量:%d"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_QTY_EMPTY" resname="Mdcomponentstrings_MD_CANDEL_QTY_EMPTY">
+        <source>"成交量:-----"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_TIME" resname="Mdcomponentstrings_MD_CANDEL_TIME">
+        <source>"時間:%s"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+      <trans-unit id="Mdcomponentstrings_MD_CANDEL_TIME_EMPTY" resname="Mdcomponentstrings_MD_CANDEL_TIME_EMPTY">
+        <source>"時間:-----"</source>
+        <prop-group name="ITEFieldProp">
+          <prop prop-type="Created">40423.923568912</prop>
+          <prop prop-type="Status">0</prop>
+        </prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

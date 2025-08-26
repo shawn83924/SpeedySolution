@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppStaticLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{F7434914-9AFC-4A00-B388-FA46AD422062}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="1"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="lastconfig" value="Release_Build"/>
+        <property category="build.node" name="libraries" value="vcl.lib rtl.lib"/>
+        <property category="build.node" name="name" value="MessageDeliver_Lib.lib"/>
+        <property category="build.node" name="sparelibs" value="rtl.lib vcl.lib"/>
+        <property category="build.node" name="use_packages" value="0"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.Gn.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.3.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.5.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.2" value="_USE_RES"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.H=.arg.1" value="$(BDS)\lib\vcl100.csm"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.H=.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.He.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.Od.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.noregistervars.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.v.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.y.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedOptimizations.containerenabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="container.SelectedWarnings.containerenabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.4.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.6.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.A.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.AK.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.AU.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.1" value="$(BDS)\lib\vcl100.csm"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.10" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="..\..\UFC"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="..\..\Migo"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.6" value="OrderMessage"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.7" value="MessageDeliver"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.8" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.9" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Jgx.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.O2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.V0.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.V1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vmm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vms.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vx.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.X.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-1.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-2.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-3.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.align-5.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.disablewarns.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.k.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.p.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pm.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.pr.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.ps.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.r.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.rd.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.v.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.vi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.w.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.y.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.16.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.31.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.1" value="OrderConnection"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.2" value="OrderMessage"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.4" value="..\..\UFC"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.5" value="..\..\Migo"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.6" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.7" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.8" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.1" value="YD"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.2" value="W"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$O.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.4" value="OrderMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.M.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.4" value="OrderMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.4" value="OrderMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.4" value="OrderMessage"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.6" value=".\"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.7" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.8" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.1" value="MarketDataConnection"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.2" value="MarketDataMessage"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.4" value="OrderMessage"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.5" value="OrderConnection"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.1" value="OrderConnection"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.2" value="OrderMessage"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.3" value="MessageDeliver"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.4" value="..\..\UFC"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.5" value="..\..\Migo"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.6" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.7" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.8" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.w2.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.P.arg" value="256"/>
+          <property category="win32.*.win32b.tlib" name="option.P.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.P.enabled" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.arg.1" value="."/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.enabled" value="1"/>
+        </optionset>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="MessageDeliver_Lib.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="MessageDeliver_Lib" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="MessageDeliver\TMdListener.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMdListener.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="MessageDeliver\TMdMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMdMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="MessageDeliver\TMdTransport.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMdTransport.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="MessageDeliver\TThreadApp.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TThreadApp.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TBaseMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TBaseMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TCancelOrderMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TCancelOrderMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TExecutionReportMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TExecutionReportMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TNetworkID.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TNetworkID.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TNewOrderMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TNewOrderMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TQuoteCancelMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TQuoteCancelMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TQuoteMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TQuoteMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TQuoteRequestMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TQuoteRequestMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TReplaceOrderMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TReplaceOrderMessage.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderConnection\TTaifexConnection.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TTaifexConnection" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="MarketDataMessage\TMarketDataMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMarketDataMessage" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TMarketDataMessage.h"/>
+        <FILE FILENAME="MarketDataMessage\TMDQuoteRequestMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMDQuoteRequestMessage" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TMDQuoteRequestMessage.h"/>
+        <FILE FILENAME="MarketDataMessage\TSecurityDefinitionRequest.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TSecurityDefinitionRequest" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TSecurityDefinitionRequest.h"/>
+        <FILE FILENAME="MarketDataMessage\TSecurityDefinition.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TSecurityDefinition" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TSecurityDefinition.h"/>
+        <FILE FILENAME="MarketDataConnection\TMarketDataConnection.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMarketDataConnection" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataConnection\TMarketDataConnection.h"/>
+        <FILE FILENAME="MarketDataMessage\TNewsMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TNewsMessage" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TNewsMessage.h"/>
+        <FILE FILENAME="MarketDataMessage\TMDBaseMessage.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TMDBaseMessage" FORMNAME="" DESIGNCLASS="" ADDITIONAL="MarketDataMessage\TMDBaseMessage.h"/>
+        <FILE FILENAME="OrderConnection\HandleExchangeFilled.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="HandleExchangeFilled" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderConnection\HandleExchangeConfirm.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="HandleExchangeConfirm" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderConnection\SendMessageToExchange.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="SendMessageToExchange" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="EmbadedResource.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="EmbadedResource" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="OrderMessage\TOrderStatusRequest.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TOrderStatusRequest" FORMNAME="" DESIGNCLASS=""/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1028</VersionInfo>
+          <VersionInfo Name="CodePage">950</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Count">8</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item0">OrderConnection;OrderMessage;MessageDeliver;..\..\UFC;..\..\Migo;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item1">OrderConnection;OrderMessage;MessageDeliver;D:\Source\Speedy\Simulator\UFC;D:\Source\Speedy\Simulator\Migo;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item2">D:\Source\Speedy\Simulator\UFC;D:\Source\Speedy\Simulator\Migo;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item3">OrderConnection;OrderMessage;MessageDeliver;..\..\..\UFC;..\..\..\Migo;.;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item4">..\..\..\UFC;..\..\..\Migo;.;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item5">OrderConnection;OrderMessage;MessageDeliver;..\..\..\UFC;..\..\..\Migo;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item6">..\..\..\UFC;..\..\..\Migo;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item7">OrderConnection;OrderMessage;MessageDeliver;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+        </HistoryLists_hlIncludePath>
+        <HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Count">1</HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Item0">OrderConnection;OrderMessage;MessageDeliver;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+        </HistoryLists_hlLibraryPath>
+        <HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+        </HistoryLists_hlDebugSourcePath>
+        <HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Count">1</HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Item0">_DEBUG</HistoryLists_hlConditionals>
+        </HistoryLists_hlConditionals>
+        <HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Count">2</HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Item0">0x0100</HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Item1">0x0010</HistoryLists_hlTlibPageSize>
+        </HistoryLists_hlTlibPageSize>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+		<Source>
+			<Source Name="MainSource">MessageDeliver_Lib.bpf</Source>
+		</Source>
+		<buildevents/>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>

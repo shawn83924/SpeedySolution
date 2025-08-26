@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="PBoxComponent.bpl"/>
+    <OBJFILES value="PBoxComponent.obj GraphPanel.obj MSNETOBJLib_OCX.obj MSNETOBJLib_TLB.obj 
+      Marquee.obj RoundForm.obj GraphButton.obj SysTrayIcon.obj Btchkbox.obj 
+      GraphMarquee.obj GraphTrackBar.obj FileExpandList.obj UsbDetect.obj 
+      ShortcutListBox.obj Lcd99.obj"/>
+    <RESFILES value="PBoxComponent.res MSNETOBJLib_OCX.dcr GraphButton.dcr SysTrayIcon.dcr 
+      BTIMAGES.res Lcd99.dcr"/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value="BtPackage.lib MessagePackage.lib dxForumLibC6.lib bcb2kaxserver.lib 
+      indy.lib dbxcds.lib dclocx.lib soaprtl.lib bcbie.lib nmfast.lib 
+      dbexpress.lib inetdbxpress.lib inetdb.lib inetdbbde.lib inet.lib 
+      xmlrtl.lib visualdbclx.lib ibxpress.lib teeqr.lib tee.lib teedb.lib 
+      teeui.lib bdecds.lib cds.lib dsnap.lib vcldbx.lib bdertl.lib qrpt.lib 
+      adortl.lib dbrtl.lib vcldb.lib bcbsmp.lib"/>
+    <SPARELIBS value="rtl.lib vcl.lib bcbsmp.lib vcldb.lib dbrtl.lib adortl.lib qrpt.lib 
+      bdertl.lib vcldbx.lib dsnap.lib cds.lib bdecds.lib teeui.lib teedb.lib 
+      tee.lib teeqr.lib ibxpress.lib visualdbclx.lib xmlrtl.lib inet.lib 
+      inetdbbde.lib inetdb.lib inetdbxpress.lib dbexpress.lib nmfast.lib 
+      bcbie.lib soaprtl.lib dclocx.lib dbxcds.lib indy.lib bcb2kaxserver.lib 
+      vclx.lib dxForumLibC6.lib MessagePackage.lib BtPackage.lib"/>
+    <PACKAGES value="rtl.bpi vcl.bpi vclx.bpi"/>
+    <PATHCPP value=".;"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
+    <RELEASELIBPATH value="$(BCB)\lib\release"/>
+    <LINKER value="ilink32"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT;USEPACKAGES"/>
+    <MAINSOURCE value="PBoxComponent.cpp"/>
+    <INCLUDEPATH value="C:\PowerBox\vcl;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="&quot;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib&quot;;C:\PowerBox\vcl;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par"/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a8 -b- -k -y -v -vi- -c 
+      -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
+    <RFLAGS value=""/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;MD C++Builder Components&quot; -aa -Tpp -x -Gn -Gl -Gi -v"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="c0pkg32.obj $(PACKAGES) sysinit.obj $(OBJFILES)"/>
+    <ALLRES value="$(RESFILES)"/>
+    <ALLLIB value="$(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib"/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="PBoxComponent.res" FORMNAME="" UNITNAME="PBoxComponent.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PBoxComponent.cpp" FORMNAME="" UNITNAME="PBoxComponent" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\WINNT\system32\rtl.bpi" FORMNAME="" UNITNAME="rtl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GraphPanel.cpp" FORMNAME="" UNITNAME="GraphPanel" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\WINNT\system32\vcl.bpi" FORMNAME="" UNITNAME="vcl" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MSNETOBJLib_OCX.cpp" FORMNAME="" UNITNAME="MSNETOBJLib_OCX" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MSNETOBJLib_OCX.dcr" FORMNAME="" UNITNAME="" CONTAINERID="DcrTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="MSNETOBJLib_TLB.cpp" FORMNAME="" UNITNAME="MSNETOBJLib_TLB" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Marquee.cpp" FORMNAME="" UNITNAME="Marquee" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="RoundForm.cpp" FORMNAME="" UNITNAME="RoundForm" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GraphButton.cpp" FORMNAME="" UNITNAME="GraphButton" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GraphButton.dcr" FORMNAME="" UNITNAME="" CONTAINERID="DcrTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SysTrayIcon.cpp" FORMNAME="" UNITNAME="SysTrayIcon" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="SysTrayIcon.dcr" FORMNAME="" UNITNAME="" CONTAINERID="DcrTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Btchkbox.pas" FORMNAME="" UNITNAME="BtChkBox" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="BTIMAGES.RES" FORMNAME="" UNITNAME="BTIMAGES" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GraphMarquee.cpp" FORMNAME="" UNITNAME="GraphMarquee" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="GraphTrackBar.cpp" FORMNAME="" UNITNAME="GraphTrackBar" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="FileExpandList.cpp" FORMNAME="" UNITNAME="FileExpandList" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="UsbDetect.cpp" FORMNAME="" UNITNAME="UsbDetect" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ShortcutListBox.cpp" FORMNAME="" UNITNAME="ShortcutListBox" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="C:\source\Qwawa\img\vclx.bpi" FORMNAME="" UNITNAME="vclx" CONTAINERID="BPITool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Lcd99.pas" FORMNAME="" UNITNAME="Lcd99" CONTAINERID="PascalCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Lcd99.dcr" FORMNAME="" UNITNAME="" CONTAINERID="DcrTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1028
+CodePage=950
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[Excluded Packages]
+c:\program files\borland\cbuilder6\Projects\Bpl\BtPackage.bpl=BtPackage
+c:\program files\borland\cbuilder6\Projects\Bpl\MessagePackage.bpl=MessagePackage
+
+[HistoryLists\hlIncludePath]
+Count=5
+Item0=C:\PowerBox\vcl;$(BCB)\include;$(BCB)\include\vcl
+Item1=..\vcl;$(BCB)\include;$(BCB)\include\vcl
+Item2=vcl;$(BCB)\include;$(BCB)\include\vcl
+Item3=D:\sdk\PowerBox\vcl;$(BCB)\include;$(BCB)\include\vcl
+Item4=D:\Develop Tools\Borland\CBuilder6\Projects;D:\sdk\PowerBox\vcl;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=7
+Item0=C:\PowerBox\vcl;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\vcl;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item2=vcl;$(BCB)\Projects\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item3=vcl;$(BCB)\Projects\Lib;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;$(BCB)\lib\obj;$(BCB)\lib
+Item4=$(BCB)\Projects\Lib;C:\Program Files\Developer Express Inc\ExpressForumLibrary\C++Builder 6\Lib;D:\sdk\PowerBox\vcl;$(BCB)\lib\obj;$(BCB)\lib
+Item5=D:\sdk\PowerBox\vcl;$(BCB)\lib\obj;$(BCB)\lib
+Item6=D:\Develop Tools\Borland\CBuilder6\Projects;D:\sdk\PowerBox\vcl;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=C:\PowerBox\PowerBox.exe
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+
+[Linker]
+LibPrefix=
+LibSuffix=
+LibVersion=
+  </IDEOPTIONS>
+</PROJECT>

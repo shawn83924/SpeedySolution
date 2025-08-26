@@ -1,0 +1,43 @@
+object RoomiForm: TRoomiForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Roomi'
+  ClientHeight = 1019
+  ClientWidth = 760
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -16
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnDeactivate = FormDeactivate
+  OnHide = FormHide
+  OnPaint = FormPaint
+  OnShow = FormShow
+  PixelsPerInch = 120
+  TextHeight = 19
+  object RedrawTimer: TTimer
+    Interval = 50
+    OnTimer = RedrawTimerTimer
+    Left = 200
+    Top = 112
+  end
+  object RoundFormEx: TRoundFormEx
+    Resource = MainForm.RoundFormExRes
+    InactiveFontColor = 19
+    Lockbox = True
+    CaptionFont.Charset = ANSI_CHARSET
+    CaptionFont.Color = clWhite
+    CaptionFont.Height = -17
+    CaptionFont.Name = #24494#36575#27491#40657#39636
+    CaptionFont.Style = []
+    Left = 435
+    Top = 104
+  end
+end

@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{BC09D5AA-E00A-4A7B-A429-E5E696B7252A}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="MDComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\VCL\MBusComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Test\WinSubscriber.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="MDComponent_XE7">
+        <MSBuild Projects="MDComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Clean">
+        <MSBuild Projects="MDComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Make">
+        <MSBuild Projects="MDComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MBusComponent_XE7">
+        <MSBuild Projects="..\..\VCL\MBusComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Clean">
+        <MSBuild Projects="..\..\VCL\MBusComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Make">
+        <MSBuild Projects="..\..\VCL\MBusComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="WinSubscriber">
+        <MSBuild Projects="..\..\Test\WinSubscriber.cbproj"/>
+    </Target>
+    <Target Name="WinSubscriber:Clean">
+        <MSBuild Projects="..\..\Test\WinSubscriber.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="WinSubscriber:Make">
+        <MSBuild Projects="..\..\Test\WinSubscriber.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="MDComponent_XE7;MBusComponent_XE7;WinSubscriber"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="MDComponent_XE7:Clean;MBusComponent_XE7:Clean;WinSubscriber:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="MDComponent_XE7:Make;MBusComponent_XE7:Make;WinSubscriber:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

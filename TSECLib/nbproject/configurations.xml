@@ -1,0 +1,934 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="94">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>AMessages.h</itemPath>
+      <itemPath>Connection.h</itemPath>
+      <itemPath>ConnectionObject.h</itemPath>
+      <itemPath>EMessages.h</itemPath>
+      <itemPath>ExchangeConst.h</itemPath>
+      <itemPath>FMessages.h</itemPath>
+      <itemPath>LMessages.h</itemPath>
+      <itemPath>LinkSubSystem.h</itemPath>
+      <itemPath>MessageHeader.h</itemPath>
+      <itemPath>Messages.h</itemPath>
+      <itemPath>OMessages.h</itemPath>
+      <itemPath>PMessages.h</itemPath>
+      <itemPath>RMessages.h</itemPath>
+      <itemPath>SocketConnection.h</itemPath>
+      <itemPath>../ExchangeUtility/TFXException.h</itemPath>
+      <itemPath>TMessages.h</itemPath>
+      <itemPath>../ExchangeUtility/Utility.h</itemPath>
+      <itemPath>VMessages.h</itemPath>
+      <itemPath>X25Connection.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Messages" projectFiles="true">
+        <itemPath>AMessages.cpp</itemPath>
+        <itemPath>EMessages.cpp</itemPath>
+        <itemPath>ExMessages.cpp</itemPath>
+        <itemPath>FMessages.cpp</itemPath>
+        <itemPath>LMessages.cpp</itemPath>
+        <itemPath>MessageHeader.cpp</itemPath>
+        <itemPath>OMessages.cpp</itemPath>
+        <itemPath>PMessages.cpp</itemPath>
+        <itemPath>RMessages.cpp</itemPath>
+        <itemPath>SMessages.cpp</itemPath>
+        <itemPath>TMessages.cpp</itemPath>
+        <itemPath>VMessages.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="Network Driver" projectFiles="true">
+        <itemPath>IBMX25Connection.cpp</itemPath>
+        <itemPath>SUNX25Connection.cpp</itemPath>
+        <itemPath>SocketConnection.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>ExchangeConst.cpp</itemPath>
+      <itemPath>LinkSubSystem.cpp</itemPath>
+      <itemPath>../ExchangeUtility/TOrderRecord.cpp</itemPath>
+      <itemPath>../ExchangeUtility/Utility.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile_TSECLib.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile_TSECLib.mk</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../ExchangeUtility</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </asmTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib_64.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <architecture>2</architecture>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../ExchangeUtility</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </fortranCompilerTool>
+        <asmTool>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </asmTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib_64D.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../ExchangeUtility</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <architecture>1</architecture>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../ExchangeUtility</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib_debug.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthreads</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>../Build/TSECLib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthreads</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>../Build/TSECLib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/TSECLib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../ExchangeUtility/TFXException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/TOrderRecord.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../ExchangeUtility/Utility.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="AMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ExMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ExchangeConst.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="FMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="FMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="IBMX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="LinkSubSystem.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Messages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="RMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="RMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SUNX25Connection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SocketConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="VMessages.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="VMessages.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="X25Connection.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

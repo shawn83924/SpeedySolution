@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>JihSunEexcutionConnection.h</itemPath>
+      <itemPath>MBusAdapter.h</itemPath>
+      <itemPath>TandemAdapter.h</itemPath>
+      <itemPath>TandemObjects.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>JSExecConnectionMain.cpp</itemPath>
+      <itemPath>JihSunEexcutionConnection.cpp</itemPath>
+      <itemPath>MBusAdapter.cpp</itemPath>
+      <itemPath>TandemAdapter.cpp</itemPath>
+      <itemPath>TandemObjects.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../UFCPlus</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../Lib</pElem>
+            <pElem>../../TAIFEXLib</pElem>
+          </incDir>
+          <commandLine>-fPIC -Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/JSExecConnection</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../TAIFEXLib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../TAIFEXLib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="../../lib/TAIFEXLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFCPlus"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFCPlus"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFCPlus.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="JSExecConnectionMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="JihSunEexcutionConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="JihSunEexcutionConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MBusAdapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MBusAdapter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TandemAdapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TandemAdapter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TandemObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TandemObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release_64" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../UFCPlus</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../Lib</pElem>
+            <pElem>../../TAIFEXLib</pElem>
+          </incDir>
+          <commandLine>-Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/JSExecConnection</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="false"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libSpeedyAPI_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="false"
+                            BL="false"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64 clean"
+                            OP="../Release/libUFC_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFCPlus"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="false"
+                            BL="false"
+                            WD="../../UFCPlus"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libUFCPlus_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../TAIFEXLib"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="false"
+                            BL="false"
+                            WD="../../TAIFEXLib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release_64 clean"
+                            OP="../../lib/TAIFEXLib_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="JSExecConnectionMain.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="JihSunEexcutionConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="JihSunEexcutionConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MBusAdapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MBusAdapter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TandemAdapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TandemAdapter.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TandemObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TandemObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

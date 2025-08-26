@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9BED1711-0686-4BEC-8486-7F46AB72C51D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\..\BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SpeedyAPI.cbproj">
+            <Dependencies>..\..\BC Projects\UFC_XE7.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyAPI" DependsOnTargets="UFC_XE7">
+        <MSBuild Projects="SpeedyAPI.cbproj"/>
+    </Target>
+    <Target Name="SpeedyAPI:Clean" DependsOnTargets="UFC_XE7:Clean">
+        <MSBuild Projects="SpeedyAPI.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyAPI:Make" DependsOnTargets="UFC_XE7:Make">
+        <MSBuild Projects="SpeedyAPI.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;SpeedyAPI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;SpeedyAPI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;SpeedyAPI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

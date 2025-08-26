@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CTPAPIFactory", "CTPAPIFactory\CTPAPIFactory.vcxproj", "{3348A0DC-473B-424A-A091-2314C7BB0523}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug_CTP|Win32 = Debug_CTP|Win32
+		Debug_HS|Win32 = Debug_HS|Win32
+		Debug_KN|Win32 = Debug_KN|Win32
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_CTP|Win32.ActiveCfg = Debug_CTP|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_CTP|Win32.Build.0 = Debug_CTP|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_HS|Win32.ActiveCfg = Debug_HS|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_HS|Win32.Build.0 = Debug_HS|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_KN|Win32.ActiveCfg = Debug_KN|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug_KN|Win32.Build.0 = Debug_KN|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug|Win32.Build.0 = Debug|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Release|Win32.ActiveCfg = Release|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

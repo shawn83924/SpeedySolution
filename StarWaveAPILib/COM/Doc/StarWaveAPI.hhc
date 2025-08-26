@@ -1,0 +1,988 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="StarWaveAPI Object Library">
+		<param name="Local" value="index.html">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Objects">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="StarWaveConnection">
+				<param name="Local" value="StarWaveConnection.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Events">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnClosingMarketData">
+						<param name="Local" value="StarWaveConnection_OnClosingMarketData.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnConnected">
+						<param name="Local" value="StarWaveConnection_OnConnected.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnContractDownloadCompleted">
+						<param name="Local" value="StarWaveConnection_OnContractDownloadCompleted.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnDayHighLow">
+						<param name="Local" value="StarWaveConnection_OnDayHighLow.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnDisconnected">
+						<param name="Local" value="StarWaveConnection_OnDisconnected.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnMatchInfo">
+						<param name="Local" value="StarWaveConnection_OnMatchInfo.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnNews">
+						<param name="Local" value="StarWaveConnection_OnNews.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnOpeningInfo">
+						<param name="Local" value="StarWaveConnection_OnOpeningInfo.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnOrderBookData">
+						<param name="Local" value="StarWaveConnection_OnOrderBookData.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnRecover">
+						<param name="Local" value="StarWaveConnection_OnRecover.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnSumOfOrder">
+						<param name="Local" value="StarWaveConnection_OnSumOfOrder.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnTotalMatch">
+						<param name="Local" value="StarWaveConnection_OnTotalMatch.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnUnderlyingIndex">
+						<param name="Local" value="StarWaveConnection_OnUnderlyingIndex.html">
+						</OBJECT>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Methods">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Connect">
+						<param name="Local" value="StarWaveConnection_Connect.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Destroy">
+						<param name="Local" value="StarWaveConnection_Destroy.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Disconnect">
+						<param name="Local" value="StarWaveConnection_Disconnect.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DownloadContract">
+						<param name="Local" value="StarWaveConnection_DownloadContract.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="GetExchange">
+						<param name="Local" value="StarWaveConnection_GetExchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="GetSecurityDefinition">
+						<param name="Local" value="StarWaveConnection_GetSecurityDefinition.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="GetSecurityDefinitionByIndex">
+						<param name="Local" value="StarWaveConnection_GetSecurityDefinitionByIndex.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="GetSymbol">
+						<param name="Local" value="StarWaveConnection_GetSymbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Init">
+						<param name="Local" value="StarWaveConnection_Init.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Subscribe">
+						<param name="Local" value="StarWaveConnection_Subscribe.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SymbolCount">
+						<param name="Local" value="StarWaveConnection_SymbolCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Unsubscribe">
+						<param name="Local" value="StarWaveConnection_Unsubscribe.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="UnsubscribeAll">
+						<param name="Local" value="StarWaveConnection_UnsubscribeAll.html">
+						</OBJECT>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="AppName">
+						<param name="Local" value="StarWaveConnection_AppName.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IP">
+						<param name="Local" value="StarWaveConnection_IP.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Port">
+						<param name="Local" value="StarWaveConnection_Port.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="CloseMarketData">
+				<param name="Local" value="CloseMarketData.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyCountTotal">
+						<param name="Local" value="CloseMarketData_BuyCountTotal.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyPx">
+						<param name="Local" value="CloseMarketData_BuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyQtyTotal">
+						<param name="Local" value="CloseMarketData_BuyQtyTotal.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ClosePx">
+						<param name="Local" value="CloseMarketData_ClosePx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayHighPx">
+						<param name="Local" value="CloseMarketData_DayHighPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayLowPx">
+						<param name="Local" value="CloseMarketData_DayLowPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="CloseMarketData_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="CloseMarketData_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpenInterest">
+						<param name="Local" value="CloseMarketData_OpenInterest.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpenPx">
+						<param name="Local" value="CloseMarketData_OpenPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellCountTotal">
+						<param name="Local" value="CloseMarketData_SellCountTotal.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellPx">
+						<param name="Local" value="CloseMarketData_SellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellQtyTotal">
+						<param name="Local" value="CloseMarketData_SellQtyTotal.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SettlementPx">
+						<param name="Local" value="CloseMarketData_SettlementPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="CloseMarketData_Symbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TermHighPx">
+						<param name="Local" value="CloseMarketData_TermHighPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TermLowPx">
+						<param name="Local" value="CloseMarketData_TermLowPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TotalCount">
+						<param name="Local" value="CloseMarketData_TotalCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TotalQty">
+						<param name="Local" value="CloseMarketData_TotalQty.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="DayHighLow">
+				<param name="Local" value="DayHighLow.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayHighPx">
+						<param name="Local" value="DayHighLow_DayHighPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayLowPx">
+						<param name="Local" value="DayHighLow_DayLowPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="DayHighLow_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="DayHighLow_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="DayHighLow_Symbol.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Match">
+				<param name="Local" value="Match.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="Match_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="Match_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchPx">
+						<param name="Local" value="Match_MatchPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchQty">
+						<param name="Local" value="Match_MatchQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchTime">
+						<param name="Local" value="Match_MatchTime.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="Match_Symbol.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="News">
+				<param name="Local" value="News.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Data">
+						<param name="Local" value="News_Data.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Key">
+						<param name="Local" value="News_Key.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="OpenInfo">
+				<param name="Local" value="OpenInfo.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="OpenInfo_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="OpenInfo_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpeningPx">
+						<param name="Local" value="OpenInfo_OpeningPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpeningQty">
+						<param name="Local" value="OpenInfo_OpeningQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpeningTime">
+						<param name="Local" value="OpenInfo_OpeningTime.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="OpenInfo_Symbol.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="OrderBook">
+				<param name="Local" value="OrderBook.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyPx">
+						<param name="Local" value="OrderBook_BuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyQty">
+						<param name="Local" value="OrderBook_BuyQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedBuyPx">
+						<param name="Local" value="OrderBook_DerivedBuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedBuyQty">
+						<param name="Local" value="OrderBook_DerivedBuyQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedFlag">
+						<param name="Local" value="OrderBook_DerivedFlag.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedSellPx">
+						<param name="Local" value="OrderBook_DerivedSellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedSellQty">
+						<param name="Local" value="OrderBook_DerivedSellQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="OrderBook_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="OrderBook_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellPx">
+						<param name="Local" value="OrderBook_SellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellQty">
+						<param name="Local" value="OrderBook_SellQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="OrderBook_Symbol.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Recover">
+				<param name="Local" value="Recover.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyOrderCount">
+						<param name="Local" value="Recover_BuyOrderCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyOrderQty">
+						<param name="Local" value="Recover_BuyOrderQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyPx">
+						<param name="Local" value="Recover_BuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyQty">
+						<param name="Local" value="Recover_BuyQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ClosingPx">
+						<param name="Local" value="Recover_ClosingPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayHighPx">
+						<param name="Local" value="Recover_DayHighPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DayLowPx">
+						<param name="Local" value="Recover_DayLowPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedBuyPx">
+						<param name="Local" value="Recover_DerivedBuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedBuyQty">
+						<param name="Local" value="Recover_DerivedBuyQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedFlag">
+						<param name="Local" value="Recover_DerivedFlag.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedSellPx">
+						<param name="Local" value="Recover_DerivedSellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DerivedSellQty">
+						<param name="Local" value="Recover_DerivedSellQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="Recover_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="Recover_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchPx">
+						<param name="Local" value="Recover_MatchPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchQty">
+						<param name="Local" value="Recover_MatchQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MatchTime">
+						<param name="Local" value="Recover_MatchTime.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpeningPx">
+						<param name="Local" value="Recover_OpeningPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpenInterest">
+						<param name="Local" value="Recover_OpenInterest.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="PreClosePx">
+						<param name="Local" value="Recover_PreClosePx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellOrderCount">
+						<param name="Local" value="Recover_SellOrderCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellOrderQty">
+						<param name="Local" value="Recover_SellOrderQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellPx">
+						<param name="Local" value="Recover_SellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellQty">
+						<param name="Local" value="Recover_SellQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SettlementPx">
+						<param name="Local" value="Recover_SettlementPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="Recover_Symbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TotalVolume">
+						<param name="Local" value="Recover_TotalVolume.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="SecurityDefinition">
+				<param name="Local" value="SecurityDefinition.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BearPx">
+						<param name="Local" value="SecurityDefinition_BearPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BullPx">
+						<param name="Local" value="SecurityDefinition_BullPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="CallPut">
+						<param name="Local" value="SecurityDefinition_CallPut.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="CancelQty">
+						<param name="Local" value="SecurityDefinition_CancelQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ChineseName">
+						<param name="Local" value="SecurityDefinition_ChineseName.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ContractMultiplier">
+						<param name="Local" value="SecurityDefinition_ContractMultiplier.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Currency">
+						<param name="Local" value="SecurityDefinition_Currency.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="DecimalLocator">
+						<param name="Local" value="SecurityDefinition_DecimalLocator.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Digit">
+						<param name="Local" value="SecurityDefinition_Digit.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="EndDate">
+						<param name="Local" value="SecurityDefinition_EndDate.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="SecurityDefinition_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ExecuteQty">
+						<param name="Local" value="SecurityDefinition_ExecuteQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ExecuteRate">
+						<param name="Local" value="SecurityDefinition_ExecuteRate.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IsMultileg">
+						<param name="Local" value="SecurityDefinition_IsMultileg.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IsWarrant">
+						<param name="Local" value="SecurityDefinition_IsWarrant.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="LastTradeDate">
+						<param name="Local" value="SecurityDefinition_LastTradeDate.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="SecurityDefinition_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MaturityDate">
+						<param name="Local" value="SecurityDefinition_MaturityDate.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MaturityDate2">
+						<param name="Local" value="SecurityDefinition_MaturityDate2.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ProductID">
+						<param name="Local" value="SecurityDefinition_ProductID.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="RefPx">
+						<param name="Local" value="SecurityDefinition_RefPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Shares">
+						<param name="Local" value="SecurityDefinition_Shares.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="StrikePx">
+						<param name="Local" value="SecurityDefinition_StrikePx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="SecurityDefinition_Symbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Tick">
+						<param name="Local" value="SecurityDefinition_Tick.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TradeFlag">
+						<param name="Local" value="SecurityDefinition_TradeFlag.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TradeSymbol">
+						<param name="Local" value="SecurityDefinition_TradeSymbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TradeUnit">
+						<param name="Local" value="SecurityDefinition_TradeUnit.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Underlying">
+						<param name="Local" value="SecurityDefinition_Underlying.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="SumOfOrder">
+				<param name="Local" value="SumOfOrder.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyOrderCount">
+						<param name="Local" value="SumOfOrder_BuyOrderCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyOrderQty">
+						<param name="Local" value="SumOfOrder_BuyOrderQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="SumOfOrder_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="SumOfOrder_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellOrderCount">
+						<param name="Local" value="SumOfOrder_SellOrderCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellOrderQty">
+						<param name="Local" value="SumOfOrder_SellOrderQty.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="SumOfOrder_Symbol.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="TotalVolume">
+				<param name="Local" value="TotalVolume.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyMatchCount">
+						<param name="Local" value="TotalVolume_BuyMatchCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="TotalVolume_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="TotalVolume_Market.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellMatchCount">
+						<param name="Local" value="TotalVolume_SellMatchCount.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Symbol">
+						<param name="Local" value="TotalVolume_Symbol.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="TotalMatchVolume">
+						<param name="Local" value="TotalVolume_TotalMatchVolume.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="UnderlyingIndex">
+				<param name="Local" value="UnderlyingIndex.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Exchange">
+						<param name="Local" value="UnderlyingIndex_Exchange.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IndexKind">
+						<param name="Local" value="UnderlyingIndex_IndexKind.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IndexTime">
+						<param name="Local" value="UnderlyingIndex_IndexTime.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IndexValue">
+						<param name="Local" value="UnderlyingIndex_IndexValue.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Market">
+						<param name="Local" value="UnderlyingIndex_Market.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ChartServerConnection">
+				<param name="Local" value="ChartServerConnection.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Events">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnConnected">
+						<param name="Local" value="ChartServerConnection_OnConnected.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnDayKBars">
+						<param name="Local" value="ChartServerConnection_OnDayKBars.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnDisconnected">
+						<param name="Local" value="ChartServerConnection_OnDisconnected.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnLastKBar">
+						<param name="Local" value="ChartServerConnection_OnLastKBar.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnLastTick">
+						<param name="Local" value="ChartServerConnection_OnLastTick.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnRecoverKBars">
+						<param name="Local" value="ChartServerConnection_OnRecoverKBars.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OnRecoverTicks">
+						<param name="Local" value="ChartServerConnection_OnRecoverTicks.html">
+						</OBJECT>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Methods">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Connect">
+						<param name="Local" value="ChartServerConnection_Connect.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Create">
+						<param name="Local" value="ChartServerConnection_Create.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Destroy">
+						<param name="Local" value="ChartServerConnection_Destroy.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Disconnect">
+						<param name="Local" value="ChartServerConnection_Disconnect.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="RequestTicks">
+						<param name="Local" value="ChartServerConnection_RequestTicks.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Subscribe">
+						<param name="Local" value="ChartServerConnection_Subscribe.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Unsubscribe">
+						<param name="Local" value="ChartServerConnection_Unsubscribe.html">
+						</OBJECT>
+				</UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="IP">
+						<param name="Local" value="ChartServerConnection_IP.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Port">
+						<param name="Local" value="ChartServerConnection_Port.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="MinuteKInfo">
+				<param name="Local" value="MinuteKInfo.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Hour">
+						<param name="Local" value="MinuteKInfo_Hour.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Minutes">
+						<param name="Local" value="MinuteKInfo_Minutes.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="OpenPx">
+						<param name="Local" value="MinuteKInfo_OpenPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ClosePx">
+						<param name="Local" value="MinuteKInfo_ClosePx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MaxPx">
+						<param name="Local" value="MinuteKInfo_MaxPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="MinPx">
+						<param name="Local" value="MinuteKInfo_MinPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Qty">
+						<param name="Local" value="MinuteKInfo_Qty.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="MinuteKInfoList">
+				<param name="Local" value="MinuteKInfoList.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Count">
+						<param name="Local" value="MinuteKInfoList_Count.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Items">
+						<param name="Local" value="MinuteKInfoList_Items.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="TickInfo">
+				<param name="Local" value="TickInfo.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="ID">
+						<param name="Local" value="TickInfo_ID.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Seq">
+						<param name="Local" value="TickInfo_Seq.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Time">
+						<param name="Local" value="TickInfo_Time.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="BuyPx">
+						<param name="Local" value="TickInfo_BuyPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="SellPx">
+						<param name="Local" value="TickInfo_SellPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="FillPx">
+						<param name="Local" value="TickInfo_FillPx.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="FillQty">
+						<param name="Local" value="TickInfo_FillQty.html">
+						</OBJECT>
+				</UL>
+			</UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="TickInfoList">
+				<param name="Local" value="TickInfoList.html">
+				</OBJECT>
+			<UL>
+				<LI> <OBJECT type="text/sitemap">
+					<param name="Name" value="Properties">
+					</OBJECT>
+				<UL>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Count">
+						<param name="Local" value="TickInfoList_Count.html">
+						</OBJECT>
+					<LI> <OBJECT type="text/sitemap">
+						<param name="Name" value="Items">
+						<param name="Local" value="TickInfoList_Items.html">
+						</OBJECT>
+				</UL>
+			</UL>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Constants">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="EnumCallPut">
+				<param name="Local" value="EnumCallPut.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="EnumMarket">
+				<param name="Local" value="EnumMarket.html">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

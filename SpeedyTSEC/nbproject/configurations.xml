@@ -1,0 +1,2149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f3" displayName="FIX" projectFiles="true">
+        <itemPath>SpeedyFIXManager.h</itemPath>
+        <itemPath>UFCFileLog.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Objects Manager" projectFiles="true">
+        <itemPath>MarketSchedule.h</itemPath>
+        <itemPath>OrderInfoStore.h</itemPath>
+        <itemPath>SpeedyObjectsManager.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="TMP Connection" projectFiles="true">
+        <itemPath>SpeedyConfirmConnectionObject.h</itemPath>
+        <itemPath>SpeedyOrderClient.h</itemPath>
+        <itemPath>SpeedyOrderConnectionObject.h</itemPath>
+      </logicalFolder>
+      <itemPath>QueryPVC.h</itemPath>
+      <itemPath>Speedy.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f3" displayName="FIX" projectFiles="true">
+        <logicalFolder name="f7" displayName="1.13.3_Only" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SessionTime.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f1" displayName="Fields" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/FieldMap.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/FieldTypes.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f8" displayName="Http" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/HttpConnection.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/HttpMessage.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/HttpParser.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/HttpServer.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f2" displayName="Message" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/DataDictionary.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Group.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Message.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f3" displayName="Session" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/Acceptor.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Initiator.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Session.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SessionFactory.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SessionSettings.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f4" displayName="Socket" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketConnection.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketConnector.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/SocketServer.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f6" displayName="src" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/CallStack.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Dictionary.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Parser.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Settings.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Utility.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/strptime.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f5" displayName="Storage" projectFiles="true">
+          <itemPath>../../../../QuickfixTWSE/src/C++/FileLog.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/FileStore.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/Log.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/MessageSorters.cpp</itemPath>
+          <itemPath>../../../../QuickfixTWSE/src/C++/MessageStore.cpp</itemPath>
+          <itemPath>UFCFileLog.cpp</itemPath>
+        </logicalFolder>
+        <itemPath>SpeedyFIXManager.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f1" displayName="Objects Manager" projectFiles="true">
+        <itemPath>MarketSchedule.cpp</itemPath>
+        <itemPath>OrderInfoStore.cpp</itemPath>
+        <itemPath>ProcessMonitor.cpp</itemPath>
+        <itemPath>SpeedyObjectsManager.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="TMP Connection" projectFiles="true">
+        <itemPath>SpeedyConfirmConnectionObject.cpp</itemPath>
+        <itemPath>SpeedyFIXOrderClient.cpp</itemPath>
+        <itemPath>SpeedyOrderClient.cpp</itemPath>
+        <itemPath>SpeedyOrderConnectionObject.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>QueryPVC.cpp</itemPath>
+      <itemPath>Speedy.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile_SpeedyTSEC.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile_SpeedyTSEC.mk</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release_64" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../UFC</pElem>
+            <pElem>../Migo</pElem>
+            <pElem>../ExchangeUtility</pElem>
+            <pElem>../../../../QuickfixTWSE</pElem>
+            <pElem>../../../../QuickfixTWSE/src/C++</pElem>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/TSECLib_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libUFC_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug_64" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../UFC</pElem>
+            <pElem>../Migo</pElem>
+            <pElem>../ExchangeUtility</pElem>
+            <pElem>../../../../QuickfixTWSE</pElem>
+            <pElem>../../../../QuickfixTWSE/src/C++</pElem>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </fortranCompilerTool>
+        <asmTool>
+          <architecture>2</architecture>
+          <warningLevel>2</warningLevel>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="LINUX_Debug_64"
+                            AC="false"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Debug_64"
+                            CC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Debug_64 clean"
+                            OP="/MBus/lib/TSECLib_64D.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="LINUX_Debug_64"
+                            AC="false"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug_64"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug_64 clean"
+                            OP="../Release/libUFC_64D.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../UFC</pElem>
+            <pElem>../Migo</pElem>
+            <pElem>../ExchangeUtility</pElem>
+            <pElem>../../../../quickfix</pElem>
+            <pElem>../../../../quickfix/src/C++</pElem>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/TSECLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <architecture>1</architecture>
+        </cTool>
+        <ccTool>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../UFC</pElem>
+            <pElem>../Migo</pElem>
+            <pElem>../ExchangeUtility</pElem>
+            <pElem>../../../../QuickfixTWSE</pElem>
+            <pElem>../../../../QuickfixTWSE/src/C++</pElem>
+            <pElem>/usr/include/libxml2</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <architecture>1</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <architecture>1</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibLibItem>xml2</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="LINUX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Debug"
+                            CC="${MAKE}  -f Makefile_TSECLib.mk CONF=LINUX_Debug clean"
+                            OP="/MBus/lib/TSECLib_debug.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="LINUX_Debug"
+                            AC="false"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Debug clean"
+                            OP="/MBus/lib/libUFC_Debug.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthreads -R/opt/SUNWconn/lib</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <linkerAddLib>
+            <pElem>/opt/SUNWconn/x25/lib</pElem>
+          </linkerAddLib>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibLibItem>sx25</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=Debug"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=Debug clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE} -f Makefile_TSECLib.mk CONF=Debug"
+                            CC="${MAKE} -f Makefile_TSECLib.mk CONF=Debug clean"
+                            OP="../Build/TSECLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthreads</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../Migo</pElem>
+            <pElem>../UFC</pElem>
+          </incDir>
+          <commandLine>-pthreads -R/opt/SUNWconn/lib</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <linkerAddLib>
+            <pElem>/opt/SUNWconn/x25/lib</pElem>
+          </linkerAddLib>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibLibItem>sx25</linkerLibLibItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE} -f Makefile_TSECLib.mk CONF=Release"
+                            CC="${MAKE} -f Makefile_TSECLib.mk CONF=Release clean"
+                            OP="../Build/TSECLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="Release"
+                            AC="true"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=Release"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthreads</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Debug" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../UFC</pElem>
+            <pElem>../Migo</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SpeedyTSEC</output>
+          <stripSymbols>true</stripSymbols>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../TSECLib"
+                            CT="3"
+                            CN="AIX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../TSECLib"
+                            BC="${MAKE} -f Makefile_TSECLib.mk CONF=AIX_Debug"
+                            CC="${MAKE} -f Makefile_TSECLib.mk CONF=AIX_Debug clean"
+                            OP="../Build/TSECLib.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../UFC"
+                            CT="3"
+                            CN="AIX_Debug"
+                            AC="true"
+                            BL="true"
+                            WD="../UFC"
+                            BC="${MAKE} -f Makefile_UFC.mk CONF=AIX_Debug"
+                            CC="${MAKE} -f Makefile_UFC.mk CONF=AIX_Debug clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../../../../QuickfixTWSE/src/C++/Acceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/CallStack.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ConfigLexer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/DataDictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Dictionary.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldMap.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FieldTypes.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileLog.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/FileStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Group.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpParser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/HttpServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Initiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/LIBXML_DOMDocument.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Log.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Message.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageSorters.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/MessageStore.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Parser.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Session.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionFactory.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionSettings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SessionTime.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Settings.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketConnector.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketMonitor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/SocketServer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketAcceptor.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/ThreadedSocketInitiator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/Utility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../../../../QuickfixTWSE/src/C++/strptime.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="MarketSchedule.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MarketSchedule.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderInfoStore.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ProcessMonitor.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="QueryPVC.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Speedy.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Speedy.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyConfirmConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyFIXManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyFIXOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyObjectsManager.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SpeedyOrderConnectionObject.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="UFCFileLog.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="UFCFileLog.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

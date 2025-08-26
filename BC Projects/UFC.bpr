@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!-- C++Builder XML Project -->
+<PROJECT>
+  <MACROS>
+    <VERSION value="BCB.06.00"/>
+    <PROJECT value="\MBus\lib\UFC.lib"/>
+    <OBJFILES value="..\UFC\List.obj ..\UFC\AnsiString.obj ..\UFC\StringBuffer.obj 
+      ..\UFC\MemoryStream.obj ..\UFC\FileStream.obj ..\UFC\MD5.obj 
+      ..\UFC\NetUtility.obj ..\UFC\PThread.obj ..\UFC\PSocket.obj 
+      ..\UFC\PClientSocket.obj ..\UFC\PServerSocket.obj ..\UFC\ThreadPool.obj 
+      ..\UFC\MultiplexingServer.obj ..\UFC\Exception.obj 
+      ..\UFC\SocketHeartBeat.obj ..\UFC\UDateTime.obj ..\UFC\iniFile.obj 
+      ..\UFC\PInt32.obj ..\UFC\PUDPClient.obj ..\UFC\TRecord.obj 
+      ..\UFC\TDataset.obj ..\UFC\TDataFormat.obj ..\UFC\TFixedFormat.obj 
+      ..\UFC\TParseData.obj ..\UFC\TField.obj ..\UFC\TRenderData.obj"/>
+    <RESFILES value=""/>
+    <IDLFILES value=""/>
+    <IDLGENFILES value=""/>
+    <DEFFILE value=""/>
+    <RESDEPEN value="$(RESFILES)"/>
+    <LIBFILES value=""/>
+    <LIBRARIES value=""/>
+    <PACKAGES value=""/>
+    <PATHCPP value=".;..\UFC"/>
+    <PATHPAS value=".;"/>
+    <PATHRC value=".;"/>
+    <PATHASM value=".;"/>
+    <LINKER value="TLib"/>
+    <USERDEFINES value="_DEBUG"/>
+    <SYSDEFINES value="NO_STRICT"/>
+    <MAINSOURCE value="UFC.bpf"/>
+    <INCLUDEPATH value="..\UFC;&quot;C:\Program Files\Borland\CBuilder6\Projects&quot;;UFC;$(BCB)\include;$(BCB)\include\vcl"/>
+    <LIBPATH value="..\UFC;&quot;C:\Program Files\Borland\CBuilder6\Projects&quot;;UFC;$(BCB)\lib\obj;$(BCB)\lib"/>
+    <WARNINGS value="-w-par -w-8027"/>
+    <LISTFILE value=""/>
+    <OTHERFILES value=""/>
+  </MACROS>
+  <OPTIONS>
+    <IDLCFLAGS value="-IUFC -I$(BCB)\include -I$(BCB)\include\vcl -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -VF -X- -r- -a8 -b- -k -y -v -vi- 
+      -c -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="/P256"/>
+    <OTHERFILES value=""/>
+  </OPTIONS>
+  <LINKER>
+    <ALLOBJ value="$(OBJFILES)"/>
+    <ALLLIB value=""/>
+    <OTHERFILES value=""/>
+  </LINKER>
+  <FILELIST>
+      <FILE FILENAME="UFC.bpf" FORMNAME="" UNITNAME="UFC" CONTAINERID="BPF" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\List.cpp" FORMNAME="" UNITNAME="List.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\AnsiString.cpp" FORMNAME="" UNITNAME="AnsiString.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\StringBuffer.cpp" FORMNAME="" UNITNAME="StringBuffer.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\MemoryStream.cpp" FORMNAME="" UNITNAME="MemoryStream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\FileStream.cpp" FORMNAME="" UNITNAME="FileStream.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\MD5.cpp" FORMNAME="" UNITNAME="MD5.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\NetUtility.cpp" FORMNAME="" UNITNAME="NetUtility.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PThread.cpp" FORMNAME="" UNITNAME="PThread.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PSocket.cpp" FORMNAME="" UNITNAME="PSocket" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PClientSocket.cpp" FORMNAME="" UNITNAME="PClientSocket.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PServerSocket.cpp" FORMNAME="" UNITNAME="PServerSocket.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\ThreadPool.cpp" FORMNAME="" UNITNAME="ThreadPool" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\MultiplexingServer.cpp" FORMNAME="" UNITNAME="MultiplexingServer" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\Exception.cpp" FORMNAME="" UNITNAME="Exception" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\SocketHeartBeat.cpp" FORMNAME="" UNITNAME="SocketHeartBeat" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\UDateTime.cpp" FORMNAME="" UNITNAME="UDateTime" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\iniFile.cpp" FORMNAME="" UNITNAME="IniFile" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PInt32.cpp" FORMNAME="" UNITNAME="PInt32" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\PUDPClient.cpp" FORMNAME="" UNITNAME="PUDPClient" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TRecord.cpp" FORMNAME="" UNITNAME="TRecord" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TDataset.cpp" FORMNAME="" UNITNAME="TDataset" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TDataFormat.cpp" FORMNAME="" UNITNAME="TDataFormat.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TFixedFormat.cpp" FORMNAME="" UNITNAME="TFixedFormat" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TParseData.cpp" FORMNAME="" UNITNAME="TParseData" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TField.cpp" FORMNAME="" UNITNAME="TField.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="..\UFC\TRenderData.cpp" FORMNAME="" UNITNAME="TRenderData.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+  </FILELIST>
+  <BUILDTOOLS>
+  </BUILDTOOLS>
+
+  <IDEOPTIONS>
+[Version Info]
+IncludeVerInfo=0
+AutoIncBuild=0
+MajorVer=1
+MinorVer=0
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1028
+CodePage=950
+
+[Version Info Keys]
+CompanyName=
+FileDescription=
+FileVersion=1.0.0.0
+InternalName=
+LegalCopyright=
+LegalTrademarks=
+OriginalFilename=
+ProductName=
+ProductVersion=1.0.0.0
+Comments=
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=..\UFC;C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\include;$(BCB)\include\vcl
+Item1=C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\include;$(BCB)\include\vcl
+Item2=UFC;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=..\UFC;C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\lib\obj;$(BCB)\lib
+Item1=C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\lib\obj;$(BCB)\lib
+Item2=UFC;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=3
+Item0=_DEBUG
+Item1=_DEBUG;
+Item2=_DEBUG;_MSC_VER=5000
+
+[HistoryLists\hlFinalOutputDir]
+Count=4
+Item0=\MBus\lib\
+Item1=\MBus\lib
+Item2=/MBus/lib\
+Item3=/MBus/lib
+
+[HistoryLists\hlTlibPageSize]
+Count=3
+Item0=0x0100
+Item1=0x0200
+Item2=0x0010
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+Launcher=
+UseLauncher=0
+DebugCWD=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteLauncher=
+RemoteCWD=
+RemoteDebug=0
+
+[Compiler]
+ShowInfoMsgs=0
+LinkDebugVcl=0
+LinkCGLIB=0
+
+[Language]
+ActiveLang=
+ProjectLang=
+RootDir=
+  </IDEOPTIONS>
+</PROJECT>

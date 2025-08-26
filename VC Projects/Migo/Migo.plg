@@ -1,0 +1,69 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Migo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\yuan\LOCALS~1\Temp\RSP18C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GR /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_MBCS" /D "_LIB" /Fp"Debug/Migo.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\MessageLib\Simulator\Sigo\Sigo.cpp"
+"C:\MessageLib\Simulator\Migo\MApp.cpp"
+"C:\MessageLib\Simulator\Migo\MComponent.cpp"
+"C:\MessageLib\Simulator\Migo\MDataEvent.cpp"
+"C:\MessageLib\Simulator\Migo\MEvent.cpp"
+"C:\MessageLib\Simulator\Migo\MEventSource.cpp"
+"C:\MessageLib\Simulator\Migo\MException.cpp"
+"C:\MessageLib\Simulator\Migo\MigoHeader.cpp"
+"C:\MessageLib\Simulator\Migo\MNode.cpp"
+"C:\MessageLib\Simulator\Migo\MPublisher.cpp"
+"C:\MessageLib\Simulator\Migo\MSubscriber.cpp"
+"C:\MessageLib\Simulator\Migo\MTree.cpp"
+"C:\MessageLib\Simulator\Migo\SubjectDB.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\yuan\LOCALS~1\Temp\RSP18C.tmp" 
+Creating temporary file "C:\DOCUME~1\yuan\LOCALS~1\Temp\RSP18D.tmp" with contents
+[
+/nologo /out:"..\..\Build\VC\Migo.lib" 
+".\Debug\Sigo.obj"
+".\Debug\MApp.obj"
+".\Debug\MComponent.obj"
+".\Debug\MDataEvent.obj"
+".\Debug\MEvent.obj"
+".\Debug\MEventSource.obj"
+".\Debug\MException.obj"
+".\Debug\MigoHeader.obj"
+".\Debug\MNode.obj"
+".\Debug\MPublisher.obj"
+".\Debug\MSubscriber.obj"
+".\Debug\MTree.obj"
+".\Debug\SubjectDB.obj"
+"..\..\Build\VC\UFC.lib"
+]
+Creating command line "link.exe -lib @C:\DOCUME~1\yuan\LOCALS~1\Temp\RSP18D.tmp"
+<h3>Output Window</h3>
+Compiling...
+Sigo.cpp
+MApp.cpp
+MComponent.cpp
+MDataEvent.cpp
+MEvent.cpp
+MEventSource.cpp
+MException.cpp
+MigoHeader.cpp
+MNode.cpp
+MPublisher.cpp
+MSubscriber.cpp
+MTree.cpp
+SubjectDB.cpp
+Creating library...
+
+
+
+<h3>Results</h3>
+Migo.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

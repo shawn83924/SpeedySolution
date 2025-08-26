@@ -1,0 +1,80 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{1a9a0e15-4f24-4a9d-a90c-861e7bcb8e1a}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\BC Projects\Migo.cbproj" />
+    <Projects Include="..\BC Projects\UFC.cbproj" />
+    <Projects Include="Lib\MessageDeliver_Lib.cbproj">
+      <Dependencies>..\BC Projects\Migo.cbproj;..\BC Projects\UFC.cbproj</Dependencies>
+    </Projects>
+    <Projects Include="MarketDataConnection\MarketDataConnection.cbproj">
+      <Dependencies>Lib\MessageDeliver_Lib.cbproj</Dependencies>
+    </Projects>
+    <Projects Include="OrderConnection\OrderConnection.cbproj">
+      <Dependencies>Lib\MessageDeliver_Lib.cbproj</Dependencies>
+    </Projects>
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="UFC">
+    <MSBuild Projects="..\BC Projects\UFC.cbproj" Targets="" />
+  </Target>
+  <Target Name="UFC:Clean">
+    <MSBuild Projects="..\BC Projects\UFC.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="UFC:Make">
+    <MSBuild Projects="..\BC Projects\UFC.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Migo">
+    <MSBuild Projects="..\BC Projects\Migo.cbproj" Targets="" />
+  </Target>
+  <Target Name="Migo:Clean">
+    <MSBuild Projects="..\BC Projects\Migo.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="Migo:Make">
+    <MSBuild Projects="..\BC Projects\Migo.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="MessageDeliver_Lib" DependsOnTargets="Migo;UFC">
+    <MSBuild Projects="Lib\MessageDeliver_Lib.cbproj" Targets="" />
+  </Target>
+  <Target Name="MessageDeliver_Lib:Clean" DependsOnTargets="Migo:Clean;UFC:Clean">
+    <MSBuild Projects="Lib\MessageDeliver_Lib.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="MessageDeliver_Lib:Make" DependsOnTargets="Migo:Make;UFC:Make">
+    <MSBuild Projects="Lib\MessageDeliver_Lib.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="OrderConnection" DependsOnTargets="MessageDeliver_Lib">
+    <MSBuild Projects="OrderConnection\OrderConnection.cbproj" Targets="" />
+  </Target>
+  <Target Name="OrderConnection:Clean" DependsOnTargets="MessageDeliver_Lib:Clean">
+    <MSBuild Projects="OrderConnection\OrderConnection.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="OrderConnection:Make" DependsOnTargets="MessageDeliver_Lib:Make">
+    <MSBuild Projects="OrderConnection\OrderConnection.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="MarketDataConnection" DependsOnTargets="MessageDeliver_Lib">
+    <MSBuild Projects="MarketDataConnection\MarketDataConnection.cbproj" Targets="" />
+  </Target>
+  <Target Name="MarketDataConnection:Clean" DependsOnTargets="MessageDeliver_Lib:Clean">
+    <MSBuild Projects="MarketDataConnection\MarketDataConnection.cbproj" Targets="Clean" />
+  </Target>
+  <Target Name="MarketDataConnection:Make" DependsOnTargets="MessageDeliver_Lib:Make">
+    <MSBuild Projects="MarketDataConnection\MarketDataConnection.cbproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="UFC;Migo;MessageDeliver_Lib;OrderConnection;MarketDataConnection" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="UFC:Clean;Migo:Clean;MessageDeliver_Lib:Clean;OrderConnection:Clean;MarketDataConnection:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="UFC:Make;Migo:Make;MessageDeliver_Lib:Make;OrderConnection:Make;MarketDataConnection:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

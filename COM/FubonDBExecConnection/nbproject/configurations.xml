@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="38">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>FubonDBExecConnection.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>cfg/FubonDBExecConnection.cfg</itemPath>
+      <itemPath>../OrderConnection/MessageDataFormat.h</itemPath>
+      <itemPath>../OrderConnection/Resource.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>FubonDBExecConnection.cpp</itemPath>
+      <itemPath>Main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="AIX_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU</compilerSet>
+        <cRequired>true</cRequired>
+        <cppRequired>true</cppRequired>
+        <fortranRequired>false</fortranRequired>
+        <platform>5</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+          </includeDirectories>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+          </includeDirectories>
+          <commandLine>-pthread</commandLine>
+          <preprocessor>R_6 __AIX</preprocessor>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <linkerTool>
+          <output>/Speedy/bin/FubonDBExecConnection</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile CONF=AIX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../OrderConnection/MessageDataFormat.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="../OrderConnection/Resource.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="FubonDBExecConnection.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="FubonDBExecConnection.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="Main.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="cfg/FubonDBExecConnection.cfg">
+        <itemTool>3</itemTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

@@ -1,0 +1,291 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{383D4CD9-2E10-4310-928A-65D765A51D07}</ProjectGuid>
+			<ProjectVersion>12.3</ProjectVersion>
+			<MainSource>StarWaveAPI.cpp</MainSource>
+			<Config Condition="'$(Config)'==''">Release</Config>
+			<Base>True</Base>
+			<Platform>Win32</Platform>
+			<AppType>Library</AppType>
+			<FrameworkType>VCL</FrameworkType>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
+			<Cfg_1>true</Cfg_1>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
+			<Cfg_2>true</Cfg_2>
+			<CfgParent>Base</CfgParent>
+			<Base>true</Base>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Base)'!=''">
+			<BCC_IncludePath>..\MarketDataConnection;..\MarketDataMessage;..\ChartServerConnection;..\..\Migo;..\..\UFC;$(BCC_IncludePath)</BCC_IncludePath>
+			<ILINK_LibraryPath>$(HOMEPATH)\Build\lib;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+			<FinalOutputDir>C:\MBus\Lib\</FinalOutputDir>
+			<DCC_UnitAlias>WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;$(DCC_UnitAlias)</DCC_UnitAlias>
+			<BCC_Defines>USING_ATLVCL;_ATL_NO_SECURITY;INC_ATL_HEADERS;_ATL_FREE_THREADED;_ATL_COINIT_MULTITHREADED;_ATL_SINGLEUSE_INSTANCING;$(BCC_Defines)</BCC_Defines>
+			<PackageImports>vclx.bpi;vcl.bpi;vclimg.bpi;dbrtl.bpi;Rave77VCL.bpi;bdertl.bpi;rtl.bpi;bcbie.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;vcldb.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;inet.bpi;intrawebdb_100_140.bpi;Intraweb_100_140.bpi;vclie.bpi;inetdb.bpi;webdsnap.bpi;websnap.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;DbxCommonDriver.bpi;DbxClientDriver.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;dbexpress.bpi;dbxcds.bpi;IndyCore120.bpi;IndySystem120.bpi;IndyProtocols120.bpi;MBusComponent.bpi;MDComponent.bpi</PackageImports>
+			<ProjectType>CppActiveLibrary</ProjectType>
+			<LinkPackageStatics>rtl.lib;vcl.lib;vclnp.lib;vclimg.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vclie.lib</LinkPackageStatics>
+			<OutputExt>dll</OutputExt>
+			<AllPackageLibs>rtl.lib;vcl.lib;vclnp.lib;vclimg.lib;xmlrtl.lib;vclactnband.lib;vclx.lib;vclie.lib</AllPackageLibs>
+			<DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+			<IncludePath>$(HOMEPATH)\src\StarWaveAPILib\MarketDataConnection;$(HOMEPATH)\src\StarWaveAPILib\MarketDataMessage;$(HOMEPATH)\src\StarWaveAPILib\ChartServerConnection;$(HOMEPATH)\src\Migo;$(HOMEPATH)\src\UFC;$(BDS)\include;$(BDS)\include\dinkumware;$(BDS)\include\vcl;$(IncludePath)</IncludePath>
+			<BCC_wpar>false</BCC_wpar>
+			<BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_1)'!=''">
+			<BCC_OptimizeForSpeed>false</BCC_OptimizeForSpeed>
+			<BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+			<DCC_Optimize>false</DCC_Optimize>
+			<DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+			<Defines>_DEBUG;$(Defines)</Defines>
+			<BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+			<IntermediateOutputDir>Debug</IntermediateOutputDir>
+			<DCC_Define>DEBUG</DCC_Define>
+			<BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+			<TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+			<ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+			<TASM_Debugging>Full</TASM_Debugging>
+			<BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+		</PropertyGroup>
+		<PropertyGroup Condition="'$(Cfg_2)'!=''">
+			<Defines>NDEBUG;$(Defines)</Defines>
+			<IntermediateOutputDir>Release</IntermediateOutputDir>
+			<TASM_Debugging>None</TASM_Debugging>
+		</PropertyGroup>
+		<ItemGroup>
+			<CppCompile Include="CloseMarketData.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>CloseMarketData</CoClasses>
+				<DependentOn>CloseMarketData.h</DependentOn>
+				<BuildOrder>15</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="CSConnection.cpp">
+				<VirtualFolder>{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}</VirtualFolder>
+				<CoClasses>ChartServerConnection</CoClasses>
+				<DependentOn>CSConnection.h</DependentOn>
+				<BuildOrder>20</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="DayHighLow.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>DayHighLow</CoClasses>
+				<DependentOn>DayHighLow.h</DependentOn>
+				<BuildOrder>10</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="Match.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>Match</CoClasses>
+				<DependentOn>Match.h</DependentOn>
+				<BuildOrder>8</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MDConnectionObject.cpp">
+				<DependentOn>MDConnectionObject.h</DependentOn>
+				<BuildOrder>24</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinuteKInfo.cpp">
+				<VirtualFolder>{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}</VirtualFolder>
+				<CoClasses>MinuteKInfo</CoClasses>
+				<DependentOn>MinuteKInfo.h</DependentOn>
+				<BuildOrder>18</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="OrderBookData.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>OrderBook</CoClasses>
+				<DependentOn>OrderBookData.h</DependentOn>
+				<BuildOrder>16</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="News.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>News</CoClasses>
+				<DependentOn>News.h</DependentOn>
+				<BuildOrder>13</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="OpeningInfo.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>OpenInfo</CoClasses>
+				<DependentOn>OpeningInfo.h</DependentOn>
+				<BuildOrder>11</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="ErrorMsgImpl.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<DependentOn>ErrorMsgImpl.h</DependentOn>
+				<BuildOrder>25</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="Recover.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>Recover</CoClasses>
+				<DependentOn>Recover.h</DependentOn>
+				<BuildOrder>17</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="SecurityDefinition.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>SecurityDefinition</CoClasses>
+				<DependentOn>SecurityDefinition.h</DependentOn>
+				<BuildOrder>7</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="MinuteKInfoList.cpp">
+				<VirtualFolder>{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}</VirtualFolder>
+				<CoClasses>MinuteKInfoList</CoClasses>
+				<DependentOn>MinuteKInfoList.h</DependentOn>
+				<BuildOrder>21</BuildOrder>
+			</CppCompile>
+			<ResFiles Include="StarWaveAPI.res">
+				<BuildOrder>1</BuildOrder>
+			</ResFiles>
+			<RidlCompile Include="StarWaveAPI.ridl"/>
+			<CppCompile Include="StarWaveAPI_ATL.cpp">
+				<DependentOn>StarWaveAPI_ATL.h</DependentOn>
+				<BuildOrder>6</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="StarWaveAPI_TLB.cpp">
+				<DependentOn>StarWaveAPI_TLB.h</DependentOn>
+				<BuildOrder>3</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="StarWaveConnection.cpp">
+				<VirtualFolder>{220EE8C6-EBD1-48DA-A54D-F5B4A684B8C4}</VirtualFolder>
+				<CoClasses>StarWaveConnection</CoClasses>
+				<DependentOn>StarWaveConnection.h</DependentOn>
+				<BuildOrder>5</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="StarWave_ATL.cpp">
+				<DependentOn>StarWave_ATL.h</DependentOn>
+				<BuildOrder>4</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="TickInfo.cpp">
+				<VirtualFolder>{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}</VirtualFolder>
+				<CoClasses>TickInfo</CoClasses>
+				<DependentOn>TickInfo.h</DependentOn>
+				<BuildOrder>19</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="SystemMsgImpl.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>SystemMsg</CoClasses>
+				<DependentOn>SystemMsgImpl.h</DependentOn>
+				<BuildOrder>24</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="TatolVolume.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>TotalVolumn</CoClasses>
+				<DependentOn>TatolVolume.h</DependentOn>
+				<BuildOrder>9</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="StarWaveAPI.cpp">
+				<BuildOrder>0</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="TickInfoList.cpp">
+				<VirtualFolder>{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}</VirtualFolder>
+				<CoClasses>TickInfoList</CoClasses>
+				<DependentOn>TickInfoList.h</DependentOn>
+				<BuildOrder>22</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="UnderlyingIndex.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>UnderlyingIndex</CoClasses>
+				<DependentOn>UnderlyingIndex.h</DependentOn>
+				<BuildOrder>14</BuildOrder>
+			</CppCompile>
+			<CppCompile Include="SumOfOrder.cpp">
+				<VirtualFolder>{542929F2-3270-463D-B4EF-4D5336717B40}</VirtualFolder>
+				<CoClasses>SumOfOrder</CoClasses>
+				<DependentOn>SumOfOrder.h</DependentOn>
+				<BuildOrder>12</BuildOrder>
+			</CppCompile>
+			<BuildConfiguration Include="Base">
+				<Key>Base</Key>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Release">
+				<Key>Cfg_2</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+			<BuildConfiguration Include="Debug">
+				<Key>Cfg_1</Key>
+				<CfgParent>Base</CfgParent>
+			</BuildConfiguration>
+		</ItemGroup>
+		<Import Project="$(BDS)\Bin\CodeGear.Cpp.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Cpp.Targets')"/>
+		<ProjectExtensions>
+			<Borland.Personality>CPlusPlusBuilder.Personality.12</Borland.Personality>
+			<Borland.ProjectType>CppActiveLibrary</Borland.ProjectType>
+			<BorlandProject>
+				<CPlusPlusBuilder.Personality>
+					<Source>
+						<Source Name="MainSource">StarWaveAPI.cpp</Source>
+					</Source>
+					<VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
+						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
+						<VersionInfo Name="MajorVer">1</VersionInfo>
+						<VersionInfo Name="MinorVer">1</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
+						<VersionInfo Name="Build">20</VersionInfo>
+						<VersionInfo Name="Debug">False</VersionInfo>
+						<VersionInfo Name="PreRelease">False</VersionInfo>
+						<VersionInfo Name="Special">False</VersionInfo>
+						<VersionInfo Name="Private">False</VersionInfo>
+						<VersionInfo Name="DLL">False</VersionInfo>
+						<VersionInfo Name="Locale">1028</VersionInfo>
+						<VersionInfo Name="CodePage">950</VersionInfo>
+					</VersionInfo>
+					<VersionInfoKeys>
+						<VersionInfoKeys Name="CompanyName"/>
+						<VersionInfoKeys Name="FileDescription"/>
+						<VersionInfoKeys Name="FileVersion">1.1.1.20</VersionInfoKeys>
+						<VersionInfoKeys Name="InternalName"/>
+						<VersionInfoKeys Name="LegalCopyright"/>
+						<VersionInfoKeys Name="LegalTrademarks"/>
+						<VersionInfoKeys Name="OriginalFilename"/>
+						<VersionInfoKeys Name="ProductName"/>
+						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="Comments"/>
+					</VersionInfoKeys>
+					<Debugging>
+						<Debugging Name="DebugSourceDirs"/>
+					</Debugging>
+					<Parameters>
+						<Parameters Name="RemoteHost"/>
+						<Parameters Name="RemotePath"/>
+						<Parameters Name="RemoteParams"/>
+						<Parameters Name="RemoteLauncher"/>
+						<Parameters Name="UseRemoteLauncher">False</Parameters>
+						<Parameters Name="RemoteCWD"/>
+						<Parameters Name="RemoteDebug">False</Parameters>
+						<Parameters Name="RunParams"/>
+						<Parameters Name="Launcher"/>
+						<Parameters Name="UseLauncher">False</Parameters>
+						<Parameters Name="DebugCWD"/>
+						<Parameters Name="HostApplication"/>
+						<Parameters Name="Debug Symbols Search Path"/>
+						<Parameters Name="LoadAllSymbols">True</Parameters>
+						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+					</Parameters>
+					<Excluded_Packages>
+						<Excluded_Packages Name="%BDSBIN%\bcboffice2k150.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="%BDSBIN%\bcbofficexp150.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+					</Excluded_Packages>
+					<ProjectProperties>
+						<ProjectProperties Name="AutoShowDeps">False</ProjectProperties>
+						<ProjectProperties Name="ManagePaths">True</ProjectProperties>
+						<ProjectProperties Name="VerifyPackages">False</ProjectProperties>
+					</ProjectProperties>
+					<VFOLDERS>
+						<VFOLDER ID="{208090C9-9C4A-41CC-AD91-C9E22E2B6F87}" name="ChartServerConnection"/>
+						<VFOLDER ID="{542929F2-3270-463D-B4EF-4D5336717B40}" name="Messages"/>
+						<VFOLDER ID="{220EE8C6-EBD1-48DA-A54D-F5B4A684B8C4}" name="StarWaveConnection"/>
+					</VFOLDERS>
+				</CPlusPlusBuilder.Personality>
+				<ActiveXProjectInfo>
+					<version>1</version>
+				</ActiveXProjectInfo>
+				<Platforms>
+					<Platform value="Win32">True</Platform>
+				</Platforms>
+				<ModelSupport>False</ModelSupport>
+			</BorlandProject>
+			<ProjectFileVersion>12</ProjectFileVersion>
+		</ProjectExtensions>
+	</Project>

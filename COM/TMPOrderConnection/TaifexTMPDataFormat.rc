@@ -1,0 +1,37 @@
+
+
+#include "MessageDataFormat.h"
+/////////////////////////////////////////////////////////////////////////////
+//
+// INI
+//
+
+IDR_TMP_L10 INI  "L10.ini"
+IDR_TMP_L20 INI  "L20.ini"
+IDR_TMP_L30 INI  "L30.ini"
+IDR_TMP_L40 INI  "L40.ini"
+IDR_TMP_L41 INI  "L41.ini"
+IDR_TMP_L42 INI  "L42.ini"
+IDR_TMP_L50 INI  "L50.ini"
+IDR_TMP_L60 INI  "L60.ini"
+IDR_TMP_L70 INI  "L70.ini"
+IDR_TMP_L80 INI  "L80.ini"
+
+IDR_TMP_R01 INI  "R01.ini"
+IDR_TMP_R02 INI  "R02.ini"
+IDR_TMP_R22 INI  "R22.ini"
+IDR_TMP_R03 INI  "R03.ini"
+IDR_TMP_R04 INI  "R04.ini"
+IDR_TMP_R05 INI  "R05.ini"
+IDR_TMP_R07 INI  "R07.ini"
+IDR_TMP_R08 INI  "R08.ini"
+IDR_TMP_R09 INI  "R09.ini"
+IDR_TMP_R11 INI  "R11.ini"
+IDR_TMP_R12 INI  "R12.ini"
+IDR_TMP_R13 INI  "R13.ini"
+IDR_TMP_R14 INI  "R14.ini"
+IDR_TMP_R15 INI  "R15.ini"
+IDR_TMP_R16 INI  "R16.ini"
+
+IDR_ERROR_ENG   INI "TAIFEXErrorEN.ini"
+IDR_ERROR_CHT   INI "TAIFEXErrorCH.ini"

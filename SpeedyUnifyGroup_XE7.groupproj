@@ -1,0 +1,120 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{a8e44315-6475-417c-8adf-5204f9360132}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="StarWaveAPILib\StarWaveAPILib_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="COM\Lib\SpeedyAPILib_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MDComponent\vcl\MDComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="VCL\MBusComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="S8Projects\SpeedyUnify.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="S8Projects\RestartAgent.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Clean">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Make">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7:Clean">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7:Make">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MDComponent_XE7">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Clean">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Make">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MBusComponent_XE7">
+        <MSBuild Projects="VCL\MBusComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Clean">
+        <MSBuild Projects="VCL\MBusComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Make">
+        <MSBuild Projects="VCL\MBusComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="S8MarketDataComponent_XE7">
+        <MSBuild Projects="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="S8MarketDataComponent_XE7:Clean">
+        <MSBuild Projects="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="S8MarketDataComponent_XE7:Make">
+        <MSBuild Projects="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyUnify">
+        <MSBuild Projects="S8Projects\SpeedyUnify.cbproj"/>
+    </Target>
+    <Target Name="SpeedyUnify:Clean">
+        <MSBuild Projects="S8Projects\SpeedyUnify.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyUnify:Make">
+        <MSBuild Projects="S8Projects\SpeedyUnify.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="RestartAgent">
+        <MSBuild Projects="S8Projects\RestartAgent.cbproj"/>
+    </Target>
+    <Target Name="RestartAgent:Clean">
+        <MSBuild Projects="S8Projects\RestartAgent.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="RestartAgent:Make">
+        <MSBuild Projects="S8Projects\RestartAgent.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;StarWaveAPILib_XE7;SpeedyAPILib_XE7;MDComponent_XE7;MBusComponent_XE7;S8MarketDataComponent_XE7;SpeedyUnify;RestartAgent"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;StarWaveAPILib_XE7:Clean;SpeedyAPILib_XE7:Clean;MDComponent_XE7:Clean;MBusComponent_XE7:Clean;S8MarketDataComponent_XE7:Clean;SpeedyUnify:Clean;RestartAgent:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;StarWaveAPILib_XE7:Make;SpeedyAPILib_XE7:Make;MDComponent_XE7:Make;MBusComponent_XE7:Make;S8MarketDataComponent_XE7:Make;SpeedyUnify:Make;RestartAgent:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

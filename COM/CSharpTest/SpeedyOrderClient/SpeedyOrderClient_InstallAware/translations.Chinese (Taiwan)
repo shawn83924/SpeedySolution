@@ -1,0 +1,307 @@
+$TITLE$
+Description
+ComponentSpace
+Component Required Space:
+Space Remaining:
+Total Required Space:
+RemainingSpace
+TotalRequiredSpace
+Disk Space Requirements
+
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+InstallAware
+$TITLE$
+Description
+ComponentSpace
+Component Required Space:
+Space Remaining:
+Total Required Space:
+RemainingSpace
+TotalRequiredSpace
+Disk Space Requirements
+InstallAware
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+Space Remaining:
+Total Required Space:
+RemainingSpace
+TotalRequiredSpace
+Disk Space Requirements
+
+InstallAware
+&Installation folder:
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+執行 $TITLE$ 
+立即重新開機
+安裝程式
+$SUCCESS$
+$REMOVE$
+完成.
+$TITLE$
+$COMPANY$
+結束
+$TITLE$
+我同意授權書
+安裝程式
+上一步
+$TITLE$
+$COMPANY$
+下一步
+取消
+$TITLE$
+I &accept the agreement
+I &reject the agreement
+InstallAware
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+
+InstallAware
+&Type "I accept" below to indicate that you accept the license agreement.
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+新增,移除功能
+修復 / 重新安裝
+移除
+安裝程式
+歡迎使用安裝程式
+新增程式元件或移除已安裝元件.
+修復回一開始安裝的狀態
+從電腦中移除$TITLE$
+取消
+下一步
+$TITLE$
+$COMPANY$
+$TITLE$
+InstallAware
+$PRELIST$
+The above pre-requisites must be installed before setup can continue.
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+ProgressText
+安裝程式
+移除進度
+$REMOVE$
+安裝進度
+$TITLE$
+$COMPANY$
+取消
+$TITLE$
+ProgressText
+InstallAware
+Pre-Requisite Installation Progress
+$TITLE$
+$COMPANY$
+Cancel
+$TITLE$
+InstallAware
+Read the important program information above.
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+
+
+InstallAware
+&Company Name:
+&User Name:
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+
+
+
+
+
+
+
+InstallAware
+&Product Key:
+&Company Name:
+&User Name:
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+InstallAware
+Ready to start installing $TITLE$.
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+$TITLE$
+所有的使用者
+目前的使用者
+
+安裝程式
+$ISNT$
+建立圖示:
+開始選單目錄:
+上一步
+$TITLE$
+$COMPANY$
+下一步
+取消
+$TITLE$
+InstallAware
+建議您在安裝此程式之前,先停掉其他視窗程式
+案"取消"離開安裝程式.去停掉其他正在執行中的程式.按"下一步"繼續安裝
+
+
+取消
+下一步
+歡迎使用安裝程式
+$TITLE$
+$COMPANY$
+$TITLE$
+InstallAware
+Back
+$TITLE$
+$COMPANY$
+Continue
+Cancel
+FALSE
+
+TRUE
+$PRELIST$$NEWLINE$Previous Version Uninstallation
+
+
+FALSE
+$SHORTCUTFILES$
+$PROGRAMFILES$\$TITLE$
+$TITLE$
+Installing $TITLE$
+
+
+$SHORTCUTFILESALL$\$STARTMENU$
+$SHORTCUTFILES$\$STARTMENU$
+100
+100
+Uninstall #TITLE#
+Removes this MDBS product
+SpeedyOrderClient
+Link to SpeedyOrderClient.exe
+SpeedyOrderClient
+Link to SpeedyOrderClient.exe
+Default
+Description for #TITLE#
+Default
+$TITLE$ Setup Error
+This product cannot be installed on versions of Windows older than Windows 2000. Please upgrade your operating system and try again.
+$TITLE$ Setup Error
+This product requires at least 512 MB Physical Memory. Setup cannot continue.
+$TITLE$ Setup
+Unable to uninstall old version of $TITLE$. Please uninstall it yourself using Control Panel Add-Remove Programs before attempting to install this product.$NEWLINE$$NEWLINE$$ERROROLD$
+$TITLE$ Setup
+Your computer needs to be restarted before $TITLE$ Setup can continue.$NEWLINE$$NEWLINE$Please save your work in all running programs and click OK to restart your computer. Setup will resume once your computer restarts.$NEWLINE$$NEWLINE$If you click CANCEL, setup will exit. You will have to run setup again at a later time to install $TITLE$.
+CHECKOS
+TRUE
+CHECKMEM
+TRUE
+BUILDMODE
+PATCH
+NEEDSUPGRADE
+TRUE
+PREREQ
+FALSE
+WIZARD
+CANCEL
+BUILDMODE
+PATCH
+NEEDSUPGRADE
+TRUE
+REMOVEOLD
+ERROR
+REMOVEOLD
+REBOOT
+REBOOTNOW
+OK
+SHORTCUTFILESALL
+
+MAINTENANCE
+TRUE
+BUILDMODE
+PATCH
+BUILDMODE
+PATCH
+WIZARD
+CANCEL
+ALLUSERS
+TRUE
+REMOVE
+TRUE
+SELECTED
+TRUE
+BUILDMODE
+PATCH
+ADVERTISE
+TRUE
+SILENT
+FALSE
+REBOOTCOMPUTER
+TRUE
+SUCCESS
+REBOOT
+RUNAPP
+TRUE
+REMOVE
+FALSE
+SUCCESS
+COMPLETE
+$PRELIST$$NEWLINE$Microsoft Windows Installer 2.0
+TRUE
+TRUE
+MSI20
+FALSE
+Installing Microsoft Windows Installer 2.0
+MARQUEE
+
+$TITLE$ Setup
+Windows Installer 2.0 could not be installed. Please use Windows Update to manually install this update on your system.$NEWLINE$$NEWLINE$$TITLE$ Setup cannot continue.
+$TITLE$ Setup
+Your computer needs to be restarted before $TITLE$ Setup can continue.$NEWLINE$$NEWLINE$Please save your work in all running programs and click OK to restart your computer. Setup will resume once your computer restarts.$NEWLINE$$NEWLINE$If you click CANCEL, setup will exit. You will have to run setup again at a later time to install $TITLE$.
+$TITLE$ Setup
+Your computer needs to be restarted before $TITLE$ Setup can continue.$NEWLINE$$NEWLINE$Please save your work in all running programs and click OK to restart your computer. Setup will resume once your computer restarts.$NEWLINE$$NEWLINE$If you click CANCEL, setup will exit. You will have to run setup again at a later time to install $TITLE$.
+MSI20
+ERROR
+REBOOTNOW
+OK
+MSI20
+REBOOT
+MSI20
+FALSE
+PLATFORM
+FALSE
+REBOOTNOW
+OK

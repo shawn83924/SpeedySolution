@@ -1,0 +1,1 @@
+tar -cvf SpeedySrc0916.tar UFC MBus SpeedyTop SpeedyAgent SpeedyManager SpeedyProfile MessageDeliver_jni Lua LogCleaner TAIFEXLib SpeedyGateway SpeedyTCPTAIFEX Migo zlib Version.h ExchangeUtility TopLib  

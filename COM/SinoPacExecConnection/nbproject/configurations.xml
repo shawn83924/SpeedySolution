@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="38">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Tibrv Header" projectFiles="true">
+        <itemPath>/usr/tibco/tibrv/include/tibrv/tibrvcpp.h</itemPath>
+      </logicalFolder>
+      <itemPath>SinoPacExecConnection.h</itemPath>
+      <itemPath>../Lib/OrderConnection/TTaifexConnection.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>../OrderConnection/MessageDataFormat.h</itemPath>
+      <itemPath>../OrderConnection/Resource.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Main.cpp</itemPath>
+      <itemPath>SinoPacExecConnection.cpp</itemPath>
+      <itemPath>SinoPacFIXConnection.cc</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="AIX_Release_R6" type="1">
+      <toolsSet>
+        <compilerSet>GNU</compilerSet>
+        <cRequired>true</cRequired>
+        <cppRequired>true</cppRequired>
+        <fortranRequired>false</fortranRequired>
+        <platform>5</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+          </includeDirectories>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+            <directoryPath>/usr/tibco/tibrv/include</directoryPath>
+          </includeDirectories>
+          <commandLine>-pthread</commandLine>
+          <preprocessor>R_6 __AIX</preprocessor>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <linkerTool>
+          <output>/Speedy/bin/SinoPacExecConnection</output>
+          <linkerAddLib>
+            <directoryPath>/usr/tibco/tibrv/lib</directoryPath>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="false"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile CONF=AIX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="false"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>tibrv</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcm</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcmq</linkerLibLibItem>
+            <linkerLibLibItem>tibrvft</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcpp</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../Lib/OrderConnection/TTaifexConnection.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="../OrderConnection/MessageDataFormat.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="../OrderConnection/Resource.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/usr/tibco/tibrv/include/tibrv/tibrvcpp.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="Main.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="SinoPacExecConnection.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="SinoPacExecConnection.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="SinoPacFIXConnection.cc">
+        <itemTool>1</itemTool>
+      </item>
+    </conf>
+    <conf name="AIX_Release_EC" type="1">
+      <toolsSet>
+        <compilerSet>GNU</compilerSet>
+        <cRequired>true</cRequired>
+        <cppRequired>true</cppRequired>
+        <fortranRequired>false</fortranRequired>
+        <platform>5</platform>
+      </toolsSet>
+      <compileType>
+        <cCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>../../UFC</directoryPath>
+          </includeDirectories>
+        </cCompilerTool>
+        <ccCompilerTool>
+          <developmentMode>5</developmentMode>
+          <includeDirectories>
+            <directoryPath>/usr/tibco/tibrv/include</directoryPath>
+            <directoryPath>../../Migo</directoryPath>
+            <directoryPath>../../UFC</directoryPath>
+          </includeDirectories>
+          <commandLine>-pthread</commandLine>
+          <preprocessor>R_6 __AIX _FOR_EC</preprocessor>
+          <warningLevel>2</warningLevel>
+        </ccCompilerTool>
+        <linkerTool>
+          <output>/Speedy/bin/SinoPacFIXExecConnection</output>
+          <linkerAddLib>
+            <directoryPath>/usr/tibco/tibrv/lib</directoryPath>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile CONF=AIX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>tibrv</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcm</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcmq</linkerLibLibItem>
+            <linkerLibLibItem>tibrvft</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcpp</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../Lib/OrderConnection/TTaifexConnection.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="../OrderConnection/MessageDataFormat.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="../OrderConnection/Resource.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="/usr/tibco/tibrv/include/tibrv/tibrvcpp.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="Main.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="SinoPacExecConnection.cpp">
+        <itemTool>1</itemTool>
+      </item>
+      <item path="SinoPacExecConnection.h">
+        <itemTool>3</itemTool>
+      </item>
+      <item path="SinoPacFIXConnection.cc">
+        <itemTool>1</itemTool>
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

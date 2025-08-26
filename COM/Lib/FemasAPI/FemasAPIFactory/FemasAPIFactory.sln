@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FemasAPIFactory", "FemasAPIFactory.vcxproj", "{265C3BF2-ABD1-400E-9F04-72E552BCA5B4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CTPAPIFactory", "..\..\CTPAPI\CTPAPIFactory\CTPAPIFactory.vcxproj", "{3348A0DC-473B-424A-A091-2314C7BB0523}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{265C3BF2-ABD1-400E-9F04-72E552BCA5B4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{265C3BF2-ABD1-400E-9F04-72E552BCA5B4}.Debug|Win32.Build.0 = Debug|Win32
+		{265C3BF2-ABD1-400E-9F04-72E552BCA5B4}.Release|Win32.ActiveCfg = Release|Win32
+		{265C3BF2-ABD1-400E-9F04-72E552BCA5B4}.Release|Win32.Build.0 = Release|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Debug|Win32.Build.0 = Debug|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Release|Win32.ActiveCfg = Release|Win32
+		{3348A0DC-473B-424A-A091-2314C7BB0523}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

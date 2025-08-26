@@ -1,0 +1,116 @@
+object AskUpdateForm: TAskUpdateForm
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
+  Caption = 'Speedy Unify '#26377#26032#30340#29256#26412
+  ClientHeight = 286
+  ClientWidth = 327
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  Scaled = False
+  PixelsPerInch = 120
+  TextHeight = 13
+  object GraphPanel: TGraphPanel
+    Left = 0
+    Top = 0
+    Width = 327
+    Height = 286
+    Align = alClient
+    BevelOuter = bvNone
+    UseDockManager = True
+    TabOrder = 0
+    StretchGlyph = True
+    object MsgLabel: TLabel
+      Left = 16
+      Top = 30
+      Width = 4
+      Height = 16
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clCream
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object VersionLabel: TLabel
+      Left = 11
+      Top = 16
+      Width = 184
+      Height = 21
+      Caption = '1.2.0.80'#29256','#26377#20197#19979#30340#35722#21205
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object UpdateLabel: TLabel
+      Left = 11
+      Top = 226
+      Width = 127
+      Height = 21
+      Caption = #26159#21542#35201#26356#26032#29256#26412'?'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clNavy
+      Font.Height = -17
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object NoteMemo: TMemo
+      Left = 11
+      Top = 41
+      Width = 304
+      Height = 178
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object CancelButton: TButton
+      Left = 163
+      Top = 253
+      Width = 75
+      Height = 25
+      Caption = #21462#28040
+      ModalResult = 2
+      TabOrder = 1
+      OnClick = CancelButtonClick
+    end
+    object OKButton: TButton
+      Left = 79
+      Top = 253
+      Width = 75
+      Height = 25
+      Caption = #30906#23450
+      ModalResult = 1
+      TabOrder = 2
+      OnClick = OKButtonClick
+    end
+  end
+  object RoundFormEx: TRoundFormEx
+    Resource = MainForm.RoundFormExRes
+    InactiveFontColor = 19
+    Lockbox = True
+    CaptionFont.Charset = ANSI_CHARSET
+    CaptionFont.Color = clWhite
+    CaptionFont.Height = -17
+    CaptionFont.Name = #24494#36575#27491#40657#39636
+    CaptionFont.Style = []
+    Left = 248
+    Top = 24
+  end
+end

@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsApplication1.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MBusIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.0.120</Value>
+    </Setting>
+    <Setting Name="MBusSubject" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ORDER.FUT</Value>
+    </Setting>
+    <Setting Name="MBusKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">all</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

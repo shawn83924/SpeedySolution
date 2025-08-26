@@ -1,0 +1,40 @@
+#
+# Generated - do not edit!
+#
+# NOCDDL
+#
+CND_BASEDIR=`pwd`
+CND_BUILDDIR=build
+CND_DISTDIR=dist
+# LINUX_Release configuration
+CND_PLATFORM_LINUX_Release=GNU-Linux-x86
+CND_ARTIFACT_DIR_LINUX_Release=/Speedy/bin
+CND_ARTIFACT_NAME_LINUX_Release=MLExecConnection
+CND_ARTIFACT_PATH_LINUX_Release=/Speedy/bin/MLExecConnection
+CND_PACKAGE_DIR_LINUX_Release=dist/LINUX_Release/GNU-Linux-x86/package
+CND_PACKAGE_NAME_LINUX_Release=mlexecconnection.tar
+CND_PACKAGE_PATH_LINUX_Release=dist/LINUX_Release/GNU-Linux-x86/package/mlexecconnection.tar
+# AIX_Release configuration
+CND_PLATFORM_AIX_Release=GNU-Linux-x86
+CND_ARTIFACT_DIR_AIX_Release=dist/AIX_Release/GNU-Linux-x86
+CND_ARTIFACT_NAME_AIX_Release=mlexecconnection
+CND_ARTIFACT_PATH_AIX_Release=dist/AIX_Release/GNU-Linux-x86/mlexecconnection
+CND_PACKAGE_DIR_AIX_Release=dist/AIX_Release/GNU-Linux-x86/package
+CND_PACKAGE_NAME_AIX_Release=mlexecconnection.tar
+CND_PACKAGE_PATH_AIX_Release=dist/AIX_Release/GNU-Linux-x86/package/mlexecconnection.tar
+# LINUX_Release_dynamic configuration
+CND_PLATFORM_LINUX_Release_dynamic=GNU-Linux-x86
+CND_ARTIFACT_DIR_LINUX_Release_dynamic=dist/LINUX_Release/GNU-Linux-x86
+CND_ARTIFACT_NAME_LINUX_Release_dynamic=speedyorderconnection
+CND_ARTIFACT_PATH_LINUX_Release_dynamic=dist/LINUX_Release/GNU-Linux-x86/speedyorderconnection
+CND_PACKAGE_DIR_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux-x86/package
+CND_PACKAGE_NAME_LINUX_Release_dynamic=mlexecconnection.tar
+CND_PACKAGE_PATH_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux-x86/package/mlexecconnection.tar
+# LINUX_Debug configuration
+CND_PLATFORM_LINUX_Debug=GNU-Linux-x86
+CND_ARTIFACT_DIR_LINUX_Debug=/Speedy/bin
+CND_ARTIFACT_NAME_LINUX_Debug=MLExecConnection
+CND_ARTIFACT_PATH_LINUX_Debug=/Speedy/bin/MLExecConnection
+CND_PACKAGE_DIR_LINUX_Debug=dist/LINUX_Debug/GNU-Linux-x86/package
+CND_PACKAGE_NAME_LINUX_Debug=mlexecconnection.tar
+CND_PACKAGE_PATH_LINUX_Debug=dist/LINUX_Debug/GNU-Linux-x86/package/mlexecconnection.tar

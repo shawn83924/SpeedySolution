@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="79">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>KGIPTRM.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>../OrderConnection/MessageDataFormat.h</itemPath>
+      <itemPath>../OrderConnection/Resource.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>KGIPTRM.cpp</itemPath>
+      <itemPath>Main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>/usr/tibco/tibrv/include/tibrv</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="AIX_Release_R6" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>/usr/tibco/tibrv/include</pElem>
+          </incDir>
+          <commandLine>-pthreads</commandLine>
+          <preprocessorList>
+            <Elem>R_6</Elem>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SinoPacExecConnection</output>
+          <linkerAddLib>
+            <pElem>/usr/tibco/tibrv/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile CONF=AIX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>tibrv</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcm</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcmq</linkerLibLibItem>
+            <linkerLibLibItem>tibrvft</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcpp</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="AIX_Release_EC" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>/usr/tibco/tibrv/include</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>R_6</Elem>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/bin/SinoPacRMConnection</output>
+          <linkerAddLib>
+            <pElem>/usr/tibco/tibrv/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="AIX_Release"
+                            AC="true"
+                            BL="false"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=AIX_Release clean"
+                            OP="/MBus/lib/UFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibLibItem>tibrv</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcm</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcmq</linkerLibLibItem>
+            <linkerLibLibItem>tibrvft</linkerLibLibItem>
+            <linkerLibLibItem>tibrvcpp</linkerLibLibItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+    <conf name="LinuxRelease" type="1">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>GNU|GNU</compilerSet>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../OrderMessage</pElem>
+            <pElem>../OrderConnection</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>/usr/tibco/tibrv/include</pElem>
+          </incDir>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </fortranCompilerTool>
+        <linkerTool>
+          <output>/Speedy/bin/KGIPTRM</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="./libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+          </linkerLibItems>
+          <commandLine>-pthread</commandLine>
+        </linkerTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

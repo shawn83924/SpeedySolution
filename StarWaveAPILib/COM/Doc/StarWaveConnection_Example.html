@@ -1,0 +1,410 @@
+<head>
+    <style type="text/css">
+        .style1
+        {
+            color: #0000CC;
+        }
+        .style2
+        {
+            color: #3366CC;
+        }
+        .style3
+        {
+            color: #CC3300;
+        }
+        .style4
+        {
+            color: #000000;
+        }
+    </style>
+</head>
+<span style="color: #000099">Example</span><br />
+<hr />
+<span style="color: #0000cc">C#<br />
+    <hr />
+</span><span><span style="font-size: 10pt; font-family: Arial">
+StarWaveAPI.StarWaveConnection FConnection = null;<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    <br />
+    public MainForm()
+<br />
+{
+<br />
+&nbsp;&nbsp;&nbsp; InitializeComponent();
+<br />
+&nbsp;&nbsp; <span class="style3">&nbsp;// 產生StarWaveConnection物件</span><br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong> = new 
+StarWaveAPI.StarWaveConnection();
+<br />
+&nbsp;&nbsp;&nbsp; <span class="style3">// Handle 連線,斷線,商品下載完成的事件</span><br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style1"><a 
+    href="StarWaveConnection_OnConnected.html">OnConnected</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnConnectedEventHandler(<strong>FConnection_OnConnected</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style1"><a 
+    href="StarWaveConnection_OnDisconnected.html">OnDisconnected</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnDisconnectedEventHandler(<strong>FConnection_OnDisconnected</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style1"><a 
+    href="StarWaveConnection_OnContractDownloadCompleted.html">OnContractDownloadCompleted</a></span> 
++= new 
+StarWaveAPI.IStarWaveConnectionEvents_OnContractDownloadCompletedEventHandler(<strong>FConnection_OnContractDownloadCompleted</strong>);
+<br />
+<span class="style3">&nbsp;&nbsp;&nbsp; // Handel 行情異動產生的事件.</span><br 
+    class="style3" />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnRecover.html">OnRecover</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnRecoverEventHandler(<strong>FConnection_OnRecover</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnOrderBookData.html">OnOrderBookData</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnOrderBookDataEventHandler(<strong>FConnection_OnOrderBookData</strong>);<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnMatchInfo.html">OnMatchInfo</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnMatchInfoEventHandler(<strong>FConnection_OnMatchInfo</strong>);<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnDayHighLow.html">OnDayHighLow</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnDayHighLowEventHandler(<strong>FConnection_OnDayHighLow</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnUnderlyingIndex.html">OnUnderlyingIndex</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnUnderlyingIndexEventHandler(<strong>FConnection_OnUnderlyingIndex</strong>);<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnTotalMatch.html">OnTotalMatch</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnTotalMatchEventHandler(<strong>FConnection_OnTotalMatch</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnSumOfOrder.html">OnSumOfOrder</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnSumOfOrderEventHandler(<strong>FConnection_OnSumOfOrder</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnOpeningInfo.html">OnOpeningInfo</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnOpeningInfoEventHandler(<strong>FConnection_OnOpeningInfo</strong>);
+<br />
+&nbsp;&nbsp;&nbsp; <strong>FConnection</strong>.<span class="style2"><a 
+    href="StarWaveConnection_OnClosingMarketData.html">OnClosingMarketData</a></span> 
++= new StarWaveAPI.IStarWaveConnectionEvents_OnClosingMarketDataEventHandler(<strong>FConnection_OnClosingMarketData</strong>);
+    <br />
+    }
+    <br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    <br />
+    void FOrderConnection_OnConnected()
+    <br />
+    {&nbsp;<br />
+<span class="style3">&nbsp;&nbsp;&nbsp; // 與StarWave Server連線成功.</span><br />
+    &nbsp;&nbsp;&nbsp; System.Console.WriteLine(&quot;FConnection_OnConnected&quot;);<span style="font-size: 12pt; font-family: Times New Roman"><span style="font-size: 10pt;
+        font-family: Arial"><br />
+<span class="style3">&nbsp;&nbsp;&nbsp; // 向Server要所有可註冊行情的商品.</span><br />
+&nbsp;&nbsp;&nbsp; FConnection.<span class="style1"><strong><a 
+    href="StarWaveConnection_DownloadContract.html">DownloadContract</a></strong></span>();<br />
+    </span></span>}
+    <br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    <br />
+    void FOrderConnection_OnDisconnected()
+    <br />
+    {&nbsp;<br />
+&nbsp;&nbsp; <span class="style3">&nbsp;// 與StarWave Server斷線.</span><br />
+    &nbsp;&nbsp;&nbsp; &nbsp;System.Console.WriteLine(&quot;FConnection_OnDisconnected&quot;);<br />
+    }
+    <br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+    <br />
+    void FConnection_OnContractDownloadCompleted(int ExchangeCount)
+<br />
+{<br />
+<span class="style3">&nbsp;&nbsp;&nbsp; // 商品下載完畢.</span>
+<br />
+&nbsp;&nbsp;&nbsp; for (int i = 0; i &lt; ExchangeCount; i++)&nbsp;
+<br />
+&nbsp;&nbsp;&nbsp; {<br />
+<span class="style3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // 
+取得每一個交易所的交易所代碼.</span>
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string Exchange = <strong>FConnection</strong>.<span 
+    class="style1"><strong><a href="StarWaveConnection_GetExchange.html">GetExchange</a></strong></span>(i);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode ExNode = null;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if( 
+CommodTreeView.Nodes.ContainsKey(Exchange))
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TreeNode[] 
+result = CommodTreeView.Nodes.Find(Exchange, false);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExNode = 
+result[0];
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ExNode = 
+CommodTreeView.Nodes.Add(Exchange, Exchange);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="style3">// 
+取得某一交易所下,所有的商品基本資料</span><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; for (int j = 0; j &lt; <strong>
+FConnection</strong>.<span class="style1"><strong><a 
+    href="StarWaveConnection_SymbolCount.html">SymbolCount</a></strong></span>(Exchange); j++)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {&nbsp;&nbsp;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; string Symbol 
+= <strong>FConnection</strong>.<span class="style1"><strong><a 
+    href="StarWaveConnection_GetSymbol.html">GetSymbol</a></strong></span>(Exchange, 
+j);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+StarWaveAPI.SecurityDefinition Def = new StarWaveAPI.SecurityDefinition();
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>
+FConnection</strong>.<span class="style1"><strong><a 
+    href="StarWaveConnection_GetSecurityDefinition.html">GetSecurityDefinition</a></strong></span>(Exchange, 
+Symbol, Def);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (Def != 
+null)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TreeNode MarketNode, ProdNode, MaturityDateNode ,SymbolNode;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if ( ExNode.Nodes.ContainsKey(Def.Market.ToString()))
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TreeNode[] node = ExNode.Nodes.Find(Def.Market.ToString(), false);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MarketNode = node[0];
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MarketNode = ExNode.Nodes.Add(Def.Market.ToString(), Def.Market.ToString());
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if( MarketNode.Nodes.ContainsKey(Def.ProductID))
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TreeNode[] node = MarketNode.Nodes.Find(Def.ProductID, false);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ProdNode = node[0];
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ProdNode = MarketNode.Nodes.Add(Def.ProductID, Def.ProductID);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (Def.MaturityDate != null)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if( ProdNode.Nodes.ContainsKey(Def.MaturityDate))
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+{
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TreeNode[] node = ProdNode.Nodes.Find(Def.MaturityDate, false);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MaturityDateNode = node[0];
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MaturityDateNode = ProdNode.Nodes.Add(Def.MaturityDate, Def.MaturityDate);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+}
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+MaturityDateNode = null;
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+if (MaturityDateNode != null)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SymbolNode = MaturityDateNode.Nodes.Add(Def.Symbol, Def.Symbol);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+else
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SymbolNode = ProdNode.Nodes.Add(Def.Symbol, Def.Symbol);
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+<br />
+&nbsp;&nbsp;&nbsp; }<br />
+&nbsp;&nbsp;&nbsp; CommodTreeView.Sort();
+<br />
+}<}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnRecover</strong>(StarWaveAPI.Recover Recover)
+<br />
+{ 
+<br />
+&nbsp;&nbsp;&nbsp; string TableKey = string.Format(&quot;{0}.{1}&quot;, Recover.Exchange, 
+Recover.Symbol);
+<br />
+&nbsp;&nbsp;&nbsp; DepthForm UpdaateForm = (DepthForm)FTable[TableKey];<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine( &quot;OnRecover:[{0}]&quot;, TableKey );
+<br />
+&nbsp;&nbsp;&nbsp; if (UpdaateForm != null)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UpdaateForm.OnRecover(Recover);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnOrderBookData</strong>(StarWaveAPI.OrderBook 
+OrderBookData)
+<br />
+{ {
+<br />
+&nbsp;&nbsp;&nbsp; string TableKey = string.Format(&quot;{0}.{1}&quot;, 
+OrderBookData.Exchange, OrderBookData.Symbol);
+<br />
+&nbsp;&nbsp;&nbsp; DepthForm UpdaateForm = (DepthForm)FTable[TableKey];
+<br />
+&nbsp;&nbsp;&nbsp; if (UpdaateForm != null)
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; UpdaateForm.Update(OrderBookData);
+<br /}
+<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnMatchInfo</strong>(StarWaveAPI.Match MatchInfo)
+<br />
+{<br />
+&nbsp;&nbsp;&nbsp; <span class="style4">Console.WriteLine(</span><span class="style2">&quot;成交:Px[{0}] 
+Qty[{1}] Time[{2}]&quot;</span><span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>, MatchInfo.MatchPx, MatchInfo.MatchQty, 
+MatchInfo.MatchTime);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnDayHighLow</strong>(StarWaveAPI.DayHighLow 
+DayHighLow)<br />
+{
+</span>
+<span class="style2"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>
+<br /&nbsp;&nbsp;&nbsp; Console.WriteLine(<span class="style4"&quot;Recv當日高低:High[{1}] 
+Low[{2}]&quot;</span>
+</span>
+<span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>&nbsp;&nbsp;&nbsp; Console.WriteLine(</span><span class="style2"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>&quot;當日高低:High[{0}] Low[{1}]&quot;,</span><span 
+    class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>, DayHighLow.DayHighPx, DayHighLow.DayLowPx);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void   <strong>FConnection_OnUnderlyingIndex</strong>(StarWaveAPI.UnderlyingIndex 
+UnderlyingIndex)
+<br />
+{<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine(</span><span class="style2"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>&quot;指數 Time:[{0}] Value[{1}]&quot;</span><span 
+    class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>, UnderlyingIndex.IndexTime, 
+UnderlyingIndex.IndexValue);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnTotalMatch</strong>(StarWaveAPI.TotalVolume 
+TotalMatch)
+<br />
+{
+<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine(</span><span &quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span><span class="style2"style2">&quot;總成交量:Qty[{0}] 
+BuyMatch[{1}] SellMatch[{2}]&quot;</span></span><span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>, 
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+TotalMatch.TotalMatchVolume, TotalMatch.BuyMatchCount, 
+TotalMatch.SellMatchCount);<br />}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnSumOfOrder</strong>(StarWaveAPI.SumOfOrder 
+SumOfOrder)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine(</span><span class="style2"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span> &quot;BuyOrdCnt[{0}] 
+BuyOrdQty[{1}] SellOrdCnt[{2}] SellOrdQty&quot;<span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>,<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+SumOfOrder.BuyOrderCount, SumOfOrder.BuyOrderQty, SumOfOrder.SellOrderCount, 
+SumOfOrder.SellOrderQty);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnOpeningInfo</strong>(StarWaveAPI.OpenInfo 
+OpeningInfo)<br />
+{<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine(
+</span>&quot;開盤:Px[{1}] 
+Qty:[{2}] Time[{3}]&quot;<span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+OpeningInfo.OpeningPx, OpeningInfo.OpeningQty, OpeningInfo.OpeningTime);<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+<br />
+void <strong>FConnection_OnClosingMarketData</strong>(StarWaveAPI.CloseMarketData 
+ClosingMarketData)
+<br />
+{ 
+<br />
+&nbsp;&nbsp;&nbsp; Console.WriteLine(</span>&quot;開盤價[{1}] 
+收盤價[{2}] 當日最高[{3}] 當日最低[{4}] 買價[{5}] 賣價[{6}] 本期最高[{7}] 本期最低[{7}] 結算價[{8}] 
+未平倉[{9}]&quot;<span class="style4"&quot;Recv成交:Px[{1}] 
+Qty[{2}] Time[{3}]&quot;</span>,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ClosingMarketData.OpenPx, ClosingMarketData.ClosePx, 
+ClosingMarketData.DayHighPx, ClosingMarketData.DayLowPx,
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ClosingMarketData.TermHighPx, ClosingMarketData.TermLowPx, 
+ClosingMarketData.SettlementPx, ClosingMarketData.OpenInterest );<br />
+}<br />
+    //--------------------------------------------------------------------------------------------------------------------------------------------------
+
+</span>
+</span>

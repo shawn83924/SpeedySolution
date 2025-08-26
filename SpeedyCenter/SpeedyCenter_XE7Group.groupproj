@@ -1,0 +1,108 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D9ED6A6D-E0E9-4CD1-831C-15FD6464D972}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\MDComponent\vcl\MDComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\VCL\MBusComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SpeedyCenter.cbproj">
+            <Dependencies>..\BC Projects\UFC_XE7.cbproj;..\VCL\MBusComponent_XE7.cbproj</Dependencies>
+        </Projects>
+        <Projects Include="CHS\SpeedyCenter_CHS.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CHT\SpeedyCenter_CHT.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ENU\SpeedyCenter_ENU.bdsproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="..\BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MDComponent_XE7">
+        <MSBuild Projects="..\MDComponent\vcl\MDComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Clean">
+        <MSBuild Projects="..\MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Make">
+        <MSBuild Projects="..\MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MBusComponent_XE7">
+        <MSBuild Projects="..\VCL\MBusComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Clean">
+        <MSBuild Projects="..\VCL\MBusComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MBusComponent_XE7:Make">
+        <MSBuild Projects="..\VCL\MBusComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyCenter" DependsOnTargets="UFC_XE7;MBusComponent_XE7">
+        <MSBuild Projects="SpeedyCenter.cbproj"/>
+    </Target>
+    <Target Name="SpeedyCenter:Clean" DependsOnTargets="UFC_XE7:Clean;MBusComponent_XE7:Clean">
+        <MSBuild Projects="SpeedyCenter.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyCenter:Make" DependsOnTargets="UFC_XE7:Make;MBusComponent_XE7:Make">
+        <MSBuild Projects="SpeedyCenter.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHS">
+        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHS:Clean">
+        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHS:Make">
+        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHT">
+        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHT:Clean">
+        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyCenter_CHT:Make">
+        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyCenter_ENU">
+        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj"/>
+    </Target>
+    <Target Name="SpeedyCenter_ENU:Clean">
+        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyCenter_ENU:Make">
+        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;MDComponent_XE7;MBusComponent_XE7;SpeedyCenter;SpeedyCenter_CHS;SpeedyCenter_CHT;SpeedyCenter_ENU"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;MDComponent_XE7:Clean;MBusComponent_XE7:Clean;SpeedyCenter:Clean;SpeedyCenter_CHS:Clean;SpeedyCenter_CHT:Clean;SpeedyCenter_ENU:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;MDComponent_XE7:Make;MBusComponent_XE7:Make;SpeedyCenter:Make;SpeedyCenter_CHS:Make;SpeedyCenter_CHT:Make;SpeedyCenter_ENU:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

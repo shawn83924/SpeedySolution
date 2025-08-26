@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="CA" projectFiles="true">
+        <itemPath>CA/CABasicObjects.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="MessageDeliver"
+                     displayName="MessageDeliver"
+                     projectFiles="true">
+        <itemPath>MessageDeliver/TMdListener.h</itemPath>
+        <itemPath>MessageDeliver/TMdMessage.h</itemPath>
+        <itemPath>MessageDeliver/TMdTransport.h</itemPath>
+        <itemPath>MessageDeliver/TThreadApp.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="OrderConnection"
+                     displayName="OrderConnection"
+                     projectFiles="true">
+        <itemPath>OrderConnection/MessageRender.h</itemPath>
+        <itemPath>OrderConnection/TTaifexConnection.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="OrderMessage"
+                     displayName="OrderMessage"
+                     projectFiles="true">
+        <itemPath>OrderMessage/OrderMessageDefine.h</itemPath>
+        <itemPath>OrderMessage/TBaseMessage.h</itemPath>
+        <itemPath>OrderMessage/TCancelOrderMessage.h</itemPath>
+        <itemPath>OrderMessage/TExecutionReportMessage.h</itemPath>
+        <itemPath>OrderMessage/TNetworkID.h</itemPath>
+        <itemPath>OrderMessage/TNewOrderMessage.h</itemPath>
+        <itemPath>OrderMessage/TOrderStatusRequest.h</itemPath>
+        <itemPath>OrderMessage/TQuoteCancelMessage.h</itemPath>
+        <itemPath>OrderMessage/TQuoteMessage.h</itemPath>
+        <itemPath>OrderMessage/TQuoteRequestMessage.h</itemPath>
+        <itemPath>OrderMessage/TReplaceOrderMessage.h</itemPath>
+      </logicalFolder>
+      <itemPath>EmbadedResource.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>../SpeedyAPIXE7/MessageDataFormat.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="CA" projectFiles="true">
+        <itemPath>CA/CABasicObjects.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="MessageDeliver"
+                     displayName="MessageDeliver"
+                     projectFiles="true">
+        <itemPath>MessageDeliver/TMdListener.cpp</itemPath>
+        <itemPath>MessageDeliver/TMdMessage.cpp</itemPath>
+        <itemPath>MessageDeliver/TMdTransport.cpp</itemPath>
+        <itemPath>MessageDeliver/TThreadApp.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="OrderConnection"
+                     displayName="OrderConnection"
+                     projectFiles="true">
+        <itemPath>OrderConnection/FuturesSymbolUtility.cpp</itemPath>
+        <itemPath>OrderConnection/HandleExchangeConfirm.cpp</itemPath>
+        <itemPath>OrderConnection/HandleExchangeFilled.cpp</itemPath>
+        <itemPath>OrderConnection/HandleForeignExchangeConfirm.cpp</itemPath>
+        <itemPath>OrderConnection/HandleForeignExchangeFilled.cpp</itemPath>
+        <itemPath>OrderConnection/MessageRender.cpp</itemPath>
+        <itemPath>OrderConnection/RecoverThread.cpp</itemPath>
+        <itemPath>OrderConnection/SendMessageToExchange.cpp</itemPath>
+        <itemPath>OrderConnection/TTaifexConnection.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="OrderMessage"
+                     displayName="OrderMessage"
+                     projectFiles="true">
+        <itemPath>OrderMessage/TBaseMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TCancelOrderMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TExecutionReportMessage.cpp</itemPath>
+        <itemPath>MarketDataMessage/TMDBaseMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TNetworkID.cpp</itemPath>
+        <itemPath>OrderMessage/TNewOrderMessage.cpp</itemPath>
+        <itemPath>MarketDataMessage/TNewsMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TOrderStatusRequest.cpp</itemPath>
+        <itemPath>OrderMessage/TQuoteCancelMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TQuoteMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TQuoteRequestMessage.cpp</itemPath>
+        <itemPath>OrderMessage/TReplaceOrderMessage.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>EmbadedResource.cpp</itemPath>
+      <itemPath>../../ExchangeUtility/Utility_Exc.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>CA</pElem>
+          </incDir>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>/MBus/lib/libSpeedyAPI_64.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+        </cTool>
+        <ccTool>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>CA</pElem>
+          </incDir>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>/MBus/lib/libSpeedyAPI_64D.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release_dynamic_64" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-fPIC -std=c++11</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/lib/libSpeedyAPI_64.so</output>
+          <linkerLibItems>
+            <linkerOptionItem>-L .</linkerOptionItem>
+            <linkerOptionItem>-static-libgcc</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release1_dynamic_64" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-fPIC -std=c++11</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/lib/libSpeedyAPI1_64.so</output>
+          <linkerLibItems>
+            <linkerOptionItem>-L .</linkerOptionItem>
+            <linkerOptionItem>-static-libgcc</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="9">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Debug_dynamic_64" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-fPIC -std=c++11</commandLine>
+          <preprocessorList>
+            <Elem>_REENTRANT</Elem>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/lib/libSpeedyAPI_64D.so</output>
+          <linkerLibItems>
+            <linkerOptionItem>-L .</linkerOptionItem>
+            <linkerOptionItem>-static-libgcc</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release_dynamic" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/MBus/lib/libSpeedyAPI.so</output>
+          <linkerLibItems>
+            <linkerOptionItem>-L .</linkerOptionItem>
+            <linkerOptionItem>-static-libgcc</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>.</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>CA</pElem>
+          </incDir>
+          <commandLine>-pthread -std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/libSpeedyAPI.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/MessageDeliver_Lib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>../../Migo</pElem>
+            <pElem>../../UFC</pElem>
+          </incDir>
+          <commandLine>-pthread -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/MessageDeliver_Lib.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="../../ExchangeUtility/Utility_Exc.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="../SpeedyAPIXE7/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="CA/CABasicObjects.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="EmbadedResource.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EmbadedResource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TMDBaseMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="MarketDataMessage/TNewsMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdListener.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TMdTransport.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MessageDeliver/TThreadApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/FuturesSymbolUtility.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeConfirm.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/HandleForeignExchangeFilled.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/MessageRender.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderConnection/RecoverThread.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderConnection/SendMessageToExchange.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderConnection/TTaifexConnection.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/OrderMessageDefine.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TBaseMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TCancelOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TExecutionReportMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNetworkID.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TNewOrderMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TOrderStatusRequest.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteCancelMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteMessage.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TQuoteRequestMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="OrderMessage/TReplaceOrderMessage.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

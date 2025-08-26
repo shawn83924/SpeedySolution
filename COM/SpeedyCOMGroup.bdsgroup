@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{9191CBF2-1115-44EF-BA08-7D986B5DB318}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="UFC.lib">..\BC Projects\UFC.bdsproj</Projects>
+      <Projects Name="Migo.lib">..\BC Projects\Migo.bdsproj</Projects>
+      <Projects Name="MessageDeliver_Lib.lib">Lib\MessageDeliver_Lib.bdsproj</Projects>
+      <Projects Name="OrderConnection.dll">OrderConnection\OrderConnection.bdsproj</Projects>
+      <Projects Name="MarketDataConnection.dll">MarketDataConnection\MarketDataConnection.bdsproj</Projects>
+      <Projects Name="Targets">UFC.lib Migo.lib MessageDeliver_Lib.lib OrderConnection.dll MarketDataConnection.dll</Projects>
+    </Projects>
+    <Dependencies>
+      <Dependency GUID="{F7434914-9AFC-4A00-B388-FA46AD422062}">
+        <Dependency GUID="{2190B777-DF2A-4C8B-BC7F-5A8691F1AC19}"/>
+        <Dependency GUID="{3689654C-46EE-4C28-BD0E-C4F7230AF15C}"/>
+      </Dependency>
+      <Dependency GUID="{96DD2EED-2939-435E-850B-B5F64668BC64}">
+        <Dependency GUID="{F7434914-9AFC-4A00-B388-FA46AD422062}"/>
+      </Dependency>
+    </Dependencies>
+  </Default.Personality>
+	<StarTeamAssociation></StarTeamAssociation>
+	<StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+</BorlandProject>

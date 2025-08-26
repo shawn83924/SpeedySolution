@@ -1,0 +1,7 @@
+[
+  uuid(4299B42A-D6A7-4DB1-9ED4-782A98E6C26C),
+  version(1.0)
+]
+library StarWaveAPILib
+{
+};

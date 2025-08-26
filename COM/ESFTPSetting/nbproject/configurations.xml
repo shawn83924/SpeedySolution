@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>GCRMConnection.h</itemPath>
+      <itemPath>PEasyFTPClient.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>../OrderConnection/MessageDataFormat.h</itemPath>
+      <itemPath>../OrderConnection/Resource.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>GCRMConnection.cpp</itemPath>
+      <itemPath>Main.cpp</itemPath>
+      <itemPath>PEasyFTPClient.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="LINUX_Release64" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <incDir>
+            <pElem>../OrderMessage</pElem>
+            <pElem>../OrderConnection</pElem>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../curl_32/include</pElem>
+          </incDir>
+          <commandLine>-Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/GCRiskManager</output>
+          <linkerAddLib>
+            <pElem>/usr/tibco/tibrv/lib</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libSpeedyAPI_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release_64"
+                            AC="true"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release_64 clean"
+                            OP="/MBus/lib/libUFC_64.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibFileItem>/usr/local/lib/libcurl.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="../OrderConnection/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../OrderConnection/Resource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GCRMConnection.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="GCRMConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Main.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="PEasyFTPClient.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="PEasyFTPClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="LINUX_Release" type="1">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+          <incDir>
+            <pElem>../../UFC</pElem>
+            <pElem>../../Migo</pElem>
+            <pElem>../../curl_32/include</pElem>
+          </incDir>
+          <commandLine>-Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+          <architecture>1</architecture>
+        </asmTool>
+        <linkerTool>
+          <output>/Speedy/bin/ESFTPSetting</output>
+          <linkerLibItems>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../Lib"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="false"
+                            WD="../Lib"
+                            BC="${MAKE}  -f Makefile CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libSpeedyAPI.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../../UFC"
+                            CT="3"
+                            CN="LINUX_Release"
+                            AC="false"
+                            BL="true"
+                            WD="../../UFC"
+                            BC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release"
+                            CC="${MAKE}  -f Makefile_UFC.mk CONF=LINUX_Release clean"
+                            OP="/MBus/lib/libUFC.a">
+              </makeArtifact>
+            </linkerLibProjectItem>
+            <linkerLibStdlibItem>PosixThreads</linkerLibStdlibItem>
+            <linkerLibFileItem>../../curl_32/lib/.libs/libcurl.a</linkerLibFileItem>
+          </linkerLibItems>
+          <commandLine>-lrt</commandLine>
+        </linkerTool>
+      </compileType>
+      <item path="../OrderConnection/MessageDataFormat.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../OrderConnection/Resource.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="GCRMConnection.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="GCRMConnection.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PEasyFTPClient.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PEasyFTPClient.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

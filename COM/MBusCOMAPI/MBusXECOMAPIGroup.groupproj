@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{4843240C-3184-4B1C-853B-741E9C5E5538}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\..\BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MBusAPI.cbproj">
+            <Dependencies>..\..\BC Projects\UFC_XE7.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="..\..\BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MBusAPI" DependsOnTargets="UFC_XE7">
+        <MSBuild Projects="MBusAPI.cbproj"/>
+    </Target>
+    <Target Name="MBusAPI:Clean" DependsOnTargets="UFC_XE7:Clean">
+        <MSBuild Projects="MBusAPI.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MBusAPI:Make" DependsOnTargets="UFC_XE7:Make">
+        <MSBuild Projects="MBusAPI.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;MBusAPI"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;MBusAPI:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;MBusAPI:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,254 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{a8e44315-6475-417c-8adf-5204f9360132}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BC Projects\UFC_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="COM\Lib\SpeedyAPILib_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="StarWaveAPILib\StarWaveAPILib_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MDComponent\vcl\MDComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MDComponent\MarketDataComponent\MarketDataComponent_XE7.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\Agent.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextReg\NextReg.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\PMFNext.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\CHS\PMFNext_CHS.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\CHT\PMFNext_CHT.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\COM\PMFNextAPI.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\DynamicRes\DynamicRes.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Next\DynamicSimRes\DynamicSimRes.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextLogUpload\NextLogUpload.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextLogUpload\CHT\NextLogUpload_CHT.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextLogUpload\CHS\NextLogUpload_CHS.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextSetting\NextSetting.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextSetting\CHS\NextSetting_CHS.bdsproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="NextSetting\CHT\NextSetting_CHT.bdsproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <BorlandProject>
+                <Default.Personality/>
+            </BorlandProject>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC_XE7">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj"/>
+    </Target>
+    <Target Name="UFC_XE7:Clean">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC_XE7:Make">
+        <MSBuild Projects="BC Projects\UFC_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7:Clean">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyAPILib_XE7:Make">
+        <MSBuild Projects="COM\Lib\SpeedyAPILib_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Clean">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="StarWaveAPILib_XE7:Make">
+        <MSBuild Projects="StarWaveAPILib\StarWaveAPILib_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MDComponent_XE7">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Clean">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDComponent_XE7:Make">
+        <MSBuild Projects="MDComponent\vcl\MDComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MarketDataComponent_XE7">
+        <MSBuild Projects="MDComponent\MarketDataComponent\MarketDataComponent_XE7.cbproj"/>
+    </Target>
+    <Target Name="MarketDataComponent_XE7:Clean">
+        <MSBuild Projects="MDComponent\MarketDataComponent\MarketDataComponent_XE7.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MarketDataComponent_XE7:Make">
+        <MSBuild Projects="MDComponent\MarketDataComponent\MarketDataComponent_XE7.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Agent">
+        <MSBuild Projects="Next\Agent.cbproj"/>
+    </Target>
+    <Target Name="Agent:Clean">
+        <MSBuild Projects="Next\Agent.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Agent:Make">
+        <MSBuild Projects="Next\Agent.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextReg">
+        <MSBuild Projects="NextReg\NextReg.cbproj"/>
+    </Target>
+    <Target Name="NextReg:Clean">
+        <MSBuild Projects="NextReg\NextReg.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextReg:Make">
+        <MSBuild Projects="NextReg\NextReg.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PMFNext">
+        <MSBuild Projects="Next\PMFNext.cbproj"/>
+    </Target>
+    <Target Name="PMFNext:Clean">
+        <MSBuild Projects="Next\PMFNext.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PMFNext:Make">
+        <MSBuild Projects="Next\PMFNext.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="PMFNext_CHS">
+        <MSBuild Projects="Next\CHS\PMFNext_CHS.bdsproj"/>
+    </Target>
+    <Target Name="PMFNext_CHS:Clean">
+        <MSBuild Projects="Next\CHS\PMFNext_CHS.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PMFNext_CHS:Make">
+        <MSBuild Projects="Next\CHS\PMFNext_CHS.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="PMFNext_CHT">
+        <MSBuild Projects="Next\CHT\PMFNext_CHT.bdsproj"/>
+    </Target>
+    <Target Name="PMFNext_CHT:Clean">
+        <MSBuild Projects="Next\CHT\PMFNext_CHT.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PMFNext_CHT:Make">
+        <MSBuild Projects="Next\CHT\PMFNext_CHT.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="PMFNextAPI">
+        <MSBuild Projects="Next\COM\PMFNextAPI.cbproj"/>
+    </Target>
+    <Target Name="PMFNextAPI:Clean">
+        <MSBuild Projects="Next\COM\PMFNextAPI.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PMFNextAPI:Make">
+        <MSBuild Projects="Next\COM\PMFNextAPI.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DynamicRes">
+        <MSBuild Projects="Next\DynamicRes\DynamicRes.cbproj"/>
+    </Target>
+    <Target Name="DynamicRes:Clean">
+        <MSBuild Projects="Next\DynamicRes\DynamicRes.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DynamicRes:Make">
+        <MSBuild Projects="Next\DynamicRes\DynamicRes.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="DynamicSimRes">
+        <MSBuild Projects="Next\DynamicSimRes\DynamicSimRes.cbproj"/>
+    </Target>
+    <Target Name="DynamicSimRes:Clean">
+        <MSBuild Projects="Next\DynamicSimRes\DynamicSimRes.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DynamicSimRes:Make">
+        <MSBuild Projects="Next\DynamicSimRes\DynamicSimRes.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextLogUpload">
+        <MSBuild Projects="NextLogUpload\NextLogUpload.cbproj"/>
+    </Target>
+    <Target Name="NextLogUpload:Clean">
+        <MSBuild Projects="NextLogUpload\NextLogUpload.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextLogUpload:Make">
+        <MSBuild Projects="NextLogUpload\NextLogUpload.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextLogUpload_CHT">
+        <MSBuild Projects="NextLogUpload\CHT\NextLogUpload_CHT.bdsproj"/>
+    </Target>
+    <Target Name="NextLogUpload_CHT:Clean">
+        <MSBuild Projects="NextLogUpload\CHT\NextLogUpload_CHT.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextLogUpload_CHT:Make">
+        <MSBuild Projects="NextLogUpload\CHT\NextLogUpload_CHT.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextLogUpload_CHS">
+        <MSBuild Projects="NextLogUpload\CHS\NextLogUpload_CHS.bdsproj"/>
+    </Target>
+    <Target Name="NextLogUpload_CHS:Clean">
+        <MSBuild Projects="NextLogUpload\CHS\NextLogUpload_CHS.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextLogUpload_CHS:Make">
+        <MSBuild Projects="NextLogUpload\CHS\NextLogUpload_CHS.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextSetting">
+        <MSBuild Projects="NextSetting\NextSetting.cbproj"/>
+    </Target>
+    <Target Name="NextSetting:Clean">
+        <MSBuild Projects="NextSetting\NextSetting.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextSetting:Make">
+        <MSBuild Projects="NextSetting\NextSetting.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextSetting_CHS">
+        <MSBuild Projects="NextSetting\CHS\NextSetting_CHS.bdsproj"/>
+    </Target>
+    <Target Name="NextSetting_CHS:Clean">
+        <MSBuild Projects="NextSetting\CHS\NextSetting_CHS.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextSetting_CHS:Make">
+        <MSBuild Projects="NextSetting\CHS\NextSetting_CHS.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="NextSetting_CHT">
+        <MSBuild Projects="NextSetting\CHT\NextSetting_CHT.bdsproj"/>
+    </Target>
+    <Target Name="NextSetting_CHT:Clean">
+        <MSBuild Projects="NextSetting\CHT\NextSetting_CHT.bdsproj" Targets="Clean"/>
+    </Target>
+    <Target Name="NextSetting_CHT:Make">
+        <MSBuild Projects="NextSetting\CHT\NextSetting_CHT.bdsproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC_XE7;SpeedyAPILib_XE7;StarWaveAPILib_XE7;MDComponent_XE7;MarketDataComponent_XE7;Agent;NextReg;PMFNext;PMFNext_CHS;PMFNext_CHT;PMFNextAPI;DynamicRes;DynamicSimRes;NextLogUpload;NextLogUpload_CHT;NextLogUpload_CHS;NextSetting;NextSetting_CHS;NextSetting_CHT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC_XE7:Clean;SpeedyAPILib_XE7:Clean;StarWaveAPILib_XE7:Clean;MDComponent_XE7:Clean;MarketDataComponent_XE7:Clean;Agent:Clean;NextReg:Clean;PMFNext:Clean;PMFNext_CHS:Clean;PMFNext_CHT:Clean;PMFNextAPI:Clean;DynamicRes:Clean;DynamicSimRes:Clean;NextLogUpload:Clean;NextLogUpload_CHT:Clean;NextLogUpload_CHS:Clean;NextSetting:Clean;NextSetting_CHS:Clean;NextSetting_CHT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC_XE7:Make;SpeedyAPILib_XE7:Make;StarWaveAPILib_XE7:Make;MDComponent_XE7:Make;MarketDataComponent_XE7:Make;Agent:Make;NextReg:Make;PMFNext:Make;PMFNext_CHS:Make;PMFNext_CHT:Make;PMFNextAPI:Make;DynamicRes:Make;DynamicSimRes:Make;NextLogUpload:Make;NextLogUpload_CHT:Make;NextLogUpload_CHS:Make;NextSetting:Make;NextSetting_CHS:Make;NextSetting_CHT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

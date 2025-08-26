@@ -1,0 +1,177 @@
+#include "stdafx.h"
+#include "CTPAPIFactory.h"
+#include "CTPAPIDynamic.h"
+#if defined(__S8_CTP)
+#include "include_CTP/ThostFtdcTraderApi.h"
+#elif defined(__S8_HS)
+#include "include_HS/ThostFtdcTraderApi.h"
+#elif defined(__S8_KN)
+#include "include_KN/ThostFtdcTraderApi.h"
+#endif
+//---------------------------------------------------------------------------
+typedef struct tagCTPHandle
+{
+	CThostFtdcTraderApi*  CTPObj;
+	CThostFtdcTraderSpi*  CTPHandler;
+	void*                 FOwner;
+	///< Call back functions
+	pfOnFrontConnected                                  OnFrontConnected;                             
+	pfOnFrontDisconnected                           	OnFrontDisconnected;                      
+	pfOnHeartBeatWarning                            	OnHeartBeatWarning;                       
+	pfOnRspAuthenticate                             	OnRspAuthenticate;                        
+	pfOnRspUserLogin                                	OnRspUserLogin;                           
+	pfOnRspUserLogout                               	OnRspUserLogout;                          
+	pfOnRspUserPasswordUpdate                       	OnRspUserPasswordUpdate;                  
+	pfOnRspTradingAccountPasswordUpdate             	OnRspTradingAccountPasswordUpdate;        
+	pfOnRspOrderInsert                              	OnRspOrderInsert;                         
+	pfOnRspParkedOrderInsert                        	OnRspParkedOrderInsert;                   
+	pfOnRspParkedOrderAction                        	OnRspParkedOrderAction;                   
+	pfOnRspOrderAction                              	OnRspOrderAction;                         
+	pfOnRspQueryMaxOrderVolume                      	OnRspQueryMaxOrderVolume;                 
+	pfOnRspSettlementInfoConfirm                    	OnRspSettlementInfoConfirm;               
+	pfOnRspRemoveParkedOrder                        	OnRspRemoveParkedOrder;                   
+	pfOnRspRemoveParkedOrderAction                  	OnRspRemoveParkedOrderAction;             
+	pfOnRspQryOrder                                 	OnRspQryOrder;                            
+	pfOnRspQryTrade                                 	OnRspQryTrade;                            
+	pfOnRspQryInvestorPosition                      	OnRspQryInvestorPosition;                 
+	pfOnRspQryTradingAccount                        	OnRspQryTradingAccount;                   
+	pfOnRspQryInvestor                              	OnRspQryInvestor;                         
+	pfOnRspQryTradingCode                           	OnRspQryTradingCode;                      
+	pfOnRspQryInstrumentMarginRate                  	OnRspQryInstrumentMarginRate;             
+	pfOnRspQryInstrumentCommissionRate              	OnRspQryInstrumentCommissionRate;         
+	pfOnRspQryExchange                              	OnRspQryExchange;                         
+	pfOnRspQryInstrument                            	OnRspQryInstrument;                       
+	pfOnRspQryDepthMarketData                       	OnRspQryDepthMarketData;                  
+	pfOnRspQrySettlementInfo                        	OnRspQrySettlementInfo;                   
+	pfOnRspQryTransferBank                          	OnRspQryTransferBank;                     
+	pfOnRspQryInvestorPositionDetail                	OnRspQryInvestorPositionDetail;           
+	pfOnRspQryNotice                                	OnRspQryNotice;                           
+	pfOnRspQrySettlementInfoConfirm                 	OnRspQrySettlementInfoConfirm;            
+	pfOnRspQryInvestorPositionCombineDetail         	OnRspQryInvestorPositionCombineDetail;    
+	pfOnRspQryCFMMCTradingAccountKey                	OnRspQryCFMMCTradingAccountKey;           
+	pfOnRspQryEWarrantOffset                        	OnRspQryEWarrantOffset;                   
+	pfOnRspQryTransferSerial                        	OnRspQryTransferSerial;                   
+	pfOnRspQryAccountregister                       	OnRspQryAccountregister;                  
+	pfOnRspError                                    	OnRspError;                               
+	pfOnRtnOrder                                    	OnRtnOrder;                               
+	pfOnRtnTrade                                    	OnRtnTrade;                               
+	pfOnErrRtnOrderInsert                           	OnErrRtnOrderInsert;                      
+	pfOnErrRtnOrderAction                           	OnErrRtnOrderAction;                      
+	pfOnRtnInstrumentStatus                         	OnRtnInstrumentStatus;                    
+	pfOnRtnTradingNotice                            	OnRtnTradingNotice;                       
+	pfOnRtnErrorConditionalOrder                    	OnRtnErrorConditionalOrder;               
+	pfOnRspQryContractBank                          	OnRspQryContractBank;                     
+	pfOnRspQryParkedOrder                           	OnRspQryParkedOrder;                      
+	pfOnRspQryParkedOrderAction                     	OnRspQryParkedOrderAction;                
+	pfOnRspQryTradingNotice                         	OnRspQryTradingNotice;                    
+	pfOnRspQryBrokerTradingParams                   	OnRspQryBrokerTradingParams;              
+	pfOnRspQryBrokerTradingAlgos                    	OnRspQryBrokerTradingAlgos;               
+	pfOnRtnFromBankToFutureByBank                   	OnRtnFromBankToFutureByBank;              
+	pfOnRtnFromFutureToBankByBank                   	OnRtnFromFutureToBankByBank;              
+	pfOnRtnRepealFromBankToFutureByBank             	OnRtnRepealFromBankToFutureByBank;        
+	pfOnRtnRepealFromFutureToBankByBank             	OnRtnRepealFromFutureToBankByBank;        
+	pfOnRtnFromBankToFutureByFuture                 	OnRtnFromBankToFutureByFuture;            
+	pfOnRtnFromFutureToBankByFuture                 	OnRtnFromFutureToBankByFuture;            
+	pfOnRtnRepealFromBankToFutureByFutureManual     	OnRtnRepealFromBankToFutureByFutureManual;
+	pfOnRtnRepealFromFutureToBankByFutureManual     	OnRtnRepealFromFutureToBankByFutureManual;
+	pfOnRtnQueryBankBalanceByFuture                 	OnRtnQueryBankBalanceByFuture;            
+	pfOnErrRtnBankToFutureByFuture                  	OnErrRtnBankToFutureByFuture;             
+	pfOnErrRtnFutureToBankByFuture                  	OnErrRtnFutureToBankByFuture;             
+	pfOnErrRtnRepealBankToFutureByFutureManual      	OnErrRtnRepealBankToFutureByFutureManual; 
+	pfOnErrRtnRepealFutureToBankByFutureManual      	OnErrRtnRepealFutureToBankByFutureManual; 
+	pfOnErrRtnQueryBankBalanceByFuture              	OnErrRtnQueryBankBalanceByFuture;         
+	pfOnRtnRepealFromBankToFutureByFuture           	OnRtnRepealFromBankToFutureByFuture;      
+	pfOnRtnRepealFromFutureToBankByFuture           	OnRtnRepealFromFutureToBankByFuture;      
+	pfOnRspFromBankToFutureByFuture                 	OnRspFromBankToFutureByFuture;            
+	pfOnRspFromFutureToBankByFuture                 	OnRspFromFutureToBankByFuture;            
+	pfOnRspQueryBankAccountMoneyByFuture            	OnRspQueryBankAccountMoneyByFuture;       
+	pfOnRtnOpenAccountByBank                        	OnRtnOpenAccountByBank;                   
+	pfOnRtnCancelAccountByBank                      	OnRtnCancelAccountByBank;                 
+	pfOnRtnChangeAccountByBank                      	OnRtnChangeAccountByBank;                 
+
+} CTPHandle;
+//---------------------------------------------------------------------------
+class CTPAPIHandler : public CThostFtdcTraderSpi
+{
+private:
+	CTPHandle* FhCTP;
+public:
+	CTPAPIHandler( CTPHandle* ctpobj ):FhCTP( ctpobj ){}
+	~CTPAPIHandler() {}
+	virtual void OnFrontConnected();
+	virtual void OnFrontDisconnected(int nReason);
+	virtual void OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+    virtual void OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+    virtual void OnRspQrySettlementInfo(CThostFtdcSettlementInfoField *pSettlementInfo, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+    virtual void OnRspSettlementInfoConfirm(CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+    virtual void OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+    virtual void OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo);
+    virtual void OnRspOrderAction(CThostFtdcInputOrderActionField *pInputOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+    virtual void OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo);
+    virtual void OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+    virtual void OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+    virtual void OnRspQryInstrument(CThostFtdcInstrumentField *pInstrument, CThostFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+    virtual void OnRspQryInvestorPosition(CThostFtdcInvestorPositionField *pInvestorPosition,CThostFtdcRspInfoField *pRspInfo,int nRequestID, bool bIsLast);
+    virtual void OnRtnOrder(CThostFtdcOrderField *pOrder);
+    virtual void OnRtnTrade(CThostFtdcTradeField *pTrade);
+    virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	///< Not implement RegXXXXXX
+	virtual void OnHeartBeatWarning( int nTimeLapse);
+	virtual void OnRspAuthenticate( CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspUserPasswordUpdate( CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspTradingAccountPasswordUpdate( CThostFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspParkedOrderInsert( CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspParkedOrderAction( CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQueryMaxOrderVolume( CThostFtdcQueryMaxOrderVolumeField *pQueryMaxOrderVolume, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspRemoveParkedOrder( CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspRemoveParkedOrderAction( CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTrade( CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTradingAccount( CThostFtdcTradingAccountField *pTradingAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryInvestor( CThostFtdcInvestorField *pInvestor, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTradingCode( CThostFtdcTradingCodeField *pTradingCode, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryInstrumentMarginRate( CThostFtdcInstrumentMarginRateField *pInstrumentMarginRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryInstrumentCommissionRate( CThostFtdcInstrumentCommissionRateField *pInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryDepthMarketData( CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTransferBank( CThostFtdcTransferBankField *pTransferBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryInvestorPositionDetail( CThostFtdcInvestorPositionDetailField *pInvestorPositionDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryNotice( CThostFtdcNoticeField *pNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQrySettlementInfoConfirm( CThostFtdcSettlementInfoConfirmField *pSettlementInfoConfirm, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryInvestorPositionCombineDetail( CThostFtdcInvestorPositionCombineDetailField *pInvestorPositionCombineDetail, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryCFMMCTradingAccountKey( CThostFtdcCFMMCTradingAccountKeyField *pCFMMCTradingAccountKey, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryEWarrantOffset( CThostFtdcEWarrantOffsetField *pEWarrantOffset, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTransferSerial( CThostFtdcTransferSerialField *pTransferSerial, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryAccountregister( CThostFtdcAccountregisterField *pAccountregister, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRtnInstrumentStatus( CThostFtdcInstrumentStatusField *pInstrumentStatus);
+	virtual void OnRtnTradingNotice( CThostFtdcTradingNoticeInfoField *pTradingNoticeInfo);
+	virtual void OnRtnErrorConditionalOrder( CThostFtdcErrorConditionalOrderField *pErrorConditionalOrder);
+	virtual void OnRspQryContractBank( CThostFtdcContractBankField *pContractBank, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryParkedOrder( CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryParkedOrderAction( CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryTradingNotice( CThostFtdcTradingNoticeField *pTradingNotice, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryBrokerTradingParams( CThostFtdcBrokerTradingParamsField *pBrokerTradingParams, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQryBrokerTradingAlgos( CThostFtdcBrokerTradingAlgosField *pBrokerTradingAlgos, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRtnFromBankToFutureByBank( CThostFtdcRspTransferField *pRspTransfer);
+	virtual void OnRtnFromFutureToBankByBank( CThostFtdcRspTransferField *pRspTransfer);
+	virtual void OnRtnRepealFromBankToFutureByBank( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRtnRepealFromFutureToBankByBank( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRtnFromBankToFutureByFuture( CThostFtdcRspTransferField *pRspTransfer);
+	virtual void OnRtnFromFutureToBankByFuture( CThostFtdcRspTransferField *pRspTransfer);
+	virtual void OnRtnRepealFromBankToFutureByFutureManual( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRtnRepealFromFutureToBankByFutureManual( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRtnQueryBankBalanceByFuture( CThostFtdcNotifyQueryAccountField *pNotifyQueryAccount);
+	virtual void OnErrRtnBankToFutureByFuture( CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo);
+	virtual void OnErrRtnFutureToBankByFuture( CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo);
+	virtual void OnErrRtnRepealBankToFutureByFutureManual( CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo);
+	virtual void OnErrRtnRepealFutureToBankByFutureManual( CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo);
+	virtual void OnErrRtnQueryBankBalanceByFuture( CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo);
+	virtual void OnRtnRepealFromBankToFutureByFuture( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRtnRepealFromFutureToBankByFuture( CThostFtdcRspRepealField *pRspRepeal);
+	virtual void OnRspFromBankToFutureByFuture( CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspFromFutureToBankByFuture( CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRspQueryBankAccountMoneyByFuture( CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
+	virtual void OnRtnOpenAccountByBank( CThostFtdcOpenAccountField *pOpenAccount);
+	virtual void OnRtnCancelAccountByBank( CThostFtdcCancelAccountField *pCancelAccount);
+	virtual void OnRtnChangeAccountByBank( CThostFtdcChangeAccountField *pChangeAccount);
+
+};
+//---------------------------------------------------------------------------

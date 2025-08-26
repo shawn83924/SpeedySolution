@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="62">
+  <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Network Drivers" projectFiles="true">
+        <itemPath>Connection.h</itemPath>
+        <itemPath>SocketConnection.h</itemPath>
+        <itemPath>X25Connection.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="TCP/IP TMP protocol" projectFiles="true">
+        <itemPath>TMPDataFormat.h</itemPath>
+        <itemPath>TMPDefines.h</itemPath>
+        <itemPath>TMPMessage.h</itemPath>
+        <itemPath>TMPType.h</itemPath>
+        <itemPath>TMPTypes.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="X.25 TMP protocol" projectFiles="true">
+        <itemPath>CMessages.h</itemPath>
+        <itemPath>FMessages.h</itemPath>
+        <itemPath>LMessages.h</itemPath>
+        <itemPath>MessageHeader.h</itemPath>
+        <itemPath>Messages.h</itemPath>
+        <itemPath>RMessages.h</itemPath>
+      </logicalFolder>
+      <itemPath>LinkSubSystem.h</itemPath>
+      <itemPath>MultilegSymbol.h</itemPath>
+      <itemPath>../ExchangeUtility/TFXException.h</itemPath>
+      <itemPath>../ExchangeUtility/Utility.h</itemPath>
+      <itemPath>XBIODefine.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <logicalFolder name="f1" displayName="Netword Driver" projectFiles="true">
+        <itemPath>IBMX25Connection.cpp</itemPath>
+        <itemPath>SUNX25Connection.cpp</itemPath>
+        <itemPath>SocketConnection.cc</itemPath>
+        <itemPath>Win32X25Connection.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f2" displayName="TCP/IP TMP protocol" projectFiles="true">
+        <logicalFolder name="f1" displayName="TMPTypes" projectFiles="true">
+          <itemPath>TMPCharArray.cpp</itemPath>
+          <itemPath>TMPInt16.cpp</itemPath>
+          <itemPath>TMPInt32.cpp</itemPath>
+          <itemPath>TMPInt64.cpp</itemPath>
+          <itemPath>TMPInt8.cpp</itemPath>
+          <itemPath>TMPSymbol.cpp</itemPath>
+          <itemPath>TMPTime.cpp</itemPath>
+        </logicalFolder>
+        <itemPath>TMPDataFormat.cpp</itemPath>
+        <itemPath>TMPMessage.cpp</itemPath>
+        <itemPath>TMPType.cpp</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f3" displayName="X.25 TMP protocol" projectFiles="true">
+        <itemPath>CMessages.cpp</itemPath>
+        <itemPath>FMessages.cpp</itemPath>
+        <itemPath>LMessages.cpp</itemPath>
+        <itemPath>MessageHeader.cpp</itemPath>
+        <itemPath>RMessages.cpp</itemPath>
+      </logicalFolder>
+      <itemPath>LinkSubSystem.cpp</itemPath>
+      <itemPath>LinkSubSystemFCM.cpp</itemPath>
+      <itemPath>LinkSubSystemTAIFEX.cpp</itemPath>
+      <itemPath>MultilegSymbol.cpp</itemPath>
+      <itemPath>../ExchangeUtility/Utility.cpp</itemPath>
+      <itemPath>XBIODefine.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Solaris_GCC4.3.2_Release_FCM" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU-4.3.2Sun|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthreads -fPIC -Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+            <Elem>_FOR_FCM</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>../lib/libTAIFEXLibFCM.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="Solaris_Release_FCM" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthreads -fPIC -Wno-deprecated</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+            <Elem>_FOR_FCM</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>../lib/libTAIFEXLibFCM.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="Solaris_Release" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthreads -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+            <Elem>SYSTEM_TYPE=20</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>../bin/TAIFEXLib.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="Solaris_Debug" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthreads</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>../lib/libTAIFEXLib_Debug.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="AIX_Release" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+            <Elem>_FOR_FCM</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>../bin/TAIFEXLib.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+    <conf name="AIX_Debug" type="3">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <compilerSet>GNU|GNU</compilerSet>
+        <platform>0</platform>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+            <Elem>_FOR_FCM</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>../bin/TAIFEXLib.a</output>
+        </archiverTool>
+      </compileType>
+    </conf>
+  </confs>
+</configurationDescriptor>

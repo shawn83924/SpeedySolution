@@ -1,0 +1,95 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "MBus"=".\MBus\MBus.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Migo
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name UFC
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "Migo"=".\Migo\Migo.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name UFC
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "UFC"=".\UFC\UFC.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "imFIX"=".\imFIX\imFIX.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name Migo
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name quickfix
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name UFC
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "quickfix"="..\..\..\QuickFIX\quickfix.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

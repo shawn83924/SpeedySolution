@@ -1,0 +1,6 @@
+﻿[XPManifest]
+LayerNames=
+
+[Module Settings]
+ModelLayerNames=" <requestedExecutionLevel level=""requireAdministrator"" uiAccess=""false"" />"
+

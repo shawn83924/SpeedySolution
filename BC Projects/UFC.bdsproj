@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">CPlusPlusBuilder.Personality</Option>
+			<Option Name="ProjectType">CppStaticLibrary</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{3689654C-46EE-4C28-BD0E-C4F7230AF15C}</Option>
+		</Option>
+	</PersonalityInfo>
+	<CPlusPlusBuilder.Personality>
+		<BCBPROJECT>
+      <project version="10.0">
+        <property category="build.config" name="active" value="1"/>
+        <property category="build.config" name="count" value="1"/>
+        <property category="build.config" name="excludedefaultforzero" value="0"/>
+        <property category="build.config.0" name="builddir" value="Debug"/>
+        <property category="build.config.0" name="key" value="Debug_Build"/>
+        <property category="build.config.0" name="name" value="Debug Build"/>
+        <property category="build.config.0" name="settings.win32b" value="default"/>
+        <property category="build.config.0" name="type" value="Toolset"/>
+        <property category="build.config.0" name="win32.win32b.builddir" value="Debug_Build"/>
+        <property category="build.config.1" name="key" value="Release_Build"/>
+        <property category="build.config.1" name="name" value="Release Build"/>
+        <property category="build.config.1" name="settings.win32b" value="default"/>
+        <property category="build.config.1" name="type" value="Toolset"/>
+        <property category="build.config.1" name="win32.win32b.builddir" value="Release_Build"/>
+        <property category="build.node" name="libraries" value="rtl.lib"/>
+        <property category="build.node" name="name" value="UFC.lib"/>
+        <property category="build.node" name="sparelibs" value="rtl.lib"/>
+        <property category="build.node" name="use_packages" value="0"/>
+        <property category="build.platform" name="active" value="win32"/>
+        <property category="build.platform" name="win32.Debug_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.Release_Build.toolset" value="win32b"/>
+        <property category="build.platform" name="win32.default" value="win32b"/>
+        <property category="build.platform" name="win32.enabled" value="1"/>
+        <property category="build.platform" name="win32.win32b.enabled" value="1"/>
+        <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+        <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.1" value="_DEBUG"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.r.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.bcc32" name="option.vG.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.$O.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.1" value="DEBUG"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.dcc32" name="option.V.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.D.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.Gn.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\debug"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.ilink32" name="option.v.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.z.enabled" value="1"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Debug_Build.win32b.tasm32" name="option.zi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.1" value="NDEBUG"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.D.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.O2.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.k.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.r.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.bcc32" name="option.vi.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$D.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.$O.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.dcc32" name="option.V.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib\release"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+        <property category="win32.Release_Build.win32b.ilink32" name="option.L.enabled" value="1"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.z.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zd.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zi.enabled" value="0"/>
+        <property category="win32.Release_Build.win32b.tasm32" name="option.zn.enabled" value="1"/>
+        <optionset name="all_configurations">
+          <property category="node" name="displayname" value="All Configurations"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.1" value="$(BDS)\lib\vcl100.csm"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.arg.merge" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.H=.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.Hc.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.He.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.3" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.4" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.5" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Od.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Ve.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.Vx.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.X.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.b.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.k.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.n.arg.1" value="..\UFC\"/>
+          <property category="win32.*.win32b.bcc32" name="option.n.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.n.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.noregistervars.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.1" value="NO_STRICT"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.arg.merge" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.sysdefines.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tW.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.tWM.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.v.enabled" value="1"/>
+          <property category="win32.*.win32b.bcc32" name="option.vi.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.winl.enabled" value="0"/>
+          <property category="win32.*.win32b.bcc32" name="option.y.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.D.enabled" value="0"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.1" value="..\UFC"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.2" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.3" value="UFC"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.4" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.5" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.6" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.INCLUDEPATH.enabled" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.1" value="..\UFC\"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.brcc32" name="option.outputdir.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.1" value="Y+"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.2" value="W"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.$O.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.I.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.M.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.N0.arg.1" value="..\UFC\"/>
+          <property category="win32.*.win32b.dcc32" name="option.N0.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.N0.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.NO.arg.1" value="..\UFC\"/>
+          <property category="win32.*.win32b.dcc32" name="option.NO.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.NO.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.O.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.R.enabled" value="0"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.3" value=".\"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.4" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.5" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.arg.merge" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="option.U.enabled" value="1"/>
+          <property category="win32.*.win32b.dcc32" name="param.filenames.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.D.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.D.arg.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.D.enabled" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.1" value="..\zlib"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.2" value="..\UFC"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.3" value="UFC"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.4" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.5" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.arg.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.I.enabled" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.boa.enabled" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.srcsuffix.arg" value="cpp"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.srcsuffix.arg.merge" value="1"/>
+          <property category="win32.*.win32b.idl2cpp" name="option.srcsuffix.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.1" value="$(BDS)\lib"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.2" value="$(BDS)\lib\obj"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.3" value="$(BDS)\lib\psdk"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.arg.merge" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.L.enabled" value="1"/>
+          <property category="win32.*.win32b.ilink32" name="option.dynamicrtl.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.1" value="_DEBUG"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.d.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.1" value="..\UFC"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.2" value="C:\Program Files\Borland\CBuilder6\Projects"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.3" value="UFC"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.4" value="$(BDS)\include"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.5" value="$(BDS)\include\vcl"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.6" value="$(BDS)\include\dinkumware"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.i.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.outputdir.arg.1" value="..\UFC\"/>
+          <property category="win32.*.win32b.tasm32" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.outputdir.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.w2.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="option.zi.enabled" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.listfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.objfile.merge" value="1"/>
+          <property category="win32.*.win32b.tasm32" name="param.xreffile.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.P.arg" value="256"/>
+          <property category="win32.*.win32b.tlib" name="option.P.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.P.enabled" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.arg.1" value="\MBus\lib\"/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.arg.merge" value="1"/>
+          <property category="win32.*.win32b.tlib" name="option.outputdir.enabled" value="1"/>
+        </optionset>
+      </project>
+      <FILELIST>
+        <FILE FILENAME="UFC.bpf" CONTAINERID="BPF" LOCALCOMMAND="" UNITNAME="UFC" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\List.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="List.cpp" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\List.h"/>
+        <FILE FILENAME="..\UFC\AnsiString.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="AnsiString.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\StringBuffer.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="StringBuffer.cpp" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\StringBuffer.h"/>
+        <FILE FILENAME="..\UFC\MemoryStream.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="MemoryStream.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\FileStream.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="FileStream.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\MD5.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="MD5.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\NetUtility.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="NetUtility.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\PThread.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PThread.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\PSocket.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PSocket" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\PClientSocket.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PClientSocket.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\PServerSocket.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PServerSocket.cpp" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\ThreadPool.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="ThreadPool" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\MultiplexingServer.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="MultiplexingServer" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\Exception.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="Exception" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\SocketHeartBeat.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="SocketHeartBeat" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\SocketHeartBeat.h"/>
+        <FILE FILENAME="..\UFC\UDateTime.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="UDateTime" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\iniFile.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="iniFile" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\iniFile.h"/>
+        <FILE FILENAME="..\UFC\PInt32.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PInt32" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\PUDPClient.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PUDPClient" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\TRecord.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TRecord" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TRecord.h"/>
+        <FILE FILENAME="..\UFC\TDataset.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TDataset" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TDataset.h"/>
+        <FILE FILENAME="..\UFC\TDataFormat.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TDataFormat.cpp" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TDataFormat.h"/>
+        <FILE FILENAME="..\UFC\TFixedFormat.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TFixedFormat" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TFixedFormat.h"/>
+        <FILE FILENAME="..\UFC\TParseData.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TParseData" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TParseData.h"/>
+        <FILE FILENAME="..\UFC\TField.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TField.cpp" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TField.h"/>
+        <FILE FILENAME="..\UFC\TRenderData.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TRenderData.cpp" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TRenderData.h"/>
+        <FILE FILENAME="..\UFC\PQueue.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="PQueue" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\TFileMapping.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TFileMapping" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TFileMapping.h"/>
+        <FILE FILENAME="..\zlib\adler32.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="adler32" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\compress.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="compress" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\crc32.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="crc32" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\deflate.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="deflate" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\gzio.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="gzio" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\infback.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="infback" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\inffast.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="inffast" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\inflate.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="inflate" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\inftrees.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="inftrees" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\trees.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="trees" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\uncompr.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="uncompr" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\zlib\zutil.c" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="zutil" FORMNAME="" DESIGNCLASS=""/>
+        <FILE FILENAME="..\UFC\TLicenseKey.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="TLicenseKey" FORMNAME="" DESIGNCLASS="" ADDITIONAL="..\UFC\TLicenseKey.h"/>
+        <FILE FILENAME="..\UFC\zlibutility.cpp" CONTAINERID="CCompiler" LOCALCOMMAND="" UNITNAME="zlibutility" FORMNAME="" DESIGNCLASS=""/>
+      </FILELIST>
+      <IDEOPTIONS>
+        <VersionInfo>
+          <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+          <VersionInfo Name="AutoIncBuild">False</VersionInfo>
+          <VersionInfo Name="MajorVer">1</VersionInfo>
+          <VersionInfo Name="MinorVer">0</VersionInfo>
+          <VersionInfo Name="Release">0</VersionInfo>
+          <VersionInfo Name="Build">0</VersionInfo>
+          <VersionInfo Name="Debug">False</VersionInfo>
+          <VersionInfo Name="PreRelease">False</VersionInfo>
+          <VersionInfo Name="Special">False</VersionInfo>
+          <VersionInfo Name="Private">False</VersionInfo>
+          <VersionInfo Name="DLL">False</VersionInfo>
+          <VersionInfo Name="Locale">1028</VersionInfo>
+          <VersionInfo Name="CodePage">950</VersionInfo>
+        </VersionInfo>
+        <VersionInfoKeys>
+          <VersionInfoKeys Name="CompanyName"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileDescription"></VersionInfoKeys>
+          <VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="InternalName"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys>
+          <VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys>
+          <VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductName"></VersionInfoKeys>
+          <VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+          <VersionInfoKeys Name="Comments"></VersionInfoKeys>
+        </VersionInfoKeys>
+        <HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Count">3</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item0">..\UFC;C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item1">C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+          <HistoryLists_hlIncludePath Name="Item2">UFC;$(BCB)\include;$(BCB)\include\vcl</HistoryLists_hlIncludePath>
+        </HistoryLists_hlIncludePath>
+        <HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Count">3</HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Item0">..\UFC;C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Item1">C:\Program Files\Borland\CBuilder6\Projects;UFC;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+          <HistoryLists_hlLibraryPath Name="Item2">UFC;$(BCB)\lib\obj;$(BCB)\lib</HistoryLists_hlLibraryPath>
+        </HistoryLists_hlLibraryPath>
+        <HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Count">1</HistoryLists_hlDebugSourcePath>
+          <HistoryLists_hlDebugSourcePath Name="Item0">$(BCB)\source\vcl</HistoryLists_hlDebugSourcePath>
+        </HistoryLists_hlDebugSourcePath>
+        <HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Count">3</HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Item0">_DEBUG</HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Item1">_DEBUG;</HistoryLists_hlConditionals>
+          <HistoryLists_hlConditionals Name="Item2">_DEBUG;_MSC_VER=5000</HistoryLists_hlConditionals>
+        </HistoryLists_hlConditionals>
+        <HistoryLists_hlFinalOutputDir>
+          <HistoryLists_hlFinalOutputDir Name="Count">4</HistoryLists_hlFinalOutputDir>
+          <HistoryLists_hlFinalOutputDir Name="Item0">\MBus\lib\</HistoryLists_hlFinalOutputDir>
+          <HistoryLists_hlFinalOutputDir Name="Item1">\MBus\lib</HistoryLists_hlFinalOutputDir>
+          <HistoryLists_hlFinalOutputDir Name="Item2">/MBus/lib\</HistoryLists_hlFinalOutputDir>
+          <HistoryLists_hlFinalOutputDir Name="Item3">/MBus/lib</HistoryLists_hlFinalOutputDir>
+        </HistoryLists_hlFinalOutputDir>
+        <HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Count">3</HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Item0">0x0100</HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Item1">0x0200</HistoryLists_hlTlibPageSize>
+          <HistoryLists_hlTlibPageSize Name="Item2">0x0010</HistoryLists_hlTlibPageSize>
+        </HistoryLists_hlTlibPageSize>
+        <Debugging>
+          <Debugging Name="DebugSourceDirs">$(BCB)\source\vcl</Debugging>
+        </Debugging>
+        <Parameters>
+          <Parameters Name="RunParams"></Parameters>
+          <Parameters Name="Launcher"></Parameters>
+          <Parameters Name="UseLauncher">False</Parameters>
+          <Parameters Name="DebugCWD"></Parameters>
+          <Parameters Name="HostApplication"></Parameters>
+          <Parameters Name="RemoteHost"></Parameters>
+          <Parameters Name="RemotePath"></Parameters>
+          <Parameters Name="RemoteParams"></Parameters>
+          <Parameters Name="RemoteLauncher"></Parameters>
+          <Parameters Name="UseRemoteLauncher">False</Parameters>
+          <Parameters Name="RemoteCWD"></Parameters>
+          <Parameters Name="RemoteDebug">False</Parameters>
+          <Parameters Name="Debug Symbols Search Path"></Parameters>
+          <Parameters Name="LoadAllSymbols">True</Parameters>
+          <Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
+        </Parameters>
+        <Linker>
+          <Linker Name="LibPrefix"></Linker>
+          <Linker Name="LibSuffix"></Linker>
+          <Linker Name="LibVersion"></Linker>
+        </Linker>
+      </IDEOPTIONS>
+    </BCBPROJECT>
+		<Source>
+			<Source Name="MainSource">UFC.bpf</Source>
+		</Source>
+		<buildevents/>
+		<Folders/>
+	</CPlusPlusBuilder.Personality>
+</BorlandProject>

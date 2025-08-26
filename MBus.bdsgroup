@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{0F16FF96-71D6-4B07-ACCC-9045DA12DCCC}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  <Projects>
+      <Projects Name="UFC.lib">BC Projects\UFC.bdsproj</Projects>
+      <Projects Name="Migo.lib">BC Projects\Migo.bdsproj</Projects>
+      <Projects Name="MBus.exe">BC Projects\MBus.bdsproj</Projects>
+      <Projects Name="PBoxComponent.bpl">..\..\PowerBox\vcl\PBoxComponent.bdsproj</Projects>
+      <Projects Name="MessagePackage.bpl">VCL\MessagePackage.bdsproj</Projects>
+      <Projects Name="MessageDeliver.dll">COM\MessageDeliver\MessageDeliver.bdsproj</Projects>
+      <Projects Name="Publisher.exe">BC Projects\Publisher.bdsproj</Projects>
+      <Projects Name="Subscriber.exe">BC Projects\Subscriber.bdsproj</Projects>
+      <Projects Name="SpeedyCenter.exe">SpeedyCenter\SpeedyCenter.bdsproj</Projects>
+      <Projects Name="TAIFEXLib.lib">TAIFEXLib\TAIFEXLib.bdsproj</Projects>
+      <Projects Name="SpeedyTAIFEX.exe">SpeedyTAIFEX\SpeedyTAIFEX.bdsproj</Projects>
+      <Projects Name="SpeedyGateway.exe">SpeedyGateway\SpeedyGateway.bdsproj</Projects>
+      <Projects Name="mbus_keygen.exe">mbus_keygen\mbus_keygen.bdsproj</Projects>
+      <Projects Name="SimTXCenter.exe">..\WinClient\SimTXCenter.bdsproj</Projects>
+      <Projects Name="Targets">UFC.lib Migo.lib MBus.exe PBoxComponent.bpl MessagePackage.bpl MessageDeliver.dll Publisher.exe Subscriber.exe SpeedyCenter.exe TAIFEXLib.lib SpeedyTAIFEX.exe SpeedyGateway.exe mbus_keygen.exe SimTXCenter.exe</Projects>
+    </Projects>
+    <Dependencies>
+      <Dependency GUID="{F902FEDA-E9EB-434C-B9A7-4BA9F38A2406}">
+        <Dependency GUID="{3689654C-46EE-4C28-BD0E-C4F7230AF15C}"/>
+        <Dependency GUID="{2190B777-DF2A-4C8B-BC7F-5A8691F1AC19}"/>
+      </Dependency>
+      <Dependency GUID="{2CFCC90E-3236-4D71-A2F8-0BD146659536}">
+        <Dependency GUID="{F902FEDA-E9EB-434C-B9A7-4BA9F38A2406}"/>
+      </Dependency>
+    </Dependencies>
+  </Default.Personality>
+	<StarTeamAssociation></StarTeamAssociation>
+	<StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+</BorlandProject>

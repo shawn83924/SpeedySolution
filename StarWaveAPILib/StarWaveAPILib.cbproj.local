@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/02/23 21:03:34.185.cpp,C:\src\StarWaveAPILib\ChartServerConnection\ChartServerConnection.cpp=</Transaction>
+    <Transaction>2012/03/06 23:49:57.748.ridl,C:\src\StarWaveAPILib\StarWaveAPILib.ridl=</Transaction>
+    <Transaction>2012/03/06 23:49:57.775.cpp,C:\src\StarWaveAPILib\StarWaveAPILib_TLB.cpp=</Transaction>
+  </Transactions>
+</BorlandProject>

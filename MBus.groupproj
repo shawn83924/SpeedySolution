@@ -1,0 +1,86 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{a8e44315-6475-417c-8adf-5204f9360132}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="BC Projects\UFC.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="..\MDComponent\vcl\MDComponent2009.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="VCL\MBusPackage2009.cbproj">
+				<Dependencies>BC Projects\UFC.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="Test\WinSubscriber.cbproj">
+				<Dependencies>VCL\MBusPackage2009.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="SpeedyCenter\SpeedyCenter.cbproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<BorlandProject>
+					<Default.Personality/>
+				</BorlandProject>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="UFC">
+			<MSBuild Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Clean">
+			<MSBuild Targets="Clean" Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Make">
+			<MSBuild Targets="Make" Projects="BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="MDComponent2009">
+			<MSBuild Projects="..\MDComponent\vcl\MDComponent2009.cbproj"/>
+		</Target>
+		<Target Name="MDComponent2009:Clean">
+			<MSBuild Targets="Clean" Projects="..\MDComponent\vcl\MDComponent2009.cbproj"/>
+		</Target>
+		<Target Name="MDComponent2009:Make">
+			<MSBuild Targets="Make" Projects="..\MDComponent\vcl\MDComponent2009.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC" Name="MBusPackage2009">
+			<MSBuild Projects="VCL\MBusPackage2009.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean" Name="MBusPackage2009:Clean">
+			<MSBuild Targets="Clean" Projects="VCL\MBusPackage2009.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make" Name="MBusPackage2009:Make">
+			<MSBuild Targets="Make" Projects="VCL\MBusPackage2009.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="MBusPackage2009" Name="WinSubscriber">
+			<MSBuild Projects="Test\WinSubscriber.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="MBusPackage2009:Clean" Name="WinSubscriber:Clean">
+			<MSBuild Targets="Clean" Projects="Test\WinSubscriber.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="MBusPackage2009:Make" Name="WinSubscriber:Make">
+			<MSBuild Targets="Make" Projects="Test\WinSubscriber.cbproj"/>
+		</Target>
+		<Target Name="SpeedyCenter">
+			<MSBuild Projects="SpeedyCenter\SpeedyCenter.cbproj"/>
+		</Target>
+		<Target Name="SpeedyCenter:Clean">
+			<MSBuild Targets="Clean" Projects="SpeedyCenter\SpeedyCenter.cbproj"/>
+		</Target>
+		<Target Name="SpeedyCenter:Make">
+			<MSBuild Targets="Make" Projects="SpeedyCenter\SpeedyCenter.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="UFC;MDComponent2009;MBusPackage2009;WinSubscriber;SpeedyCenter"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="UFC:Clean;MDComponent2009:Clean;MBusPackage2009:Clean;WinSubscriber:Clean;SpeedyCenter:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="UFC:Make;MDComponent2009:Make;MBusPackage2009:Make;WinSubscriber:Make;SpeedyCenter:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

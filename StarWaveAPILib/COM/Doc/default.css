@@ -1,0 +1,72 @@
+body
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+.componentconstlist
+{
+	font-size: 12pt;
+	font-weight: bold;
+}
+.componentobjlist
+{
+	font-weight: bold;
+	font-size: 12pt;
+}
+.componentenum
+{
+	font-size: 10pt;
+	font-weight: normal;
+}
+a
+{
+	color: Blue;
+	font-weight: bold;
+}
+a:hover
+{
+	background-color: Blue;
+	color: Yellow;
+}
+.componentobj
+{
+	font-size: 10pt;
+	font-weight: normal;
+}
+.enumname
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+.enumvalue
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+.implements
+{
+	font-size: 11pt;
+	font-weight: bold;
+}
+.implemented
+{
+	font-style: italic;
+}
+.paramname
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: italic;
+}
+.paramtype
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 10pt;
+}
+.paramheader
+{
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	font-size: 12pt;
+	font-weight: bold;
+}
+

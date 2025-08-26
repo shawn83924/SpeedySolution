@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<TgConfig Version="3" SubLevelDisabled="False">
+  <Option Name="namespaceFolder.Orderconnection_tlb" Type="System.String" Value="Orderconnection_tlb" Category="General" IsBrowsable="False" />
+</TgConfig>

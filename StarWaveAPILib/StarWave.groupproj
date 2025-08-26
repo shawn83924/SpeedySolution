@@ -1,0 +1,60 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{708B5884-5E18-4531-AA6F-A1E89E077280}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="..\BC Projects\UFC.cbproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="StarWaveAPILib.cbproj">
+				<Dependencies>..\BC Projects\UFC.cbproj</Dependencies>
+			</Projects>
+			<Projects Include="COM\StarWaveAPI.cbproj">
+				<Dependencies>..\BC Projects\UFC.cbproj;StarWaveAPILib.cbproj</Dependencies>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="UFC">
+			<MSBuild Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Clean">
+			<MSBuild Targets="Clean" Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target Name="UFC:Make">
+			<MSBuild Targets="Make" Projects="..\BC Projects\UFC.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC" Name="StarWaveAPILib">
+			<MSBuild Projects="StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean" Name="StarWaveAPILib:Clean">
+			<MSBuild Targets="Clean" Projects="StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make" Name="StarWaveAPILib:Make">
+			<MSBuild Targets="Make" Projects="StarWaveAPILib.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC;StarWaveAPILib" Name="StarWaveAPI">
+			<MSBuild Projects="COM\StarWaveAPI.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Clean;StarWaveAPILib:Clean" Name="StarWaveAPI:Clean">
+			<MSBuild Targets="Clean" Projects="COM\StarWaveAPI.cbproj"/>
+		</Target>
+		<Target DependsOnTargets="UFC:Make;StarWaveAPILib:Make" Name="StarWaveAPI:Make">
+			<MSBuild Targets="Make" Projects="COM\StarWaveAPI.cbproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="UFC;StarWaveAPILib;StarWaveAPI"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="UFC:Clean;StarWaveAPILib:Clean;StarWaveAPI:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="UFC:Make;StarWaveAPILib:Make;StarWaveAPI:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

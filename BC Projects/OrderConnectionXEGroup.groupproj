@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{6CDB940E-13F4-4FFE-95AF-8F0B93811ED7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="UFC.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\COM\Lib\SpeedyAPILib.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\COM\OrderConnectionXE\OrderConnection.cbproj">
+            <Dependencies>UFC.cbproj;..\COM\Lib\SpeedyAPILib.cbproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="UFC">
+        <MSBuild Projects="UFC.cbproj"/>
+    </Target>
+    <Target Name="UFC:Clean">
+        <MSBuild Projects="UFC.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="UFC:Make">
+        <MSBuild Projects="UFC.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="SpeedyAPILib">
+        <MSBuild Projects="..\COM\Lib\SpeedyAPILib.cbproj"/>
+    </Target>
+    <Target Name="SpeedyAPILib:Clean">
+        <MSBuild Projects="..\COM\Lib\SpeedyAPILib.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SpeedyAPILib:Make">
+        <MSBuild Projects="..\COM\Lib\SpeedyAPILib.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="OrderConnection" DependsOnTargets="UFC;SpeedyAPILib">
+        <MSBuild Projects="..\COM\OrderConnectionXE\OrderConnection.cbproj"/>
+    </Target>
+    <Target Name="OrderConnection:Clean" DependsOnTargets="UFC:Clean;SpeedyAPILib:Clean">
+        <MSBuild Projects="..\COM\OrderConnectionXE\OrderConnection.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="OrderConnection:Make" DependsOnTargets="UFC:Make;SpeedyAPILib:Make">
+        <MSBuild Projects="..\COM\OrderConnectionXE\OrderConnection.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="UFC;SpeedyAPILib;OrderConnection"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="UFC:Clean;SpeedyAPILib:Clean;OrderConnection:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="UFC:Make;SpeedyAPILib:Make;OrderConnection:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

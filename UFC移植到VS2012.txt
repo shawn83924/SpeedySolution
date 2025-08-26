@@ -1,0 +1,49 @@
+=====================================
+    UFC--->OK
+=====================================
+1. 拿掉 FIFO.cpp .h StringTokenizer.cpp .h Profiler.cpp .h
+2. Project define 加 _WIN32
+3. Project define 加 _CRT_SECURE_NO_WARNINGS
+4. Project Linker->Input 加 Ws2_32.lib
+5. 修改 AnsiString.h UFCType.h FileStream.cpp PThread.cpp
+
+=====================================
+    Migo-->OK
+=====================================
+1. 拿掉 MPublisher.cpp
+2. 修改 MTree.h MTree.cpp Sigo.cpp
+
+=====================================
+    COM/Lib/OrderConnection
+=====================================
+1. 修改 TTaifexConnection.h TTaifexConnection.cpp MessageRender.cpp
+        HandleExchangeFilled.cpp HandleExchangeConfirm.cpp
+
+=====================================
+    COM/Lib/OrderMessage
+=====================================
+1. 修改 TBaseMessage.cpp
+
+=====================================
+ StarWaveAPILib/MarketDataConnection  --->OK
+=====================================
+1. 修改 MarketDataConnection.h MarketDataConnection.cpp Utility.cpp
+
+=====================================
+    Utility
+=====================================
+StarWaveAPILib/MarketDataConnection/Utility.cpp 改名為 Utility_MDC.cpp --->OK
+ExchangeUtility/Utility.cpp 改名為 Utility_Exc.cpp  --->OK
+UFC/Utility.cpp
+
+COM
+ExchangeUtility-->OK
+Migo-->OK
+pySpeedyAPI---> New Add
+RiskManager-->OK
+StarWaveAPILib-->OK
+TAIFEXLib-->OK
+Temp-->OK
+UFC-->OK
+vcproj ---> New Add
+zlib-->OK   

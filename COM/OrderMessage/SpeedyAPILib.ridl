@@ -1,0 +1,7 @@
+[
+  uuid(99350780-3ED5-4883-A303-E41C1E734E90),
+  version(1.0)
+]
+library SpeedyAPILib
+{
+};

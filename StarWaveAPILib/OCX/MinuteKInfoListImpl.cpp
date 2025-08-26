@@ -1,0 +1,90 @@
+// ---------------------------------------------------------------------------
+// MINUTEKINFOLISTIMPL : Implementation of TMinuteKInfoListImpl (CoClass: MinuteKInfoList, Interface: IMinuteKInfoList)
+// ---------------------------------------------------------------------------
+#include <vcl.h>
+#pragma hdrstop
+
+#include "MinuteKInfoListImpl.h"
+#include "MinuteKInfoImpl.h"
+
+// ---------------------------------------------------------------------------
+// TMinuteKInfoListImpl
+// ---------------------------------------------------------------------------
+__fastcall TMinuteKInfoListImpl::TMinuteKInfoListImpl()
+:FKBars( NULL )
+{
+}
+
+
+// ---------------------------------------------------------------------------
+// TMinuteKInfoListImpl
+// ---------------------------------------------------------------------------
+__fastcall TMinuteKInfoListImpl::TMinuteKInfoListImpl(const System::_di_IInterface Controller)
+							  : inherited(Controller),FKBars( NULL )
+{
+}
+
+
+// ---------------------------------------------------------------------------
+// TMinuteKInfoListImpl
+// ---------------------------------------------------------------------------
+__fastcall TMinuteKInfoListImpl::TMinuteKInfoListImpl(Comobj::TComObjectFactory* Factory,
+                                      const System::_di_IInterface Controller)
+                              : inherited(Factory, Controller),FKBars( NULL )
+{
+}
+
+// ---------------------------------------------------------------------------
+// TMinuteKInfoListImpl - Class Factory
+// ---------------------------------------------------------------------------
+static void createFactory()
+{
+  new TCppAutoObjectFactory<TMinuteKInfoListImpl>(Comserv::GetComServer(),
+                           __classid(TMinuteKInfoListImpl),
+                           CLSID_MinuteKInfoList,
+                           Comobj::ciMultiInstance,
+                           Comobj::tmApartment);
+}
+#pragma startup createFactory 32
+//------------------------------------------------------------------------------
+STDMETHODIMP TMinuteKInfoListImpl::get_Count(long* Value)
+{
+	try
+	{
+		if( FKBars != NULL )
+			*Value = FKBars->ItemCount();
+		else
+			*Value = 0;
+	}
+	catch(Exception &e)
+	{
+		return Error(e.Message.c_str(), IID_IMinuteKInfoList);
+	}
+	return S_OK;
+};
+//------------------------------------------------------------------------------
+STDMETHODIMP TMinuteKInfoListImpl::get_Items(long Index, IMinuteKInfo** Value)
+{
+	try
+	{
+		if( FKBars != NULL && Index < FKBars->ItemCount() )
+		{
+			TMinuteKInfoImpl* MinuteKInfoImpl = new TMinuteKInfoImpl();
+			TMinuteKInfo Info = FKBars->GetItem( Index );
+
+			MinuteKInfoImpl->Copy( Info );
+			MinuteKInfoImpl->QueryInterface( IID_IMinuteKInfo, (void**)Value );
+			MinuteKInfoImpl->Release();
+		}
+		else
+			return Error(  "Index out of bound", IID_IMinuteKInfoList);
+	}
+	catch(Exception &e)
+	{
+		return Error(e.Message.c_str(), IID_IMinuteKInfoList);
+	}
+	return S_OK;
+};
+//------------------------------------------------------------------------------
+
+
