@@ -1,0 +1,59 @@
+17:46:01.431  _______________________________________________________________
+17:46:01.431                                                                 
+17:46:01.431    Speedy Unify Version:3.3.7.0 
+17:46:01.431                                                                 
+17:46:01.431    Windows version 10.0
+17:46:01.431    Windows 10 (Service Pack:0)
+17:46:07.615                                                                 
+17:46:07.615    主機記憶體: 65253 MB
+17:46:07.615    可用記憶體: 46541 MB
+17:46:07.615       CPU時脈: 2.11 GHz
+17:46:07.615  _______________________________________________________________
+17:46:17.370 [Config] Install dir[C:\Program Files (x86)\Speedy Unify\].
+17:48:25.372  _______________________________________________________________
+17:48:25.372                                                                 
+17:48:25.372    Speedy Unify Version:3.3.16.0 
+17:48:25.372                                                                 
+17:48:25.372    Windows version 10.0
+17:48:25.372    Windows 10 (Service Pack:0)
+17:48:26.761                                                                 
+17:48:26.761    主機記憶體: 65253 MB
+17:48:26.761    可用記憶體: 47022 MB
+17:48:26.761       CPU時脈: 2.11 GHz
+17:48:26.761  _______________________________________________________________
+17:48:29.558 [Config] Install dir[C:\Program Files (x86)\Speedy Unify\].
+17:49:13.808  _______________________________________________________________
+17:49:13.808                                                                 
+17:49:13.808    Speedy Unify Version:3.3.16.0 
+17:49:13.808                                                                 
+17:49:13.808    Windows version 10.0
+17:49:13.808    Windows 10 (Service Pack:0)
+17:49:17.315                                                                 
+17:49:17.315    主機記憶體: 65253 MB
+17:49:17.315    可用記憶體: 47033 MB
+17:49:17.315       CPU時脈: 2.11 GHz
+17:49:17.315  _______________________________________________________________
+17:49:19.928 [Config] Install dir[C:\Program Files (x86)\Speedy Unify\].
+17:51:28.513 App[TCMarketDataStore] MBus connected FD:3480
+17:51:28.589 App[TCMarketDataStore] Server Heartbeat interval:40 sec timeout:45 sec 
+17:51:29.474 App[TChartsStore] MBus connected FD:3448
+17:51:29.504 App[TChartsStore] Server Heartbeat interval:40 sec timeout:45 sec 
+17:51:34.308 [TThreadApp] Start MApp message pump
+17:51:34.308 [TThreadApp] MApp->Start()
+17:51:34.308 (null)::MApp::start() start...
+17:51:35.740 TOrderStore::SubscribeSymbol() Subscribe[TAIFEX-TXFI5], Count=0001.
+17:51:35.836 TOrderStore::OnMarketDataUpdate() for Recover, [TAIFEX-TXFI5] First Market Data arrived.
+17:51:35.857 ----- Save Stop Order Setting -----
+17:51:35.857 Stop Buy  OrderType[Limit] Ticks[0]
+17:51:35.857 Stop Sell OrderType[Limit] Ticks[0]
+17:51:35.857 -------------- End ----------------
+17:51:36.190 TOrderStore::SubscribeSymbol() Subscribe[TAIFEX-TXFI5], Count=0002.
+17:52:08.502 TOrderStore::SubscribeSymbol() Subscribe[TAIFEX-TXFI5], Count=0003.
+17:52:21.331 TOrderStore::UnsubscribeSymbol() [TAIFEX-TXFI5], Count=0002.
+17:52:22.840 TChartsStore::MApp::CheckHeartBeat() Send Heartbeat. Send timer[40 sec(39 + 1)], Heartbeat time[40]
+17:52:29.743 [Config::Save] Save desktop config to[C:\Program Files (x86)\Speedy Unify\].
+17:52:29.745 [UiniFile::SaveToStream] 45 Sections saved.
+17:52:29.745 TOrderStore::UnsubscribeSymbol() [TAIFEX-TXFI5], Count=0001.
+17:52:29.756 TOrderStore::UnsubscribeSymbol() Unsubscribe[TAIFEX-TXFI5], Count=0000.
+17:52:30.302 App[TCMarketDataStore] Close MBus connection FD:3480
+17:52:30.302 App[TChartsStore] Close MBus connection FD:3448

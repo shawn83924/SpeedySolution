@@ -7,7 +7,7 @@
 #include "AgentForm.h"
 #include <Registry.hpp>
 //------------------------------------------------------------------------------
-#pragma link "C:\\MBus\\Lib\\UFC.lib"
+#pragma link "C:\\MBus\\Lib\\Win32\\UFC_XE7.lib"
 //------------------------------------------------------------------------------
 #define MUTEX_NAME     "SpeedyUnify"      /// The PowerBox main program mutex name.
 //------------------------------------------------------------------------------

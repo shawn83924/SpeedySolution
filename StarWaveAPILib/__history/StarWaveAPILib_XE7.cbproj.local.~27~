@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2012/02/23 21:03:34.185.cpp,C:\src\StarWaveAPILib\ChartServerConnection\ChartServerConnection.cpp=</Transaction>
+    <Transaction>2012/03/06 23:49:57.748.ridl,C:\src\StarWaveAPILib\StarWaveAPILib.ridl=</Transaction>
+    <Transaction>2012/03/06 23:49:57.775.cpp,C:\src\StarWaveAPILib\StarWaveAPILib_TLB.cpp=</Transaction>
+    <Transaction>2014/09/22 21:28:36.000.007,=C:\src\StarWaveAPILib\StarWaveAPILib.otares</Transaction>
+    <Transaction>2014/10/27 21:00:12.000.283,C:\src\StarWaveAPILib\StarWaveAPILib.cbproj=C:\src\StarWaveAPILib\StarWaveAPILib_XE7.cbproj</Transaction>
+    <Transaction>2019/05/22 01:18:53.000.644,=C:\src\StarWaveAPILib\HKExMessageHandler.cpp</Transaction>
+    <Transaction>2019/12/02 18:18:30.000.407,=C:\src\StarWaveAPILib\MarketDataConnection\HKExMessageHandler.cpp</Transaction>
+    <Transaction>2020/06/01 00:14:00.000.512,=C:\src\StarWaveAPILib\MarketDataConnection\Utility_MDC.cpp</Transaction>
+    <Transaction>2020/11/13 17:02:34.000.289,=C:\src\StarWaveAPILib\CQGMessageHandler.cpp</Transaction>
+    <Transaction>2021/11/22 17:48:43.000.956,C:\src\StarWaveAPILib\CQGMessageHandler.cpp=</Transaction>
+    <Transaction>2021/11/22 17:48:56.000.671,=C:\src\StarWaveAPILib\CQGMessageHandler.cpp</Transaction>
+    <Transaction>2021/11/22 17:49:38.000.957,C:\src\StarWaveAPILib\CQGMessageHandler.cpp=</Transaction>
+    <Transaction>2021/11/22 17:55:19.000.524,=C:\src\StarWaveAPILib\MarketDataConnection\CQGMessageHandler.cpp</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="ChartServerConnection"/>
+    <File Path="ChartServerConnection\ChartServerConnection.cpp"/>
+    <File Path="MarketDataConnection"/>
+    <File Path="MarketDataConnection\ChinaMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\CMEMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\CQGMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\HKExMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\MarketDataConnection.cpp"/>
+    <File Path="MarketDataConnection\MarketDataConnection.cpp"/>
+    <File Path="MarketDataConnection\MarketDataConnection.h"/>
+    <File Path="MarketDataConnection\TAIFEXMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\TMDThreadApp.cpp"/>
+    <File Path="MarketDataConnection\TMDThreadApp.cpp"/>
+    <File Path="MarketDataConnection\TMDThreadApp.h"/>
+    <File Path="MarketDataConnection\TWSEMessageHandler.cpp"/>
+    <File Path="MarketDataConnection\Utility_MDC.cpp"/>
+    <File Path="MarketDataMessage"/>
+    <File Path="MarketDataMessage\DepthObject.cpp"/>
+    <File Path="MarketDataMessage\MarketDataMessage.cpp"/>
+    <File Path="MarketDataMessage\MarketDataMessage.cpp"/>
+    <File Path="MarketDataMessage\MarketDataMessage.h"/>
+    <File Path="StarWaveAPILib.otares"/>
+  </ProjectSortOrder>
+</BorlandProject>

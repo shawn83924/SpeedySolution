@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>		
+		<result>Y</result>
+		<rate>
+			<GDF>0.0000025</GDF>
+			<GTF>0.00002</GTF>
+			<MXF>0.00002</MXF>
+			<MX1>0.00002</MX1>
+			<MX2>0.00002</MX2>
+			<MX4>0.00002</MX4>
+			<MX5>0.00002</MX5>
+			<RHF>0.000001</RHF>
+			<RTF>0.000001</RTF>
+			<T5F>0.00002</T5F>
+			<EXF>0.00002</EXF>
+			<FXF>0.00002</FXF>
+			<TGF>0.0000025</TGF>
+			<TXF>0.00002</TXF>
+			<XEF>0.000001</XEF>
+			<XIF>0.00002</XIF>
+			<XJF>0.000001</XJF>
+			<TGO>0.001</TGO>
+			<TEO>0.001</TEO>
+			<TFO>0.001</TFO>			
+			<TX1>0.001</TX1>
+			<TX2>0.001</TX2>
+			<TX4>0.001</TX4>
+			<TX5>0.001</TX5>
+			<TXO>0.001</TXO>			
+			<RHO>0.001</RHO>
+			<RTO>0.001</RTO>
+			<STOCKFUT>0.00002</STOCKFUT>
+			<STOCKOPT>0.001</STOCKOPT>
+		</rate>
+</root>

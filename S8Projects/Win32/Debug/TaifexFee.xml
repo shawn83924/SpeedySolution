@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>		
+		<result>Y</result>
+		<fee>
+			<GDF>30</GDF>
+			<GTF>45</GTF>
+			<MXF>25</MXF>
+			<MX1>25</MX1>
+			<MX2>25</MX2>
+			<MX4>25</MX4>
+			<MX5>25</MX5>
+			<RHF>30</RHF>
+			<RTF>10</RTF>
+			<T5F>45</T5F>
+			<EXF>45</EXF>
+			<FXF>45</FXF>
+			<TGF>88</TGF>
+			<TXF>45</TXF>
+			<XEF>5</XEF>
+			<XIF>45</XIF>
+			<XJF>500</XJF>
+			<GTO>25</GTO>
+			<TEO>25</TEO>
+			<TFO>25</TFO>
+			<TGO>128</TGO>
+			<TX1>18</TX1>
+			<TX2>18</TX2>
+			<TX4>18</TX4>
+			<TX5>18</TX5>
+			<TXO>18</TXO>
+			<XIO>25</XIO>
+			<RHO>30</RHO>
+			<RTO>10</RTO>
+			<STOCKFUT>18</STOCKFUT>
+			<STOCKOPT>18</STOCKOPT>
+			<STOCK>0.3</STOCK>
+		</fee>
+</root>
