@@ -223,7 +223,7 @@ void Config::LoadSpeedySetting( const char* FileName )  ///< Speedy Unify
 	UFC::Section* capitalSection = new UFC::Section( "群益期貨" );
 	capitalSection->SetValue( "BrokerID",  "F020000" );
 	capitalSection->SetValue( "TWSEBrokerID",  "2210" );
-	capitalSection->SetValue( "CMID",  "F020" );
+	capitalSection->SetValue( "CMID",  "F915" );
 	capitalSection->SetValue( "Count",  "1" );
 	capitalSection->SetValue( "Name1",  "網際網路" );
 	capitalSection->SetValue( "IsProxy1", "1" );

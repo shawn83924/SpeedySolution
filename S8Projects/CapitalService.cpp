@@ -38,7 +38,7 @@ bool TCapitalService::LoginBroker( const String& ID, const String& Password, Str
 {
 	FAccounts.ClearAccounts();
 	String account = "1111111";
-	String BrokerID = "F020000";
+	String BrokerID = "F915000";
 	String dayTrade = "Today";
 	FAccounts.FFutAccounts.Add( new TAccountInfo(account, BrokerID, dayTrade ) );
 	FAccounts.FStockAccounts.Add( new TAccountInfo(account, BrokerID, dayTrade ) );
