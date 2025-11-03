@@ -27,6 +27,8 @@
 #include "GraphButton.h"
 #include <Vcl.Buttons.hpp>
 //---------------------------------------------------------------------------
+class	TBrokerConfig;
+//---------------------------------------------------------------------------
 class TLoginForm : public TForm
 {
 __published:	// IDE-managed Components
@@ -68,6 +70,7 @@ __published:	// IDE-managed Components
 private:	// User declarations
 	int FWaitCount;
 	String FVersion;
+	TBrokerConfig* FLoginBroker;
 	bool __fastcall CheckFreeTry( void );
 	void __fastcall OnNCHitTest( TMessage &Message );
 	void __fastcall WndProc( TMessage &Msg );
