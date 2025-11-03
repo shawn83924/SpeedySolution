@@ -394,7 +394,6 @@ private:
 	bool FConnectFailed;
 	bool FRequestWeb;
 	int  FWebFunc;
-	int  FTimerCount;
 	int  FFutAccIndex;
 	int  FTseAccIndex;
     double FNetBalance;
@@ -483,15 +482,6 @@ public:
 	bool __fastcall EnablePxAlarm( void ) { return PxAlarmSoundSwitch->Selected; }
 	bool __fastcall EnableLowPxAlarm( void ) { return LowPxAlarmSoundSwitch->Selected; }
 	void __fastcall LoadingProgress( int Percent,  const String& Msg );
-};
-//---------------------------------------------------------------------------
-class TokenExpiredThread : public TThread
-{
-private:
-	void _fastcall Check();
-public:
-	__fastcall TokenExpiredThread( void );
-	void __fastcall Execute( void );
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;

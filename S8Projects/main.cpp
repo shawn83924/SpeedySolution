@@ -66,7 +66,7 @@ const int CAPTION_H = 50;
 const int BOTTOM_H  = 32;
 //---------------------------------------------------------------------------
 bool               gCheckCA   = true;  ///< Needs CA
-bool   			   gIsExpired = true;  ///< SpeedyUnify License Expired
+bool   			   gIsExpired = false;  ///< SpeedyUnify License Expired
 bool               gNuclear   = true;  ///< AOE Nuclear class
 bool               gTFT       = false; ///< Enable TFT functions. ( Turn on 創富 tab )
 //---------------------------------------------------------------------------
@@ -104,23 +104,6 @@ const int    MD_SERVER_PORT    = 34567;
 const String CHART_SERVER_IP   = L"10.1.8.82";//L"203.75.198.98";//L"61.220.47.67"; //L"60.250.82.135";
 const int    CHART_SERVER_PORT = 34569;
 //---------------------------------------------------------------------------
-__fastcall TokenExpiredThread::TokenExpiredThread()
-:TThread( false )
-{
-	FreeOnTerminate = true;
-}
-//---------------------------------------------------------------------------
-void __fastcall TokenExpiredThread::Check( )
-{
-   MainForm->HandleTokenExpired();
-}
-//---------------------------------------------------------------------------
-void __fastcall TokenExpiredThread::Execute( )
-{
-   if( g_Config.TokenExpired( ) == false )
-	   Synchronize( Check );
-}
-//---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 : TForm(Owner)
 ,FSelectedFuncText( NULL )
@@ -131,7 +114,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 ,FUILoaded( false )
 ,FForceClose( false )
 ,FRequestWeb( false )
-,FTimerCount( 0 )
 ,FNetBalance( 0 )
 ,FLoginUserStr( L"交易帳號:尚未登入" )
 ,FCopyRights( L"Copyright© 2020 MDBS, All Rights Reserved.  " )
@@ -2680,11 +2662,6 @@ void __fastcall TMainForm::HandleTokenExpired( void )
 void __fastcall TMainForm::PreventIdleTimerTimer(TObject *Sender)
 {
 	UFCType::Int32 Now = UFC::GetHHMMSS();
-
-	SetThreadExecutionState( ES_DISPLAY_REQUIRED|ES_SYSTEM_REQUIRED );
-	FTimerCount++;
-	if( FTimerCount %3 == 0 )
-		new TokenExpiredThread();
 
 	if( Now >= 140000 && Now <= 140500  && OrderStore != NULL && OrderStore->IsLogon() == true && OrderStore->HasStopOrder() == true )
 		OrderStore->CancelAllStopOrder();

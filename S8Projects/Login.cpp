@@ -197,7 +197,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	g_Config.LoadStarWaveSettingIni();
 	if( Logon() )
 	{
-		g_Config.UserRightsInfo();
+		//g_Config.UserRightsInfo();
 		if( Tranning == true ) ///< Traning room not production.
 		{
 			if( CheckFreeTry() == false )
@@ -353,7 +353,7 @@ bool __fastcall TLoginForm::Logon( void )
 				if( ResultStr == L"0" )
 				{
 					gUser.UserID   = IDEdit->Text;
-					g_Config.LoadUserInfo( lpRoot );
+					//g_Config.LoadUserInfo( lpRoot );
 					StatusLabel->Caption = L"µn¤J¦¨¥\!";
 					IsOk = true;
 				}
