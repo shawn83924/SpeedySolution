@@ -467,6 +467,7 @@ public:		// User declarations
 	void __fastcall UpdateAccount( bool IsFut );
 	__property AnsiString LoginID = { read = FID };
 	__property AnsiString LoginPassword = { read = FPassword };
+	void __fastcall LoadIDPassword(String id, String password);
 private:
     bool FLoadPositionOK;
 	UFC::PCriticalSection FFillSubLock;

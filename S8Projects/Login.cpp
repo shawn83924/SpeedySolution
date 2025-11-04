@@ -197,7 +197,6 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	g_Config.LoadStarWaveSettingIni();
 	if( Logon() )
 	{
-		//g_Config.UserRightsInfo();
 		if( Tranning == true ) ///< Traning room not production.
 		{
 			if( CheckFreeTry() == false )
@@ -337,34 +336,24 @@ bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& Resp
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::Logon( void )
 {
-	TMemoryStream* ResultStream = new TMemoryStream();
-	if( RequestLogon( IDEdit->Text, PasswordEdit->Text, ResultStream ) )
+	FLoginBroker = g_Config.BrokerConfig(0);
+	if(FLoginBroker == NULL)
 	{
-		bool IsOk = false;
-		String ResponseJSON;
-		if( GetResponseJSON( ResultStream, ResponseJSON ) )
-		{
-			TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
-			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
-			if( lpRoot != NULL )
-			{
-				String ResultStr  = lpRoot->Values[L"result"]->Value();
-				UTF8String MessageStr( lpRoot->Values[L"message"]->Value() );
-				if( ResultStr == L"0" )
-				{
-					gUser.UserID   = IDEdit->Text;
-					//g_Config.LoadUserInfo( lpRoot );
-					StatusLabel->Caption = L"登入成功!";
-					IsOk = true;
-				}
-				else
-				   StatusLabel->Caption = L"登入失敗:" + MessageStr;
-			}
-		}
-		delete ResultStream;
-		return IsOk;
+		TUnifyDlgs::MessageDialog( "Speedy Unify", L"錯誤的連線設定" );
+		return false;
 	}
-	return false;
+
+	String errMsg;
+	if(FLoginBroker->GetService()->LoginBroker( IDEdit->Text, PasswordEdit->Text, errMsg ) == false)
+	{
+		TUnifyDlgs::MessageDialog( "Speedy Unify", errMsg );
+		StatusLabel->Caption = L"登入失敗:" + errMsg;
+		return false;
+	}
+
+	gUser.UserID = IDEdit->Text;
+    StatusLabel->Caption = L"登入成功!";
+	return true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::GenData( const String& ID, const String& Password, String& Out )
