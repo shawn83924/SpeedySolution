@@ -1121,7 +1121,8 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 	LoadProperties( );
 	EnableNuclear();
 	SettingPanel( false );
-	catMenuItems->Enabled = true;
+	LoadIDPassword(LoginForm->IDEdit->Text,LoginForm->PasswordEdit->Text);
+	LoginButtonClick(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormShow(TObject *Sender)
@@ -1608,8 +1609,8 @@ void __fastcall TMainForm::LoginSimBroker( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 {
-	FSpeedyCfg = g_Config.SpeedyConfig( BrokerComboBoxEx->ItemIndex, LinkComboBoxEx->ItemIndex );
-	FLoginBroker = g_Config.BrokerConfig( BrokerComboBoxEx->ItemIndex );
+	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
+	FLoginBroker = g_Config.BrokerConfig( 0 );
 
 	if( FLoginBroker != NULL && FSpeedyCfg != NULL )
 	{
@@ -1693,6 +1694,8 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 	}
 	else
 		TUnifyDlgs::MessageDialog( "Speedy Unify", L"錯誤的連線設定" );
+
+	catMenuItems->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::actLogoutExecute(TObject *Sender)
@@ -3033,6 +3036,12 @@ void __fastcall TMainForm::UpdateAccount( bool IsFut )
 	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
 	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
 	PaintStatusBar( );
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::LoadIDPassword(String id, String password)
+{
+	IDEdit->Text = id;
+	PasswordEdit->Text = password;
 }
 //---------------------------------------------------------------------------
 
