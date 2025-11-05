@@ -3,7 +3,7 @@ object SimTFXForm: TSimTFXForm
   Top = 75
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Speedy'#25511#21046#21488
-  ClientHeight = 838
+  ClientHeight = 599
   ClientWidth = 1140
   Color = clBtnFace
   Constraints.MinHeight = 600
@@ -23,13 +23,13 @@ object SimTFXForm: TSimTFXForm
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 21
   object OPPanel: TPanel
     Left = 0
     Top = 0
     Width = 1140
-    Height = 806
+    Height = 567
     Align = alClient
     Alignment = taLeftJustify
     BevelOuter = bvLowered
@@ -42,8 +42,8 @@ object SimTFXForm: TSimTFXForm
       Left = 1
       Top = 1
       Width = 1138
-      Height = 804
-      ActivePage = LineSheet
+      Height = 565
+      ActivePage = APITabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -63,7 +63,7 @@ object SimTFXForm: TSimTFXForm
           Left = 184
           Top = 0
           Width = 946
-          Height = 770
+          Height = 531
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -176,7 +176,7 @@ object SimTFXForm: TSimTFXForm
             Left = 1
             Top = 362
             Width = 944
-            Height = 407
+            Height = 168
             ParentCustomHint = False
             Align = alClient
             Color = clWhite
@@ -277,7 +277,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 0
           Width = 184
-          Height = 770
+          Height = 531
           Align = alLeft
           BevelOuter = bvNone
           DoubleBuffered = True
@@ -3861,7 +3861,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 0
           Width = 242
-          Height = 770
+          Height = 531
           Align = alLeft
           BevelOuter = bvNone
           FullRepaint = False
@@ -5125,7 +5125,7 @@ object SimTFXForm: TSimTFXForm
           Left = 242
           Top = 0
           Width = 888
-          Height = 770
+          Height = 531
           Align = alClient
           BevelOuter = bvNone
           DoubleBuffered = False
@@ -5136,7 +5136,7 @@ object SimTFXForm: TSimTFXForm
             Left = 0
             Top = 96
             Width = 888
-            Height = 654
+            Height = 420
             Style = lbVirtualOwnerDraw
             AutoComplete = False
             Align = alClient
@@ -5364,7 +5364,7 @@ object SimTFXForm: TSimTFXForm
               OnClick = DeletePVCButtonClick
             end
             object StateButton: TSpeedButton
-              Left = 281
+              Left = 278
               Top = 0
               Width = 116
               Height = 33
@@ -5790,7 +5790,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 36
           Width = 1130
-          Height = 734
+          Height = 495
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -5897,7 +5897,7 @@ object SimTFXForm: TSimTFXForm
             Left = 0
             Top = 265
             Width = 1130
-            Height = 469
+            Height = 230
             ActivePage = MessageTabSheet
             Align = alClient
             TabOrder = 1
@@ -6064,7 +6064,7 @@ object SimTFXForm: TSimTFXForm
                 Left = 0
                 Top = 0
                 Width = 1122
-                Height = 436
+                Height = 197
                 Style = lbOwnerDrawVariable
                 Align = alClient
                 Color = clBlack
@@ -6165,7 +6165,7 @@ object SimTFXForm: TSimTFXForm
             OnClick = NewSessionButtonClick
           end
           object SessionSettingButton: TSpeedButton
-            Left = 91
+            Left = 96
             Top = 0
             Width = 87
             Height = 33
@@ -6418,7 +6418,7 @@ object SimTFXForm: TSimTFXForm
         ImageIndex = 4
         DesignSize = (
           1130
-          770)
+          531)
         object GroupBox4: TGroupBox
           Left = 0
           Top = 185
@@ -6485,7 +6485,7 @@ object SimTFXForm: TSimTFXForm
           Left = 5
           Top = 257
           Width = 1120
-          Height = 510
+          Height = 271
           Anchors = [akLeft, akTop, akRight, akBottom]
           Columns = <
             item
@@ -7009,7 +7009,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 42
           Width = 1130
-          Height = 728
+          Height = 489
           TabStop = False
           Style = lbOwnerDrawVariable
           AutoComplete = False
@@ -7448,7 +7448,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 36
           Width = 1130
-          Height = 734
+          Height = 495
           Align = alClient
           BevelInner = bvNone
           BevelOuter = bvNone
@@ -7503,7 +7503,6 @@ object SimTFXForm: TSimTFXForm
           LargeImages = ImageList
           OwnerDraw = True
           ReadOnly = True
-          RowSelect = True
           ParentDoubleBuffered = False
           ParentFont = False
           SmallImages = ImageList
@@ -7525,7 +7524,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 0
           Width = 1130
-          Height = 770
+          Height = 531
           VertScrollBar.Smooth = True
           VertScrollBar.Style = ssHotTrack
           VertScrollBar.Tracking = True
@@ -7551,7 +7550,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 72
           Width = 1130
-          Height = 698
+          Height = 459
           Align = alClient
           BevelEdges = []
           BevelInner = bvNone
@@ -7862,7 +7861,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 0
           Width = 1130
-          Height = 472
+          Height = 233
           VertScrollBar.Smooth = True
           VertScrollBar.Style = ssHotTrack
           VertScrollBar.Tracking = True
@@ -7882,7 +7881,7 @@ object SimTFXForm: TSimTFXForm
         end
         object RoutePageControl: TPageControl
           Left = 0
-          Top = 472
+          Top = 233
           Width = 1130
           Height = 298
           ActivePage = RuleTabSheet
@@ -8314,7 +8313,7 @@ object SimTFXForm: TSimTFXForm
           Left = 0
           Top = 0
           Width = 1130
-          Height = 770
+          Height = 531
           VertScrollBar.Smooth = True
           VertScrollBar.Style = ssHotTrack
           VertScrollBar.Tracking = True
@@ -8377,11 +8376,325 @@ object SimTFXForm: TSimTFXForm
           LineColor = clYellow
         end
       end
+      object APITabSheet: TTabSheet
+        Caption = 'API '#30435#25511
+        ImageIndex = 11
+        object APILockedListView: TListView
+          Left = 0
+          Top = 41
+          Width = 1130
+          Height = 490
+          Align = alClient
+          BevelEdges = []
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          Checkboxes = True
+          Color = clWhite
+          Columns = <
+            item
+              Caption = #23458#25142#24115#34399
+              MaxWidth = 150
+              MinWidth = 100
+              Width = 120
+            end
+            item
+              Alignment = taCenter
+              Caption = #20998#20844#21496
+              MaxWidth = 100
+              MinWidth = 100
+              Width = 100
+            end
+            item
+              Caption = #37782#23450#26178#38291
+              MaxWidth = 200
+              MinWidth = 200
+              Width = 200
+            end
+            item
+              Caption = #37782#23450#21407#22240
+              MinWidth = 200
+              Width = 250
+            end>
+          ColumnClick = False
+          Ctl3D = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          LargeImages = ImageList
+          MultiSelect = True
+          ReadOnly = True
+          RowSelect = True
+          ParentFont = False
+          ParentShowHint = False
+          PopupMenu = APIPopupMenu
+          ShowHint = False
+          SmallImages = ImageList
+          TabOrder = 0
+          ViewStyle = vsReport
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 0
+          Width = 1130
+          Height = 41
+          Align = alTop
+          DoubleBuffered = True
+          ParentDoubleBuffered = False
+          TabOrder = 1
+          DesignSize = (
+            1130
+            41)
+          object APIStateButton: TSpeedButton
+            Left = -1
+            Top = 2
+            Width = 116
+            Height = 33
+            Caption = #26356#26032#29376#24907
+            Flat = True
+            Glyph.Data = {
+              F6060000424DF606000000000000760200002800000030000000180000000100
+              08000000000080040000120B0000120B0000900000009000000000000000FFFF
+              FF00FE00FE00A56C67008E5D590080504B009F69630093625C0095635C00AB70
+              66009D675E00B1756600B67A6500BB7E6400C0816100C6845F00D1906500D291
+              6700D28C5900D5905B00D5996E00D8A07400E3C2A700FCF7F300FCF7F200FBF6
+              F100FCF8F400FEFCFA00F3DEC800F3E0CC00F4E3D000FAF2E900E8BF9000F0DB
+              C200F3E0CA00F5E6D400F6E7D600F7E9D900F8ECDE00F8EDE000F9EFE300FAF1
+              E600FBF4EC00FBF5EE00FBF6F000EBB26500EBB77000EAB87500EBC59400ECC7
+              9800EDC99A00EDCA9B00EECC9E00EECDA200EED8BA00EFDABF00F7EBDC00E8BC
+              7D00E9BD7F00EABF8000EABF8200EAC08600E8C18800EDCFA500EED9BC00FDFB
+              F800EBD0A700EBD7B700FEFDFB00E3D1AC00E4D4B000E2D2AF00E6D6B300D1C0
+              9300CEC39600D2C89C00B6AF7800B3AF7800B1AD7700B1B0730000700000FEFE
+              FE00CBCBCB00CACACA00C9C9C900C8C8C800C6C6C600C5C5C500C4C4C400C3C3
+              C300C1C1C100C0C0C000BEBEBE00BCBCBC00BBBBBB00BABABA00B8B8B800B7B7
+              B700B4B4B400B2B2B200B1B1B100ADADAD00ACACAC00AAAAAA00A9A9A900A7A7
+              A700A3A3A300A1A1A100A0A0A0009E9E9E009D9D9D009C9C9C009B9B9B009999
+              990096969600939393009292920091919100909090008F8F8F008E8E8E008C8C
+              8C008B8B8B008686860085858500818181007D7D7D007C7C7C00797979007777
+              77007676760075757500747474007373730071717100707070006D6D6D006B6B
+              6B006767670064646400606060005C5C5C00515151002D2D2D00020202020202
+              0202020202020202020202020202020202020202020202020202020202020202
+              0202020202020202020202020704040404040404040404040404040404040502
+              020202028C8D8D8D8D8D8D8D8D8D8D8D8D8D8D8D8D8D8E020202020207433646
+              3F3433303E3C3B3B3B3B3B3B3B3B0502020202028C69686B6B6D6E7173757676
+              7676767676768E020202020207364048423F3431303E3C3A3A3A3A3A3B390502
+              020202028C68676A6B6B6D70717375767676767676778E020202020207372236
+              46423F3431303E3C3A3A3A3A3B390502020202028C6663686B6B6B6D70717375
+              7676767676778E020202020207212237365042354F5050504F3A3A3A3B390502
+              020202028C656366688F6B6C838F8F8F8376767676778E0202020202071D2322
+              3750504D504F314F504F3A3A3B390502020202028C636163668F8F818F837083
+              8F83767676778E0202020202081E251E1C5050504D3534314F503A3A3B390502
+              020202028C625F62648F8F8F816C6D70838F767676778E020202020206232624
+              225050505042353431503E3A3B390502020202028A615D60638F8F8F8F6B6C6D
+              708F737676778E020202020206272938235050505050423F3331303E3C390502
+              020202028A5D5B5E618F8F8F8F8F6B6B6E70717375778E0202020202031F2B28
+              25231D1C37364642353331303E39050202020202895A595C5F61636466686B6B
+              6C6E707173778E0202020202092C412A2838241D2250505050503331303D0502
+              02020202885855595C5E6063638F8F8F8F8F6E7071738E02020202020B19511A
+              1F5038231D225050505035333220050202020202875752565A8F5E6163638F8F
+              8F8F6C6E6F728E02020202020B1951441850452524224A505050423533300502
+              0202020287575253568F6C5F6063788F8F8F6B6C6E718E02020202020C195151
+              1B485045384B504A505046423F3205020202020286575252546A8F6C5E748F78
+              8F8F6B6B6B6F8E02020202020D1951515144485050504B221C50364642490502
+              020202028557525252536A8F8F8F7463648F686B6B788E02020202020E175151
+              515144181F283823221C37474A4E05020202020284565252525253565A5C5E61
+              6364666C78828E02020202020F1751515151511B182A28252425474C4E4E0502
+              02020202835652525252525456595C5F605F6C8082828E020202020211175151
+              5151515144181F29210A0A0A0A0A0A02020202027E5652525252525253565A5B
+              658B8B8B8B8B8B02020202021417515151515151511B1818160A151313120302
+              020202027D56525252525252525456566D8B7C808081890202020202141A5151
+              5151515151511B44160A2F2D2D030202020202027D5652525252525252525453
+              6D8B797B7B89020202020202141A51515151515151515151470A2F2D03020202
+              020202027D56525252525252525252526C8B797B890202020202020214515151
+              5151515151515151470A2E0302020202020202027D5252525252525252525252
+              6C8B7A890202020202020202101010101010101010101010100A030202020202
+              020202027F7F7F7F7F7F7F7F7F7F7F7F7F8B8902020202020202}
+            NumGlyphs = 2
+            OnClick = APIStateButtonClick
+          end
+          object APISettingButton: TSpeedButton
+            Left = 121
+            Top = 2
+            Width = 87
+            Height = 33
+            Caption = #20462#25913#35373#23450
+            Flat = True
+            Glyph.Data = {
+              EE060000424DEE060000000000006E0200002800000030000000180000000100
+              08000000000080040000120B0000120B00008E0000008E00000000000000FFFF
+              FF005F5DF700FF00FE00FEFDFD00A4787400996B6600B6847E00B3827C00A87C
+              7700B1817A00AF807900AC7E7800B8877E00BB897D00BF8C7B00C48F79009337
+              0C009933000094320300FCF7F400CD967200DBA78100DAAA8700D8AF8E00FBF5
+              F000DDA47000DFA77400D2B49700FAF2EA00FDFCFB00D6B89900F5E5D400F6E7
+              D700F8EADB00F9EFE400DCBE9A00F3DEC600F2DFC900F4E2CD00F4E3CF00F7E9
+              D900F8ECDE00E2C49B00F3DAB800F4DBBB00F4DDBE00F4DEC100F3DEC300EECB
+              9700EFCD9A00EFCE9D00F0D0A100F0D1A300F0D2A700F1D3A900F1D5AC00F1D6
+              AE00F2D6AF00F2D7B200F2D9B500FCFAF700EFCC9700EECC9700ECCB98007C93
+              F4008A9EF3009BACF500ADBBF700CCD5FA00D4DCFA006A81F400728AF300DDE2
+              FB00292E78006169F700F9F9FD00FCFCFD00CACACA00C9C9C900C8C8C800C6C6
+              C600C4C4C400C1C1C100BEBEBE00BDBDBD00BCBCBC00BABABA00B9B9B900B8B8
+              B800B7B7B700B5B5B500B4B4B400B3B3B300B1B1B100B0B0B000AFAFAF00AEAE
+              AE00ADADAD00ACACAC00AAAAAA00A9A9A900A8A8A800A7A7A700A6A6A600A5A5
+              A500A4A4A400A3A3A300A1A1A100A0A0A0009E9E9E009D9D9D009C9C9C009B9B
+              9B0098989800959595009393930092929200909090008F8F8F008E8E8E008D8D
+              8D008C8C8C008B8B8B008A8A8A008888880087878700858585007F7F7F007D7D
+              7D007C7C7C007B7B7B0079797900787878007676760075757500727272007070
+              700066666600404040003D3D3D003C3C3C000303030303030303030303030303
+              0303030303030303030303030303030303030303030303030303030303030303
+              0303030309050505050505050505050505050505050506030303030388898989
+              89898989898989898989898989898A03030303030C30252F2C3B383734323232
+              32323232323E06030303030387605F616466696A6D6F6F6F6F6F6F6F6F708A03
+              030303030C26272F2D2C3B383634323F3F3F3F3F3E31060303030303875E5D61
+              636466696B6D6F717171717170718A03030303030C2728272F2D2C3B38363432
+              3F3F3F3F3E31060303030303875D5C5D61636466696B6D6F7171717170718A03
+              030303030C282927252F2D3C3B3736343F3F3F3F3E31060303030303875C575D
+              5F616365666A6B6D7171717170718A03030303030C21221212121212123B3836
+              34323F3F3E310603030303038759578C8C8C8C8C8C66696B6D6F717170718A03
+              030303030B29231204460248123C3B3836343F3F3E310603030303038657548C
+              4E587D788C6566696B6D717170718A0303030303082A1D1245024102132D3C3B
+              3836343F3E310603030303038456538C5B7D747D8D636566696B6D7170718A03
+              030303030D231912494504414A2F2D2C3B38363432310603030303038254528C
+              555B4E748B61636466696B6D6F718A03030303030D1D14120404044C4A412F2D
+              3C3A373534400603030303038253518C4E4E4E508B74616365676A6C6D718A03
+              030303030E141E121212121211024B432D3C3B37363306030303030381514F8C
+              8C8C8C8C8B7D7C6D6365666A6B6E8A03030303030F3D043D191D232A29204147
+              2F2D3C3B383506030303030381504E5052535456575A747A61636566696C8A03
+              03030303103D040414191D232A292127252F2D3C3B3606030303030380504E4E
+              515253545657595D5F616365666B8A0303030303103D041212121212122A2220
+              27252F2D2C3906030303030380504E8C8C8C8C8C8C56575A5D5F616364688A03
+              03030303153D04120446024812232A292027252F2D2B06030303030380504E8C
+              4E587D788C5456575A5D5F6163728A0303030303173D041245024102131D232A
+              2920272E241C06030303030379504E8C5B7D747D8D535456575A5D6273768A03
+              03030303173D0412494504414A191D232A22261F1C1C06030303030379504E8C
+              555B4E748B52535456575E7576768A0303030303173D04120404044C4A411919
+              260A0A0A0A0A0A030303030379504E8C4E4E4E508B7452525E85858585858503
+              03030303173D041212121212114B4B44250A171B1A1A07030303030379504E8C
+              8C8C8C8C8B7C7C665F85797E7F7F830303030303183D040404040404044D4248
+              260A311B1B0703030303030377504E4E4E4E4E4E4E4E72785E85717E7E830303
+              03030303183D04040404040404040404260A311B070303030303030377504E4E
+              4E4E4E4E4E4E4E4E5E85717E8303030303030303180404040404040404040404
+              200A31070303030303030303774E4E4E4E4E4E4E4E4E4E4E5A85718303030303
+              03030303161616161616161616161616160A070303030303030303037B7B7B7B
+              7B7B7B7B7B7B7B7B7B858303030303030303}
+            NumGlyphs = 2
+            OnClick = APISettingButtonClick
+          end
+          object Panel5: TPanel
+            Left = 224
+            Top = 7
+            Width = 901
+            Height = 28
+            Anchors = [akLeft, akTop, akRight]
+            BevelInner = bvLowered
+            TabOrder = 0
+            object Label60: TLabel
+              Left = 2
+              Top = 2
+              Width = 96
+              Height = 24
+              Align = alLeft
+              Alignment = taCenter
+              Caption = #30070#26085#31558#25976#19978#38480
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              Transparent = False
+              ExplicitHeight = 18
+            end
+            object Label61: TLabel
+              Left = 354
+              Top = 2
+              Width = 96
+              Height = 24
+              Align = alLeft
+              Alignment = taCenter
+              Caption = #26368#24460#20462#25913#26178#38291
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              Transparent = False
+              ExplicitHeight = 18
+            end
+            object ThroughputCtrlLabel: TLabel
+              Left = 151
+              Top = 2
+              Width = 70
+              Height = 24
+              Align = alLeft
+              Alignment = taCenter
+              Caption = ' '#25104#20132#31558#25976' '
+              Transparent = False
+              ExplicitLeft = 157
+              ExplicitTop = 4
+            end
+            object Label64: TLabel
+              Left = 221
+              Top = 2
+              Width = 48
+              Height = 24
+              Align = alLeft
+              Alignment = taCenter
+              Caption = #20462#25913#32773
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Tahoma'
+              Font.Style = [fsBold]
+              ParentFont = False
+              Transparent = False
+              ExplicitHeight = 18
+            end
+            object DayLimitText: TStaticText
+              Left = 98
+              Top = 2
+              Width = 53
+              Height = 24
+              Align = alLeft
+              Alignment = taCenter
+              AutoSize = False
+              Caption = '----'
+              TabOrder = 0
+              ExplicitLeft = 92
+              ExplicitTop = 4
+            end
+            object ModifyTimeText: TStaticText
+              Left = 450
+              Top = 2
+              Width = 449
+              Height = 24
+              Align = alClient
+              AutoSize = False
+              Caption = '----'
+              TabOrder = 1
+              ExplicitLeft = 435
+              ExplicitWidth = 464
+            end
+            object EditorText: TStaticText
+              Left = 269
+              Top = 2
+              Width = 85
+              Height = 24
+              Align = alLeft
+              AutoSize = False
+              Caption = '-----'
+              TabOrder = 2
+              ExplicitLeft = 260
+            end
+          end
+        end
+      end
     end
   end
   object AdminPageControl: TPageControl
-    Left = 673
-    Top = 503
+    Left = 633
+    Top = 495
     Width = 849
     Height = 473
     ActivePage = LogTabSheet
@@ -8877,7 +9190,7 @@ object SimTFXForm: TSimTFXForm
   end
   object StatusBar: TStatusBar
     Left = 0
-    Top = 806
+    Top = 567
     Width = 1140
     Height = 32
     Panels = <
@@ -9055,7 +9368,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 515
     Bitmap = {
-      494C010106000900CC0017001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000900180117001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000005C0000003000000001002000000000000045
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9638,7 +9951,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 395
     Bitmap = {
-      494C01010E001100CC0018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E001100180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10839,7 +11152,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 455
     Bitmap = {
-      494C010111001500CC0018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010111001500180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006000000078000000010020000000000000B4
       0000000000000000000000000000000000000000000000000000000000000000
       00009E7A5F00A1806600A1806600A1806600A1806600A1806600A1806600A180
@@ -12605,7 +12918,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 647
     Bitmap = {
-      494C010103000500CC0018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -12924,5 +13237,36 @@ object SimTFXForm: TSimTFXForm
     OnMessage = SpeedyFLEXOPTSubscriberMessage
     Left = 405
     Top = 486
+  end
+  object APIStatePublisher: TPublisher
+    MessageObject = MessageObject
+    Subject = 'DTSAdapter'
+    Key = 'query_locked_account'
+    Left = 292
+    Top = 126
+  end
+  object APIStateSubscriber: TSubscriber
+    MessageObject = MessageObject
+    Subject = 'DTSAdapter'
+    Key = 'locked_account'
+    OnMessage = APIStateSubscriberMessage
+    Left = 397
+    Top = 126
+  end
+  object APISettingSubscriber: TSubscriber
+    MessageObject = MessageObject
+    Subject = 'DTSAdapter'
+    Key = 'order_threshold'
+    OnMessage = APISettingSubscriberMessage
+    Left = 405
+    Top = 182
+  end
+  object APIPopupMenu: TPopupMenu
+    Left = 121
+    Top = 152
+    object MenuItem1: TMenuItem
+      Caption = #35299#37782#24115#34399
+      OnClick = MenuItem1Click
+    end
   end
 end

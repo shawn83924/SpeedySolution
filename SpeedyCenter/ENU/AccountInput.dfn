@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\AccountInput.dfm" source-language="zh-TW" target-language="en-US" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\AccountInput.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">41449.5300925926</prop>
+        <prop prop-type="OrigDateTime">41449.5227777778</prop>
+        <prop prop-type="XlatDateTime">40455.8303240741</prop>
+        <prop prop-type="Translated">14</prop>
+        <prop prop-type="UnTranslated">48</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:AccountInputForm.Left" resname="O:AccountInputForm.Left">
+        <source>642</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428009</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Top" resname="O:AccountInputForm.Top">
+        <source>341</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428009</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.BorderStyle" resname="O:AccountInputForm.BorderStyle">
+        <source>bsToolWindow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428125</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Caption" resname="O:AccountInputForm.Caption">
+        <source>'帳號輸入'</source>
+        <target>'Input Account'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428125</prop><prop prop-type="Status">1</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.ClientHeight" resname="O:AccountInputForm.ClientHeight">
+        <source>85</source>
+        <target>88</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428125</prop><prop prop-type="Status">1</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.ClientWidth" resname="O:AccountInputForm.ClientWidth">
+        <source>252</source>
+        <target>314</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428125</prop><prop prop-type="Status">1</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Color" resname="O:AccountInputForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428125</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Font.Charset" resname="O:AccountInputForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428241</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Font.Color" resname="O:AccountInputForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428241</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Font.Height" resname="O:AccountInputForm.Font.Height">
+        <source>-18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428241</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Font.Name" resname="O:AccountInputForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428241</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Font.Style" resname="O:AccountInputForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428241</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.OldCreateOrder" resname="O:AccountInputForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Position" resname="O:AccountInputForm.Position">
+        <source>poDesktopCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.Scaled" resname="O:AccountInputForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.PixelsPerInch" resname="O:AccountInputForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.TextHeight" resname="O:AccountInputForm.TextHeight">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TAccountInputForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label1.Left" resname="O:AccountInputForm.O:Label1.Left">
+        <source>9</source>
+        <target>8</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428356</prop><prop prop-type="Status">1</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label1.Top" resname="O:AccountInputForm.O:Label1.Top">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label1.Width" resname="O:AccountInputForm.O:Label1.Width">
+        <source>36</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label1.Height" resname="O:AccountInputForm.O:Label1.Height">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label1.Caption" resname="O:AccountInputForm.O:Label1.Caption">
+        <source>'帳號'</source>
+        <target>'Account'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">1</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label2.Left" resname="O:AccountInputForm.O:Label2.Left">
+        <source>153</source>
+        <target>176</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">1</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label2.Top" resname="O:AccountInputForm.O:Label2.Top">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">1</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label2.Width" resname="O:AccountInputForm.O:Label2.Width">
+        <source>54</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label2.Height" resname="O:AccountInputForm.O:Label2.Height">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:Label2.Caption" resname="O:AccountInputForm.O:Label2.Caption">
+        <source>'身份別'</source>
+        <target>'Account Flag'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">1</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.Left" resname="O:AccountInputForm.O:AccountEdit.Left">
+        <source>49</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      <alt-trans>  <source>54</source>
+          <target>80</target>
+          <prop-group name="ITEFieldProp">
+          <prop prop-type="Modified">41449.1967594097</prop></prop-group>
+        </alt-trans></trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.Top" resname="O:AccountInputForm.O:AccountEdit.Top">
+        <source>12</source>
+        <target>8</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">1</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.Width" resname="O:AccountInputForm.O:AccountEdit.Width">
+        <source>101</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.Height" resname="O:AccountInputForm.O:AccountEdit.Height">
+        <source>30</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428588</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.ImeMode" resname="O:AccountInputForm.O:AccountEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428704</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.MaxLength" resname="O:AccountInputForm.O:AccountEdit.MaxLength">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428704</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountEdit.TabOrder" resname="O:AccountInputForm.O:AccountEdit.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428704</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.Left" resname="O:AccountInputForm.O:AccountFlagEdit.Left">
+        <source>210</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428704</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      <alt-trans>  <source>214</source>
+          <target>280</target>
+          <prop-group name="ITEFieldProp">
+          <prop prop-type="Modified">41448.5472664005</prop></prop-group>
+        </alt-trans></trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.Top" resname="O:AccountInputForm.O:AccountFlagEdit.Top">
+        <source>12</source>
+        <target>8</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428704</prop><prop prop-type="Status">1</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.Width" resname="O:AccountInputForm.O:AccountFlagEdit.Width">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428819</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.Height" resname="O:AccountInputForm.O:AccountFlagEdit.Height">
+        <source>30</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428819</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.ImeMode" resname="O:AccountInputForm.O:AccountFlagEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428819</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.MaxLength" resname="O:AccountInputForm.O:AccountFlagEdit.MaxLength">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428819</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:AccountFlagEdit.TabOrder" resname="O:AccountInputForm.O:AccountFlagEdit.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428819</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Left" resname="O:AccountInputForm.O:BitBtn1.Left">
+        <source>24</source>
+        <target>56</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428935</prop><prop prop-type="Status">1</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Top" resname="O:AccountInputForm.O:BitBtn1.Top">
+        <source>48</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428935</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Width" resname="O:AccountInputForm.O:BitBtn1.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428935</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Height" resname="O:AccountInputForm.O:BitBtn1.Height">
+        <source>28</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428935</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Caption" resname="O:AccountInputForm.O:BitBtn1.Caption">
+        <source>'確定'</source>
+        <target>'OK'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079428935</prop><prop prop-type="Status">1</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Default" resname="O:AccountInputForm.O:BitBtn1.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.DoubleBuffered" resname="O:AccountInputForm.O:BitBtn1.DoubleBuffered">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.Glyph.Data" resname="O:AccountInputForm.O:BitBtn1.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.NumGlyphs" resname="O:AccountInputForm.O:BitBtn1.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.ParentDoubleBuffered" resname="O:AccountInputForm.O:BitBtn1.ParentDoubleBuffered">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.TabOrder" resname="O:AccountInputForm.O:BitBtn1.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429051</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn1.OnClick" resname="O:AccountInputForm.O:BitBtn1.OnClick">
+        <source>BitBtn1Click</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429167</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Left" resname="O:AccountInputForm.O:BitBtn2.Left">
+        <source>128</source>
+        <target>168</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429167</prop><prop prop-type="Status">1</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Top" resname="O:AccountInputForm.O:BitBtn2.Top">
+        <source>48</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429167</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Width" resname="O:AccountInputForm.O:BitBtn2.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429167</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Height" resname="O:AccountInputForm.O:BitBtn2.Height">
+        <source>28</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429167</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Caption" resname="O:AccountInputForm.O:BitBtn2.Caption">
+        <source>'取消'</source>
+        <target>'Cancel'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429282</prop><prop prop-type="Status">1</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.DoubleBuffered" resname="O:AccountInputForm.O:BitBtn2.DoubleBuffered">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.Kind" resname="O:AccountInputForm.O:BitBtn2.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.ParentDoubleBuffered" resname="O:AccountInputForm.O:BitBtn2.ParentDoubleBuffered">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:AccountInputForm.O:BitBtn2.TabOrder" resname="O:AccountInputForm.O:BitBtn2.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079429282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

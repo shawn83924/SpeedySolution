@@ -1,0 +1,2 @@
+IF (InstallationFolder.Text <> )  THEN  Continue.Enabled := True;
+IF (InstallationFolder.Text = )  THEN  Continue.Enabled := False;

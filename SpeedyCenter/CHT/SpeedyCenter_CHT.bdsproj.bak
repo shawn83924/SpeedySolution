@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">W32ResourceDLL.Personality</Option>
+			<Option Name="ProjectType">ResourceDLL</Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{B1F149EE-AF1F-44EA-8CF3-0DD05B5BB751}</Option>
+		</Option>
+	</PersonalityInfo>
+	<W32ResourceDLL.Personality>
+		<Source>
+			<Source Name="MainSource">SpeedyCenter.dpr</Source>
+		</Source>
+		<Options>
+			<Options Name="BaseLang">1028</Options>
+			<Options Name="TargetName">..\Debug\SpeedyCenter.CHT</Options>
+			<Options Name="BRCC_IncludePath">..\MDComponent\vcl;..\VCL</Options>
+			<Options Name="Company"></Options>
+			<Options Name="Configuration"></Options>
+			<Options Name="Copyright"></Options>
+			<Options Name="Description"></Options>
+			<Options Name="Trademark"></Options>
+			<Options Name="Product"></Options>
+			<Options Name="ProductVersion"></Options>
+			<Options Name="Title"></Options>
+			<Options Name="FileVersion"></Options>
+			<Options Name="Evidence"></Options>
+			<Options Name="KeyFile"></Options>
+			<Options Name="KeyName"></Options>
+		</Options>
+		<FileList>
+			<File FileName="vcl\DBLOGDLG.dfm" ContainerId="W32Form" ModuleName="DBLOGDLG.dfm"/>
+			<File FileName="AccountInput.dfm" ContainerId="W32Form" ModuleName="AccountInput.dfm"/>
+			<File FileName="AlarmForm.dfm" ContainerId="W32Form" ModuleName="AlarmForm.dfm"/>
+			<File FileName="AppInfo.dfm" ContainerId="W32Form" ModuleName="AppInfo.dfm"/>
+			<File FileName="EventViewer.dfm" ContainerId="W32Form" ModuleName="EventViewer.dfm"/>
+			<File FileName="FormAbout.dfm" ContainerId="W32Form" ModuleName="FormAbout.dfm"/>
+			<File FileName="LineEditForm.dfm" ContainerId="W32Form" ModuleName="LineEditForm.dfm"/>
+			<File FileName="Login.dfm" ContainerId="W32Form" ModuleName="Login.dfm"/>
+			<File FileName="MDIMain.dfm" ContainerId="W32Form" ModuleName="MDIMain.dfm"/>
+			<File FileName="NewAccountForm.dfm" ContainerId="W32Form" ModuleName="NewAccountForm.dfm"/>
+			<File FileName="NewSession.dfm" ContainerId="W32Form" ModuleName="NewSession.dfm"/>
+			<File FileName="NewUser.dfm" ContainerId="W32Form" ModuleName="NewUser.dfm"/>
+			<File FileName="PrcoessSettingForm.dfm" ContainerId="W32Form" ModuleName="PrcoessSettingForm.dfm"/>
+			<File FileName="ProfileGraph.dfm" ContainerId="W32Form" ModuleName="ProfileGraph.dfm"/>
+			<File FileName="SearchSpeedyForm.dfm" ContainerId="W32Form" ModuleName="SearchSpeedyForm.dfm"/>
+			<File FileName="SeqSettingForm.dfm" ContainerId="W32Form" ModuleName="SeqSettingForm.dfm"/>
+			<File FileName="SettingForm.dfm" ContainerId="W32Form" ModuleName="SettingForm.dfm"/>
+			<File FileName="SimTFXMain.dfm" ContainerId="W32Form" ModuleName="SimTFXMain.dfm"/>
+			<File FileName="SpeedyServerForm.dfm" ContainerId="W32Form" ModuleName="SpeedyServerForm.dfm"/>
+			<File FileName="SystemInfoForm.dfm" ContainerId="W32Form" ModuleName="SystemInfoForm.dfm"/>
+			<File FileName="TagViewer.dfm" ContainerId="W32Form" ModuleName="TagViewer.dfm"/>
+			<File FileName="TerminalForm.dfm" ContainerId="W32Form" ModuleName="TerminalForm.dfm"/>
+			<File FileName="VersionUnit.dfm" ContainerId="W32Form" ModuleName="VersionUnit.dfm"/>
+			<File FileName="WarningDialog.dfm" ContainerId="W32Form" ModuleName="WarningDialog.dfm"/>
+			<File FileName="SpeedyCenter_DRC.rc" ContainerId="W32RC" ModuleName="SpeedyCenter_DRC.rc"/>
+			<File FileName="StarWaveFrame.dfm" ContainerId="W32Form" ModuleName="StarWaveFrame.dfm"/>
+			<File FileName="PATSFrame.dfm" ContainerId="W32Form" ModuleName="PATSFrame.dfm"/>
+			<File FileName="GroupServer.dfm" ContainerId="W32Form" ModuleName="GroupServer.dfm"/>
+			<File FileName="Debug\SpeedyCenter_DRC.rc" ContainerId="W32RC" ModuleName="SpeedyCenter_DRC.rc"/>
+			<File FileName="ChangeSessionStatus.dfm" ContainerId="W32Form" ModuleName="ChangeSessionStatus.dfm"/>
+			<File FileName="..\..\VCL\CHT\NewValueForm.dfm" ContainerId="W32Form" ModuleName="NewValueForm"/>
+			<File FileName="C\src\VCL\NewValueForm.dfm" ContainerId="W32Form" ModuleName="NewValueForm.dfm"/>
+		</FileList>
+	</W32ResourceDLL.Personality>
+</BorlandProject>

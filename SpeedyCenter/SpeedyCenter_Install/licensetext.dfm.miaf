@@ -1,0 +1,2 @@
+IF (License.Text = I accept)  THEN  Continue.Enabled := True;
+IF (License.Text <> I accept)  THEN  Continue.Enabled := False;

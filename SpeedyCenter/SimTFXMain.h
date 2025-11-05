@@ -436,6 +436,24 @@ __published:	// IDE-managed Components
 	TComboBox *CallPutComboBox;
 	TSubscriber *SpeedyFLEXFUTSubscriber;
 	TSubscriber *SpeedyFLEXOPTSubscriber;
+	TTabSheet *APITabSheet;
+	TListView *APILockedListView;
+	TSpeedButton *APIStateButton;
+	TPanel *Panel1;
+	TPanel *Panel5;
+	TLabel *Label60;
+	TLabel *Label61;
+	TLabel *ThroughputCtrlLabel;
+	TLabel *Label64;
+	TStaticText *DayLimitText;
+	TStaticText *ModifyTimeText;
+	TStaticText *EditorText;
+	TSpeedButton *APISettingButton;
+	TPublisher *APIStatePublisher;
+	TSubscriber *APIStateSubscriber;
+	TSubscriber *APISettingSubscriber;
+	TPopupMenu *APIPopupMenu;
+	TMenuItem *MenuItem1;
     void __fastcall MessageObjectConnected(TObject *Sender);
     void __fastcall MessageObjectError(TObject *Sender);
     void __fastcall LogonButtonClick(TObject *Sender);
@@ -646,6 +664,13 @@ __published:	// IDE-managed Components
 	void __fastcall NewFLEXButtonClick(TObject *Sender);
 	void __fastcall SpeedyFLEXOPTSubscriberMessage(const MString &Subject, const MString &Key,
           MTree *Tree);
+	void __fastcall APIStateButtonClick(TObject *Sender);
+	void __fastcall APIStateSubscriberMessage(const MString &Subject, const MString &Key,
+          MTree *Tree);
+	void __fastcall APISettingSubscriberMessage(const MString &Subject, const MString &Key,
+          MTree *Tree);
+	void __fastcall APISettingButtonClick(TObject *Sender);
+	void __fastcall MenuItem1Click(TObject *Sender);
 
 
 
@@ -912,6 +937,7 @@ private:	// User declarations
 	void __fastcall SetLogon( bool IsLogon );
 	String __fastcall GetStatusString( UFCType::UInt32 Status );
 	void __fastcall SetSessionStatusString( bool IsTSE, UFCType::UInt32 Status );
+	void __fastcall QueryAPISetting( void );
 public:		// User declarations
 	__fastcall TSimTFXForm(TComponent* Owner);
 	void __fastcall LogonOK( const AnsiString& HostName, int Version );

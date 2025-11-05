@@ -1,0 +1,1413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\PATSFrame.dfm" source-language="zh-TW" target-language="zh-CN" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\PATSFrame.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">45051.7902083333</prop>
+        <prop prop-type="OrigDateTime">44978.0199305556</prop>
+        <prop prop-type="XlatDateTime">41008.7413657407</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">278</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:ConnectionFrame.Left" resname="O:ConnectionFrame.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Top" resname="O:ConnectionFrame.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Width" resname="O:ConnectionFrame.Width">
+        <source>546</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Height" resname="O:ConnectionFrame.Height">
+        <source>334</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Margins.Left" resname="O:ConnectionFrame.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222685</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Margins.Top" resname="O:ConnectionFrame.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222685</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Margins.Right" resname="O:ConnectionFrame.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Margins.Bottom" resname="O:ConnectionFrame.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.Align" resname="O:ConnectionFrame.Align">
+        <source>alTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7484265972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.TabOrder" resname="O:ConnectionFrame.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">0</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.DesignSize[0]" resname="O:ConnectionFrame.DesignSize[0]">
+        <source>546</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.DesignSize[1]" resname="O:ConnectionFrame.DesignSize[1]">
+        <source>334</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TConnectionFrame</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Left" resname="O:ConnectionFrame.O:Panel5.Left">
+        <source>400</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Top" resname="O:ConnectionFrame.O:Panel5.Top">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Width" resname="O:ConnectionFrame.O:Panel5.Width">
+        <source>143</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Height" resname="O:ConnectionFrame.O:Panel5.Height">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Margins.Left" resname="O:ConnectionFrame.O:Panel5.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Margins.Top" resname="O:ConnectionFrame.O:Panel5.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Margins.Right" resname="O:ConnectionFrame.O:Panel5.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222801</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Anchors" resname="O:ConnectionFrame.O:Panel5.Anchors">
+        <source>[akLeft, akTop, akRight]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.BevelOuter" resname="O:ConnectionFrame.O:Panel5.BevelOuter">
+        <source>bvNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.Color" resname="O:ConnectionFrame.O:Panel5.Color">
+        <source>2311680</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.ParentBackground" resname="O:ConnectionFrame.O:Panel5.ParentBackground">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.TabOrder" resname="O:ConnectionFrame.O:Panel5.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Left" resname="O:ConnectionFrame.O:Panel5.O:Label50.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Top" resname="O:ConnectionFrame.O:Panel5.O:Label50.Top">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181829</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Width" resname="O:ConnectionFrame.O:Panel5.O:Label50.Width">
+        <source>133</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Height" resname="O:ConnectionFrame.O:Panel5.O:Label50.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label50.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label50.Caption">
+        <source>'最大委託流量:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Color" resname="O:ConnectionFrame.O:Panel5.O:Label50.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label50.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label50.Font.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label50.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label50.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label50.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label50.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428181944</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label50.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label50.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Left" resname="O:ConnectionFrame.O:Panel5.O:Label51.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Top" resname="O:ConnectionFrame.O:Panel5.O:Label51.Top">
+        <source>71</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Width" resname="O:ConnectionFrame.O:Panel5.O:Label51.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Height" resname="O:ConnectionFrame.O:Panel5.O:Label51.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label51.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902222917</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label51.Caption">
+        <source>'委託流量:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Color" resname="O:ConnectionFrame.O:Panel5.O:Label51.Color">
+        <source>clYellow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label51.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label51.Font.Color">
+        <source>clYellow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label51.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label51.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818206</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label51.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label51.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label51.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label51.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Left" resname="O:ConnectionFrame.O:Panel5.O:Label52.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Top" resname="O:ConnectionFrame.O:Panel5.O:Label52.Top">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Width" resname="O:ConnectionFrame.O:Panel5.O:Label52.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Height" resname="O:ConnectionFrame.O:Panel5.O:Label52.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label52.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label52.Caption">
+        <source>'回報流量:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Color" resname="O:ConnectionFrame.O:Panel5.O:Label52.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label52.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label52.Font.Color">
+        <source>clLime</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182176</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label52.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label52.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label52.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label52.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label52.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label52.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Left" resname="O:ConnectionFrame.O:Panel5.O:Label53.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Top" resname="O:ConnectionFrame.O:Panel5.O:Label53.Top">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Width" resname="O:ConnectionFrame.O:Panel5.O:Label53.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Height" resname="O:ConnectionFrame.O:Panel5.O:Label53.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label53.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223032</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label53.Caption">
+        <source>'連線狀態:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Color" resname="O:ConnectionFrame.O:Panel5.O:Label53.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182292</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label53.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label53.Font.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label53.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label53.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label53.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label53.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label53.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label53.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Left">
+        <source>151</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Top">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Width">
+        <source>133</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182407</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Caption">
+        <source>'0.0 筆/秒'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182523</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSMaxTPLabel.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Left">
+        <source>106</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Top">
+        <source>71</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Width">
+        <source>178</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Height">
+        <source>27</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223148</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Caption">
+        <source>'0.0 筆/秒'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182639</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">129</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTPLabel.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">130</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">131</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Top">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">132</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Width">
+        <source>177</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">133</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182755</prop><prop prop-type="Status">0</prop><prop prop-type="Order">134</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">135</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">136</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">137</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">138</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">139</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">140</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Caption">
+        <source>'0.0 筆/秒'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">141</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">142</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">143</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">144</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">145</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">146</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">147</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">148</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTPLabel.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.742818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">149</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Left" resname="O:ConnectionFrame.O:Panel5.O:Label54.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">150</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Top" resname="O:ConnectionFrame.O:Panel5.O:Label54.Top">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">151</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Width" resname="O:ConnectionFrame.O:Panel5.O:Label54.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">152</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Height" resname="O:ConnectionFrame.O:Panel5.O:Label54.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">153</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">154</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">155</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">156</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label54.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">157</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label54.Caption">
+        <source>'總委託量:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">158</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Color" resname="O:ConnectionFrame.O:Panel5.O:Label54.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">159</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label54.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">160</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label54.Font.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">161</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label54.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">162</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label54.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428182986</prop><prop prop-type="Status">0</prop><prop prop-type="Order">163</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label54.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">164</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label54.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">165</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label54.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label54.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">166</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Left">
+        <source>151</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">167</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Top">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">168</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Width">
+        <source>133</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">169</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Height">
+        <source>27</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">170</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">171</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223264</prop><prop prop-type="Status">0</prop><prop prop-type="Order">172</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">173</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">174</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">175</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">176</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Caption">
+        <source>'0 筆'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">177</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183102</prop><prop prop-type="Status">0</prop><prop prop-type="Order">178</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">179</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">180</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">181</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">182</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">183</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">184</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSOrderTotalLabel.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">185</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Left" resname="O:ConnectionFrame.O:Panel5.O:Label56.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">186</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Top" resname="O:ConnectionFrame.O:Panel5.O:Label56.Top">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">187</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Width" resname="O:ConnectionFrame.O:Panel5.O:Label56.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183218</prop><prop prop-type="Status">0</prop><prop prop-type="Order">188</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Height" resname="O:ConnectionFrame.O:Panel5.O:Label56.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">189</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">190</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">191</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">192</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:Label56.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">193</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Caption" resname="O:ConnectionFrame.O:Panel5.O:Label56.Caption">
+        <source>'總回報量:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">194</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Color" resname="O:ConnectionFrame.O:Panel5.O:Label56.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">195</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:Label56.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">196</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:Label56.Font.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">197</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:Label56.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">198</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:Label56.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">199</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:Label56.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">200</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:Label56.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">201</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:Label56.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:Label56.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">202</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Left">
+        <source>151</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">203</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Top">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">204</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Width">
+        <source>133</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">205</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">206</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">207</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">208</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">209</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">210</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">211</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">212</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Caption">
+        <source>'0 筆'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">213</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Color">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">214</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">215</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">216</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183449</prop><prop prop-type="Status">0</prop><prop prop-type="Order">217</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">218</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">219</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">220</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSExecTotalLabel.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">221</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Left">
+        <source>106</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">222</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Top">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">223</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Width" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Width">
+        <source>178</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">224</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Height">
+        <source>31</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">225</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Left" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.790222338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">226</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Top" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">227</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Right" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">228</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Bottom" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">229</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Alignment" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Alignment">
+        <source>taCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">230</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.AutoSize" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">231</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.BorderStyle" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.BorderStyle">
+        <source>sbsSunken</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">232</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Caption" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Caption">
+        <source>'斷線'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">233</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Color">
+        <source>clRed</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">234</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Charset" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">235</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Color" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Color">
+        <source>cl3DLight</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">236</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Height" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Height">
+        <source>-21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">237</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Name" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">238</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Style" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">239</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.ParentColor" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.ParentColor">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">240</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.ParentFont" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">241</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.TabOrder" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">242</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:Panel5.O:PATSStateText.Transparent" resname="O:ConnectionFrame.O:Panel5.O:PATSStateText.Transparent">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">243</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Left" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Left">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">244</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Top" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Top">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">245</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Width" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Width">
+        <source>395</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">246</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Height" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Height">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">247</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Left" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">248</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Top" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">249</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Right" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">250</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Bottom" resname="O:ConnectionFrame.O:PatsPerformanceGauge.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">251</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.DrawFill" resname="O:ConnectionFrame.O:PatsPerformanceGauge.DrawFill">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">252</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.MaxValue" resname="O:ConnectionFrame.O:PatsPerformanceGauge.MaxValue">
+        <source>3000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">253</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.BackgroundColor" resname="O:ConnectionFrame.O:PatsPerformanceGauge.BackgroundColor">
+        <source>2311680</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">254</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.GridColor" resname="O:ConnectionFrame.O:PatsPerformanceGauge.GridColor">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">255</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.LineColor" resname="O:ConnectionFrame.O:PatsPerformanceGauge.LineColor">
+        <source>clLime</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">256</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:PatsPerformanceGauge.SecondLineColor" resname="O:ConnectionFrame.O:PatsPerformanceGauge.SecondLineColor">
+        <source>clYellow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">257</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Left" resname="O:ConnectionFrame.O:TitleStaticText.Left">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">258</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Top" resname="O:ConnectionFrame.O:TitleStaticText.Top">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">259</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Width" resname="O:ConnectionFrame.O:TitleStaticText.Width">
+        <source>565</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">260</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Height" resname="O:ConnectionFrame.O:TitleStaticText.Height">
+        <source>33</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">261</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Margins.Left" resname="O:ConnectionFrame.O:TitleStaticText.Margins.Left">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">262</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Margins.Top" resname="O:ConnectionFrame.O:TitleStaticText.Margins.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">263</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Margins.Right" resname="O:ConnectionFrame.O:TitleStaticText.Margins.Right">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">264</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Margins.Bottom" resname="O:ConnectionFrame.O:TitleStaticText.Margins.Bottom">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7902223495</prop><prop prop-type="Status">0</prop><prop prop-type="Order">265</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.AutoSize" resname="O:ConnectionFrame.O:TitleStaticText.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">266</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Caption" resname="O:ConnectionFrame.O:TitleStaticText.Caption">
+        <source>'Speedy PATS'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">267</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Font.Charset" resname="O:ConnectionFrame.O:TitleStaticText.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">268</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Font.Color" resname="O:ConnectionFrame.O:TitleStaticText.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">269</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Font.Height" resname="O:ConnectionFrame.O:TitleStaticText.Font.Height">
+        <source>-24</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428183912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">270</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Font.Name" resname="O:ConnectionFrame.O:TitleStaticText.Font.Name">
+        <source>'Arial'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428184028</prop><prop prop-type="Status">0</prop><prop prop-type="Order">271</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.Font.Style" resname="O:ConnectionFrame.O:TitleStaticText.Font.Style">
+        <source>[fsBold]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428184028</prop><prop prop-type="Status">0</prop><prop prop-type="Order">272</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.ParentFont" resname="O:ConnectionFrame.O:TitleStaticText.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428184028</prop><prop prop-type="Status">0</prop><prop prop-type="Order">273</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TitleStaticText.TabOrder" resname="O:ConnectionFrame.O:TitleStaticText.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7428184028</prop><prop prop-type="Status">0</prop><prop prop-type="Order">274</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TimeoutTimer.Enabled" resname="O:ConnectionFrame.O:TimeoutTimer.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7542349768</prop><prop prop-type="Status">0</prop><prop prop-type="Order">275</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TimeoutTimer.OnTimer" resname="O:ConnectionFrame.O:TimeoutTimer.OnTimer">
+        <source>TimeoutTimerTimer</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7542349768</prop><prop prop-type="Status">0</prop><prop prop-type="Order">276</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TimeoutTimer.Left" resname="O:ConnectionFrame.O:TimeoutTimer.Left">
+        <source>704</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7542349768</prop><prop prop-type="Status">0</prop><prop prop-type="Order">277</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ConnectionFrame.O:TimeoutTimer.Top" resname="O:ConnectionFrame.O:TimeoutTimer.Top">
+        <source>176</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41008.7542349768</prop><prop prop-type="Status">0</prop><prop prop-type="Order">278</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

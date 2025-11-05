@@ -106,7 +106,7 @@
         <TASM_Debugging>None</TASM_Debugging>
         <DCC_ResourcePath>..\..\OrderTest;$(DCC_ResourcePath)</DCC_ResourcePath>
         <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
-        <Custom_Styles>&quot;Sapphire Kamri|VCLSTYLE|$(PUBLIC)\Documents\Embarcadero\Studio\15.0\Styles\SapphireKamri.vsf&quot;</Custom_Styles>
+        <Custom_Styles>&quot;Sapphire Kamri|VCLSTYLE|$(BDSCOMMONDIR)\Styles\SapphireKamri.vsf&quot;;Windows10|VCLSTYLE|$(BDSCOMMONDIR)\Styles\Windows10.vsf</Custom_Styles>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <PackageImports>bindcomp;bindcompdbx;bindengine;$(PackageImports)</PackageImports>
@@ -154,8 +154,8 @@
         <VerInfo_MinorVer>0</VerInfo_MinorVer>
         <VerInfo_Release>0</VerInfo_Release>
         <ILINK_LibraryPath>C:\MBus\lib\Win32\;C:\Users\Public\Documents\Embarcadero\Studio\15.0\DCP\;C:\src\VCL;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <VerInfo_Build>72</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileDescription=Monitoring program for Speedy Solution;FileVersion=3.0.0.72;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=3.0.0.72;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Build>73</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileDescription=Monitoring program for Speedy Solution;FileVersion=3.0.0.73;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=3.0.0.73;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
@@ -375,27 +375,28 @@
                     <RDP_Source_Files Name="Item14">StarWaveFrame.dfm</RDP_Source_Files>
                     <RDP_Source_Files Name="Item15">SystemInfoForm.dfm</RDP_Source_Files>
                     <RDP_Source_Files Name="Item16">TagViewer.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item17">ExceptionProd.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item18">ExecptionAccount.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item19">FormAbout.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item20">GroupServer.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item21">ItemListForm.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item22">AccountInput.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item23">AlarmForm.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item24">AppInfo.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item25">ChangeSessionStatus.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item26">EventViewer.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item27">NewAccountForm.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item28">NewSession.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item29">NewUser.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item30">PATSFrame.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item31">PrcoessSettingForm.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item32">LineEditForm.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item33">LinkFrame.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item34">Login.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item35">MDIMain.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item36">MessageDialog.dfm</RDP_Source_Files>
-                    <RDP_Source_Files Name="Item37">Debug\SpeedyCenter.drc</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item17">PrcoessSettingForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item18">EventViewer.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item19">ExceptionProd.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item20">ExecptionAccount.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item21">FormAbout.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item22">GroupServer.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item23">AccountInput.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item24">AlarmForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item25">APIForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item26">AppInfo.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item27">ChangeSessionStatus.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item28">MessageDialog.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item29">NewAccountForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item30">NewSession.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item31">NewUser.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item32">PATSFrame.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item33">ItemListForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item34">LineEditForm.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item35">LinkFrame.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item36">Login.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item37">MDIMain.dfm</RDP_Source_Files>
+                    <RDP_Source_Files Name="Item38">Debug\SpeedyCenter.drc</RDP_Source_Files>
                 </RDP_Source_Files>
             </CPlusPlusBuilder.Personality>
             <Platforms>
@@ -403,6 +404,18 @@
                 <Platform value="Win64">False</Platform>
             </Platforms>
             <Deployment Version="3">
+                <DeployFile LocalName="Debug\SpeedyCenter.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>SpeedyCenter.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="SpeedyCenter.res" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="SpeedyCenter.res" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
@@ -447,8 +460,20 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName="Debug\SpeedyCenter.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>SpeedyCenter.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Debug\SpeedyCenter.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="Debug\SpeedyCenter.tds" Configuration="Debug" Class="DebugSymbols"/>
+                <DeployFile LocalName="SpeedyCenter.otares" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -893,6 +918,12 @@
             <DependentOn>AlarmForm.h</DependentOn>
             <BuildOrder>18</BuildOrder>
         </CppCompile>
+        <CppCompile Include="APIForm.cpp">
+            <Form>APISettingForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>APIForm.h</DependentOn>
+            <BuildOrder>40</BuildOrder>
+        </CppCompile>
         <CppCompile Include="AppInfo.cpp">
             <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
             <Form>AppInfoForm</Form>
@@ -1122,25 +1153,26 @@
         <FormResources Include="StarWaveFrame.dfm"/>
         <FormResources Include="SystemInfoForm.dfm"/>
         <FormResources Include="TagViewer.dfm"/>
+        <FormResources Include="PrcoessSettingForm.dfm"/>
+        <FormResources Include="EventViewer.dfm"/>
         <FormResources Include="ExceptionProd.dfm"/>
         <FormResources Include="ExecptionAccount.dfm"/>
         <FormResources Include="FormAbout.dfm"/>
         <FormResources Include="GroupServer.dfm"/>
-        <FormResources Include="ItemListForm.dfm"/>
         <FormResources Include="AccountInput.dfm"/>
         <FormResources Include="AlarmForm.dfm"/>
+        <FormResources Include="APIForm.dfm"/>
         <FormResources Include="AppInfo.dfm"/>
         <FormResources Include="ChangeSessionStatus.dfm"/>
-        <FormResources Include="EventViewer.dfm"/>
+        <FormResources Include="MessageDialog.dfm"/>
         <FormResources Include="NewAccountForm.dfm"/>
         <FormResources Include="NewSession.dfm"/>
         <FormResources Include="NewUser.dfm"/>
         <FormResources Include="PATSFrame.dfm"/>
-        <FormResources Include="PrcoessSettingForm.dfm"/>
+        <FormResources Include="ItemListForm.dfm"/>
         <FormResources Include="LineEditForm.dfm"/>
         <FormResources Include="Login.dfm"/>
         <FormResources Include="MDIMain.dfm"/>
-        <FormResources Include="MessageDialog.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

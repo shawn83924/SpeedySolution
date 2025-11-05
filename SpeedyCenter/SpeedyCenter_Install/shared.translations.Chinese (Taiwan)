@@ -1,0 +1,126 @@
+Please install the common controls update from Microsoft before attempting to install this product.
+Setup resource not found
+Setup resource decompression failure
+Setup database not found
+Runtime error in install: 
+bytes
+KB
+MB
+Attempting to get value of undefined variable 
+Attempting to set value of undefined variable 
+Copying: 
+Unable to copy installation data to local folders
+Downloading Web Media: 
+Unable to download installation data from the web
+Extracting Web Media: 
+Unable to extract installation data downloaded from the web
+Please locate your original setup sources to continue operation
+Original setup sources required to complete operation, sources not found
+General setup failure
+Runtime error in setup script:
+% complete
+bytes received
+InstallAware Wizard
+正在準備安裝,請等待...
+重新下載?
+Downloading of installation data from the web has failed. Would you like to try again?
+ Proxy Information (optional) 
+Proxy &Server:
+Proxy &Port:
+If you choose No, setup will exit. However, you will be able to resume your download from where it left off when you re-run setup.
+&Yes
+&No
+Retry Extraction?
+Extraction of installation data downloaded from the web has failed. What would you like to do?
+&Download a fresh copy of the installation data.
+Try to &extract the existing download data again.
+If you choose Cancel, setup will exit. Your existing download data will be preserved.
+&確認
+&取消
+您確定您想取消?
+Proxy &User:
+Proxy Pass&word:
+嚴重錯誤
+錯誤
+警告
+訊息
+Files in Use
+磁碟空間已滿
+Downloading of installation data from the web has failed. Please make sure you are connected to the Internet.
+Would you like to:
+Try to &resume the broken download?
+Download a &new copy of the data instead?
+If you choose Cancel, setup will exit. However, you will be able to resume your download from where it left off when you re-run setup.
+
+Locating resource
+Connecting to
+Redirecting to
+Beginning data transfer
+Transferring data
+Finishing data transfer
+Beginning component download
+Installing components
+Finishing component download
+Resuming broken download
+Requesting data
+CLASSID available
+Download data recognized
+Saving download information
+Beginning synchronous operation
+Finishing synchronous operation
+Beginning data upload
+Uploading data
+Finishing data upload
+Protocol CLASSID
+Encoding
+Download data recognized and verified
+Class install location
+Decoding
+Loading data handler
+Content disposition attach
+Download data filtered
+CLSID can instantiate
+COM services unavailable
+Direct bind
+Unrecognized download data
+Detecting proxy information
+Accept ranges
+A previously executed setup still has pending operations on the system. Please restart your computer before attempting to install this product.
+Select Setup Language
+Select the language for this installation from the choices below.
+Cannot create folder '{0}'
+InstallAware Wizard
+Unable to remove temporary files
+Unable to create file
+Internal error (unknown compression)
+Cannot start setup - the setup file may be corrupt, or you may have the wrong password. If you downloaded this file, please download a fresh copy. If the file is password protected, check your password and try again.
+Cannot start setup - the setup file may be corrupt, or you may have the wrong password. If you downloaded this file, please download a fresh copy. If the file is password protected, check your password and try again.
+Unknown Error
+Cannot load configuration information
+Configuration failed
+Cannot create temporary folder for extracting installation
+Cannot open compressed data stream
+Can not find archive file
+File is not correct archive
+Can not create output folder
+您確定要取消?
+InstallAware Wizard
+&確認
+&取消
+This installation is password protected. Please &enter the password to begin:
+安裝程式正在檢查安裝資料.請稍後
+Unable to play Flash movie
+Will be &installed on local hard drive
+&Entire feature will be installed on local hard drive
+Entire feature will be &unavailable
+Setup cancelled
+Would you like to try again?
+Unable to create shortcut
+Old file date:
+Old file version:
+New file date:
+New file version: 
+Overwrite
+Would you like to overwrite this file?
+<unknown date>
+<no version information>

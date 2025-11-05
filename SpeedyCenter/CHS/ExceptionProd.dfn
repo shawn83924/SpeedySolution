@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\ExceptionProd.dfm" source-language="zh-TW" target-language="zh-CN" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\ExceptionProd.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">43200.7814583333</prop>
+        <prop prop-type="OrigDateTime">43200.7809259259</prop>
+        <prop prop-type="XlatDateTime">43103.9968981482</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">129</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:ExceptionProdForm.Left" resname="O:ExceptionProdForm.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Top" resname="O:ExceptionProdForm.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.BorderStyle" resname="O:ExceptionProdForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Caption" resname="O:ExceptionProdForm.Caption">
+        <source>'例外商品'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.ClientHeight" resname="O:ExceptionProdForm.ClientHeight">
+        <source>192</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.ClientWidth" resname="O:ExceptionProdForm.ClientWidth">
+        <source>279</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Color" resname="O:ExceptionProdForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Font.Charset" resname="O:ExceptionProdForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Font.Color" resname="O:ExceptionProdForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Font.Height" resname="O:ExceptionProdForm.Font.Height">
+        <source>-13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Font.Name" resname="O:ExceptionProdForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Font.Style" resname="O:ExceptionProdForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.OldCreateOrder" resname="O:ExceptionProdForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Position" resname="O:ExceptionProdForm.Position">
+        <source>poScreenCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.Scaled" resname="O:ExceptionProdForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.PixelsPerInch" resname="O:ExceptionProdForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.TextHeight" resname="O:ExceptionProdForm.TextHeight">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TExceptionProdForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:UserNameLabel.Left" resname="O:ExceptionProdForm.O:UserNameLabel.Left">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:UserNameLabel.Top" resname="O:ExceptionProdForm.O:UserNameLabel.Top">
+        <source>11</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:UserNameLabel.Width" resname="O:ExceptionProdForm.O:UserNameLabel.Width">
+        <source>50</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:UserNameLabel.Height" resname="O:ExceptionProdForm.O:UserNameLabel.Height">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:UserNameLabel.Caption" resname="O:ExceptionProdForm.O:UserNameLabel.Caption">
+        <source>'交易所:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label1.Left" resname="O:ExceptionProdForm.O:Label1.Left">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label1.Top" resname="O:ExceptionProdForm.O:Label1.Top">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label1.Width" resname="O:ExceptionProdForm.O:Label1.Width">
+        <source>35</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label1.Height" resname="O:ExceptionProdForm.O:Label1.Height">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label1.Caption" resname="O:ExceptionProdForm.O:Label1.Caption">
+        <source>'市場:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label2.Left" resname="O:ExceptionProdForm.O:Label2.Left">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label2.Top" resname="O:ExceptionProdForm.O:Label2.Top">
+        <source>103</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label2.Width" resname="O:ExceptionProdForm.O:Label2.Width">
+        <source>35</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label2.Height" resname="O:ExceptionProdForm.O:Label2.Height">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label2.Caption" resname="O:ExceptionProdForm.O:Label2.Caption">
+        <source>'上手:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label3.Left" resname="O:ExceptionProdForm.O:Label3.Left">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label3.Top" resname="O:ExceptionProdForm.O:Label3.Top">
+        <source>73</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label3.Width" resname="O:ExceptionProdForm.O:Label3.Width">
+        <source>35</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label3.Height" resname="O:ExceptionProdForm.O:Label3.Height">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:Label3.Caption" resname="O:ExceptionProdForm.O:Label3.Caption">
+        <source>'商品:'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Left" resname="O:ExceptionProdForm.O:OkBtn.Left">
+        <source>36</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Top" resname="O:ExceptionProdForm.O:OkBtn.Top">
+        <source>153</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Width" resname="O:ExceptionProdForm.O:OkBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Height" resname="O:ExceptionProdForm.O:OkBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Caption" resname="O:ExceptionProdForm.O:OkBtn.Caption">
+        <source>'確定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Default" resname="O:ExceptionProdForm.O:OkBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.Glyph.Data" resname="O:ExceptionProdForm.O:OkBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.ModalResult" resname="O:ExceptionProdForm.O:OkBtn.ModalResult">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.NumGlyphs" resname="O:ExceptionProdForm.O:OkBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:OkBtn.TabOrder" resname="O:ExceptionProdForm.O:OkBtn.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Left" resname="O:ExceptionProdForm.O:CancelBtn.Left">
+        <source>139</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Top" resname="O:ExceptionProdForm.O:CancelBtn.Top">
+        <source>153</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Width" resname="O:ExceptionProdForm.O:CancelBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Height" resname="O:ExceptionProdForm.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Cancel" resname="O:ExceptionProdForm.O:CancelBtn.Cancel">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Caption" resname="O:ExceptionProdForm.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.Glyph.Data" resname="O:ExceptionProdForm.O:CancelBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333333333333333333333333333000033338833333333333333333F3333333333330000333911833333983333333388F333333F333300003339111833391183333338F38F333F88F33300003339111183911118333338F338F3F8338F3300003333911118111118333338F3338F833338F3000033333911111111833333338F33383333F8330000333333911111183333333338F333333F833300003333333111118333333333338F3333383333000033333339111183333333333338F33383333300003333339111118333333333333833338F333300003333391118111833333333338333338F333300003333911183911183333333383338F338F333000033339118333911183333338F33838F338F33000033333913333391113333338FF83338F338F300003333333333333919333333388333338FFF83000033333333333333333333333333333338883300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.ModalResult" resname="O:ExceptionProdForm.O:CancelBtn.ModalResult">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.NumGlyphs" resname="O:ExceptionProdForm.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:CancelBtn.TabOrder" resname="O:ExceptionProdForm.O:CancelBtn.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Left" resname="O:ExceptionProdForm.O:ChComboBox.Left">
+        <source>88</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Top" resname="O:ExceptionProdForm.O:ChComboBox.Top">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Width" resname="O:ExceptionProdForm.O:ChComboBox.Width">
+        <source>145</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Height" resname="O:ExceptionProdForm.O:ChComboBox.Height">
+        <source>24</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Style" resname="O:ExceptionProdForm.O:ChComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Font.Charset" resname="O:ExceptionProdForm.O:ChComboBox.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Font.Color" resname="O:ExceptionProdForm.O:ChComboBox.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Font.Height" resname="O:ExceptionProdForm.O:ChComboBox.Font.Height">
+        <source>-13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Font.Name" resname="O:ExceptionProdForm.O:ChComboBox.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Font.Style" resname="O:ExceptionProdForm.O:ChComboBox.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987396991</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.ItemIndex" resname="O:ExceptionProdForm.O:ChComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.ParentFont" resname="O:ExceptionProdForm.O:ChComboBox.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.TabOrder" resname="O:ExceptionProdForm.O:ChComboBox.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Text" resname="O:ExceptionProdForm.O:ChComboBox.Text">
+        <source>'規則1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Items.Strings[0]" resname="O:ExceptionProdForm.O:ChComboBox.Items.Strings[0]">
+        <source>'規則1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Items.Strings[1]" resname="O:ExceptionProdForm.O:ChComboBox.Items.Strings[1]">
+        <source>'規則2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Items.Strings[2]" resname="O:ExceptionProdForm.O:ChComboBox.Items.Strings[2]">
+        <source>'規則3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Items.Strings[3]" resname="O:ExceptionProdForm.O:ChComboBox.Items.Strings[3]">
+        <source>'規則4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ChComboBox.Items.Strings[4]" resname="O:ExceptionProdForm.O:ChComboBox.Items.Strings[4]">
+        <source>'規則5'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Left" resname="O:ExceptionProdForm.O:ExComboBox.Left">
+        <source>88</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Top" resname="O:ExceptionProdForm.O:ExComboBox.Top">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Width" resname="O:ExceptionProdForm.O:ExComboBox.Width">
+        <source>145</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Height" resname="O:ExceptionProdForm.O:ExComboBox.Height">
+        <source>24</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Style" resname="O:ExceptionProdForm.O:ExComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Font.Charset" resname="O:ExceptionProdForm.O:ExComboBox.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Font.Color" resname="O:ExceptionProdForm.O:ExComboBox.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Font.Height" resname="O:ExceptionProdForm.O:ExComboBox.Font.Height">
+        <source>-13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Font.Name" resname="O:ExceptionProdForm.O:ExComboBox.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Font.Style" resname="O:ExceptionProdForm.O:ExComboBox.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.ItemIndex" resname="O:ExceptionProdForm.O:ExComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.ParentFont" resname="O:ExceptionProdForm.O:ExComboBox.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.TabOrder" resname="O:ExceptionProdForm.O:ExComboBox.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Text" resname="O:ExceptionProdForm.O:ExComboBox.Text">
+        <source>'規則1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Items.Strings[0]" resname="O:ExceptionProdForm.O:ExComboBox.Items.Strings[0]">
+        <source>'規則1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Items.Strings[1]" resname="O:ExceptionProdForm.O:ExComboBox.Items.Strings[1]">
+        <source>'規則2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Items.Strings[2]" resname="O:ExceptionProdForm.O:ExComboBox.Items.Strings[2]">
+        <source>'規則3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Items.Strings[3]" resname="O:ExceptionProdForm.O:ExComboBox.Items.Strings[3]">
+        <source>'規則4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ExComboBox.Items.Strings[4]" resname="O:ExceptionProdForm.O:ExComboBox.Items.Strings[4]">
+        <source>'規則5'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Left" resname="O:ExceptionProdForm.O:MarketComboBox.Left">
+        <source>88</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Top" resname="O:ExceptionProdForm.O:MarketComboBox.Top">
+        <source>38</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Width" resname="O:ExceptionProdForm.O:MarketComboBox.Width">
+        <source>145</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Height" resname="O:ExceptionProdForm.O:MarketComboBox.Height">
+        <source>24</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Style" resname="O:ExceptionProdForm.O:MarketComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Font.Charset" resname="O:ExceptionProdForm.O:MarketComboBox.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Font.Color" resname="O:ExceptionProdForm.O:MarketComboBox.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Font.Height" resname="O:ExceptionProdForm.O:MarketComboBox.Font.Height">
+        <source>-13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Font.Name" resname="O:ExceptionProdForm.O:MarketComboBox.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Font.Style" resname="O:ExceptionProdForm.O:MarketComboBox.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.ItemIndex" resname="O:ExceptionProdForm.O:MarketComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.ParentFont" resname="O:ExceptionProdForm.O:MarketComboBox.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.TabOrder" resname="O:ExceptionProdForm.O:MarketComboBox.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Text" resname="O:ExceptionProdForm.O:MarketComboBox.Text">
+        <source>'期貨'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[0]" resname="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[0]">
+        <source>'期貨'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[1]" resname="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[1]">
+        <source>'選擇權'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[2]" resname="O:ExceptionProdForm.O:MarketComboBox.Items.Strings[2]">
+        <source>'證券'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Left" resname="O:ExceptionProdForm.O:ProdIDEdit.Left">
+        <source>88</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Top" resname="O:ExceptionProdForm.O:ProdIDEdit.Top">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Width" resname="O:ExceptionProdForm.O:ProdIDEdit.Width">
+        <source>145</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Height" resname="O:ExceptionProdForm.O:ProdIDEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Font.Charset" resname="O:ExceptionProdForm.O:ProdIDEdit.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Font.Color" resname="O:ExceptionProdForm.O:ProdIDEdit.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Font.Height" resname="O:ExceptionProdForm.O:ProdIDEdit.Font.Height">
+        <source>-15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Font.Name" resname="O:ExceptionProdForm.O:ProdIDEdit.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.Font.Style" resname="O:ExceptionProdForm.O:ProdIDEdit.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.ParentFont" resname="O:ExceptionProdForm.O:ProdIDEdit.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ProdIDEdit.TabOrder" resname="O:ExceptionProdForm.O:ProdIDEdit.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43103.9987397106</prop><prop prop-type="Status">0</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.Left" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.Left">
+        <source>69</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.Top" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.Top">
+        <source>130</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.Width" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.Width">
+        <source>161</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.Height" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.Height">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.Caption" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.Caption">
+        <source>'修改所有相同的上手'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ExceptionProdForm.O:ApplyAllChCheckBox.TabOrder" resname="O:ExceptionProdForm.O:ApplyAllChCheckBox.TabOrder">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43200.7814783333</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

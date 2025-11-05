@@ -1,0 +1,4 @@
+IF (UserName.Text <> )  THEN  Continue.Enabled := True;
+IF (CompanyName.Text <> )  THEN  Continue.Enabled := True;
+IF (UserName.Text = )  THEN  Continue.Enabled := False;
+IF (CompanyName.Text = )  THEN  Continue.Enabled := False;

@@ -1,0 +1,14 @@
+IF (Key1.Text <> )  THEN  Continue.Enabled := True;
+IF (Key2.Text <> )  THEN  Continue.Enabled := True;
+IF (Key3.Text <> )  THEN  Continue.Enabled := True;
+IF (Key4.Text <> )  THEN  Continue.Enabled := True;
+IF (Key5.Text <> )  THEN  Continue.Enabled := True;
+IF (UserName.Text <> )  THEN  Continue.Enabled := True;
+IF (CompanyName.Text <> )  THEN  Continue.Enabled := True;
+IF (Key1.Text = )  THEN  Continue.Enabled := False;
+IF (Key2.Text = )  THEN  Continue.Enabled := False;
+IF (Key3.Text = )  THEN  Continue.Enabled := False;
+IF (Key4.Text = )  THEN  Continue.Enabled := False;
+IF (Key5.Text = )  THEN  Continue.Enabled := False;
+IF (UserName.Text = )  THEN  Continue.Enabled := False;
+IF (CompanyName.Text = )  THEN  Continue.Enabled := False;

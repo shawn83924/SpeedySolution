@@ -1,0 +1,1947 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\NewSession.dfm" source-language="zh-TW" target-language="zh-CN" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\NewSession.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">42582.9986574074</prop>
+        <prop prop-type="OrigDateTime">42582.9966203704</prop>
+        <prop prop-type="XlatDateTime">40455.8303472222</prop>
+        <prop prop-type="Translated">6</prop>
+        <prop prop-type="UnTranslated">379</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:SessionForm.Left" resname="O:SessionForm.Left">
+        <source>315</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Top" resname="O:SessionForm.Top">
+        <source>192</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.BorderStyle" resname="O:SessionForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Caption" resname="O:SessionForm.Caption">
+        <source>'新增連線'</source>
+        <target>'新增联机'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814468</prop><prop prop-type="Status">1</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.ClientHeight" resname="O:SessionForm.ClientHeight">
+        <source>536</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.ClientWidth" resname="O:SessionForm.ClientWidth">
+        <source>436</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Color" resname="O:SessionForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Font.Charset" resname="O:SessionForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Font.Color" resname="O:SessionForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Font.Height" resname="O:SessionForm.Font.Height">
+        <source>-17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Font.Name" resname="O:SessionForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Font.Style" resname="O:SessionForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.OldCreateOrder" resname="O:SessionForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Position" resname="O:SessionForm.Position">
+        <source>poMainFormCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.Scaled" resname="O:SessionForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.PixelsPerInch" resname="O:SessionForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.TextHeight" resname="O:SessionForm.TextHeight">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TSessionForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Left" resname="O:SessionForm.O:Label13.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Top" resname="O:SessionForm.O:Label13.Top">
+        <source>84</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Width" resname="O:SessionForm.O:Label13.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Height" resname="O:SessionForm.O:Label13.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Alignment" resname="O:SessionForm.O:Label13.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.AutoSize" resname="O:SessionForm.O:Label13.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label13.Caption" resname="O:SessionForm.O:Label13.Caption">
+        <source>'FIX版本'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814815</prop><prop prop-type="Status">1</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Left" resname="O:SessionForm.O:Label14.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Top" resname="O:SessionForm.O:Label14.Top">
+        <source>146</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Width" resname="O:SessionForm.O:Label14.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Height" resname="O:SessionForm.O:Label14.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Alignment" resname="O:SessionForm.O:Label14.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.AutoSize" resname="O:SessionForm.O:Label14.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label14.Caption" resname="O:SessionForm.O:Label14.Caption">
+        <source>'SenderCompID'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625814931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Left" resname="O:SessionForm.O:Label15.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Top" resname="O:SessionForm.O:Label15.Top">
+        <source>178</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Width" resname="O:SessionForm.O:Label15.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Height" resname="O:SessionForm.O:Label15.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Alignment" resname="O:SessionForm.O:Label15.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.AutoSize" resname="O:SessionForm.O:Label15.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label15.Caption" resname="O:SessionForm.O:Label15.Caption">
+        <source>'TargetCompID'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Left" resname="O:SessionForm.O:Label1.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Top" resname="O:SessionForm.O:Label1.Top">
+        <source>115</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Width" resname="O:SessionForm.O:Label1.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Height" resname="O:SessionForm.O:Label1.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Alignment" resname="O:SessionForm.O:Label1.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.AutoSize" resname="O:SessionForm.O:Label1.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label1.Caption" resname="O:SessionForm.O:Label1.Caption">
+        <source>'FIX SPEC Directory'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Left" resname="O:SessionForm.O:StartLabel.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Top" resname="O:SessionForm.O:StartLabel.Top">
+        <source>209</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Width" resname="O:SessionForm.O:StartLabel.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Height" resname="O:SessionForm.O:StartLabel.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Alignment" resname="O:SessionForm.O:StartLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563491898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.AutoSize" resname="O:SessionForm.O:StartLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563492014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartLabel.Caption" resname="O:SessionForm.O:StartLabel.Caption">
+        <source>'Start Time (UTC)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Left" resname="O:SessionForm.O:Label2.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Top" resname="O:SessionForm.O:Label2.Top">
+        <source>242</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Width" resname="O:SessionForm.O:Label2.Width">
+        <source>157</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Height" resname="O:SessionForm.O:Label2.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Alignment" resname="O:SessionForm.O:Label2.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.956349213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.AutoSize" resname="O:SessionForm.O:Label2.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.956349213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Label2.Caption" resname="O:SessionForm.O:Label2.Caption">
+        <source>'End Time (UTC)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Bevel1.Left" resname="O:SessionForm.O:Bevel1.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Bevel1.Top" resname="O:SessionForm.O:Bevel1.Top">
+        <source>490</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Bevel1.Width" resname="O:SessionForm.O:Bevel1.Width">
+        <source>419</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Bevel1.Height" resname="O:SessionForm.O:Bevel1.Height">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:Bevel1.Shape" resname="O:SessionForm.O:Bevel1.Shape">
+        <source>bsTopLine</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Left" resname="O:SessionForm.O:AppVLabel.Left">
+        <source>270</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924421</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Top" resname="O:SessionForm.O:AppVLabel.Top">
+        <source>84</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Width" resname="O:SessionForm.O:AppVLabel.Width">
+        <source>36</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Height" resname="O:SessionForm.O:AppVLabel.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Alignment" resname="O:SessionForm.O:AppVLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.AutoSize" resname="O:SessionForm.O:AppVLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVLabel.Caption" resname="O:SessionForm.O:AppVLabel.Caption">
+        <source>'App'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.Left" resname="O:SessionForm.O:PageControl.Left">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.Top" resname="O:SessionForm.O:PageControl.Top">
+        <source>270</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.Width" resname="O:SessionForm.O:PageControl.Width">
+        <source>417</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.Height" resname="O:SessionForm.O:PageControl.Height">
+        <source>165</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.ActivePage" resname="O:SessionForm.O:PageControl.ActivePage">
+        <source>AcceptSheet</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.TabOrder" resname="O:SessionForm.O:PageControl.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.TabStop" resname="O:SessionForm.O:PageControl.TabStop">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.Caption">
+        <source>'Initiator'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.ImageIndex" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.ImageIndex">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.TabVisible" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.TabVisible">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Left">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Top">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Width">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label4.Caption">
+        <source>'Heartbeat Interval'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Left">
+        <source>260</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Top">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Width">
+        <source>30</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label5.Caption">
+        <source>'Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Left">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Top">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Width">
+        <source>43</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label6.Caption">
+        <source>'Host1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Left">
+        <source>260</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Top">
+        <source>98</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Width">
+        <source>30</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625815972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label7.Caption">
+        <source>'Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Left">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Top">
+        <source>98</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Width">
+        <source>43</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label9.Caption">
+        <source>'Host2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Left">
+        <source>260</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Top">
+        <source>128</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Width">
+        <source>30</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label10.Caption">
+        <source>'Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Left">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Top">
+        <source>128</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Width">
+        <source>43</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label11.Caption">
+        <source>'Host3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Left">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Top">
+        <source>34</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Width">
+        <source>140</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label3.Caption">
+        <source>'Reconnect Interval'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Left">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Top">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Width">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label16.Caption">
+        <source>'sec'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Left">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Top">
+        <source>34</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Width">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">129</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Caption" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Label17.Caption">
+        <source>'sec'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">130</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Left">
+        <source>187</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">131</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Top">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">132</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">133</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">134</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">135</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.MaxLength">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">136</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">137</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Text" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HeartbeatEdit.Text">
+        <source>'30'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">138</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Left">
+        <source>305</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">139</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Top">
+        <source>64</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">140</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Width">
+        <source>50</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">141</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">142</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625816898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">143</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.MaxLength">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">144</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:PortEdit.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">145</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Left">
+        <source>73</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">146</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Top">
+        <source>64</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">147</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Width">
+        <source>170</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">148</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">149</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">150</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.MaxLength">
+        <source>128</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">151</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:HostEdit.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">152</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Left">
+        <source>305</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">153</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Top">
+        <source>94</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">154</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Width">
+        <source>50</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">155</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">156</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">157</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.MaxLength">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">158</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port1Edit.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">159</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Left">
+        <source>73</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">160</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Top">
+        <source>94</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">161</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Width">
+        <source>170</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">162</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">163</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">164</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.MaxLength">
+        <source>128</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">165</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host1Edit.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">166</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Left">
+        <source>305</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">167</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Top">
+        <source>124</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">168</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Width">
+        <source>50</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">169</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">170</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">171</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.MaxLength">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">172</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Port2Edit.TabOrder">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">173</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Left">
+        <source>73</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">174</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Top">
+        <source>124</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">175</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Width">
+        <source>170</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">176</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">177</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">178</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.MaxLength">
+        <source>128</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">179</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:Host2Edit.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">180</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Left" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Left">
+        <source>187</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">181</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Top" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Top">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">182</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Width" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">183</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Height" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625817824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">184</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.ImeMode" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">185</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.MaxLength" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.MaxLength">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">186</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.TabOrder" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.TabOrder">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">187</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Text" resname="O:SessionForm.O:PageControl.O:InitiatorSheet.O:ReconnectEdit.Text">
+        <source>'30'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">188</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.Caption" resname="O:SessionForm.O:PageControl.O:AcceptSheet.Caption">
+        <source>'Acceptor'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">189</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.TabVisible" resname="O:SessionForm.O:PageControl.O:AcceptSheet.TabVisible">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">190</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Left" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Left">
+        <source>58</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">191</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Top" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Top">
+        <source>40</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">192</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Width" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Width">
+        <source>101</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">193</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Height" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">194</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Caption" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label12.Caption">
+        <source>'Acceptor Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">195</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Left" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Left">
+        <source>31</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">196</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Top" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Top">
+        <source>73</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">197</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Width" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Width">
+        <source>339</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">198</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Height" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">199</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.AutoSize" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">200</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Caption" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Caption">
+        <source>'注意:所有的Accptor都Listen同一個Port.'</source>
+        <target>'注意:所有的Accptor都Listen同一个Port.'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">1</prop><prop prop-type="Order">201</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Charset" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">202</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Color" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Color">
+        <source>clRed</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">203</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Height" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Height">
+        <source>-18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">204</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Name" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">205</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Style" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">206</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.ParentFont" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">207</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.WordWrap" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:Label8.WordWrap">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">208</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Left" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Left">
+        <source>187</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">209</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Top" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Top">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">210</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Width" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Width">
+        <source>83</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">211</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Height" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">212</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.ImeMode" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">213</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.MaxLength" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.MaxLength">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">214</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.TabOrder" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:APortEdit.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">215</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Left" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Left">
+        <source>31</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">216</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Top" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Top">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">217</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Width" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Width">
+        <source>144</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818518</prop><prop prop-type="Status">0</prop><prop prop-type="Order">218</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Height" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">219</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Caption" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.Caption">
+        <source>'Reset on logon'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">220</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.TabOrder" resname="O:SessionForm.O:PageControl.O:AcceptSheet.O:ResetOnLogonCheckBox.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">221</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Left" resname="O:SessionForm.O:OKBtn.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">222</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Top" resname="O:SessionForm.O:OKBtn.Top">
+        <source>498</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">223</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Width" resname="O:SessionForm.O:OKBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">224</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Height" resname="O:SessionForm.O:OKBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">225</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Caption" resname="O:SessionForm.O:OKBtn.Caption">
+        <source>'確定'</source>
+        <target>'确定'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581875</prop><prop prop-type="Status">1</prop><prop prop-type="Order">226</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Default" resname="O:SessionForm.O:OKBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">227</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.Glyph.Data" resname="O:SessionForm.O:OKBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">228</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.NumGlyphs" resname="O:SessionForm.O:OKBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">229</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.TabOrder" resname="O:SessionForm.O:OKBtn.TabOrder">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">230</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:OKBtn.OnClick" resname="O:SessionForm.O:OKBtn.OnClick">
+        <source>OKBtnClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">231</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Left" resname="O:SessionForm.O:CancelBtn.Left">
+        <source>215</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">232</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Top" resname="O:SessionForm.O:CancelBtn.Top">
+        <source>498</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">233</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Width" resname="O:SessionForm.O:CancelBtn.Width">
+        <source>96</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">234</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Height" resname="O:SessionForm.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818981</prop><prop prop-type="Status">0</prop><prop prop-type="Order">235</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Caption" resname="O:SessionForm.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818981</prop><prop prop-type="Status">1</prop><prop prop-type="Order">236</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.Kind" resname="O:SessionForm.O:CancelBtn.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818981</prop><prop prop-type="Status">0</prop><prop prop-type="Order">237</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.NumGlyphs" resname="O:SessionForm.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41946.5094533565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">238</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:CancelBtn.TabOrder" resname="O:SessionForm.O:CancelBtn.TabOrder">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818981</prop><prop prop-type="Status">0</prop><prop prop-type="Order">239</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Left" resname="O:SessionForm.O:TypeRadioGroup.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625818981</prop><prop prop-type="Status">0</prop><prop prop-type="Order">240</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Top" resname="O:SessionForm.O:TypeRadioGroup.Top">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819097</prop><prop prop-type="Status">0</prop><prop prop-type="Order">241</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Width" resname="O:SessionForm.O:TypeRadioGroup.Width">
+        <source>417</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819097</prop><prop prop-type="Status">0</prop><prop prop-type="Order">242</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Height" resname="O:SessionForm.O:TypeRadioGroup.Height">
+        <source>76</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819097</prop><prop prop-type="Status">0</prop><prop prop-type="Order">243</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Caption" resname="O:SessionForm.O:TypeRadioGroup.Caption">
+        <source>' 連線型態 '</source>
+        <target>' 联机型态 '</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819097</prop><prop prop-type="Status">1</prop><prop prop-type="Order">244</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.ItemIndex" resname="O:SessionForm.O:TypeRadioGroup.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819097</prop><prop prop-type="Status">0</prop><prop prop-type="Order">245</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Items.Strings[0]" resname="O:SessionForm.O:TypeRadioGroup.Items.Strings[0]">
+        <source>'Initiator (Buy side)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">246</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.Items.Strings[1]" resname="O:SessionForm.O:TypeRadioGroup.Items.Strings[1]">
+        <source>'Acceptor (Sell side)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">247</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.TabOrder" resname="O:SessionForm.O:TypeRadioGroup.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">248</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TypeRadioGroup.OnClick" resname="O:SessionForm.O:TypeRadioGroup.OnClick">
+        <source>TypeRadioGroupClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">249</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Left" resname="O:SessionForm.O:FIXVerComboBox.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">250</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Top" resname="O:SessionForm.O:FIXVerComboBox.Top">
+        <source>81</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">251</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Width" resname="O:SessionForm.O:FIXVerComboBox.Width">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819329</prop><prop prop-type="Status">0</prop><prop prop-type="Order">252</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Height" resname="O:SessionForm.O:FIXVerComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819329</prop><prop prop-type="Status">0</prop><prop prop-type="Order">253</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Style" resname="O:SessionForm.O:FIXVerComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819329</prop><prop prop-type="Status">0</prop><prop prop-type="Order">254</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.ItemIndex" resname="O:SessionForm.O:FIXVerComboBox.ItemIndex">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819329</prop><prop prop-type="Status">0</prop><prop prop-type="Order">255</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.TabOrder" resname="O:SessionForm.O:FIXVerComboBox.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819329</prop><prop prop-type="Status">0</prop><prop prop-type="Order">256</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Text" resname="O:SessionForm.O:FIXVerComboBox.Text">
+        <source>'FIX.4.4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">257</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.OnChange" resname="O:SessionForm.O:FIXVerComboBox.OnChange">
+        <source>FIXVerComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">258</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[0]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[0]">
+        <source>'FIX.4.0'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">259</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[1]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[1]">
+        <source>'FIX.4.1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">260</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[2]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[2]">
+        <source>'FIX.4.2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">261</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[3]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[3]">
+        <source>'FIX.4.3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819444</prop><prop prop-type="Status">0</prop><prop prop-type="Order">262</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[4]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[4]">
+        <source>'FIX.4.4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">263</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXVerComboBox.Items.Strings[5]" resname="O:SessionForm.O:FIXVerComboBox.Items.Strings[5]">
+        <source>'FIXT.1.1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41946.5094533565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">264</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.Left" resname="O:SessionForm.O:TargetIDEdit.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">265</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.Top" resname="O:SessionForm.O:TargetIDEdit.Top">
+        <source>175</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">266</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.Width" resname="O:SessionForm.O:TargetIDEdit.Width">
+        <source>160</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">267</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.Height" resname="O:SessionForm.O:TargetIDEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">268</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.ImeMode" resname="O:SessionForm.O:TargetIDEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862581956</prop><prop prop-type="Status">0</prop><prop prop-type="Order">269</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.MaxLength" resname="O:SessionForm.O:TargetIDEdit.MaxLength">
+        <source>20</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">270</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:TargetIDEdit.TabOrder" resname="O:SessionForm.O:TargetIDEdit.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">271</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.Left" resname="O:SessionForm.O:SenderIDEdit.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">272</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.Top" resname="O:SessionForm.O:SenderIDEdit.Top">
+        <source>143</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">273</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.Width" resname="O:SessionForm.O:SenderIDEdit.Width">
+        <source>160</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">274</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.Height" resname="O:SessionForm.O:SenderIDEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819676</prop><prop prop-type="Status">0</prop><prop prop-type="Order">275</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.ImeMode" resname="O:SessionForm.O:SenderIDEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819792</prop><prop prop-type="Status">0</prop><prop prop-type="Order">276</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.MaxLength" resname="O:SessionForm.O:SenderIDEdit.MaxLength">
+        <source>20</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819792</prop><prop prop-type="Status">0</prop><prop prop-type="Order">277</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:SenderIDEdit.TabOrder" resname="O:SessionForm.O:SenderIDEdit.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819792</prop><prop prop-type="Status">0</prop><prop prop-type="Order">278</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.Left" resname="O:SessionForm.O:FIXDictComboBox.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819792</prop><prop prop-type="Status">0</prop><prop prop-type="Order">279</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.Top" resname="O:SessionForm.O:FIXDictComboBox.Top">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819792</prop><prop prop-type="Status">0</prop><prop prop-type="Order">280</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.Width" resname="O:SessionForm.O:FIXDictComboBox.Width">
+        <source>246</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819907</prop><prop prop-type="Status">0</prop><prop prop-type="Order">281</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.Height" resname="O:SessionForm.O:FIXDictComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819907</prop><prop prop-type="Status">0</prop><prop prop-type="Order">282</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.Style" resname="O:SessionForm.O:FIXDictComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819907</prop><prop prop-type="Status">0</prop><prop prop-type="Order">283</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.ImeMode" resname="O:SessionForm.O:FIXDictComboBox.ImeMode">
+        <source>imClose</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819907</prop><prop prop-type="Status">0</prop><prop prop-type="Order">284</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:FIXDictComboBox.TabOrder" resname="O:SessionForm.O:FIXDictComboBox.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625819907</prop><prop prop-type="Status">0</prop><prop prop-type="Order">285</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.Left" resname="O:SessionForm.O:StartHourSpinEdit.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">286</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.Top" resname="O:SessionForm.O:StartHourSpinEdit.Top">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">287</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.Width" resname="O:SessionForm.O:StartHourSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">288</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.Height" resname="O:SessionForm.O:StartHourSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">289</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.MaxValue" resname="O:SessionForm.O:StartHourSpinEdit.MaxValue">
+        <source>23</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">290</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartHourSpinEdit.TabOrder" resname="O:SessionForm.O:StartHourSpinEdit.TabOrder">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">291</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.Left" resname="O:SessionForm.O:StartMinutesSpinEdit.Left">
+        <source>216</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">292</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.Top" resname="O:SessionForm.O:StartMinutesSpinEdit.Top">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">293</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.Width" resname="O:SessionForm.O:StartMinutesSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">294</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.Height" resname="O:SessionForm.O:StartMinutesSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">295</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.MaxValue" resname="O:SessionForm.O:StartMinutesSpinEdit.MaxValue">
+        <source>59</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">296</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartMinutesSpinEdit.TabOrder" resname="O:SessionForm.O:StartMinutesSpinEdit.TabOrder">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">297</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.Left" resname="O:SessionForm.O:StartSecSpinEdit.Left">
+        <source>258</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">298</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.Top" resname="O:SessionForm.O:StartSecSpinEdit.Top">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">299</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.Width" resname="O:SessionForm.O:StartSecSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">300</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.Height" resname="O:SessionForm.O:StartSecSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">301</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.MaxValue" resname="O:SessionForm.O:StartSecSpinEdit.MaxValue">
+        <source>59</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">302</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartSecSpinEdit.TabOrder" resname="O:SessionForm.O:StartSecSpinEdit.TabOrder">
+        <source>10</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">303</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.Left" resname="O:SessionForm.O:EndHourSpinEdit.Left">
+        <source>174</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820255</prop><prop prop-type="Status">0</prop><prop prop-type="Order">304</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.Top" resname="O:SessionForm.O:EndHourSpinEdit.Top">
+        <source>239</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">305</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.Width" resname="O:SessionForm.O:EndHourSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">306</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.Height" resname="O:SessionForm.O:EndHourSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">307</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.MaxValue" resname="O:SessionForm.O:EndHourSpinEdit.MaxValue">
+        <source>23</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">308</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndHourSpinEdit.TabOrder" resname="O:SessionForm.O:EndHourSpinEdit.TabOrder">
+        <source>11</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">309</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.Left" resname="O:SessionForm.O:EndMinutesSpinEdit.Left">
+        <source>216</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862582037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">310</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.Top" resname="O:SessionForm.O:EndMinutesSpinEdit.Top">
+        <source>239</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">311</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.Width" resname="O:SessionForm.O:EndMinutesSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">312</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.Height" resname="O:SessionForm.O:EndMinutesSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">313</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.MaxValue" resname="O:SessionForm.O:EndMinutesSpinEdit.MaxValue">
+        <source>59</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">314</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndMinutesSpinEdit.TabOrder" resname="O:SessionForm.O:EndMinutesSpinEdit.TabOrder">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">315</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.Left" resname="O:SessionForm.O:EndSecSpinEdit.Left">
+        <source>258</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">316</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.Top" resname="O:SessionForm.O:EndSecSpinEdit.Top">
+        <source>239</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">317</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.Width" resname="O:SessionForm.O:EndSecSpinEdit.Width">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">318</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.Height" resname="O:SessionForm.O:EndSecSpinEdit.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">319</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.MaxValue" resname="O:SessionForm.O:EndSecSpinEdit.MaxValue">
+        <source>59</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">320</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndSecSpinEdit.TabOrder" resname="O:SessionForm.O:EndSecSpinEdit.TabOrder">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">321</prop><prop prop-type="Type">TCSpinEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.Left" resname="O:SessionForm.O:PersistCheckBox.Left">
+        <source>123</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820602</prop><prop prop-type="Status">0</prop><prop prop-type="Order">322</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.Top" resname="O:SessionForm.O:PersistCheckBox.Top">
+        <source>441</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820718</prop><prop prop-type="Status">0</prop><prop prop-type="Order">323</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.Width" resname="O:SessionForm.O:PersistCheckBox.Width">
+        <source>175</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">324</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.Height" resname="O:SessionForm.O:PersistCheckBox.Height">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">325</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.Caption" resname="O:SessionForm.O:PersistCheckBox.Caption">
+        <source>'Persist Messages '</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">326</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:PersistCheckBox.TabOrder" resname="O:SessionForm.O:PersistCheckBox.TabOrder">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">327</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.Left" resname="O:SessionForm.O:VerifySeqCheckBox.Left">
+        <source>123</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">328</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.Top" resname="O:SessionForm.O:VerifySeqCheckBox.Top">
+        <source>466</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820833</prop><prop prop-type="Status">0</prop><prop prop-type="Order">329</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.Width" resname="O:SessionForm.O:VerifySeqCheckBox.Width">
+        <source>254</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">330</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.Height" resname="O:SessionForm.O:VerifySeqCheckBox.Height">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">331</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.Caption" resname="O:SessionForm.O:VerifySeqCheckBox.Caption">
+        <source>'Verify Message Seq Number'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">332</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:VerifySeqCheckBox.TabOrder" resname="O:SessionForm.O:VerifySeqCheckBox.TabOrder">
+        <source>15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625820949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">333</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Left" resname="O:SessionForm.O:AppVComboBox.Left">
+        <source>312</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">334</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Top" resname="O:SessionForm.O:AppVComboBox.Top">
+        <source>81</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">335</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Width" resname="O:SessionForm.O:AppVComboBox.Width">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">336</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Height" resname="O:SessionForm.O:AppVComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">337</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Style" resname="O:SessionForm.O:AppVComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">338</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.ItemIndex" resname="O:SessionForm.O:AppVComboBox.ItemIndex">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">339</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.TabOrder" resname="O:SessionForm.O:AppVComboBox.TabOrder">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">340</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Text" resname="O:SessionForm.O:AppVComboBox.Text">
+        <source>'FIX.5.0SP2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">341</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.OnChange" resname="O:SessionForm.O:AppVComboBox.OnChange">
+        <source>AppVComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">342</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[0]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[0]">
+        <source>'FIX.4.0'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">343</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[1]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[1]">
+        <source>'FIX.4.1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">344</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[2]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[2]">
+        <source>'FIX.4.2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">345</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[3]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[3]">
+        <source>'FIX.4.3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">346</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[4]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[4]">
+        <source>'FIX.4.4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">347</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[5]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[5]">
+        <source>'FIX.5.0'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">348</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[6]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[6]">
+        <source>'FIX.5.0SP1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">349</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:AppVComboBox.Items.Strings[7]" resname="O:SessionForm.O:AppVComboBox.Items.Strings[7]">
+        <source>'FIX.5.0SP2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41949.9664924653</prop><prop prop-type="Status">0</prop><prop prop-type="Order">350</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Left" resname="O:SessionForm.O:StartDayComboBox.Left">
+        <source>305</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">351</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Top" resname="O:SessionForm.O:StartDayComboBox.Top">
+        <source>208</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">352</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Width" resname="O:SessionForm.O:StartDayComboBox.Width">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">353</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Height" resname="O:SessionForm.O:StartDayComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">354</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Style" resname="O:SessionForm.O:StartDayComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">355</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.ItemIndex" resname="O:SessionForm.O:StartDayComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">356</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.TabOrder" resname="O:SessionForm.O:StartDayComboBox.TabOrder">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.859436713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">357</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Text" resname="O:SessionForm.O:StartDayComboBox.Text">
+        <source>'everyday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">358</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.OnChange" resname="O:SessionForm.O:StartDayComboBox.OnChange">
+        <source>StartDayComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">359</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[0]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[0]">
+        <source>'everyday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">360</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[1]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[1]">
+        <source>'sunday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">361</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[2]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[2]">
+        <source>'monday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">362</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[3]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[3]">
+        <source>'tuesday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">363</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[4]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[4]">
+        <source>'wednesday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">364</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[5]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[5]">
+        <source>'thursday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">365</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[6]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[6]">
+        <source>'friday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">366</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:StartDayComboBox.Items.Strings[7]" resname="O:SessionForm.O:StartDayComboBox.Items.Strings[7]">
+        <source>'saturday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">367</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Left" resname="O:SessionForm.O:EndDayComboBox.Left">
+        <source>305</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">368</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Top" resname="O:SessionForm.O:EndDayComboBox.Top">
+        <source>241</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">369</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Width" resname="O:SessionForm.O:EndDayComboBox.Width">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">370</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Height" resname="O:SessionForm.O:EndDayComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">371</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Style" resname="O:SessionForm.O:EndDayComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">372</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.ItemIndex" resname="O:SessionForm.O:EndDayComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">373</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.TabOrder" resname="O:SessionForm.O:EndDayComboBox.TabOrder">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">374</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Text" resname="O:SessionForm.O:EndDayComboBox.Text">
+        <source>'everyday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">375</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.OnChange" resname="O:SessionForm.O:EndDayComboBox.OnChange">
+        <source>EndDayComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">376</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[0]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[0]">
+        <source>'everyday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">377</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[1]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[1]">
+        <source>'sunday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">378</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[2]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[2]">
+        <source>'monday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">379</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[3]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[3]">
+        <source>'tuesday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">380</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[4]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[4]">
+        <source>'wednesday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">381</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[5]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[5]">
+        <source>'thursday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">382</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[6]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[6]">
+        <source>'friday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">383</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SessionForm.O:EndDayComboBox.Items.Strings[7]" resname="O:SessionForm.O:EndDayComboBox.Items.Strings[7]">
+        <source>'saturday'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42580.8594367245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">384</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

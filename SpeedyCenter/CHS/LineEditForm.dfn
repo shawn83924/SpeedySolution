@@ -1,0 +1,1224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\LineEditForm.dfm" source-language="zh-TW" target-language="zh-CN" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\LineEditForm.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">44042.0419675926</prop>
+        <prop prop-type="OrigDateTime">44042.0360648148</prop>
+        <prop prop-type="XlatDateTime">40455.8303240741</prop>
+        <prop prop-type="Translated">12</prop>
+        <prop prop-type="UnTranslated">227</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:PVCSettingForm.Left" resname="O:PVCSettingForm.Left">
+        <source>114</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625660995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Top" resname="O:PVCSettingForm.Top">
+        <source>140</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625660995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.BorderStyle" resname="O:PVCSettingForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625660995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Caption" resname="O:PVCSettingForm.Caption">
+        <source>'新增連線'</source>
+        <target>'新增联机'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625660995</prop><prop prop-type="Status">1</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.ClientHeight" resname="O:PVCSettingForm.ClientHeight">
+        <source>341</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.ClientWidth" resname="O:PVCSettingForm.ClientWidth">
+        <source>352</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Color" resname="O:PVCSettingForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Font.Charset" resname="O:PVCSettingForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Font.Color" resname="O:PVCSettingForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Font.Height" resname="O:PVCSettingForm.Font.Height">
+        <source>-15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661111</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Font.Name" resname="O:PVCSettingForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Font.Style" resname="O:PVCSettingForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.OldCreateOrder" resname="O:PVCSettingForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Position" resname="O:PVCSettingForm.Position">
+        <source>poMainFormCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.Scaled" resname="O:PVCSettingForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.OnShow" resname="O:PVCSettingForm.OnShow">
+        <source>FormShow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661227</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.PixelsPerInch" resname="O:PVCSettingForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.TextHeight" resname="O:PVCSettingForm.TextHeight">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TPVCSettingForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Left" resname="O:PVCSettingForm.O:BrokerLabel.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Top" resname="O:PVCSettingForm.O:BrokerLabel.Top">
+        <source>40</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Width" resname="O:PVCSettingForm.O:BrokerLabel.Width">
+        <source>115</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Height" resname="O:PVCSettingForm.O:BrokerLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661343</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Alignment" resname="O:PVCSettingForm.O:BrokerLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.628475</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.AutoSize" resname="O:PVCSettingForm.O:BrokerLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.628475</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:BrokerLabel.Caption" resname="O:PVCSettingForm.O:BrokerLabel.Caption">
+        <source>'期貨商代號'</source>
+        <target>'期货商代号'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">1</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Left" resname="O:PVCSettingForm.O:CMorIPLabel.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Top" resname="O:PVCSettingForm.O:CMorIPLabel.Top">
+        <source>180</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Width" resname="O:PVCSettingForm.O:CMorIPLabel.Width">
+        <source>115</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Height" resname="O:PVCSettingForm.O:CMorIPLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Alignment" resname="O:PVCSettingForm.O:CMorIPLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.628475</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.AutoSize" resname="O:PVCSettingForm.O:CMorIPLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.628475</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMorIPLabel.Caption" resname="O:PVCSettingForm.O:CMorIPLabel.Caption">
+        <source>'結算會員'</source>
+        <target>'结算会员'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">1</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Left" resname="O:PVCSettingForm.O:PortLabel.Left">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Top" resname="O:PVCSettingForm.O:PortLabel.Top">
+        <source>123</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Width" resname="O:PVCSettingForm.O:PortLabel.Width">
+        <source>110</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Height" resname="O:PVCSettingForm.O:PortLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Alignment" resname="O:PVCSettingForm.O:PortLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.AutoSize" resname="O:PVCSettingForm.O:PortLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.628475</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PortLabel.Caption" resname="O:PVCSettingForm.O:PortLabel.Caption">
+        <source>'Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Left" resname="O:PVCSettingForm.O:PVCLabel.Left">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625661574</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Top" resname="O:PVCSettingForm.O:PVCLabel.Top">
+        <source>98</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Width" resname="O:PVCSettingForm.O:PVCLabel.Width">
+        <source>110</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Height" resname="O:PVCSettingForm.O:PVCLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Alignment" resname="O:PVCSettingForm.O:PVCLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.AutoSize" resname="O:PVCSettingForm.O:PVCLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6284750116</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCLabel.Caption" resname="O:PVCSettingForm.O:PVCLabel.Caption">
+        <source>'PVC'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Left" resname="O:PVCSettingForm.O:APCodeLabel.Left">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Top" resname="O:PVCSettingForm.O:APCodeLabel.Top">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Width" resname="O:PVCSettingForm.O:APCodeLabel.Width">
+        <source>110</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Height" resname="O:PVCSettingForm.O:APCodeLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Alignment" resname="O:PVCSettingForm.O:APCodeLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.AutoSize" resname="O:PVCSettingForm.O:APCodeLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeLabel.Caption" resname="O:PVCSettingForm.O:APCodeLabel.Caption">
+        <source>'業務別'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Left" resname="O:PVCSettingForm.O:PasswordLabel.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Top" resname="O:PVCSettingForm.O:PasswordLabel.Top">
+        <source>152</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Width" resname="O:PVCSettingForm.O:PasswordLabel.Width">
+        <source>115</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Height" resname="O:PVCSettingForm.O:PasswordLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Alignment" resname="O:PVCSettingForm.O:PasswordLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.AutoSize" resname="O:PVCSettingForm.O:PasswordLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PasswordLabel.Caption" resname="O:PVCSettingForm.O:PasswordLabel.Caption">
+        <source>'線路密碼'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Left" resname="O:PVCSettingForm.O:MarketLabel.Left">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Top" resname="O:PVCSettingForm.O:MarketLabel.Top">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Width" resname="O:PVCSettingForm.O:MarketLabel.Width">
+        <source>110</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Height" resname="O:PVCSettingForm.O:MarketLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Alignment" resname="O:PVCSettingForm.O:MarketLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.AutoSize" resname="O:PVCSettingForm.O:MarketLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:MarketLabel.Caption" resname="O:PVCSettingForm.O:MarketLabel.Caption">
+        <source>'系統別'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:Bevel.Left" resname="O:PVCSettingForm.O:Bevel.Left">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563344213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:Bevel.Top" resname="O:PVCSettingForm.O:Bevel.Top">
+        <source>236</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563344213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:Bevel.Width" resname="O:PVCSettingForm.O:Bevel.Width">
+        <source>318</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563344213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:Bevel.Height" resname="O:PVCSettingForm.O:Bevel.Height">
+        <source>11</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563344213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:Bevel.Shape" resname="O:PVCSettingForm.O:Bevel.Shape">
+        <source>bsTopLine</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40667.9563344213</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TBevel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Left" resname="O:PVCSettingForm.O:LocalPortURLLabel.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662732</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Top" resname="O:PVCSettingForm.O:LocalPortURLLabel.Top">
+        <source>208</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662732</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Width" resname="O:PVCSettingForm.O:LocalPortURLLabel.Width">
+        <source>115</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Height" resname="O:PVCSettingForm.O:LocalPortURLLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Alignment" resname="O:PVCSettingForm.O:LocalPortURLLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.AutoSize" resname="O:PVCSettingForm.O:LocalPortURLLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6284750116</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLLabel.Caption" resname="O:PVCSettingForm.O:LocalPortURLLabel.Caption">
+        <source>'Local Port'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Left" resname="O:PVCSettingForm.O:PVCIDLabel.Left">
+        <source>81</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Top" resname="O:PVCSettingForm.O:PVCIDLabel.Top">
+        <source>98</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Width" resname="O:PVCSettingForm.O:PVCIDLabel.Width">
+        <source>42</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Height" resname="O:PVCSettingForm.O:PVCIDLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625662963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Alignment" resname="O:PVCSettingForm.O:PVCIDLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0537552546</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDLabel.Caption" resname="O:PVCSettingForm.O:PVCIDLabel.Caption">
+        <source>'PVCID'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Left" resname="O:PVCSettingForm.O:ProtocolLabel.Left">
+        <source>206</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Top" resname="O:PVCSettingForm.O:ProtocolLabel.Top">
+        <source>245</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Width" resname="O:PVCSettingForm.O:ProtocolLabel.Width">
+        <source>57</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Height" resname="O:PVCSettingForm.O:ProtocolLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Alignment" resname="O:PVCSettingForm.O:ProtocolLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.AutoSize" resname="O:PVCSettingForm.O:ProtocolLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolLabel.Caption" resname="O:PVCSettingForm.O:ProtocolLabel.Caption">
+        <source>'協定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupLabel.Left" resname="O:PVCSettingForm.O:GroupLabel.Left">
+        <source>199</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361345949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupLabel.Top" resname="O:PVCSettingForm.O:GroupLabel.Top">
+        <source>125</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361345949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupLabel.Width" resname="O:PVCSettingForm.O:GroupLabel.Width">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361345949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupLabel.Height" resname="O:PVCSettingForm.O:GroupLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361345949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupLabel.Caption" resname="O:PVCSettingForm.O:GroupLabel.Caption">
+        <source>'Group'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361345949</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Left" resname="O:PVCSettingForm.O:TWSETPLabel.Left">
+        <source>199</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Top" resname="O:PVCSettingForm.O:TWSETPLabel.Top">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Width" resname="O:PVCSettingForm.O:TWSETPLabel.Width">
+        <source>64</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Height" resname="O:PVCSettingForm.O:TWSETPLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Alignment" resname="O:PVCSettingForm.O:TWSETPLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.AutoSize" resname="O:PVCSettingForm.O:TWSETPLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPLabel.Caption" resname="O:PVCSettingForm.O:TWSETPLabel.Caption">
+        <source>'流量單位'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547338</prop><prop prop-type="Status">0</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Left" resname="O:PVCSettingForm.O:APCodeComboBox.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Top" resname="O:PVCSettingForm.O:APCodeComboBox.Top">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Width" resname="O:PVCSettingForm.O:APCodeComboBox.Width">
+        <source>185</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Height" resname="O:PVCSettingForm.O:APCodeComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Style" resname="O:PVCSettingForm.O:APCodeComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.TabOrder" resname="O:PVCSettingForm.O:APCodeComboBox.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.OnChange" resname="O:PVCSettingForm.O:APCodeComboBox.OnChange">
+        <source>APCodeComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[0]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[0]">
+        <source>'1:檔案傳輸'</source>
+        <target>'1:文件传输'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663194</prop><prop prop-type="Status">1</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[1]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[1]">
+        <source>'2:檔案傳輸'</source>
+        <target>'2:文件传输'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663194</prop><prop prop-type="Status">1</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[2]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[2]">
+        <source>'3:成交回報'</source>
+        <target>'3:成交回报'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663194</prop><prop prop-type="Status">1</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[3]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[3]">
+        <source>'4:委託'</source>
+        <target>'4:委托'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">1</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[4]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[4]">
+        <source>'8:結算會員委回'</source>
+        <target>'8:结算会员委回'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">1</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[5]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[5]">
+        <source>'9:結算會員成回'</source>
+        <target>'9:结算会员成回'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">1</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[6]" resname="O:PVCSettingForm.O:APCodeComboBox.Items.Strings[6]">
+        <source>'10:行情傳輸'</source>
+        <target>'10:行情传输'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">1</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Left" resname="O:PVCSettingForm.O:OKBitBtn.Left">
+        <source>80</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Top" resname="O:PVCSettingForm.O:OKBitBtn.Top">
+        <source>301</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Width" resname="O:PVCSettingForm.O:OKBitBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Height" resname="O:PVCSettingForm.O:OKBitBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Caption" resname="O:PVCSettingForm.O:OKBitBtn.Caption">
+        <source>'確定'</source>
+        <target>'确定'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663426</prop><prop prop-type="Status">1</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Default" resname="O:PVCSettingForm.O:OKBitBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.Glyph.Data" resname="O:PVCSettingForm.O:OKBitBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.NumGlyphs" resname="O:PVCSettingForm.O:OKBitBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.TabOrder" resname="O:PVCSettingForm.O:OKBitBtn.TabOrder">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OKBitBtn.OnClick" resname="O:PVCSettingForm.O:OKBitBtn.OnClick">
+        <source>OKBitBtnClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Left" resname="O:PVCSettingForm.O:CancelBitBtn.Left">
+        <source>184</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Top" resname="O:PVCSettingForm.O:CancelBitBtn.Top">
+        <source>301</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">129</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Width" resname="O:PVCSettingForm.O:CancelBitBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">130</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Height" resname="O:PVCSettingForm.O:CancelBitBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">131</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Caption" resname="O:PVCSettingForm.O:CancelBitBtn.Caption">
+        <source>'取消'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663657</prop><prop prop-type="Status">1</prop><prop prop-type="Order">132</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.Kind" resname="O:PVCSettingForm.O:CancelBitBtn.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">133</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.NumGlyphs" resname="O:PVCSettingForm.O:CancelBitBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41954.6496986458</prop><prop prop-type="Status">0</prop><prop prop-type="Order">134</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CancelBitBtn.TabOrder" resname="O:PVCSettingForm.O:CancelBitBtn.TabOrder">
+        <source>10</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">135</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.Left" resname="O:PVCSettingForm.O:LinkEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">136</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.Top" resname="O:PVCSettingForm.O:LinkEdit.Top">
+        <source>121</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">137</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.Width" resname="O:PVCSettingForm.O:LinkEdit.Width">
+        <source>57</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">138</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.Height" resname="O:PVCSettingForm.O:LinkEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">139</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.ImeMode" resname="O:PVCSettingForm.O:LinkEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">140</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.MaxLength" resname="O:PVCSettingForm.O:LinkEdit.MaxLength">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">141</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinkEdit.TabOrder" resname="O:PVCSettingForm.O:LinkEdit.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625663889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">142</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.Left" resname="O:PVCSettingForm.O:PVCEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">143</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.Top" resname="O:PVCSettingForm.O:PVCEdit.Top">
+        <source>93</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">144</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.Width" resname="O:PVCSettingForm.O:PVCEdit.Width">
+        <source>57</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">145</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.Height" resname="O:PVCSettingForm.O:PVCEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">146</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.ImeMode" resname="O:PVCSettingForm.O:PVCEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">147</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.MaxLength" resname="O:PVCSettingForm.O:PVCEdit.MaxLength">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">148</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCEdit.TabOrder" resname="O:PVCSettingForm.O:PVCEdit.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">149</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.Left" resname="O:PVCSettingForm.O:SysComboBox.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">150</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.Top" resname="O:PVCSettingForm.O:SysComboBox.Top">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">151</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.Width" resname="O:PVCSettingForm.O:SysComboBox.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">152</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.Height" resname="O:PVCSettingForm.O:SysComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.862566412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">153</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.Style" resname="O:PVCSettingForm.O:SysComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">154</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.TabOrder" resname="O:PVCSettingForm.O:SysComboBox.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">155</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:SysComboBox.OnChange" resname="O:PVCSettingForm.O:SysComboBox.OnChange">
+        <source>SysComboBoxChange</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">156</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.Left" resname="O:PVCSettingForm.O:LinePWDEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">157</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.Top" resname="O:PVCSettingForm.O:LinePWDEdit.Top">
+        <source>149</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">158</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.Width" resname="O:PVCSettingForm.O:LinePWDEdit.Width">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">159</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.Height" resname="O:PVCSettingForm.O:LinePWDEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">160</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.ImeMode" resname="O:PVCSettingForm.O:LinePWDEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">161</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.MaxLength" resname="O:PVCSettingForm.O:LinePWDEdit.MaxLength">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">162</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LinePWDEdit.TabOrder" resname="O:PVCSettingForm.O:LinePWDEdit.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">163</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.Left" resname="O:PVCSettingForm.O:CMEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">164</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.Top" resname="O:PVCSettingForm.O:CMEdit.Top">
+        <source>177</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">165</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.Width" resname="O:PVCSettingForm.O:CMEdit.Width">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">166</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.Height" resname="O:PVCSettingForm.O:CMEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">167</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.ImeMode" resname="O:PVCSettingForm.O:CMEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">168</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.MaxLength" resname="O:PVCSettingForm.O:CMEdit.MaxLength">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">169</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:CMEdit.TabOrder" resname="O:PVCSettingForm.O:CMEdit.TabOrder">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">170</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.Left" resname="O:PVCSettingForm.O:FCMEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">171</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.Top" resname="O:PVCSettingForm.O:FCMEdit.Top">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">172</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.Width" resname="O:PVCSettingForm.O:FCMEdit.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">173</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.Height" resname="O:PVCSettingForm.O:FCMEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">174</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.ImeMode" resname="O:PVCSettingForm.O:FCMEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">175</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.MaxLength" resname="O:PVCSettingForm.O:FCMEdit.MaxLength">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">176</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:FCMEdit.TabOrder" resname="O:PVCSettingForm.O:FCMEdit.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">177</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.Left" resname="O:PVCSettingForm.O:LocalPortURLEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">178</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.Top" resname="O:PVCSettingForm.O:LocalPortURLEdit.Top">
+        <source>205</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">179</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.Width" resname="O:PVCSettingForm.O:LocalPortURLEdit.Width">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">180</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.Height" resname="O:PVCSettingForm.O:LocalPortURLEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">181</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.ImeMode" resname="O:PVCSettingForm.O:LocalPortURLEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">182</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.MaxLength" resname="O:PVCSettingForm.O:LocalPortURLEdit.MaxLength">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">183</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:LocalPortURLEdit.TabOrder" resname="O:PVCSettingForm.O:LocalPortURLEdit.TabOrder">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625664815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">184</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.Left" resname="O:PVCSettingForm.O:OffHourCheckBox.Left">
+        <source>77</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">185</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.Top" resname="O:PVCSettingForm.O:OffHourCheckBox.Top">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">186</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.Width" resname="O:PVCSettingForm.O:OffHourCheckBox.Width">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">187</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.Height" resname="O:PVCSettingForm.O:OffHourCheckBox.Height">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">188</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.Caption" resname="O:PVCSettingForm.O:OffHourCheckBox.Caption">
+        <source>'下午盤'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">189</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:OffHourCheckBox.TabOrder" resname="O:PVCSettingForm.O:OffHourCheckBox.TabOrder">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42778.9660560995</prop><prop prop-type="Status">0</prop><prop prop-type="Order">190</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.Left" resname="O:PVCSettingForm.O:PVCIDEdit.Left">
+        <source>136</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">191</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.Top" resname="O:PVCSettingForm.O:PVCIDEdit.Top">
+        <source>93</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">192</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.Width" resname="O:PVCSettingForm.O:PVCIDEdit.Width">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">193</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.Height" resname="O:PVCSettingForm.O:PVCIDEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">194</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.ImeMode" resname="O:PVCSettingForm.O:PVCIDEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665046</prop><prop prop-type="Status">0</prop><prop prop-type="Order">195</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.MaxLength" resname="O:PVCSettingForm.O:PVCIDEdit.MaxLength">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">196</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:PVCIDEdit.TabOrder" resname="O:PVCSettingForm.O:PVCIDEdit.TabOrder">
+        <source>11</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.8625665162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">197</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.Left" resname="O:PVCSettingForm.O:EnabledCheckBox.Left">
+        <source>77</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">198</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.Top" resname="O:PVCSettingForm.O:EnabledCheckBox.Top">
+        <source>246</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">199</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.Width" resname="O:PVCSettingForm.O:EnabledCheckBox.Width">
+        <source>76</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">200</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.Height" resname="O:PVCSettingForm.O:EnabledCheckBox.Height">
+        <source>17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">201</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.Caption" resname="O:PVCSettingForm.O:EnabledCheckBox.Caption">
+        <source>'啟用'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">202</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:EnabledCheckBox.TabOrder" resname="O:PVCSettingForm.O:EnabledCheckBox.TabOrder">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">203</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Left" resname="O:PVCSettingForm.O:ProtocolComboBox.Left">
+        <source>266</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">204</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Top" resname="O:PVCSettingForm.O:ProtocolComboBox.Top">
+        <source>242</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">205</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Width" resname="O:PVCSettingForm.O:ProtocolComboBox.Width">
+        <source>67</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">206</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Height" resname="O:PVCSettingForm.O:ProtocolComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">207</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Style" resname="O:PVCSettingForm.O:ProtocolComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">208</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.ItemIndex" resname="O:PVCSettingForm.O:ProtocolComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">209</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.TabOrder" resname="O:PVCSettingForm.O:ProtocolComboBox.TabOrder">
+        <source>13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">210</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Text" resname="O:PVCSettingForm.O:ProtocolComboBox.Text">
+        <source>'TMP'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">211</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Items.Strings[0]" resname="O:PVCSettingForm.O:ProtocolComboBox.Items.Strings[0]">
+        <source>'TMP'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">212</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:ProtocolComboBox.Items.Strings[1]" resname="O:PVCSettingForm.O:ProtocolComboBox.Items.Strings[1]">
+        <source>'FIX'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0325950694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">213</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.Left" resname="O:PVCSettingForm.O:GroupEdit.Left">
+        <source>244</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">214</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.Top" resname="O:PVCSettingForm.O:GroupEdit.Top">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">215</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.Width" resname="O:PVCSettingForm.O:GroupEdit.Width">
+        <source>39</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">216</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.Height" resname="O:PVCSettingForm.O:GroupEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">217</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.ImeMode" resname="O:PVCSettingForm.O:GroupEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">218</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.MaxLength" resname="O:PVCSettingForm.O:GroupEdit.MaxLength">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">219</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:GroupEdit.TabOrder" resname="O:PVCSettingForm.O:GroupEdit.TabOrder">
+        <source>14</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41841.0361346065</prop><prop prop-type="Status">0</prop><prop prop-type="Order">220</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Left" resname="O:PVCSettingForm.O:TWSETPComboBox.Left">
+        <source>266</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">221</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Top" resname="O:PVCSettingForm.O:TWSETPComboBox.Top">
+        <source>269</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">222</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Width" resname="O:PVCSettingForm.O:TWSETPComboBox.Width">
+        <source>67</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">223</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Height" resname="O:PVCSettingForm.O:TWSETPComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">224</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Style" resname="O:PVCSettingForm.O:TWSETPComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">225</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.ItemIndex" resname="O:PVCSettingForm.O:TWSETPComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">226</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.TabOrder" resname="O:PVCSettingForm.O:TWSETPComboBox.TabOrder">
+        <source>15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">227</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Text" resname="O:PVCSettingForm.O:TWSETPComboBox.Text">
+        <source>'1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">228</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[0]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[0]">
+        <source>'1'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">229</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[1]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[1]">
+        <source>'2'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">230</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[2]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[2]">
+        <source>'3'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">231</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[3]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[3]">
+        <source>'4'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">232</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[4]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[4]">
+        <source>'5'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">233</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[5]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[5]">
+        <source>'6'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">234</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[6]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[6]">
+        <source>'7'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">235</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[7]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[7]">
+        <source>'8'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">236</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[8]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[8]">
+        <source>'9'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">237</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[9]" resname="O:PVCSettingForm.O:TWSETPComboBox.Items.Strings[9]">
+        <source>'10'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42976.7785547454</prop><prop prop-type="Status">0</prop><prop prop-type="Order">238</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

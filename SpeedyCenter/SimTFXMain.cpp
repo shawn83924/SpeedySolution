@@ -33,6 +33,7 @@
 #include "ExceptionProd.h"
 #include "MessageDialog.h"
 #include "ThroughputLimit.h"
+#include "APIForm.h"
 #include <DateUtils.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -216,6 +217,7 @@ const AnsiString SPEEDY_OTC_NAME     = "SpeedyOTC";
 const AnsiString SPEEDY_PATS_NAME    = "SpeedyPATS";
 const AnsiString SPEEDY_TT_NAME      = "SpeedyTTGW";
 const AnsiString STAR_WAVE_NAME      = "StarWave";
+const AnsiString DTS_API_NAME        = "DTSAdapter";
 //---------------------------------------------------------------------------
 const AnsiString SPEEDY_TOP_NAME     = "SpeedyTop";
 const AnsiString SPEEDY_GATEWAY_NAME = "SpeedyGateway";
@@ -1695,6 +1697,10 @@ void __fastcall TSimTFXForm::CheckMarketExist( void )
 		StarWaveTabSheet->TabVisible = true;
 	else
 		StarWaveTabSheet->TabVisible = false;
+	if( FProcessList->IndexOf( DTS_API_NAME )!=-1 )
+		APITabSheet->TabVisible = true;
+	else
+		APITabSheet->TabVisible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::RequestRouteFiles( void )
@@ -3031,7 +3037,7 @@ void __fastcall TSimTFXForm::ReadUsers( void )
 
 		iniSection = ini.GetSection( i );
 		if( iniSection->GetSectionName() == "Speedy" || iniSection->GetSectionName() == "SpeedyOffHour" )
-        	continue;
+			continue;
 		NewListItem = AccountsListView->Items->Add();
 		NewListItem->Caption = iniSection->GetSectionName().c_str();
 		NewListItem->Data = NULL;
@@ -3115,7 +3121,7 @@ void __fastcall TSimTFXForm::ReadUsers( void )
 			NewListItem->SubItems->Add( "-" );
 		}
 	}
-    AccountsListView->Items->EndUpdate();
+	AccountsListView->Items->EndUpdate();
 }
 //------------------------------------------------------------------------------
 //  FIX setting functions
@@ -3562,6 +3568,13 @@ void __fastcall TSimTFXForm::PageControlChange(TObject *Sender)
 	{
 		//RuleTabSet->TabIndex = 0;
 		LoadRule( RuleTabSet->TabIndex );
+	}
+	else if( PageControl->ActivePage == APITabSheet )
+	{
+		if( APISettingForm == NULL )
+			APISettingForm = new TAPISettingForm(this);
+		APIStateButtonClick( NULL );
+		QueryAPISetting();
 	}
 }
 //---------------------------------------------------------------------------
@@ -5358,7 +5371,7 @@ void __fastcall TSimTFXForm::FIXInSubscriberMessage(const MString &Subject,
     {
         UFC::AnsiString FIXMsg;
 
-        if( FMonitorFIX && Tree->get( "FIXMSG", FIXMsg ))
+		if( FMonitorFIX && Tree->get( "FIXMSG", FIXMsg ))
 		{
 			ReplaceChar( FIXMsg );
 			AddFIXMessage( 1, FIXMsg.c_str() );
@@ -8179,6 +8192,139 @@ void __fastcall TSimTFXForm::SpeedyFLEXOPTSubscriberMessage(const MString &Subje
 		}
 		FLEXStatusLabel->Caption = ReqType + Msg;
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TSimTFXForm::APIStateButtonClick(TObject *Sender)
+{
+	MTree Data;
+
+	APILockedListView->Clear();
+	Data.append("text", "query_locked_account" );
+	APIStatePublisher->Key = "query_locked_account";
+	APIStatePublisher->SendData( &Data );
+	APILockedListView->Items->BeginUpdate();
+}
+//---------------------------------------------------------------------------
+void __fastcall TSimTFXForm::QueryAPISetting( void )
+{
+	MTree Data;
+
+	Data.append("text", "query_order_threshold" );
+	APIStatePublisher->Key = "query_order_threshold";
+	APIStatePublisher->SendData( &Data );
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSimTFXForm::APIStateSubscriberMessage(const MString &Subject, const MString &Key,
+		  MTree *Tree)
+{
+	UFC::AnsiString BrokerID,Account,Reason,Time;
+	UFC::Int32 Total, Cur;
+	if( Tree->get( "broker_id", BrokerID ) == true &&
+		Tree->get( "account", Account ) == true &&
+		Tree->get( "reason", Reason ) == true &&
+		Tree->get( "timestamp", Time ) == true &&
+		Tree->get( "total", Total ) == true &&
+		Tree->get( "n_th", Cur ) == true )
+	{
+		TListItem*       NewListItem;
+		UTF8String UniReason( Reason.c_str() );
+
+		if( BrokerID.Length() >= 4 && Account.Length() >= 5 )
+		{
+			NewListItem = APILockedListView->Items->Add();
+			NewListItem->Caption = Account.c_str();
+			NewListItem->SubItems->Add( BrokerID.c_str());
+			NewListItem->SubItems->Add( Time.c_str());
+			NewListItem->SubItems->Add( UniReason );
+			NewListItem->ImageIndex = 3;
+		}
+		if( Total == Cur )
+			APILockedListView->Items->EndUpdate();
+	}
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TSimTFXForm::APISettingSubscriberMessage(const MString &Subject, const MString &Key,
+          MTree *Tree)
+{
+	UFC::AnsiString Editor,Time;
+	UFC::Int32 DayLimit, Duration, Limit;
+
+	if( Tree->get( "day_threshold", DayLimit ) == true &&
+		Tree->get( "time_duration", Duration ) == true &&
+		Tree->get( "duration_threshold", Limit ) == true &&
+		Tree->get( "editor", Editor ) == true &&
+		Tree->get( "last_modified", Time ) == true )
+	{
+		String ThroughputCtrl;
+
+		ThroughputCtrl.printf( L"每%d秒最多下%d筆  ", Duration, Limit );
+		DayLimitText->Caption = String( DayLimit );
+		ModifyTimeText->Caption = Time.c_str();
+		EditorText->Caption = Editor.c_str();
+		ThroughputCtrlLabel->Caption = ThroughputCtrl;
+
+		APISettingForm->DayLimitEdit->Value = DayLimit;
+		APISettingForm->SecSpinEdit->Value = Duration;
+		APISettingForm->OrdLimitEdit->Value = Limit;
+
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSimTFXForm::APISettingButtonClick(TObject *Sender)
+{
+	String Title;
+
+	Title.printf( L"API 編輯者:%s", FUser );
+	APISettingForm->Caption = Title;
+	if( APISettingForm->ShowModal() == mrOk )
+	{
+		AnsiString ID( FUser );
+		MTree Data;
+
+		Data.append("day_threshold", (UFCType::Int32)APISettingForm->DayLimitEdit->Value );
+		Data.append("time_duration", (UFCType::Int32)APISettingForm->SecSpinEdit->Value );
+		Data.append("duration_threshold", (UFCType::Int32)APISettingForm->OrdLimitEdit->Value );
+		Data.append("editor", ID.c_str() );
+		APIStatePublisher->Key = "modify_order_threshold";
+		APIStatePublisher->SendData( &Data );
+		for( int i = 0; i < 10; i++ )
+		{
+			UFC::SleepMS( 10 );
+			Application->ProcessMessages();
+		}
+		QueryAPISetting();
+	}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TSimTFXForm::MenuItem1Click(TObject *Sender)
+{
+	TListItem* Item;
+
+	for( register int j= 0; j < APILockedListView->Items->Count; j++ )
+	{
+		Item = APILockedListView->Items->Item[j];
+		if( Item->Checked == true )
+		{
+			AnsiString Acc( Item->Caption );
+			AnsiString Broker(Item->SubItems->Strings[0]);
+			MTree Data;
+
+			Data.append("broker_id", Broker.c_str() );
+			Data.append("account", Acc.c_str() );
+			APIStatePublisher->Key = "remove_locked_account";
+			APIStatePublisher->SendData( &Data );
+			UFC::SleepMS( 20 );
+			Application->ProcessMessages();
+		}
+	}
+	APIStateButtonClick( NULL );
 }
 //---------------------------------------------------------------------------
 
