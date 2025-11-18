@@ -2692,7 +2692,18 @@ void __fastcall TMainForm::NewConfirmSwitchClick(TObject *Sender)
 void __fastcall TMainForm::LightRadioButtonClick(TObject *Sender)
 {
 	g_Config.SetBoolProperty( "Setting","Skin", LightRadioButton->Checked );
+	SetChartBKColor(LightRadioButton->Checked);
 	DarkRadioButton->Checked = ! LightRadioButton->Checked;
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SetChartBKColor(bool checkLightButton)
+{
+	if(checkLightButton)
+		g_Config.SetIntegerProperty("Setting","ChartBKColor", TColorRec::White);
+	else
+		g_Config.SetIntegerProperty("Setting","ChartBKColor", TColorRec::Black);
+
+	ContractViewerForm->LoadChartColor( NULL );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CAButtonClick(TObject *Sender)
