@@ -136,7 +136,6 @@ __published:	// IDE-managed Components
 	TComboBox *K1ComboBox;
 	TLabel *Label6;
 	TImageList *LightImageList;
-	TGraphButton *SentRoomiButton;
 	TComboBox *TimeGridComboBox;
 	TRadioGroup *RadioGroup1;
 	TGraphButton *CopyDepthButton;
@@ -150,6 +149,7 @@ __published:	// IDE-managed Components
 	TToggleSwitch *TradingSwitch;
 	TGraphButton *TextButton;
 	TGraphButton *SelectButton;
+	TGraphButton *RectButton;
 	TCheckBox *HLSectionBox;
 	void __fastcall SymbolButtonClick(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
