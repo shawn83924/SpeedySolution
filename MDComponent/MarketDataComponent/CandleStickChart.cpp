@@ -2,6 +2,7 @@
 #include <vcl.h>
 #include <Gdiplus.h>
 #include <Vcl.Clipbrd.hpp>
+#include <utility>
 #pragma hdrstop
 #include "CandleStickChart.h"
 #include "MDComponentStrings.hpp"
@@ -1759,6 +1760,13 @@ void __fastcall TCandleStickChart::MouseMove( Classes::TShiftState Shift, int X,
 				}
 				else if( FEditType == et2PLine )
 					return;
+				else if( FEditType == et2PRect)
+				{
+                    FCanUpdate = false;
+                    if( FLastMouseX != -1 ) ///< Erase old Rect
+						DrawRect( FLastMouseX, FLastMouseY, 1);
+					DrawRect( X, Y, 1);
+				}
 			}
 			else if( FDrawRect.Contains( NewPoint ) ) ///< Pen the viewport.
 			{
@@ -1796,7 +1804,7 @@ void __fastcall TCandleStickChart::MouseMove( Classes::TShiftState Shift, int X,
 
 				if( FEditMode == true ) ///< Drawing mode.
 				{
-					if( FEditType == et2PLine || FEditType == etText )
+					if( FEditType == et2PLine || FEditType == etText || FEditType == et2PRect)
 						SetCursor( crCross, crCross );
 					else if( FEditType == etDefault )
 						SelectObjectCursor(  X, Y , crArrow );
@@ -1896,58 +1904,57 @@ void __fastcall TCandleStickChart::MouseDown( Controls::TMouseButton Button, Cla
 			{
 				FOnNewOrder( this, Side, OrderPx );
 				FMouseDown = false;
-            }
+			}
+			return;
 		}
-		else
+		HandleMouseLeave( this );
+		if( FEditMode == true || FEnableTrade == false  )
 		{
-			HandleMouseLeave( this );
-			if( FEditMode == false && FEnableTrade == true  )
-			{
-				HitResult Result = HitPositionLine( X, Y );
-
-				if( Result == olDelete )
+			SetMouseDownCursor();
+			if( FEditMode == true )
+				CreateGraph( X, Y );
+			return;
+		}
+        HitResult Result = HitPositionLine( X, Y );
+		switch (Result)
+		{
+			case olDelete:
+                if( FHitWorkingOrder->IsStopOrder() == false)
 				{
-					if( FHitWorkingOrder->IsStopOrder() == false)
-					{
-						if( FOnDelete != NULL )
-							FOnDelete( this, FHitWorkingOrder->GetSide(), FHitWorkingOrder->GetPrice() );
-					}
-					else
-					{
-						if( FOnDeleteStopOrder != NULL )
-							FOnDeleteStopOrder( this, FHitWorkingOrder->GetSide(), FHitWorkingOrder->GetPrice() );
-					}
+					if( FOnDelete != NULL )
+						FOnDelete( this, FHitWorkingOrder->GetSide(), FHitWorkingOrder->GetPrice() );
+					break;
 				}
-				else if( Result == olMove )
+				if( FOnDeleteStopOrder != NULL )
+					FOnDeleteStopOrder( this, FHitWorkingOrder->GetSide(), FHitWorkingOrder->GetPrice() );
+				break;
+			case olMove:
+                FReplacePx = true;
+				SetCursor( crSizeNS, crSizeNS );
+				break;
+			default:
+				if( FUseHLSection == true )
 				{
-					FReplacePx = true;
+					FSelectSectionLine = NULL;
+					return;
+				}
+				if(	FSectionHLine.HitTest( X, Y ) == true )
+				{
+					FSelectSectionLine = &FSectionHLine;
+					SetCursor( crSizeNS, crSizeNS );
+				}
+				else if( FSectionLLine.HitTest( X, Y )== true  )
+				{
+					FSelectSectionLine = &FSectionLLine;
 					SetCursor( crSizeNS, crSizeNS );
 				}
 				else
-				{
-					if( FUseHLSection == false )
-					{
-						if(	FSectionHLine.HitTest( X, Y ) == true )
-						{
-							FSelectSectionLine = &FSectionHLine;
-							SetCursor( crSizeNS, crSizeNS );
-						}
-						else if( FSectionLLine.HitTest( X, Y )== true  )
-						{
-							FSelectSectionLine = &FSectionLLine;
-							SetCursor( crSizeNS, crSizeNS );
-						}
-						else
-							FSelectSectionLine = NULL;
-					}
-					else
-						FSelectSectionLine = NULL;
-				}
-			}
-			SetMouseDownCursor( );
-			if( FEditMode == true )
-				CreateGraph( X, Y );
+					FSelectSectionLine = NULL;
 		}
+
+		SetMouseDownCursor( );
+		if( FEditMode == true )
+			CreateGraph( X, Y );
 	}
 	else if( Button == mbRight )
 	{
@@ -1999,6 +2006,12 @@ void __fastcall TCandleStickChart::MouseUp(Controls::TMouseButton Button, Classe
 			FCanUpdate = true;
 			if( DeleteGraphs( DelRect ) == true )
 				PaintFPS();
+		}
+		else if(FEditType == et2PRect)
+		{
+			FCanUpdate = true;
+			AddRect(X, FMouseDownPos.x, Y, FMouseDownPos.y);
+			Paint();
 		}
 		else if( FEditType == etDefault && FMoveGraph != NULL )
 		{
@@ -3196,13 +3209,12 @@ void __fastcall TCandleStickChart::DrawNotLine(TCanvas *canvas,int x,int y,int x
 	 canvas->LineTo( x1, y1 );
 }
 //---------------------------------------------------------------------------
-void __fastcall TCandleStickChart::DrawRect( int X, int Y )
+void __fastcall TCandleStickChart::DrawRect( int X, int Y , int width)
 {
 	 TPenMode Mode = Canvas->Pen->Mode;
 
 	 Canvas->Pen->Mode  = pmNot;
-	 Canvas->Pen->Width  = 2;
-	 Canvas->Pen->Style = psSolid;
+	 Canvas->Pen->Width = width;
 	 Canvas->Brush->Style = bsClear;
 	 Canvas->Rectangle( FMouseDownPos.x , FMouseDownPos.y , X,Y );
 	 Canvas->Pen->Mode = Mode;
@@ -3369,6 +3381,7 @@ void __fastcall TCandleStickChart::SetMouseDownCursor( void )
 			case etHLine:
 			case etVLine:
 			case etText:
+			case et2PRect:
 			case et2PLine: Screen->Cursor = crCross;break;
 			case etDelete: /*Screen->Cursor = crHandPoint;*/ break;
 		}
@@ -3389,6 +3402,7 @@ void __fastcall TCandleStickChart::SetMouseUpCursor( void )
 			case etHLine:
 			case etVLine:
 			case etText:
+			case et2PRect:
 			case et2PLine: Screen->Cursor = crCross;break;
 			case etDelete: Screen->Cursor = crArrow;break;
 		}
@@ -3456,6 +3470,23 @@ void __fastcall TCandleStickChart::AddLine( int x, int y )
 		int EndIndex = XPosToIndex( x );
 		FGraphs.Add( new TLine( this, FBeginIndex, FBeginTick, EndIndex, EndTick , FLineColor ) );
 	}
+}
+//---------------------------------------------------------------------------
+ void __fastcall TCandleStickChart::AddRect(int x1, int x2, int y1, int y2)
+{
+	if(x1>x2)
+		std::swap(x1,x2);
+	if(y1>y2)
+		std::swap(y1,y2);
+
+	int y1Tick = YPosToTick(y1);
+	int y2Tick = YPosToTick(y2);
+	int x1Index= XPosToIndex(x1);
+	int x2Index= XPosToIndex(x2);
+	FGraphs.Add( new TLine( this, x1Index, y2Tick, x2Index, y2Tick , FLineColor ) );
+	FGraphs.Add( new TLine( this, x2Index, y2Tick, x2Index, y1Tick , FLineColor ) );
+	FGraphs.Add( new TLine( this, x2Index, y1Tick, x1Index, y1Tick , FLineColor ) );
+	FGraphs.Add( new TLine( this, x1Index, y1Tick, x1Index, y2Tick , FLineColor ) );
 }
 //---------------------------------------------------------------------------
 void __fastcall TCandleStickChart::AddText( int x, int y )
