@@ -73,7 +73,8 @@ typedef enum editType
 	etHLine   = 2,
 	et2PLine  = 3,
 	etDelete  = 4,
-	etText    = 5
+	etText    = 5,
+    et2PRect  = 6
 
 } EditType;
 //---------------------------------------------------------------------------
@@ -328,6 +329,7 @@ private: ///< Graph tools.
 	int                      FObjDeltaX;
 	int                      FObjDeltaY;
 	void __fastcall AddLine( int x, int y );
+    void __fastcall AddRect( int x1, int x2, int y1, int y2 );
 	void __fastcall AddText( int x, int y );
 	void __fastcall DrawGraphs( TCanvas* canvas );
 	void __fastcall SetMouseDownCursor( void );
@@ -409,7 +411,7 @@ private:
 	void __fastcall DrawViewPort( TCanvas* canvas );
 	void __fastcall DrawAxis( TCanvas* canvas, TRect& BufferRect );
 	void __fastcall DrawCross( int X, int Y );
-	void __fastcall DrawRect( int X, int Y );
+	void __fastcall DrawRect( int X, int Y , int width = 2);
 	void __fastcall EraseCross( bool ClearFlag );
 private: ///< Called in DrawCross
 	void __fastcall DrawNotLine(TCanvas *canvas,int x,int y,int x1,int y1);

@@ -134,6 +134,7 @@ __fastcall TLineChartForm::TLineChartForm(TComponent* Owner)
 	FEditTools.Add(HLineButton);
 	FEditTools.Add(VLineButton);
 	FEditTools.Add(LineButton);
+    FEditTools.Add(RectButton);
 	FEditTools.Add(DelButton);
 	FEditTools.Add(TextButton);
 	FEditTools.Add(SelectButton);
@@ -556,6 +557,7 @@ void __fastcall TLineChartForm::LoadProperties( const String& Profile )
 		case etText:   EditButtonClick( TextButton );break;
 		case etDefault:EditButtonClick( SelectButton );break;
 		case etDelete: EditButtonClick( DelButton );break;
+		case et2PRect:  EditButtonClick( RectButton );break;
 	}
 	CandleStickChart->EditMode = g_Config.GetDesktopBool( ProfileDir, "EditMode", false );
 	SetEditMode( CandleStickChart->EditMode );
@@ -1318,6 +1320,8 @@ void __fastcall TLineChartForm::EditButtonClick(TObject *Sender)
 		CandleStickChart->Edit = etText;
 	else if( Sender == SelectButton )
 		CandleStickChart->Edit = etDefault;
+	else if( Sender == RectButton )
+        CandleStickChart->Edit = et2PRect;
 	FEditTools.Select((TGraphButton*)Sender );
 }
 //---------------------------------------------------------------------------
