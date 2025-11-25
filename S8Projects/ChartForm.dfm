@@ -833,7 +833,7 @@ object LineChartForm: TLineChartForm
     GradientCandle = True
     GDIPlus = True
     EmojiIcons = EmojiImageList
-    XScale = 0.072361111111111110
+    XScale = 0.072361111111111120
     YScale = 1.000000000000000000
     SectionLineColor = clOlive
     RightSpace = 5
@@ -934,10 +934,6 @@ object LineChartForm: TLineChartForm
       TabOrder = 1
       object SettingTabSheet: TTabSheet
         Caption = #35373#23450
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object DefColorButton: TSpeedButton
           Left = 156
           Top = 440
@@ -1146,7 +1142,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 440
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1161,7 +1157,7 @@ object LineChartForm: TLineChartForm
           Left = 155
           Top = 384
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1176,7 +1172,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 384
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1191,7 +1187,7 @@ object LineChartForm: TLineChartForm
           Left = 156
           Top = 328
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1206,7 +1202,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 328
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1221,7 +1217,7 @@ object LineChartForm: TLineChartForm
           Left = 156
           Top = 271
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1236,7 +1232,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 271
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1251,7 +1247,7 @@ object LineChartForm: TLineChartForm
           Left = 155
           Top = 215
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1266,7 +1262,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 215
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1576,13 +1572,13 @@ object LineChartForm: TLineChartForm
         object BOXLabel: TLabel
           Left = 10
           Top = 547
-          Width = 38
+          Width = 57
           Height = 24
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
           Margins.Bottom = 4
-          Caption = #31665#23376
+          Caption = #36264#21218#31665
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -19
@@ -2128,7 +2124,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 208
     Bitmap = {
-      494C010104000800500220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010104000800540220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3198,7 +3194,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 280
     Bitmap = {
-      494C010103004C016C0219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010103004C01700219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000640000001900000001002000000000001027
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
