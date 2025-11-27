@@ -161,6 +161,7 @@ void __fastcall TContractListForm::ToCustomList( int index )
 void __fastcall TContractListForm::Init( const String& Exchange, int ProdID )
 {
 	MarketDataList->SetColumns( FColumns );
+	MarketDataList->OnColumnClick = OnColumnClick;
 	if( FFutExchanges->Count == 0 )
 	{
 		for( register int i = 0; i < gMarketDataStore->ExchangeCount(); i++ )
@@ -190,7 +191,13 @@ void __fastcall TContractListForm::Init( const String& Exchange, int ProdID )
 		SerialComboBoxChange( this );
 	}
 	LoadColor( );
-    LoadCustomNames();
+	LoadCustomNames();
+}
+//------------------------------------------------------------------------------
+void __fastcall TContractListForm::OnColumnClick(TObject *Sender, TListColumn *Column)
+{
+	int clickedTag = Column->Tag;
+	MarketDataList->SortByTag(clickedTag);
 }
 //------------------------------------------------------------------------------
 void __fastcall TContractListForm::ForceSortSymbol( const String& Exchange,const String& SerieName, int Place )

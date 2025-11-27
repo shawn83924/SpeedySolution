@@ -130,6 +130,7 @@ private:
 	bool FCustomSort;
 	bool FUpdating;
 	UFC::PStringList FOrderList;
+	int FClickedCategory;
 private:
 	virtual Classes::TStringList* __fastcall GetSymbols( void );
 	virtual void OnMarketDataUpdate( MarketDataMessage* Msg );
@@ -182,6 +183,7 @@ private:
 	void __fastcall AddToListItemTable( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, TListItem* Record );
 	TListItem* __fastcall SearchFromListItemTable( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol );
 	void __fastcall RemoveFromListItemTable( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol );
+	void __fastcall ResetCaption(void);
 protected:
 	virtual void __fastcall Loaded(void);
 	//DYNAMIC void __fastcall ColRightClick(TListColumn* Column, const Types::TPoint &Point);
@@ -202,6 +204,12 @@ public:
 	void __fastcall GetColumns( UnicodeString& Str );
 	void __fastcall SetColumns( const String& ColStr );
 	void __fastcall AdjuestCol( void );
+	void __fastcall SortByTag(int tag);
+	enum OrderType
+	{
+		Descending = 1,
+		Ascending  =-1
+	};
 __published:
 	__property BevelEdges;
 	__property BevelInner;
@@ -222,6 +230,7 @@ __published:
 	__property OnDragOver;
 	__property Hint;
 	__property ViewStyle;
+    __property OnColumnClick;
 	__property bool Sort = { read = FCustomSort, write  = FCustomSort };
 	__property UnicodeString Exchange = { read = FExchange, write = FExchange };
 	__property TCMarketDataStore* Store = { read = FStore, write = SetStore };
@@ -236,4 +245,11 @@ __published:
 	__property TNotifyEvent OnItemPosChanged = { read = FOnItemPosChanged, write = FOnItemPosChanged };
 };
 //---------------------------------------------------------------------------
+struct PACKAGE SortParam
+{
+	public:
+		TMarketDataList::OrderType TOrderType;
+		int TClickTag;
+		UFC::PHashedList<UFC::AnsiString, TMDListRecord*> TRecordTable;
+};
 #endif
