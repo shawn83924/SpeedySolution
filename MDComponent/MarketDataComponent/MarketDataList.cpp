@@ -14,6 +14,7 @@ String ListViewHeaderString[20];/* = { "商品名稱", "委買價", "委賣價", "成交價",
 									"開盤價", "最高", "最低", "未平倉", "結算價", "昨收", "漲跌", "漲跌幅", "成交時間" };*/
 //---------------------------------------------------------------------------
 int __stdcall SymbolSort(long lParam1, long lParam2, long ParamSort);
+int __stdcall CaptionSort(long lParam1, long lParam2, long ParamSort);
 UFC::Int32 TMarketDataList::BaseYear;
 UFC::Int32 TMarketDataList::Remainder;
 //---------------------------------------------------------------------------
@@ -107,6 +108,7 @@ __fastcall TMarketDataList::TMarketDataList(TComponent* Owner)
 ,FTextColor( clNavy )
 ,FCustomSort( false )
 ,FUpdating( false )
+,FClickedCategory(-1)
 {
 	InitString();
 	if( dynamic_cast< TWinControl*>( Owner ) )
@@ -357,6 +359,9 @@ void __fastcall TMarketDataList::AddSymbol( const String& Exchange, const String
 	}
 	if( FCustomSort )
 		CustomSort( SymbolSort, 0 );
+
+	ResetCaption();
+	FClickedCategory = -1;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMarketDataList::RemoveAllSymbol( void )
@@ -1519,6 +1524,9 @@ void __fastcall TMarketDataList::EndUpdate( void )
 	Items->EndUpdate();
 	if( FCustomSort )
 		CustomSort( SymbolSort, 0 );
+
+	ResetCaption();
+	FClickedCategory = -1;
 	for( register int i = 0; i < Columns->Count; i++ )
 	{
 		int width = GetMinWidth( i );
@@ -1578,6 +1586,53 @@ void __fastcall TMarketDataList::SetColumns( const String& ColStr )
 	Columns->EndUpdate();
 }
 //---------------------------------------------------------------------------
+void __fastcall TMarketDataList::ResetCaption(void)
+{
+	for( register int i = 0; i < Columns->Count; i++ )
+	{
+		TListColumn* Col = Columns->Items[i];
+		Col->Caption = ListViewHeaderString[Col->Tag];
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TMarketDataList::SortByTag(int tag)
+{
+	TListColumn* Col = NULL;
+	for(int i=0; i< Columns->Count; i++)
+	{
+		if(Columns->Items[i]->Tag == tag)
+		{
+			Col = Columns->Items[i];
+			break;
+		}
+	}
+
+	if(Col == NULL)
+		return;
+	UnicodeString newStr;
+	UnicodeString compareStr = Col->Caption[Col->Caption.Length()];
+	OrderType orderType;
+	if (compareStr == L"▲" ||
+		tag != FClickedCategory)
+	{
+		newStr = L"▼";
+		orderType = OrderType::Descending;
+	}
+	else
+	{
+		newStr = L"▲";
+		orderType = OrderType::Ascending;
+	}
+	FClickedCategory = tag;
+	ResetCaption();
+	Col->Caption = ListViewHeaderString[FClickedCategory] + newStr;
+	SortParam param;
+	param.TOrderType = orderType;
+	param.TClickTag = FClickedCategory;
+    param.TRecordTable = FRecordTable;
+	CustomSort(CaptionSort, (NativeInt)&param);
+}
+//---------------------------------------------------------------------------
 int __stdcall SymbolSort(long lParam1, long lParam2, long ParamSort)
 {
 	TListItem* Item1 = reinterpret_cast<TListItem *>(lParam1);
@@ -1601,6 +1656,148 @@ int __stdcall SymbolSort(long lParam1, long lParam2, long ParamSort)
 		else if( Info1->GetEndDate().ToInt() < Info2->GetEndDate().ToInt() )
 			return -1;
 	}
+	return 0;
+}
+//---------------------------------------------------------------------------
+int __stdcall CaptionSort(long lParam1, long lParam2, long ParamSort)
+{
+	TListItem* Item1 = reinterpret_cast<TListItem *>(lParam1);
+	TListItem* Item2 = reinterpret_cast<TListItem *>(lParam2);
+
+	if ((Item1 == NULL) || (Item2 == NULL))
+		return 0;
+	BasicInformation* Info1 = (BasicInformation*)Item1->Data;
+	BasicInformation* Info2 = (BasicInformation*)Item2->Data;
+	SortParam* param = (SortParam*)ParamSort;
+
+	if( Info1->GetTradeFlag() == false )
+		return param->TOrderType;;
+
+	if( Info2->GetTradeFlag() == false )
+		return -1 * param->TOrderType;
+
+	if( Info1 == NULL || Info2 == NULL )
+		return 0;
+
+	UFC::AnsiString Key1;
+	UFC::AnsiString Key2;
+	Key1.Printf( "%s.%s", Info1->GetExchange().c_str(), Info1->GetSymbol().c_str());
+	Key2.Printf( "%s.%s", Info2->GetExchange().c_str(), Info2->GetSymbol().c_str());
+	TMDListRecord* record1 = param->TRecordTable.GetObjectByKey(Key1);
+	TMDListRecord* record2 = param->TRecordTable.GetObjectByKey(Key2);
+	switch(param->TClickTag)
+	{
+		case  0:// 商品名稱
+			if(record1->GetDisplayName() < record2->GetDisplayName())
+				return 		param->TOrderType;
+			if(record1->GetDisplayName() > record2->GetDisplayName())
+				return -1 * param->TOrderType;
+		case  1:// 委買價
+			if(record1->GetBidPx() < record2->GetBidPx())
+				return      param->TOrderType;
+			if(record1->GetBidPx() > record2->GetBidPx())
+				return -1 * param->TOrderType;
+		case  2:// 委賣價
+			if(record1->GetAskPx() < record2->GetAskPx())
+				return      param->TOrderType;
+			if(record1->GetAskPx() > record2->GetAskPx())
+				return -1 * param->TOrderType;
+		case  3:// 成交價
+			if(record1->GetTradePx() < record2->GetTradePx())
+				return      param->TOrderType;
+			if(record1->GetTradePx() > record2->GetTradePx())
+				return -1 * param->TOrderType;
+		case  4:// 單量
+			if(record1->GetTradeQty() < record2->GetTradeQty())
+				return      param->TOrderType;
+			if(record1->GetTradeQty() > record2->GetTradeQty())
+				return -1 * param->TOrderType;
+		case  5:// 委買量
+			if(record1->GetBidQty() < record2->GetBidQty())
+				return      param->TOrderType;
+			if(record1->GetBidQty() > record2->GetBidQty())
+				return -1 * param->TOrderType;
+		case  6:// 委賣量
+			if(record1->GetAskQty() < record2->GetAskQty())
+				return      param->TOrderType;
+			if(record1->GetAskQty() > record2->GetAskQty())
+				return -1 * param->TOrderType;
+		case  7:// 總量
+			if(record1->GetTradeVolume() < record2->GetTradeVolume())
+				return      param->TOrderType;
+			if(record1->GetTradeVolume() > record2->GetTradeVolume())
+				return -1 * param->TOrderType;
+		case  8:// 總委買量
+			if(record1->GetTotalBidQty() < record2->GetTotalBidQty())
+				return      param->TOrderType;
+			if(record1->GetTotalBidQty() > record2->GetTotalBidQty())
+				return -1 * param->TOrderType;
+		case  9:// 總委賣量
+			if(record1->GetTotalAskQty() < record2->GetTotalAskQty())
+				return      param->TOrderType;
+			if(record1->GetTotalAskQty() > record2->GetTotalAskQty())
+				return -1 * param->TOrderType;
+		case 10:// 開盤價
+			if(record1->GetOpeningPx() < record2->GetOpeningPx())
+				return      param->TOrderType;
+			if(record1->GetOpeningPx() > record2->GetOpeningPx())
+				return -1 * param->TOrderType;
+		case 11:// 最高
+			if(record1->GetDayHighPx() < record2->GetDayHighPx())
+				return      param->TOrderType;
+			if(record1->GetDayHighPx() > record2->GetDayHighPx())
+				return -1 * param->TOrderType;
+		case 12:// 最低
+			if(record1->GetDayLowPx() < record2->GetDayLowPx())
+				return      param->TOrderType;
+			if(record1->GetDayLowPx() > record2->GetDayLowPx())
+				return -1 * param->TOrderType;
+		case 13:// 未平倉
+			if(record1->GetOpenInterest() < record2->GetOpenInterest())
+				return      param->TOrderType;
+			if(record1->GetOpenInterest() > record2->GetOpenInterest())
+				return -1 * param->TOrderType;
+		case 14:// 結算價
+			if(record1->GetSettlementPx() < record2->GetSettlementPx())
+				return      param->TOrderType;
+			if(record1->GetSettlementPx() > record2->GetSettlementPx())
+				return -1 * param->TOrderType;
+		case 15:// 昨收
+			if(record1->GetClosingPx() < record2->GetClosingPx())
+				return      param->TOrderType;
+			if(record1->GetClosingPx() > record2->GetClosingPx())
+				return -1 * param->TOrderType;
+		case 16:// 漲跌
+		{
+			double DiffPx1 = record1->GetTradePx() - record1->GetRefPx();
+			double DiffPx2 = record2->GetTradePx() - record2->GetRefPx();
+			if(DiffPx1 < DiffPx2)
+				return      param->TOrderType;
+			if(DiffPx1 > DiffPx2)
+				return -1 * param->TOrderType;
+			break;
+		}
+		case 17:// 漲跌幅
+		{
+			double DiffPx1 = record1->GetTradePx() - record1->GetRefPx();
+			double DiffPx2 = record2->GetTradePx() - record2->GetRefPx();
+			if(DiffPx1 < DiffPx2)
+				return      param->TOrderType;
+			if(DiffPx1 > DiffPx2)
+				return -1 * param->TOrderType;
+			break;
+		}
+		case 18:// 成交時間
+		{
+			if(record1->GetTradeTime() > record2->GetTradeTime())
+				return      param->TOrderType;
+			if(record1->GetTradeTime() < record2->GetTradeTime())
+				return -1 * param->TOrderType;
+			break;
+		}
+
+	}
+
 	return 0;
 }
 //---------------------------------------------------------------------------
