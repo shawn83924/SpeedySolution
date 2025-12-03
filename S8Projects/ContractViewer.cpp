@@ -1569,12 +1569,23 @@ void __fastcall TContractViewerForm::LoadCustomList( TContractListForm* Who, int
 {
 	for( register int i = 0;i < FFormList.ItemCount(); i ++ )
 	{
-		if( FFormList[i]->Type() == mdfList )
-		{
-			TContractListForm* ReloadForm = dynamic_cast<TContractListForm*>(FFormList[ i ]->GetTForm());
-			if( ReloadForm != NULL && ReloadForm != Who )
-				ReloadForm->LoadCustomList( Index );
-		}
+		if( FFormList[i]->Type() != mdfList )
+			continue;
+
+		TContractListForm* ContractListForm = dynamic_cast<TContractListForm*>(FFormList[ i ]->GetTForm());
+		if( ContractListForm == NULL || ContractListForm == Who )
+			continue;
+
+		ContractListForm->LoadCustomList( Index );
+	}
+
+	for( register int i = 0; i< FDepthForms.ItemCount(); i++)
+	{
+		TDepthForm* DepthForm = dynamic_cast<TDepthForm*>(FDepthForms[ i ]->GetTForm());
+		if( DepthForm == NULL )
+			continue;
+
+		DepthForm->LoadCustomList();
 	}
 }
 //---------------------------------------------------------------------------

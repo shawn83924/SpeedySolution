@@ -33,6 +33,7 @@ extern TUnifyUser         gUser;
 const int FONT_SIZE_MIN = 9;
 const int FONT_SIZE_DEF = 10;
 const int FONT_SIZE_MAX = 15;
+const int CUSTOM_LIST_COUNT = 5;
 //---------------------------------------------------------------------------
 TColor FixedRowBidColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
 TColor FixedRowAskColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
@@ -72,6 +73,7 @@ TColor SellConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
 TColor SellConditionColColor[2]   = {clBlack,clWhite};
 //---------------------------------------------------------------------------
 UFC::PHashMap<UFC::AnsiString, UFC::List<TDepthForm*>*> FStopCloseMap;
+UFC::List<BasicInformation*> TDepthForm::FCustomMDList[CUSTOM_LIST_COUNT];
 //---------------------------------------------------------------------------
 __fastcall TDepthForm::TDepthForm(TComponent* Owner)
 	: TForm(Owner)
@@ -111,9 +113,8 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 	EnableStopAfterFilled( false );
 	TIFComboBox->ItemIndex = 0;
 
-	FBrowseNameList = new TStringList();
-	FBrowseExList = new TStringList();
-	FBrowseSymList = new TStringList();
+	FExList = new TStringList();
+	FSymList = new TStringList();
 
 	FExpBtn2Panel.Add(SplitExpBtn,SplitPanel);
 	FExpBtn2Panel.Add(BullInExpBtn,BullInPanel);
@@ -123,23 +124,8 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 //---------------------------------------------------------------------------
 __fastcall TDepthForm::~TDepthForm( void )
 {
-	delete FBrowseNameList;
-	delete FBrowseExList;
-	delete FBrowseSymList;
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::AddBrowseHistroy( nsOrderMessageDefine::MarketEnum Market, const String& Name, const String& Ex,const String& Sym )
-{
-	if( MainForm->HasPosition( Ex,Sym ) == false )
-	{
-		if( FBrowseNameList->IndexOf( Name ) == -1 )
-		{
-			FBrowseNameList->Add( Name );
-			FBrowseExList->Add( Ex );
-			FBrowseSymList->Add( Sym );
-			UpdateHistroyCount();
-		}
-	}
+	delete FExList;
+	delete FSymList;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SetWidth( int Add )
@@ -363,31 +349,31 @@ void __fastcall TDepthForm::ChangeSymbol( void )
 {
 	BasicInformation* NewSymInfo = OrderBookList->Store->GetBasicInformation( FEx, FSym, false );
 
-	if( NewSymInfo != NULL )
+	if( NewSymInfo == NULL )
+    	return;
+
+	FSymInfo = NewSymInfo;
+	EnableStopAfterFilled( false );
+	UnregisterOrderStore();
+	for( int i = 0;i < 20; i++)
 	{
-		FSymInfo = NewSymInfo;
-		EnableStopAfterFilled( false );
-		UnregisterOrderStore();
-		for( int i = 0;i < 20; i++)
-		{
-			Application->ProcessMessages();
-			UFC::SleepMS(10);
-		}
-		OrderBookList->SetSymbol( FEx, FSym );
-		FMarket   = FSymInfo->GetMarket();
-		FSym      = FSymInfo->GetSymbol().c_str();
-		FCallPut  = FSymInfo->GetCallPut();
-		FStrikePX = FSymInfo->GetStrikePrice();
-		FBullPx   = FSymInfo->GetBullPrice();
-		FDigit    = FSymInfo->GetDigit();
-		UpdateCaption();
-		AddBrowseHistroy( FMarket, Caption, FEx, FSym );
-		RegisterOrderStore();
-		ContractViewerForm->ChangeSymbol( FOldEx, FOldSym, FEx, FSym, this );
-		FOldEx = FEx;
-		FOldSym = FSym;
-		OnSymbolChanged();
+		Application->ProcessMessages();
+		UFC::SleepMS(10);
 	}
+	OrderBookList->SetSymbol( FEx, FSym );
+	FMarket   = FSymInfo->GetMarket();
+	FSym      = FSymInfo->GetSymbol().c_str();
+	FCallPut  = FSymInfo->GetCallPut();
+	FStrikePX = FSymInfo->GetStrikePrice();
+	FBullPx   = FSymInfo->GetBullPrice();
+	FDigit    = FSymInfo->GetDigit();
+	UpdateCaption();
+	RegisterOrderStore();
+	ContractViewerForm->ChangeSymbol( FOldEx, FOldSym, FEx, FSym, this );
+	FOldEx = FEx;
+	FOldSym = FSym;
+	OnSymbolChanged();
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OnSymbolChanged( void )
@@ -804,7 +790,7 @@ void __fastcall TDepthForm::OrderBookListProfitAndAvgPxUpdate(TObject *Sender, d
 	ProfitLabel->Caption = CurrToStrF( Balance, ffNumber, 2 );
 	DspStr.printf( L"%.*lf", FDigit + 2, AvgPx );
 	AvgPxLabel->Caption = DspStr;
-	UpdateHistroyCount();
+	UpdateSymbolListCount();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -1059,7 +1045,6 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 	g_Config.SetIntegerProperty( Profile,"Font", FFontSize );
 	g_Config.SetIntegerProperty( Profile ,"BetterStep", OrderBookList->BetterStep );
 	g_Config.SetIntegerProperty( Profile ,"SettingPage", PageControl->ActivePageIndex );
-	g_Config.SetBoolProperty( Profile,"ShowPosSym", PosSymCheckBox->Checked );
 
 	g_Config.SetIntegerProperty( Profile ,"NuclearLots", NuclearLotsUpDown->Position );
 	g_Config.SetIntegerProperty( Profile ,"NuclearUCount", UpCountUpDown->Position );
@@ -1070,6 +1055,8 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 	g_Config.SetIntegerProperty( Profile ,"NuclearPTicks", ProfitTickUpDown->Position );
 	g_Config.SetIntegerProperty( Profile ,"NuclearPCount", ProfitCountUpDown->Position );
 	g_Config.SetIntegerProperty( Profile ,"NuclearPStep", ProfitStepUpDown->Position );
+
+    g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
 	SaveColor( );
 	SaveTFT();
 }
@@ -1132,7 +1119,6 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	FFontSize                      = g_Config.GetIntegerProperty( Profile, "Font", FONT_SIZE_DEF );
 	OrderBookList->BetterStep      = g_Config.GetIntegerProperty( Profile ,"BetterStep", 1 );
 	PageControl->ActivePageIndex   = g_Config.GetIntegerProperty( Profile ,"SettingPage", 0 );
-	PosSymCheckBox->Checked        = g_Config.GetBoolProperty( Profile,"ShowPosSym", false );
 
 	NuclearLotsUpDown->Position  = g_Config.GetIntegerProperty( Profile ,"NuclearLots", 10 );
 	UpCountUpDown->Position      = g_Config.GetIntegerProperty( Profile ,"NuclearUCount", 4 );
@@ -1153,6 +1139,10 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	SliceOrderSwitch->State = ( OrderBookList->SetEnable == true)?tssOn:tssOff;
 	StepUpDown->Position = OrderBookList->Step;
 	StepCountUpDown->Position = OrderBookList->StepCount;
+	LoadCustomList();
+    int ExchangeComboBoxIdx = g_Config.GetIntegerProperty( Profile ,"ExchangeComboBox", 0 );
+	InitExchangeComboBox(ExchangeComboBoxIdx);
+	g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
 	ApplyStopTick( StopTickUpDown->Position, StopProfitTickUpDown->Position );
 	RatioComboBoxChange( NULL );
 	FilledStopToggleSwitchClick( NULL );
@@ -2595,33 +2585,25 @@ void TDepthForm::OnOrderFilled( const String &Exchange,const String &Symbol, con
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::UpdateHistroyCount(void)
+void __fastcall TDepthForm::UpdateSymbolListCount(void)
 {
-	if( PosSymCheckBox->Checked == true )
-		SymbolListBox->Count = MainForm->GetPositionCount() + FBrowseNameList->Count;
-	else
-		SymbolListBox->Count = FBrowseNameList->Count;
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::PosSymCheckBoxClick(TObject *Sender)
-{
-	UpdateHistroyCount();
+	FExList->Clear();
+	FSymList->Clear();
+	SymbolListBox->Count = FCustomMDList[ ExchangeComboBox->ItemIndex ].ItemCount();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SymbolListBoxData(TWinControl *Control, int Index, UnicodeString &Data)
 {
-	if( PosSymCheckBox->Checked == true )
-	{
-		int PosCount = MainForm->GetPositionCount();
-		String Ex,Sym;
-
-		if( Index < PosCount )
-			MainForm->GetPositionSymbol( Index, Ex,Sym,Data );
-		else
-			Data = FBrowseNameList->Strings[ Index - PosCount ];
-	}
-	else
-		Data = FBrowseNameList->Strings[ Index ];
+	if(FCustomMDList[ ExchangeComboBox->ItemIndex ].ItemCount()<=Index)
+        return;
+	BasicInformation* Info = FCustomMDList[ ExchangeComboBox->ItemIndex ].GetItem(Index);
+	if(Info == NULL)
+		return;
+	if(Index == FExList->Count)
+		FExList->Add(Info->GetExchange().c_str());
+	if(Index == FSymList->Count)
+		FSymList->Add(Info->GetSymbol().c_str());
+	Data = Info->GetDisplayName();
 }
 //---------------------------------------------------------------------------
 bool __fastcall TDepthForm::GetExSymbol( String &Ex, String &Sym )
@@ -2630,33 +2612,15 @@ bool __fastcall TDepthForm::GetExSymbol( String &Ex, String &Sym )
 
 	if( Index == -1 )
 		return false;
-	if( PosSymCheckBox->Checked == true )
-	{
-		int PosCount = MainForm->GetPositionCount();
 
-		if( Index < PosCount )
-		{
-			String DispName;
-			MainForm->GetPositionSymbol( Index, Ex,Sym,DispName );
-		}
-		else
-		{
-			Ex  = FBrowseExList->Strings[ Index - PosCount ];
-			Sym = FBrowseSymList->Strings[ Index - PosCount ];
-		}
-		return true;
-	}
-	else
-	{
-		Ex  = FBrowseExList->Strings[ Index ];
-		Sym = FBrowseSymList->Strings[ Index ];
-		return true;
-	}
+	Ex  = FExList->Strings[ Index ];
+	Sym = FSymList->Strings[ Index ];
+	return true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OnOrderStoreReady( void )
 {
-	UpdateHistroyCount();
+	UpdateSymbolListCount();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::BullInToggleSwitchClick(TObject *Sender)
@@ -2765,6 +2729,46 @@ void __fastcall TDepthForm::AutoStop( SideEnum side, double Price, int Qty, cons
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::InitExchangeComboBox(int Idx)
+{
+	for( int i = 0; i < CUSTOM_LIST_COUNT; i++ )
+	{
+		String KeyName,DefName, CustomName;
+
+		DefName.printf( L"自選商品-%d", i + 1 );
+		KeyName.printf( L"Name%d", i + 1 );
+		CustomName = g_Config.GetStringProperty( "CustomNames",KeyName, DefName );
+		ExchangeComboBox->Items->Strings[ i ] = CustomName;
+	}
+	ExchangeComboBox->ItemIndex = Idx;
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::LoadCustomList(void)
+{
+    String Dir;
+
+	for( int j = 0; j < CUSTOM_LIST_COUNT; j++ )
+	{
+		FCustomMDList[ j ].Clear();
+		Dir.printf( L"ContractList\\Custom%d", j );
+		int Count = g_Config.GetDesktopInteger( Dir, "SymCount", 0 );
+		for( int i =0; i< Count; i ++ )
+		{
+			String ExchangeName = "Exchange" + IntToStr( i );
+			String KeyName 	= "Symbol" + IntToStr( i );
+			String Exchange	= g_Config.GetDesktopString( Dir, ExchangeName, "" );
+			String Symbol  	= g_Config.GetDesktopString( Dir, KeyName, "" );
+			if( Exchange.Length() > 0 && Symbol.Length() > 0 )
+			{
+				BasicInformation* Info = gMarketDataStore->GetBasicInformation( Exchange, Symbol, false );
+				if( Info != NULL )
+					FCustomMDList[ j ].Add( Info );
+			}
+		}
+	}
+	UpdateSymbolListCount();
+}
+//---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListAutoStopLoss(TObject *Sender, SideEnum side,
 		  double Price, int Qty)
 {
@@ -2797,4 +2801,11 @@ void __fastcall TDepthForm::TakeProfitTimerTimer(TObject *Sender)
 	AutoStop( FTakeProfitSide, FTakeProfitPrice, FTakeProfitQty, L"OnAutoTakeProfit" );
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::ExchangeComboBoxChange(TObject *Sender)
+{
+	if( ExchangeComboBox->ItemIndex == -1 )
+		return;
 
+	UpdateSymbolListCount();
+}
+//---------------------------------------------------------------------------
