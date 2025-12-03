@@ -368,7 +368,7 @@ void __fastcall TContractListForm::SaveCustomList( const String& Profile )
 
 	for( int j = 0; j < CUSTOM_LIST_COUNT; j++ )
 	{
-		Dir.printf( L"%s\\ContractList\\Custom%d",Profile, j );
+		Dir.printf( L"ContractList\\Custom%d", j );
 		g_Config.SetDesktopInteger( Dir, "SymCount", FCustomMDList[ j ].ItemCount() );
 		for( int i = 0; i< FCustomMDList[ j ].ItemCount(); i ++ )
 		{
@@ -388,7 +388,7 @@ void __fastcall TContractListForm::LoadCustomList( const String& Profile )
 	for( int j = 0; j < CUSTOM_LIST_COUNT; j++ )
 	{
 		FCustomMDList[ j ].Clear();
-		Dir.printf( L"%s\\ContractList\\Custom%d",Profile, j );
+		Dir.printf( L"ContractList\\Custom%d", j );
 		int Count = g_Config.GetDesktopInteger( Dir, "SymCount", 0 );
 		for( int i =0; i< Count; i ++ )
 		{
