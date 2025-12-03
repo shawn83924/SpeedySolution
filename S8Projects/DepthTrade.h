@@ -177,8 +177,6 @@ __published:	// IDE-managed Components
 	TButton *DepthExpBtn;
 	TToggleSwitch *DepthCancelToggleSwitch;
 	TListBox *SymbolListBox;
-	TLabel *Label15;
-	TCheckBox *PosSymCheckBox;
 	TBevel *Bevel8;
 	TLabel *Label19;
 	TEdit *Edit10;
@@ -198,6 +196,7 @@ __published:	// IDE-managed Components
 	TToggleSwitch *FilledStopProfitToggleSwitch;
 	TTimer *StopLossTimer;
 	TTimer *TakeProfitTimer;
+	TComboBox *ExchangeComboBox;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -277,7 +276,6 @@ __published:	// IDE-managed Components
 	void __fastcall OrderBookListTick(TObject *Sender, const AnsiString &time, double MatchPx,
           int MatchQty);
 	void __fastcall DepthCancelToggleSwitchClick(TObject *Sender);
-	void __fastcall PosSymCheckBoxClick(TObject *Sender);
 	void __fastcall SymbolListBoxData(TWinControl *Control, int Index, UnicodeString &Data);
 	void __fastcall BullInToggleSwitchClick(TObject *Sender);
 	void __fastcall BullOutToggleSwitchClick(TObject *Sender);
@@ -295,6 +293,7 @@ __published:	// IDE-managed Components
           int Qty);
 	void __fastcall StopLossTimerTimer(TObject *Sender);
 	void __fastcall TakeProfitTimerTimer(TObject *Sender);
+	void __fastcall ExchangeComboBoxChange(TObject *Sender);
 
 
 
@@ -307,9 +306,8 @@ private:	// Interface TOrderQtyListener
 									 double Px, int Qty,
 									 nsOrderMessageDefine::OrderTypeEnum OrderType );
 private:	// User declarations
-	TStringList* FBrowseNameList;
-	TStringList* FBrowseExList;
-	TStringList* FBrowseSymList;
+	TStringList* FExList;
+	TStringList* FSymList;
 	BasicInformation* FSymInfo;
 	TWinControl*      FParent;
 	int               FDigit;
@@ -334,6 +332,7 @@ private:	// User declarations
 	int FNuclearUpperLots;
 	int FNuclearLowerLots;
 	UFC::PHashMap<TButton*,TPanel*>  FExpBtn2Panel;
+	static UFC::List<BasicInformation*> FCustomMDList[];
 private:	// User declarations
 	bool FRegOrderStore;
 	void __fastcall AdjustByExchange( const String& Ex );
@@ -350,11 +349,11 @@ private:	// User declarations
 	void __fastcall OrderTypeStr( nsOrderMessageDefine::OrderTypeEnum ot, AnsiString& OTStr );
 	void __fastcall NewStopOrder( SideEnum side, double Px, int Qty );
 	void __fastcall AlignLabels( void );
-	void __fastcall AddBrowseHistroy( nsOrderMessageDefine::MarketEnum Market, const String& Name, const String& Ex,const String& Sym );
 	bool __fastcall CheckOrder( int Qty );
 	void __fastcall UpdateCaption( void );
 	void __fastcall ApplyStopTick( int New, int NewProfit );
 	void __fastcall AutoStop( SideEnum side, double Price, int Qty, const String& Msg );
+	void __fastcall InitExchangeComboBox( int Idx );
 public:		// User declarations
 	bool __fastcall PlaceOrder( SideEnum side,double Price, int Qty,OrderTypeEnum OrderType, bool EnableStop );
 	void __fastcall PlaceMarketOrder( SideEnum side, int Qty,TimeInForceEnum TIF );
@@ -380,7 +379,7 @@ private: ///< TFT Functions
 	bool __fastcall GetExSymbol( String &Ex, String &Sym );
 	void __fastcall CheckBullIn(  double MatchPx, int MatchQty );
 	void __fastcall CheckBullOut(  double MatchPx, int MatchQty );
-	void __fastcall UpdateHistroyCount(void);
+	void __fastcall UpdateSymbolListCount(void);
 	void OnOrderFilled( const String &Exchange,const String &Symbol, const String &OrderID,SideEnum Side, double Px,int Qty, OrderStatusEnum OrderStatus);
 public:		// User declarations
 	String FProfile;
@@ -417,6 +416,7 @@ public:		// User declarations
 	TimeInForceEnum      __fastcall GetTimeInForce( bool IsHotKey );
 	bool __fastcall CanClose( void );
 	void __fastcall OnOrderStoreReady( void );
+    void __fastcall LoadCustomList(void);
 private:
 	SideEnum FStopLossSide;
 	double   FStopLossPrice;

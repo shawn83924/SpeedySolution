@@ -17,7 +17,7 @@ object DepthForm: TDepthForm
   OldCreateOrder = False
   Scaled = False
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 23
   object OrderBookList: TOrderBookList
     Left = 190
@@ -256,8 +256,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 186
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -282,8 +282,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 214
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -308,8 +308,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -389,8 +389,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -418,8 +418,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2152,8 +2152,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -3921,7 +3921,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = StopSettingTabSheet
+      ActivePage = SettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -4115,23 +4115,6 @@ object DepthForm: TDepthForm
           Margins.Right = 4
           Margins.Bottom = 4
           Shape = bsTopLine
-        end
-        object Label15: TLabel
-          Left = 8
-          Top = 508
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #28687#35261#21830#21697
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
         end
         object Bevel8: TBevel
           Left = 7
@@ -4412,9 +4395,9 @@ object DepthForm: TDepthForm
         end
         object SymbolListBox: TListBox
           Left = 8
-          Top = 534
-          Width = 163
-          Height = 248
+          Top = 543
+          Width = 162
+          Height = 314
           Style = lbVirtual
           ExtendedSelect = False
           ItemHeight = 20
@@ -4422,14 +4405,28 @@ object DepthForm: TDepthForm
           OnClick = SymbolListBoxClick
           OnData = SymbolListBoxData
         end
-        object PosSymCheckBox: TCheckBox
+        object ExchangeComboBox: TComboBox
           Left = 8
-          Top = 787
-          Width = 97
-          Height = 17
-          Caption = #24235#23384#21830#21697
+          Top = 510
+          Width = 162
+          Height = 27
+          BevelInner = bvNone
+          BevelOuter = bvNone
+          DropDownCount = 10
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -15
+          Font.Name = #24494#36575#27491#40657#39636
+          Font.Style = []
+          ParentFont = False
           TabOrder = 13
-          OnClick = PosSymCheckBoxClick
+          OnChange = ExchangeComboBoxChange
+          Items.Strings = (
+            #33258#36984#21830#21697'-1'
+            #33258#36984#21830#21697'-2'
+            #33258#36984#21830#21697'-3'
+            #33258#36984#21830#21697'-4'
+            #33258#36984#21830#21697'-5')
         end
       end
       object StopSettingTabSheet: TTabSheet
@@ -6694,7 +6691,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080020010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300080030010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
