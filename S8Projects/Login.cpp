@@ -13,6 +13,7 @@
 #include <windowsx.h>
 #include <System.JSON.hpp>
 #include <System.IOUtils.hpp>
+#include <ShellAPI.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GraphButton"
@@ -291,32 +292,10 @@ void __fastcall TLoginForm::AtAOELabelClick(TObject *Sender)
 	 AtAOECheckBox->Checked = ! AtAOECheckBox->Checked;
 }
 //---------------------------------------------------------------------------
-void __fastcall TLoginForm::JoinMemberLabelClick(TObject *Sender)
-{
-	BrowserForm = new TBrowserForm( this );
-	BrowserForm->Caption = L"成為新會員";
-	BrowserForm->WebBrowser->Navigate( g_Config.GetRegisterURL( ) );
-	BrowserForm->WaitLoading( );
-	if( BrowserForm->ShowModal() == mrOk )
-	{
-		IDEdit->Text = BrowserForm->LoginID;
-		PasswordEdit->Text = L"";
-	}
-	delete BrowserForm;
-}
-//---------------------------------------------------------------------------
 void __fastcall TLoginForm::ResetPasswordLabelClick(TObject *Sender)
 {
-	BrowserForm = new TBrowserForm( this );
-	BrowserForm->Caption = L"忘記密碼";
-	BrowserForm->WebBrowser->Navigate( g_Config.GetForgetPasswordURL( ) );
-	BrowserForm->WaitLoading( );
-	if( BrowserForm->ShowModal() == mrOk )
-	{
-		IDEdit->Text = BrowserForm->LoginID;
-		PasswordEdit->Text = L"";
-	}
-	delete BrowserForm;
+    UnicodeString url = L"https://www.emega.com.tw/emegaTran/forgetPw.do";
+	ShellExecute(0, L"open", url.c_str(), NULL, NULL, SW_SHOWNORMAL);
 }
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON )
