@@ -22,7 +22,7 @@ object LoginForm: TLoginForm
   Scaled = False
   StyleElements = []
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 16
   object BKImage: TImage
     Left = 0
@@ -4679,7 +4679,8 @@ object LoginForm: TLoginForm
       0425021281094084A0425021281094084A0425021281094084A0425021281094
       084A04250217FFD9}
     Stretch = True
-    ExplicitWidth = 800
+    ExplicitLeft = 113
+    ExplicitTop = 216
   end
   object StatusLabel: TLabel
     Left = 8
@@ -4695,26 +4696,8 @@ object LoginForm: TLoginForm
     ParentFont = False
     StyleElements = []
   end
-  object JoinMemberLabel: TLabel
-    Left = 523
-    Top = 360
-    Width = 68
-    Height = 22
-    Cursor = crHandPoint
-    Caption = #35387#20874#26371#21729
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clSilver
-    Font.Height = -17
-    Font.Name = #24494#36575#27491#40657#39636
-    Font.Style = [fsUnderline]
-    ParentFont = False
-    StyleElements = []
-    OnClick = JoinMemberLabelClick
-    OnMouseEnter = LabelMouseEnter
-    OnMouseLeave = LabelMouseLeave
-  end
   object ResetPasswordLabel: TLabel
-    Left = 610
+    Left = 565
     Top = 360
     Width = 68
     Height = 22

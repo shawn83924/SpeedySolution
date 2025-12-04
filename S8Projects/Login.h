@@ -42,7 +42,6 @@ __published:	// IDE-managed Components
 	TTimer *WaitTimer;
 	TGraphButton *LoginButton;
 	TGraphButton *ExitButton;
-	TLabel *JoinMemberLabel;
 	TLabel *ResetPasswordLabel;
 	TLabel *SaveAccountLabel;
 	TLabel *SavePasswordLabel;
@@ -60,7 +59,6 @@ __published:	// IDE-managed Components
 	void __fastcall LabelMouseLeave(TObject *Sender);
 	void __fastcall SaveAccountLabelClick(TObject *Sender);
 	void __fastcall SavePasswordLabelClick(TObject *Sender);
-	void __fastcall JoinMemberLabelClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall IDEditEnter(TObject *Sender);
 	void __fastcall PasswordEditEnter(TObject *Sender);
