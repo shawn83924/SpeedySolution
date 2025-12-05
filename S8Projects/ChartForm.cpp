@@ -247,7 +247,7 @@ void __fastcall TLineChartForm::RequestGraph( String Exchange, String Symbol )
 
 		if( Info->GetBullPrice() == 0 && Info->GetBearPrice() == 0 )
 		{
-		   TUnifyDlgs::MessageDialog( "Speedy Unify", L"此商品的漲跌停價為0,不能顯示" );
+		   TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"此商品的漲跌停價為0,不能顯示" );
 		   return;
 		}
 		FSymbolChanging = true;
@@ -279,7 +279,7 @@ void __fastcall TLineChartForm::RequestGraph( String Exchange, String Symbol )
 		String Msg;
 
 		Msg.printf( L"錯誤的商品代號:%s", Symbol.c_str());
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
 	}
 }
 //---------------------------------------------------------------------------
@@ -359,7 +359,7 @@ void TLineChartForm::OnDayKBars(  int DayCount, double MaxPx, double MinPx, UFC:
 	}
 	catch( Exception &exception )
 	{
-		 TUnifyDlgs::MessageDialog( L"Speedy Unify", exception.Message );
+		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, exception.Message );
 	}
 }
 //---------------------------------------------------------------------------
@@ -387,7 +387,7 @@ void TLineChartForm::OnRecoverKBars( UFC::List<TMinuteKInfo>& KBars )
 	}
 	catch( Exception &exception )
 	{
-		 TUnifyDlgs::MessageDialog( L"Speedy Unify", exception.Message );
+		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, exception.Message );
 	}
 }
 //---------------------------------------------------------------------------
@@ -1244,7 +1244,7 @@ void __fastcall TLineChartForm::TradePointsButtonClick(TObject *Sender)
 		   RemoveFilledListener(  FExchange, FSymbol);
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void TLineChartForm::OnRecoverFilled( const String& Ex,const String& Sym, UFC::List<TFilledData>& Filleds )
@@ -1442,13 +1442,13 @@ void __fastcall TLineChartForm::CandleStickChartDelete(TObject *Sender, SideEnum
 		if( gOrderStore->IsReady() == true )
 			gOrderStore->CancelOrder( FMarket, FExchange, FSymbol, side, Price);
 		else
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 	}
 	catch( UFC::Exception& execp )
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 刪單失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 }
 //---------------------------------------------------------------------------
@@ -1478,7 +1478,7 @@ void __fastcall TLineChartForm::CandleStickChartReplacePx(TObject *Sender, SideE
 	{
 		Msg.printf( L"改價失敗,原因[%s]", execp.what() );
 	}
-	TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 改價失敗
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 改價失敗
 }
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::CandleStickChartStopOrderReplacePx(TObject *Sender,
@@ -1509,7 +1509,7 @@ void __fastcall TLineChartForm::CandleStickChartStopOrderReplacePx(TObject *Send
 
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 bool __fastcall TLineChartForm::PlaceOrder( SideEnum side, double Price, int Qty, OrderTypeEnum OrderType )
@@ -1545,7 +1545,7 @@ bool __fastcall TLineChartForm::PlaceOrder( SideEnum side, double Price, int Qty
 	{
 		String Msg;
 		Msg.printf( L"委託失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 委託失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 委託失敗
 		return false;
 	}
 }
@@ -1583,7 +1583,7 @@ void __fastcall TLineChartForm::CandleStickChartNewOrder(TObject *Sender, SideEn
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 
@@ -1705,7 +1705,7 @@ void __fastcall TLineChartForm::CandleStickChartNewStopOrder(TObject *Sender, Si
 
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 
