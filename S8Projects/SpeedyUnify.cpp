@@ -8,6 +8,7 @@
 #include <Vcl.Themes.hpp>
 #include <Gdiplus.h>
 #include "UnifyDlg.h"
+#include "Mdcomponentstrings.hpp"
 //---------------------------------------------------------------------------
 #pragma link "Gdiplus.lib"
 #pragma link "sapi.lib"
@@ -93,13 +94,13 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR CMD, int)
 		{
 			GSimMatch = true;
 			MutexName = "SpeedyUnify_Sim";
-			WindowCaption = "Speedy Unify Sim";
+			WindowCaption = Mdcomponentstrings_MD_SpeedyUnify_AppName + " Sim";
 		}
 		else
 		{
 			GSimMatch = false;
 			MutexName = "SpeedyUnify";
-			WindowCaption = "Speedy Unify";
+			WindowCaption = Mdcomponentstrings_MD_SpeedyUnify_AppName;
 		}
 		if((hMutex = OpenMutexA( MUTEX_ALL_ACCESS, FALSE, MutexName.c_str() ))!=NULL)
 		{
@@ -107,7 +108,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR CMD, int)
 			DWORD SUProcessId;
 
 			SUHwnd = FindWindowA( "TMainForm", WindowCaption.c_str() );
-			if( MessageDlg( L"Speedy Unify已啟動,確定要關閉之前的程式?", mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
+			if( MessageDlg( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"已啟動,確定要關閉之前的程式?", mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 			{
 				GetWindowThreadProcessId( SUHwnd, & SUProcessId );
 				TerminateProcessEx( SUProcessId, 0 );

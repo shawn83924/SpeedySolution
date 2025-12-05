@@ -348,13 +348,13 @@ bool Config::UploadFilled( const String& Items, int FC )
 				if( ResultStr == L"0" )
 				{
 					ErrMsg.printf( L"成功上傳%d筆成交資料!", FC );
-					TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 					IsOk = true;
 				}
 				else
 				{
 					ErrMsg.printf( L"上傳%d筆成交資料失敗:%s", FC, MessageStr );
-					TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 				}
 
 			}

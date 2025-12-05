@@ -89,7 +89,7 @@ void __fastcall TAgentMain::OKButtonClick(TObject *Sender)
 void __fastcall TAgentMain::FormShow(TObject *Sender)
 {
 	Memo->Lines->Clear();
-	Memo->Lines->Add( L"等待Speedy Unify程式停止...");
+	Memo->Lines->Add( L"等待" + Mdcomponentstrings_MD_SpeedyUnify_AppName + L"程式停止...");
 	OKButton->Enabled = false;
 	CheckProcessTimer->Enabled = true;
 }
@@ -106,7 +106,7 @@ void __fastcall TAgentMain::CheckProcessTimerTimer(TObject *Sender)
 		 CloseHandle( hMutex );
 	}
 	Sleep( 500 );
-	Memo->Lines->Add( L"Speedy Unify程式已停止.");
+	Memo->Lines->Add( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"程式已停止.");
 	UpdateTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -124,7 +124,7 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		String Msg;
 		///< Backup the old version. SpeedyUnify.exe -> SpeedyUnifyPrev.exe
 		FileVersion( MAIN_EXE, VerStr );
-		AgentMain->Memo->Lines->Add( L"更新 Speedy Unify");
+		AgentMain->Memo->Lines->Add( L"更新 " + Mdcomponentstrings_MD_SpeedyUnify_AppName);
 		Msg.printf( L"移除舊版[%s]",VerStr );
 		AgentMain->Memo->Lines->Add( Msg );
 		if( MoveFileEx( MAIN_EXE, PREV_EXE, MOVEFILE_REPLACE_EXISTING ) )///< Rename old EXE file
@@ -136,7 +136,7 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		}
 	}
 	else
-		AgentMain->Memo->Lines->Add( L"Speedy Unify主程式並無更新." );
+		AgentMain->Memo->Lines->Add( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"主程式並無更新." );
 	///< Rename all *.*.download to *.*
 	UFC::FileList( ".", "*.download", Files );
 	for( int i=0;i< Files.ItemCount(); i ++)
@@ -163,7 +163,7 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		UFC::RemoveFile( DelFile );
 	}
 	AgentMain->Memo->Lines->Add( L"程式更新完畢!" );
-	AgentMain->Memo->Lines->Add( L"請重新啟動 Speedy Unify." );
+	AgentMain->Memo->Lines->Add( L"請重新啟動 " + Mdcomponentstrings_MD_SpeedyUnify_AppName + L"." );
 	OKButton->Enabled = true;
 }
 //---------------------------------------------------------------------------

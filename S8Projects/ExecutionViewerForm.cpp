@@ -336,7 +336,7 @@ void __fastcall TExecutionForm::DeleteMenuItemClick(TObject *Sender)
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );///< 刪單失敗"
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< 刪單失敗"
 	}
 }
 //---------------------------------------------------------------------------
@@ -350,7 +350,7 @@ void __fastcall TExecutionForm::QueryMenuItemClick(TObject *Sender)
 	{
 		String Msg;
 		Msg.printf( L"查詢失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );///< 查詢失敗"
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< 查詢失敗"
 	}
 }
 //---------------------------------------------------------------------------
@@ -457,7 +457,7 @@ void __fastcall TExecutionForm::QueryButtonClick(TObject *Sender)
 		catch( ... )
 		{
 			edtPrice->Text = L"";
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"回報查詢錯誤[不正確的價格]" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"回報查詢錯誤[不正確的價格]" );
 			return;
 		}
 	}
