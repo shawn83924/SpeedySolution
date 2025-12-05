@@ -1422,23 +1422,6 @@ void __fastcall TLineChartForm::DeviationTrackBarChange(TObject *Sender)
 	CandleStickChart->PivotDeviation = dev /100.0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TLineChartForm::SentRoomiButtonClick(TObject *Sender)
-{
-	if( RoomiForm == NULL )
-	{
-		MainForm->IMButtonClick( NULL );
-		if( RoomiForm != NULL )
-			WinSleep( 150 );
-	}
-	CandleStickChart->SaveToClipboard();
-	if( RoomiForm != NULL )
-	{
-		if( RoomiForm->Visible == false )
-			RoomiForm->Show();
-		RoomiForm->LoadFromClipboard();
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall TLineChartForm::TimeGridComboBoxChange(TObject *Sender)
 {
 	CandleStickChart->TimeGrid =(TimeGridType)TimeGridComboBox->ItemIndex;

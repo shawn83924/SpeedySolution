@@ -206,7 +206,6 @@ __published:	// IDE-managed Components
 	void __fastcall SkyLandToggleSwitchClick(TObject *Sender);
 	void __fastcall PivotSwitchClick(TObject *Sender);
 	void __fastcall DeviationTrackBarChange(TObject *Sender);
-	void __fastcall SentRoomiButtonClick(TObject *Sender);
 	void __fastcall TimeGridComboBoxChange(TObject *Sender);
 	void __fastcall CopyDepthButtonClick(TObject *Sender);
 	void __fastcall AvgPxSwitchClick(TObject *Sender);

@@ -13,7 +13,6 @@
 #include "ContractViewer.h"
 #include "UnifyDlg.h"
 #include "GraphUtility.h"
-#include "Roomi.h"
 #include "UnifyUtility.h"
 #include "AskCloseAll.h"
 //---------------------------------------------------------------------------
@@ -1018,23 +1017,6 @@ void __fastcall THoldOpenInterestForm::SaveToClipboard( void )
 	cb->SetAsHandle( MyFormat, DataHandle);
 	delete cb;
 	delete ScreenBmpPtr;
-}
-//---------------------------------------------------------------------------
-void __fastcall THoldOpenInterestForm::IMButtonClick(TObject *Sender)
-{
-	if( RoomiForm == NULL )
-	{
-		MainForm->IMButtonClick( NULL );
-		if( RoomiForm != NULL )
-			WinSleep( 150 );
-	}
-	SaveToClipboard();
-	if( RoomiForm != NULL )
-	{
-		if( RoomiForm->Visible == false )
-			RoomiForm->Show();
-		RoomiForm->LoadFromClipboard();
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall THoldOpenInterestForm::HoldPosition( void )

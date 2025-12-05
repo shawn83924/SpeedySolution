@@ -16,9 +16,6 @@ Coordinates=322,280,72,58
 [BackgroundPanel]
 Coordinates=533,144,116,58
 
-[EditButton]
-Coordinates=334,486,74,36
-
 [Label2]
 Coordinates=725,212,53,58
 
@@ -206,9 +203,6 @@ Coordinates=596,348,113,36
 [DarkRadioButton]
 Coordinates=10,486,112,36
 
-[SubscribeButton]
-Coordinates=239,440,109,36
-
 [TabNormal]
 Coordinates=410,532,78,36
 
@@ -289,9 +283,6 @@ Coordinates=902,335,112,58
 
 [Bevel23]
 Coordinates=599,560,61,36
-
-[IMButton]
-Coordinates=530,560,66,36
 
 [SearchButton]
 Coordinates=0,532,92,36
@@ -485,9 +476,6 @@ Coordinates=1517,496,88,36
 
 [Bevel5]
 Coordinates=760,751,54,36
-
-[BuyHistroyButton]
-Coordinates=1517,551,114,36
 
 [MinButton]
 Coordinates=681,751,72,36
