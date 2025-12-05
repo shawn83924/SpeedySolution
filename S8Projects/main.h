@@ -76,8 +76,6 @@ __published:	// IDE-managed Components
 	TTabSheet *TabSheet3;
 	TAction *actKBar;
 	TImageList *ToolImageList;
-	TGraphButton *SubscribeButton;
-	TGraphButton *EditButton;
 	TPanel *BackgroundPanel;
 	TSplitView *SettingSV;
 	TPageControl *SettingPageControl;
@@ -197,7 +195,6 @@ __published:	// IDE-managed Components
 	TPopupMenu *TrayPopupMenu;
 	TMenuItem *RestoreItem;
 	TMenuItem *CloseItem;
-	TGraphButton *BuyHistroyButton;
 	TTimer *PurchaseTimer;
 	TLabel *NuclearBuyLabel;
 	TGraphButton *NuclearBuyText;
@@ -225,7 +222,6 @@ __published:	// IDE-managed Components
 	TBevel *Bevel23;
 	TLabel *GWIPLabel;
 	TLabel *ChartServerLabel;
-	TGraphButton *IMButton;
 	TLabel *Label8;
 	TComboBox *StopSoundComboBox;
 	TGraphButton *StopSoundButton;
@@ -326,8 +322,6 @@ __published:	// IDE-managed Components
 	void __fastcall CMarketDataStoreMarketDataServerAck(int RTT);
 	void __fastcall RTTTimerTimer(TObject *Sender);
 	void __fastcall RenameItemClick(TObject *Sender);
-	void __fastcall EditButtonClick(TObject *Sender);
-	void __fastcall SubscribeButtonClick(TObject *Sender);
 	void __fastcall PreventIdleTimerTimer(TObject *Sender);
 	void __fastcall WebBrowserBeforeNavigate2(TObject *ASender, IDispatch * const pDisp,
           const OleVariant &URL, const OleVariant &Flags, const OleVariant &TargetFrameName,
@@ -341,14 +335,12 @@ __published:	// IDE-managed Components
 	void __fastcall CloseItemClick(TObject *Sender);
 	void __fastcall WebBrowserNavigateComplete2(TObject *ASender, IDispatch * const pDisp,
           const OleVariant &URL);
-	void __fastcall BuyHistroyButtonClick(TObject *Sender);
 	void __fastcall PurchaseTimerTimer(TObject *Sender);
 	void __fastcall CMarketDataStoreLeaderBoard(TStringList *Board);
 	void __fastcall FormConstrainedResize(TObject *Sender, int &MinWidth, int &MinHeight,
           int &MaxWidth, int &MaxHeight);
 	void __fastcall actInfoExecute(TObject *Sender);
 	void __fastcall InfoOKButtonClick(TObject *Sender);
-	void __fastcall IMButtonClick(TObject *Sender);
 	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall StopOrderChange( TObject* Sender, const String& Exchange, const String& StopSymbol, double StopPrice,
