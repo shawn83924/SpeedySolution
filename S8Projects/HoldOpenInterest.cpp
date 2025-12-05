@@ -819,7 +819,7 @@ bool __fastcall THoldOpenInterestForm::CloseOrder( TOrderStore* OrdStore, BasicI
 {
 	if( Qty == 0 )
 	{
-		TUnifyDlgs::MessageDialog( L"Speedy Unify", L"平倉口數不能為0." );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"平倉口數不能為0." );
 		return false;
 	}
 	try

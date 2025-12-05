@@ -99,7 +99,7 @@ bool __fastcall TLoginForm::CheckFreeTry( void )
 		{
 			g_Config.SetServerValue( "LastDate", Today.c_str() );
 			g_Config.SetServerValue( "DayCount", "1" );
-			TUnifyDlgs::MessageDialog( "Speedy Unify", "謝謝您的試用!每個月您可以使用三天練功房." );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, "謝謝您的試用!每個月您可以使用三天練功房." );
 		}
 		else
 		{
@@ -122,7 +122,7 @@ bool __fastcall TLoginForm::CheckFreeTry( void )
 						Msg.printf( L"謝謝您的試用!除了今天之外,這個月您還可以試用%d天.", LeavesDay ); ///< Pass!
 					else
 						Msg.printf( L"謝謝您的試用!今天是你這個月的最後一天試用,下個月您又可以試用三天.");
-					TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
 				}
 			}
 			else
@@ -131,7 +131,7 @@ bool __fastcall TLoginForm::CheckFreeTry( void )
 			   {
 				  g_Config.SetServerValue( "LastDate", Today.c_str() );
 				  g_Config.SetServerValue( "DayCount", "1" );
-				  TUnifyDlgs::MessageDialog( "Speedy Unify", "謝謝您的試用!每個月您可以使用三天練功房." );
+				  TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, "謝謝您的試用!每個月您可以使用三天練功房." );
 			   }
 			   else
 			   {
@@ -146,7 +146,7 @@ bool __fastcall TLoginForm::CheckFreeTry( void )
 						  Msg.printf( L"謝謝您的試用!除了今天之外,這個月您還可以試用%d天.", LeavesDay ); ///< Pass!
 					  else
 						  Msg.printf( L"謝謝您的試用!今天是你這個月的最後一天試用,下個月您又可以試用三天.");
-					  TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );
+					  TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
 				  }
 				  else
 				  {
@@ -400,7 +400,7 @@ bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Passwo
 	catch( Exception& ex )
 	{
 		Result = false;
-		TUnifyDlgs::MessageDialog( "Speedy Unify", ex.ToString() );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ex.ToString() );
 	}
 	delete SSLIOHandler;
 	delete pHTTP;

@@ -448,14 +448,14 @@ bool __fastcall TDepthForm::CheckOrder( int Qty )
 {
 	if( Qty == 0 )
 	{
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"口數不能為0" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"口數不能為0" );
 		return false;
 	}
 	if( FMarket == nsOrderMessageDefine::mTSE || FMarket == nsOrderMessageDefine::mOTC )
 	{
 		if( gUser.AccountType == hatTAIFEX )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"證券帳號不存在" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"證券帳號不存在" );
 			return false;
 		}
 	}
@@ -463,7 +463,7 @@ bool __fastcall TDepthForm::CheckOrder( int Qty )
 	{
 		if( gUser.AccountType == hatTWSE )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"期貨帳號不存在" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"期貨帳號不存在" );
 			return false;
 		}
 	}
@@ -525,7 +525,7 @@ bool __fastcall TDepthForm::PlaceOrder( SideEnum side, double Price, int Qty,Ord
 	{
 		String Msg;
 		Msg.printf( L"委託失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 委託失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 委託失敗
 		return false;
 	}
 }
@@ -555,7 +555,7 @@ void __fastcall TDepthForm::PlaceMarketOrder( SideEnum side, int Qty,TimeInForce
 	{
 		String Msg;
 		Msg.printf( L"委託失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
 	}
 }
 //---------------------------------------------------------------------------
@@ -607,7 +607,7 @@ void __fastcall TDepthForm::OrderBookListNewOrders(TObject *Sender, SideEnum sid
 			 PlaceOrder( side, PriceArray[i], LotsUpDown->Position, nsOrderMessageDefine::otLimit, false );
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOrder(TObject *Sender, SideEnum side,
@@ -621,7 +621,7 @@ void __fastcall TDepthForm::OrderBookListNewOrder(TObject *Sender, SideEnum side
 		PlaceOrder( side, Price, LotsUpDown->Position, nsOrderMessageDefine::otLimit, true );
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewMarketOrder(TObject *Sender, SideEnum side,
@@ -630,7 +630,7 @@ void __fastcall TDepthForm::OrderBookListNewMarketOrder(TObject *Sender, SideEnu
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( side, LotsUpDown->Position, GetTimeInForce( true ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 
 }
 //---------------------------------------------------------------------------
@@ -659,7 +659,7 @@ void __fastcall TDepthForm::OrderBookListNewConditionOrder(TObject *Sender, Side
 										  true );                         ///< client side stop order.
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 //
@@ -710,13 +710,13 @@ void __fastcall TDepthForm::OrderBookListReduceQty(TObject *Sender, SideEnum sid
 		if( gOrderStore->IsReady() == true )
 			gOrderStore->CancelOrder( FMarket, FEx, FSym, side, Price);
 		else
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 	}
 	catch( UFC::Exception& execp )
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 刪單失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 }
 //---------------------------------------------------------------------------
@@ -740,7 +740,7 @@ void __fastcall TDepthForm::OrderBookListDeleteAllOrders(TObject *Sender, SideEn
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 刪單失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 	DelCount = CxCount;
 }
@@ -770,7 +770,7 @@ void __fastcall TDepthForm::OrderBookListReplacePx(TObject *Sender, SideEnum sid
 	{
 		Msg.printf( L"改價失敗,原因[%s]", execp.what() );
 	}
-	TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 改價失敗
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 改價失敗
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNetPositionUpdate(TObject *Sender, int NetPosition,
@@ -819,7 +819,7 @@ void __fastcall TDepthForm::LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TS
 		{
 			LotsPerOrderEdit->Text = L"0";
 			ErrMsg.printf( L"輸入的口數[%d],超過口數上限[%d]",Qty,LotsUpDown->Max );
-			TUnifyDlgs::MessageDialog( "Speedy Unify",  ErrMsg );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
 		}
 		else if( Qty <= 1  )
 			LotsPerOrderEdit->Text = L"1";
@@ -899,7 +899,7 @@ void __fastcall TDepthForm::NuclearBuy( void )
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::NuclearSell( void )
@@ -946,7 +946,7 @@ void __fastcall TDepthForm::NuclearSell( void )
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -1012,7 +1012,7 @@ void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TSh
 
 			LotsUpDown->Position = 1;
 			ErrMsg.printf( L"輸入的口數[%d],超過口數上限[%d]",NewQty,LotsUpDown->Max );
-			TUnifyDlgs::MessageDialog( "Speedy Unify",  ErrMsg );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
 		}
 		else
 			LotsUpDown->Position = NewQty;
@@ -2283,7 +2283,7 @@ void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( sBuy, LotsUpDown->Position, GetTimeInForce( false ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::MarketSellLabelClick(TObject *Sender)
@@ -2291,7 +2291,7 @@ void __fastcall TDepthForm::MarketSellLabelClick(TObject *Sender)
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( sSell, LotsUpDown->Position, GetTimeInForce( false ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 bool __fastcall TDepthForm::CanClose( void )
@@ -2421,7 +2421,7 @@ void __fastcall TDepthForm::FateTestButtonClick(TObject *Sender)
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::FateTestCancelButtonClick(TObject *Sender)

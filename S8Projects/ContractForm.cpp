@@ -358,7 +358,7 @@ void __fastcall TContractInfoForm::AddExchangeSymbols( const UFC::AnsiString& Ex
 		String ErrMsg;
 
 		ErrMsg.printf( L"交易所[%s]沒有期貨或選擇權商品.", Ex );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 		return;
     }
 	if( MarketTabSet->Tabs->Count <= 1 )
@@ -568,7 +568,7 @@ void __fastcall TContractInfoForm::AddSymbol( TLabel* StatusLabel )
 			}
 			catch( UFC::Exception& ex )
 			{
-				TUnifyDlgs::MessageDialog( "Speedy Unify", ex.what() );
+				TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ex.what() );
 			}
 		}
 	}
