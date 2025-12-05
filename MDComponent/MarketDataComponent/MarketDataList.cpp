@@ -1612,15 +1612,15 @@ void __fastcall TMarketDataList::SortByTag(int tag)
 	UnicodeString newStr;
 	UnicodeString compareStr = Col->Caption[Col->Caption.Length()];
 	OrderType orderType;
-	if (compareStr == L"¡¶" ||
+	if (compareStr == Mdcomponentstrings_MD_ORDERLIST_CONFIRM_UP_ARROW ||
 		tag != FClickedCategory)
 	{
-		newStr = L"¡¿";
+		newStr = Mdcomponentstrings_MD_ORDERLIST_CONFIRM_DOWN_ARROW;
 		orderType = OrderType::Descending;
 	}
 	else
 	{
-		newStr = L"¡¶";
+		newStr = Mdcomponentstrings_MD_ORDERLIST_CONFIRM_UP_ARROW;
 		orderType = OrderType::Ascending;
 	}
 	FClickedCategory = tag;
