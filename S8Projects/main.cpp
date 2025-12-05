@@ -734,9 +734,6 @@ HRGN __fastcall TMainForm::CreateCaptionDrawRgn( void )
 	}
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchEditBox->BoundsRect ); ///< Exclude SearchEditBox
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchButton->BoundsRect ); ///< Exclude SearchButton
-	CaptionRgn = ExcludeRect( CaptionRgn, EditButton->BoundsRect ); ///< Exclude EditButton
-	CaptionRgn = ExcludeRect( CaptionRgn, IMButton->BoundsRect );
-	CaptionRgn = ExcludeRect( CaptionRgn, SubscribeButton->BoundsRect ); ///< Exclude MailButton
 	CaptionRgn = ExcludeRect( CaptionRgn, MinButton->BoundsRect ); ///< Exclude MinButton
 	CaptionRgn = ExcludeRect( CaptionRgn, MaxButton->BoundsRect ); ///< Exclude MaxButton
 	CaptionRgn = ExcludeRect( CaptionRgn, CloseButton->BoundsRect ); ///< Exclude CloseButton
@@ -752,7 +749,6 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	int BottomTextY = (BOTTOM_H - TextH )/2;
 	int SearchBoxR = SearchButton->Left + SearchButton->Width;
 	TRect CaptionRect = TRect(0,0,ClientWidth, CAPTION_H );
-	TRect IDRect = TRect( SubscribeButton->Left + 72, BorderH, SubscribeButton->Left + 186, CAPTION_H-BorderH );
 	TRect SearchRect = TRect( SearchEditBox->Left, 10, SearchBoxR, CAPTION_H - 10 );
 	HRGN  CaptionRgn = CreateCaptionDrawRgn();
 	TTextFormat Formats,CRFormats;
@@ -767,9 +763,6 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	FBKBuffer->Canvas->Pen->Color = TColor( 0x002d1605 );
 	FBKBuffer->Canvas->Brush->Color = TColor( 0x002d1605 );
 	FBKBuffer->Canvas->FillRect( CaptionRect );
-	///< Draw login ID
-	FBKBuffer->Canvas->Font->Color = clWhite;
-	FBKBuffer->Canvas->TextRect( IDRect, gUser.Nickname, Formats );
 	///< Draw Search box
 	FBKBuffer->Canvas->Pen->Color = TColor( 0x00402B1C );
 	FBKBuffer->Canvas->Brush->Color = TColor( 0x00402B1C );
@@ -778,12 +771,6 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	FBKBuffer->Canvas->Ellipse( SearchBoxR -15, 10, SearchBoxR + 15 ,CAPTION_H - 10 );
 	///< Draw Speedy logo
 	LogoImageList->Draw( FBKBuffer->Canvas, 40, 12, 0 );
-	///< Draw User image
-	TRect DR( SubscribeButton->Left + SubscribeButton->Width + 5, 9, SubscribeButton->Left + SubscribeButton->Width + 37, 41 );
-	if( FUserImg->Graphic != NULL &&  FUserImg->Graphic->Empty == false)
-		FBKBuffer->Canvas->StretchDraw( DR, FUserImg->Graphic );
-	else
-		UserImageList->Draw( FBKBuffer->Canvas, SubscribeButton->Left + 36, 10, 0 );
 	SelectClipRgn( Canvas->Handle, CaptionRgn );
 	Canvas->Draw( 0,0, FBKBuffer );
 	SelectClipRgn( Canvas->Handle, NULL );
@@ -1086,18 +1073,8 @@ void __fastcall TMainForm::ControlPosition( void )
 	MinButton->Top = 10;
 	MinButton->Left = MaxButton->Left - MinButton->Width;
 
-	SubscribeButton->Top = 10;
-	SubscribeButton->Left = MinButton->Left - 200;
-	BuyHistroyButton->Top = 10;
-	BuyHistroyButton->Left = SubscribeButton->Left - BuyHistroyButton->Width;
-	EditButton->Top = 10;
-	EditButton->Left = BuyHistroyButton->Left - EditButton->Width;
-
-	IMButton->Top = 10;
-	IMButton->Left = EditButton->Left - IMButton->Width;
-
 	SearchButton->Top = 10;
-	SearchButton->Left = IMButton->Left - 32;
+	//SearchButton->Left = IMButton->Left - 32;
 
 	SearchEditBox->Height = 25;
 	SearchEditBox->Top = (CAPTION_H - SearchEditBox->Height )/2;
@@ -2440,27 +2417,6 @@ void __fastcall TMainForm::RenameItemClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::EditButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 17;
-	WebBrowser->Navigate( g_Config.GetEditURL( gUser.UserID, gUser.Token ).c_str() );
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::SubscribeButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 9;
-	WebBrowser->Navigate( g_Config.GetXFlashURL( gUser.UserID, gUser.Token ).c_str() );
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BuyHistroyButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 19;
-	WebBrowser->Navigate( g_Config.GePurchaseListURL( gUser.UserID, gUser.Token ).c_str());
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::LoadImage( const String& ImgFile )
 {
 	try
@@ -2770,7 +2726,6 @@ void __fastcall TMainForm::PurchaseTimerTimer(TObject *Sender)
 	if( GSimMatch == false ) ///< Only hint in production.
 	{
 		TTrainingDlgForm::MessageDlg( L"感謝您的試用!想使用全功能的版本", L"請訂閱正式版." );
-		SubscribeButtonClick( NULL );
 		PurchaseTimer->Enabled = true;
 	}
 }
@@ -3003,30 +2958,6 @@ void __fastcall TMainForm::SystemInfo( void )
 	NetworkLabel->Caption = Msg;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::IMButtonClick(TObject *Sender)
-{
-	if( gIsExpired == true )
-	{
-		TUnifyDlgs::MessageDialog( L"Speedy Unify", L"Speedy Unify 付費會員,才能進入討論區." );
-        return;
-    }
-	if( RoomiForm == NULL )
-	{
-		AskRoomiForm = new TAskRoomiForm( this );
-		if( AskRoomiForm->ShowModal() == mrOk )
-		{
-			Screen->Cursor = crHourGlass;
-			RoomiForm = new TRoomiForm( this );
-			RoomiForm->LoadProperties();
-			RoomiForm->Show();
-			Screen->Cursor = crDefault;
-		}
-		delete AskRoomiForm;
-	}
-	else
-		RoomiForm->Show();
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::UpdateAccount( bool IsFut )
 {
 	if( OrderStore->IsLogon() == true )
@@ -3218,4 +3149,3 @@ void __fastcall TMainForm::TabSheetLoadingResize(TObject *Sender)
 	ProgressPanel->Top  =  (TabSheetLoading->Height - 320 )/2;
 }
 //---------------------------------------------------------------------------
-

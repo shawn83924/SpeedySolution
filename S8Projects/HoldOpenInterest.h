@@ -42,7 +42,6 @@ __published:	// IDE-managed Components
 	TImageList *ImageList;
 	TPanel *SettingPanel;
 	TImageList *TabImageList;
-	TGraphButton *IMButton;
 	TMenuItem *CloseAllPosItem;
 	TMenuItem *N1;
 	TStaticText *WarningLabel;
@@ -63,7 +62,6 @@ __published:	// IDE-managed Components
 	void __fastcall FPListMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall CloseAllItemClick(TObject *Sender);
-	void __fastcall IMButtonClick(TObject *Sender);
 	void __fastcall CloseAllPosItemClick(TObject *Sender);
 	void __fastcall PopupMenuPopup(TObject *Sender);
 	void __fastcall ShowDepthMenuItemClick(TObject *Sender);
