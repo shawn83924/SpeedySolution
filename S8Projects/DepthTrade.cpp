@@ -26,7 +26,6 @@ extern TCMarketDataStore* gMarketDataStore;
 extern DSAudio            gDSAudio;
 extern bool               GSimMatch;
 extern bool               gNuclear;
-extern bool               GVIPServer; ///< Use AOE production server.
 extern bool               gTFT;  ///< Enable TFT functions
 extern TUnifyUser         gUser;
 //---------------------------------------------------------------------------
@@ -318,9 +317,6 @@ void __fastcall TDepthForm::AdjustByExchange( const String& Ex )
 		NormalButton->Visible    = false;
 		LoanButton->Visible      = false;
 		LoanShareButton->Visible = false;
-		W50GraphButton->Visible = false;
-		W100GraphButton->Visible = false;
-		W200GraphButton->Visible = false;
 		NormalButtonClick( NormalButton );
 	}
 	else if( Ex == L"TWSE" || Ex == L"OTC" )
@@ -331,9 +327,6 @@ void __fastcall TDepthForm::AdjustByExchange( const String& Ex )
 		NormalButton->Visible    = true;
 		LoanButton->Visible      = true;
 		LoanShareButton->Visible = true;
-		W50GraphButton->Visible = GVIPServer;
-		W100GraphButton->Visible = GVIPServer;
-		W200GraphButton->Visible = GVIPServer;
 		NormalButtonClick( NormalButton );
     }
 }
@@ -2670,19 +2663,6 @@ void __fastcall TDepthForm::OrderBookListLowerPxAlarm(TObject *Sender)
 		GdAudioWave* Wave = gDSAudio.GetBaseWave( "LowPxAlarm" );
 		if( Wave != NULL  )
 			Wave->Play();
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::W50GraphButtonClick(TObject *Sender)
-{
-	TGraphButton* Btn = dynamic_cast<TGraphButton*>(Sender );
-
-	if( Btn != NULL )
-	{
-		double Px = OrderBookList->LastPx;
-		int Qty = Btn->Tag /(Px*1000);
-
-		LotsUpDown->Position = Qty;
 	}
 }
 //---------------------------------------------------------------------------

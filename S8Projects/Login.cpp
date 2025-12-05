@@ -179,13 +179,10 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	StatusLabel->Caption = Msg;
 	Application->ProcessMessages();
 
-	GVIPServer = g_Config.IamVIP( IDEdit->Text );
 	if( GSimMatch == true )
 	{
 		if( NetworkComboBox->ItemIndex == 2 ) ///< Production Market Data
 			NeedLicense = true;
-		else
-			GVIPServer = false;
 		if( NetworkComboBox->ItemIndex > 2 )
 			Tranning = true;
 		g_Config.SetInternetConfig( NetworkComboBox->ItemIndex );
