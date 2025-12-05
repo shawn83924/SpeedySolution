@@ -1317,7 +1317,7 @@ TDepthForm* __fastcall TContractViewerForm::OpenOrderBookForm( String Exchange, 
 			MainForm->SubscribeButtonClick( NULL );
 		}
 		else
-			TUnifyDlgs::MessageDialog( L"Speedy Unify", L"基於效能考量,最多只能開20個閃電下單" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開20個閃電下單" );
 	}
 	return NULL;
 }
@@ -1370,7 +1370,7 @@ TContractListForm*  __fastcall TContractViewerForm::OpenMarketDataListForm( int 
 			MainForm->SubscribeButtonClick( NULL );
 		}
 		else
-			TUnifyDlgs::MessageDialog( L"Speedy Unify", L"基於效能考量,最多只能開三個行情表" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開三個行情表" );
 		return NULL;
 	}
 }
@@ -1414,7 +1414,7 @@ TLineChartForm*  __fastcall TContractViewerForm::OpenKBarForm( const String& Ex,
 			MainForm->SubscribeButtonClick( NULL );
 		}
 		else
-			TUnifyDlgs::MessageDialog( L"Speedy Unify", L"基於效能考量,最多只能開五個K線圖" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開五個K線圖" );
 		return NULL;
 	}
 }
