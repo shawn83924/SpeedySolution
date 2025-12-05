@@ -23,6 +23,8 @@ namespace Mdcomponentstrings
 //-- forward type declarations -----------------------------------------------
 //-- type declarations -------------------------------------------------------
 //-- var, const, procedure ---------------------------------------------------
+extern DELPHI_PACKAGE System::ResourceString _MD_SpeedyUnify_AppName;
+#define Mdcomponentstrings_MD_SpeedyUnify_AppName System::LoadResourceString(&Mdcomponentstrings::_MD_SpeedyUnify_AppName)
 extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL;
 #define Mdcomponentstrings_MD_CANDEL_FILL System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_FILL)
 extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL_EMPTY;

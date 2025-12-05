@@ -209,10 +209,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	{
 		TOrderStore::SetTestMode( true );
 		TOrderStore::SetTestMatchPrice( true );
-		Caption = L"Speedy Unify Sim";
+		Caption = Mdcomponentstrings_MD_SpeedyUnify_AppName + L" Sim";
 	}
 	else
-		Caption = L"Speedy Unify";
+		Caption = Mdcomponentstrings_MD_SpeedyUnify_AppName;
 }
 //---------------------------------------------------------------------------
 __fastcall TMainForm::~TMainForm( void )
@@ -237,7 +237,7 @@ void __fastcall TMainForm::OSNotSupport( const AnsiString& OSStr )
 	 String OSVer( OSStr.c_str() );
 
 	 ErrMsg.printf( L"您的作業系統[%s]版本太舊,無法執行本程式!", OSVer );
-	 TUnifyDlgs::MessageDialog( L"Speedy Unify", ErrMsg );
+	 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 	 Application->Terminate();
 }
 //---------------------------------------------------------------------------
@@ -274,7 +274,7 @@ void __fastcall TMainForm::PrintLogHeader( void )
 
 	UFC::BufferedLog::Printf( "  _______________________________________________________________");
 	UFC::BufferedLog::Printf( "                                                                 ");
-	UFC::BufferedLog::Printf( "    Speedy Unify Version:%d.%d.%d.%d ",AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100, AppVer%100);
+	UFC::BufferedLog::Printf( "    %s Version:%d.%d.%d.%d ", Mdcomponentstrings_MD_SpeedyUnify_AppName, AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100, AppVer%100);
 	UFC::BufferedLog::Printf( "                                                                 ");
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
 	ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
@@ -355,12 +355,12 @@ void __fastcall TMainForm::PrintLogHeader( void )
 			 ErrMsg.printf( L"注意!您的記憶體只剩[%dMB]可能會影響交易速度!建議增加記憶體.", FreeMem );
 		 else
 			 ErrMsg.printf( L"注意!您的記憶體只剩[%dMB]可能會影響交易速度!建議關閉不必要程式.", FreeMem );
-		 TUnifyDlgs::MessageDialog( L"Speedy Unify", ErrMsg );
+		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 	}
 	if( GHz < 3.0 ) ///< less than 2.5 GHz memory
 	{
 		 ErrMsg.printf( L"注意!您的CPU只有[%0.2fGHz]會導致交易速度不佳!建議升級CPU.", GHz );
-		 TUnifyDlgs::MessageDialog( L"Speedy Unify", ErrMsg );
+		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 	}
 	UFC::BufferedLog::Printf( "                                                                 ");
 	UFC::BufferedLog::Printf( "    主機記憶體: %d MB", TotalMem );
@@ -1187,7 +1187,7 @@ void __fastcall TMainForm::actExecExecute(TObject *Sender)
 	else
 	{
 		Speak( L"請先登入下單Server" );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 	}
 }
 //---------------------------------------------------------------------------
@@ -1197,11 +1197,11 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 	{
 		if( FForceClose == true )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"交易主機斷線,請重新啟動程式" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"交易主機斷線,請重新啟動程式" );
 			SaveProperties( );
 			CloseAll();
 		}
-		else if( TUnifyDlgs::AskYesNoDialog( L"Speedy Unify", L"確定要登出並離開程式?") == true )
+		else if( TUnifyDlgs::AskYesNoDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"確定要登出並離開程式?") == true )
 		{
 			SaveProperties( );
 			CloseAll();
@@ -1251,9 +1251,9 @@ void __fastcall TMainForm::CMarketDataStoreAppDisconnected(TObject *Sender)
 			Visible = false;
 			CloseAll( );
 			if( Sender != NULL )
-				TUnifyDlgs::MessageDialog( "Speedy Unify", L"行情主機斷線,請重新登入." );
+				TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"行情主機斷線,請重新登入." );
 			else
-	            TUnifyDlgs::MessageDialog( "Speedy Unify", L"線圖主機斷線,請重新登入." );
+	            TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"線圖主機斷線,請重新登入." );
 			LoginForm->StatusLabel->Caption = L"";
 			Show();
 		}
@@ -1286,7 +1286,7 @@ bool __fastcall TMainForm::IsHotkeyDup( const String& NewHotkey )
 	{
 		if( FHotkeys[j]->ButtonText != DisableName && FHotkeys[j]->ButtonText == NewHotkey )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify",L"熱鍵重複設定" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"熱鍵重複設定" );
 			return true;
 		}
 	}
@@ -1414,7 +1414,7 @@ void __fastcall TMainForm::actLoginExecute(TObject *Sender)
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"您已經登入交易服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您已經登入交易服務器" );
 
 }
 //---------------------------------------------------------------------------
@@ -1509,7 +1509,7 @@ void __fastcall TMainForm::CheckAgreement( void )
 	if( FLoginBroker != NULL &&
 		FLoginBroker->GetService()->SignAgreememt( gUser.LoginUserID,FCAChecker, Reason ) == false )
 	{
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Reason );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
 		OrderStore->Disconnect( true );
 	}
 }
@@ -1667,10 +1667,10 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 			OrderStore->Connect();
 		}
 		else
-			TUnifyDlgs::MessageDialog( "Speedy Unify", errMsg );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg );
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"錯誤的連線設定" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"錯誤的連線設定" );
 
 	catMenuItems->Enabled = true;
 }
@@ -1684,7 +1684,7 @@ void __fastcall TMainForm::actLogoutExecute(TObject *Sender)
 	else
 	{
 		Speak( L"您尚未登入" );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"您尚未登入交易服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未登入交易服務器" );
 	}
 }
 //---------------------------------------------------------------------------
@@ -1701,7 +1701,7 @@ void __fastcall TMainForm::Tab1ButtonClick(TObject *Sender)
 	{
 		if( Btn->Tag == 1 && ContractInfoForm->SupportOptions() == false )
 		{
-			TUnifyDlgs::MessageDialog( L"Speedy Unify", L"沒有選擇權商品");
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"沒有選擇權商品");
 			return;
 		}
 		int   TabCount = FTabs.ItemCount();
@@ -1747,7 +1747,7 @@ void __fastcall TMainForm::actReportExecute(TObject *Sender)
 	if( OrderStore->IsReady() == false )
 	{
 		Speak( L"請先登入下單服務器" );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 	}
 	else
 	{
@@ -1890,7 +1890,7 @@ void __fastcall TMainForm::SaveProperties( void )
 	   SaveHotkey();
 	   SaveWavesSetting();
 	   if( g_Config.Save() == false)
-		   TUnifyDlgs::MessageDialog( "Speedy Unify", L"設定檔存檔失敗!" );
+		   TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"設定檔存檔失敗!" );
 	}
 }
 //---------------------------------------------------------------------------
@@ -2215,19 +2215,19 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 			if( gUser.AccountType == hatBoth )
 			{
 				if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
-					TUnifyDlgs::MessageDialog( "Speedy Unify", L"中台期貨部位查詢失敗:" + Msg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
 				if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
-					TUnifyDlgs::MessageDialog( "Speedy Unify", L"中台證券部位查詢失敗:" + Msg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
 			}
 			else if( gUser.AccountType == hatTAIFEX )
 			{
 				if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
-					TUnifyDlgs::MessageDialog( "Speedy Unify", L"中台期貨部位查詢失敗:" + Msg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
 			}
 			else if( gUser.AccountType == hatTWSE )
 			{
 				if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
-					TUnifyDlgs::MessageDialog( "Speedy Unify", L"中台證券部位查詢失敗:" + Msg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
 			}
 		}
 		else
@@ -2544,25 +2544,25 @@ void __fastcall TMainForm::UnifyLicense( void )
 	{
 		EnableUnifyLicense( true );
 		if( gTFT == true  )
-			FCopyRights.printf( L"Speedy Unify© [創富專屬服務器]" );
+			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		else
-			FCopyRights.printf( L"Speedy Unify© [專屬服務器]    " );
+			FCopyRights.printf( L"%s© [專屬服務器]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 	}
 	else if( gTFT == true  )
 	{
 		EnableUnifyLicense( true );
 		if( GVIPServer == true  )
-			FCopyRights.printf( L"Speedy Unify© [創富專屬服務器]" );
+			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		else
-			FCopyRights.printf( L"Speedy Unify© [創富投資]    " );
+			FCopyRights.printf( L"%s© [創富投資]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 	}
 	else if( g_Config.IPLicense( gUser.ClientIP ) == true )
 	{
 		EnableUnifyLicense( true );
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"Speedy Unify© [學員在啟蒙基地]    " );
+			FCopyRights.printf( L"%s© [學員在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		else
-			FCopyRights.printf( L"Speedy Unify© [在啟蒙基地]    " );
+			FCopyRights.printf( L"%s© [在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		gUser.IsAOEMember = true;
 	}
 	else if( Support( UnifyKey, YYYYMMDD ) == true || Support( ProdUnifyKey, YYYYMMDD ) )
@@ -2570,9 +2570,9 @@ void __fastcall TMainForm::UnifyLicense( void )
 		int TodayInt = Today.ToInt();
 
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"Speedy Unify© 啟蒙學員[%04d-%02d-%02d]    ", YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
+			FCopyRights.printf( L"%s© 啟蒙學員[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName, YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
 		else
-			FCopyRights.printf( L"Speedy Unify© 授權至[%04d-%02d-%02d]    ", YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
+			FCopyRights.printf( L"%s© 授權至[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName, YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
 		if( YYYYMMDD >= TodayInt )
 			EnableUnifyLicense( true );
 		else
@@ -2581,9 +2581,9 @@ void __fastcall TMainForm::UnifyLicense( void )
 	else
 	{
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"Speedy Unify© [啟蒙學員試用版]    " );
+			FCopyRights.printf( L"%s© [啟蒙學員試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		else
-			FCopyRights.printf( L"Speedy Unify© [試用版]    " );
+			FCopyRights.printf( L"%s© [試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		EnableUnifyLicense( false );
 	}
 	if( Support( Nuclear1Key, YYYYMMDD ) == true || Support( Nuclear2Key, YYYYMMDD ) || Support( Nuclear2Key, YYYYMMDD ) )
@@ -2612,7 +2612,7 @@ void __fastcall TMainForm::UseLastLicense( UFC::PHashMap<String,UnifyProductInfo
 void __fastcall TMainForm::HandleTokenExpired( void )
 {
 	PreventIdleTimer->Enabled = false;
-	TUnifyDlgs::MessageDialog( "Speedy Unify", L"同樣帳號在別的地方登入,您將被強制登出,請注意您的帳號密碼安全!" );
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"同樣帳號在別的地方登入,您將被強制登出,請注意您的帳號密碼安全!" );
 	Visible = false;
 	CloseAll( );
 	Show();
@@ -2668,7 +2668,7 @@ void __fastcall TMainForm::CAButtonClick(TObject *Sender)
 	{
 		CASettingForm = new TCASettingForm( this );
 
-		CASettingForm->Caption = L"Speedy Unify 憑證設定";
+		CASettingForm->Caption = Mdcomponentstrings_MD_SpeedyUnify_AppName + L" 憑證設定";
 		CASettingForm->IDLabel->Caption = L"身分證號:" + gUser.LoginUserID;
 		CASettingForm->CAFileEdit->Text = FCAChecker->FPFXFile;
 		CASettingForm->SavePasswordCheckBox->Checked = g_Config.GetBoolProperty( gUser.LoginUserID, "SavePwd", true );
@@ -2774,7 +2774,7 @@ void __fastcall TMainForm::SystemInfo( void )
 	int             AppVer = g_Config.GetVersion();
 
 	///< Unify Version
-	Msg.printf( L"Speedy Unify 版本: %d.%d.%d",AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
+	Msg.printf( L"%s 版本: %d.%d.%d", Mdcomponentstrings_MD_SpeedyUnify_AppName, AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
 	SUVerLabel->Caption = Msg;
 	///< OS Version
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
@@ -3023,7 +3023,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender, TMouseButton Button, T
 			}
 		}
 		else
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"您尚未登入交易服務器" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未登入交易服務器" );
 	}
 }
 //---------------------------------------------------------------------------
