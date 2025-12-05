@@ -186,9 +186,6 @@ __published:	// IDE-managed Components
 	TUpDown *StopTickUpDown;
 	TEdit *StopTickEdit;
 	TComboBox *StopPercentComboBox;
-	TGraphButton *W100GraphButton;
-	TGraphButton *W50GraphButton;
-	TGraphButton *W200GraphButton;
 	TRadioGroup *AutoStopProfitRadioGroup;
 	TEdit *StopProfitTickEdit;
 	TUpDown *StopProfitTickUpDown;
@@ -283,7 +280,6 @@ __published:	// IDE-managed Components
 	void __fastcall StopPercentComboBoxChange(TObject *Sender);
 	void __fastcall AutoStopRadioGroupClick(TObject *Sender);
 	void __fastcall OrderBookListPxAlarm(TObject *Sender);
-	void __fastcall W50GraphButtonClick(TObject *Sender);
 	void __fastcall OrderBookListLowerPxAlarm(TObject *Sender);
 	void __fastcall StopProfitTickUpDownChangingEx(TObject *Sender, bool &AllowChange,
           int NewValue, TUpDownDirection Direction);
