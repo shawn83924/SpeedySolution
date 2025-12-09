@@ -96,6 +96,7 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 ,FGroup( Page )
 ,FNetPos( 0 )
 ,FFontSize( FONT_SIZE_DEF )
+,FPostSizeOffset( 5 )
 ,FLeft(0)
 ,FTop(0)
 ,FFateTesting( false )
@@ -1271,9 +1272,11 @@ void __fastcall TDepthForm::AdjuestFont( void )
 	OrderBookList->Font = Font;
 	Canvas->Font = Font;
 	RoundFormEx->CaptionFont->Size  = FFontSize;
-	NetPosText->Font->Size  = FFontSize;
+	NetPosText->Font->Size  = FFontSize + FPostSizeOffset;
+	Canvas->Font->Size = FFontSize + FPostSizeOffset;
 	NetPosText->Width  = Canvas->TextWidth( L"淨部位   ");
 	NetPosText->Height = Canvas->TextHeight( L"淨部位   ");
+	Canvas->Font->Size = FFontSize;
 	NetPosText->Top = ((pnlToolbar->Height - Bevel4->Height) - NetPosText->Height )/2;
 	PosLabel->Font->Size  = FFontSize;
 	PosLabel->SetBounds( NetPosText->Left + NetPosText->Width,

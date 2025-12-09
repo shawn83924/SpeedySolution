@@ -194,6 +194,7 @@ __published:	// IDE-managed Components
 	TTimer *StopLossTimer;
 	TTimer *TakeProfitTimer;
 	TComboBox *ExchangeComboBox;
+	TGraphButton *EscapeButton;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -325,6 +326,7 @@ private:	// User declarations
 	int FGroup;
 	int FNetPos;
 	int FFontSize;
+	int FPostSizeOffset;
 	int FNuclearUpperLots;
 	int FNuclearLowerLots;
 	UFC::PHashMap<TButton*,TPanel*>  FExpBtn2Panel;
