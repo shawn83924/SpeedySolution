@@ -254,7 +254,7 @@ object DepthForm: TDepthForm
       OnMouseDown = LotsPerOrderEditMouseDown
     end
     object SmallButton: TGraphButton
-      Left = 186
+      Left = 196
       Top = 5
       Width = 27
       Height = 27
@@ -280,7 +280,7 @@ object DepthForm: TDepthForm
       ImageIndex = 9
     end
     object LargeButton: TGraphButton
-      Left = 214
+      Left = 224
       Top = 5
       Width = 27
       Height = 27
@@ -358,7 +358,7 @@ object DepthForm: TDepthForm
       StyleElements = []
     end
     object PosLabel: TStaticText
-      Left = 127
+      Left = 137
       Top = 2
       Width = 49
       Height = 33
@@ -2176,6 +2176,20 @@ object DepthForm: TDepthForm
       ButtonText = #27798
       ImageList = MainForm.ToolImageList
       ImageIndex = 0
+    end
+    object EscapeButton: TGraphButton
+      Left = 324
+      Top = 49
+      Width = 62
+      Height = 24
+      TabOrder = 13
+      Anchors = [akTop, akRight]
+      FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
+      FontAttrib.CaptionFont.Color = clWindowText
+      FontAttrib.CaptionFont.Height = -13
+      FontAttrib.CaptionFont.Name = 'Tahoma'
+      FontAttrib.CaptionFont.Style = []
+      ButtonText = #36867#21629
     end
   end
   object ToolSV: TSplitView
@@ -4981,7 +4995,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080034010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030008003C010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
