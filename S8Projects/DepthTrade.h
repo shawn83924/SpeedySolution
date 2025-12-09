@@ -291,6 +291,7 @@ __published:	// IDE-managed Components
 	void __fastcall StopLossTimerTimer(TObject *Sender);
 	void __fastcall TakeProfitTimerTimer(TObject *Sender);
 	void __fastcall ExchangeComboBoxChange(TObject *Sender);
+	void __fastcall EscapeButtonClick(TObject *Sender);
 
 
 
@@ -337,7 +338,7 @@ private:	// User declarations
 	void __fastcall ChangeSymbol( void );
 	void __fastcall WndProc( TMessage &Msg );
 	void __fastcall SetWidth( int Add );
-	void __fastcall CancelAllAndClose( void );
+	void __fastcall CancelAllAndClose( bool UsingStep );
 	void __fastcall AdjuestFont( void );
 	void __fastcall OnPositionClosed( void );
 	void __fastcall EnableStopAfterFilled( bool Enable );
