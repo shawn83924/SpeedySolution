@@ -2178,11 +2178,12 @@ object DepthForm: TDepthForm
       ImageIndex = 0
     end
     object EscapeButton: TGraphButton
-      Left = 324
+      Left = 344
       Top = 49
-      Width = 62
+      Width = 42
       Height = 24
       TabOrder = 13
+      OnClick = EscapeButtonClick
       Anchors = [akTop, akRight]
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWindowText
@@ -2716,6 +2717,7 @@ object DepthForm: TDepthForm
           Height = 27
           BevelInner = bvNone
           BevelOuter = bvNone
+          Style = csDropDownList
           DropDownCount = 10
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -4995,7 +4997,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C0101030008003C010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300080040010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

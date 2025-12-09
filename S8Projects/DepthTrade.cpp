@@ -96,7 +96,7 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 ,FGroup( Page )
 ,FNetPos( 0 )
 ,FFontSize( FONT_SIZE_DEF )
-,FPostSizeOffset( 5 )
+,FPostSizeOffset( 7 )
 ,FLeft(0)
 ,FTop(0)
 ,FFateTesting( false )
@@ -812,7 +812,7 @@ void __fastcall TDepthForm::LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TS
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::CancelAllAndClose( void )
+void __fastcall TDepthForm::CancelAllAndClose( bool UsingStep )
 {
 	double ClosePx;
 	int    dir;
@@ -828,7 +828,12 @@ void __fastcall TDepthForm::CancelAllAndClose( void )
 		dir   = 1;
 		Side  = nsOrderMessageDefine::sSell;
 	}
-	ClosePx = OrderBookList->GetTickPrice( dir* MainForm->CloseBetterTick() ); ///< Get price.
+	int step = 0;
+	if(UsingStep)
+	{
+		step = dir* MainForm->CloseBetterTick();
+	}
+	ClosePx = OrderBookList->GetTickPrice( step ); ///< Get price.
 	OrderBookList->DeleteAllOrders( false );
 	///< Place new order to close positions.
 	if( FNetPos != 0 )
@@ -839,7 +844,7 @@ void __fastcall TDepthForm::NuclearBuy( void )
 {
 	if( gOrderStore->IsReady() == true )
 	{
-		CancelAllAndClose();
+		CancelAllAndClose(true);
 		OrderBookList->DeleteAllStopOrders();
 		TDoubleDynArray UpPrices,DownPrices,ProfitPrices;
 		int Lots,AddLots;
@@ -886,7 +891,7 @@ void __fastcall TDepthForm::NuclearSell( void )
 {
 	if( gOrderStore->IsReady() == true )
 	{
-		CancelAllAndClose();
+		CancelAllAndClose(true);
 		OrderBookList->DeleteAllStopOrders();
 		TDoubleDynArray UpPrices,DownPrices,ProfitPrices;
 		int Lots,AddLots;
@@ -943,7 +948,7 @@ void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TSh
 	else if( Key == FKeyCxlAndClose && gNuclear == true ) ///< Cancel all and close it.
 	{
 		UFC::BufferedLog::Printf( " -----[KeyDown::Cancel all and Close] Begin" );
-		CancelAllAndClose();
+		CancelAllAndClose(true);
 		UFC::BufferedLog::Printf( " -----[KeyDown::Cancel all and Close] End" );
 		return;
 	}
@@ -2723,6 +2728,9 @@ void __fastcall TDepthForm::InitExchangeComboBox(int Idx)
 		CustomName = g_Config.GetStringProperty( "CustomNames",KeyName, DefName );
 		ExchangeComboBox->Items->Strings[ i ] = CustomName;
 	}
+
+	if(Idx<0)
+		Idx = 0;
 	ExchangeComboBox->ItemIndex = Idx;
 }
 //---------------------------------------------------------------------------
@@ -2792,3 +2800,14 @@ void __fastcall TDepthForm::ExchangeComboBoxChange(TObject *Sender)
 	UpdateSymbolListCount();
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::EscapeButtonClick(TObject *Sender)
+{
+	if( TUnifyDlgs::AskYesNoDialog(
+		Mdcomponentstrings_MD_SpeedyUnify_AppName,
+		L"確定要出清該部位? " + Caption) == false )
+		return;
+
+	CancelAllAndClose(false);
+}
+//---------------------------------------------------------------------------
+
