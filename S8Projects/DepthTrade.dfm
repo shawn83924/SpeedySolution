@@ -20,9 +20,9 @@ object DepthForm: TDepthForm
   PixelsPerInch = 96
   TextHeight = 23
   object OrderBookList: TOrderBookList
-    Left = 190
+    Left = 210
     Top = 113
-    Width = 201
+    Width = 181
     Height = 905
     Margins.Left = 5
     Margins.Top = 5
@@ -2196,7 +2196,7 @@ object DepthForm: TDepthForm
   object ToolSV: TSplitView
     Left = 0
     Top = 113
-    Width = 190
+    Width = 210
     Height = 905
     Margins.Left = 5
     Margins.Top = 5
@@ -2211,7 +2211,7 @@ object DepthForm: TDepthForm
     Font.Height = -18
     Font.Name = #24494#36575#27491#40657#39636
     Font.Style = []
-    OpenedWidth = 190
+    OpenedWidth = 210
     ParentFont = False
     Placement = svpLeft
     TabOrder = 2
@@ -2220,13 +2220,13 @@ object DepthForm: TDepthForm
     object PageControl: TPageControl
       Left = 0
       Top = 0
-      Width = 190
+      Width = 210
       Height = 905
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = SettingTabSheet
+      ActivePage = StopSettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2252,487 +2252,501 @@ object DepthForm: TDepthForm
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        object CountLabel: TLabel
-          Left = 8
-          Top = 441
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #19979#21934#31558#25976
-        end
-        object CxlBeforeNewLabel: TLabel
-          Left = 8
-          Top = 334
-          Width = 126
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #26032#21934#21069#21462#28040#21069#21934
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object DrivedPxLabel: TLabel
-          Left = 8
-          Top = 113
-          Width = 90
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #39023#31034#34893#29983#20729
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object FillLabel: TLabel
-          Left = 8
-          Top = 5
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #39023#31034#25104#20132
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object FillQtyLabel: TLabel
-          Left = 8
-          Top = 168
-          Width = 90
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #39023#31034#25104#20132#37327
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object MarketLabel: TLabel
-          Left = 8
-          Top = 280
-          Width = 90
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #29105#37749#24066#20729#21934
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object SliceOrderLabel: TLabel
-          Left = 8
-          Top = 388
-          Width = 108
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #22810#31558#19979#21934#35373#23450
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object TickLabel: TLabel
-          Left = 8
-          Top = 472
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #38291#38548#27284#20301
-        end
-        object Label1: TLabel
-          Left = 8
-          Top = 59
-          Width = 108
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #25104#20132#33258#21205#32622#20013
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label2: TLabel
-          Left = 8
-          Top = 226
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #21934#31558#19978#38480
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Bevel5: TBevel
-          Left = 7
-          Top = 503
-          Width = 163
-          Height = 12
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          Shape = bsTopLine
-        end
-        object Bevel8: TBevel
-          Left = 7
-          Top = 221
-          Width = 163
-          Height = 12
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          Shape = bsTopLine
-        end
-        object CxlBeforeNewToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 357
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
+        object SettingScrollBox: TScrollBox
+          Left = 0
+          Top = 0
+          Width = 202
+          Height = 868
+          HorzScrollBar.Range = 170
+          VertScrollBar.Range = 868
+          VertScrollBar.Smooth = True
+          VertScrollBar.Tracking = True
+          Align = alClient
+          AutoScroll = False
           TabOrder = 0
-          ThumbWidth = 20
-          OnClick = CxlBeforeNewToggleSwitchClick
-        end
-        object DrivedToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 136
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 1
-          ThumbWidth = 20
-          OnClick = DrivedToggleSwitchClick
-        end
-        object FillQtyToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 191
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 2
-          ThumbWidth = 20
-          OnClick = FillQtyToggleSwitchClick
-        end
-        object FillToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 28
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 3
-          ThumbWidth = 20
-          OnClick = FillToggleSwitchClick
-        end
-        object MarketToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 303
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = 'FOK'
-          StateCaptions.CaptionOff = 'IOC'
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 4
-          ThumbWidth = 20
-        end
-        object SliceOrderSwitch: TToggleSwitch
-          Left = 8
-          Top = 410
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 5
-          ThumbWidth = 20
-          OnClick = SliceOrderSwitchClick
-        end
-        object StepCountEdit: TEdit
-          Left = 86
-          Top = 439
-          Width = 39
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = 'Arial'
-          Font.Style = []
-          ImeMode = imSAlpha
-          MaxLength = 2
-          ParentFont = False
-          TabOrder = 6
-          Text = '1'
-        end
-        object StepCountUpDown: TUpDown
-          Left = 125
-          Top = 439
-          Width = 31
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Associate = StepCountEdit
-          Min = 1
-          Max = 10
-          Position = 1
-          TabOrder = 7
-          OnChangingEx = StepCountUpDownChangingEx
-        end
-        object StepEdit: TEdit
-          Left = 86
-          Top = 470
-          Width = 39
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = 'Arial'
-          Font.Style = []
-          ImeMode = imSAlpha
-          MaxLength = 2
-          ParentFont = False
-          TabOrder = 8
-          Text = '2'
-        end
-        object StepUpDown: TUpDown
-          Left = 125
-          Top = 470
-          Width = 31
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Associate = StepEdit
-          Min = 1
-          Max = 5
-          Position = 2
-          TabOrder = 9
-          OnChangingEx = StepUpDownChangingEx
-        end
-        object AutoCenterSwitch: TToggleSwitch
-          Left = 8
-          Top = 82
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 10
-          ThumbWidth = 20
-          OnClick = AutoCenterSwitchClick
-        end
-        object LotsComboBox: TComboBox
-          Left = 8
-          Top = 248
-          Width = 117
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Style = csDropDownList
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ItemIndex = 9
-          ParentFont = False
-          TabOrder = 11
-          Text = '200'
-          OnChange = LotsComboBoxChange
-          Items.Strings = (
-            '1'
-            '5'
-            '10'
-            '20'
-            '30'
-            '40'
-            '50'
-            '100'
-            '150'
-            '200'
-            '300'
-            '499')
-        end
-        object SymbolListBox: TListBox
-          Left = 8
-          Top = 543
-          Width = 162
-          Height = 314
-          Style = lbVirtual
-          ExtendedSelect = False
-          ItemHeight = 20
-          TabOrder = 12
-          OnClick = SymbolListBoxClick
-          OnData = SymbolListBoxData
-        end
-        object ExchangeComboBox: TComboBox
-          Left = 8
-          Top = 510
-          Width = 162
-          Height = 27
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          Style = csDropDownList
-          DropDownCount = 10
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clBlack
-          Font.Height = -15
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 13
-          OnChange = ExchangeComboBoxChange
-          Items.Strings = (
-            #33258#36984#21830#21697'-1'
-            #33258#36984#21830#21697'-2'
-            #33258#36984#21830#21697'-3'
-            #33258#36984#21830#21697'-4'
-            #33258#36984#21830#21697'-5')
+          OnMouseWheel = ScrollBoxMouseWheel
+          object CountLabel: TLabel
+            Left = 8
+            Top = 441
+            Width = 72
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #19979#21934#31558#25976
+          end
+          object MarketLabel: TLabel
+            Left = 8
+            Top = 280
+            Width = 90
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #29105#37749#24066#20729#21934
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label2: TLabel
+            Left = 8
+            Top = 226
+            Width = 72
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #21934#31558#19978#38480
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Label1: TLabel
+            Left = 8
+            Top = 59
+            Width = 108
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #25104#20132#33258#21205#32622#20013
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object FillQtyLabel: TLabel
+            Left = 8
+            Top = 168
+            Width = 90
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #39023#31034#25104#20132#37327
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object FillLabel: TLabel
+            Left = 8
+            Top = 5
+            Width = 72
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #39023#31034#25104#20132
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object DrivedPxLabel: TLabel
+            Left = 8
+            Top = 113
+            Width = 90
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #39023#31034#34893#29983#20729
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object CxlBeforeNewLabel: TLabel
+            Left = 8
+            Top = 334
+            Width = 126
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #26032#21934#21069#21462#28040#21069#21934
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object Bevel8: TBevel
+            Left = 7
+            Top = 221
+            Width = 163
+            Height = 12
+            Margins.Left = 4
+            Margins.Top = 4
+            Margins.Right = 4
+            Margins.Bottom = 4
+            Shape = bsTopLine
+          end
+          object Bevel5: TBevel
+            Left = 7
+            Top = 503
+            Width = 163
+            Height = 12
+            Margins.Left = 4
+            Margins.Top = 4
+            Margins.Right = 4
+            Margins.Bottom = 4
+            Shape = bsTopLine
+          end
+          object SliceOrderLabel: TLabel
+            Left = 8
+            Top = 388
+            Width = 108
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #22810#31558#19979#21934#35373#23450
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object TickLabel: TLabel
+            Left = 8
+            Top = 472
+            Width = 72
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #38291#38548#27284#20301
+          end
+          object MarketToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 303
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = 'FOK'
+            StateCaptions.CaptionOff = 'IOC'
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 0
+            ThumbWidth = 20
+          end
+          object LotsComboBox: TComboBox
+            Left = 8
+            Top = 248
+            Width = 117
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Style = csDropDownList
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ItemIndex = 9
+            ParentFont = False
+            TabOrder = 1
+            Text = '200'
+            OnChange = LotsComboBoxChange
+            Items.Strings = (
+              '1'
+              '5'
+              '10'
+              '20'
+              '30'
+              '40'
+              '50'
+              '100'
+              '150'
+              '200'
+              '300'
+              '499')
+          end
+          object FillToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 28
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 2
+            ThumbWidth = 20
+            OnClick = FillToggleSwitchClick
+          end
+          object FillQtyToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 191
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 3
+            ThumbWidth = 20
+            OnClick = FillQtyToggleSwitchClick
+          end
+          object ExchangeComboBox: TComboBox
+            Left = 8
+            Top = 510
+            Width = 162
+            Height = 27
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Style = csDropDownList
+            DropDownCount = 10
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clBlack
+            Font.Height = -15
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 4
+            OnChange = ExchangeComboBoxChange
+            Items.Strings = (
+              #33258#36984#21830#21697'-1'
+              #33258#36984#21830#21697'-2'
+              #33258#36984#21830#21697'-3'
+              #33258#36984#21830#21697'-4'
+              #33258#36984#21830#21697'-5')
+          end
+          object DrivedToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 136
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 5
+            ThumbWidth = 20
+            OnClick = DrivedToggleSwitchClick
+          end
+          object CxlBeforeNewToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 357
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 6
+            ThumbWidth = 20
+            OnClick = CxlBeforeNewToggleSwitchClick
+          end
+          object AutoCenterSwitch: TToggleSwitch
+            Left = 8
+            Top = 82
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 7
+            ThumbWidth = 20
+            OnClick = AutoCenterSwitchClick
+          end
+          object SliceOrderSwitch: TToggleSwitch
+            Left = 8
+            Top = 410
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 8
+            ThumbWidth = 20
+            OnClick = SliceOrderSwitchClick
+          end
+          object StepCountEdit: TEdit
+            Left = 86
+            Top = 439
+            Width = 39
+            Height = 27
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = 'Arial'
+            Font.Style = []
+            ImeMode = imSAlpha
+            MaxLength = 2
+            ParentFont = False
+            TabOrder = 9
+            Text = '1'
+          end
+          object StepEdit: TEdit
+            Left = 86
+            Top = 470
+            Width = 39
+            Height = 27
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = 'Arial'
+            Font.Style = []
+            ImeMode = imSAlpha
+            MaxLength = 2
+            ParentFont = False
+            TabOrder = 10
+            Text = '2'
+          end
+          object SymbolListBox: TListBox
+            Left = 8
+            Top = 543
+            Width = 162
+            Height = 314
+            Style = lbVirtual
+            ExtendedSelect = False
+            ItemHeight = 20
+            TabOrder = 11
+            OnClick = SymbolListBoxClick
+            OnData = SymbolListBoxData
+          end
+          object StepUpDown: TUpDown
+            Left = 125
+            Top = 470
+            Width = 31
+            Height = 27
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Associate = StepEdit
+            Min = 1
+            Max = 5
+            Position = 2
+            TabOrder = 12
+            OnChangingEx = StepUpDownChangingEx
+          end
+          object StepCountUpDown: TUpDown
+            Left = 125
+            Top = 439
+            Width = 31
+            Height = 27
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Associate = StepCountEdit
+            Min = 1
+            Max = 10
+            Position = 1
+            TabOrder = 13
+            OnChangingEx = StepCountUpDownChangingEx
+          end
         end
       end
       object StopSettingTabSheet: TTabSheet
@@ -2744,468 +2758,214 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 2
         ParentDoubleBuffered = False
-        object StopSettingBtn: TSpeedButton
-          Left = 125
-          Top = 57
-          Width = 38
-          Height = 33
-          Hint = #35320#20729#35373#23450
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Glyph.Data = {
-            36050000424D3605000000000000360400002800000010000000100000000100
-            0800000000000001000000000000000000000001000000010000000000000101
-            0100020202000303030004040400050505000606060007070700080808000909
-            09000A0A0A000B0B0B000C0C0C000D0D0D000E0E0E000F0F0F00101010001111
-            1100121212001313130014141400151515001616160017171700181818001919
-            19001A1A1A001B1B1B001C1C1C001D1D1D001E1E1E001F1F1F00202020002121
-            2100222222002323230024242400252525002626260027272700282828002929
-            29002A2A2A002B2B2B002C2C2C002D2D2D002E2E2E002F2F2F00303030003131
-            3100323232003333330034343400353535003636360037373700383838003939
-            39003A3A3A003B3B3B003C3C3C003D3D3D003E3E3E003F3F3F00404040004141
-            4100424242004343430044444400454545004646460047474700484848004949
-            49004A4A4A004B4B4B004C4C4C004D4D4D004E4E4E004F4F4F00505050005151
-            5100525252005353530054545400555555005656560057575700585858005959
-            59005A5A5A005B5B5B005F5F5F0064636300686868006C6B6B00727171007777
-            77007C7B7B007F7F7F008382820086858500898888008E8D8D00919090009392
-            9200959494009695950096959500969595009695950097969600979696009796
-            96009796960098969600999797009A9898009C9999009E9B9B00A19D9D00A39E
-            9E00A59F9F00A6A0A000A8A0A000AAA1A100ACA3A200ADA3A300AEA3A300AFA4
-            A400B0A5A400B1A6A600B2A8A800B4ABAB00BAAFAE00BEB2B200B9B3B400B0B4
-            B700A8B5BB009DB7C00093BAC60089BECD0081BFD10074C1D6006CC1D90064C1
-            DA005EC1DC0057C1DD004FC2E1004AC5E50045C7E90041C9EB003ACBEF0033CD
-            F2002DCFF40027D0F70020D0F8001DD1FA0022D1F9002DD3F9003CD5F8004AD7
-            F70056D9F7005DD9F60063DAF60067DAF6006BDBF60070DCF50076DEF5007FDF
-            F5008BE2F50091E3F50096E4F5009DE3F200A3E3F100AEE2ED00B9E1EA00C4E1
-            E700CFE1E500D4E1E500D7E1E500DCE1E400E0E0E300E2DFE300E3DBE400E4D4
-            E500E7C4E700ECAAEA00F090ED00F378F000F55BF300F935F800FC15FB00FE09
-            FD00FE02FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
-            FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
-            FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
-            FE00F703FC00E50EF500C91DEC00A034DF007F47D4006954CD00575EC6004768
-            C1003970BC002D78B800237EB4001A82B2001585B0001486B0001587B1001488
-            B2001488B3001589B400168AB400178AB500178CB600188DB8001A8FBA001B91
-            BC001B94BF001E98C2001D9CC7001D9EC9001D9FCA001DA0CC001EA1CD0021A3
-            CE0023A4CE0027A5CF0029A7D1002AA9D2002CAAD3002CABD300CECECECECECE
-            CEF8FEE6CECECECECECECECECEFBFAE6F3FFFFEDE8FFFCCECECECECECEFBFFFF
-            F79CA1FB9291FBCECECECEEEF394A994989DA0A38FAFABEDCECECE92FF94ACAA
-            A39B9DA2A8A998FFFBCECEF1FA94A9ABA792949A9D9D9D9CFFCECEF0FF96A68D
-            6F6F6F6F949D9D9DF5CECEF1FFFFA36FB7897E876FA2ADAFF3CECEEEF8FF966F
-            B7897E876FA9AF8DFBCECECEE6F9986FB7897E876FA591E6CECECECECEEBF06F
-            B7897E876FF3F1CECECECECECECECE6FB7867D876FCECECECECECECECECECE6F
-            897B737C6FCECECECECECECECECECE6FB6877B826FCECECECECECECECECECE6F
-            B7B788796FCECECECECECECECECECECE6F6F6F6FCECECECECECE}
-          ParentShowHint = False
-          ShowHint = True
-          OnClick = StopSettingBtnClick
-        end
-        object Label3: TLabel
-          Left = 8
-          Top = 97
-          Width = 160
-          Height = 48
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          AutoSize = False
-          Caption = #25104#20132#24460#36865#20986#35320#20729#21934
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-          WordWrap = True
-        end
-        object StopLabel: TLabel
-          Left = 8
-          Top = 5
-          Width = 72
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #39023#31034#35320#20729
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label5: TLabel
-          Left = 8
-          Top = 63
-          Width = 108
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #35320#20729#26781#20214#35373#23450
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object Label6: TLabel
-          Left = 5
-          Top = 318
-          Width = 116
-          Height = 23
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #31354#25163'-'#33258#21205#20840#21034
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -18
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-        end
-        object AutoStopRadioGroup: TRadioGroup
-          Left = 3
-          Top = 122
-          Width = 173
-          Height = 94
-          ItemIndex = 0
-          Items.Strings = (
-            #40670#25976
-            #30334#20998#27604)
-          TabOrder = 4
-          OnClick = AutoStopRadioGroupClick
-        end
-        object FilledStopToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 123
-          Width = 112
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          State = tssOn
-          StateCaptions.CaptionOn = #38283#21855#20572#25613
-          StateCaptions.CaptionOff = #38364#38281#20572#25613
-          SwitchHeight = 18
-          SwitchWidth = 38
+        object StopSettingScrollBox: TScrollBox
+          Left = 0
+          Top = 0
+          Width = 202
+          Height = 868
+          VertScrollBar.Smooth = True
+          VertScrollBar.Tracking = True
+          Align = alClient
           TabOrder = 0
-          ThumbWidth = 20
-          OnClick = FilledStopToggleSwitchClick
-        end
-        object StopToggleSwitch: TToggleSwitch
-          Left = 8
-          Top = 28
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          State = tssOn
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 1
-          ThumbWidth = 20
-          OnClick = StopToggleSwitchClick
-        end
-        object DelOnCloseToggleSwitch: TToggleSwitch
-          Left = 5
-          Top = 344
-          Width = 78
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          State = tssOn
-          StateCaptions.CaptionOn = #38283#21855
-          StateCaptions.CaptionOff = #38364#38281
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 2
-          ThumbWidth = 20
-          OnClick = StopToggleSwitchClick
-        end
-        object NuclearGroupBox: TGroupBox
-          Left = 4
-          Top = 371
-          Width = 173
-          Height = 401
-          Margins.Left = 4
-          Margins.Top = 4
-          Margins.Right = 4
-          Margins.Bottom = 4
-          Caption = #26680#29190#35373#23450
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 3
-          object Label7: TLabel
-            Left = 7
-            Top = 29
-            Width = 72
+          OnMouseWheel = ScrollBoxMouseWheel
+          object Label5: TLabel
+            Left = 8
+            Top = 63
+            Width = 108
             Height = 23
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Caption = #26680#29190#21475#25976
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clRed
-            Font.Height = -18
-            Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label9: TLabel
-            Left = 11
-            Top = 114
-            Width = 72
-            Height = 23
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Caption = #38291#38548#27284#20301
+            Caption = #35320#20729#26781#20214#35373#23450
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -18
             Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
+            Font.Style = [fsBold]
             ParentFont = False
           end
-          object Label8: TLabel
-            Left = 11
-            Top = 76
+          object StopSettingBtn: TSpeedButton
+            Left = 125
+            Top = 57
+            Width = 38
+            Height = 33
+            Hint = #35320#20729#35373#23450
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Glyph.Data = {
+              36050000424D3605000000000000360400002800000010000000100000000100
+              0800000000000001000000000000000000000001000000010000000000000101
+              0100020202000303030004040400050505000606060007070700080808000909
+              09000A0A0A000B0B0B000C0C0C000D0D0D000E0E0E000F0F0F00101010001111
+              1100121212001313130014141400151515001616160017171700181818001919
+              19001A1A1A001B1B1B001C1C1C001D1D1D001E1E1E001F1F1F00202020002121
+              2100222222002323230024242400252525002626260027272700282828002929
+              29002A2A2A002B2B2B002C2C2C002D2D2D002E2E2E002F2F2F00303030003131
+              3100323232003333330034343400353535003636360037373700383838003939
+              39003A3A3A003B3B3B003C3C3C003D3D3D003E3E3E003F3F3F00404040004141
+              4100424242004343430044444400454545004646460047474700484848004949
+              49004A4A4A004B4B4B004C4C4C004D4D4D004E4E4E004F4F4F00505050005151
+              5100525252005353530054545400555555005656560057575700585858005959
+              59005A5A5A005B5B5B005F5F5F0064636300686868006C6B6B00727171007777
+              77007C7B7B007F7F7F008382820086858500898888008E8D8D00919090009392
+              9200959494009695950096959500969595009695950097969600979696009796
+              96009796960098969600999797009A9898009C9999009E9B9B00A19D9D00A39E
+              9E00A59F9F00A6A0A000A8A0A000AAA1A100ACA3A200ADA3A300AEA3A300AFA4
+              A400B0A5A400B1A6A600B2A8A800B4ABAB00BAAFAE00BEB2B200B9B3B400B0B4
+              B700A8B5BB009DB7C00093BAC60089BECD0081BFD10074C1D6006CC1D90064C1
+              DA005EC1DC0057C1DD004FC2E1004AC5E50045C7E90041C9EB003ACBEF0033CD
+              F2002DCFF40027D0F70020D0F8001DD1FA0022D1F9002DD3F9003CD5F8004AD7
+              F70056D9F7005DD9F60063DAF60067DAF6006BDBF60070DCF50076DEF5007FDF
+              F5008BE2F50091E3F50096E4F5009DE3F200A3E3F100AEE2ED00B9E1EA00C4E1
+              E700CFE1E500D4E1E500D7E1E500DCE1E400E0E0E300E2DFE300E3DBE400E4D4
+              E500E7C4E700ECAAEA00F090ED00F378F000F55BF300F935F800FC15FB00FE09
+              FD00FE02FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+              FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+              FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+              FE00F703FC00E50EF500C91DEC00A034DF007F47D4006954CD00575EC6004768
+              C1003970BC002D78B800237EB4001A82B2001585B0001486B0001587B1001488
+              B2001488B3001589B400168AB400178AB500178CB600188DB8001A8FBA001B91
+              BC001B94BF001E98C2001D9CC7001D9EC9001D9FCA001DA0CC001EA1CD0021A3
+              CE0023A4CE0027A5CF0029A7D1002AA9D2002CAAD3002CABD300CECECECECECE
+              CEF8FEE6CECECECECECECECECEFBFAE6F3FFFFEDE8FFFCCECECECECECEFBFFFF
+              F79CA1FB9291FBCECECECEEEF394A994989DA0A38FAFABEDCECECE92FF94ACAA
+              A39B9DA2A8A998FFFBCECEF1FA94A9ABA792949A9D9D9D9CFFCECEF0FF96A68D
+              6F6F6F6F949D9D9DF5CECEF1FFFFA36FB7897E876FA2ADAFF3CECEEEF8FF966F
+              B7897E876FA9AF8DFBCECECEE6F9986FB7897E876FA591E6CECECECECEEBF06F
+              B7897E876FF3F1CECECECECECECECE6FB7867D876FCECECECECECECECECECE6F
+              897B737C6FCECECECECECECECECECE6FB6877B826FCECECECECECECECECECE6F
+              B7B788796FCECECECECECECECECECECE6F6F6F6FCECECECECECE}
+            ParentShowHint = False
+            ShowHint = True
+            OnClick = StopSettingBtnClick
+          end
+          object StopLabel: TLabel
+            Left = 8
+            Top = 5
             Width = 72
             Height = 23
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Caption = #21516#21521#31558#25976
+            Caption = #39023#31034#35320#20729
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -18
             Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
+            Font.Style = [fsBold]
             ParentFont = False
           end
-          object Label10: TLabel
-            Left = 11
-            Top = 192
-            Width = 72
-            Height = 23
+          object Label3: TLabel
+            Left = 8
+            Top = 97
+            Width = 160
+            Height = 48
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Caption = #21453#21521#31558#25976
+            AutoSize = False
+            Caption = #25104#20132#24460#36865#20986#35320#20729#21934
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -18
             Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
+            Font.Style = [fsBold]
             ParentFont = False
+            WordWrap = True
           end
-          object Label11: TLabel
-            Left = 11
-            Top = 231
-            Width = 72
+          object Label6: TLabel
+            Left = 5
+            Top = 318
+            Width = 116
             Height = 23
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Caption = #38291#38548#27284#20301
+            Caption = #31354#25163'-'#33258#21205#20840#21034
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -18
             Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
+            Font.Style = [fsBold]
             ParentFont = False
           end
-          object Label12: TLabel
-            Left = 11
-            Top = 280
-            Width = 72
-            Height = 23
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Caption = #20572#21033#40670#25976
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clRed
-            Font.Height = -18
-            Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
-            ParentFont = False
-          end
-          object Bevel6: TBevel
-            Left = 9
-            Top = 62
-            Width = 155
-            Height = 5
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            Shape = bsTopLine
-          end
-          object Bevel7: TBevel
-            Left = 9
-            Top = 265
-            Width = 158
-            Height = 5
-            Margins.Left = 4
-            Margins.Top = 4
-            Margins.Right = 4
-            Margins.Bottom = 4
-            Shape = bsTopLine
-          end
-          object Label13: TLabel
-            Left = 11
-            Top = 356
-            Width = 72
-            Height = 23
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Caption = #38291#38548#27284#20301
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -18
-            Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label14: TLabel
-            Left = 11
-            Top = 319
-            Width = 72
-            Height = 23
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Caption = #37610#21934#40670#25976
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -18
-            Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = []
-            ParentFont = False
-          end
-          object NuclearLotsUpDown: TUpDown
-            Left = 142
-            Top = 25
-            Width = 25
-            Height = 29
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Associate = Edit1
-            Min = 5
-            Max = 500
-            Position = 10
-            TabOrder = 0
-            OnChangingEx = NuclearLotsUpDownChangingEx
-          end
-          object Edit1: TEdit
-            Left = 89
-            Top = 25
-            Width = 53
-            Height = 29
+          object StopTickEdit: TEdit
+            Left = 93
+            Top = 146
+            Width = 44
+            Height = 27
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -18
+            Font.Height = -17
             Font.Name = 'Arial'
             Font.Style = []
             ImeMode = imSAlpha
             MaxLength = 2
-            NumbersOnly = True
             ParentFont = False
-            ReadOnly = True
-            TabOrder = 1
+            TabOrder = 0
             Text = '10'
           end
-          object Edit3: TEdit
-            Left = 89
-            Top = 110
-            Width = 44
+          object StopTickUpDown: TUpDown
+            Left = 137
+            Top = 146
+            Width = 25
             Height = 27
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
+            Associate = StopTickEdit
+            Min = 1
+            Position = 10
+            TabOrder = 1
+            OnChangingEx = StopTickUpDownChangingEx
+          end
+          object StopToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 28
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            State = tssOn
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
             TabOrder = 2
-            Text = '2'
+            ThumbWidth = 20
+            OnClick = StopToggleSwitchClick
           end
-          object UpStepUpDown: TUpDown
-            Left = 133
-            Top = 110
+          object StopProfitTickUpDown: TUpDown
+            Left = 137
+            Top = 244
             Width = 25
             Height = 27
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Associate = Edit3
+            Associate = StopProfitTickEdit
             Min = 1
-            Max = 5
-            Position = 2
+            Position = 10
             TabOrder = 3
-            OnChangingEx = StepUpDownChangingEx
+            OnChangingEx = StopProfitTickUpDownChangingEx
           end
-          object UpCountUpDown: TUpDown
-            Left = 133
-            Top = 72
-            Width = 25
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Associate = Edit2
-            Min = 1
-            Position = 5
-            TabOrder = 4
-            OnChangingEx = StepCountUpDownChangingEx
-          end
-          object Edit2: TEdit
-            Left = 89
-            Top = 72
+          object StopProfitTickEdit: TEdit
+            Left = 93
+            Top = 244
             Width = 44
             Height = 27
             Margins.Left = 5
@@ -3219,17 +2979,15 @@ object DepthForm: TDepthForm
             Font.Style = []
             ImeMode = imSAlpha
             MaxLength = 2
-            NumbersOnly = True
             ParentFont = False
-            ReadOnly = True
-            TabOrder = 5
-            Text = '5'
+            TabOrder = 4
+            Text = '10'
           end
-          object RatioComboBox: TComboBox
-            Left = 10
-            Top = 147
-            Width = 155
-            Height = 31
+          object StopProfitPercentComboBox: TComboBox
+            Left = 93
+            Top = 281
+            Width = 68
+            Height = 30
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -3237,392 +2995,659 @@ object DepthForm: TDepthForm
             Style = csDropDownList
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
-            Font.Height = -18
+            Font.Height = -17
             Font.Name = #24494#36575#27491#40657#39636
-            Font.Style = [fsBold]
-            ItemIndex = 0
+            Font.Style = []
+            ItemIndex = 5
+            ParentFont = False
+            TabOrder = 5
+            Text = '3.0'
+            OnChange = StopPercentComboBoxChange
+            Items.Strings = (
+              '0.5'
+              '1.0'
+              '1.5'
+              '2.0'
+              '2.5'
+              '3.0'
+              '3.5'
+              '4.0'
+              '4.5'
+              '5.0'
+              '5.5'
+              '6.0'
+              '6.5'
+              '7.0'
+              '7.5'
+              '8.0'
+              '8.5'
+              '9.0'
+              '9.5'
+              '10.0')
+          end
+          object StopPercentComboBox: TComboBox
+            Left = 93
+            Top = 179
+            Width = 68
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Style = csDropDownList
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ItemIndex = 5
             ParentFont = False
             TabOrder = 6
-            Text = #65514'90%  '#65516'10%'
-            OnChange = RatioComboBoxChange
+            Text = '3.0'
+            OnChange = StopPercentComboBoxChange
             Items.Strings = (
-              #65514'90%  '#65516'10%'
-              #65514'80%  '#65516'20%'
-              #65514'70%  '#65516'30%'
-              #65514'60%  '#65516'40%')
+              '0.5'
+              '1.0'
+              '1.5'
+              '2.0'
+              '2.5'
+              '3.0'
+              '3.5'
+              '4.0'
+              '4.5'
+              '5.0'
+              '5.5'
+              '6.0'
+              '6.5'
+              '7.0'
+              '7.5'
+              '8.0'
+              '8.5'
+              '9.0'
+              '9.5'
+              '10.0')
           end
-          object DownCountUpDown: TUpDown
-            Left = 133
-            Top = 188
-            Width = 25
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Associate = Edit4
-            Min = 1
-            Position = 3
+          object NuclearGroupBox: TGroupBox
+            Left = 4
+            Top = 371
+            Width = 173
+            Height = 401
+            Margins.Left = 4
+            Margins.Top = 4
+            Margins.Right = 4
+            Margins.Bottom = 4
+            Caption = #26680#29190#35373#23450
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
             TabOrder = 7
-            OnChangingEx = StepCountUpDownChangingEx
+            object Label7: TLabel
+              Left = 7
+              Top = 29
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #26680#29190#21475#25976
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clRed
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label9: TLabel
+              Left = 11
+              Top = 114
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #38291#38548#27284#20301
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label8: TLabel
+              Left = 11
+              Top = 76
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #21516#21521#31558#25976
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label10: TLabel
+              Left = 11
+              Top = 192
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #21453#21521#31558#25976
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 11
+              Top = 231
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #38291#38548#27284#20301
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 11
+              Top = 280
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #20572#21033#40670#25976
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clRed
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Bevel6: TBevel
+              Left = 9
+              Top = 62
+              Width = 155
+              Height = 5
+              Margins.Left = 4
+              Margins.Top = 4
+              Margins.Right = 4
+              Margins.Bottom = 4
+              Shape = bsTopLine
+            end
+            object Bevel7: TBevel
+              Left = 9
+              Top = 265
+              Width = 158
+              Height = 5
+              Margins.Left = 4
+              Margins.Top = 4
+              Margins.Right = 4
+              Margins.Bottom = 4
+              Shape = bsTopLine
+            end
+            object Label13: TLabel
+              Left = 11
+              Top = 356
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #38291#38548#27284#20301
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label14: TLabel
+              Left = 11
+              Top = 319
+              Width = 72
+              Height = 23
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Caption = #37610#21934#40670#25976
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = []
+              ParentFont = False
+            end
+            object NuclearLotsUpDown: TUpDown
+              Left = 142
+              Top = 25
+              Width = 25
+              Height = 29
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit1
+              Min = 5
+              Max = 500
+              Position = 10
+              TabOrder = 0
+              OnChangingEx = NuclearLotsUpDownChangingEx
+            end
+            object Edit1: TEdit
+              Left = 89
+              Top = 25
+              Width = 53
+              Height = 29
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 1
+              Text = '10'
+            end
+            object Edit3: TEdit
+              Left = 89
+              Top = 110
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 2
+              Text = '2'
+            end
+            object UpStepUpDown: TUpDown
+              Left = 133
+              Top = 110
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit3
+              Min = 1
+              Max = 5
+              Position = 2
+              TabOrder = 3
+              OnChangingEx = StepUpDownChangingEx
+            end
+            object UpCountUpDown: TUpDown
+              Left = 133
+              Top = 72
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit2
+              Min = 1
+              Position = 5
+              TabOrder = 4
+              OnChangingEx = StepCountUpDownChangingEx
+            end
+            object Edit2: TEdit
+              Left = 89
+              Top = 72
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 5
+              Text = '5'
+            end
+            object RatioComboBox: TComboBox
+              Left = 10
+              Top = 147
+              Width = 155
+              Height = 31
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Style = csDropDownList
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -18
+              Font.Name = #24494#36575#27491#40657#39636
+              Font.Style = [fsBold]
+              ItemIndex = 0
+              ParentFont = False
+              TabOrder = 6
+              Text = #65514'90%  '#65516'10%'
+              OnChange = RatioComboBoxChange
+              Items.Strings = (
+                #65514'90%  '#65516'10%'
+                #65514'80%  '#65516'20%'
+                #65514'70%  '#65516'30%'
+                #65514'60%  '#65516'40%')
+            end
+            object DownCountUpDown: TUpDown
+              Left = 133
+              Top = 188
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit4
+              Min = 1
+              Position = 3
+              TabOrder = 7
+              OnChangingEx = StepCountUpDownChangingEx
+            end
+            object Edit4: TEdit
+              Left = 89
+              Top = 188
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 8
+              Text = '3'
+            end
+            object DownStepUpDown: TUpDown
+              Left = 133
+              Top = 227
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit5
+              Min = 1
+              Max = 5
+              Position = 1
+              TabOrder = 9
+              OnChangingEx = StepUpDownChangingEx
+            end
+            object Edit5: TEdit
+              Left = 89
+              Top = 227
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 10
+              Text = '1'
+            end
+            object ProfitTickUpDown: TUpDown
+              Left = 142
+              Top = 276
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit6
+              Min = 1
+              Max = 500
+              Position = 80
+              TabOrder = 11
+              OnChangingEx = StopTickUpDownChangingEx
+            end
+            object Edit6: TEdit
+              Left = 89
+              Top = 276
+              Width = 53
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 12
+              Text = '80'
+            end
+            object ProfitStepUpDown: TUpDown
+              Left = 133
+              Top = 354
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit7
+              Min = 1
+              Max = 5
+              Position = 1
+              TabOrder = 13
+              OnChangingEx = StepUpDownChangingEx
+            end
+            object Edit7: TEdit
+              Left = 89
+              Top = 354
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 14
+              Text = '1'
+            end
+            object ProfitCountUpDown: TUpDown
+              Left = 133
+              Top = 315
+              Width = 25
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Associate = Edit8
+              Min = 1
+              Position = 5
+              TabOrder = 15
+              OnChangingEx = StepCountUpDownChangingEx
+            end
+            object Edit8: TEdit
+              Left = 89
+              Top = 315
+              Width = 44
+              Height = 27
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -17
+              Font.Name = 'Arial'
+              Font.Style = []
+              ImeMode = imSAlpha
+              MaxLength = 2
+              NumbersOnly = True
+              ParentFont = False
+              ReadOnly = True
+              TabOrder = 16
+              Text = '5'
+            end
           end
-          object Edit4: TEdit
-            Left = 89
-            Top = 188
-            Width = 44
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
+          object AutoStopProfitRadioGroup: TRadioGroup
+            Left = 3
+            Top = 222
+            Width = 173
+            Height = 95
+            ItemIndex = 0
+            Items.Strings = (
+              #40670#25976
+              #30334#20998#27604)
             TabOrder = 8
-            Text = '3'
+            OnClick = AutoStopRadioGroupClick
           end
-          object DownStepUpDown: TUpDown
-            Left = 133
-            Top = 227
-            Width = 25
-            Height = 27
+          object FilledStopToggleSwitch: TToggleSwitch
+            Left = 8
+            Top = 123
+            Width = 112
+            Height = 24
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Associate = Edit5
-            Min = 1
-            Max = 5
-            Position = 1
+            State = tssOn
+            StateCaptions.CaptionOn = #38283#21855#20572#25613
+            StateCaptions.CaptionOff = #38364#38281#20572#25613
+            SwitchHeight = 18
+            SwitchWidth = 38
             TabOrder = 9
-            OnChangingEx = StepUpDownChangingEx
+            ThumbWidth = 20
+            OnClick = FilledStopToggleSwitchClick
           end
-          object Edit5: TEdit
-            Left = 89
-            Top = 227
-            Width = 44
-            Height = 27
+          object FilledStopProfitToggleSwitch: TToggleSwitch
+            Left = 5
+            Top = 224
+            Width = 112
+            Height = 24
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
+            State = tssOn
+            StateCaptions.CaptionOn = #38283#21855#20572#21033
+            StateCaptions.CaptionOff = #38364#38281#20572#21033
+            SwitchHeight = 18
+            SwitchWidth = 38
             TabOrder = 10
-            Text = '1'
+            ThumbWidth = 20
+            OnClick = FilledStopToggleSwitchClick
           end
-          object ProfitTickUpDown: TUpDown
-            Left = 142
-            Top = 276
-            Width = 25
-            Height = 27
+          object DelOnCloseToggleSwitch: TToggleSwitch
+            Left = 5
+            Top = 344
+            Width = 78
+            Height = 24
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
             Margins.Bottom = 5
-            Associate = Edit6
-            Min = 1
-            Max = 500
-            Position = 80
+            State = tssOn
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
             TabOrder = 11
-            OnChangingEx = StopTickUpDownChangingEx
+            ThumbWidth = 20
+            OnClick = StopToggleSwitchClick
           end
-          object Edit6: TEdit
-            Left = 89
-            Top = 276
-            Width = 53
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
+          object AutoStopRadioGroup: TRadioGroup
+            Left = 3
+            Top = 122
+            Width = 173
+            Height = 94
+            ItemIndex = 0
+            Items.Strings = (
+              #40670#25976
+              #30334#20998#27604)
             TabOrder = 12
-            Text = '80'
+            OnClick = AutoStopRadioGroupClick
           end
-          object ProfitStepUpDown: TUpDown
-            Left = 133
-            Top = 354
-            Width = 25
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Associate = Edit7
-            Min = 1
-            Max = 5
-            Position = 1
-            TabOrder = 13
-            OnChangingEx = StepUpDownChangingEx
-          end
-          object Edit7: TEdit
-            Left = 89
-            Top = 354
-            Width = 44
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
-            TabOrder = 14
-            Text = '1'
-          end
-          object ProfitCountUpDown: TUpDown
-            Left = 133
-            Top = 315
-            Width = 25
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Associate = Edit8
-            Min = 1
-            Position = 5
-            TabOrder = 15
-            OnChangingEx = StepCountUpDownChangingEx
-          end
-          object Edit8: TEdit
-            Left = 89
-            Top = 315
-            Width = 44
-            Height = 27
-            Margins.Left = 5
-            Margins.Top = 5
-            Margins.Right = 5
-            Margins.Bottom = 5
-            Font.Charset = ANSI_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -17
-            Font.Name = 'Arial'
-            Font.Style = []
-            ImeMode = imSAlpha
-            MaxLength = 2
-            NumbersOnly = True
-            ParentFont = False
-            ReadOnly = True
-            TabOrder = 16
-            Text = '5'
-          end
-        end
-        object StopTickUpDown: TUpDown
-          Left = 137
-          Top = 146
-          Width = 25
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Associate = StopTickEdit
-          Min = 1
-          Position = 10
-          TabOrder = 5
-          OnChangingEx = StopTickUpDownChangingEx
-        end
-        object StopTickEdit: TEdit
-          Left = 93
-          Top = 146
-          Width = 44
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = 'Arial'
-          Font.Style = []
-          ImeMode = imSAlpha
-          MaxLength = 2
-          ParentFont = False
-          TabOrder = 6
-          Text = '10'
-        end
-        object StopPercentComboBox: TComboBox
-          Left = 93
-          Top = 179
-          Width = 68
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Style = csDropDownList
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ItemIndex = 5
-          ParentFont = False
-          TabOrder = 7
-          Text = '3.0'
-          OnChange = StopPercentComboBoxChange
-          Items.Strings = (
-            '0.5'
-            '1.0'
-            '1.5'
-            '2.0'
-            '2.5'
-            '3.0'
-            '3.5'
-            '4.0'
-            '4.5'
-            '5.0'
-            '5.5'
-            '6.0'
-            '6.5'
-            '7.0'
-            '7.5'
-            '8.0'
-            '8.5'
-            '9.0'
-            '9.5'
-            '10.0')
-        end
-        object AutoStopProfitRadioGroup: TRadioGroup
-          Left = 3
-          Top = 222
-          Width = 173
-          Height = 95
-          ItemIndex = 0
-          Items.Strings = (
-            #40670#25976
-            #30334#20998#27604)
-          TabOrder = 8
-          OnClick = AutoStopRadioGroupClick
-        end
-        object StopProfitTickEdit: TEdit
-          Left = 93
-          Top = 248
-          Width = 44
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = 'Arial'
-          Font.Style = []
-          ImeMode = imSAlpha
-          MaxLength = 2
-          ParentFont = False
-          TabOrder = 9
-          Text = '10'
-        end
-        object StopProfitTickUpDown: TUpDown
-          Left = 137
-          Top = 248
-          Width = 25
-          Height = 27
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Associate = StopProfitTickEdit
-          Min = 1
-          Position = 10
-          TabOrder = 10
-          OnChangingEx = StopProfitTickUpDownChangingEx
-        end
-        object StopProfitPercentComboBox: TComboBox
-          Left = 93
-          Top = 281
-          Width = 68
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Style = csDropDownList
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = []
-          ItemIndex = 5
-          ParentFont = False
-          TabOrder = 11
-          Text = '3.0'
-          OnChange = StopPercentComboBoxChange
-          Items.Strings = (
-            '0.5'
-            '1.0'
-            '1.5'
-            '2.0'
-            '2.5'
-            '3.0'
-            '3.5'
-            '4.0'
-            '4.5'
-            '5.0'
-            '5.5'
-            '6.0'
-            '6.5'
-            '7.0'
-            '7.5'
-            '8.0'
-            '8.5'
-            '9.0'
-            '9.5'
-            '10.0')
-        end
-        object FilledStopProfitToggleSwitch: TToggleSwitch
-          Left = 5
-          Top = 224
-          Width = 112
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          State = tssOn
-          StateCaptions.CaptionOn = #38283#21855#20572#21033
-          StateCaptions.CaptionOff = #38364#38281#20572#21033
-          SwitchHeight = 18
-          SwitchWidth = 38
-          TabOrder = 12
-          ThumbWidth = 20
-          OnClick = FilledStopToggleSwitchClick
         end
       end
       object TFTTabSheet: TTabSheet
@@ -3637,7 +3662,7 @@ object DepthForm: TDepthForm
         object SplitPanel: TPanel
           Left = 0
           Top = 0
-          Width = 182
+          Width = 202
           Height = 92
           Align = alTop
           UseDockManager = False
@@ -3754,7 +3779,7 @@ object DepthForm: TDepthForm
         object BullOutPanel: TPanel
           Left = 0
           Top = 252
-          Width = 182
+          Width = 202
           Height = 185
           Align = alTop
           UseDockManager = False
@@ -4015,7 +4040,7 @@ object DepthForm: TDepthForm
         object FataOrdPanel: TPanel
           Left = 0
           Top = 492
-          Width = 182
+          Width = 202
           Height = 91
           Align = alTop
           UseDockManager = False
@@ -4080,7 +4105,7 @@ object DepthForm: TDepthForm
         object DepthPanel: TPanel
           Left = 0
           Top = 437
-          Width = 182
+          Width = 202
           Height = 55
           Align = alTop
           UseDockManager = False
@@ -4146,7 +4171,7 @@ object DepthForm: TDepthForm
         object BullInPanel: TPanel
           Left = 0
           Top = 92
-          Width = 182
+          Width = 202
           Height = 160
           Align = alTop
           UseDockManager = False
@@ -4359,392 +4384,403 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 1
         ParentDoubleBuffered = False
-        object Bevel1: TBevel
+        object ColorScrollBox: TScrollBox
           Left = 0
-          Top = 87
-          Width = 182
-          Height = 16
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Shape = bsBottomLine
-          ExplicitTop = 81
-          ExplicitWidth = 146
-        end
-        object Bevel2: TBevel
-          Left = 0
-          Top = 190
-          Width = 182
-          Height = 15
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Shape = bsBottomLine
-          ExplicitTop = 178
-          ExplicitWidth = 146
-        end
-        object Bevel3: TBevel
-          Left = 0
-          Top = 291
-          Width = 182
-          Height = 16
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Shape = bsBottomLine
-          ExplicitTop = 273
-          ExplicitWidth = 146
-        end
-        object DefColorButton: TSpeedButton
-          Left = 9
-          Top = 452
-          Width = 164
-          Height = 42
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #35712#21462#38928#35373#38991#33394
-          Glyph.Data = {
-            36050000424D3605000000000000360400002800000010000000100000000100
-            0800000000000001000000000000000000000001000000010000000000000101
-            0100020202000303030004040400050505000606060007070700080808000909
-            09000A0A0A000B0B0B000C0C0C000D120D000F180F00111E1000122412001429
-            1300152E140016331500173C160018451700194F18001A5718001B5C19001B62
-            19001B6619001B6919001B6C19001B6E19001B7119001A7419001A7619001A78
-            19001A7A19001A7D1900197F1900198019001980190019811900198019001980
-            19001E801B0025801D002C802000338122003B82260044842A0057873200708C
-            3B00869144009B944C00B2995600C19D5D00CCA06200D1A26300D5A46600D5A3
-            6400D6A26200D69E5E00D69B5A00D5975500D3914E00D0894400D1843E00D181
-            3800D3803300D47F2F00D27E3100CF7C3200CD7A3300C9763300C7743200C270
-            3200BE6D3400BA6A3200B5653100B1612E00AF5E2D00AC5C2C00A95A2C00A658
-            2C00A2552C009E522C009B4F2B00974C2A00954A290093492800934927009248
-            2700904826008F4725008E4723008D4722008B4622008A452200884422008643
-            22008542220085422300864224008743250088442B008846310087483B00854B
-            4600834E54007F5161007B59740076608600726797006C6CA5006770AF006373
-            B8005F75C0005977C9005577D1005377D5005277D800527CDC005280DE005283
-            DF005182DD004F80DB004C7BD8004B7BD800497AD7004779D6004172D2003B6C
-            CF003665CB003160C8002D5BC4002956C1002552BD00224FB800204FB5001F50
-            B3001D4EB0001A4AAE001D50AB002156A6002556A4002957A3002E58A200335B
-            A0003D5F9D0047649A0050689700586C9400627191006B768E00747A8B007C7E
-            8800828186008483850085848500868584008785840087858400878684008886
-            84008886840089878500898785008A8886008B8987008C8B89008F8D8B00918F
-            8E009392900096949300989796009B9A99009E9D9C00A2A1A000A4A4A300A7A7
-            A600AAAAA900ADADAD00B1B1B100B5B5B500B6B6B600B7B7B700B8B8B800B9B9
-            B900BABABA00BBBBBB00BCBCBC00BDBDBD00BEBEBE00BFBFBF00C0C0C000C1C1
-            C100C2C2C200C3C3C300C4C4C400C5C5C500CCCBCA00D3D1CF00D9D6D300E2C1
-            DB00EBA1E300F185EA00F56DEE00F85AF200FA49F500FC37F700FD27FA00FD1C
-            FB00FE13FC00FE0CFD00FE06FE00FE03FE00FE01FE00FE00FE00FE00FE00FE00
-            FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
-            FE00FE00FE00FE00FE00FE00FE00FE01FE00FE07FE00FE16FD00FE2AFC00FE51
-            F900FE84F400FEA6F100FECAEF00FEE1ED00FEEBED00FEF1ED00FEF4EE00FEF6
-            EE00FEF5EC00FEF5EA00FDF3E700FDF1E400FDF0E100FDEFDE00FDECD900FEE9
-            D300FEE7CE00FEE5CA00FDE4C800FDE3C600FDE2C400FDE2C400DDDDDDDDDDDD
-            DDDDDDDDDDDDDDDDDDDD5356585858585858585858585858555362F1F4A1F8F9
-            A1FBFBA1FEFEA1FEFE5A62F5A1A1A1A1A1A1A1A1A1A1A1A1A15C62A1A1F3768B
-            F7271AF93569FC798D5C62F1A1F1768BF7271AF93569FC798D5C62A1A1F1768B
-            F7271AF9FDFDFC798D5C62F1A1F1768BF72A1AF9FDFDFC798D5C62A1A1F1768B
-            F7271AF9FAFBFCFEFE5C62F1A1F1F1F3F72A1AF8F9FAFCFEFE5C63A1A1F1F1F3
-            F7F7F7F7F8F9FBFDFE564B3A3939393939393939383A3838364A4F4343434343
-            4343434338433834754EDD5050505050505050504E504D5253DDDDDDDDDDDDDD
-            DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD}
-          OnClick = DefColorButtonClick
-        end
-        object AsDefColorButton: TSpeedButton
-          Left = 9
-          Top = 503
-          Width = 164
-          Height = 42
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Caption = #23384#28858#38928#35373#38991#33394
-          OnClick = AsDefColorButtonClick
-        end
-        object FixRowComboBox: TComboBox
-          Left = 0
-          Top = 35
-          Width = 182
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          Style = csDropDownList
-          DropDownCount = 4
-          ItemIndex = 0
-          TabOrder = 1
-          Text = #36023#37002#32972#26223#38991#33394
-          OnChange = FixRowComboBoxChange
-          Items.Strings = (
-            #36023#37002#32972#26223#38991#33394
-            #36067#37002#32972#26223#38991#33394
-            #25991#23383#38991#33394
-            #26684#32218#38991#33394)
-        end
-        object FixRowColorBox: TColorBox
-          Left = 0
-          Top = 65
-          Width = 182
-          Height = 31
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ItemHeight = 25
-          ParentFont = False
-          TabOrder = 2
-          OnChange = FixRowColorBoxChange
-        end
-        object BuyComboBox: TComboBox
-          Left = 0
-          Top = 239
-          Width = 182
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          Style = csDropDownList
-          ItemIndex = 0
-          TabOrder = 3
-          Text = #22996#36023#32972#26223#38991#33394
-          OnChange = BuyComboBoxChange
-          Items.Strings = (
-            #22996#36023#32972#26223#38991#33394
-            #22996#36023#25991#23383#38991#33394
-            #36023#36914#32972#26223#38991#33394
-            #36023#36914#25991#23383#38991#33394
-            #25104#20132#32972#26223#38991#33394
-            #25104#20132#25991#23383#38991#33394
-            #35320#20729#32972#26223#38991#33394
-            #35320#20729#25991#23383#38991#33394)
-        end
-        object BuyTextColorBox: TColorBox
-          Left = 0
-          Top = 269
-          Width = 182
-          Height = 31
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ItemHeight = 25
-          ParentFont = False
-          TabOrder = 4
-          OnChange = BuyTextColorBoxChange
-        end
-        object StaticText2: TStaticText
-          AlignWithMargins = True
-          Left = 5
-          Top = 210
-          Width = 172
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          AutoSize = False
-          Caption = #36023#37002
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 5
-        end
-        object StaticText1: TStaticText
-          AlignWithMargins = True
-          Left = 5
-          Top = 5
-          Width = 172
-          Height = 25
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          AutoSize = False
-          Caption = #22266#23450#27396#20301
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
+          Top = 0
+          Width = 202
+          Height = 868
+          VertScrollBar.Smooth = True
+          VertScrollBar.Tracking = True
+          Align = alClient
           TabOrder = 0
-        end
-        object SellComboBox: TComboBox
-          Left = 0
-          Top = 341
-          Width = 182
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          Style = csDropDownList
-          ItemIndex = 0
-          TabOrder = 7
-          Text = #22996#36067#32972#26223#38991#33394
-          OnChange = SellComboBoxChange
-          Items.Strings = (
-            #22996#36067#32972#26223#38991#33394
-            #22996#36067#25991#23383#38991#33394
-            #36067#20986#32972#26223#38991#33394
-            #36067#20986#25991#23383#38991#33394
-            #25104#20132#32972#26223#38991#33394
-            #25104#20132#25991#23383#38991#33394
-            #35320#20729#32972#26223#38991#33394
-            #35320#20729#25991#23383#38991#33394)
-        end
-        object SellTextColorBox: TColorBox
-          Left = 0
-          Top = 371
-          Width = 182
-          Height = 31
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ItemHeight = 25
-          ParentFont = False
-          TabOrder = 8
-          OnChange = SellTextColorBoxChange
-        end
-        object StaticText3: TStaticText
-          AlignWithMargins = True
-          Left = 5
-          Top = 312
-          Width = 172
-          Height = 24
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          AutoSize = False
-          Caption = #36067#37002
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 6
-        end
-        object TickColorBox: TColorBox
-          Left = 0
-          Top = 168
-          Width = 182
-          Height = 31
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -20
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ItemHeight = 25
-          ParentFont = False
-          TabOrder = 9
-          OnChange = TickColorBoxChange
-        end
-        object TickComboBox: TComboBox
-          Left = 0
-          Top = 138
-          Width = 182
-          Height = 30
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          BevelInner = bvNone
-          BevelOuter = bvNone
-          Style = csDropDownList
-          DropDownCount = 9
-          ItemIndex = 0
-          TabOrder = 10
-          Text = #32972#26223#38991#33394
-          OnChange = TickComboBoxChange
-          Items.Strings = (
-            #32972#26223#38991#33394
-            #39640#26044#25104#20132#20729#25991#23383
-            #20302#26044#25104#20132#20729#25991#23383
-            #25104#20132#20729#32972#26223#33394
-            #25104#20132#20729#25991#23383#33394
-            'Better'#36023#32972#26223#33394
-            'Better'#36023#25991#23383#33394
-            'Better'#36067#32972#26223#33394
-            'Better'#36067#25991#23383#33394
-            #26085#39640#20729#32218#26694#33394#11
-            #26085#20302#20729#32218#26694#33394#11
-            #25104#20132#22343#20729#32218)
-        end
-        object StaticText4: TStaticText
-          AlignWithMargins = True
-          Left = 5
-          Top = 108
-          Width = 172
-          Height = 25
-          Margins.Left = 5
-          Margins.Top = 5
-          Margins.Right = 5
-          Margins.Bottom = 5
-          Align = alTop
-          AutoSize = False
-          Caption = 'Tick'#27396#20301
-          Font.Charset = ANSI_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -17
-          Font.Name = #24494#36575#27491#40657#39636
-          Font.Style = [fsBold]
-          ParentFont = False
-          TabOrder = 11
+          OnMouseWheel = ScrollBoxMouseWheel
+          object Bevel1: TBevel
+            Left = 0
+            Top = 87
+            Width = 198
+            Height = 16
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Shape = bsBottomLine
+            ExplicitLeft = -4
+            ExplicitTop = 122
+          end
+          object Bevel2: TBevel
+            Left = 0
+            Top = 190
+            Width = 198
+            Height = 15
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Shape = bsBottomLine
+            ExplicitLeft = 5
+            ExplicitTop = 233
+          end
+          object Bevel3: TBevel
+            Left = 0
+            Top = 291
+            Width = 198
+            Height = 16
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Shape = bsBottomLine
+            ExplicitLeft = -4
+            ExplicitTop = 344
+          end
+          object AsDefColorButton: TSpeedButton
+            Left = 9
+            Top = 503
+            Width = 164
+            Height = 42
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #23384#28858#38928#35373#38991#33394
+            OnClick = AsDefColorButtonClick
+          end
+          object DefColorButton: TSpeedButton
+            Left = 9
+            Top = 452
+            Width = 164
+            Height = 42
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #35712#21462#38928#35373#38991#33394
+            Glyph.Data = {
+              36050000424D3605000000000000360400002800000010000000100000000100
+              0800000000000001000000000000000000000001000000010000000000000101
+              0100020202000303030004040400050505000606060007070700080808000909
+              09000A0A0A000B0B0B000C0C0C000D120D000F180F00111E1000122412001429
+              1300152E140016331500173C160018451700194F18001A5718001B5C19001B62
+              19001B6619001B6919001B6C19001B6E19001B7119001A7419001A7619001A78
+              19001A7A19001A7D1900197F1900198019001980190019811900198019001980
+              19001E801B0025801D002C802000338122003B82260044842A0057873200708C
+              3B00869144009B944C00B2995600C19D5D00CCA06200D1A26300D5A46600D5A3
+              6400D6A26200D69E5E00D69B5A00D5975500D3914E00D0894400D1843E00D181
+              3800D3803300D47F2F00D27E3100CF7C3200CD7A3300C9763300C7743200C270
+              3200BE6D3400BA6A3200B5653100B1612E00AF5E2D00AC5C2C00A95A2C00A658
+              2C00A2552C009E522C009B4F2B00974C2A00954A290093492800934927009248
+              2700904826008F4725008E4723008D4722008B4622008A452200884422008643
+              22008542220085422300864224008743250088442B008846310087483B00854B
+              4600834E54007F5161007B59740076608600726797006C6CA5006770AF006373
+              B8005F75C0005977C9005577D1005377D5005277D800527CDC005280DE005283
+              DF005182DD004F80DB004C7BD8004B7BD800497AD7004779D6004172D2003B6C
+              CF003665CB003160C8002D5BC4002956C1002552BD00224FB800204FB5001F50
+              B3001D4EB0001A4AAE001D50AB002156A6002556A4002957A3002E58A200335B
+              A0003D5F9D0047649A0050689700586C9400627191006B768E00747A8B007C7E
+              8800828186008483850085848500868584008785840087858400878684008886
+              84008886840089878500898785008A8886008B8987008C8B89008F8D8B00918F
+              8E009392900096949300989796009B9A99009E9D9C00A2A1A000A4A4A300A7A7
+              A600AAAAA900ADADAD00B1B1B100B5B5B500B6B6B600B7B7B700B8B8B800B9B9
+              B900BABABA00BBBBBB00BCBCBC00BDBDBD00BEBEBE00BFBFBF00C0C0C000C1C1
+              C100C2C2C200C3C3C300C4C4C400C5C5C500CCCBCA00D3D1CF00D9D6D300E2C1
+              DB00EBA1E300F185EA00F56DEE00F85AF200FA49F500FC37F700FD27FA00FD1C
+              FB00FE13FC00FE0CFD00FE06FE00FE03FE00FE01FE00FE00FE00FE00FE00FE00
+              FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00FE00
+              FE00FE00FE00FE00FE00FE00FE00FE01FE00FE07FE00FE16FD00FE2AFC00FE51
+              F900FE84F400FEA6F100FECAEF00FEE1ED00FEEBED00FEF1ED00FEF4EE00FEF6
+              EE00FEF5EC00FEF5EA00FDF3E700FDF1E400FDF0E100FDEFDE00FDECD900FEE9
+              D300FEE7CE00FEE5CA00FDE4C800FDE3C600FDE2C400FDE2C400DDDDDDDDDDDD
+              DDDDDDDDDDDDDDDDDDDD5356585858585858585858585858555362F1F4A1F8F9
+              A1FBFBA1FEFEA1FEFE5A62F5A1A1A1A1A1A1A1A1A1A1A1A1A15C62A1A1F3768B
+              F7271AF93569FC798D5C62F1A1F1768BF7271AF93569FC798D5C62A1A1F1768B
+              F7271AF9FDFDFC798D5C62F1A1F1768BF72A1AF9FDFDFC798D5C62A1A1F1768B
+              F7271AF9FAFBFCFEFE5C62F1A1F1F1F3F72A1AF8F9FAFCFEFE5C63A1A1F1F1F3
+              F7F7F7F7F8F9FBFDFE564B3A3939393939393939383A3838364A4F4343434343
+              4343434338433834754EDD5050505050505050504E504D5253DDDDDDDDDDDDDD
+              DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD}
+            OnClick = DefColorButtonClick
+          end
+          object StaticText1: TStaticText
+            AlignWithMargins = True
+            Left = 5
+            Top = 5
+            Width = 188
+            Height = 25
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            AutoSize = False
+            Caption = #22266#23450#27396#20301
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 0
+          end
+          object FixRowComboBox: TComboBox
+            Left = 0
+            Top = 35
+            Width = 198
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Style = csDropDownList
+            DropDownCount = 4
+            ItemIndex = 0
+            TabOrder = 1
+            Text = #36023#37002#32972#26223#38991#33394
+            OnChange = FixRowComboBoxChange
+            Items.Strings = (
+              #36023#37002#32972#26223#38991#33394
+              #36067#37002#32972#26223#38991#33394
+              #25991#23383#38991#33394
+              #26684#32218#38991#33394)
+          end
+          object FixRowColorBox: TColorBox
+            Left = 0
+            Top = 65
+            Width = 198
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ItemHeight = 25
+            ParentFont = False
+            TabOrder = 2
+            OnChange = FixRowColorBoxChange
+          end
+          object StaticText4: TStaticText
+            AlignWithMargins = True
+            Left = 5
+            Top = 108
+            Width = 188
+            Height = 25
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            AutoSize = False
+            Caption = 'Tick'#27396#20301
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 3
+          end
+          object TickComboBox: TComboBox
+            Left = 0
+            Top = 138
+            Width = 198
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Style = csDropDownList
+            DropDownCount = 9
+            ItemIndex = 0
+            TabOrder = 4
+            Text = #32972#26223#38991#33394
+            OnChange = TickComboBoxChange
+            Items.Strings = (
+              #32972#26223#38991#33394
+              #39640#26044#25104#20132#20729#25991#23383
+              #20302#26044#25104#20132#20729#25991#23383
+              #25104#20132#20729#32972#26223#33394
+              #25104#20132#20729#25991#23383#33394
+              'Better'#36023#32972#26223#33394
+              'Better'#36023#25991#23383#33394
+              'Better'#36067#32972#26223#33394
+              'Better'#36067#25991#23383#33394
+              #26085#39640#20729#32218#26694#33394#11
+              #26085#20302#20729#32218#26694#33394#11
+              #25104#20132#22343#20729#32218)
+          end
+          object TickColorBox: TColorBox
+            Left = 0
+            Top = 168
+            Width = 198
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ItemHeight = 25
+            ParentFont = False
+            TabOrder = 5
+            OnChange = TickColorBoxChange
+          end
+          object StaticText2: TStaticText
+            AlignWithMargins = True
+            Left = 5
+            Top = 210
+            Width = 188
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            AutoSize = False
+            Caption = #36023#37002
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 6
+          end
+          object BuyComboBox: TComboBox
+            Left = 0
+            Top = 239
+            Width = 198
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Style = csDropDownList
+            ItemIndex = 0
+            TabOrder = 7
+            Text = #22996#36023#32972#26223#38991#33394
+            OnChange = BuyComboBoxChange
+            Items.Strings = (
+              #22996#36023#32972#26223#38991#33394
+              #22996#36023#25991#23383#38991#33394
+              #36023#36914#32972#26223#38991#33394
+              #36023#36914#25991#23383#38991#33394
+              #25104#20132#32972#26223#38991#33394
+              #25104#20132#25991#23383#38991#33394
+              #35320#20729#32972#26223#38991#33394
+              #35320#20729#25991#23383#38991#33394)
+          end
+          object BuyTextColorBox: TColorBox
+            Left = 0
+            Top = 269
+            Width = 198
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ItemHeight = 25
+            ParentFont = False
+            TabOrder = 8
+            OnChange = BuyTextColorBoxChange
+          end
+          object StaticText3: TStaticText
+            AlignWithMargins = True
+            Left = 5
+            Top = 312
+            Width = 188
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            AutoSize = False
+            Caption = #36067#37002
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 9
+          end
+          object SellComboBox: TComboBox
+            Left = 0
+            Top = 341
+            Width = 198
+            Height = 30
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            BevelInner = bvNone
+            BevelOuter = bvNone
+            Style = csDropDownList
+            ItemIndex = 0
+            TabOrder = 10
+            Text = #22996#36067#32972#26223#38991#33394
+            OnChange = SellComboBoxChange
+            Items.Strings = (
+              #22996#36067#32972#26223#38991#33394
+              #22996#36067#25991#23383#38991#33394
+              #36067#20986#32972#26223#38991#33394
+              #36067#20986#25991#23383#38991#33394
+              #25104#20132#32972#26223#38991#33394
+              #25104#20132#25991#23383#38991#33394
+              #35320#20729#32972#26223#38991#33394
+              #35320#20729#25991#23383#38991#33394)
+          end
+          object SellTextColorBox: TColorBox
+            Left = 0
+            Top = 371
+            Width = 198
+            Height = 31
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Align = alTop
+            Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -20
+            Font.Name = 'Tahoma'
+            Font.Style = []
+            ItemHeight = 25
+            ParentFont = False
+            TabOrder = 11
+            OnChange = SellTextColorBoxChange
+          end
         end
       end
     end
@@ -4997,7 +5033,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080040010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300080058010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

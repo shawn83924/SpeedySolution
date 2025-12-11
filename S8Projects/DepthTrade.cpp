@@ -2811,3 +2811,33 @@ void __fastcall TDepthForm::EscapeButtonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TDepthForm::ScrollBoxMouseWheel(TObject *Sender, TShiftState Shift,
+		  int WheelDelta, TPoint &MousePos, bool &Handled)
+{
+	TPoint p = ScreenToClient(MousePos);
+
+	if( PageControl->ActivePage == SettingTabSheet &&
+		SettingScrollBox->BoundsRect.Contains(p))
+	{
+		SettingScrollBox->VertScrollBar->Position -= WheelDelta / 10;
+		Handled = true;
+		return;
+	}
+
+	if( PageControl->ActivePage == StopSettingTabSheet &&
+		StopSettingScrollBox->BoundsRect.Contains(p))
+	{
+		StopSettingScrollBox->VertScrollBar->Position -= WheelDelta / 10;
+		Handled = true;
+		return;
+	}
+
+	if( PageControl->ActivePage == ColorTabSheet &&
+		ColorScrollBox->BoundsRect.Contains(p))
+	{
+		ColorScrollBox->VertScrollBar->Position -= WheelDelta / 10;
+		Handled = true;
+		return;
+	}
+}
+//---------------------------------------------------------------------------

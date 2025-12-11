@@ -195,6 +195,9 @@ __published:	// IDE-managed Components
 	TTimer *TakeProfitTimer;
 	TComboBox *ExchangeComboBox;
 	TGraphButton *EscapeButton;
+	TScrollBox *SettingScrollBox;
+	TScrollBox *StopSettingScrollBox;
+	TScrollBox *ColorScrollBox;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -292,6 +295,8 @@ __published:	// IDE-managed Components
 	void __fastcall TakeProfitTimerTimer(TObject *Sender);
 	void __fastcall ExchangeComboBoxChange(TObject *Sender);
 	void __fastcall EscapeButtonClick(TObject *Sender);
+	void __fastcall ScrollBoxMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
+          TPoint &MousePos, bool &Handled);
 
 
 
