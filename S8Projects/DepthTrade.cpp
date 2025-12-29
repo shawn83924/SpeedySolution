@@ -61,6 +61,8 @@ TColor BuyFillBKColor[2]         = {clWhite,RGB(53,53,53)};
 TColor BuyFillColor[2]           = {clBlack,clWhite};
 TColor BuyConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
 TColor BuyConditionColColor[2]   = {clBlack,clWhite};
+TColor BuyOCOColBKColor[2]       = {clWhite,RGB(53,53,53)};
+TColor BuyOCOColColor[2]         = {clBlack,clWhite};
 ///<Sell side color
 TColor AskDepth5BKColor[2]        = {clWhite,RGB(53,53,53)};
 TColor AskDepth5Color[2]          = {RGB(124,186,63),RGB(149,255,116)};
@@ -70,6 +72,8 @@ TColor SellFillBKColor[2]         = {clWhite,RGB(53,53,53)};
 TColor SellFillColor[2]           = {clBlack,clWhite};
 TColor SellConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
 TColor SellConditionColColor[2]   = {clBlack,clWhite};
+TColor SellOCOColBKColor[2]       = {clWhite,RGB(53,53,53)};
+TColor SellOCOColColor[2]         = {clBlack,clWhite};
 //---------------------------------------------------------------------------
 UFC::PHashMap<UFC::AnsiString, UFC::List<TDepthForm*>*> FStopCloseMap;
 UFC::List<BasicInformation*> TDepthForm::FCustomMDList[CUSTOM_LIST_COUNT];
@@ -1055,8 +1059,7 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 	g_Config.SetIntegerProperty( Profile ,"NuclearPCount", ProfitCountUpDown->Position );
 	g_Config.SetIntegerProperty( Profile ,"NuclearPStep", ProfitStepUpDown->Position );
 
-    g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
-	SaveColor( );
+	g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
 	SaveTFT();
 }
 //---------------------------------------------------------------------------
@@ -1391,47 +1394,50 @@ void __fastcall TDepthForm::AutoStopRadioGroupClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadColor( void )
 {
-	String	 Name = L"SpeedyUnify.Depth" + IntToStr( Tag );
-	int      DorL = !(bool)g_Config.GetBoolProperty( "Setting","Skin", true );
+	int DorL = !(bool)g_Config.GetBoolProperty( "Setting","Skin", true );
 
 	LoadDefColor( DorL );
 	///< Fix row colors
-	OrderBookList->FixedRowBidColor  = (TColor)g_Config.GetIntegerProperty(Name,"FixRowBColor",FixedRowBidColor[DorL] );
-	OrderBookList->FixedRowAskColor  = (TColor)g_Config.GetIntegerProperty(Name,"FixRowSColor",FixedRowAskColor[DorL] );
-	OrderBookList->FixedRowColor     = (TColor)g_Config.GetIntegerProperty(Name,"FixRowColor",FixedRowColor[DorL] );
-	OrderBookList->FixedRowBKColor   = (TColor)g_Config.GetIntegerProperty(Name,"FixRowBKColor",FixedRowBKColor[DorL] );
-	OrderBookList->GridColor	     = (TColor)g_Config.GetIntegerProperty(Name,"GridLineColor",GridColor[DorL] );
+	OrderBookList->FixedRowBidColor  = FixedRowBidColor[DorL];
+	OrderBookList->FixedRowAskColor  = FixedRowAskColor[DorL];
+	OrderBookList->FixedRowColor     = FixedRowColor[DorL];
+	OrderBookList->FixedRowBKColor   = FixedRowBKColor[DorL];
+	OrderBookList->GridColor	     = GridColor[DorL];
 	///< Tick row colors
-	OrderBookList->TickBKColor       = (TColor)g_Config.GetIntegerProperty(Name,"TickColBKColor" ,TickBKColor[DorL]);
-	OrderBookList->TickUpperColor    = (TColor)g_Config.GetIntegerProperty(Name,"TickUpperColor" ,TickUpperColor[DorL]);
-	OrderBookList->TickLowerColor    = (TColor)g_Config.GetIntegerProperty(Name,"TickLowerColor" ,TickLowerColor[DorL]);
-	OrderBookList->FillColor         = (TColor)g_Config.GetIntegerProperty(Name,"FillCellColor", FillColor[DorL]);
-	OrderBookList->FillBKColor       = (TColor)g_Config.GetIntegerProperty(Name,"FillCellBKColor",FillBKColor[DorL] );
-	OrderBookList->BetterBuyColor    = (TColor)g_Config.GetIntegerProperty(Name,"BetterBuyColor", BetterBuyColor[DorL]);
-	OrderBookList->BetterBuyBKColor  = (TColor)g_Config.GetIntegerProperty(Name,"BetterBuyBKColor", BetterBuyBKColor[DorL]);
-	OrderBookList->BetterSellColor   = (TColor)g_Config.GetIntegerProperty(Name,"BetterSellColor" ,BetterSellColor[DorL]);
-	OrderBookList->BetterSellBKColor = (TColor)g_Config.GetIntegerProperty(Name,"BetterSellBKColor" ,BetterSellBKColor[DorL]);
-	OrderBookList->DayHColor         = (TColor)g_Config.GetIntegerProperty(Name,"DHColor" ,DayHiColor[DorL]);
-	OrderBookList->DayLColor         = (TColor)g_Config.GetIntegerProperty(Name,"DLColor" ,DayLoColor[DorL]);
-	OrderBookList->AvgPxColor        = (TColor)g_Config.GetIntegerProperty(Name,"AvgPxColor" ,AvgPriceColor[DorL]);
+	OrderBookList->TickBKColor       = TickBKColor[DorL];
+	OrderBookList->TickUpperColor    = TickUpperColor[DorL];
+	OrderBookList->TickLowerColor    = TickLowerColor[DorL];
+	OrderBookList->FillColor         = FillColor[DorL];
+	OrderBookList->FillBKColor       = FillBKColor[DorL];
+	OrderBookList->BetterBuyColor    = BetterBuyColor[DorL];
+	OrderBookList->BetterBuyBKColor  = BetterBuyBKColor[DorL];
+	OrderBookList->BetterSellColor   = BetterSellColor[DorL];
+	OrderBookList->BetterSellBKColor = BetterSellBKColor[DorL];
+	OrderBookList->DayHColor         = DayHiColor[DorL];
+	OrderBookList->DayLColor         = DayLoColor[DorL];
+	OrderBookList->AvgPxColor        = AvgPriceColor[DorL];
 	///< Buy side color
-	OrderBookList->BidDepth5BKColor  = (TColor)g_Config.GetIntegerProperty(Name,"BuyDepthColBKColor", BidDepth5BKColor[DorL]);
-	OrderBookList->BidDepth5Color    = (TColor)g_Config.GetIntegerProperty(Name,"BuyDepthColColor", BidDepth5Color[DorL]);
-	OrderBookList->BuyBKColor        = (TColor)g_Config.GetIntegerProperty(Name,"BuyColBKColor", BuyBKColor[DorL]);
-	OrderBookList->BuyColor          = (TColor)g_Config.GetIntegerProperty(Name,"BuyColColor",BuyColor[DorL] );
-	OrderBookList->BuyFillBKColor    = (TColor)g_Config.GetIntegerProperty(Name,"BuyFillBKColor" ,BuyFillBKColor[DorL]);
-	OrderBookList->BuyFillColor      = (TColor)g_Config.GetIntegerProperty(Name,"BuyFillColor" ,BuyFillColor[DorL]);
-	OrderBookList->BuyConditionColBKColor = (TColor)g_Config.GetIntegerProperty(Name,"BuyStopBKColor" ,BuyConditionColBKColor[DorL]);
-	OrderBookList->BuyConditionColColor   = (TColor)g_Config.GetIntegerProperty(Name,"BuyStopColor" ,BuyConditionColColor[DorL]);
+	OrderBookList->BidDepth5BKColor  = BidDepth5BKColor[DorL];
+	OrderBookList->BidDepth5Color    = BidDepth5Color[DorL];
+	OrderBookList->BuyBKColor        = BuyBKColor[DorL];
+	OrderBookList->BuyColor          = BuyColor[DorL];
+	OrderBookList->BuyFillBKColor    = BuyFillBKColor[DorL];
+	OrderBookList->BuyFillColor      = BuyFillColor[DorL];
+	OrderBookList->BuyConditionColBKColor = BuyConditionColBKColor[DorL];
+	OrderBookList->BuyConditionColColor   = BuyConditionColColor[DorL];
+	OrderBookList->BuyOCOColColor    = BuyOCOColColor[DorL];
+	OrderBookList->BuyOCOColBKColor  = BuyOCOColBKColor[DorL];
 	///<Sell side color
-	OrderBookList->AskDepth5BKColor  = (TColor)g_Config.GetIntegerProperty(Name,"SellDepthColBKColor",AskDepth5BKColor[DorL] );
-	OrderBookList->AskDepth5Color    = (TColor)g_Config.GetIntegerProperty(Name,"SellDepthColColor", AskDepth5Color[DorL]);
-	OrderBookList->SellBKColor       = (TColor)g_Config.GetIntegerProperty(Name,"SellColBKColor",SellBKColor[DorL] );
-	OrderBookList->SellColor         = (TColor)g_Config.GetIntegerProperty(Name,"SellColColor", SellColor[DorL] );
-	OrderBookList->SellFillBKColor   = (TColor)g_Config.GetIntegerProperty(Name,"SellFillBKColor" ,SellFillBKColor[DorL]);
-	OrderBookList->SellFillColor     = (TColor)g_Config.GetIntegerProperty(Name,"SellFillColor" ,SellFillColor[DorL]);
-	OrderBookList->SellConditionColBKColor = (TColor)g_Config.GetIntegerProperty(Name,"SellStopBKColor" ,SellConditionColBKColor[DorL]);
-	OrderBookList->SellConditionColColor   = (TColor)g_Config.GetIntegerProperty(Name,"SellStopColor" ,SellConditionColColor[DorL]);
+	OrderBookList->AskDepth5BKColor  = AskDepth5BKColor[DorL];
+	OrderBookList->AskDepth5Color    = AskDepth5Color[DorL];
+	OrderBookList->SellBKColor       = SellBKColor[DorL];
+	OrderBookList->SellColor         = SellColor[DorL];
+	OrderBookList->SellFillBKColor   = SellFillBKColor[DorL];
+	OrderBookList->SellFillColor     = SellFillColor[DorL];
+	OrderBookList->SellConditionColBKColor = SellConditionColBKColor[DorL];
+	OrderBookList->SellConditionColColor   = SellConditionColColor[DorL];
+	OrderBookList->SellOCOColColor   = SellOCOColColor[DorL];
+	OrderBookList->SellOCOColBKColor = SellOCOColBKColor[DorL];
 	OrderBookList->Repaint();
 }
 //---------------------------------------------------------------------------
@@ -1447,136 +1453,165 @@ void __fastcall TDepthForm::SaveDefColor( void  )
 	SaveColorToConfig( Name, DorL );
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::SaveColor( void )
-{
-	String	 Name = L"SpeedyUnify.Depth" + IntToStr( Tag );
-	int      DorL = !(bool)g_Config.GetBoolProperty( "Setting","Skin", true );
-
-	SaveColorToConfig( Name, DorL );
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::DeleteColorSetting( void )
-{
-	String	 Name = L"SpeedyUnify.Depth" + IntToStr( Tag );
-	int      DorL = !(bool)g_Config.GetBoolProperty( "Setting","Skin", true );
-
-	DeleteColorConfig( Name, DorL );
-}
-//---------------------------------------------------------------------------
 void __fastcall TDepthForm::SaveColorToConfig( const String& Name, bool DorL )
 {
 	///< Fix row colors
-	if( FixedRowBidColor[DorL] != OrderBookList->FixedRowBidColor )
-		g_Config.SetIntegerProperty(Name,"FixRowBColor",OrderBookList->FixedRowBidColor );
-	if(	FixedRowAskColor[DorL] != OrderBookList->FixedRowAskColor )
-		g_Config.SetIntegerProperty(Name,"FixRowSColor",OrderBookList->FixedRowAskColor );
-	if( FixedRowColor[DorL] != OrderBookList->FixedRowColor )
-		g_Config.SetIntegerProperty(Name,"FixRowColor",OrderBookList->FixedRowColor );
-	if( FixedRowBKColor[DorL] != OrderBookList->FixedRowBKColor )
-		g_Config.SetIntegerProperty(Name,"FixRowBKColor", OrderBookList->FixedRowBKColor );
-	if( GridColor[DorL] != OrderBookList->GridColor )
-		g_Config.SetIntegerProperty(Name,"GridLineColor", OrderBookList->GridColor );
-	///< Tick row colors
-	if( TickBKColor[DorL] != OrderBookList->TickBKColor )
-		g_Config.SetIntegerProperty(Name,"TickColBKColor" , OrderBookList->TickBKColor );
-	if( TickUpperColor[DorL] != OrderBookList->TickUpperColor )
-		g_Config.SetIntegerProperty(Name,"TickUpperColor" , OrderBookList->TickUpperColor );
-	if( TickLowerColor[DorL] != OrderBookList->TickLowerColor )
-		g_Config.SetIntegerProperty(Name,"TickLowerColor" , OrderBookList->TickLowerColor );
-	if( FillColor[DorL] != OrderBookList->FillColor )
-		g_Config.SetIntegerProperty(Name,"FillCellColor", OrderBookList->FillColor );
-	if( FillBKColor[DorL] != OrderBookList->FillBKColor )
-		g_Config.SetIntegerProperty(Name,"FillCellBKColor", OrderBookList->FillBKColor );
-	if( BetterBuyColor[DorL] != OrderBookList->BetterBuyColor )
-		g_Config.SetIntegerProperty(Name,"BetterBuyColor", OrderBookList->BetterBuyColor );
-	if( BetterBuyBKColor[DorL] != OrderBookList->BetterBuyBKColor )
-		g_Config.SetIntegerProperty(Name,"BetterBuyBKColor", OrderBookList->BetterBuyBKColor );
-	if( BetterSellColor[DorL] != OrderBookList->BetterSellColor )
-		g_Config.SetIntegerProperty(Name,"BetterSellColor" , OrderBookList->BetterSellColor );
-	if( BetterSellBKColor[DorL] != OrderBookList->BetterSellBKColor )
-		g_Config.SetIntegerProperty(Name,"BetterSellBKColor" , OrderBookList->BetterSellBKColor );
-	if( DayHiColor[DorL] != OrderBookList->DayHColor )
-		g_Config.SetIntegerProperty(Name,"DHColor" , OrderBookList->DayHColor );
-	if( DayLoColor[DorL] != OrderBookList->DayLColor )
-		g_Config.SetIntegerProperty(Name,"DLColor" , OrderBookList->DayLColor );
-	if( AvgPriceColor[DorL] != OrderBookList->AvgPxColor )
-		g_Config.SetIntegerProperty(Name,"AvgPxColor" , OrderBookList->AvgPxColor );
-	///< Buy side color
-	if( BidDepth5BKColor[DorL] != OrderBookList->BidDepth5BKColor )
-		g_Config.SetIntegerProperty(Name,"BuyDepthColBKColor", OrderBookList->BidDepth5BKColor );
-	if( BidDepth5Color[DorL] != OrderBookList->BidDepth5Color )
-		g_Config.SetIntegerProperty(Name,"BuyDepthColColor", OrderBookList->BidDepth5Color );
-	if( BuyBKColor[DorL] != OrderBookList->BuyBKColor )
-		g_Config.SetIntegerProperty(Name,"BuyColBKColor", OrderBookList->BuyBKColor );
-	if( BuyColor[DorL] != OrderBookList->BuyColor )
-		g_Config.SetIntegerProperty(Name,"BuyColColor", OrderBookList->BuyColor );
-	if( BuyFillBKColor[DorL] != OrderBookList->BuyFillBKColor )
-		g_Config.SetIntegerProperty(Name,"BuyFillBKColor" , OrderBookList->BuyFillBKColor );
-	if( BuyFillColor[DorL] != OrderBookList->BuyFillColor )
-		g_Config.SetIntegerProperty(Name,"BuyFillColor" , OrderBookList->BuyFillColor );
-	if( BuyConditionColBKColor[DorL] != OrderBookList->BuyConditionColColor )
-		g_Config.SetIntegerProperty(Name,"BuyStopColor" , OrderBookList->BuyConditionColColor );
-	if( BuyConditionColColor[DorL] != OrderBookList->BuyConditionColBKColor)
-		g_Config.SetIntegerProperty(Name,"BuyStopBKColor" , OrderBookList->BuyConditionColBKColor);
-	///<Sell side color
-	if( AskDepth5BKColor[DorL] != OrderBookList->AskDepth5BKColor )
-		g_Config.SetIntegerProperty(Name,"SellDepthColBKColor", OrderBookList->AskDepth5BKColor );
-	if( AskDepth5Color[DorL] != OrderBookList->AskDepth5Color)
-		g_Config.SetIntegerProperty(Name,"SellDepthColColor", OrderBookList->AskDepth5Color);
-	if( SellBKColor[DorL] != OrderBookList->SellBKColor )
-		g_Config.SetIntegerProperty(Name,"SellColBKColor", OrderBookList->SellBKColor );
-	if( SellColor[DorL] != OrderBookList->SellColor )
-		g_Config.SetIntegerProperty(Name,"SellColColor", OrderBookList->SellColor );
-	if( SellFillBKColor[DorL] != OrderBookList->SellFillBKColor )
-		g_Config.SetIntegerProperty(Name,"SellFillBKColor" , OrderBookList->SellFillBKColor );
-	if( SellFillColor[DorL] != OrderBookList->SellFillColor )
-		g_Config.SetIntegerProperty(Name,"SellFillColor" , OrderBookList->SellFillColor );
-	if( SellConditionColBKColor[DorL] != OrderBookList->SellConditionColBKColor)
-		g_Config.SetIntegerProperty(Name,"SellStopBKColor" ,OrderBookList->SellConditionColBKColor);
-	if( SellConditionColColor[DorL] != OrderBookList->SellConditionColColor)
-		g_Config.SetIntegerProperty(Name,"SellStopColor" , OrderBookList->SellConditionColColor);
+    if (FixedRowBidColor[DorL] != OrderBookList->FixedRowBidColor) {
+        g_Config.SetIntegerProperty(Name, "FixRowBColor", OrderBookList->FixedRowBidColor);
+        FixedRowBidColor[DorL] = OrderBookList->FixedRowBidColor;
+    }
+    if (FixedRowAskColor[DorL] != OrderBookList->FixedRowAskColor) {
+        g_Config.SetIntegerProperty(Name, "FixRowSColor", OrderBookList->FixedRowAskColor);
+        FixedRowAskColor[DorL] = OrderBookList->FixedRowAskColor;
+    }
+    if (FixedRowColor[DorL] != OrderBookList->FixedRowColor) {
+        g_Config.SetIntegerProperty(Name, "FixRowColor", OrderBookList->FixedRowColor);
+        FixedRowColor[DorL] = OrderBookList->FixedRowColor;
+    }
+    if (FixedRowBKColor[DorL] != OrderBookList->FixedRowBKColor) {
+        g_Config.SetIntegerProperty(Name, "FixRowBKColor", OrderBookList->FixedRowBKColor);
+        FixedRowBKColor[DorL] = OrderBookList->FixedRowBKColor;
+    }
+    if (GridColor[DorL] != OrderBookList->GridColor) {
+        g_Config.SetIntegerProperty(Name, "GridLineColor", OrderBookList->GridColor);
+        GridColor[DorL] = OrderBookList->GridColor;
+    }
 
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::DeleteColorConfig( const String& Name, bool DorL )
-{
-	///< Fix row colors
-	g_Config.DeleteProperty(Name,"FixRowBColor" );
-	g_Config.DeleteProperty(Name,"FixRowSColor" );
-	g_Config.DeleteProperty(Name,"FixRowColor" );
-	g_Config.DeleteProperty(Name,"FixRowBKColor" );
-	g_Config.DeleteProperty(Name,"GridLineColor" );
-	///< Tick row colors
-	g_Config.DeleteProperty(Name,"TickColBKColor" );
-	g_Config.DeleteProperty(Name,"TickUpperColor" );
-	g_Config.DeleteProperty(Name,"TickLowerColor" );
-	g_Config.DeleteProperty(Name,"FillCellColor" );
-	g_Config.DeleteProperty(Name,"FillCellBKColor" );
-	g_Config.DeleteProperty(Name,"BetterBuyColor" );
-	g_Config.DeleteProperty(Name,"BetterBuyBKColor" );
-	g_Config.DeleteProperty(Name,"BetterSellColor"  );
-	g_Config.DeleteProperty(Name,"BetterSellBKColor" );
-	g_Config.DeleteProperty(Name,"DHColor");
-	g_Config.DeleteProperty(Name,"DLColor");
-	g_Config.DeleteProperty(Name,"AvgPxColor");
-	///< Buy side color
-	g_Config.DeleteProperty(Name,"BuyDepthColBKColor" );
-	g_Config.DeleteProperty(Name,"BuyDepthColColor" );
-	g_Config.DeleteProperty(Name,"BuyColBKColor" );
-	g_Config.DeleteProperty(Name,"BuyColColor" );
-	g_Config.DeleteProperty(Name,"BuyFillBKColor" );
-	g_Config.DeleteProperty(Name,"BuyFillColor" );
-	g_Config.DeleteProperty(Name,"BuyStopColor" );
-	g_Config.DeleteProperty(Name,"BuyStopBKColor" );
-	///<Sell side color
-	g_Config.DeleteProperty(Name,"SellDepthColBKColor" );
-	g_Config.DeleteProperty(Name,"SellDepthColColor" );
-	g_Config.DeleteProperty(Name,"SellColBKColor" );
-	g_Config.DeleteProperty(Name,"SellColColor" );
-	g_Config.DeleteProperty(Name,"SellFillBKColor" );
-	g_Config.DeleteProperty(Name,"SellFillColor" );
-	g_Config.DeleteProperty(Name,"SellStopBKColor");
-	g_Config.DeleteProperty(Name,"SellStopColor");
+    ///< Tick row colors
+    if (TickBKColor[DorL] != OrderBookList->TickBKColor) {
+        g_Config.SetIntegerProperty(Name, "TickColBKColor", OrderBookList->TickBKColor);
+        TickBKColor[DorL] = OrderBookList->TickBKColor;
+    }
+    if (TickUpperColor[DorL] != OrderBookList->TickUpperColor) {
+        g_Config.SetIntegerProperty(Name, "TickUpperColor", OrderBookList->TickUpperColor);
+        TickUpperColor[DorL] = OrderBookList->TickUpperColor;
+    }
+    if (TickLowerColor[DorL] != OrderBookList->TickLowerColor) {
+        g_Config.SetIntegerProperty(Name, "TickLowerColor", OrderBookList->TickLowerColor);
+        TickLowerColor[DorL] = OrderBookList->TickLowerColor;
+    }
+    if (FillColor[DorL] != OrderBookList->FillColor) {
+        g_Config.SetIntegerProperty(Name, "FillCellColor", OrderBookList->FillColor);
+        FillColor[DorL] = OrderBookList->FillColor;
+    }
+    if (FillBKColor[DorL] != OrderBookList->FillBKColor) {
+        g_Config.SetIntegerProperty(Name, "FillCellBKColor", OrderBookList->FillBKColor);
+        FillBKColor[DorL] = OrderBookList->FillBKColor;
+    }
+    if (BetterBuyColor[DorL] != OrderBookList->BetterBuyColor) {
+        g_Config.SetIntegerProperty(Name, "BetterBuyColor", OrderBookList->BetterBuyColor);
+        BetterBuyColor[DorL] = OrderBookList->BetterBuyColor;
+    }
+    if (BetterBuyBKColor[DorL] != OrderBookList->BetterBuyBKColor) {
+        g_Config.SetIntegerProperty(Name, "BetterBuyBKColor", OrderBookList->BetterBuyBKColor);
+        BetterBuyBKColor[DorL] = OrderBookList->BetterBuyBKColor;
+    }
+    if (BetterSellColor[DorL] != OrderBookList->BetterSellColor) {
+        g_Config.SetIntegerProperty(Name, "BetterSellColor", OrderBookList->BetterSellColor);
+        BetterSellColor[DorL] = OrderBookList->BetterSellColor;
+    }
+    if (BetterSellBKColor[DorL] != OrderBookList->BetterSellBKColor) {
+        g_Config.SetIntegerProperty(Name, "BetterSellBKColor", OrderBookList->BetterSellBKColor);
+        BetterSellBKColor[DorL] = OrderBookList->BetterSellBKColor;
+    }
+    if (DayHiColor[DorL] != OrderBookList->DayHColor) {
+        g_Config.SetIntegerProperty(Name, "DHColor", OrderBookList->DayHColor);
+        DayHiColor[DorL] = OrderBookList->DayHColor;
+    }
+    if (DayLoColor[DorL] != OrderBookList->DayLColor) {
+        g_Config.SetIntegerProperty(Name, "DLColor", OrderBookList->DayLColor);
+        DayLoColor[DorL] = OrderBookList->DayLColor;
+    }
+    if (AvgPriceColor[DorL] != OrderBookList->AvgPxColor) {
+        g_Config.SetIntegerProperty(Name, "AvgPxColor", OrderBookList->AvgPxColor);
+        AvgPriceColor[DorL] = OrderBookList->AvgPxColor;
+    }
+
+    ///< Buy side color
+    if (BidDepth5BKColor[DorL] != OrderBookList->BidDepth5BKColor) {
+        g_Config.SetIntegerProperty(Name, "BuyDepthColBKColor", OrderBookList->BidDepth5BKColor);
+        BidDepth5BKColor[DorL] = OrderBookList->BidDepth5BKColor;
+    }
+    if (BidDepth5Color[DorL] != OrderBookList->BidDepth5Color) {
+        g_Config.SetIntegerProperty(Name, "BuyDepthColColor", OrderBookList->BidDepth5Color);
+        BidDepth5Color[DorL] = OrderBookList->BidDepth5Color;
+    }
+    if (BuyBKColor[DorL] != OrderBookList->BuyBKColor) {
+        g_Config.SetIntegerProperty(Name, "BuyColBKColor", OrderBookList->BuyBKColor);
+        BuyBKColor[DorL] = OrderBookList->BuyBKColor;
+    }
+    if (BuyColor[DorL] != OrderBookList->BuyColor) {
+        g_Config.SetIntegerProperty(Name, "BuyColColor", OrderBookList->BuyColor);
+        BuyColor[DorL] = OrderBookList->BuyColor;
+    }
+    if (BuyFillBKColor[DorL] != OrderBookList->BuyFillBKColor) {
+        g_Config.SetIntegerProperty(Name, "BuyFillBKColor", OrderBookList->BuyFillBKColor);
+        BuyFillBKColor[DorL] = OrderBookList->BuyFillBKColor;
+    }
+    if (BuyFillColor[DorL] != OrderBookList->BuyFillColor) {
+        g_Config.SetIntegerProperty(Name, "BuyFillColor", OrderBookList->BuyFillColor);
+        BuyFillColor[DorL] = OrderBookList->BuyFillColor;
+	}
+	if (BuyConditionColColor[DorL] != OrderBookList->BuyConditionColColor) {
+		g_Config.SetIntegerProperty(Name, "BuyStopColor", OrderBookList->BuyConditionColColor);
+		BuyConditionColColor[DorL] = OrderBookList->BuyConditionColColor;
+	}
+	if (BuyConditionColBKColor[DorL] != OrderBookList->BuyConditionColBKColor) {
+		g_Config.SetIntegerProperty(Name, "BuyStopBKColor", OrderBookList->BuyConditionColBKColor);
+		BuyConditionColBKColor[DorL] = OrderBookList->BuyConditionColBKColor;
+	}
+	//if (BuyOCOColColor[DorL] != OrderBookList->BuyOCOColColor)
+	{
+        g_Config.SetIntegerProperty(Name, "BuyOCOColColor", OrderBookList->BuyOCOColColor);
+        BuyOCOColColor[DorL] = OrderBookList->BuyOCOColColor;
+    }
+	//if (BuyOCOColBKColor[DorL] != OrderBookList->BuyOCOColBKColor)
+	{
+        g_Config.SetIntegerProperty(Name, "BuyOCOColBKColor", OrderBookList->BuyOCOColBKColor);
+        BuyOCOColBKColor[DorL] = OrderBookList->BuyOCOColBKColor;
+    }
+
+    ///< Sell side color
+    if (AskDepth5BKColor[DorL] != OrderBookList->AskDepth5BKColor) {
+        g_Config.SetIntegerProperty(Name, "SellDepthColBKColor", OrderBookList->AskDepth5BKColor);
+        AskDepth5BKColor[DorL] = OrderBookList->AskDepth5BKColor;
+    }
+    if (AskDepth5Color[DorL] != OrderBookList->AskDepth5Color) {
+        g_Config.SetIntegerProperty(Name, "SellDepthColColor", OrderBookList->AskDepth5Color);
+        AskDepth5Color[DorL] = OrderBookList->AskDepth5Color;
+    }
+    if (SellBKColor[DorL] != OrderBookList->SellBKColor) {
+        g_Config.SetIntegerProperty(Name, "SellColBKColor", OrderBookList->SellBKColor);
+        SellBKColor[DorL] = OrderBookList->SellBKColor;
+    }
+    if (SellColor[DorL] != OrderBookList->SellColor) {
+        g_Config.SetIntegerProperty(Name, "SellColColor", OrderBookList->SellColor);
+        SellColor[DorL] = OrderBookList->SellColor;
+    }
+    if (SellFillBKColor[DorL] != OrderBookList->SellFillBKColor) {
+        g_Config.SetIntegerProperty(Name, "SellFillBKColor", OrderBookList->SellFillBKColor);
+        SellFillBKColor[DorL] = OrderBookList->SellFillBKColor;
+    }
+    if (SellFillColor[DorL] != OrderBookList->SellFillColor) {
+        g_Config.SetIntegerProperty(Name, "SellFillColor", OrderBookList->SellFillColor);
+        SellFillColor[DorL] = OrderBookList->SellFillColor;
+    }
+    if (SellConditionColBKColor[DorL] != OrderBookList->SellConditionColBKColor) {
+        g_Config.SetIntegerProperty(Name, "SellStopBKColor", OrderBookList->SellConditionColBKColor);
+        SellConditionColBKColor[DorL] = OrderBookList->SellConditionColBKColor;
+    }
+    if (SellConditionColColor[DorL] != OrderBookList->SellConditionColColor) {
+        g_Config.SetIntegerProperty(Name, "SellStopColor", OrderBookList->SellConditionColColor);
+        SellConditionColColor[DorL] = OrderBookList->SellConditionColColor;
+    }
+	if (SellOCOColColor[DorL] != OrderBookList->SellOCOColColor) {
+        g_Config.SetIntegerProperty(Name, "SellOCOColColor", OrderBookList->SellOCOColColor);
+        SellOCOColColor[DorL] = OrderBookList->SellOCOColColor;
+	}
+	if (SellOCOColBKColor[DorL] != OrderBookList->SellOCOColBKColor) {
+        g_Config.SetIntegerProperty(Name, "SellOCOColBKColor", OrderBookList->SellOCOColBKColor);
+		SellOCOColBKColor[DorL] = OrderBookList->SellOCOColBKColor;
+	}
 }
 //---------------------------------------------------------------------------
 TColor __fastcall TDepthForm::GetFixColor( int Index )
@@ -1656,6 +1691,8 @@ TColor __fastcall TDepthForm::GetBuyColor( int Index )
 		case 5: return OrderBookList->BuyFillColor;
 		case 6: return OrderBookList->BuyConditionColBKColor;
 		case 7: return OrderBookList->BuyConditionColColor;
+		case 8: return OrderBookList->BuyOCOColBKColor;
+		case 9: return OrderBookList->BuyOCOColColor;
 		default: return clWhite;
 	}
 }
@@ -1672,6 +1709,8 @@ void __fastcall TDepthForm::SetBuyColor( int Index, TColor Color )
 		case 5: OrderBookList->BuyFillColor = Color;break;
 		case 6: OrderBookList->BuyConditionColBKColor = Color;break;
 		case 7: OrderBookList->BuyConditionColColor = Color;break;
+		case 8: OrderBookList->BuyOCOColBKColor = Color;break;
+		case 9: OrderBookList->BuyOCOColColor = Color;break;
 		default: break;
 	}
 }
@@ -1688,6 +1727,8 @@ TColor __fastcall TDepthForm::GetSellColor( int Index )
 		case 5: return OrderBookList->SellFillColor;
 		case 6: return OrderBookList->SellConditionColBKColor;
 		case 7: return OrderBookList->SellConditionColColor;
+		case 8: return OrderBookList->SellOCOColBKColor;
+		case 9: return OrderBookList->SellOCOColColor;
 		default: return clWhite;
 	}
 }
@@ -1704,6 +1745,8 @@ void __fastcall TDepthForm::SetSellColor( int Index, TColor Color )
 		case 5: OrderBookList->SellFillColor = Color;break;
 		case 6: OrderBookList->SellConditionColBKColor = Color;break;
 		case 7: OrderBookList->SellConditionColColor = Color;break;
+		case 8: OrderBookList->SellOCOColBKColor = Color;break;
+		case 9: OrderBookList->SellOCOColColor = Color;break;
 		default: break;
 	}
 }
@@ -1716,7 +1759,6 @@ void __fastcall TDepthForm::FixRowComboBoxChange(TObject *Sender)
 void __fastcall TDepthForm::FixRowColorBoxChange(TObject *Sender)
 {
 	FixRowColors[ FixRowComboBox->ItemIndex ] = FixRowColorBox->Selected;
-	//SaveColor();
 	//ContractViewerForm->LoadDepthColor( this );
 	OrderBookList->Repaint();
 }
@@ -1729,7 +1771,6 @@ void __fastcall TDepthForm::TickComboBoxChange(TObject *Sender)
 void __fastcall TDepthForm::TickColorBoxChange(TObject *Sender)
 {
 	TickColors[ TickComboBox->ItemIndex ] = TickColorBox->Selected;
-	//SaveColor();
 	//ContractViewerForm->LoadDepthColor( this );
 	OrderBookList->Repaint();
 }
@@ -1742,7 +1783,6 @@ void __fastcall TDepthForm::BuyComboBoxChange(TObject *Sender)
 void __fastcall TDepthForm::BuyTextColorBoxChange(TObject *Sender)
 {
 	BuyColors[ BuyComboBox->ItemIndex ] = BuyTextColorBox->Selected;
-	//SaveColor();
 	//ContractViewerForm->LoadDepthColor( this );
 	OrderBookList->Repaint();
 }
@@ -1755,7 +1795,6 @@ void __fastcall TDepthForm::SellComboBoxChange(TObject *Sender)
 void __fastcall TDepthForm::SellTextColorBoxChange(TObject *Sender)
 {
 	SellColors[ SellComboBox->ItemIndex ] = SellTextColorBox->Selected;
-	//SaveColor();
 	//ContractViewerForm->LoadDepthColor( this );
 	OrderBookList->Repaint();
 }
@@ -1791,6 +1830,8 @@ void __fastcall TDepthForm::DefColorButtonClick(TObject *Sender)
 	OrderBookList->BuyFillColor      = BuyFillColor[DorL];
 	OrderBookList->BuyConditionColBKColor = BuyConditionColBKColor[DorL];
 	OrderBookList->BuyConditionColColor   = BuyConditionColColor[DorL];
+	OrderBookList->BuyOCOColBKColor  = BuyOCOColBKColor[DorL];
+	OrderBookList->BuyOCOColColor    = BuyOCOColColor[DorL];
 	///<Sell side color
 	OrderBookList->AskDepth5BKColor  = AskDepth5BKColor[DorL];
 	OrderBookList->AskDepth5Color    = AskDepth5Color[DorL];
@@ -1800,15 +1841,19 @@ void __fastcall TDepthForm::DefColorButtonClick(TObject *Sender)
 	OrderBookList->SellFillColor     = SellFillColor[DorL];
 	OrderBookList->SellConditionColBKColor = SellConditionColBKColor[DorL];
 	OrderBookList->SellConditionColColor   = SellConditionColColor[DorL];
-	///< Save Color
-	DeleteColorSetting();
+	OrderBookList->SellOCOColBKColor = SellOCOColBKColor[DorL];
+	OrderBookList->SellOCOColColor   = SellOCOColColor[DorL];
 	OrderBookList->Repaint();
+	FixRowComboBoxChange( NULL );
+	TickComboBoxChange( NULL );
+	BuyComboBoxChange( NULL );
+	SellComboBoxChange( NULL );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadDefColor( bool DorL )
 {
+    return;
 	String Name;
-
 	if( DorL == true )
 		Name = L"DepthDarkColor";
 	else
@@ -1841,6 +1886,8 @@ void __fastcall TDepthForm::LoadDefColor( bool DorL )
 	BuyFillColor[DorL]      = (TColor)g_Config.GetIntegerProperty(Name,"BuyFillColor" ,BuyFillColor[DorL]);
 	BuyConditionColBKColor[DorL] = (TColor)g_Config.GetIntegerProperty(Name,"BuyStopBKColor" ,BuyConditionColBKColor[DorL]);
 	BuyConditionColColor[DorL]   = (TColor)g_Config.GetIntegerProperty(Name,"BuyStopColor" ,BuyConditionColColor[DorL]);
+	BuyOCOColColor[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"BuyOCOColColor" ,BuyOCOColColor[DorL]);
+	BuyOCOColBKColor[DorL]  = (TColor)g_Config.GetIntegerProperty(Name,"BuyOCOColBKColor" ,BuyOCOColBKColor[DorL]);
 	///<Sell side color
 	AskDepth5BKColor[DorL]  = (TColor)g_Config.GetIntegerProperty(Name,"SellDepthColBKColor",AskDepth5BKColor[DorL] );
 	AskDepth5Color[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"SellDepthColColor", AskDepth5Color[DorL]);
@@ -1850,6 +1897,8 @@ void __fastcall TDepthForm::LoadDefColor( bool DorL )
 	SellFillColor[DorL]     = (TColor)g_Config.GetIntegerProperty(Name,"SellFillColor" ,SellFillColor[DorL]);
 	SellConditionColBKColor[DorL] = (TColor)g_Config.GetIntegerProperty(Name,"SellStopBKColor" ,SellConditionColBKColor[DorL]);
 	SellConditionColColor[DorL]   = (TColor)g_Config.GetIntegerProperty(Name,"SellStopColor" ,SellConditionColColor[DorL]);
+	SellOCOColColor[DorL]   = (TColor)g_Config.GetIntegerProperty(Name,"SellOCOColColor" ,SellOCOColColor[DorL]);
+	SellOCOColBKColor[DorL] = (TColor)g_Config.GetIntegerProperty(Name,"SellOCOColBKColor" ,SellOCOColBKColor[DorL]);
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::AsDefColorButtonClick(TObject *Sender)
@@ -1898,6 +1947,8 @@ void __fastcall TDepthForm::CopyThis( TDepthForm* NewDepth )
 	NewDepth->OrderBookList->BuyFillColor      = OrderBookList->BuyFillColor;
 	NewDepth->OrderBookList->BuyConditionColBKColor = OrderBookList->BuyConditionColBKColor;
 	NewDepth->OrderBookList->BuyConditionColColor   = OrderBookList->BuyConditionColColor;
+	NewDepth->OrderBookList->BuyOCOColColor    = OrderBookList->BuyOCOColColor;
+	NewDepth->OrderBookList->BuyOCOColBKColor  = OrderBookList->BuyOCOColBKColor;
 	///<Sell side color
 	NewDepth->OrderBookList->AskDepth5BKColor  = OrderBookList->AskDepth5BKColor;
 	NewDepth->OrderBookList->AskDepth5Color    = OrderBookList->AskDepth5Color;
@@ -1907,6 +1958,8 @@ void __fastcall TDepthForm::CopyThis( TDepthForm* NewDepth )
 	NewDepth->OrderBookList->SellFillColor     = OrderBookList->SellFillColor;
 	NewDepth->OrderBookList->SellConditionColBKColor = OrderBookList->SellConditionColBKColor;
 	NewDepth->OrderBookList->SellConditionColColor   = OrderBookList->SellConditionColColor;
+	NewDepth->OrderBookList->SellOCOColColor   = OrderBookList->SellOCOColColor;
+	NewDepth->OrderBookList->SellOCOColBKColor = OrderBookList->SellOCOColBKColor;
 	///< Copy Setting
 	NewDepth->LotsUpDown->Position = LotsUpDown->Position;
 	NewDepth->OrderBookList->ShowFilled      = OrderBookList->ShowFilled;

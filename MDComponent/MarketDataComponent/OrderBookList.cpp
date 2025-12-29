@@ -12,14 +12,15 @@
 // any pure virtual functions.
 //
 //---------------------------------------------------------------------------
-const int COL_COUNT = 13;
+const int COL_COUNT = 15;
 const int ShortWidth = 30;
 const int DEPTH_COUNT = 10;
 const PAINT_TIMER_ID = 100079;
 //---------------------------------------------------------------------------
 UFC::List<TOrderBookList*>  TOrderBookList::FSyncDepth;
 //---------------------------------------------------------------------------
-String TOrderBookList::HeaderString[COL_COUNT];// = { "買成", "觸價", "刪", "委託", "市場", "買", "Price", "賣", "市場", "委託", "刪", "觸價","賣成" };
+//{ "買成", "觸價", "OCO", "刪", "買進", "委買", "買", "Price", "賣", "委賣", "賣出", "刪", "OCO", "觸價","賣成" };
+String TOrderBookList::HeaderString[COL_COUNT];
 //---------------------------------------------------------------------------
 __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 :TCustomGrid(Owner)
@@ -91,6 +92,10 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FBuyConditionColBKColor( (TColor)0x00763A0A )
 ,FSellConditionColColor( clWhite )
 ,FSellConditionColBKColor( (TColor)0x00763A0A )
+,FBuyOCOColColor( clBlack )
+,FBuyOCOColBKColor( clWhite )
+,FSellOCOColColor( clBlack )
+,FSellOCOColBKColor( clWhite )
 ,FDayHFrameColor( clRed )
 ,FDayLFrameColor( clGreen )
 ,FAvgPxColor( clWhite )
@@ -116,6 +121,7 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FMM(0)
 ,FSS(0)
 ,FEnableCoditionlOrder( true )
+,FShowOCO( false )
 ,FBuyStopOrderOrdType( nsOrderMessageDefine::otLimit )
 ,FSellStopOrderOrdType( nsOrderMessageDefine::otLimit )
 ,FBuyStopTick(0)
@@ -217,23 +223,27 @@ __fastcall TOrderBookList::~TOrderBookList()
 	FSellFillQty.Length = 0;
 	FBuyConditionQty.Length = 0;
 	FSellConditionQty.Length = 0;
+	FBuyOCOQty.Length = 0;
+    FSellOCOQty.Length = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::InitString( void )
 {
 	HeaderString[ 0] = Mdcomponentstrings_MD_ORDERBOOK_FILL_BUY;///'買成'
 	HeaderString[ 1] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
-	HeaderString[ 2] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪'
-	HeaderString[ 3] = L"買進";//Mdcomponentstrings_MD_ORDERBOOK_ORDER;///'委託'
-	HeaderString[ 4] = L"委買";//Mdcomponentstrings_MD_ORDERBOOK_MARKET;///'市場'
-	HeaderString[ 5] = Mdcomponentstrings_MD_ORDERBOOK_BUY;///'買'
-	HeaderString[ 6] = L"價格";
-	HeaderString[ 7] = Mdcomponentstrings_MD_ORDERBOOK_SELL;///'賣'
-	HeaderString[ 8] = L"委賣";//Mdcomponentstrings_MD_ORDERBOOK_MARKET;///'市場'
-	HeaderString[ 9] = L"賣出";//Mdcomponentstrings_MD_ORDERBOOK_ORDER;///'委託'
-	HeaderString[10] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪'
-	HeaderString[11] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
-	HeaderString[12] = Mdcomponentstrings_MD_ORDERBOOK_FILL_SELL;///'賣成'
+	HeaderString[ 2] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
+	HeaderString[ 3] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪'
+	HeaderString[ 4] = Mdcomponentstrings_MD_ORDERBOOK_BUY_IN;////'買進'
+	HeaderString[ 5] = Mdcomponentstrings_MD_ORDERBOOK_BUY_ORDER;///'委買'
+	HeaderString[ 6] = Mdcomponentstrings_MD_ORDERBOOK_BUY;///'買'
+	HeaderString[ 7] = Mdcomponentstrings_MD_ORDERLIST_PRICE;///'價格'
+	HeaderString[ 8] = Mdcomponentstrings_MD_ORDERBOOK_SELL;///'賣'
+	HeaderString[ 9] = Mdcomponentstrings_MD_ORDERBOOK_SELL_ORDER;///'委賣'
+	HeaderString[10] = Mdcomponentstrings_MD_ORDERBOOK_SELL_OFF;///'賣出'
+	HeaderString[11] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪'
+	HeaderString[12] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
+	HeaderString[13] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
+	HeaderString[14] = Mdcomponentstrings_MD_ORDERBOOK_FILL_SELL;///'賣成'
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetAlarmBmp( Graphics::TBitmap* Bitmap )
@@ -333,81 +343,91 @@ void __fastcall TOrderBookList::CalSize( void )
 		FIsCompact = true;
 		FShowFilled = false;
 		FShowFillQty = false;
-		ColWidths[ BUY_DEL_BTN_COL ] = 0;
-		ColWidths[ BUY_ORDER_BTN_COL ] = 0;
-		ColWidths[ SELL_ORDER_BTN_COL ] = 0;
-		ColWidths[ SELL_DEL_BTN_COL ] = 0;
-		ColWidths[ BUY_CONDITION_COL ] = 0;
-		ColWidths[ SELL_CONDITION_COL ] = 0;
-		ColWidths[ BUY_FILL_COL ] = 48;
-		ColWidths[ SELL_FILL_COL ] = 48;
-		ColWidths[ BUY_ORDER_COL ] = 35;
-		ColWidths[ BUY_MK_COL ] = 39;
-		ColWidths[ SELL_MK_COL ] = 39;
-		ColWidths[ SELL_ORDER_COL ] = 35;
-		ColWidths[ PRICE_COL ] = 49;
-		FBestFitWidth = 5;
-		for( register int i = 0; i < COL_COUNT; i++ )
-			FBestFitWidth += ColWidths[i];
+		SetSettingModeCol();
+		delete BufferBmp;
+		return;
 	}
+
+	HeaderText.printf( L"%s(999)", HeaderString[BUY_FILL_COL].c_str() );
+	//FillPxText.printf( L" %.*f ", FDigit+1, FBullPx );
+	//_9999Width    = BufferBmp->Canvas->TextWidth( FillPxText ) + 4;    ///< width: 123.456(BullPx)
+	ShortColWidth = BufferBmp->Canvas->TextWidth( HeaderString[BUY_CONDITION_COL] ) + 4; ///< width: 觸價
+	LongColWidth  = BufferBmp->Canvas->TextWidth( HeaderText ) + 4;      ///< width: 買成(999)
+	QtyWidth      = BufferBmp->Canvas->TextWidth( L"9999(99)" ) + 4;     ///< width: 9999(99)
+	OrderWidth    = BufferBmp->Canvas->TextWidth( L"9999" ) + 4;         ///< width: 9999
+	DefaultRowHeight = BufferBmp->Canvas->TextHeight( HeaderText ) + 2;  ///< Height of
+	if( LongColWidth >= OrderWidth ) ///< FillQtyWidth
+		FillWidth = LongColWidth;
 	else
-	{
-		HeaderText.printf( L"%s(999)", HeaderString[0].c_str() );
-		//FillPxText.printf( L" %.*f ", FDigit+1, FBullPx );
-		//_9999Width    = BufferBmp->Canvas->TextWidth( FillPxText ) + 4;    ///< width: 123.456(BullPx)
-		ShortColWidth = BufferBmp->Canvas->TextWidth( HeaderString[1] ) + 4; ///< width: 觸價
-		LongColWidth  = BufferBmp->Canvas->TextWidth( HeaderText ) + 4;      ///< width: 買成(999)
-		QtyWidth      = BufferBmp->Canvas->TextWidth( L"9999(99)" ) + 4;     ///< width: 9999(99)
-		OrderWidth    = BufferBmp->Canvas->TextWidth( L"9999" ) + 4;         ///< width: 9999
-		DefaultRowHeight = BufferBmp->Canvas->TextHeight( HeaderText ) + 2;  ///< Height of
-		if( LongColWidth >= OrderWidth ) ///< FillQtyWidth
-			FillWidth = LongColWidth;
-		else
-			FillWidth = OrderWidth;
-		if( FIsCompact == false ) ///< Not Compact mode.
-		{
-			ColWidths[BUY_DEL_BTN_COL]    = ShortColWidth;
-			ColWidths[BUY_ORDER_BTN_COL]  = ShortColWidth;
-			ColWidths[SELL_ORDER_BTN_COL] = ShortColWidth;
-			ColWidths[SELL_DEL_BTN_COL]   = ShortColWidth;
-		}
-		else
-		{
-			ColWidths[BUY_DEL_BTN_COL]    = 0;
-			ColWidths[BUY_ORDER_BTN_COL]  = 0;
-			ColWidths[SELL_ORDER_BTN_COL] = 0;
-			ColWidths[SELL_DEL_BTN_COL]   = 0;
-		}
-		if( FShowFilled == true ) ///< Show Filled qty fields
-		{
-			ColWidths[BUY_FILL_COL] = FillWidth;
-			ColWidths[SELL_FILL_COL] = FillWidth;
-		}
-		else
-		{
-			ColWidths[BUY_FILL_COL] = 0;
-			ColWidths[SELL_FILL_COL] = 0;
-		}
-		if( FEnableCoditionlOrder == true )  ///< Show Stop Order qty fields.
-		{
-			ColWidths[BUY_CONDITION_COL] = OrderWidth;
-			ColWidths[SELL_CONDITION_COL] = OrderWidth;
-		}
-		else
-		{
-			ColWidths[BUY_CONDITION_COL] = 0;
-			ColWidths[SELL_CONDITION_COL] = 0;
-		}
-		CalFilledColSize( BufferBmp->Canvas );    ///< Filled price col
-		ColWidths[ BUY_ORDER_COL ]  = OrderWidth;
-		ColWidths[ SELL_ORDER_COL ] = OrderWidth;
-		ColWidths[ BUY_MK_COL ]     = QtyWidth;
-		ColWidths[ SELL_MK_COL ]    = QtyWidth;
-		FBestFitWidth = COL_COUNT;// + 2;
-		for( register int i = 0; i < COL_COUNT; i++ )
-			 FBestFitWidth += ColWidths[ i ];
-	}
+		FillWidth = OrderWidth;
+
+	SetCompactCol(ShortColWidth);
+	SetFillCol(FillWidth);
+	SetConditionCol(OrderWidth);
+	SetSmartOrderCol(OrderWidth);
+	CalFilledColSize( BufferBmp->Canvas );    ///< Filled price col
+	ColWidths[ BUY_ORDER_COL ]  = OrderWidth;
+	ColWidths[ SELL_ORDER_COL ] = OrderWidth;
+	ColWidths[ BUY_MK_COL ]     = QtyWidth;
+	ColWidths[ SELL_MK_COL ]    = QtyWidth;
+	FBestFitWidth = COL_COUNT;// + 2;
+	for( register int i = 0; i < COL_COUNT; i++ )
+		 FBestFitWidth += ColWidths[ i ];
+
 	delete BufferBmp;
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetSettingModeCol( void )
+{
+	ColWidths[ BUY_DEL_BTN_COL ] = 0;
+	ColWidths[ BUY_ORDER_BTN_COL ] = 0;
+	ColWidths[ SELL_ORDER_BTN_COL ] = 0;
+	ColWidths[ SELL_DEL_BTN_COL ] = 0;
+	ColWidths[ BUY_CONDITION_COL ] = 0;
+	ColWidths[ SELL_CONDITION_COL ] = 0;
+
+	ColWidths[ BUY_FILL_COL ] = 48;
+	ColWidths[ SELL_FILL_COL ] = 48;
+	ColWidths[ BUY_ORDER_COL ] = 35;
+	ColWidths[ BUY_MK_COL ] = 39;
+	ColWidths[ SELL_MK_COL ] = 39;
+	ColWidths[ SELL_ORDER_COL ] = 35;
+	ColWidths[ PRICE_COL ] = 49;
+
+	FBestFitWidth = 5;
+	for( register int i = 0; i < COL_COUNT; i++ )
+		FBestFitWidth += ColWidths[i];
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetCompactCol( int ColWidth )
+{
+	int width = FIsCompact ? 0 : ColWidth;
+
+	ColWidths[BUY_DEL_BTN_COL]    = width;
+	ColWidths[BUY_ORDER_BTN_COL]  = width;
+	ColWidths[SELL_ORDER_BTN_COL] = width;
+    ColWidths[SELL_DEL_BTN_COL]   = width;
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetFillCol( int FillWidth )
+{
+	int width = FShowFilled ? FillWidth : 0;
+	ColWidths[BUY_FILL_COL]	 = width;
+	ColWidths[SELL_FILL_COL] = width;
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetConditionCol( int OrderWidth )
+{
+	int width = FEnableCoditionlOrder ? OrderWidth : 0;
+	ColWidths[BUY_CONDITION_COL] = width;
+	ColWidths[SELL_CONDITION_COL] = width;
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetSmartOrderCol( int OrderWidth )
+{
+	int OCOWidth = FShowOCO ? OrderWidth : 0;
+	ColWidths[BUY_OCO_COL] = OCOWidth;
+	ColWidths[SELL_OCO_COL] = OCOWidth;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetSettingMode( bool Mode )
@@ -441,6 +461,18 @@ void __fastcall TOrderBookList::EnableConditionOrder( bool Enable )
 		CalSize();
 		Invalidate();
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::EnableOCO( bool Enable )
+{
+	EnableSmartOrder(Enable);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::EnableSmartOrder( bool OCO )
+{
+	FShowOCO = OCO;
+    CalSize();
+	Invalidate();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice, double FillPrice, int Digit )
@@ -480,6 +512,8 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 	FSellFillQty.Length = RowCount;
 	FBuyConditionQty.Length = RowCount;
 	FSellConditionQty.Length = RowCount;
+	FBuyOCOQty.Length = RowCount;
+	FSellOCOQty.Length = RowCount;
 
 	for( register int i = 0; i < DEPTH_COUNT; i++ )
 	{
@@ -498,6 +532,8 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 		FSellFillQty[i] = -1;
 		FBuyConditionQty[i] = -1;
 		FSellConditionQty[i] = -1;
+		FBuyOCOQty[i] = -1;
+        FSellOCOQty[i] = -1;
 	}
 	if( FSettingMode == true )
 	{
@@ -855,6 +891,8 @@ void _fastcall TOrderBookList::DrawCell(int ACol, int ARow, const Types::TRect &
 		case SELL_FILL_COL		: DrawSellFillCol( ARow, ARect, AState ); break;
 		case BUY_CONDITION_COL	:
 		case SELL_CONDITION_COL	: DrawConditionCol( ACol, ARow, ARect, AState ); break;
+		case BUY_OCO_COL        :
+		case SELL_OCO_COL       : DrawOCOCol( ACol, ARow, ARect, AState ); break;
 		default : break;
 	}
 }
@@ -1371,6 +1409,40 @@ void __fastcall TOrderBookList::DrawConditionCol( int ACol, int ARow, const Type
 		DrawGridLine( FBufferBmp, PaintRect );
 		Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState )
+{
+	if( ARow <= 0 )
+		return;
+
+	TRect PaintRect = Rect( 0, 0, ARect.Width(), DefaultRowHeight );
+	if( FBufferBmp->Width != ARect.Width() || FBufferBmp->Height != DefaultRowHeight )
+	{
+		FBufferBmp->Width = ARect.Width();
+		FBufferBmp->Height = DefaultRowHeight;
+	}
+
+	TColor FrontColor, BKColor;
+	if(ACol == BUY_OCO_COL)
+	{
+		FrontColor = FBuyOCOColColor;
+		BKColor = FBuyOCOColBKColor;
+	}
+	else
+	{
+		FrontColor = FSellOCOColColor;
+		BKColor = FSellOCOColBKColor;
+	}
+	FBufferBmp->Canvas->Brush->Color = BKColor;
+	FBufferBmp->Canvas->FillRect( PaintRect );
+	if( ACol == BUY_CONDITION_COL )
+		DrawQty( FBufferBmp, &PaintRect, tfRight, FBuyConditionQty[ARow], FrontColor );
+	else
+		DrawQty( FBufferBmp, &PaintRect, tfRight, FSellConditionQty[ARow], FrontColor );
+
+	DrawGridLine( FBufferBmp, PaintRect );
+	Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::DrawQty( Graphics::TBitmap* Bmp, Types::TRect* ARect, TTextFormats Align, int Qty, TColor TextColor, int DerivedQty )

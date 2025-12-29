@@ -41,17 +41,19 @@ typedef enum colName
 {
 	BUY_FILL_COL		= 0,
 	BUY_CONDITION_COL	= 1,
-	BUY_DEL_BTN_COL		= 2,
-	BUY_ORDER_COL		= 3,
-	BUY_MK_COL			= 4,
-	BUY_ORDER_BTN_COL	= 5,
-	PRICE_COL 			= 6,
-	SELL_ORDER_BTN_COL 	= 7,
-	SELL_MK_COL 		= 8,
-	SELL_ORDER_COL 		= 9,
-	SELL_DEL_BTN_COL 	= 10,
-	SELL_CONDITION_COL	= 11,
-	SELL_FILL_COL		= 12
+	BUY_OCO_COL         = 2,
+	BUY_DEL_BTN_COL		= 3,
+	BUY_ORDER_COL		= 4,
+	BUY_MK_COL			= 5,
+	BUY_ORDER_BTN_COL	= 6,
+	PRICE_COL 			= 7,
+	SELL_ORDER_BTN_COL 	= 8,
+	SELL_MK_COL 		= 9,
+	SELL_ORDER_COL 		= 10,
+	SELL_DEL_BTN_COL 	= 11,
+	SELL_OCO_COL        = 12,
+	SELL_CONDITION_COL	= 13,
+	SELL_FILL_COL		= 14
 }ColName;
 //---------------------------------------------------------------------------
 /*class IOrderInfoListener
@@ -136,6 +138,10 @@ private:
 	TColor 			FBuyConditionColBKColor;
 	TColor 			FSellConditionColColor;
 	TColor 			FSellConditionColBKColor;
+	TColor          FBuyOCOColColor;
+	TColor          FBuyOCOColBKColor;
+	TColor          FSellOCOColColor;
+	TColor          FSellOCOColBKColor;
 	TColor          FDayHFrameColor;
 	TColor          FDayLFrameColor;
 	TColor          FAvgPxColor;
@@ -153,6 +159,8 @@ private:
 	TIntegerDynArray	FSellFillQty;
 	TIntegerDynArray	FBuyConditionQty;
 	TIntegerDynArray	FSellConditionQty;
+	TIntegerDynArray    FBuyOCOQty;
+	TIntegerDynArray    FSellOCOQty;
 	bool			FIsCompact;
 	bool			FShowFilled;
 	bool			FCenterFillPrice;
@@ -219,6 +227,7 @@ private:
 	TColor FHotTracksBKColor;
 	///< Stop Order Setting
 	bool FEnableCoditionlOrder;
+	bool FShowOCO;
 	nsOrderMessageDefine::OrderTypeEnum FBuyStopOrderOrdType;
 	nsOrderMessageDefine::OrderTypeEnum FSellStopOrderOrdType;
 	int FBuyStopTick;
@@ -335,6 +344,11 @@ private:
 	int __fastcall GetRowIndex( double Price, int* PxIndex = NULL );
 	double __fastcall GetPxFromIndex( int Index );
 	void __fastcall CalSize( void );
+    void __fastcall SetSettingModeCol( void );
+	void __fastcall SetCompactCol( int ColWidth );
+	void __fastcall SetFillCol( int FillWidth );
+	void __fastcall SetConditionCol( int OrderWidth );
+	void __fastcall SetSmartOrderCol( int OrderWidth );
 	void __fastcall CalFilledColSize( TCanvas* canvas );
 	void __fastcall DrawQty( Graphics::TBitmap* Bmp, Types::TRect *ARect, TTextFormats Align, int Qty, TColor TextColor, int DerivedQty = 0 );
 	void __fastcall MouseOverCell( const TGridCoord& Coord );
@@ -386,7 +400,10 @@ private:
 	bool __fastcall CheckTakeProfit( int PxTick );
 	///< Condition Order
 	void __fastcall EnableConditionOrder( bool Enable );
+	void __fastcall EnableOCO( bool Enable );
+	void __fastcall EnableSmartOrder( bool OCO );
 	void __fastcall DrawConditionCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
+	void __fastcall DrawOCOCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall ConditionOrderColMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall MarkPrice( int Tick, bool IsMark1 );
 	void __fastcall SetBuyStopTick( int Tick );
@@ -530,6 +547,10 @@ __published:
 	__property TColor SellFillColor = { read = FSellFillColor, write = FSellFillColor };
 	__property TColor BuyFillBKColor = { read = FBuyFillBKColor, write = FBuyFillBKColor };
 	__property TColor SellFillBKColor = { read = FSellFillBKColor, write = FSellFillBKColor };
+	__property TColor BuyOCOColColor = { read = FBuyOCOColColor, write = FBuyOCOColColor };
+	__property TColor BuyOCOColBKColor = { read = FBuyOCOColBKColor, write = FBuyOCOColBKColor };
+	__property TColor SellOCOColColor = { read = FSellOCOColColor, write = FSellOCOColColor };
+	__property TColor SellOCOColBKColor = { read = FSellOCOColBKColor, write = FSellOCOColBKColor };
 
 	__property TColor DayHColor  = {read = FDayHFrameColor, write = FDayHFrameColor };
 	__property TColor DayLColor  = {read = FDayLFrameColor, write = FDayLFrameColor };
@@ -564,6 +585,7 @@ __published:
 	__property int MaxFPS = { read = FMaxFPS, write = SetFPS };
 	///< Stop Order setting
 	__property bool ConditionOrder = { read = FEnableCoditionlOrder, write = EnableConditionOrder };
+	__property bool ShowOCO = { read = FShowOCO, write = EnableOCO };
 	__property int  BuyStopTick = { read = FBuyStopTick, write = SetBuyStopTick };
 	__property int  SellStopTick = { read = FSellStopTick, write = SetSellStopTick };
 	__property nsOrderMessageDefine::OrderTypeEnum BuyStopOrderType = { read = FBuyStopOrderOrdType, write = SetBuyStopOrderType };
