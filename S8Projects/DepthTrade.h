@@ -395,11 +395,8 @@ public:		// User declarations
 	void __fastcall LoadHotkey( void );
 	void __fastcall LoadColor( void );
 	void __fastcall SaveStopSetting( void );
-	void __fastcall SaveColor( void );
 	void __fastcall SaveDefColor( void );
-	void __fastcall DeleteColorSetting( void );
 	void __fastcall SaveColorToConfig( const String& Name, bool DorL );
-	void __fastcall DeleteColorConfig( const String& Name, bool DorL );
 	void __fastcall LoadDefColor( bool DorL );
 	void __fastcall ShowDepth( int L,int T );
 	void __fastcall ShowDepth( int L,int T, const String& Profile  );

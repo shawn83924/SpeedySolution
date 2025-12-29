@@ -4,7 +4,7 @@ object DepthForm: TDepthForm
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSizeToolWin
   Caption = 'DepthForm'
-  ClientHeight = 1049
+  ClientHeight = 861
   ClientWidth = 391
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -23,7 +23,7 @@ object DepthForm: TDepthForm
     Left = 210
     Top = 113
     Width = 181
-    Height = 905
+    Height = 717
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -36,7 +36,7 @@ object DepthForm: TDepthForm
     BearPrice = 6339.000000000000000000
     FillPrice = 7293.000000000000000000
     ClickQty = 1
-    BestFitWidth = 522
+    BestFitWidth = 524
     ShowFillQty = True
     ShowDerivedPx = True
     EnableHotTracks = True
@@ -72,6 +72,8 @@ object DepthForm: TDepthForm
     SellFillColor = clNavy
     BuyFillBKColor = clWhite
     SellFillBKColor = clWhite
+    BuyOCOColBKColor = clWhite
+    SellOCOColBKColor = clWhite
     DayHColor = clRed
     DayLColor = clGreen
     AvgPxColor = clWhite
@@ -164,10 +166,12 @@ object DepthForm: TDepthForm
     OnAutoStopLoss = OrderBookListAutoStopLoss
     OnAutoTakeProfit = OrderBookListAutoTakeProfit
     OnTick = OrderBookListTick
+    ExplicitHeight = 905
     ColWidths = (
       71
       40
       0
+      0
       40
       68
       0
@@ -175,6 +179,7 @@ object DepthForm: TDepthForm
       0
       68
       40
+      0
       0
       40
       71)
@@ -2197,7 +2202,7 @@ object DepthForm: TDepthForm
     Left = 0
     Top = 113
     Width = 210
-    Height = 905
+    Height = 717
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -2217,16 +2222,17 @@ object DepthForm: TDepthForm
     TabOrder = 2
     OnClosed = ToolSVClosed
     OnOpened = ToolSVOpened
+    ExplicitHeight = 905
     object PageControl: TPageControl
       Left = 0
       Top = 0
       Width = 210
-      Height = 905
+      Height = 717
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = StopSettingTabSheet
+      ActivePage = ColorTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2238,6 +2244,7 @@ object DepthForm: TDepthForm
       ParentFont = False
       TabOrder = 0
       OnChanging = PageControlChanging
+      ExplicitHeight = 905
       object SettingTabSheet: TTabSheet
         Margins.Left = 5
         Margins.Top = 5
@@ -2252,11 +2259,12 @@ object DepthForm: TDepthForm
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
+        ExplicitHeight = 868
         object SettingScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 868
+          Height = 680
           HorzScrollBar.Range = 170
           VertScrollBar.Range = 868
           VertScrollBar.Smooth = True
@@ -2265,6 +2273,7 @@ object DepthForm: TDepthForm
           AutoScroll = False
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 868
           object CountLabel: TLabel
             Left = 8
             Top = 441
@@ -2758,16 +2767,18 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 2
         ParentDoubleBuffered = False
+        ExplicitHeight = 868
         object StopSettingScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 868
+          Height = 680
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alClient
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 868
           object Label5: TLabel
             Left = 8
             Top = 63
@@ -3659,6 +3670,7 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 3
         ParentDoubleBuffered = False
+        ExplicitHeight = 868
         object SplitPanel: TPanel
           Left = 0
           Top = 0
@@ -4384,19 +4396,21 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 1
         ParentDoubleBuffered = False
+        ExplicitHeight = 868
         object ColorScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 868
+          Height = 680
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alClient
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 868
           object Bevel1: TBevel
             Left = 0
-            Top = 87
+            Top = 96
             Width = 198
             Height = 16
             Margins.Left = 5
@@ -4410,7 +4424,7 @@ object DepthForm: TDepthForm
           end
           object Bevel2: TBevel
             Left = 0
-            Top = 190
+            Top = 208
             Width = 198
             Height = 15
             Margins.Left = 5
@@ -4424,7 +4438,7 @@ object DepthForm: TDepthForm
           end
           object Bevel3: TBevel
             Left = 0
-            Top = 291
+            Top = 318
             Width = 198
             Height = 16
             Margins.Left = 5
@@ -4572,7 +4586,7 @@ object DepthForm: TDepthForm
           object StaticText4: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 108
+            Top = 117
             Width = 188
             Height = 25
             Margins.Left = 5
@@ -4589,10 +4603,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 3
+            ExplicitTop = 108
           end
           object TickComboBox: TComboBox
             Left = 0
-            Top = 138
+            Top = 147
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4621,10 +4636,11 @@ object DepthForm: TDepthForm
               #26085#39640#20729#32218#26694#33394#11
               #26085#20302#20729#32218#26694#33394#11
               #25104#20132#22343#20729#32218)
+            ExplicitTop = 138
           end
           object TickColorBox: TColorBox
             Left = 0
-            Top = 168
+            Top = 177
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4642,11 +4658,12 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             OnChange = TickColorBoxChange
+            ExplicitTop = 168
           end
           object StaticText2: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 210
+            Top = 228
             Width = 188
             Height = 24
             Margins.Left = 5
@@ -4663,10 +4680,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 6
+            ExplicitTop = 210
           end
           object BuyComboBox: TComboBox
             Left = 0
-            Top = 239
+            Top = 257
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4690,10 +4708,11 @@ object DepthForm: TDepthForm
               #25104#20132#25991#23383#38991#33394
               #35320#20729#32972#26223#38991#33394
               #35320#20729#25991#23383#38991#33394)
+            ExplicitTop = 239
           end
           object BuyTextColorBox: TColorBox
             Left = 0
-            Top = 269
+            Top = 287
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4711,11 +4730,12 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 8
             OnChange = BuyTextColorBoxChange
+            ExplicitTop = 269
           end
           object StaticText3: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 312
+            Top = 339
             Width = 188
             Height = 24
             Margins.Left = 5
@@ -4732,10 +4752,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 9
+            ExplicitTop = 312
           end
           object SellComboBox: TComboBox
             Left = 0
-            Top = 341
+            Top = 368
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4759,10 +4780,11 @@ object DepthForm: TDepthForm
               #25104#20132#25991#23383#38991#33394
               #35320#20729#32972#26223#38991#33394
               #35320#20729#25991#23383#38991#33394)
+            ExplicitTop = 341
           end
           object SellTextColorBox: TColorBox
             Left = 0
-            Top = 371
+            Top = 398
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4780,6 +4802,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 11
             OnChange = SellTextColorBoxChange
+            ExplicitTop = 371
           end
         end
       end
@@ -4924,7 +4947,7 @@ object DepthForm: TDepthForm
   end
   object ButtonPanel: TPanel
     Left = 0
-    Top = 1018
+    Top = 830
     Width = 391
     Height = 31
     Margins.Left = 5
@@ -4940,6 +4963,7 @@ object DepthForm: TDepthForm
     ParentDoubleBuffered = False
     TabOrder = 4
     StyleElements = []
+    ExplicitTop = 1018
     object CenterLabel: TLabel
       Left = 531
       Top = 1
@@ -5033,7 +5057,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080058010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300080060010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
