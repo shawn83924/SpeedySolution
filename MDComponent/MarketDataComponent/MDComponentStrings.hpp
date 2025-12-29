@@ -185,8 +185,18 @@ extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_SELL;
 #define Mdcomponentstrings_MD_ORDERBOOK_FILL_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_FILL_SELL)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_STOPPX;
 #define Mdcomponentstrings_MD_ORDERBOOK_STOPPX System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_STOPPX)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_OCO;
+#define Mdcomponentstrings_MD_ORDERBOOK_OCO System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_OCO)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_CANCEL;
 #define Mdcomponentstrings_MD_ORDERBOOK_CANCEL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_CANCEL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_BUY_IN;
+#define Mdcomponentstrings_MD_ORDERBOOK_BUY_IN System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_BUY_IN)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_BUY_ORDER;
+#define Mdcomponentstrings_MD_ORDERBOOK_BUY_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_BUY_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_SELL_ORDER;
+#define Mdcomponentstrings_MD_ORDERBOOK_SELL_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_SELL_ORDER)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_SELL_OFF;
+#define Mdcomponentstrings_MD_ORDERBOOK_SELL_OFF System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_SELL_OFF)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_ORDER;
 #define Mdcomponentstrings_MD_ORDERBOOK_ORDER System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_ORDER)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_MARKET;
