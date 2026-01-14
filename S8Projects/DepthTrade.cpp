@@ -297,6 +297,7 @@ void __fastcall TDepthForm::imgMenuClick(TObject *Sender)
 	  TickComboBoxChange( NULL );
 	  BuyComboBoxChange( NULL );
 	  SellComboBoxChange( NULL );
+	  ExchangeComboBoxChange( NULL );
 	  ToolSV->Open();
   }
 }
