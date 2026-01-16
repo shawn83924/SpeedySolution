@@ -1145,7 +1145,7 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	LoadCustomList();
     int ExchangeComboBoxIdx = g_Config.GetIntegerProperty( Profile ,"ExchangeComboBox", 0 );
 	InitExchangeComboBox(ExchangeComboBoxIdx);
-	g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
+	InitSmartOrderTabs(0);
 	ApplyStopTick( StopTickUpDown->Position, StopProfitTickUpDown->Position );
 	RatioComboBoxChange( NULL );
 	FilledStopToggleSwitchClick( NULL );
@@ -2788,6 +2788,46 @@ void __fastcall TDepthForm::InitExchangeComboBox(int Idx)
 	ExchangeComboBox->ItemIndex = Idx;
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::InitSmartOrderTabs( int Idx )
+{
+	SmartOrderTabs->TabIndex = Idx;
+	SmartOrderTabsChange(NULL);
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::DisableExtraPanelControls( void )
+{
+	for (int i = 0; i < ExtraPanel->ControlCount; i++)
+	{
+		TControl *ctrl = ExtraPanel->Controls[i];
+        ctrl->Visible = false;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::EnableQuickMode( void )
+{
+	ExtraPanel->Visible = false;
+	OrderBookList->ShowOCO = false;
+
+	if( ToolSV->Opened )
+		SetWidth( ToolSV->OpenedWidth );
+	else
+		SetWidth( 0 );
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::EnableOCOMode( void )
+{
+	ExtraPanel->Visible = true;
+	DisableExtraPanelControls();
+	NewOCOBtn->Visible = true;
+	NewOCOBtn->Align = alRight;
+	OrderBookList->ShowOCO = true;
+
+	if( ToolSV->Opened )
+		SetWidth( ToolSV->OpenedWidth );
+	else
+		SetWidth( 0 );
+}
+//---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadCustomList(void)
 {
     String Dir;
@@ -2895,3 +2935,29 @@ void __fastcall TDepthForm::ScrollBoxMouseWheel(TObject *Sender, TShiftState Shi
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::SmartOrderTabsChange(TObject *Sender)
+{
+	switch(SmartOrderTabs->TabIndex)
+	{
+		case 0:
+			EnableQuickMode();
+			break;
+		case 1:
+			EnableOCOMode();
+			break;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::NewOCOBtnClick(TObject *Sender)
+{
+	if( FNetPos == 0 )
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未有該部位" );
+        return;
+	}
+
+	TForm *dlg = new TNewOCODlgForm(this, TNewOCODlgForm::DlgType::NewOCO);
+    dlg->ShowModal();
+}
+//---------------------------------------------------------------------------
+
