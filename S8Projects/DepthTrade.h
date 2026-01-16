@@ -22,6 +22,7 @@
 #include <Vcl.Menus.hpp>
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
+#include "NewOCODlg.h"
 //---------------------------------------------------------------------------
 class TDepthForm : public TForm, public TClientForm, public TOrderQtyListener, public IOrderFilled
 {
@@ -198,6 +199,10 @@ __published:	// IDE-managed Components
 	TScrollBox *SettingScrollBox;
 	TScrollBox *StopSettingScrollBox;
 	TScrollBox *ColorScrollBox;
+	TTabControl *SmartOrderTabs;
+	TPanel *SmartOrderTab;
+	TPanel *ExtraPanel;
+	TGraphButton *NewOCOBtn;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -297,6 +302,8 @@ __published:	// IDE-managed Components
 	void __fastcall EscapeButtonClick(TObject *Sender);
 	void __fastcall ScrollBoxMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
+	void __fastcall SmartOrderTabsChange(TObject *Sender);
+	void __fastcall NewOCOBtnClick(TObject *Sender);
 
 
 
@@ -358,6 +365,10 @@ private:	// User declarations
 	void __fastcall ApplyStopTick( int New, int NewProfit );
 	void __fastcall AutoStop( SideEnum side, double Price, int Qty, const String& Msg );
 	void __fastcall InitExchangeComboBox( int Idx );
+	void __fastcall InitSmartOrderTabs( int Idx );
+	void __fastcall EnableQuickMode( void );
+	void __fastcall DisableExtraPanelControls( void );
+	void __fastcall EnableOCOMode( void );
 public:		// User declarations
 	bool __fastcall PlaceOrder( SideEnum side,double Price, int Qty,OrderTypeEnum OrderType, bool EnableStop );
 	void __fastcall PlaceMarketOrder( SideEnum side, int Qty,TimeInForceEnum TIF );
