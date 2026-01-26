@@ -70,6 +70,10 @@ const UFC::AnsiString SUBJECT_FILE_DOWNLOAD     = "FILE.DOWNLOAD";
 const UFC::AnsiString SUBJECT_NEWS_REQUEST      = "NEWS.REQUEST";
 const UFC::AnsiString SUBJECT_NEWS_RESPONSE     = "NEWS.RESPONSE";
 //------------------------------------------------------------------------------
+const UFC::AnsiString SUBJECT_TSE_STRATEGY      = "TO.TSE.STRATEGY";
+const UFC::AnsiString SUBJECT_OTC_STRATEGY      = "TO.OTC.STRATEGY";
+//-------------------------------------------------------------------------------
+
 void TTaifexConnection::InitGlobal()
 {
     if( GStdout == NULL )        
@@ -93,12 +97,12 @@ bool TTaifexConnection::SupportAPI( APIType APITp )
 // Constructor for COM only.
 //------------------------------------------------------------------------------
 TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
-									  HMODULE ResourceInstance,
-									  const char* AppName,
-									  IOrderConnectionEventListener* pOrderConnectionEventListener,
-									  APIType WhichAPI,
-									  BOOL  IsWin32GUIApp )
-:FOutCount(0)
+                                      HMODULE ResourceInstance,
+                                      const char* AppName,
+                                      IOrderConnectionEventListener* pOrderConnectionEventListener,
+                                      APIType WhichAPI,
+                                      BOOL  IsWin32GUIApp )
+:FOutCount( 0 )
 ,FOrderPerSec( THROUGHPUT_DEF )
 ,FFirstOrderTick(0)
 ,FInstance( AppInstance )
@@ -153,14 +157,13 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FOPTSymbol( NULL )
 ,FIsProxy( false )
 ,FSupportFLEX( false )
-,FCAPFXFilePathName("")
-,FCAPassword("")
-,FCADLLFileName("")
-,FCAOrganizationalUnit("")
-,FCACommonName("")
-,FApiCAObjPtr(0)
-,FNeedCheckOrdQty0(true)
-,FCheckForeignStockOrderID(true)
+,FCAPFXFilePathName( "" )
+,FCAPassword( "" )
+,FCADLLFileName( "" )
+,FCAOrganizationalUnit( "" )
+,FCACommonName( "" )
+,FApiCAObjPtr( 0 )
+,FNeedCheckOrdQty0( true )
 {
 	InitGlobal();
 #ifdef _USE_RES
@@ -168,8 +171,8 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 #else
 	UseRes = FALSE; ///< Use the message format file in file.
 #endif
-    if( UFC::BufferedLogData::FLogObject != NULL && Glog == GStdout )
-        Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
+	if( UFC::BufferedLogData::FLogObject != NULL && Glog == GStdout )
+		Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
     FLogonEvent   = new UFC::PEvent();
     FRequestEvent = new UFC::PEvent();
     if( FUseAPI == atSpeedy )
@@ -178,8 +181,8 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
         FSupportSellSide.Add( ssTAIFEX );
         FSupportSellSide.Add( ssTSEOTC );
         SetLanguage( mlEnglish );
-        FCallbackFuncs.Add( SUBJECT_ADMIN,        &FOnAdminMsg   ); ///< Admin message
-        FCallbackFuncs.Add( SUBJECT_NEWS_RESPONSE,&FOnNewsMsg    ); ///< News
+		FCallbackFuncs.Add( SUBJECT_ADMIN,        &FOnAdminMsg   ); ///< Admin message
+		FCallbackFuncs.Add( SUBJECT_NEWS_RESPONSE,&FOnNewsMsg    ); ///< News
         FCallbackFuncs.Add( SUBJECT_RECOVER,      &FOnRecoverMsg ); ///< Recover executions
         UFC::SleepMS( 5 );
     }
@@ -188,10 +191,10 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 // Constructor for using C++ library.
 //------------------------------------------------------------------------------
 TTaifexConnection::TTaifexConnection( const char* AppName,
-									  IOrderConnectionEventListener* pOrderConnectionEventListener,
-									  APIType WhichAPI,
-									  BOOL  IsWin32GUIApp )
-:FOutCount(0)
+                                      IOrderConnectionEventListener* pOrderConnectionEventListener,
+                                      APIType WhichAPI,
+                                      BOOL IsWin32GUIApp )
+:FOutCount( 0 )
 ,FOrderPerSec( THROUGHPUT_DEF )
 ,FFirstOrderTick(0)
 ,FInstance( NULL )
@@ -245,14 +248,13 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
 ,FOPTSymbol( NULL )
 ,FIsProxy( false )
 ,FSupportFLEX( false )
-,FCAPFXFilePathName("")
-,FCAPassword("")
-,FCADLLFileName("")
-,FCAOrganizationalUnit("")
-,FCACommonName("")
-,FApiCAObjPtr(0)
-,FNeedCheckOrdQty0(true)
-,FCheckForeignStockOrderID(true)
+,FCAPFXFilePathName( "" )
+,FCAPassword( "" )
+,FCADLLFileName( "" )
+,FCAOrganizationalUnit( "" )
+,FCACommonName( "" )
+,FApiCAObjPtr( 0 )
+,FNeedCheckOrdQty0( true )
 {    
         InitGlobal();
 #ifdef   _USE_RES
@@ -794,31 +796,31 @@ void TTaifexConnection::ReceiveNews( MTree* pTree )
     Int32            NewsID;
     Int32            MsgCount = 1;
     Int32            MsgIndex = 1;
-    UFC::AnsiString  NewsData,Func;
-    TNewsMessage     NewsMsg;
+	UFC::AnsiString  NewsData,Func;
+	TNewsMessage     NewsMsg;
 
-    if( pTree->get( "UID", NewsID ) )
-    {
-            NewsMsg.SetID( NewsID );
-            if( pTree->get( "FUNC", Func ) )
-                    NewsMsg.SetHeadline( Func.c_str( ) );
-            if( pTree->get( "DATA", NewsData ) )
-                    NewsMsg.SetText( NewsData.c_str( ) );
-            if( pTree->get( "COUNT", MsgCount ) )
-                    NewsMsg.SetMsgCount( MsgCount );
-            if( pTree->get( "INDEX", MsgIndex ) )
-                    NewsMsg.SetMsgNum( MsgIndex );
-            if( Func == "ReqFUTMargin" )
-            {
-                if( FLastReqUID == NewsID )
-                {
-                    FResponseData = NewsData;
+	if( pTree->get( "UID", NewsID ) )
+	{
+		NewsMsg.SetID( NewsID );
+		if( pTree->get( "FUNC", Func ) )
+			NewsMsg.SetHeadline( Func.c_str( ) );
+		if( pTree->get( "DATA", NewsData ) )
+			NewsMsg.SetText( NewsData.c_str( ) );
+		if( pTree->get( "COUNT", MsgCount ) )
+			NewsMsg.SetMsgCount( MsgCount );
+		if( pTree->get( "INDEX", MsgIndex ) )
+			NewsMsg.SetMsgNum( MsgIndex );
+		if( Func == "ReqFUTMargin" )
+		{
+			if( FLastReqUID == NewsID )
+			{
+				FResponseData = NewsData;
                     FRequestEvent->SetEvent();
-                }
-                return;
-            }
-            if( FListener != NULL )
-                    FListener->OnNews( &NewsMsg );
+			}
+			return;
+        }
+		if( FListener != NULL )
+			FListener->OnNews( &NewsMsg );
     }
 }
 //---------------------------------------------------------------------------
@@ -905,6 +907,16 @@ void TTaifexConnection::Disconnect( void )
     }
 }
 //---------------------------------------------------------------------------
+///< SpeedyProxyLogon
+///< ID:      Logon ID, Should be citizen ID or Ecxchange account.
+///< PASSWD:  Password for logon.
+///< ACCOUNT: Exchange account.( could be "Account1,Account2,Account3..." )
+///< Token1 default: SpeedyProxy
+///< Token2 default: 601008
+///< ConnectionType: Connection type.(Place oder, Receive ececution...)
+///< Version: API version string.( Default SPEEDY_API_PROXY_VERSION )
+///< Encode: Compress the order string.
+//---------------------------------------------------------------------------
 void TTaifexConnection::SpeedyProxyLogon( const char* ID,
                                           const char* PASSWD,
                                           const char* ACCOUNT, ///< Account1,Account2,Account3.....
@@ -912,36 +924,51 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
                                           const char* Token2,  ///< Default "601008"
                                           ConnectionType Type, ///< ConnectionType Type = ctBoth
                                           int Version,         ///< Version = SPEEDY_API_PROXY_VERSION
-										  BOOL Encode )
+                                          BOOL Encode )
 {
     if( FUseAPI == atSpeedy )
     {
         ///< ID:      Logon ID, Should be citizen ID or Ecxchange account.
         ///< PASSWD:
-		///< ACCOUNT: Exchange account.( could be "Account1,Account2,Account3..." )
+        ///< ACCOUNT: Exchange account.( could be "Account1,Account2,Account3..." )
         ///< Token1 default: SpeedyProxy
         ///< Token2 default: 601008
-        UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
-        UFC::AnsiString id( ID ), passwd2( PASSWD ), TradeDate, TimeNow;
+//        UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
+        UFC::AnsiString id( ID ), passwd2( PASSWD ), TradeDate = "", TimeNow = "";
         int MAppFD = FTransport->GetMApp()->GetSocketHandle();
 
         FAccounts.SetStrings( ACCOUNT, ",\n" );
         FAccountSet.Clear();
-        for( int i=0;i< FAccounts.ItemCount();i++ )
-                 FAccountSet.Add( FAccounts[i] );
+        UFC::AnsiString firstAccountNo = "";
+        UFC::PStringBuffer accountNoCSVBuffer;
+        for( int i = 0; i < FAccounts.ItemCount(); i++ )  //ZhenFan 2026/01/22
+        {
+            UFC::AnsiString curAccountNo = FAccounts[ i ];
+            if( i == 0 ) firstAccountNo = curAccountNo;
+            if( FAccountSet.Exists( curAccountNo ) == FALSE )  //Check Duplicate AccountNo
+            {
+                FAccountSet.Add( curAccountNo );
+                if( accountNoCSVBuffer.Length() > 0 ) accountNoCSVBuffer.Append( ',' );
+                accountNoCSVBuffer.Append( curAccountNo );
+            }
+            else
+                Glog->fprintf( " %s() Duplicate AccountNo[%s].", __func__, curAccountNo.c_str() );
+        }
+        UFC::AnsiString accountNoCSV = accountNoCSVBuffer.ToString();
+        
         UFC::GetTradeYYYYMMDD( TradeDate , FALSE );
         if( id.Length() == 0 )
             id = "NULL";
         FIDs.Clear();
         FIDs.Add( id );
         UFC::GetTimeString_us( TimeNow );
-        FUniquekey.Printf( "%s@%s.%s_%d", id.c_str(), UFC::Hostname, TimeNow.c_str(),MAppFD );
+        FUniquekey.Printf( "%s@%s.%s_%d", id.c_str(), UFC::Hostname, TimeNow.c_str(), MAppFD );
        
         ///< Account: Exchange account.
         ///< TradeDate: YYYYMMDD
         ///< Logon MD5 and order MD5.
-        UFC::TLicenseKey OrderKey( Token1, FAccounts[0], TradeDate, Token2 );
-        UFC::TLicenseKey LogonKey( Token1, FAccounts[0], FUniquekey, Token2 );
+        UFC::TLicenseKey OrderKey( Token1, firstAccountNo, TradeDate, Token2 );
+        UFC::TLicenseKey LogonKey( Token1, firstAccountNo, FUniquekey, Token2 );
 
         Logoff();
         FToken    = OrderKey.ToString();
@@ -967,10 +994,10 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
                                     break;
             case ctBoth:            FReportType   = rdBoth;
                                     FTriggerExec  = TRUE;
-									FCanSendOrder = TRUE;
+                                    FCanSendOrder = TRUE;
                                     break;
         }
-        FAdminListener = new TMdListener( FTransport, this, SUBJECT_ADMIN.c_str(), FUniquekey.c_str());
+        FAdminListener = new TMdListener( FTransport, this, SUBJECT_ADMIN.c_str(), FUniquekey.c_str() );
 
         UFC::AnsiString signatureStr = "";
         UFC::AnsiString caErrorMessage = "";
@@ -978,8 +1005,8 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
 
         Glog->fprintf( " %s() Check CA Logon Data.", __func__ );
         CAResultData caResult;
-        caResult.SetPlainText(id);
-        if ( !CheckCALogonData(id, caResult) )
+        caResult.SetPlainText( id );
+        if ( !CheckCALogonData( id, caResult) )
         {
             caErrorMessage = caResult.GetResultMsg();
             Glog->fprintf( " %s() Check CA Error:%s.", __func__, caErrorMessage.c_str() );
@@ -991,34 +1018,41 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
         }
         ///< Create a thread to send the logon message.
         FIsProxy = true;
-        Glog->fprintf( " User[%s][%s] create logon thread.", id.c_str(),  FAccounts[0].c_str() );
+        Glog->fprintf( " User[%s][%s] create logon thread.", id.c_str(), firstAccountNo.c_str() );
         Glog->Flush();
         Glog->FlushToFile();
 
-        new LogonThread( FTransport, FLogonEvent, Version, SUBJECT_ADMIN, FUniquekey, id, LogonKey.ToString(), ACCOUNT, passwd2, caResult, Encode );
+        new LogonThread( FTransport, FLogonEvent, Version, SUBJECT_ADMIN, FUniquekey, id, LogonKey.ToString(), accountNoCSV, passwd2, caResult, Encode );  //ZhenFan 2026/01/22
     }
 }
 //---------------------------------------------------------------------------
-void TTaifexConnection::Logon(  const char* ID,
-                                const char* PASSWD,
-                                const char* ACCOUNT,
-                                ConnectionType Type,
-                                int Version,
-                                BOOL Encode )
+///< SpeedyGatewayLogon
+///< ID:      Logon ID, AE,Admin or channel ID.( could be "ID1,ID2,ID3..." )
+///< PASSWD:  Password for logon.
+///< ACCOUNT: Exchange account.
+///< ConnectionType: Connection type.(Place oder, Receive ececution...)
+///< Version: API version string.(Default SPEEDY_API_GATEWAY_VERSION)
+///< Encode: Compress the order string.
+//---------------------------------------------------------------------------
+void TTaifexConnection::Logon( const char* ID,
+                               const char* PASSWD,
+                               const char* ACCOUNT,
+                               ConnectionType Type,
+                               int Version,
+                               BOOL Encode )
 {
     if( FUseAPI == atSpeedy  )
     {
         FIDs.SetStrings( ID, ",\n" );
         ///< ID:      Logon AE ID .
         ///< PASSWD:  password for ID
-		///< ACCOUNT: Exchange account.
-	UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
+        ///< ACCOUNT: Exchange account.
+        UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
         UFC::AnsiString id( FIDs[0] );
         UFC::AnsiString passwd( PASSWD );
         UFC::AnsiString Account( ACCOUNT );
         UFC::AnsiString TimeNow;
         int MAppFD = FTransport->GetMApp()->GetSocketHandle();
-
 
         int  APIVer = Version;
 
@@ -1029,9 +1063,9 @@ void TTaifexConnection::Logon(  const char* ID,
         if( passwd.Length() == 0 )
             passwd = "NULL";
         FAccounts.Clear();
-		FAccounts.Add( Account );
-		FAccountSet.Clear();
-		FAccountSet.Add( Account );
+        FAccounts.Add( Account );
+        FAccountSet.Clear();
+        FAccountSet.Add( Account );
         UFC::GetTimeString_us( TimeNow );
         FUniquekey.Printf( "%s@%s.%s_%d", id.c_str(), UFC::Hostname, TimeNow.c_str(),MAppFD );
         UFC::SleepMS( 1 );
@@ -1061,10 +1095,10 @@ void TTaifexConnection::Logon(  const char* ID,
                                     FCanSendOrder = TRUE;
                                     break;
         }
-        FAdminListener = new TMdListener( FTransport, this, SUBJECT_ADMIN.c_str(), FUniquekey.c_str());
+        FAdminListener = new TMdListener( FTransport, this, SUBJECT_ADMIN.c_str(), FUniquekey.c_str() );
 
         CAResultData caResult;
-        if ( !CheckCALogonData(id, caResult) )
+        if ( !CheckCALogonData( id, caResult) )
         {
             UFC::AnsiString caErrorMessage = caResult.GetResultMsg();
             Glog->fprintf( " Check CA Error:%s.", caErrorMessage.c_str() );
@@ -1079,21 +1113,21 @@ void TTaifexConnection::Logon(  const char* ID,
         Glog->fprintf( " User:[%s] create logon thread.", FID.c_str() );
 
         UFC::AnsiString passwd2 = "";
-        new LogonThread( FTransport, FLogonEvent, APIVer, SUBJECT_ADMIN, FUniquekey, id, passwd, Account, passwd2, caResult, Encode);
+        new LogonThread( FTransport, FLogonEvent, APIVer, SUBJECT_ADMIN, FUniquekey, id, passwd, Account, passwd2, caResult, Encode );
     }
 }
 //---------------------------------------------------------------------------
-LogonThread::LogonThread(   TTransport*   Transport,
-                            UFC::PEvent*  WaitEvent,
-                            int   Version,
-                            const UFC::AnsiString& Subject,
-                            const UFC::AnsiString& Key ,
-                            const UFC::AnsiString& ID,
-                            const UFC::AnsiString& Passwd,
-                            const UFC::AnsiString& Account,
-                            const UFC::AnsiString& Passwd2,
-                            CAResultData& CAResult,
-                            BOOL Encode )
+LogonThread::LogonThread( TTransport*   Transport,
+                          UFC::PEvent*  WaitEvent,
+                          int   Version,
+                          const UFC::AnsiString& Subject,
+                          const UFC::AnsiString& Key,
+                          const UFC::AnsiString& ID,
+                          const UFC::AnsiString& Passwd,
+                          const UFC::AnsiString& Account,
+                          const UFC::AnsiString& Passwd2,
+                          CAResultData& CAResult,
+                          BOOL Encode )
 :UFC::PThread( NULL )
 ,FTransport( Transport )
 ,FReplyEvent( WaitEvent )
@@ -1260,9 +1294,9 @@ void TTaifexConnection::ChangePassword( const UFC::AnsiString& Password, const U
 
 	if( CheckPassword( Password, NewPassword, Result ) == false )
 	{
-            if( FListener != NULL )
-                FListener->OnChangePassword( Result );
-            return;
+		if( FListener != NULL )
+			FListener->OnChangePassword( Result );
+		return;
 	}
 	Glog->fprintf( " User:[%s] Change password.", FID.c_str() );
 	PwdMsg.SetIntegerValue( "CMD", CMD_CHANGE_PASSWORD );
@@ -1274,24 +1308,40 @@ void TTaifexConnection::ChangePassword( const UFC::AnsiString& Password, const U
 //---------------------------------------------------------------------------
 void TTaifexConnection::AddRecoverListener( void )
 {
-    UFC::AnsiString RecoverKey;
+    UFC::AnsiString curRecoverKey = "", idRecoverKey = "";
     bool IDisAccount = false;
-
-    for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//ZhenFan 2026/01/22 begin
+    UFC::AnsiString curAccountNo = "";
+    BOOL isAccountNoExist = FAccountSet.First( curAccountNo );
+    while ( isAccountNoExist == TRUE )
     {
-        UFC::AnsiString ExecAccount = FAccounts[ i ];
-
-        RecoverKey.Printf( "%s%d", ExecAccount.c_str(), FCurrentConnectionID );
-        FRecoverListeners.Add( new TMdListener( FTransport, this, SUBJECT_RECOVER.c_str(), RecoverKey.c_str()) );
-        if( FID == ExecAccount )
+        curRecoverKey.Printf( "%s%d", curAccountNo.c_str(), FCurrentConnectionID );
+        FRecoverListeners.Add( new TMdListener( FTransport, this, SUBJECT_RECOVER.c_str(), curRecoverKey.c_str()) );
+        Glog->fprintf( " %s() Add Account[%s] Recover Listener [%s][%s].", __func__, curAccountNo.c_str(), SUBJECT_RECOVER.c_str(), curRecoverKey.c_str() );
+        if( FID == curAccountNo )
+        {
             IDisAccount = true;
+            idRecoverKey = curRecoverKey;
+        }
+        isAccountNoExist = FAccountSet.Next( curAccountNo );
     }
+//ZhenFan 2026/01/22 end
+
+//    for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//    {
+//        UFC::AnsiString ExecAccount = FAccounts[ i ];
+
+//        curRecoverKey.Printf( "%s%d", ExecAccount.c_str(), FCurrentConnectionID );
+//        FRecoverListeners.Add( new TMdListener( FTransport, this, SUBJECT_RECOVER.c_str(), curRecoverKey.c_str()) );
+//        if( FID == ExecAccount )
+//            IDisAccount = true;
+//    }
     if( IDisAccount == false )
     {
-        RecoverKey.Printf( "%s%d", FID.c_str(), FCurrentConnectionID );
-        FRecoverListeners.Add( new TMdListener( FTransport, this, SUBJECT_RECOVER.c_str(), RecoverKey.c_str() ));
+        idRecoverKey.Printf( "%s%d", FID.c_str(), FCurrentConnectionID );
+        FRecoverListeners.Add( new TMdListener( FTransport, this, SUBJECT_RECOVER.c_str(), idRecoverKey.c_str() ));
     }
-    Glog->fprintf( " %s logon,CID[%d] Admin[%s] RecoverKey:[%s]", FID.c_str(), FCurrentConnectionID, ( FAdmin == 0 )? "false" : "true", RecoverKey.c_str() );
+    Glog->fprintf( " %s logon,CID[%d] Admin[%s] RecoverKey:[%s]", FID.c_str(), FCurrentConnectionID, ( FAdmin == 0 )? "false" : "true", idRecoverKey.c_str() );
 }
 //---------------------------------------------------------------------------
 LogonResult TTaifexConnection::CreateShareMemory( MTree* pTree, int CIDBits, UFC::AnsiString& ReplyString )
@@ -1337,7 +1387,7 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
         FLogonEvent->SetEvent();
         FCurrentConnectionID  = Msg.GetIntegerValue( "CID", 0 );
         if( FCurrentConnectionID > 0 ) ///< CID > 0 means Logon OK!
-        {
+	{
             UFC::GetTradeYYYYMMDD( FTradeingDate );
             FOrderPerSec = Msg.GetIntegerValue( "LIMIT", THROUGHPUT_DEF );
             FAdmin       = Msg.GetIntegerValue( "ADMIN", 0 );
@@ -1358,9 +1408,9 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
                 FID = FUserName; ///< In LogonProxy func: FID = Account, FUserName = Logon ID.
             FUserName = Msg.GetStringValue( "NAME", FUserName.c_str() );
             ///< Add Recover listeners.
-            AddRecoverListener();
+			AddRecoverListener();
             ///< Add Execution reports listener.
-            CreateReportListener( );
+			CreateReportListener( );
             ///< Init seq share memory.
             Result = CreateShareMemory( pTree, CIDBits, ReplyString );
             UFC::BufferedLog::Printf( " NID use [%d]bits rule", CIDBits );
@@ -1413,20 +1463,30 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
 //---------------------------------------------------------------------------
 void TTaifexConnection::AddExecListener( const UFC::AnsiString& Subject, const UFC::AnsiString& Key, EventFunc* CBFunc )
 {
-    
     ///< Listen main account (Proxy) or AE(Gateway) Key = AE
     FExecListeners.Add( new TMdListener( FTransport, this, Subject, Key ) );
+    Glog->fprintf( " %s() Add Exec Listener [%s][%s].", __func__, Subject.c_str(), Key.c_str() );  //ZhenFan 2026/01/22 begin
     ///< Listen others accounts.
     if( Key.AnsiCompare( "all" ) != 0  )
     {
         if( FIsProxy == TRUE )
         {
-            for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//ZhenFan 2026/01/22 begin
+            UFC::AnsiString curAccountNo = "";
+            BOOL isAccountNoExist = FAccountSet.First( curAccountNo );
+            while ( isAccountNoExist == TRUE )
             {
-                UFC::AnsiString ExecAccount = FAccounts[ i ];
-                FExecListeners.Add( new TMdListener( FTransport, this, Subject, ExecAccount ) );
+                FExecListeners.Add( new TMdListener( FTransport, this, Subject, curAccountNo ) );
+                Glog->fprintf( " %s() Add Proxy Exec Listener [%s][%s].", __func__, Subject.c_str(), curAccountNo.c_str() );
+                isAccountNoExist = FAccountSet.Next( curAccountNo );
             }
-        }
+//ZhenFan 2026/01/22 end
+//            for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//            {
+//                UFC::AnsiString ExecAccount = FAccounts[ i ];
+//                FExecListeners.Add( new TMdListener( FTransport, this, Subject, ExecAccount ) );
+//            }
+    	}
     }
     FCallbackFuncs.Add( Subject, CBFunc ); ///< Add Subject to callback function map.
 }
@@ -1439,14 +1499,14 @@ void TTaifexConnection::AddTAIFEXReportListener( const UFC::AnsiString& ListenKe
         Glog->fprintf( " Support TAIFEX" );
         if( FReportType == rdConfirm || FReportType == rdBoth )///< Add confirm listener.
         {
-            Glog->fprintf( " - Add TAIFEX Confirm Listerner." );
-            AddExecListener( SUBJECT_CONFIRM_FUT, ListenKey, &FOnFutConfirm ); ///< Futures Confirm
-            AddExecListener( SUBJECT_CONFIRM_OPT, ListenKey, &FOnOptConfirm ); ///< Option Confirm
-        }
-        if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
-        {
-            Glog->fprintf( " - Add TAIFEX Filled Listerner." );
-            AddExecListener( SUBJECT_FILL_FUT, ListenKey, &FOnFutFill ); ///< Futures filled
+			Glog->fprintf( " - Add TAIFEX Confirm Listerner." );
+			AddExecListener( SUBJECT_CONFIRM_FUT, ListenKey, &FOnFutConfirm ); ///< Futures Confirm
+			AddExecListener( SUBJECT_CONFIRM_OPT, ListenKey, &FOnOptConfirm ); ///< Option Confirm
+		}
+		if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
+		{
+			Glog->fprintf( " - Add TAIFEX Filled Listerner." );
+			AddExecListener( SUBJECT_FILL_FUT, ListenKey, &FOnFutFill ); ///< Futures filled
             AddExecListener( SUBJECT_FILL_OPT, ListenKey, &FOnOptFill ); ///< Option filled
         }
     }
@@ -1505,15 +1565,15 @@ void TTaifexConnection::CreateReportListener( void )
         if( FAdmin == 1 ) ///< Admin receive all execution
         {
             ListenKey = "all";
-            AddTAIFEXReportListener( ListenKey );
+			AddTAIFEXReportListener( ListenKey );
             AddTWSEReportListener( ListenKey );
             AddForeignExReportListener( ListenKey );
         }
-        else
+		else  ///< Subscribes all IDs execution report.
         {
             for( int i = 0;i < FIDs.ItemCount(); i++ )
             {
-                ListenKey = FIDs[i];
+				ListenKey = FIDs[i];
                 AddTAIFEXReportListener( ListenKey );
                 AddTWSEReportListener( ListenKey );
                 AddForeignExReportListener( ListenKey );
@@ -1669,22 +1729,37 @@ void TTaifexConnection::Recover( const char* BeginTime, RecoverDataType Type, Re
     if( FIsLogon == true )
     {
         if( FUseAPI == atSpeedy )
-		{
+        {
             if( FTriggerExec == true ) ///< Accept Executioons
             {
+                Glog->fprintf( " %s() Recover ID[%s] Type[%d] Market[%d] from [%s][%s].", __func__, FID.c_str(), Type, Market, RecoverYYYYMMDD.c_str(), BeginTime );  //ZhenFan 2026/01/22 begin
                 DoRecover( FID.c_str(),BeginTime, "", Type, Market, Session, RecoverYYYYMMDD );
-				if( FIsProxy == true )
+                if( FIsProxy == true )
                 {
-                    for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//ZhenFan 2026/01/22 begin
+                    UFC::AnsiString curAccountNo = "";
+                    BOOL isAccountNoExist = FAccountSet.First( curAccountNo );
+                    while ( isAccountNoExist == TRUE )
                     {
-                        UFC::AnsiString ExecAccount = FAccounts[ i ];
-
-                        if( ExecAccount != FID )
+                        if( curAccountNo != FID )
                         {
-                            DoRecover( ExecAccount.c_str(),BeginTime, "", Type, Market, Session, RecoverYYYYMMDD );
+                            Glog->fprintf( " %s() Recover Proxy Account[%s] Type[%d] Market[%d] from [%s][%s].", __func__, curAccountNo.c_str(), Type, Market, RecoverYYYYMMDD.c_str(), BeginTime );
+                            DoRecover( curAccountNo.c_str(), BeginTime, "", Type, Market, Session, RecoverYYYYMMDD );
                             UFC::SleepMS( 100 );
                         }
+                        isAccountNoExist = FAccountSet.Next( curAccountNo );
                     }
+//ZhenFan 2026/01/22 end
+//                    for( int i = 0; i < FAccounts.ItemCount(); i ++ )
+//                    {
+//                        UFC::AnsiString ExecAccount = FAccounts[ i ];
+//
+//                        if( ExecAccount != FID )
+//                        {
+//                            DoRecover( ExecAccount.c_str(), BeginTime, "", Type, Market, Session, RecoverYYYYMMDD );
+//                            UFC::SleepMS( 100 );
+//                        }
+//                    }
                 }
             }
             else ///< Session to place order only.
@@ -1704,7 +1779,7 @@ void TTaifexConnection::Recover( const char* BeginTime, const char* EndTime, Rec
         {
             if( FTriggerExec == true ) ///< Accept Executioons
             {
-                DoRecover( FID.c_str(),BeginTime, EndTime, Type, Market, Session, RecoverYYYYMMDD );
+                DoRecover( FID.c_str(), BeginTime, EndTime, Type, Market, Session, RecoverYYYYMMDD );
             }
             else ///< Session to place order only.
             {

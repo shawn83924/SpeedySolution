@@ -6,15 +6,18 @@ extern UFC::BufferedLog* Glog;
 //---------------------------------------------------------------------------
 void TTaifexConnection::ReceiveForeignConfirmMessage( MTree* pTree  )
 {
-    UFC::AnsiString ConfirmMessage, Key, AE, Data, StatusCode, Value, OrdType = "", ExecID, PVC;
-    Int32 NID;
+    UFC::AnsiString ConfirmMessage = "", Key = "", PVC = "";
+    UFC::AnsiString AE = "", Data = "", StatusCode = "", Value = "", OrdType = "", ExecID = "";
+    Int32 NID = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
 
     Glog->fprintf( " ------------------------ Foreign Confirm -----------------------" );
-    if( ( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) &&
-        ( pTree->get( "NID", NID ) == TRUE ) &&
-        ( pTree->get( "KEY", Key ) == TRUE ) &&
-        ( pTree->get( "PVC", PVC ) == TRUE ) &&
-        ( NID != 0 ) )
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PVC_Received )
     {
         Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
         Glog->fprintf( " Key[%s]",  Key.c_str() );
@@ -420,6 +423,44 @@ void TTaifexConnection::ReceiveForeignConfirmMessage( MTree* pTree  )
                 rptExecDup = edNewExecution;
         }
         if( isProxyAccountExist ) TrigerOnExecutionReport( &ExecutionReport, rptExecDup );
+    }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
     }
     Glog->FlushToFile();
 }

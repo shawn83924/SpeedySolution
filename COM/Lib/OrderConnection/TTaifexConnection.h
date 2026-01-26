@@ -39,8 +39,8 @@
 	#include "../CA/CABasicObjects.h"
 #endif
 //------------------------------------------------------------------------------
-const int SPEEDY_API_PROXY_VERSION   = 2010101;
-const int SPEEDY_API_GATEWAY_VERSION = 20101;
+const int SPEEDY_API_PROXY_VERSION   = 3050801;
+const int SPEEDY_API_GATEWAY_VERSION = 30508;
 //------------------------------------------------------------------------------
 typedef enum
 {
@@ -225,6 +225,9 @@ extern const UFC::AnsiString SUBJECT_FILE_DOWNLOAD;
 extern const UFC::AnsiString SUBJECT_NEWS_REQUEST;
 extern const UFC::AnsiString SUBJECT_NEWS_RESPONSE;
 //------------------------------------------------------------------------------
+extern const UFC::AnsiString SUBJECT_TSE_STRATEGY; // added by Kenny. 2026/01/15
+extern const UFC::AnsiString SUBJECT_OTC_STRATEGY; // added by Kenny. 2026/01/15
+//------------------------------------------------------------------------------
 extern UFC::BufferedLog* Glog;
 //------------------------------------------------------------------------------
 class FuturesSymbolUtility
@@ -289,16 +292,16 @@ private:
     UFC::AnsiString FCASerialNumber;
 public:
     LogonThread( TTransport* Transport,
-                 UFC::PEvent*  LogonEvent,
-                 int   Version,
-                 const UFC::AnsiString& Subject,
-                 const UFC::AnsiString& Key ,
-                 const UFC::AnsiString& ID ,
-                 const UFC::AnsiString& Passwd,
-                 const UFC::AnsiString& Account,
-                 const UFC::AnsiString& Passwd2,
-                 CAResultData& CAResult,
-                 BOOL Encode );
+							 UFC::PEvent*  LogonEvent,
+                             int   Version,
+                             const UFC::AnsiString& Subject,
+                             const UFC::AnsiString& Key ,
+                             const UFC::AnsiString& ID ,
+                             const UFC::AnsiString& Passwd,
+                             const UFC::AnsiString& Account,
+                             const UFC::AnsiString& Passwd2,
+                             CAResultData& CAResult,
+                             BOOL Encode );
 protected:
     virtual void Execute( void );
 };
@@ -591,7 +594,6 @@ private: ///< for CA
 	CApiCADllObject* FApiCAObjPtr;
         
         bool FNeedCheckOrdQty0;  //for KGI RiskManager
-        bool FCheckForeignStockOrderID;
         
 private:
 	bool ControlTroughput( void );
@@ -643,7 +645,8 @@ private:
 															 const UFC::AnsiString& CASignature = "",
 															 const UFC::AnsiString& CAPlainText = "",
 															 const UFC::AnsiString& CASessionID = "",
-															 const UFC::AnsiString& CASerialNumber = "");
+															 const UFC::AnsiString& CASerialNumber = "",
+                                                                                                                         const UFC::AnsiString& StopPriceStrategy = "");
 	UFC::TRecord*                   ParseConfirmReport( nsOrderMessageDefine::MarketEnum Market, nsOrderMessageDefine::MessageTypeEnum MessageType, const UFC::AnsiString&  Msg );
 	UFC::TRecord*                   ParseExecuteReport( nsOrderMessageDefine::MarketEnum Market, const UFC::AnsiString&  Msg );
 	void                            NoOrderIDReject( nsOrderMessageDefine::CxlRejResponseToEnum CxlRejResponseTo, TBaseMessage* Msg,const UFC::AnsiString& UserData, nsOrderMessageDefine::TradingSessionIDEnum TradingSession );
@@ -925,6 +928,10 @@ public: ///< Functions to setup order connection.
 	const UFC::AnsiString&          GetCMID( void )                { return FCMID; }
 	const UFC::AnsiString&          GetUserName( void )            { return FUserName; }
 	void                            Stdout( BOOL ToStdOut );
+
+public: ///< Functions to control touch order (added by Kenny 2026/01/15)
+	BOOL                            CancelTouchOrder(const char* touch_order_id);
+
 public:
 	/** Constructor for COM only.
 	 */
@@ -1014,11 +1021,6 @@ public:
 
 	bool GetFNeedCheckOrdQty0() { return FNeedCheckOrdQty0; };
 	void SetFNeedCheckOrdQty0( bool NewValue ) { FNeedCheckOrdQty0 = NewValue; };
-	void DisableOrderStockIDCheck(nsOrderMessageDefine::MarketEnum OrderMarket)
-	{
-		if (OrderMarket == nsOrderMessageDefine::mForeignStock)
-			FCheckForeignStockOrderID = false;
-	}
 };
 //------------------------------------------------------------------------------
 #endif

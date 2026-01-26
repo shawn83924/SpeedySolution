@@ -21,35 +21,35 @@ inline nsOrderMessageDefine::OrderSourceEnum ToOrderSource(  char Code )
 //---------------------------------------------------------------------------
 nsOrderMessageDefine::TradingSessionIDEnum TTaifexConnection::GetMessageTradeingSession( const UFC::AnsiString& Msg )
 {
-	int System = UFC::AnsiString::StrToInt32( Msg.c_str() , 2 );
+    int System = UFC::AnsiString::StrToInt32( Msg.c_str() , 2 );
 
-	switch( System )
-	{
-		case 30:
-		case 93:
-			return nsOrderMessageDefine::tsNormal;
-		case 40:
-		case 94:
-			return nsOrderMessageDefine::tsOddLot;
-		case 33:
-		case 83:
-			return nsOrderMessageDefine::tsIntradayOdd;
-		case 32:
-		case 98:
-			return nsOrderMessageDefine::tsOffHour;
-		case 70:
-			return nsOrderMessageDefine::tsAuction;
-		case 96:
-			return nsOrderMessageDefine::tsNegotiatePx;
-		case 31:
-		case 90:
-			return nsOrderMessageDefine::tsLend;
-		case 41:
-		case 97:
-			return nsOrderMessageDefine::tsTender;
-		case 42:
-		case 89:
-			return nsOrderMessageDefine::tsTenderEx;
+    switch( System )
+    {
+        case 30:
+        case 93:
+            return nsOrderMessageDefine::tsNormal;
+        case 40:
+        case 94:
+            return nsOrderMessageDefine::tsOddLot;
+        case 33:
+        case 83:
+            return nsOrderMessageDefine::tsIntradayOdd;
+        case 32:
+        case 98:
+            return nsOrderMessageDefine::tsOffHour;
+        case 70:
+            return nsOrderMessageDefine::tsAuction;
+        case 96:
+            return nsOrderMessageDefine::tsNegotiatePx;
+        case 31:
+        case 90:
+            return nsOrderMessageDefine::tsLend;
+        case 41:
+        case 97:
+            return nsOrderMessageDefine::tsTender;
+        case 42:
+        case 89:
+            return nsOrderMessageDefine::tsTenderEx;
     }
     return nsOrderMessageDefine::tsNormal;
 }
@@ -130,21 +130,21 @@ UFC::TRecord* TTaifexConnection::ParseConfirmReport( nsOrderMessageDefine::Marke
 {
     int Length = ConfirmMessage.Length();
 
-	if( Market == nsOrderMessageDefine::mTWOptions || Market == nsOrderMessageDefine::mTWFutures )
+    if( Market == nsOrderMessageDefine::mTWOptions || Market == nsOrderMessageDefine::mTWFutures )
     {
         switch( MessageType )
         {
             case nsOrderMessageDefine::mtNew:
             case nsOrderMessageDefine::mtReplace:
             case nsOrderMessageDefine::mtCancel:
-			case nsOrderMessageDefine::mtOrderStatusRequest: return FR020Parser.Parse( ConfirmMessage.c_str(), Length );
+            case nsOrderMessageDefine::mtOrderStatusRequest: return FR020Parser.Parse( ConfirmMessage.c_str(), Length );
             case nsOrderMessageDefine::mtQuote:
             case nsOrderMessageDefine::mtQuoteCancel:        return FR100Parser.Parse( ConfirmMessage.c_str(), Length );
             case nsOrderMessageDefine::mtQuoteRequest:       return FR080Parser.Parse( ConfirmMessage.c_str(), Length );
             default: break;
         }
     }
-	else if( Market == nsOrderMessageDefine::mTSE || Market == nsOrderMessageDefine::mES )
+    else if( Market == nsOrderMessageDefine::mTSE || Market == nsOrderMessageDefine::mES )
     {
         switch( MessageType )
         {
@@ -983,57 +983,57 @@ void TTaifexConnection::FillStockExecution( nsOrderMessageDefine::MessageTypeEnu
                                             TExecutionReportMessage* ExecutionReport,
                                             int& Precision )
 {
-	UFC::AnsiString Value,Symbol,OldSymbol,MaturityMonthYear;
-	int functionCode = 0;
+    UFC::AnsiString Value = "", Symbol = "", OldSymbol = "", MaturityMonthYear = "";
+    int functionCode = 0;
 
-	if( pRecord->GetField( "FunctionCode", Value ) )
-            functionCode = StringToInt( Value, 0 );
-	///< Fetch the symbol
-	if( pRecord->GetField( "Symbol", Symbol ) )
-	{
-            Symbol.TrimRight();
-            Precision = GetPricePrecision( Market, TradingSession, Symbol );
-            ExecutionReport->SetSymbol( Symbol.c_str() );
-	}
-	ExecutionReport->SetPxDigit( Precision );
-	///< Fetch TransactTime
-	if( pRecord->GetField( "OrderTime", Value )   || ///< Time from confirm execution.(T020,O020,P020)
-		pRecord->GetField( "ProcessTime", Value ) || ///< Get from Filled execution.(R3)
-		pRecord->GetField( "ORDER-TIME", Value )  || ///< Special Session.(A020,E020,V020,Ex020)
-		pRecord->GetField( "MessageTime", Value ) )  ///< Use header time.
-	{
-            Value.PadThis( 9,'0' );
-            ExecutionReport->SetTransactTime( Value.c_str() );
-	}
-	if( pRecord->GetField( "BrokerID", Value ) )
-            ExecutionReport->SetBrokerID( Value.c_str() );
-	if( pRecord->GetField( "OrderID", Value ) )
-            ExecutionReport->SetOrderID( Value.c_str() );
-	if( pRecord->GetField( "Account", Value ) )
-            ExecutionReport->SetAccount( Value.c_str() );
-	if( pRecord->GetField( "AccountFlag", Value ) )
-            ExecutionReport->SetAccountFlag( Value.c_str() );
-	if( pRecord->GetField( "Price", Value ) )
-            ExecutionReport->SetPrice( UFC::IntToDouble( StringToInt( Value, 0 ), Precision ) );
-	if( pRecord->GetField( "Qty", Value ) )
-            ExecutionReport->SetOrderQty( StringToInt( Value, 0 ) );
-	if( pRecord->GetField( "BeforeQty", Value ) )
-            ExecutionReport->SetBeforeQty( StringToInt( Value, 0 ) );
-	if( pRecord->GetField( "AfterQty", Value ) )
-	{
-            int lqty = StringToInt( Value, 0 );
-            ExecutionReport->SetAfterQty( lqty );
-            ExecutionReport->SetLeavesQty( lqty );
-	}
-	if( pRecord->GetField( "STK-SEQ-NO", Value ) ) ///< E020,Ex020
-            ExecutionReport->SetStockSeqNo( StringToInt( Value, 0 ) );
-	SetExecSide( pRecord,  ExecutionReport );
-	SetExecOrderType( pRecord,  ExecutionReport );
-	SetExecTimeInForce( Market, pRecord, ExecutionReport );
-	ExecutionReport->SetPositionEffect( nsOrderMessageDefine::peOpen );
-	switch( MessageType )
-        {
-            case nsOrderMessageDefine::mtNew:
+    if( pRecord->GetField( "FunctionCode", Value ) )
+        functionCode = StringToInt( Value, 0 );
+    ///< Fetch the symbol
+    if( pRecord->GetField( "Symbol", Symbol ) )
+    {
+        Symbol.TrimRight();
+        Precision = GetPricePrecision( Market, TradingSession, Symbol );
+        ExecutionReport->SetSymbol( Symbol.c_str() );
+    }
+    ExecutionReport->SetPxDigit( Precision );
+    ///< Fetch TransactTime
+    if( pRecord->GetField( "OrderTime", Value )   || ///< Time from confirm execution.(T020,O020,P020)
+        pRecord->GetField( "ProcessTime", Value ) || ///< Get from Filled execution.(R3)
+        pRecord->GetField( "ORDER-TIME", Value )  || ///< Special Session.(A020,E020,V020,Ex020)
+        pRecord->GetField( "MessageTime", Value ) )  ///< Use header time.
+    {
+        Value.PadThis( 9,'0' );
+        ExecutionReport->SetTransactTime( Value.c_str() );
+    }
+    if( pRecord->GetField( "BrokerID", Value ) )
+        ExecutionReport->SetBrokerID( Value.c_str() );
+    if( pRecord->GetField( "OrderID", Value ) )
+        ExecutionReport->SetOrderID( Value.c_str() );
+    if( pRecord->GetField( "Account", Value ) )
+        ExecutionReport->SetAccount( Value.c_str() );
+    if( pRecord->GetField( "AccountFlag", Value ) )
+        ExecutionReport->SetAccountFlag( Value.c_str() );
+    if( pRecord->GetField( "Price", Value ) )
+        ExecutionReport->SetPrice( UFC::IntToDouble( StringToInt( Value, 0 ), Precision ) );
+    if( pRecord->GetField( "Qty", Value ) )
+        ExecutionReport->SetOrderQty( StringToInt( Value, 0 ) );
+    if( pRecord->GetField( "BeforeQty", Value ) )
+        ExecutionReport->SetBeforeQty( StringToInt( Value, 0 ) );
+    if( pRecord->GetField( "AfterQty", Value ) )
+    {
+        int lqty = StringToInt( Value, 0 );
+        ExecutionReport->SetAfterQty( lqty );
+        ExecutionReport->SetLeavesQty( lqty );
+    }
+    if( pRecord->GetField( "STK-SEQ-NO", Value ) ) ///< E020,Ex020
+        ExecutionReport->SetStockSeqNo( StringToInt( Value, 0 ) );
+    SetExecSide( pRecord,  ExecutionReport );
+    SetExecOrderType( pRecord,  ExecutionReport );
+    SetExecTimeInForce( Market, pRecord, ExecutionReport );
+    ExecutionReport->SetPositionEffect( nsOrderMessageDefine::peOpen );
+    switch( MessageType )
+    {
+        case nsOrderMessageDefine::mtNew:
                                             if( functionCode == 4 )  //Canceled by Exchange
                                             {
                                                 ExecutionReport->SetOrderStatus( nsOrderMessageDefine::osCanceled );
@@ -1045,7 +1045,7 @@ void TTaifexConnection::FillStockExecution( nsOrderMessageDefine::MessageTypeEnu
                                                 ExecutionReport->SetExecType( nsOrderMessageDefine::etNew );
                                             }
                                             break;
-            case nsOrderMessageDefine::mtReplace:
+        case nsOrderMessageDefine::mtReplace:
                                             ExecutionReport->SetOrderStatus( nsOrderMessageDefine::osReplaced );
                                             ExecutionReport->SetExecType( nsOrderMessageDefine::etReplaced );
                                             if( functionCode == 6 )
@@ -1053,54 +1053,54 @@ void TTaifexConnection::FillStockExecution( nsOrderMessageDefine::MessageTypeEnu
                                             else
 												ExecutionReport->SetReplacePx( false );
                                             break;
-            case nsOrderMessageDefine::mtReplacePx:
+        case nsOrderMessageDefine::mtReplacePx:
                                             ExecutionReport->SetOrderStatus( nsOrderMessageDefine::osReplaced );
                                             ExecutionReport->SetExecType( nsOrderMessageDefine::etReplaced );
                                             ExecutionReport->SetReplacePx( true );
                                             break;
-            case nsOrderMessageDefine::mtCancel:
+        case nsOrderMessageDefine::mtCancel:
                                             ///< TSE/OTC are one step order canceled process.
                                             ExecutionReport->SetOrderStatus( nsOrderMessageDefine::osCanceled );
                                             ExecutionReport->SetExecType( nsOrderMessageDefine::etCanceled );
                                             break;
-            case nsOrderMessageDefine::mtOrderStatusRequest:
+        case nsOrderMessageDefine::mtOrderStatusRequest:
                                             ExecutionReport->SetOrderStatus( nsOrderMessageDefine::osNew );
                                             ExecutionReport->SetExecType( nsOrderMessageDefine::etOrderStatus );
                                             break;
-            default: break;
-	}
+        default: break;
+    }
 }
 //------------------------------------------------------------------------------
 bool TTaifexConnection::IsTAIFEXSucceed( const UFC::AnsiString& StatusCode )
 {
-	int Code = StatusCode.ToInt();
+    int Code = StatusCode.ToInt();
 
-	switch( Code )
-	{
-		case 0:  ///< OK
-		case 32: ///< Reduce Qty OK, but reduce Qty > leaves Qty
-		case 47: ///< OK, but some lots price exceed the dynamic limitation price will be canceled.
-		case 48: ///< Order canceled and the price filed set the dynamic limitation price.
-				return true;
-		default:return false;
-	}
-	return false;
+    switch( Code )
+    {
+        case 0:  ///< OK
+        case 32: ///< Reduce Qty OK, but reduce Qty > leaves Qty
+        case 47: ///< OK, but some lots price exceed the dynamic limitation price will be canceled.
+        case 48: ///< Order canceled and the price filed set the dynamic limitation price.
+            return true;
+        default: return false;
+    }
+    return false;
 }
 //------------------------------------------------------------------------------
 bool TTaifexConnection::IsTWSESucceed( const UFC::AnsiString& StatusCode )
 {
-	int Code = StatusCode.ToInt();
+    int Code = StatusCode.ToInt();
 
-	switch( Code )
-	{
-		case 0:  ///< OK
-		case 31: ///< OK, but the confirmed sell short qty < order qty
-		case 32: ///< Reduce Qty OK, but reduce Qty > leaves Qty
-		case 51: ///< touch dynamic limit price, partial ok
-				return true;
-		default:return false;
-	}
-	return false;
+    switch( Code )
+    {
+        case 0:  ///< OK
+        case 31: ///< OK, but the confirmed sell short qty < order qty
+        case 32: ///< Reduce Qty OK, but reduce Qty > leaves Qty
+        case 51: ///< touch dynamic limit price, partial ok
+            return true;
+        default: return false;
+    }
+    return false;
 }
 //---------------------------------------------------------------------------
 void TTaifexConnection::TAIFEXConfirmExecID( bool IsFut, UFC::AnsiString& Seq, const UFC::AnsiString& PBNO, int NID, int PartID, UFC::AnsiString& ExecID )
@@ -1129,20 +1129,25 @@ void TTaifexConnection::TAIFEXConfirmExecID( bool IsFut, UFC::AnsiString& Seq, c
 void TTaifexConnection::ReceiveFutConfirmMessage( MTree* pTree  )
 {
     nsOrderMessageDefine::MessageTypeEnum MessageType;
-    UFC::AnsiString ConfirmMessage, Key, AE, ExecID, Seq, PBNO, PVC, StatusCode, ErrMsg, eTime;
+    UFC::AnsiString ConfirmMessage = "", Key = "", PBNO = "", PVC = "";
+    UFC::AnsiString AE = "", ExecID = "", Seq = "", StatusCode = "", ErrMsg = "", eTime = "";
     UFC::TRecord*   pRecord;
-    Int32           NID,us;
+    Int32           NID = 0, us = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PBNO_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PBNO", PBNO ) == TRUE ) is_PBNO_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
 
     Glog->fprintf( " --------------------- TAIFEX Futures Confirm -------------------" );
-    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) &&
-        pTree->get( "NID", NID )   && pTree->get( "KEY", Key ) &&
-        pTree->get( "PBNO", PBNO ) && pTree->get( "PVC", PVC ) &&
-        (NID != 0 ))
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PBNO_Received && is_PVC_Received )
     {
         if( ConfirmMessage.Length() < 99 )
             ConfirmMessage.PadThis( 99, ' ' );///< Length of R020 = 99.
         MessageType = (nsOrderMessageDefine::MessageTypeEnum)( FNetworkID.GetMessageType( NID ) );
-        if( UFC::AnsiString( ConfirmMessage.c_str()+ 2 , 2 ).ToInt() == 5 )
+        if( UFC::AnsiString( ConfirmMessage.c_str() + 2, 2 ).ToInt() == 5 )
             MessageType = nsOrderMessageDefine::mtOrderStatusRequest;
         ///< Find Parser and parse the Exchange message.
 	pRecord = ParseConfirmReport( nsOrderMessageDefine::mTWFutures, MessageType, ConfirmMessage );
@@ -1152,7 +1157,7 @@ void TTaifexConnection::ReceiveFutConfirmMessage( MTree* pTree  )
             int Precision = 2;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
-	    UpdateTAIFEXAEUDD(  pTree, Key,  AE,  ExecutionReport );
+	    UpdateTAIFEXAEUDD( pTree, Key, AE, ExecutionReport );
             if( pTree->get( "us", us ) == TRUE )
                 ExecutionReport.SetUseus( us );
             if( pTree->get( "ETIME", eTime ) == TRUE )
@@ -1170,7 +1175,7 @@ void TTaifexConnection::ReceiveFutConfirmMessage( MTree* pTree  )
             {
                 pRecord->GetField( "Seq", Seq );
                 TAIFEXConfirmExecID( true, Seq, PBNO, NID, ExecutionReport.GetTMPPartID(), ExecID );
-                FillExecution( MessageType, nsOrderMessageDefine::mTWFutures, nsOrderMessageDefine::tsNormal,pRecord, &ExecutionReport, Precision );
+                FillExecution( MessageType, nsOrderMessageDefine::mTWFutures, nsOrderMessageDefine::tsNormal, pRecord, &ExecutionReport, Precision );
             }
             else  ///< Reject, Status code != 0
             {
@@ -1205,25 +1210,74 @@ void TTaifexConnection::ReceiveFutConfirmMessage( MTree* pTree  )
             delete pRecord;
         }
     }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PBNO_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PBNO" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
+    }  //if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
 }
 //------------------------------------------------------------------------------
 void TTaifexConnection::ReceiveOptConfirmMessage( MTree* pTree )
 {
     nsOrderMessageDefine::MessageTypeEnum MessageType;
-    UFC::AnsiString ConfirmMessage, Key, AE, Seq, ExecID, PBNO, PVC, StatusCode, ErrMsg, eTime;
+    UFC::AnsiString ConfirmMessage = "", Key = "", PBNO = "", PVC = "";
+    UFC::AnsiString AE = "", Seq = "", ExecID = "", StatusCode = "", ErrMsg = "", eTime = "";
     UFC::TRecord*   pRecord;
-    Int32           NID, us;
+    Int32           NID = 0, us = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PBNO_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PBNO", PBNO ) == TRUE ) is_PBNO_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
 
     Glog->fprintf( " --------------------- TAIFEX Options Confirm -------------------" );
-    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) &&
-        pTree->get( "NID", NID ) &&   pTree->get( "KEY", Key ) &&
-        pTree->get( "PBNO", PBNO ) && pTree->get( "PVC", PVC ) &&
-        (NID != 0) ) 
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PBNO_Received && is_PVC_Received )
     {
         if( ConfirmMessage.Length() < 99 )
             ConfirmMessage.PadThis( 99, ' ' );///< Length of R020 = 99.
         MessageType = (nsOrderMessageDefine::MessageTypeEnum)( FNetworkID.GetMessageType( NID ) );
-        if( UFC::AnsiString( ConfirmMessage.c_str()+ 2 , 2 ).ToInt() == 5 )
+        if( UFC::AnsiString( ConfirmMessage.c_str() + 2, 2 ).ToInt() == 5 )
             MessageType = nsOrderMessageDefine::mtOrderStatusRequest;
         ///< Find Parser and parse the Exchange message.
         pRecord = ParseConfirmReport( nsOrderMessageDefine::mTWOptions, MessageType, ConfirmMessage );
@@ -1233,7 +1287,7 @@ void TTaifexConnection::ReceiveOptConfirmMessage( MTree* pTree )
             int Precision = 2;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
-            UpdateTAIFEXAEUDD(  pTree, Key,  AE,  ExecutionReport );
+            UpdateTAIFEXAEUDD( pTree, Key, AE, ExecutionReport );
             if( pTree->get( "us", us ) == TRUE )
                 ExecutionReport.SetUseus( us );
             if( pTree->get( "ETIME", eTime ) == TRUE )
@@ -1251,16 +1305,16 @@ void TTaifexConnection::ReceiveOptConfirmMessage( MTree* pTree )
             {
                 pRecord->GetField( "Seq", Seq );
                 TAIFEXConfirmExecID( false, Seq, PBNO, NID, ExecutionReport.GetTMPPartID(), ExecID );
-                FillExecution( MessageType, nsOrderMessageDefine::mTWOptions, nsOrderMessageDefine::tsNormal,pRecord, &ExecutionReport, Precision );
+                FillExecution( MessageType, nsOrderMessageDefine::mTWOptions, nsOrderMessageDefine::tsNormal, pRecord, &ExecutionReport, Precision );
             }
             else ///< Reject, Status code != 0
             {
                 pTree->get( "MSG", ErrMsg );
                 ExecID.Printf( "OPTR%s%10d", PBNO.c_str(), NID );
-                FillRejectExecution( MessageType, nsOrderMessageDefine::mTWOptions, nsOrderMessageDefine::tsNormal,pRecord, StatusCode, ErrMsg, &ExecutionReport , Precision );
+                FillRejectExecution( MessageType, nsOrderMessageDefine::mTWOptions, nsOrderMessageDefine::tsNormal, pRecord, StatusCode, ErrMsg, &ExecutionReport, Precision );
             }            
             UpdateTAIFEXTMPExt( pTree, ExecutionReport, Precision );
-            ExecutionReport.SetExecID ( ExecID.c_str() );
+            ExecutionReport.SetExecID( ExecID.c_str() );
                         
             bool isProxyAccountExist = true;
             if( FIsProxy && ( FAdmin == 0 ) )
@@ -1285,6 +1339,50 @@ void TTaifexConnection::ReceiveOptConfirmMessage( MTree* pTree )
             delete pRecord;
         }
     }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PBNO_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PBNO" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
+    }  //if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
 }
 //------------------------------------------------------------------------------
 //
@@ -1294,18 +1392,21 @@ void TTaifexConnection::ReceiveOptConfirmMessage( MTree* pTree )
 void  TTaifexConnection::ReceiveTSEConfirmMessage( MTree* pTree )
 {
     nsOrderMessageDefine::MessageTypeEnum MessageType;
-    UFC::AnsiString ConfirmMessage, Key, AE, Data, OID, Func, ExecID, PBNO, PVC, StatusCode, ExchangeCode, TSEObjectBroker, TSEOrderType, TradeKind, PHost, CDKey, Value, eTime, orderTime = "";
+    UFC::AnsiString ConfirmMessage = "", Key = "", PBNO = "", PVC = "";
+    UFC::AnsiString AE = "", Data = "", OID = "", Func = "", ExecID = "", StatusCode = "", ExchangeCode = "", TSEObjectBroker = "", TSEOrderType = "", TradeKind = "", PHost = "", CDKey = "", Value = "", eTime = "", orderTime = "";
     UFC::TRecord*   pRecord;
-    nsOrderMessageDefine::TradingSessionIDEnum   TradeSession;
-    Int32           NID, OrigNID, AfterQty;
-
+    nsOrderMessageDefine::TradingSessionIDEnum TradeSession;
+    Int32           NID = 0, OrigNID = 0, AfterQty = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PBNO_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PBNO", PBNO ) == TRUE ) is_PBNO_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
+    
     Glog->fprintf( " --------------------------- TSE Confirm ------------------------" );
-    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) &&
-        pTree->get( "NID", NID ) &&
-        pTree->get( "KEY", Key ) &&
-        pTree->get( "PBNO", PBNO ) &&
-        pTree->get( "PVC", PVC ) &&
-        (NID != 0) )
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PBNO_Received && is_PVC_Received )
     {
 	MessageType = (nsOrderMessageDefine::MessageTypeEnum)( FNetworkID.GetMessageType( NID ) );
 	TradeSession = GetMessageTradeingSession( ConfirmMessage );
@@ -1313,7 +1414,7 @@ void  TTaifexConnection::ReceiveTSEConfirmMessage( MTree* pTree )
 	if( (pRecord != NULL) && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = (FIsTWSENewVersion == true )? 4 : 2;
+            int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
             if( pTree->get( "CKEY", CDKey ) == TRUE )
@@ -1340,7 +1441,7 @@ void  TTaifexConnection::ReceiveTSEConfirmMessage( MTree* pTree )
             if( pTree->get( "ETIME", eTime ) == TRUE )
                 ExecutionReport.SetMessageTime( eTime.c_str() );
             if( pTree->get( "PHOST", PHost ) )
-				ExecutionReport.SetProcessHost( PHost );
+                ExecutionReport.SetProcessHost( PHost );
             if( pRecord->GetField( "TSEOrderType", TSEOrderType ) )
                 ExecutionReport.SetTSEOrderType( TSEOrderType.c_str() );
             else
@@ -1408,23 +1509,70 @@ void  TTaifexConnection::ReceiveTSEConfirmMessage( MTree* pTree )
             delete pRecord;
         }
     }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PBNO_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PBNO" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
+    }  //if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
 }
 //------------------------------------------------------------------------------
 void  TTaifexConnection::ReceiveOTCConfirmMessage( MTree* pTree )
 {
     nsOrderMessageDefine::MessageTypeEnum      MessageType;
     nsOrderMessageDefine::TradingSessionIDEnum TradeSession;
-    UFC::AnsiString ConfirmMessage, Key, AE, Data, OID, Func, ExecID, PBNO, PVC, StatusCode, ExchangeCode, TSEObjectBroker, TSEOrderType, TradeKind, PHost,CDKey, Value, eTime, orderTime = "";
+    UFC::AnsiString ConfirmMessage = "", Key = "", PBNO = "", PVC = "";
+    UFC::AnsiString AE = "", Data = "", OID = "", Func = "", ExecID = "", StatusCode = "", ExchangeCode = "", TSEObjectBroker = "", TSEOrderType = "", TradeKind = "", PHost = "", CDKey = "", Value = "", eTime = "", orderTime = "";
     UFC::TRecord*   pRecord;
-    Int32           NID, OrigNID, AfterQty;
+    Int32           NID = 0, OrigNID = 0, AfterQty = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PBNO_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PBNO", PBNO ) == TRUE ) is_PBNO_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
 
     Glog->fprintf( " --------------------------- OTC Confirm ------------------------" );
-    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) &&
-        pTree->get( "NID", NID ) &&
-        pTree->get( "KEY", Key ) &&
-        pTree->get( "PBNO", PBNO ) &&
-        pTree->get( "PVC", PVC ) &&
-        (NID != 0) )
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PBNO_Received && is_PVC_Received )
     {
         MessageType = (nsOrderMessageDefine::MessageTypeEnum)( FNetworkID.GetMessageType( NID ) );
         TradeSession = GetMessageTradeingSession( ConfirmMessage );
@@ -1454,7 +1602,7 @@ void  TTaifexConnection::ReceiveOTCConfirmMessage( MTree* pTree )
             if( pRecord != NULL && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
             {
                 TExecutionReportMessage ExecutionReport;
-                int Precision = (FIsTWSENewVersion == true )? 4 : 2;
+                int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
 
                 Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
                 if( pTree->get( "CKEY", CDKey ) == TRUE )
@@ -1543,23 +1691,70 @@ void  TTaifexConnection::ReceiveOTCConfirmMessage( MTree* pTree )
             }
         }
     }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PBNO_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PBNO" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
+    }  //if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
 }
 //------------------------------------------------------------------------------
 void  TTaifexConnection::ReceiveESConfirmMessage( MTree* pTree )
 {
     nsOrderMessageDefine::MessageTypeEnum MessageType;
-    UFC::AnsiString ConfirmMessage, Key, AE, Data, OID, Func, ExecID, PBNO, PVC, StatusCode, ExchangeCode, TSEObjectBroker, TSEOrderType,TradeKind, PHost,CDKey, Value,eTime;
+    UFC::AnsiString ConfirmMessage = "", Key = "", PBNO = "", PVC = "";
+    UFC::AnsiString AE = "", Data = "", OID = "", Func = "", ExecID = "", StatusCode = "", ExchangeCode = "", TSEObjectBroker = "", TSEOrderType = "", TradeKind = "", PHost = "", CDKey = "", Value = "", eTime = "";
     UFC::TRecord*   pRecord;
     nsOrderMessageDefine::TradingSessionIDEnum   TradeSession;
-    Int32           NID, AfterQty;
+    Int32           NID = 0, AfterQty = 0;
+    bool is_CONFIRM_ORDER_Received = false, is_NID_Received = false, is_KEY_Received = false, is_PBNO_Received = false, is_PVC_Received = false;
+    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) == TRUE ) is_CONFIRM_ORDER_Received = true;
+    if( pTree->get( "NID", NID ) == TRUE ) is_NID_Received = true;
+    if( pTree->get( "KEY", Key ) == TRUE ) is_KEY_Received = true;
+    if( pTree->get( "PBNO", PBNO ) == TRUE ) is_PBNO_Received = true;
+    if( pTree->get( "PVC", PVC ) == TRUE ) is_PVC_Received = true;
 
     Glog->fprintf( " --------------------------- ES Confirm ------------------------" );
-    if( pTree->get( "CONFIRM_ORDER", ConfirmMessage ) &&
-        pTree->get( "NID", NID ) &&
-        pTree->get( "KEY", Key ) &&
-        pTree->get( "PBNO", PBNO ) &&
-        pTree->get( "PVC", PVC ) &&
-        (NID != 0) )
+    if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
+        is_KEY_Received && is_PBNO_Received && is_PVC_Received )
     {
         MessageType = (nsOrderMessageDefine::MessageTypeEnum)( FNetworkID.GetMessageType( NID ) );
         TradeSession = GetMessageTradeingSession( ConfirmMessage );
@@ -1567,7 +1762,7 @@ void  TTaifexConnection::ReceiveESConfirmMessage( MTree* pTree )
         if( (pRecord != NULL) && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = (FIsTWSENewVersion == true )? 4 : 2;
+            int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
             if( pTree->get( "CKEY", CDKey ) == TRUE )
@@ -1626,7 +1821,7 @@ void  TTaifexConnection::ReceiveESConfirmMessage( MTree* pTree )
                 {
                     UFC::AnsiString ErrMsg( "" );
                     pTree->get( "MSG",ErrMsg );
-                    FillRejectExecution( MessageType,nsOrderMessageDefine::mES, TradeSession, pRecord, StatusCode, ErrMsg, &ExecutionReport, Precision );
+                    FillRejectExecution( MessageType, nsOrderMessageDefine::mES, TradeSession, pRecord, StatusCode, ErrMsg, &ExecutionReport, Precision );
                     ExecID.Printf( "ESCR%s%010d", OID.c_str(), NID );
                 }
                 Glog->fprintf( " %s() StatusCode[%s] ExecID[%s]", __func__, StatusCode.c_str(), ExecID.c_str() );
@@ -1636,6 +1831,50 @@ void  TTaifexConnection::ReceiveESConfirmMessage( MTree* pTree )
             delete pRecord;
         }
     }
+    else
+    {
+        UFC::PStringBuffer missingBuff;
+        if( !is_CONFIRM_ORDER_Received ) missingBuff.Append( "CONFIRM_ORDER" );
+            
+        if( !is_NID_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "NID" );
+        }
+
+        if( !is_KEY_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "KEY" );
+        }
+            
+        if( !is_PBNO_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PBNO" );
+        }
+            
+        if( !is_PVC_Received )
+        {
+            if( missingBuff.Length() > 0 ) missingBuff.Append( ", " );
+            missingBuff.Append( "PVC" );
+        }
+        
+        UFC::PStringBuffer logBuff;
+        logBuff.AppendPrintf( "Ignore CONFIRM[%u][", (UInt32)NID );
+        if( ConfirmMessage.Length() > 0 )
+            logBuff.AppendPrintf( " %s]", ConfirmMessage.c_str() );
+        else
+            logBuff.Append( ']' );
+        
+        if( is_NID_Received && ( NID == 0 ) )
+            logBuff.Append( ", NID is 0" );
+        
+        if( missingBuff.Length() > 0 )
+            logBuff.AppendPrintf( ", Missing Node:%s", missingBuff.c_str() );
+        
+        Glog->fprintf( " %s.", logBuff.c_str() );
+    }  //if( is_CONFIRM_ORDER_Received && ( is_NID_Received && ( NID != 0 ) ) &&
 }
 //------------------------------------------------------------------------------
 
