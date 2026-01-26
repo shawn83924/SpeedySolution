@@ -33,7 +33,11 @@ private:
     nsOrderMessageDefine::TradingSessionIDEnum FTradingSessionID;
     UFC::AnsiString FExpireDate;  //Tag 432 for Tag 59 TimeInForce:Good till Date
     UFC::PHashedList<UFC::AnsiString, UFC::AnsiString*> FOrderAttributes;
-
+    UFC::AnsiString FStopLossSetting;        // added by Kenny to support Strategy. 2026/01/02
+    UFC::AnsiString FTakeProfitSetting;      // added by Kenny to support Strategy. 2026/01/02
+    UFC::AnsiString FNewOrderIfMatchSetting; // added by Kenny to support Strategy. 2026/01/02
+    UFC::AnsiString FStopOrderSetting;      // added by Kenny to support Strategy. 2026/01/02
+    UFC::AnsiString FStopOrderError;      // added by Kenny to support Strategy. 2026/01/05 
 public:
     TNewOrderMessage( void );
     ~TNewOrderMessage(void);
@@ -90,6 +94,14 @@ public:
     const char*                                GetExpireDate( void )            { return FExpireDate.c_str(); }
     BOOL                                       GetAttribute( UFCType::Int32 index, UFC::AnsiString& key, UFC::AnsiString& value );
     UFCType::Int32                             GetAttributeCount() { return FOrderAttributes.ItemCount(); }
+    BOOL                                       SetStopLoss(BOOL isTrailingStop, UFCType::Int32 ticks, const char* StopPrice, const char* OrderPrice);
+    BOOL                                       SetTakeProfit(BOOL isTrailingStop, UFCType::Int32 ticks, const char* StopPriice, const char* OrderPrice);
+    //BOOL                                       SetNewOrderIfMatch(const char* OrderPrice);
+    void                                       ClearStopLoss()          { FStopLossSetting.SetLength(0); }   // added by Kenny to support Strategy. 2026/01/02
+    void                                       ClearTakeProfit()        { FTakeProfitSetting.SetLength(0); } // added by Kenny to support Strategy. 2026/01/02
+    //void                                       ClearNewOrderIfMatch()   { FDirectOrderStrategy.SetLength(0); }// added by Kenny to support Strategy. 2026/01/02
+    const char*                                GetStopOrderSetting(); // added by Kenny to support Strategy. 2026/01/02
+    const char*                                GetStopOrderError();   // added by Kenny to support Strategy. 2026/01/05    
 };
 //--------------------------------------------------------------------------
 #endif

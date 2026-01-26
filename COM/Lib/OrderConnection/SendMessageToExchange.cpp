@@ -61,9 +61,9 @@ bool TTaifexConnection::CheckOrderID( nsOrderMessageDefine::MarketEnum OrderMark
                 return false;
         }
     }
-    else if (OrderMarket == nsOrderMessageDefine::mForeignStock && !FCheckForeignStockOrderID)
+    else if ( OrderMarket == nsOrderMessageDefine::mForeignStock )
     {
-        if (orderIDLength == 0)
+        if ( orderIDLength == 0 )
             return false;
     }
     else
@@ -568,7 +568,13 @@ bool TTaifexConnection::TriggerEventAndSend( TBaseMessage* Msg,
             {
                 UFC::AnsiString peerIP = Msg->GetPeerIP();
                 UFC::AnsiString msgCASessionID = Msg->GetCASessionID();
-                BOOL isSendSuccess = SendToOrderServerEx( Msg->GetMarket(), UserData, Order.c_str(), TradingSession, Source, Msg->GetGroup(), Msg->GetNID(), CNID, peerIP, signatureStr, msgCAPlainText, msgCASessionID, caSerialNumber );
+                /* added & modified by Kenny to support Stop Price Strategy. 2026/01/02 */
+                UFC::AnsiString strategy = "";
+                TNewOrderMessage* neworder_message = dynamic_cast<TNewOrderMessage*>(Msg);
+                if (neworder_message)
+                    strategy = neworder_message->GetStopOrderSetting();
+                BOOL isSendSuccess = SendToOrderServerEx( Msg->GetMarket(), UserData, Order.c_str(), TradingSession, Source, Msg->GetGroup(), Msg->GetNID(), CNID, peerIP, signatureStr, msgCAPlainText, msgCASessionID, caSerialNumber, strategy );
+                /* end added & modified by Kenny */
                 if (isSendSuccess == TRUE)
                 {
                     Glog->fprintf( " %s() Send to Order Server success.", __func__ );
@@ -1394,7 +1400,8 @@ BOOL TTaifexConnection::SendToOrderServerEx( nsOrderMessageDefine::MarketEnum Ma
                                              const UFC::AnsiString& CASignature,
                                              const UFC::AnsiString& CAPlainText,
                                              const UFC::AnsiString& CASessionID,
-                                             const UFC::AnsiString& CASerialNumber )
+                                             const UFC::AnsiString& CASerialNumber,
+                                             const UFC::AnsiString& StopPriceStrategy)
 {
     UFC::AnsiString PublishKey;
     UFC::AnsiString sendPeerIP;
@@ -1473,7 +1480,29 @@ BOOL TTaifexConnection::SendToOrderServerEx( nsOrderMessageDefine::MarketEnum Ma
         sendPeerIP = MBusClient->GetLocalIPAddress();
     if( sendPeerIP.Length() > 0 )
         MBusClient->WriteString( MHandle, "PeerIP", sendPeerIP );
+    if ( StopPriceStrategy.Length() > 0)
+        MBusClient->WriteString( MHandle, "STRATEGY", StopPriceStrategy );
     return MBusClient->EndSend( MHandle );
 }
 //---------------------------------------------------------------------------
+BOOL  TTaifexConnection::CancelTouchOrder(const char* touch_order_id)
+{
+    if (!touch_order_id || (touch_order_id[0] != 'T' && touch_order_id[0] != 'O'))
+        return FALSE;
 
+    UFC::AnsiString PublishKey;
+    MTHandle        MHandle;
+    MApp* MBusClient = FTransport->GetMApp();
+    
+    PublishKey = FID;
+    if ('T' == touch_order_id[0])
+        MBusClient->BeginSend(MHandle, SUBJECT_TSE_STRATEGY, PublishKey);
+    else
+        MBusClient->BeginSend(MHandle, SUBJECT_OTC_STRATEGY, PublishKey);
+
+    UFC::AnsiString order;
+    order.Printf("cmd=cxl&oid=%s", touch_order_id);
+
+    MBusClient->WriteString(MHandle, "ORDER", order);
+    return MBusClient->EndSend(MHandle);
+}
