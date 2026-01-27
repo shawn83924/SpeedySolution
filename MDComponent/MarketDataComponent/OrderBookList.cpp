@@ -1424,16 +1424,22 @@ void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRe
 	}
 
 	TColor FrontColor, BKColor;
-	if(ACol == BUY_OCO_COL)
+	bool isHotTrack = 	FEnableHotTracks &&
+						!FCancelMouseDown &&
+						ARow == FMouseCoord.Y &&
+						ACol == FMouseCoord.X;
+	if (isHotTrack)
 	{
-		FrontColor = FBuyOCOColColor;
-		BKColor = FBuyOCOColBKColor;
+		FrontColor = FHotTracksColor;
+		BKColor    = FHotTracksBKColor;
 	}
 	else
 	{
-		FrontColor = FSellOCOColColor;
-		BKColor = FSellOCOColBKColor;
+		bool isBuyCol = (ACol == BUY_CONDITION_COL);
+		FrontColor = isBuyCol ? FBuyConditionColColor : FSellConditionColColor;
+		BKColor    = isBuyCol ? FBuyConditionColBKColor : FSellConditionColBKColor;
 	}
+
 	FBufferBmp->Canvas->Brush->Color = BKColor;
 	FBufferBmp->Canvas->FillRect( PaintRect );
 	if( ACol == BUY_CONDITION_COL )
