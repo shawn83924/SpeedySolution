@@ -121,6 +121,12 @@ void __fastcall TNewUserForm::OKBtnClick(TObject *Sender)
 			ShowMessage( Scstrings_MAIN_USER_PASSWORD_CANT_SAME_AS_ID );///"密碼不得與帳號相同.");
 			return;
 		}
+		if( IDEdit->Text.Pos( PwdEdit->Text ) != 0 )
+		{
+			ShowMessage( "密碼不得包含帳號." ); ///"密碼不得包含帳號.");
+			return;
+		}
+
 		if( PwdEdit->Text.Length() < 6 )
 		{
 			ShowMessage( Scstrings_MAIN_USER_PASSWORD_AT_LEAST_LEN_6 );//"密碼長度至少要六碼.");

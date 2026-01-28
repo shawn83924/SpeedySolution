@@ -216,6 +216,7 @@ const AnsiString SPEEDY_STOCK_NAME   = "SpeedyTSEC";
 const AnsiString SPEEDY_OTC_NAME     = "SpeedyOTC";
 const AnsiString SPEEDY_PATS_NAME    = "SpeedyPATS";
 const AnsiString SPEEDY_TT_NAME      = "SpeedyTTGW";
+const AnsiString SPEEDY_FPGA_NAME    = "FPGAGateway";
 const AnsiString STAR_WAVE_NAME      = "StarWave";
 const AnsiString DTS_API_NAME        = "DTSAdapter";
 //---------------------------------------------------------------------------
@@ -366,6 +367,7 @@ __fastcall TSimTFXForm::TSimTFXForm(TComponent* Owner)
 
 	AppUniqueID.printf( "SpeedyCenter@%s.%d",UFC::Hostname,GetTickCount());
 	MessageObject->AppName = AppUniqueID;
+	FLocolIP = UFC::PSocket::GetLocalIP();
 }
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::FormCreate(TObject *Sender)
@@ -410,6 +412,7 @@ void __fastcall TSimTFXForm::LogonDialog()
 		Data.append( "ID",      FLastUser.c_str());
 		Data.append( "PWD",     FLastPasswordMD5.c_str() );
 		Data.append( "VER",     SCVersion );
+		Data.append( "IP",      FLocolIP );
 		AdminPublisher->SendData( &Data );
 		FLogonResponse = false;
 		ResponseTimer->Enabled = true;
@@ -434,6 +437,7 @@ void __fastcall TSimTFXForm::LogonDialog()
 			Data.append( "ID",      FUser.c_str());
 			Data.append( "PWD",     PasswdMD5.c_str() );
 			Data.append( "VER",     SCVersion );
+			Data.append( "IP",      FLocolIP );
 			AdminPublisher->SendData( &Data );
 			FLogonResponse = false;
 			ResponseTimer->Enabled = true;
@@ -514,7 +518,8 @@ void __fastcall TSimTFXForm::LogoutButtonClick(TObject *Sender)
 		MTree Data;
 
 		Data.append( "COMMAND", CMD_LOGOUT );
-		Data.append( "ID", FUser.c_str());
+		Data.append( "ID",      FUser.c_str());
+		Data.append( "IP",      FLocolIP );
 		AdminPublisher->SendData( &Data );
 	}
 	FUser = "";
@@ -946,7 +951,7 @@ void __fastcall TSimTFXForm::RequestFIXSessionList( )
 
 	Data.append( "COMMAND", SPEEDY_GET_FIX_SETTING );
 	Data.append( "HOST", FSpeedyHost.c_str());
-    SpeedyAgentPublisher->SendData( &Data );
+	SpeedyAgentPublisher->SendData( &Data );
 }
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::RequestFIXSessionsState( void )
@@ -1014,6 +1019,7 @@ void __fastcall TSimTFXForm::AdminLogon( int Days, bool Force )
 	///< Send the get user list request
 	MTree Data;
 	Data.append( "COMMAND", CMD_GET_LIST );
+	Data.append( "IP",      FLocolIP );
 	AdminPublisher->SendData( &Data );
 	if(	Force == false )
 	{
@@ -1038,7 +1044,8 @@ void __fastcall TSimTFXForm::RequestConfigFile( const char* FileName )
 	AgentData.append( "COMMAND",  SPEEDY_GET_CONFIG_FILE );
 	AgentData.append( "FILENAME", FileName );
 	AgentData.append( "HOST",     FSpeedyHost.c_str());
-	AgentData.append( "ZIP",     1 );
+	AgentData.append( "ZIP",      1 );
+	AgentData.append( "IP",       FLocolIP );
 	SpeedyAgentPublisher->SendData( &AgentData );
 }
 //---------------------------------------------------------------------------
@@ -1701,6 +1708,29 @@ void __fastcall TSimTFXForm::CheckMarketExist( void )
 		APITabSheet->TabVisible = true;
 	else
 		APITabSheet->TabVisible = false;
+    ///< For FPGA Gateway
+	if( FProcessList->IndexOf( SPEEDY_FPGA_NAME )!=-1 )
+	{
+		FMarketSet.Clear();
+		FMarketSet << mtStock;
+		FMarketSet << mtOTC;
+		PerformanceGaugeSTOCK->Clear();
+		TSEAlarmButton->Selected =	!FormSetting->AlarmTSE( );
+		PerformanceGaugeOTC->Clear();
+		OTCAlarmButton->Selected =	!FormSetting->AlarmOTC( );
+		OPTGroupBox->Visible = false;
+		OPTGroupBox->Visible = false;
+		StockGroupBox->Top = 1000;
+		StockGroupBox->Visible = true;
+		OTCGroupBox->Top = 1000;
+		OTCGroupBox->Visible = true;
+		LineSheet->TabVisible  = true;
+		FTTabSheet->TabVisible = false;
+		LogSheet->TabVisible   = false;
+		FIsTWSEFPGA = true;
+	}
+	else
+   		FIsTWSEFPGA = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::RequestRouteFiles( void )
@@ -2402,6 +2432,7 @@ void __fastcall TSimTFXForm::NewUserButtonClick(TObject *Sender)
 		Data.append( "ID", ID.c_str());
 		Data.append( "PWD", md5.ToString().c_str() );
 		Data.append( "GROUP", Group );
+		Data.append( "IP",      FLocolIP );
 		AdminPublisher->SendData( &Data );
 		FLogonResponse = false;
 		ResponseTimer->Enabled = true;
@@ -2422,6 +2453,7 @@ void __fastcall TSimTFXForm::DelUserButtonClick(TObject *Sender)
 
 			Data.append( "COMMAND", CMD_DELETE_USER );
 			Data.append( "ID", DelID.c_str());
+			Data.append( "IP",      FLocolIP );
 			AdminPublisher->SendData( &Data );
 			FLogonResponse = false;
 			ResponseTimer->Enabled = true;
@@ -2451,6 +2483,7 @@ void __fastcall TSimTFXForm::AttribButtonClick(TObject *Sender)
 			Data.append( "ID", ID.c_str());
 			Data.append( "GROUP", Group );
 			Data.append( "STATE", State );
+			Data.append( "IP",      FLocolIP );
 			AdminPublisher->SendData( &Data );
 			FLogonResponse = false;
 			ResponseTimer->Enabled = true;
@@ -2478,6 +2511,7 @@ void __fastcall TSimTFXForm::PasswdButtonClick(TObject *Sender)
 			Data.append( "COMMAND", CMD_MODIFY_PWD );
 			Data.append( "ID", ID.c_str());
 			Data.append( "PWD", md5.ToString() );
+			Data.append( "IP",      FLocolIP );
 			AdminPublisher->SendData( &Data );
 			FLogonResponse = false;
 			ResponseTimer->Enabled = true;
@@ -3462,7 +3496,8 @@ void __fastcall TSimTFXForm::OnChangeToPVCPage( void )
 					  (IsProcessRunning(SPEEDY_TW_NAME )<<1)|
 					   IsProcessRunning(SPEEDY_OPT_NAME)|
 					   IsProcessRunning(SPEEDY_TFX_NAME)|
-					   IsProcessRunning(SPEEDY_TW_NAME ));
+					   IsProcessRunning(SPEEDY_TW_NAME )|
+					   IsProcessRunning(SPEEDY_FPGA_NAME ));
 	bool  Running = true;
 
     if( StateNow == 0 )
@@ -3619,10 +3654,10 @@ void __fastcall TSimTFXForm::ProcessStateRequestTimerTimer(TObject *Sender)
 
     Data.append( "COMMAND", SPEEDY_GET_PROCESS );
     Data.append( "HOST", FSpeedyHost.c_str());
-    SpeedyAgentPublisher->SendData( &Data );
+	SpeedyAgentPublisher->SendData( &Data );
 	FHeartbeatResponse = false;
     ///< Turn on Heartbeat timeout timer
-    HeartbeatResponseTimer->Enabled = true;
+	HeartbeatResponseTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::SendShellCMD( int CMD, int ProcessIndex, bool IsMBusApp )
@@ -3636,6 +3671,7 @@ void __fastcall TSimTFXForm::SendShellCMD( int CMD, int ProcessIndex, bool IsMBu
 		Data.append( "MBusApp", 0 );
 	else
 		Data.append( "MBusApp", 1 );
+	Data.append( "IP", FLocolIP );
 	SpeedyAgentPublisher->SendData( &Data );
 }
 //---------------------------------------------------------------------------
@@ -3780,7 +3816,8 @@ void __fastcall TSimTFXForm::OnProcessStateChanged  ( int Index, int State )
 			 FProcessList->Strings[ Index ] == SPEEDY_TFX_NAME ||
 			 FProcessList->Strings[ Index ] == SPEEDY_TW_NAME  ||
 			 FProcessList->Strings[ Index ] == SPEEDY_STOCK_NAME ||
-			 FProcessList->Strings[ Index ] == SPEEDY_OTC_NAME )
+			 FProcessList->Strings[ Index ] == SPEEDY_OTC_NAME ||
+			 FProcessList->Strings[ Index ] == SPEEDY_FPGA_NAME )
 	{
 		if( PageControl->ActivePage == LineSheet )
 			PageControlChange( NULL );
@@ -4457,7 +4494,7 @@ int __fastcall TSimTFXForm::GetInsertPos( TMarket Market )
 void __fastcall TSimTFXForm::NewPVCButtonClick(TObject *Sender)
 {
 	if( IsProcessRunning( SPEEDY_FUT_NAME ) || IsProcessRunning( SPEEDY_OPT_NAME ) || IsProcessRunning( SPEEDY_TFX_NAME ) ||
-		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME ) )
+		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME )||  IsProcessRunning( SPEEDY_FPGA_NAME) )
 	{
 		MessageDlg( Scstrings_MAIN_SPEEDY_RUNNING_CANT_ADD_SESSION, mtWarning, TMsgDlgButtons() << mbOK,0);
 		return;
@@ -4508,7 +4545,7 @@ void __fastcall TSimTFXForm::NewPVCButtonClick(TObject *Sender)
 void __fastcall TSimTFXForm::ModifyPVCButtonClick(TObject *Sender)
 {
 	if( IsProcessRunning( SPEEDY_FUT_NAME ) || IsProcessRunning( SPEEDY_OPT_NAME ) || IsProcessRunning( SPEEDY_TFX_NAME ) ||
-		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME ) )
+		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME )||  IsProcessRunning( SPEEDY_FPGA_NAME) )
 	{
 		MessageDlg( Scstrings_MAIN_SPEEDY_RUNNING_CANT_ADD_SESSION, mtWarning, TMsgDlgButtons() << mbOK,0);
 		return;
@@ -4574,7 +4611,7 @@ void __fastcall TSimTFXForm::ModifyPVCButtonClick(TObject *Sender)
 void __fastcall TSimTFXForm::DeletePVCButtonClick(TObject *Sender)
 {
 	if( IsProcessRunning( SPEEDY_FUT_NAME ) || IsProcessRunning( SPEEDY_OPT_NAME ) || IsProcessRunning( SPEEDY_TFX_NAME ) ||
-		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME ) )
+		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME )||  IsProcessRunning( SPEEDY_FPGA_NAME) )
 	{
 		MessageDlg( Scstrings_MAIN_SPEEDY_RUNNING_CANT_ADD_SESSION, mtWarning, TMsgDlgButtons() << mbOK,0);
 		return;
@@ -4609,7 +4646,7 @@ void __fastcall TSimTFXForm::DeletePVCButtonClick(TObject *Sender)
 void __fastcall TSimTFXForm::CopySettingMenuItemClick(TObject *Sender)
 {
 	if( IsProcessRunning( SPEEDY_FUT_NAME ) || IsProcessRunning( SPEEDY_OPT_NAME ) || IsProcessRunning( SPEEDY_TFX_NAME ) ||
-		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME ) )
+		IsProcessRunning( SPEEDY_OTC_NAME ) || IsProcessRunning( SPEEDY_STOCK_NAME ) || IsProcessRunning( SPEEDY_TW_NAME )||  IsProcessRunning( SPEEDY_FPGA_NAME) )
 	{
 		MessageDlg( Scstrings_MAIN_SPEEDY_RUNNING_CANT_ADD_SESSION, mtWarning, TMsgDlgButtons() << mbOK,0);
 		return;
@@ -4744,6 +4781,7 @@ void __fastcall TSimTFXForm::RequestUpdatePVCList( TMarket Market )
 		case mtOTC:     Data.append( "OTC",(unsigned char*)MemCgf->Memory, MemCgf->Size );break;
 	}
 	Data.append( "HOST", FSpeedyHost.c_str());
+	Data.append( "IP", FLocolIP );
 	SpeedyAgentPublisher->SendData( &Data );
     delete MemCgf;
 }
@@ -5218,6 +5256,7 @@ void __fastcall TSimTFXForm::QueryButtonClick(TObject *Sender)
 	Data.append( "EM", (UFCType::Int32)m );
 	Data.append( "ED", (UFCType::Int32)d );
 	Data.append( "ID", Acc.c_str() );
+	Data.append( "IP",      FLocolIP );
 	AdminPublisher->SendData( &Data );
 }
 //---------------------------------------------------------------------------
@@ -5236,6 +5275,7 @@ void __fastcall TSimTFXForm::WriteUserLog( const AnsiString& Type, const AnsiStr
 		Data.append( "ID", FUser.c_str() );
 		Data.append( "TYPE", Type.c_str() );
 		Data.append( "MSG", Msg.c_str() );
+		Data.append( "IP",      FLocolIP );
 		AdminPublisher->SendData( &Data );
 		EventForm->AddEvent( FSpeedyHost, Type, Msg );
 	}
@@ -5952,6 +5992,13 @@ void __fastcall TSimTFXForm::LineListBoxContextPopup(TObject *Sender,
 			APCodeMenuItem->Enabled = false;
 			Handled = false;
 		}
+		if(	FIsTWSEFPGA == true )
+		{
+			MonitorMenuItem->Enabled = false;
+			APCodeMenuItem->Enabled = false;
+			CODPVCMenuItem->Enabled = false;
+			EODItem->Enabled = false;
+		}
 	}
 	else
 		Handled = true;
@@ -6307,6 +6354,7 @@ void __fastcall TSimTFXForm::ChangePasswdButtonClick(TObject *Sender)
 		Data.append( "ID", FUser.c_str());
 		Data.append( "USER", FUser.c_str());
 		Data.append( "PWD", md5.ToString() );
+    	Data.append( "IP",      FLocolIP );
 		AdminPublisher->SendData( &Data );
 		FLogonResponse = false;
 		ResponseTimer->Enabled = true;
@@ -7102,6 +7150,7 @@ bool __fastcall TSimTFXForm::RequestCancelAll( bool IsOptions, bool IsOffHour, S
 		}
 		Data.append( "HOST", FSpeedyHost.c_str() );
 		Data.append( "OFFHOUR", (int)IsOffHour );
+		Data.append( "IP", FLocolIP );
 		SpeedyAgentPublisher->SendData( &Data );
 		AddEventMessage( Msg );
 		return true;

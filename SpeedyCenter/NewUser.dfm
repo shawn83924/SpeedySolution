@@ -15,7 +15,7 @@ object NewUserForm: TNewUserForm
   Position = poMainFormCenter
   Scaled = False
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 21
   object IDPanel: TPanel
     Left = 0
@@ -148,7 +148,7 @@ object NewUserForm: TNewUserForm
     BevelOuter = bvNone
     TabOrder = 3
     object OKBtn: TBitBtn
-      Left = 63
+      Left = 64
       Top = 6
       Width = 97
       Height = 32
