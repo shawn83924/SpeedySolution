@@ -698,6 +698,7 @@ private:	// User declarations
 	bool FLogonResponse;
 	bool FHeartbeatResponse;
 	bool FMonitorFIX;
+	bool FIsTWSEFPGA;
 	TFIXSession* FMonitorSession;
 	int        FProcessState[ MAX_PROCESS ];
 	bool       FProcessAutoStart[ MAX_PROCESS ];
@@ -781,6 +782,7 @@ private:
 	UFC::UiniFile FRuleExchangeIni;
 	UFC::UiniFile FRuleChannelIni;
 	UFC::UiniFile FRuleAccountIni;
+    UFC::AnsiString FLocolIP;
 	void __fastcall LoadRule( int index );
 	void __fastcall SaveAndLoadRule( int index, char* Buffer, int Size  );
 	bool __fastcall CheckExceptionProdID( void );

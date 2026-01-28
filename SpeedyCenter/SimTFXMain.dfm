@@ -43,7 +43,7 @@ object SimTFXForm: TSimTFXForm
       Top = 1
       Width = 1138
       Height = 565
-      ActivePage = APITabSheet
+      ActivePage = LineSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -8631,8 +8631,7 @@ object SimTFXForm: TSimTFXForm
               Alignment = taCenter
               Caption = ' '#25104#20132#31558#25976' '
               Transparent = False
-              ExplicitLeft = 157
-              ExplicitTop = 4
+              ExplicitHeight = 18
             end
             object Label64: TLabel
               Left = 221
@@ -8661,8 +8660,6 @@ object SimTFXForm: TSimTFXForm
               AutoSize = False
               Caption = '----'
               TabOrder = 0
-              ExplicitLeft = 92
-              ExplicitTop = 4
             end
             object ModifyTimeText: TStaticText
               Left = 450
@@ -8673,8 +8670,6 @@ object SimTFXForm: TSimTFXForm
               AutoSize = False
               Caption = '----'
               TabOrder = 1
-              ExplicitLeft = 435
-              ExplicitWidth = 464
             end
             object EditorText: TStaticText
               Left = 269
@@ -8685,7 +8680,6 @@ object SimTFXForm: TSimTFXForm
               AutoSize = False
               Caption = '-----'
               TabOrder = 2
-              ExplicitLeft = 260
             end
           end
         end
@@ -8693,11 +8687,11 @@ object SimTFXForm: TSimTFXForm
     end
   end
   object AdminPageControl: TPageControl
-    Left = 633
-    Top = 495
+    Left = 331
+    Top = 367
     Width = 849
     Height = 473
-    ActivePage = LogTabSheet
+    ActivePage = UserTabSheet
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -15
@@ -8903,7 +8897,7 @@ object SimTFXForm: TSimTFXForm
           OnClick = DelUserButtonClick
         end
         object PasswdButton: TSpeedButton
-          Left = 203
+          Left = 208
           Top = 0
           Width = 111
           Height = 33
@@ -9368,7 +9362,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 515
     Bitmap = {
-      494C010106000900180117001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101060009002C0117001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000005C0000003000000001002000000000000045
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9951,7 +9945,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 395
     Bitmap = {
-      494C01010E001100180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E0011002C0118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000006000000001002000000000000090
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11152,7 +11146,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 455
     Bitmap = {
-      494C010111001500180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101110015002C0118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006000000078000000010020000000000000B4
       0000000000000000000000000000000000000000000000000000000000000000
       00009E7A5F00A1806600A1806600A1806600A1806600A1806600A1806600A180
@@ -12918,7 +12912,7 @@ object SimTFXForm: TSimTFXForm
     Left = 13
     Top = 647
     Bitmap = {
-      494C010103000500180118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005002C0118001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
