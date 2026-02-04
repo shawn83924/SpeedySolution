@@ -339,6 +339,13 @@
             <DependentOn>SetFontForm.h</DependentOn>
             <BuildOrder>44</BuildOrder>
         </CppCompile>
+        <CppCompile Include="SettingOCODlg.cpp">
+            <VirtualFolder>{B30ABE23-D3EC-49B5-8284-7FEE5BE036B5}</VirtualFolder>
+            <Form>SettingOCODlgForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>SettingOCODlg.h</DependentOn>
+            <BuildOrder>45</BuildOrder>
+        </CppCompile>
         <CppCompile Include="SpeedyUnify.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
@@ -400,11 +407,12 @@
         <FormResources Include="SelAccount.dfm"/>
         <FormResources Include="Login.dfm"/>
         <FormResources Include="main.dfm"/>
+        <FormResources Include="SetFontForm.dfm"/>
         <FormResources Include="TrainingDlg.dfm"/>
         <FormResources Include="UnifyDlg.dfm"/>
         <FormResources Include="WebBrowserForm.dfm"/>
         <FormResources Include="TBarForm.dfm"/>
-        <FormResources Include="SetFontForm.dfm"/>
+        <FormResources Include="SettingOCODlg.dfm"/>
         <FormResources Include="StopSetting.dfm"/>
         <FormResources Include="CASetting.dfm"/>
         <FormResources Include="ChartForm.dfm"/>
@@ -416,11 +424,11 @@
         <FormResources Include="AskCloseAll.dfm"/>
         <FormResources Include="AskForUpdateForm.dfm"/>
         <FormResources Include="AskRoomi.dfm"/>
+        <FormResources Include="DepthTrade.dfm"/>
         <FormResources Include="HoldOpenInterest.dfm"/>
         <FormResources Include="LeaderBoard.dfm"/>
         <FormResources Include="LifeUpdateForm.dfm"/>
         <FormResources Include="ExecutionViewerForm.dfm"/>
-        <FormResources Include="DepthTrade.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

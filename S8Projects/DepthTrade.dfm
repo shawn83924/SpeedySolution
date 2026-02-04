@@ -260,8 +260,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 196
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -286,8 +286,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 224
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -312,8 +312,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -393,8 +393,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -422,8 +422,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2156,8 +2156,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -2230,7 +2230,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = SettingTabSheet
+      ActivePage = StopSettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2256,6 +2256,10 @@ object DepthForm: TDepthForm
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object SettingScrollBox: TScrollBox
           Left = 0
           Top = 0
@@ -3663,6 +3667,10 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 3
         ParentDoubleBuffered = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object SplitPanel: TPanel
           Left = 0
           Top = 0
@@ -4388,6 +4396,10 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 1
         ParentDoubleBuffered = False
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ColorScrollBox: TScrollBox
           Left = 0
           Top = 0
@@ -4556,7 +4568,7 @@ object DepthForm: TDepthForm
             Left = 0
             Top = 65
             Width = 198
-            Height = 31
+            Height = 22
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4572,6 +4584,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 2
             OnChange = FixRowColorBoxChange
+            ExplicitHeight = 31
           end
           object StaticText4: TStaticText
             AlignWithMargins = True
@@ -4630,7 +4643,7 @@ object DepthForm: TDepthForm
             Left = 0
             Top = 168
             Width = 198
-            Height = 31
+            Height = 22
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4646,6 +4659,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             OnChange = TickColorBoxChange
+            ExplicitHeight = 31
           end
           object StaticText2: TStaticText
             AlignWithMargins = True
@@ -4701,7 +4715,7 @@ object DepthForm: TDepthForm
             Left = 0
             Top = 269
             Width = 198
-            Height = 31
+            Height = 22
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4717,6 +4731,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 8
             OnChange = BuyTextColorBoxChange
+            ExplicitHeight = 31
           end
           object StaticText3: TStaticText
             AlignWithMargins = True
@@ -4772,7 +4787,7 @@ object DepthForm: TDepthForm
             Left = 0
             Top = 371
             Width = 198
-            Height = 31
+            Height = 22
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4788,6 +4803,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 11
             OnChange = SellTextColorBoxChange
+            ExplicitHeight = 31
           end
         end
       end
@@ -5059,22 +5075,37 @@ object DepthForm: TDepthForm
     DesignSize = (
       391
       30)
-    object NewOCOBtn: TGraphButton
+    object SettingOCOBtn: TGraphButton
       AlignWithMargins = True
-      Left = 333
-      Top = 0
-      Width = 52
+      Left = 304
+      Top = 6
+      Width = 81
       Height = 26
       TabOrder = 0
-      OnClick = NewOCOBtnClick
+      OnClick = SettingOCOBtnClick
       Anchors = [akTop, akRight, akBottom]
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWindowText
       FontAttrib.CaptionFont.Height = -11
       FontAttrib.CaptionFont.Name = 'Tahoma'
       FontAttrib.CaptionFont.Style = []
-      ButtonText = #26032'OCO'
+      ButtonText = 'OCO'#19979#21934#35373#23450
       ImageList = MainForm.GrayTabImageList
+    end
+    object OCODetailBtn: TGraphButton
+      AlignWithMargins = True
+      Left = 232
+      Top = 6
+      Width = 66
+      Height = 26
+      TabOrder = 1
+      Anchors = [akTop, akRight, akBottom]
+      FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
+      FontAttrib.CaptionFont.Color = clWindowText
+      FontAttrib.CaptionFont.Height = -11
+      FontAttrib.CaptionFont.Name = 'Tahoma'
+      FontAttrib.CaptionFont.Style = []
+      ButtonText = 'OCO'#26126#32048
     end
   end
   object RoundFormEx: TRoundFormEx
@@ -5097,7 +5128,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080070010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010300080090010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

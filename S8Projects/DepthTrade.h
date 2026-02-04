@@ -22,7 +22,7 @@
 #include <Vcl.Menus.hpp>
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
-#include "NewOCODlg.h"
+#include "SettingOCODlg.h"
 //---------------------------------------------------------------------------
 class TDepthForm : public TForm, public TClientForm, public TOrderQtyListener, public IOrderFilled
 {
@@ -202,7 +202,8 @@ __published:	// IDE-managed Components
 	TTabControl *SmartOrderTabs;
 	TPanel *SmartOrderTab;
 	TPanel *ExtraPanel;
-	TGraphButton *NewOCOBtn;
+	TGraphButton *SettingOCOBtn;
+	TGraphButton *OCODetailBtn;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -303,7 +304,7 @@ __published:	// IDE-managed Components
 	void __fastcall ScrollBoxMouseWheel(TObject *Sender, TShiftState Shift, int WheelDelta,
           TPoint &MousePos, bool &Handled);
 	void __fastcall SmartOrderTabsChange(TObject *Sender);
-	void __fastcall NewOCOBtnClick(TObject *Sender);
+	void __fastcall SettingOCOBtnClick(TObject *Sender);
 
 
 
@@ -342,6 +343,9 @@ private:	// User declarations
 	int FPostSizeOffset;
 	int FNuclearUpperLots;
 	int FNuclearLowerLots;
+	int FOCOType;
+	int FLimitOrderTick;
+    int FRangeMarketOrderTick;
 	UFC::PHashMap<TButton*,TPanel*>  FExpBtn2Panel;
 	static UFC::List<BasicInformation*> FCustomMDList[];
 private:	// User declarations
@@ -405,9 +409,11 @@ public:		// User declarations
 	void __fastcall LoadStopSetting( void );
 	void __fastcall LoadHotkey( void );
 	void __fastcall LoadColor( void );
+    void __fastcall LoadOCOSetting( void );
 	void __fastcall SaveStopSetting( void );
 	void __fastcall SaveDefColor( void );
 	void __fastcall SaveColorToConfig( const String& Name, bool DorL );
+    void __fastcall SaveOCOSetting( void );
 	void __fastcall LoadDefColor( bool DorL );
 	void __fastcall ShowDepth( int L,int T );
 	void __fastcall ShowDepth( int L,int T, const String& Profile  );
