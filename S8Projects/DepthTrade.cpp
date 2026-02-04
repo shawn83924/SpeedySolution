@@ -159,6 +159,7 @@ void __fastcall TDepthForm::ShowDepth( int L,int T, const String& Profile  )
 	SetWidth( 0 );
 	ToolSV->Opened = false;
 	AdjuestFont( );
+	SetEditTag();
 	LoadProperty( Profile );
 	Show();
 	BringToFront();
@@ -179,6 +180,7 @@ void __fastcall TDepthForm::ShowDepth( int L,int T )
 	SetWidth( 0 );
 	ToolSV->Opened = false;
 	AdjuestFont( );
+	SetEditTag();
 	Show();
 	BringToFront();
 }
@@ -792,28 +794,41 @@ void __fastcall TDepthForm::OrderBookListProfitAndAvgPxUpdate(TObject *Sender, d
 	UpdateSymbolListCount();
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
+void __fastcall TDepthForm::EditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift)
 
 {
+	TEdit *edit 	= static_cast<TEdit*>(Sender);
+	TUpDown *updown = reinterpret_cast<TUpDown*>(edit->Tag);
 	String ErrMsg;
 	try
 	{
-		int Qty = LotsPerOrderEdit->Text.ToInt();
-
-		if( Qty > LotsUpDown->Max )
+		int Qty;
+		if( !TryStrToInt(edit->Text, Qty) )
 		{
-			LotsPerOrderEdit->Text = L"0";
-			ErrMsg.printf( L"块计[%d],禬筁计[%d]",Qty,LotsUpDown->Max );
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
+			edit->Text = String( updown->Min );
+			return;
 		}
-		else if( Qty <= 1  )
-			LotsPerOrderEdit->Text = L"1";
-		else
-			LotsPerOrderEdit->Text = String( Qty );
+
+		if( Qty > updown->Max )
+		{
+			edit->Text = String( updown->Min );
+			ErrMsg.printf( L"块计秖[%d],禬筁计秖[%d]", Qty, updown->Max );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
+			return;
+		}
+		if( Qty < updown->Min  )
+		{
+			edit->Text = String( updown->Min );
+			ErrMsg.printf( L"块计秖[%d],禬筁计秖[%d]", Qty, updown->Min );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
+			return;
+		}
+
+		edit->Text = String( Qty );
 	}
 	catch(...)
 	{
-		LotsPerOrderEdit->Text = L"1";
+		edit->Text = String( updown->Min );
 	}
 }
 //---------------------------------------------------------------------------
@@ -1010,16 +1025,18 @@ void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TSh
 	FLastKeyDownTick = TickNow;
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::LotsPerOrderEditMouseActivate(TObject *Sender, TMouseButton Button,
+void __fastcall TDepthForm::EditMouseActivate(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y, int HitTest, TMouseActivate &MouseActivate)
 {
-	LotsPerOrderEdit->SetFocus();
+	TEdit *edit = static_cast<TEdit*>(Sender);
+	edit->SetFocus();
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::LotsPerOrderEditMouseDown(TObject *Sender, TMouseButton Button,
+void __fastcall TDepthForm::EditMouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
-	LotsPerOrderEdit->SetFocus();
+	TEdit *edit = static_cast<TEdit*>(Sender);
+	edit->SetFocus();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SaveProperty( const String& Profile )
@@ -1314,6 +1331,29 @@ void __fastcall TDepthForm::AdjuestFont( void )
 		SetWidth( ToolSV->OpenedWidth );
 	else
 		SetWidth( 0 );
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::SetEditTag( void )
+{
+	LotsPerOrderEdit	->Tag = reinterpret_cast<NativeInt>(LotsUpDown);
+	StepEdit			->Tag =	reinterpret_cast<NativeInt>(StepUpDown);
+	StepCountEdit		->Tag = reinterpret_cast<NativeInt>(StepCountUpDown);
+	Edit1				->Tag =	reinterpret_cast<NativeInt>(NuclearLotsUpDown);
+	Edit2				->Tag =	reinterpret_cast<NativeInt>(UpCountUpDown);
+	Edit3				->Tag =	reinterpret_cast<NativeInt>(UpStepUpDown);
+	Edit4				->Tag = reinterpret_cast<NativeInt>(DownCountUpDown);
+	Edit5				->Tag = reinterpret_cast<NativeInt>(DownStepUpDown);
+	Edit6				->Tag = reinterpret_cast<NativeInt>(ProfitTickUpDown);
+	Edit7				->Tag = reinterpret_cast<NativeInt>(ProfitStepUpDown);
+	Edit8				->Tag = reinterpret_cast<NativeInt>(ProfitCountUpDown);
+	Edit9				->Tag = reinterpret_cast<NativeInt>(SplitUpDown);
+	Edit10				->Tag = reinterpret_cast<NativeInt>(BullOutTickUpDown);
+	Edit12				->Tag = reinterpret_cast<NativeInt>(BullInAccumulateUpDown);
+	Edit13				->Tag = reinterpret_cast<NativeInt>(BullInOnceUpDown);
+	Edit15				->Tag = reinterpret_cast<NativeInt>(BullOutAccumulateUpDown);
+	Edit16          	->Tag = reinterpret_cast<NativeInt>(BullOutOnceUpDown);
+	StopTickEdit    	->Tag = reinterpret_cast<NativeInt>(StopTickUpDown);
+	StopProfitTickEdit	->Tag =	reinterpret_cast<NativeInt>(StopProfitTickUpDown);
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::UpdateBalance( double Net )
