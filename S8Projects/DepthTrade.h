@@ -223,11 +223,11 @@ __published:	// IDE-managed Components
           double Profitint, int BuyOpenQty, int SellOpenQty);
 	void __fastcall OrderBookListProfitAndAvgPxUpdate(TObject *Sender, double NetPositionProfit,
           double AvgPx);
-	void __fastcall LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall EditKeyUp(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall OrderBookListKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
-	void __fastcall LotsPerOrderEditMouseActivate(TObject *Sender, TMouseButton Button,
+	void __fastcall EditMouseActivate(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y, int HitTest, TMouseActivate &MouseActivate);
-	void __fastcall LotsPerOrderEditMouseDown(TObject *Sender, TMouseButton Button,
+	void __fastcall EditMouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y);
 	void __fastcall CxlBeforeNewToggleSwitchClick(TObject *Sender);
 	void __fastcall SmallButtonClick(TObject *Sender);
@@ -356,6 +356,7 @@ private:	// User declarations
 	void __fastcall SetWidth( int Add );
 	void __fastcall CancelAllAndClose( bool UsingStep );
 	void __fastcall AdjuestFont( void );
+	void __fastcall SetEditTag( void );
 	void __fastcall OnPositionClosed( void );
 	void __fastcall EnableStopAfterFilled( bool Enable );
 	void __fastcall NuclearBuy( void );

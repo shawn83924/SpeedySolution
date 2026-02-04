@@ -227,6 +227,7 @@ object DepthForm: TDepthForm
       Margins.Bottom = 5
       Associate = LotsPerOrderEdit
       DoubleBuffered = True
+      Min = 1
       Max = 200
       ParentDoubleBuffered = False
       Position = 199
@@ -253,9 +254,9 @@ object DepthForm: TDepthForm
       ParentFont = False
       TabOrder = 1
       Text = '199'
-      OnKeyUp = LotsPerOrderEditKeyUp
-      OnMouseActivate = LotsPerOrderEditMouseActivate
-      OnMouseDown = LotsPerOrderEditMouseDown
+      OnKeyUp = EditKeyUp
+      OnMouseActivate = EditMouseActivate
+      OnMouseDown = EditMouseDown
     end
     object SmallButton: TGraphButton
       Left = 196
@@ -2690,6 +2691,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 9
             Text = '1'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object StepEdit: TEdit
             Left = 86
@@ -2710,6 +2714,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 10
             Text = '2'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object SymbolListBox: TListBox
             Left = 8
@@ -2922,6 +2929,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 0
             Text = '10'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object StopTickUpDown: TUpDown
             Left = 137
@@ -2990,6 +3000,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 4
             Text = '10'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object StopProfitPercentComboBox: TComboBox
             Left = 93
@@ -3281,12 +3294,14 @@ object DepthForm: TDepthForm
               Font.Name = 'Arial'
               Font.Style = []
               ImeMode = imSAlpha
-              MaxLength = 2
+              MaxLength = 3
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 1
               Text = '10'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object Edit3: TEdit
               Left = 89
@@ -3306,9 +3321,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 2
-              Text = '2'
+              Text = '5'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object UpStepUpDown: TUpDown
               Left = 133
@@ -3359,9 +3376,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 5
               Text = '5'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object RatioComboBox: TComboBox
               Left = 10
@@ -3422,9 +3441,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 8
               Text = '3'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object DownStepUpDown: TUpDown
               Left = 133
@@ -3460,9 +3481,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 10
               Text = '1'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object ProfitTickUpDown: TUpDown
               Left = 142
@@ -3495,12 +3518,14 @@ object DepthForm: TDepthForm
               Font.Name = 'Arial'
               Font.Style = []
               ImeMode = imSAlpha
-              MaxLength = 2
+              MaxLength = 3
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 12
               Text = '80'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object ProfitStepUpDown: TUpDown
               Left = 133
@@ -3536,9 +3561,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 14
               Text = '1'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
             object ProfitCountUpDown: TUpDown
               Left = 133
@@ -3573,9 +3600,11 @@ object DepthForm: TDepthForm
               MaxLength = 2
               NumbersOnly = True
               ParentFont = False
-              ReadOnly = True
               TabOrder = 16
               Text = '5'
+              OnKeyUp = EditKeyUp
+              OnMouseActivate = EditMouseActivate
+              OnMouseDown = EditMouseDown
             end
           end
           object AutoStopProfitRadioGroup: TRadioGroup
@@ -3766,6 +3795,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 2
             Text = '1'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object SplitExpBtn: TButton
             Tag = 92
@@ -3914,6 +3946,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 3
             Text = '199'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object BullOutAccumulateTimeComboBox: TComboBox
             Left = 100
@@ -3966,6 +4001,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             Text = '199'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object BullOutAccumulateCheckBox: TCheckBox
             Left = 6
@@ -4034,6 +4072,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 9
             Text = '2'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object BullOutTickUpDown: TUpDown
             Left = 115
@@ -4284,6 +4325,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 3
             Text = '199'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object BullInAccumulateTimeComboBox: TComboBox
             Left = 100
@@ -4336,6 +4380,9 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             Text = '199'
+            OnKeyUp = EditKeyUp
+            OnMouseActivate = EditMouseActivate
+            OnMouseDown = EditMouseDown
           end
           object BullInAccumulateCheckBox: TCheckBox
             Left = 6
