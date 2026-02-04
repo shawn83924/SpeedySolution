@@ -1062,6 +1062,7 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 
 	g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
 	SaveTFT();
+	SaveOCOSetting();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::ApplyStopTick( int StopTick, int ProfitTick )
@@ -1153,6 +1154,7 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	LoadColor();
 	LoadStopSetting();
 	LoadTFT();
+	LoadOCOSetting();
 	AdjuestFont( );
 }
 //---------------------------------------------------------------------------
@@ -1442,6 +1444,13 @@ void __fastcall TDepthForm::LoadColor( void )
 	OrderBookList->Repaint();
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::LoadOCOSetting( void )
+{
+	FOCOType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
+	FLimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
+	FRangeMarketOrderTick = g_Config.GetIntegerProperty( "Setting", "RangeMarketOrderTick", 0 );
+}
+//---------------------------------------------------------------------------
 void __fastcall TDepthForm::SaveDefColor( void  )
 {
 	String Name;
@@ -1613,6 +1622,13 @@ void __fastcall TDepthForm::SaveColorToConfig( const String& Name, bool DorL )
         g_Config.SetIntegerProperty(Name, "SellOCOColBKColor", OrderBookList->SellOCOColBKColor);
 		SellOCOColBKColor[DorL] = OrderBookList->SellOCOColBKColor;
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::SaveOCOSetting( void )
+{
+	g_Config.SetIntegerProperty( "Setting", "OCOType", FOCOType);
+	g_Config.SetIntegerProperty( "Setting", "LimitOrderTick", FLimitOrderTick);
+	g_Config.SetIntegerProperty( "Setting", "RangeMarketOrderTick", FRangeMarketOrderTick);
 }
 //---------------------------------------------------------------------------
 TColor __fastcall TDepthForm::GetFixColor( int Index )
@@ -2818,8 +2834,10 @@ void __fastcall TDepthForm::EnableOCOMode( void )
 {
 	ExtraPanel->Visible = true;
 	DisableExtraPanelControls();
-	NewOCOBtn->Visible = true;
-	NewOCOBtn->Align = alRight;
+	SettingOCOBtn->Visible = true;
+	SettingOCOBtn->Align = alRight;
+	OCODetailBtn->Visible = true;
+	OCODetailBtn->Align = alRight;
 	OrderBookList->ShowOCO = true;
 
 	if( ToolSV->Opened )
@@ -2948,16 +2966,17 @@ void __fastcall TDepthForm::SmartOrderTabsChange(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::NewOCOBtnClick(TObject *Sender)
+void __fastcall TDepthForm::SettingOCOBtnClick(TObject *Sender)
 {
-	if( FNetPos == 0 )
-	{
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未有該部位" );
-        return;
-	}
+	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(this, FOCOType, FLimitOrderTick, FRangeMarketOrderTick);
+	int showResult = dlg->ShowModal();
+	if(showResult == mrCancel)
+		return;
 
-	TForm *dlg = new TNewOCODlgForm(this, TNewOCODlgForm::DlgType::NewOCO);
-    dlg->ShowModal();
+	FOCOType = dlg->GetOrderType();
+	FLimitOrderTick = dlg->GetLimitOrderTick();
+	FRangeMarketOrderTick = dlg->GetRangeMarketOrderTick();
+	SaveOCOSetting();
+	ContractViewerForm->LoadDepthOCO(this);
 }
 //---------------------------------------------------------------------------
-

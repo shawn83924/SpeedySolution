@@ -1497,6 +1497,15 @@ void __fastcall TContractViewerForm::LoadDepthColor( TDepthForm* Who )
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TContractViewerForm::LoadDepthOCO( TDepthForm* Who )
+{
+	for( register int i = 0;i < FDepthForms.ItemCount(); i ++ )
+	{
+		if( FDepthForms[ i ] != Who )
+			FDepthForms[ i ]->LoadOCOSetting();
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TContractViewerForm::OrderStoreReady( void )
 {
 	for( register int i = 0;i < FDepthForms.ItemCount(); i ++ )
