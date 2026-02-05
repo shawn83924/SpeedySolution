@@ -202,7 +202,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	UFC::GetTradeYYYYMMDD( Today );
 	FileName.Printf( "%slog\\SpeedyUnify_AP_Log%s.txt", CurrDir,Today.c_str() );
 	UFC::BufferedLog::SetLogObject( new UFC::BufferedLog( FileName, 10240, true, true ) );
-	PrintLogHeader( );
+	//PrintLogHeader( );
 
    	TrayIcon->Visible = false;
 	if( GSimMatch == true )
@@ -1104,6 +1104,7 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormShow(TObject *Sender)
 {
+	PrintLogHeader( );
 	if( TrayIcon->Visible == false )
 	{
 		LiveUpdate();
