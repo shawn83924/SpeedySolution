@@ -233,7 +233,7 @@ __published:	// IDE-managed Components
 	void __fastcall SmallButtonClick(TObject *Sender);
 	void __fastcall LargeButtonClick(TObject *Sender);
 	void __fastcall OrderBookListNewConditionOrder(TObject *Sender, SideEnum side, double Px,
-          OrderTypeEnum Type, double OrderPrice);
+		  OrderTypeEnum Type, double OrderPrice);
 	void __fastcall OrderBookListDeleteStopOrder(TObject *Sender, SideEnum side, double StopPx);
 	void __fastcall OrderBookListFocus(TObject *Sender);
 	void __fastcall SliceOrderSwitchClick(TObject *Sender);
@@ -305,6 +305,8 @@ __published:	// IDE-managed Components
           TPoint &MousePos, bool &Handled);
 	void __fastcall SmartOrderTabsChange(TObject *Sender);
 	void __fastcall SettingOCOBtnClick(TObject *Sender);
+	void __fastcall OrderBookListNewOCOOrder(TObject *Sender, SideEnum side, double Price);
+	void __fastcall OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage);
 
 
 
