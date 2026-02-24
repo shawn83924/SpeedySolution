@@ -56,6 +56,13 @@ typedef enum colName
 	SELL_FILL_COL		= 14
 }ColName;
 //---------------------------------------------------------------------------
+typedef enum
+{
+	None 	= 0,
+	Clicked = 1,
+	Paired  = 2
+}ocoClickState;
+//---------------------------------------------------------------------------
 /*class IOrderInfoListener
 {
 public:
@@ -64,6 +71,24 @@ public:
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 };*/
+//---------------------------------------------------------------------------
+class OCOGrid
+{
+public:
+	int Qty;
+	ocoClickState ClickState;
+};
+//---------------------------------------------------------------------------
+class OCOPair
+{
+public:
+	int OrderQty1;
+	double ConditionPrice1;
+	SideEnum OrderSide1;
+	int OrderQty2;
+	double ConditionPrice2;
+	SideEnum OrderSide2;
+};
 //---------------------------------------------------------------------------
 typedef void __fastcall (__closure *TOnStepChangeEvent)(System::TObject* Sender, int Step );
 typedef void __fastcall (__closure *TOnNewOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price, int Qty );
@@ -74,6 +99,8 @@ typedef void __fastcall (__closure *TOnNewMarketOrderEvent)(System::TObject* Sen
 typedef void __fastcall (__closure *TOnProfitAndAvgPxUpdateEvent)(System::TObject* Sender, double NetPositionProfit, double AvgPx );
 typedef void __fastcall (__closure *TOnNetPositionUpdateEvent)(System::TObject* Sender, int NetPosition, double Profitint, int BuyOpenQty, int SellOpenQty );
 typedef void __fastcall (__closure *TOnNewConditionOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Px, nsOrderMessageDefine::OrderTypeEnum Type, double OrderPrice );
+typedef void __fastcall (__closure *TOnNewOCOFailEvent)(System::TObject* Sender, const AnsiString& ErrorMessage);
+typedef void __fastcall (__closure *TOnNewOCOEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price);
 typedef void __fastcall (__closure *TOnNewPingPongOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price, int Qty, int Tick );
 typedef void __fastcall (__closure *TOnDeleteStopOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double StopPx );
 typedef void __fastcall (__closure *TOnCenterEvent)(System::TObject* Sender );
@@ -159,8 +186,8 @@ private:
 	TIntegerDynArray	FSellFillQty;
 	TIntegerDynArray	FBuyConditionQty;
 	TIntegerDynArray	FSellConditionQty;
-	TIntegerDynArray    FBuyOCOQty;
-	TIntegerDynArray    FSellOCOQty;
+	DynamicArray<OCOGrid>	FBuyOCOQty;
+	DynamicArray<OCOGrid>	FSellOCOQty;
 	bool			FIsCompact;
 	bool			FShowFilled;
 	bool			FCenterFillPrice;
@@ -198,12 +225,15 @@ private:
 	int FTotalSellQty;
 	int FTotalStopBuyQty;
 	int FTotalStopSellQty;
+	int FTotalOCOBuyQty;
+	int FTotalOCOSellQty;
 	bool FBetterEnable;
 	int FBetterStep;
 	bool FStepEnable;
 	int FStep;
 	int FStepCount;
 	bool FCancelBeforeNew;
+    int FNetPosition;
 	double FBuyAvgFillPx;
 	double FSellAvgFillPx;
 	bool FShowDerivedPx;
@@ -227,11 +257,17 @@ private:
 	TColor FHotTracksBKColor;
 	///< Stop Order Setting
 	bool FEnableCoditionlOrder;
-	bool FShowOCO;
 	nsOrderMessageDefine::OrderTypeEnum FBuyStopOrderOrdType;
 	nsOrderMessageDefine::OrderTypeEnum FSellStopOrderOrdType;
 	int FBuyStopTick;
 	int FSellStopTick;
+	//< OCO Order Setting
+	bool FShowOCO;
+	bool FIsPairingOCO;
+	bool FDeleteOCOByRightClick;
+	OCOPair* FCurrentPairOCO;
+	nsOrderMessageDefine::OrderTypeEnum FBuyOCOOrderType;
+    nsOrderMessageDefine::OrderTypeEnum FSellOCOOrderType;
 	///< Auto Stop-loss Take-Profit
 	bool   FAutoStopLoss;
 	bool   FAutoTakeProfit;
@@ -271,6 +307,9 @@ private:
 	TOnNetPositionUpdateEvent FOnNetPositionUpdate;
 	TOnNewPingPongOrderEvent FOnNewPingPongOrder;
 	TOnNewConditionOrderEvent FOnNewConditionOrder;
+	TOnNewOCOFailEvent FOnNewOCOFail;
+	TOnNewOCOEvent FOnNewOCO;
+
 	TOnDeleteStopOrderEvent FOnDeleteStopOrder;
 	TOnCenterEvent FOnCenterPx;
 	TOnStepChangeEvent FOnStepChange;
@@ -405,6 +444,8 @@ private:
 	void __fastcall DrawConditionCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawOCOCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall ConditionOrderColMouseDown( Classes::TShiftState Shift, int X, int Y );
+	void __fastcall OCOColLeftMouseDown( Classes::TShiftState Shift, int X, int Y );
+	void __fastcall OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall MarkPrice( int Tick, bool IsMark1 );
 	void __fastcall SetBuyStopTick( int Tick );
 	void __fastcall SetSellStopTick( int Tick );
@@ -479,6 +520,7 @@ public:
 	virtual void __fastcall UpdateOrder( AnsiString Symbol, double Price, nsOrderMessageDefine::SideEnum side, int Qty, nsOrderMessageDefine::OrderTypeEnum Type );
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
+    void __fastcall UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty );
 __published:
 	__property UnicodeString Symbol = { read = FSymbol, write = FSymbol };
 	__property UnicodeString Exchange = { read = FExchange, write = FExchange };
@@ -620,6 +662,8 @@ __published:
 	__property TOnNetPositionUpdateEvent OnNetPositionUpdate = { read = FOnNetPositionUpdate, write = FOnNetPositionUpdate };
 	__property TOnNewPingPongOrderEvent OnNewPingPongOrder = { read = FOnNewPingPongOrder, write = FOnNewPingPongOrder };
 	__property TOnNewConditionOrderEvent OnNewConditionOrder = { read = FOnNewConditionOrder, write = FOnNewConditionOrder };
+	__property TOnNewOCOFailEvent OnNewOCOFail = { read = FOnNewOCOFail, write = FOnNewOCOFail };
+    __property TOnNewOCOEvent OnNewOCO = { read = FOnNewOCO, write = FOnNewOCO };
 	__property TOnDeleteStopOrderEvent OnDeleteStopOrder = { read = FOnDeleteStopOrder, write = FOnDeleteStopOrder };
 	__property TOnCenterEvent OnCenterPx = { read = FOnCenterPx, write = FOnCenterPx };
 	__property TOnStepChangeEvent OnStepChange = { read = FOnStepChange, write = FOnStepChange };

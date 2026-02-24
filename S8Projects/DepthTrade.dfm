@@ -161,6 +161,8 @@ object DepthForm: TDepthForm
     OnProfitAndAvgPxUpdate = OrderBookListProfitAndAvgPxUpdate
     OnNetPositionUpdate = OrderBookListNetPositionUpdate
     OnNewConditionOrder = OrderBookListNewConditionOrder
+    OnNewOCOFail = OrderBookListNewOCOFail
+    OnNewOCO = OrderBookListNewOCOOrder
     OnDeleteStopOrder = OrderBookListDeleteStopOrder
     OnCenterPx = OrderBookListCenterPx
     OnAutoStopLoss = OrderBookListAutoStopLoss
