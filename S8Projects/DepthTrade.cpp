@@ -648,8 +648,7 @@ void __fastcall TDepthForm::OrderBookListNewConditionOrder(TObject *Sender, Side
 	else
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
-//---------------------------------------------------------------------------
-//
+//---------------------------------------------------------------------------//
 // Private function for Nuclear BUY/Sell
 // to place stop order
 //
@@ -3018,5 +3017,20 @@ void __fastcall TDepthForm::SettingOCOBtnClick(TObject *Sender)
 	FRangeMarketOrderTick = dlg->GetRangeMarketOrderTick();
 	SaveOCOSetting();
 	ContractViewerForm->LoadDepthOCO(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::OrderBookListNewOCOOrder(
+	TObject *Sender,
+	SideEnum side,
+	double Price)
+{
+	//
+	//OrderBookList->UpdateOCOOrderQty()
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage)
+
+{
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrorMessage.c_str() );
 }
 //---------------------------------------------------------------------------

@@ -133,6 +133,9 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FHotTracksBKColor( clSilver )
 ,FTotalStopBuyQty( 0 )
 ,FTotalStopSellQty( 0 )
+,FTotalOCOBuyQty( 0 )
+,FTotalOCOSellQty( 0 )
+,FIsPairingOCO( false )
 ,FOnStepChange( NULL )
 ,FOnReplacePx( NULL )
 {
@@ -223,8 +226,8 @@ __fastcall TOrderBookList::~TOrderBookList()
 	FSellFillQty.Length = 0;
 	FBuyConditionQty.Length = 0;
 	FSellConditionQty.Length = 0;
-	FBuyOCOQty.Length = 0;
-    FSellOCOQty.Length = 0;
+	FBuyOCOQty.Length  = 0;
+	FSellOCOQty.Length = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::InitString( void )
@@ -532,8 +535,10 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 		FSellFillQty[i] = -1;
 		FBuyConditionQty[i] = -1;
 		FSellConditionQty[i] = -1;
-		FBuyOCOQty[i] = -1;
-        FSellOCOQty[i] = -1;
+		FBuyOCOQty[i].Qty = -1;
+		FBuyOCOQty[i].ClickState = ocoClickState::None;
+		FSellOCOQty[i].Qty = -1;
+		FSellOCOQty[i].ClickState = ocoClickState::None;
 	}
 	if( FSettingMode == true )
 	{
@@ -1044,6 +1049,10 @@ void __fastcall TOrderBookList::DrawSumRow( int Col, const Types::TRect &ARect, 
 		Qty = FTotalStopBuyQty;
 	else if( Col == SELL_CONDITION_COL )
 		Qty = FTotalStopSellQty;
+	else if( Col == BUY_OCO_COL )
+		Qty = FTotalOCOBuyQty;
+	else if( Col == SELL_OCO_COL )
+		Qty = FTotalOCOSellQty;
 	else if( Col == BUY_DEL_BTN_COL || Col == SELL_DEL_BTN_COL )
 	{
 		if( FMouseCoord.Y == 1 && Col == FMouseCoord.X )
@@ -1132,6 +1141,13 @@ void __fastcall TOrderBookList::DrawSumRow( int Col, const Types::TRect &ARect, 
 	else if( Col == BUY_CONDITION_COL || Col == SELL_CONDITION_COL )
 	{
 		TTextFormat Formats;
+
+		Formats <<tfSingleLine<<tfCenter<<tfVerticalCenter<<tfEndEllipsis;
+		FBufferBmp->Canvas->TextRect( PaintRect, Text, Formats );
+	}
+	else if( Col == BUY_OCO_COL || Col == SELL_OCO_COL )
+	{
+        TTextFormat Formats;
 
 		Formats <<tfSingleLine<<tfCenter<<tfVerticalCenter<<tfEndEllipsis;
 		FBufferBmp->Canvas->TextRect( PaintRect, Text, Formats );
@@ -1442,10 +1458,10 @@ void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRe
 
 	FBufferBmp->Canvas->Brush->Color = BKColor;
 	FBufferBmp->Canvas->FillRect( PaintRect );
-	if( ACol == BUY_CONDITION_COL )
-		DrawQty( FBufferBmp, &PaintRect, tfRight, FBuyConditionQty[ARow], FrontColor );
+	if( ACol == BUY_OCO_COL )
+		DrawQty( FBufferBmp, &PaintRect, tfRight, FBuyOCOQty[ARow].Qty, FrontColor );
 	else
-		DrawQty( FBufferBmp, &PaintRect, tfRight, FSellConditionQty[ARow], FrontColor );
+		DrawQty( FBufferBmp, &PaintRect, tfRight, FSellOCOQty[ARow].Qty, FrontColor );
 
 	DrawGridLine( FBufferBmp, PaintRect );
 	Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
@@ -2379,6 +2395,36 @@ void __fastcall TOrderBookList::ConditionOrderColMouseDown( Classes::TShiftState
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift, int X, int Y )
+{
+	if(Y <= 2)
+		return;
+	/*
+	if(FNetPosition <= 0)
+	{
+		FOnNewOCOFail( this, Mdcomponentstrings_MD_ORDERBOOK_NOPOSITION);
+		return;
+	}
+	*/
+	if(!FIsPairingOCO)
+	{
+		if(X == BUY_OCO_COL)
+			FOnNewOCO(this, nsOrderMessageDefine::SideEnum::sBuy, GetPxFromIndex( Y ));
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y )
+{
+	if(Y < 0)
+		return;
+
+	if(FIsPairingOCO)
+	{
+        //目前沒定義下oco過程中按右鍵的情境，這邊直接返回處理
+		return;
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBuyStopTick( int Tick )
 {
 	FBuyStopTick = Tick;
@@ -2752,6 +2798,9 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 			case BUY_CONDITION_COL:
 			case SELL_CONDITION_COL: ConditionOrderColMouseDown( Shift, Coord.X, Coord.Y );
 				break;
+			case BUY_OCO_COL:
+			case SELL_OCO_COL: OCOColLeftMouseDown( Shift, Coord.X, Coord.Y );
+				break;
 			case PRICE_COL:
 							CellR = CellRect( Coord.X, Coord.Y );
 							if( X < CellR.Left + CellR.Width()/2 )
@@ -2766,6 +2815,8 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 	{
 		if( Coord.X == BUY_CONDITION_COL || Coord.X == SELL_CONDITION_COL )
 			ConditionOrderColMouseDown( Shift, Coord.X, Coord.Y );
+		if( Coord.X == BUY_OCO_COL || Coord.X == SELL_OCO_COL)
+			OCOColRightMouseDown( Shift, Coord.X, Coord.Y );
 		else
 		{
 			TShiftState Shift;
@@ -3309,7 +3360,10 @@ void TOrderBookList::OnFill(int Position, double BuyArvPx, double SellArvPx, int
 			InvalidateCellRect( SELL_FILL_COL, 1 );
 	}
 	if( FOnNetPositionUpdate != NULL && FStore != NULL )
+	{
 		FOnNetPositionUpdate( this, NetPosition, FloatingProfit, BuyOpenInterestQty, SellOpenInterestQty );
+		FNetPosition = NetPosition;
+	}
 }
 //---------------------------------------------------------------------------
 void TOrderBookList::OnProfit(double AveragePrice, double ProfitAmount)
@@ -3626,6 +3680,11 @@ double __fastcall TOrderBookList::GetAskPrice( int depth )
 	if( depth >= 0 && depth < DEPTH_COUNT )
 		return FSellPx[ depth ];
 	return 0.0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty )
+{
+
 }
 //---------------------------------------------------------------------------
 double __fastcall TOrderBookList::GetBullPrice( int BetterSellTick )

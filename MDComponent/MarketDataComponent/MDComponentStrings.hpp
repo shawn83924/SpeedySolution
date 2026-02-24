@@ -205,6 +205,8 @@ extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_BUY;
 #define Mdcomponentstrings_MD_ORDERBOOK_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_BUY)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_SELL;
 #define Mdcomponentstrings_MD_ORDERBOOK_SELL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_SELL)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_NOPOSITION;
+#define Mdcomponentstrings_MD_ORDERBOOK_NOPOSITION System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_NOPOSITION)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_CANCELALL;
 #define Mdcomponentstrings_MD_ORDERLIST_CANCELALL System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERLIST_CANCELALL)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERLIST_TIME;
