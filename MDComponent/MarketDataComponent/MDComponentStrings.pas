@@ -108,6 +108,7 @@ resourcestring
   MD_ORDERBOOK_BUY = '買';
   MD_ORDERBOOK_SELL = '賣';
   MD_ORDERBOOK_NOPOSITION = '您尚未擁有該部位';
+  MD_ORDERBOOK_INVALIDOCOPRICE = '請選擇適當的停利停損價位';
 
   MD_ORDERLIST_CANCELALL = '全刪';
   MD_ORDERLIST_TIME = '時間';

@@ -56,13 +56,6 @@ typedef enum colName
 	SELL_FILL_COL		= 14
 }ColName;
 //---------------------------------------------------------------------------
-typedef enum
-{
-	None 	= 0,
-	Clicked = 1,
-	Paired  = 2
-}ocoClickState;
-//---------------------------------------------------------------------------
 /*class IOrderInfoListener
 {
 public:
@@ -71,13 +64,6 @@ public:
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 };*/
-//---------------------------------------------------------------------------
-class OCOGrid
-{
-public:
-	int Qty;
-	ocoClickState ClickState;
-};
 //---------------------------------------------------------------------------
 class OCOPair
 {
@@ -186,8 +172,8 @@ private:
 	TIntegerDynArray	FSellFillQty;
 	TIntegerDynArray	FBuyConditionQty;
 	TIntegerDynArray	FSellConditionQty;
-	DynamicArray<OCOGrid>	FBuyOCOQty;
-	DynamicArray<OCOGrid>	FSellOCOQty;
+	TIntegerDynArray	FBuyOCOQty;
+	TIntegerDynArray	FSellOCOQty;
 	bool			FIsCompact;
 	bool			FShowFilled;
 	bool			FCenterFillPrice;
@@ -266,6 +252,7 @@ private:
 	bool FIsPairingOCO;
 	bool FDeleteOCOByRightClick;
 	OCOPair* FCurrentPairOCO;
+	std::vector<OCOPair*> FOCOPairs;
 	nsOrderMessageDefine::OrderTypeEnum FBuyOCOOrderType;
     nsOrderMessageDefine::OrderTypeEnum FSellOCOOrderType;
 	///< Auto Stop-loss Take-Profit
@@ -390,6 +377,7 @@ private:
 	void __fastcall SetSmartOrderCol( int OrderWidth );
 	void __fastcall CalFilledColSize( TCanvas* canvas );
 	void __fastcall DrawQty( Graphics::TBitmap* Bmp, Types::TRect *ARect, TTextFormats Align, int Qty, TColor TextColor, int DerivedQty = 0 );
+	void __fastcall DrawOCOQty( Graphics::TBitmap* Bmp,	Types::TRect* ARect, int ACol, int ARow, TColor TextColor);
 	void __fastcall MouseOverCell( const TGridCoord& Coord );
 	DYNAMIC void __fastcall MouseDown(Controls::TMouseButton Button, Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseUp(Controls::TMouseButton Button, Classes::TShiftState Shift, int X, int Y);
@@ -446,6 +434,7 @@ private:
 	void __fastcall ConditionOrderColMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColLeftMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y );
+	void __fastcall SetOCOQtyArray(nsOrderMessageDefine::SideEnum side, int index, int Qty, bool isAdd );
 	void __fastcall MarkPrice( int Tick, bool IsMark1 );
 	void __fastcall SetBuyStopTick( int Tick );
 	void __fastcall SetSellStopTick( int Tick );
@@ -520,7 +509,7 @@ public:
 	virtual void __fastcall UpdateOrder( AnsiString Symbol, double Price, nsOrderMessageDefine::SideEnum side, int Qty, nsOrderMessageDefine::OrderTypeEnum Type );
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
-    void __fastcall UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty );
+    void __fastcall UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty , bool isAdd);
 __published:
 	__property UnicodeString Symbol = { read = FSymbol, write = FSymbol };
 	__property UnicodeString Exchange = { read = FExchange, write = FExchange };
