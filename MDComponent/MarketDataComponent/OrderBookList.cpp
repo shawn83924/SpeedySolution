@@ -136,6 +136,8 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FTotalOCOBuyQty( 0 )
 ,FTotalOCOSellQty( 0 )
 ,FIsPairingOCO( false )
+,FDeleteOCOByRightClick( false )
+,FCurrentPairOCO( NULL )
 ,FOnStepChange( NULL )
 ,FOnReplacePx( NULL )
 {
@@ -193,6 +195,7 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 	FTimer->OnTimer = OnUpdateTimer;
 	if( ComponentState.Contains( csDesigning ) )
 		InitialGrid( FBullPx, FBearPx, FFillPx, FDigit );
+	FOCOPairs.resize(0);
 }
 //---------------------------------------------------------------------------
 __fastcall TOrderBookList::~TOrderBookList()
@@ -228,6 +231,8 @@ __fastcall TOrderBookList::~TOrderBookList()
 	FSellConditionQty.Length = 0;
 	FBuyOCOQty.Length  = 0;
 	FSellOCOQty.Length = 0;
+	if(FCurrentPairOCO != NULL)
+		delete FCurrentPairOCO;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::InitString( void )
@@ -535,10 +540,8 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 		FSellFillQty[i] = -1;
 		FBuyConditionQty[i] = -1;
 		FSellConditionQty[i] = -1;
-		FBuyOCOQty[i].Qty = -1;
-		FBuyOCOQty[i].ClickState = ocoClickState::None;
-		FSellOCOQty[i].Qty = -1;
-		FSellOCOQty[i].ClickState = ocoClickState::None;
+		FBuyOCOQty[i] = 0;
+		FSellOCOQty[i] = 0;
 	}
 	if( FSettingMode == true )
 	{
@@ -1451,17 +1454,14 @@ void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRe
 	}
 	else
 	{
-		bool isBuyCol = (ACol == BUY_CONDITION_COL);
-		FrontColor = isBuyCol ? FBuyConditionColColor : FSellConditionColColor;
-		BKColor    = isBuyCol ? FBuyConditionColBKColor : FSellConditionColBKColor;
+		bool isBuyCol = (ACol == BUY_OCO_COL);
+		FrontColor = isBuyCol ? FBuyOCOColColor : FSellOCOColColor;
+		BKColor    = isBuyCol ? FBuyOCOColBKColor : FSellOCOColBKColor;
 	}
 
 	FBufferBmp->Canvas->Brush->Color = BKColor;
 	FBufferBmp->Canvas->FillRect( PaintRect );
-	if( ACol == BUY_OCO_COL )
-		DrawQty( FBufferBmp, &PaintRect, tfRight, FBuyOCOQty[ARow].Qty, FrontColor );
-	else
-		DrawQty( FBufferBmp, &PaintRect, tfRight, FSellOCOQty[ARow].Qty, FrontColor );
+	DrawOCOQty( FBufferBmp, &PaintRect, ACol, ARow, FrontColor );
 
 	DrawGridLine( FBufferBmp, PaintRect );
 	Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
@@ -1496,6 +1496,68 @@ void __fastcall TOrderBookList::DrawQty( Graphics::TBitmap* Bmp, Types::TRect* A
 		Bmp->Canvas->Font->Color = TextColor;
 		Bmp->Canvas->TextRect( PaintRect, Text, Formats );
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DrawOCOQty(
+	Graphics::TBitmap* Bmp,
+	Types::TRect* ARect,
+	int ACol,
+	int ARow,
+	TColor TextColor)
+{
+	int Qty = 0;
+	if( ACol == BUY_OCO_COL )
+		Qty = FBuyOCOQty[ARow];
+	else
+		Qty = FSellOCOQty[ARow];
+
+	if( Qty > 0 )
+	{
+		TRect PaintRectRight( *ARect );
+
+		PaintRectRight.Left += 5;
+		PaintRectRight.Right-= 5;
+
+		TTextFormat FormatsRight;
+		FormatsRight<<tfSingleLine<<tfVerticalCenter<<tfEndEllipsis<<TTextFormats::tfRight;
+
+		String TextRight;
+		TextRight.printf(L"%d", Qty );
+		Bmp->Canvas->Font->Assign( FFont );
+		Bmp->Canvas->Font->Color = TextColor;
+		Bmp->Canvas->TextRect( PaintRectRight, TextRight, FormatsRight );
+	}
+
+	if(!FIsPairingOCO)
+		return;
+
+	if( ACol == BUY_OCO_COL )
+	{
+		if(FCurrentPairOCO->OrderSide1 == nsOrderMessageDefine::sSell)
+			return;
+	}
+	else
+	{
+		if(FCurrentPairOCO->OrderSide1 == nsOrderMessageDefine::sBuy)
+			return;
+	}
+
+	if(ARow != GetRowIndex(FCurrentPairOCO->ConditionPrice1))
+		return;
+
+	TRect PaintRectLeft( *ARect );
+	PaintRectLeft.Left	+= 5;
+	PaintRectLeft.Right -= 5;
+	PaintRectLeft.Right -= PaintRectLeft.Size.Width/2;
+
+	TTextFormat FormatsLeft;
+	FormatsLeft	<<tfSingleLine<<tfVerticalCenter<<tfEndEllipsis<<TTextFormats::tfLeft;
+
+	String TextLeft;
+
+	TextLeft.printf(L"%d", FCurrentPairOCO->OrderQty1);
+	Bmp->Canvas->Font->Color = clWebLightGreen;
+	Bmp->Canvas->TextRect( PaintRectLeft, TextLeft, FormatsLeft );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::DrawBuyMKCol( int Row, const Types::TRect &ARect, TGridDrawState AState )
@@ -2399,6 +2461,8 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 {
 	if(Y <= 2)
 		return;
+	if(Y == FFillRowIndex)
+		return;
 	/*
 	if(FNetPosition <= 0)
 	{
@@ -2406,11 +2470,30 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 		return;
 	}
 	*/
+	// first select oco price
 	if(!FIsPairingOCO)
 	{
 		if(X == BUY_OCO_COL)
-			FOnNewOCO(this, nsOrderMessageDefine::SideEnum::sBuy, GetPxFromIndex( Y ));
+			FOnNewOCO(this, nsOrderMessageDefine::sBuy,	GetPxFromIndex( Y ));
+		if(X == SELL_OCO_COL)
+			FOnNewOCO(this, nsOrderMessageDefine::sSell,GetPxFromIndex( Y ));
+
+		return;
 	}
+
+	// second select oco price
+	int firstIndex = GetRowIndex( FCurrentPairOCO->ConditionPrice1 );
+	if( (firstIndex > FFillRowIndex && Y > FFillRowIndex) ||
+		(firstIndex < FFillRowIndex && Y < FFillRowIndex))
+	{
+        FOnNewOCOFail( this, Mdcomponentstrings_MD_ORDERBOOK_INVALIDOCOPRICE);
+		return;
+	}
+
+    if(X == BUY_OCO_COL)
+		FOnNewOCO(this, nsOrderMessageDefine::sBuy,	GetPxFromIndex( Y ));
+	if(X == SELL_OCO_COL)
+		FOnNewOCO(this, nsOrderMessageDefine::sSell,GetPxFromIndex( Y ));
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y )
@@ -3682,9 +3765,73 @@ double __fastcall TOrderBookList::GetAskPrice( int depth )
 	return 0.0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderBookList::UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty )
+void __fastcall TOrderBookList::UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty ,bool isAdd)
 {
+	if(isAdd)
+	{
+		// first click
+		if(!FIsPairingOCO)
+		{
+			FCurrentPairOCO = new OCOPair();
+			FCurrentPairOCO->OrderQty1 = Qty;
+			FCurrentPairOCO->ConditionPrice1 = Price;
+			FCurrentPairOCO->OrderSide1 = side;
+			FIsPairingOCO = true;
+			return;
+		}
 
+		// second click
+		FIsPairingOCO = false;
+		SetOCOQtyArray(
+			FCurrentPairOCO->OrderSide1,
+			GetRowIndex(FCurrentPairOCO->ConditionPrice1),
+			FCurrentPairOCO->OrderQty1,
+			true);
+		SetOCOQtyArray(
+			side,
+			GetRowIndex(Price),
+			Qty,
+			true);
+
+		FCurrentPairOCO->OrderQty2 = Qty;
+		FCurrentPairOCO->ConditionPrice2 = Price;
+		FCurrentPairOCO->OrderSide2 = side;
+
+		FOCOPairs.push_back(FCurrentPairOCO);
+		FCurrentPairOCO = NULL;
+		return;
+	}
+
+    // is sub
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetOCOQtyArray(
+	nsOrderMessageDefine::SideEnum side,
+	int index,
+	int Qty,
+	bool isAdd)
+{
+	if(isAdd)
+	{
+		if(side == nsOrderMessageDefine::sBuy)
+		{
+			FBuyOCOQty[index] += Qty;
+			FTotalOCOBuyQty += Qty;
+			InvalidateCellRect( BUY_OCO_COL, index );
+			InvalidateCellRect( BUY_OCO_COL, 1 );
+		}
+		if(side == nsOrderMessageDefine::sSell)
+		{
+			FSellOCOQty[index] += Qty;
+			FTotalOCOSellQty += Qty;
+			InvalidateCellRect( SELL_OCO_COL, index );
+			InvalidateCellRect( SELL_OCO_COL, 1 );
+		}
+
+		return;
+	}
+	// is sub
+	//這部分等確定規則再做
 }
 //---------------------------------------------------------------------------
 double __fastcall TOrderBookList::GetBullPrice( int BetterSellTick )

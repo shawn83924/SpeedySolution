@@ -3024,8 +3024,7 @@ void __fastcall TDepthForm::OrderBookListNewOCOOrder(
 	SideEnum side,
 	double Price)
 {
-	//
-	//OrderBookList->UpdateOCOOrderQty()
+	OrderBookList->UpdateOCOOrderQty(side, Price, LotsPerOrderEdit->Text.ToInt(), true);
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage)
