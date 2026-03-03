@@ -41,19 +41,21 @@ typedef enum colName
 {
 	BUY_FILL_COL		= 0,
 	BUY_CONDITION_COL	= 1,
-	BUY_OCO_COL         = 2,
-	BUY_DEL_BTN_COL		= 3,
-	BUY_ORDER_COL		= 4,
-	BUY_MK_COL			= 5,
-	BUY_ORDER_BTN_COL	= 6,
-	PRICE_COL 			= 7,
-	SELL_ORDER_BTN_COL 	= 8,
-	SELL_MK_COL 		= 9,
-	SELL_ORDER_COL 		= 10,
-	SELL_DEL_BTN_COL 	= 11,
-	SELL_OCO_COL        = 12,
-	SELL_CONDITION_COL	= 13,
-	SELL_FILL_COL		= 14
+	BUY_OCODEL_COL      = 2,
+	BUY_OCO_COL         = 3,
+	BUY_DEL_BTN_COL		= 4,
+	BUY_ORDER_COL		= 5,
+	BUY_MK_COL			= 6,
+	BUY_ORDER_BTN_COL	= 7,
+	PRICE_COL 			= 8,
+	SELL_ORDER_BTN_COL 	= 9,
+	SELL_MK_COL 		= 10,
+	SELL_ORDER_COL 		= 11,
+	SELL_DEL_BTN_COL 	= 12,
+	SELL_OCO_COL        = 13,
+	SELL_OCODEL_COL     = 14,
+	SELL_CONDITION_COL	= 15,
+	SELL_FILL_COL		= 16
 }ColName;
 //---------------------------------------------------------------------------
 /*class IOrderInfoListener
@@ -155,6 +157,10 @@ private:
 	TColor          FBuyOCOColBKColor;
 	TColor          FSellOCOColColor;
 	TColor          FSellOCOColBKColor;
+	TColor          FBuyOCODelColColor;
+	TColor          FBuyOCODelColBKColor;
+	TColor          FSellOCODelColColor;
+    TColor          FSellOCODelColBKColor;
 	TColor          FDayHFrameColor;
 	TColor          FDayLFrameColor;
 	TColor          FAvgPxColor;
@@ -174,6 +180,8 @@ private:
 	TIntegerDynArray	FSellConditionQty;
 	TIntegerDynArray	FBuyOCOQty;
 	TIntegerDynArray	FSellOCOQty;
+	TIntegerDynArray    FBuyOCODelQty;
+    TIntegerDynArray    FSellOCODelQty;
 	bool			FIsCompact;
 	bool			FShowFilled;
 	bool			FCenterFillPrice;
@@ -431,6 +439,7 @@ private:
 	void __fastcall EnableSmartOrder( bool OCO );
 	void __fastcall DrawConditionCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawOCOCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
+	void __fastcall DrawOCODelCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall ConditionOrderColMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColLeftMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y );
@@ -582,6 +591,10 @@ __published:
 	__property TColor BuyOCOColBKColor = { read = FBuyOCOColBKColor, write = FBuyOCOColBKColor };
 	__property TColor SellOCOColColor = { read = FSellOCOColColor, write = FSellOCOColColor };
 	__property TColor SellOCOColBKColor = { read = FSellOCOColBKColor, write = FSellOCOColBKColor };
+	__property TColor BuyOCODelColColor = { read = FBuyOCODelColColor, write = FBuyOCODelColColor };
+	__property TColor BuyOCODelColBKColor = { read = FBuyOCODelColBKColor, write = FBuyOCODelColBKColor };
+	__property TColor SellOCODelColColor = { read = FSellOCODelColColor, write = FSellOCODelColColor };
+	__property TColor SellOCODelColBKColor = { read = FSellOCODelColBKColor, write = FSellOCODelColBKColor };
 
 	__property TColor DayHColor  = {read = FDayHFrameColor, write = FDayHFrameColor };
 	__property TColor DayLColor  = {read = FDayLFrameColor, write = FDayLFrameColor };
