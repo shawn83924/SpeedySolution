@@ -36,7 +36,7 @@ object DepthForm: TDepthForm
     BearPrice = 6339.000000000000000000
     FillPrice = 7293.000000000000000000
     ClickQty = 1
-    BestFitWidth = 524
+    BestFitWidth = 526
     ShowFillQty = True
     ShowDerivedPx = True
     EnableHotTracks = True
@@ -173,6 +173,7 @@ object DepthForm: TDepthForm
       40
       0
       0
+      0
       40
       68
       0
@@ -180,6 +181,7 @@ object DepthForm: TDepthForm
       0
       68
       40
+      0
       0
       0
       40
@@ -2233,7 +2235,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = StopSettingTabSheet
+      ActivePage = ColorTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2259,10 +2261,6 @@ object DepthForm: TDepthForm
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object SettingScrollBox: TScrollBox
           Left = 0
           Top = 0
@@ -3324,7 +3322,7 @@ object DepthForm: TDepthForm
               NumbersOnly = True
               ParentFont = False
               TabOrder = 2
-              Text = '5'
+              Text = '2'
               OnKeyUp = EditKeyUp
               OnMouseActivate = EditMouseActivate
               OnMouseDown = EditMouseDown
@@ -3698,10 +3696,6 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 3
         ParentDoubleBuffered = False
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object SplitPanel: TPanel
           Left = 0
           Top = 0
@@ -4445,10 +4439,6 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 1
         ParentDoubleBuffered = False
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ColorScrollBox: TScrollBox
           Left = 0
           Top = 0
@@ -4617,7 +4607,7 @@ object DepthForm: TDepthForm
             Left = 0
             Top = 65
             Width = 198
-            Height = 22
+            Height = 31
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4633,7 +4623,6 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 2
             OnChange = FixRowColorBoxChange
-            ExplicitHeight = 31
           end
           object StaticText4: TStaticText
             AlignWithMargins = True
@@ -4685,14 +4674,16 @@ object DepthForm: TDepthForm
               'Better'#36067#32972#26223#33394
               'Better'#36067#25991#23383#33394
               #26085#39640#20729#32218#26694#33394#11
+              ''
               #26085#20302#20729#32218#26694#33394#11
+              ''
               #25104#20132#22343#20729#32218)
           end
           object TickColorBox: TColorBox
             Left = 0
             Top = 168
             Width = 198
-            Height = 22
+            Height = 31
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4708,7 +4699,6 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             OnChange = TickColorBoxChange
-            ExplicitHeight = 31
           end
           object StaticText2: TStaticText
             AlignWithMargins = True
@@ -4758,13 +4748,14 @@ object DepthForm: TDepthForm
               #35320#20729#32972#26223#38991#33394
               #35320#20729#25991#23383#38991#33394
               'OCO'#32972#26223#38991#33394
-              'OCO'#25991#23383#38991#33394)
+              'OCO'#25991#23383#38991#33394
+              #21034'OCO'#32972#26223#38991#33394)
           end
           object BuyTextColorBox: TColorBox
             Left = 0
             Top = 269
             Width = 198
-            Height = 22
+            Height = 31
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4780,7 +4771,6 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 8
             OnChange = BuyTextColorBoxChange
-            ExplicitHeight = 31
           end
           object StaticText3: TStaticText
             AlignWithMargins = True
@@ -4830,13 +4820,14 @@ object DepthForm: TDepthForm
               #35320#20729#32972#26223#38991#33394
               #35320#20729#25991#23383#38991#33394
               'OCO'#32972#26223#38991#33394
-              'OCO'#25991#23383#38991#33394)
+              'OCO'#25991#23383#38991#33394
+              'OCO'#21034#32972#26223#38991#33394)
           end
           object SellTextColorBox: TColorBox
             Left = 0
             Top = 371
             Width = 198
-            Height = 22
+            Height = 31
             Margins.Left = 5
             Margins.Top = 5
             Margins.Right = 5
@@ -4852,7 +4843,6 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 11
             OnChange = SellTextColorBoxChange
-            ExplicitHeight = 31
           end
         end
       end
@@ -5177,7 +5167,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C01010300080090010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800A0010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
