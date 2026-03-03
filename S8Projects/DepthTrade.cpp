@@ -2886,6 +2886,9 @@ void __fastcall TDepthForm::EnableQuickMode( void )
 {
 	ExtraPanel->Visible = false;
 	OrderBookList->ShowOCO = false;
+	StopLabel->Enabled = true;
+	StopToggleSwitch->Enabled = true;
+	OrderBookList->ConditionOrder = (StopToggleSwitch->State != tssOff);
 
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
@@ -2902,6 +2905,9 @@ void __fastcall TDepthForm::EnableOCOMode( void )
 	OCODetailBtn->Visible = true;
 	OCODetailBtn->Align = alRight;
 	OrderBookList->ShowOCO = true;
+	OrderBookList->ConditionOrder = false;
+	StopLabel->Enabled = false;
+    StopToggleSwitch->Enabled = false;
 
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
