@@ -33,17 +33,14 @@ __published:	// IDE-managed Components
 public:		// User declarations
 	__fastcall TSettingOCODlgForm(	TComponent* Owner,
 									int orderType,
-									int limitOrderTick,
-									int rangeMarketOrderTick);
+									int limitOrderTick);
 	__fastcall ~TSettingOCODlgForm( void );
 	void __fastcall SetOCOOrderType( int type );
 	int __fastcall GetOrderType( void ){ return FOrderType;}
 	int __fastcall GetLimitOrderTick( void ){ return FLimitOrderTick; }
-	int __fastcall GetRangeMarketOrderTick( void ){ return FRangeMarketOrderTick; }
 private:	// User declarations
 	int FOrderType;
 	int FLimitOrderTick;
-	int FRangeMarketOrderTick;
 	const String FLimitOrderTitle;
 	const String FMarketOrderTitle;
 	const String FRangeMarketOrderTitle;

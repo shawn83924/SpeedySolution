@@ -13,17 +13,15 @@ TSettingOCODlgForm *SettingOCODlgForm;
 //---------------------------------------------------------------------------
 __fastcall TSettingOCODlgForm::TSettingOCODlgForm(TComponent* Owner,
 									int orderType,
-									int limitOrderTick,
-									int rangeMarketOrderTick)
+									int limitOrderTick)
 	: TForm(Owner)
 	,FLimitOrderTitle		(L"﹚基丁禯:")
 	,FMarketOrderTitle		(L"カ基癳〆癠")
-	,FRangeMarketOrderTitle	(L"﹚基絛瞅:")
+	,FRangeMarketOrderTitle	(L"絛瞅カ基癳〆癠")
 {
 	FOrderType 					= orderType;
 	OrderTypeComboBox->ItemIndex= orderType;
 	FLimitOrderTick 			= limitOrderTick;
-	FRangeMarketOrderTick 		= rangeMarketOrderTick;
 	OrderTypeComboBoxChange(NULL);
 }
 //---------------------------------------------------------------------------
@@ -57,10 +55,9 @@ void __fastcall TSettingOCODlgForm::SetOCOOrderType( int type )
 	else
 	{
 		PriceTitleLabel->Caption= FRangeMarketOrderTitle;
-		TickEdit->Visible 		= true;
-		TickUpDown->Visible 	= true;
-		TickUpDown->Position 	= FRangeMarketOrderTick;
-		PriceEndLabel->Visible 	= true;
+		TickEdit->Visible 		= false;
+		TickUpDown->Visible 	= false;
+		PriceEndLabel->Visible 	= false;
 	}
 	FOrderType = OrderTypeComboBox->ItemIndex;
 }
@@ -68,8 +65,6 @@ void __fastcall TSettingOCODlgForm::SetOCOOrderType( int type )
 void __fastcall TSettingOCODlgForm::TickUpDownClick(TObject *Sender, TUDBtnType Button)
 {
 	if(FOrderType == 0)
-		FLimitOrderTick 		= TickUpDown->Position;
-	if(FOrderType == 2)
-		FRangeMarketOrderTick 	= TickUpDown->Position;
+		FLimitOrderTick = TickUpDown->Position;
 }
 //---------------------------------------------------------------------------

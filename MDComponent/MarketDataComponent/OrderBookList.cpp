@@ -3530,6 +3530,12 @@ void __fastcall TOrderBookList::WndProc( TMessage &Msg )
 				if( Coord.Y > 9 )
 					return;
 			}
+			if(FOrderByOneClick == false)
+				return;
+			break;
+		case WM_LBUTTONDBLCLK:
+			if(FOrderByOneClick == true)
+				return;
 			break;
 	}
 	inherited::WndProc( Msg );
