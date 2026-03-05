@@ -204,6 +204,10 @@ __published:	// IDE-managed Components
 	TPanel *ExtraPanel;
 	TGraphButton *SettingOCOBtn;
 	TGraphButton *OCODetailBtn;
+	TLabel *OrderByOneClickLabel;
+	TToggleSwitch *OrderByOneClickSwitch;
+	TLabel *CancelByRightClickLabel;
+	TToggleSwitch *CancelByRightClickSwitch;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -307,6 +311,7 @@ __published:	// IDE-managed Components
 	void __fastcall SettingOCOBtnClick(TObject *Sender);
 	void __fastcall OrderBookListNewOCOOrder(TObject *Sender, SideEnum side, double Price);
 	void __fastcall OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage);
+	void __fastcall OrderByOneClickSwitchClick(TObject *Sender);
 
 
 

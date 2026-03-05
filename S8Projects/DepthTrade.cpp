@@ -1048,6 +1048,8 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 	g_Config.SetBoolProperty( Profile,"Stop", OrderBookList->ConditionOrder );
 	g_Config.SetBoolProperty( Profile,"DerivedPx", OrderBookList->ShowDerivedPx );
 	g_Config.SetBoolProperty( Profile,"FillQty", OrderBookList->ShowFillQty );
+	g_Config.SetBoolProperty( Profile,"OrderByOneClick", OrderBookList->OrderByOneClick );
+	g_Config.SetBoolProperty( Profile,"CancelByRightClick", OrderBookList->CancelByRightClick );
 	g_Config.SetBoolProperty( Profile,"CxBeforeNew", OrderBookList->CancelBeforeNew );
 	g_Config.SetBoolProperty( Profile,"EnableSlice", OrderBookList->SetEnable );
 	g_Config.SetBoolProperty( Profile,"MKTIOC", ( MarketToggleSwitch->State == tssOn)? true:false );
@@ -1121,6 +1123,8 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	OrderBookList->ConditionOrder  = g_Config.GetBoolProperty( Profile,"Stop", false );
 	OrderBookList->ShowDerivedPx   = g_Config.GetBoolProperty( Profile,"DerivedPx", false );
 	OrderBookList->ShowFillQty     = g_Config.GetBoolProperty( Profile,"FillQty", false );
+	OrderBookList->OrderByOneClick = g_Config.GetBoolProperty( Profile,"OrderByOneClick", true );
+	OrderBookList->CancelByRightClick = g_Config.GetBoolProperty( Profile,"CancelByRightClick", true );
 	OrderBookList->CancelBeforeNew = g_Config.GetBoolProperty( Profile,"CxBeforeNew", false );
 	OrderBookList->SetEnable       = g_Config.GetBoolProperty( Profile,"EnableSlice", false );
 	MarketToggleSwitch->State      = (g_Config.GetBoolProperty( Profile,"MKTIOC", true ) == true)? tssOn:tssOff;
@@ -1157,6 +1161,8 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	StopToggleSwitch->State = ( OrderBookList->ConditionOrder == true)?tssOn:tssOff;
 	DrivedToggleSwitch->State = ( OrderBookList->ShowDerivedPx == true)?tssOn:tssOff;
 	FillQtyToggleSwitch->State = ( OrderBookList->ShowFillQty == true)?tssOn:tssOff;
+	OrderByOneClickSwitch->State = (OrderBookList->OrderByOneClick == true)?tssOn:tssOff;
+	CancelByRightClickSwitch->State = (OrderBookList->CancelByRightClick == true)?tssOn:tssOff;
 	CxlBeforeNewToggleSwitch->State = ( OrderBookList->CancelBeforeNew == true)?tssOn:tssOff;
 	SliceOrderSwitch->State = ( OrderBookList->SetEnable == true)?tssOn:tssOff;
 	StepUpDown->Position = OrderBookList->Step;
@@ -1491,7 +1497,6 @@ void __fastcall TDepthForm::LoadOCOSetting( void )
 {
 	FOCOType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
 	FLimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
-	FRangeMarketOrderTick = g_Config.GetIntegerProperty( "Setting", "RangeMarketOrderTick", 0 );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SaveDefColor( void  )
@@ -1681,7 +1686,6 @@ void __fastcall TDepthForm::SaveOCOSetting( void )
 {
 	g_Config.SetIntegerProperty( "Setting", "OCOType", FOCOType);
 	g_Config.SetIntegerProperty( "Setting", "LimitOrderTick", FLimitOrderTick);
-	g_Config.SetIntegerProperty( "Setting", "RangeMarketOrderTick", FRangeMarketOrderTick);
 }
 //---------------------------------------------------------------------------
 TColor __fastcall TDepthForm::GetFixColor( int Index )
@@ -3037,14 +3041,13 @@ void __fastcall TDepthForm::SmartOrderTabsChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SettingOCOBtnClick(TObject *Sender)
 {
-	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(this, FOCOType, FLimitOrderTick, FRangeMarketOrderTick);
+	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(this, FOCOType, FLimitOrderTick);
 	int showResult = dlg->ShowModal();
 	if(showResult == mrCancel)
 		return;
 
 	FOCOType = dlg->GetOrderType();
 	FLimitOrderTick = dlg->GetLimitOrderTick();
-	FRangeMarketOrderTick = dlg->GetRangeMarketOrderTick();
 	SaveOCOSetting();
 	ContractViewerForm->LoadDepthOCO(this);
 }
@@ -3063,3 +3066,13 @@ void __fastcall TDepthForm::OrderBookListNewOCOFail(TObject *Sender, const AnsiS
 	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrorMessage.c_str() );
 }
 //---------------------------------------------------------------------------
+
+void __fastcall TDepthForm::OrderByOneClickSwitchClick(TObject *Sender)
+{
+	if(OrderByOneClickSwitch->State == tssOff)
+		OrderBookList->OrderByOneClick = false;
+	else
+        OrderBookList->OrderByOneClick = true;
+}
+//---------------------------------------------------------------------------
+

@@ -120,6 +120,8 @@ private:
 	bool            FMarkPx2Alarm;
 	bool            FMarkPx2Higher;
 	bool			FShowFillQty;
+	bool            FOrderByOneClick;
+    bool            FCancelByRightClick;
 	TColor 			FBuyBKColor;
 	TColor 			FBuyColor;
 	TColor 			FSellBKColor;
@@ -532,6 +534,8 @@ __published:
 	__property int ClickQty = { read = FClickQty, write = FClickQty };
 	__property int BestFitWidth = { read = FBestFitWidth, write = FBestFitWidth };
 	__property bool ShowFillQty = { read = FShowFillQty, write = FShowFillQty };
+	__property bool OrderByOneClick = { read = FOrderByOneClick, write = FOrderByOneClick };
+	__property bool CancelByRightClick = { read = FCancelByRightClick, write = FCancelByRightClick };
 	__property bool ShowDerivedPx = { read = FShowDerivedPx, write = FShowDerivedPx };
 	__property bool EnableHotTracks = { read = FEnableHotTracks, write = FEnableHotTracks };
 	__property int BidQty[ int depth ]  = { read = GetBidQty };
