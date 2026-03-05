@@ -239,7 +239,7 @@ void __fastcall TOrderBookList::InitString( void )
 {
 	HeaderString[ 0] = Mdcomponentstrings_MD_ORDERBOOK_FILL_BUY;///'買成'
 	HeaderString[ 1] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
-	HeaderString[ 2] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(OCO)'
+	HeaderString[ 2] = Mdcomponentstrings_MD_ORDERBOOK_CANCELOCO;///'刪單(OCO)'
 	HeaderString[ 3] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
 	HeaderString[ 4] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(賣出)'
 	HeaderString[ 5] = Mdcomponentstrings_MD_ORDERBOOK_BUY_IN;////'買進'
@@ -251,7 +251,7 @@ void __fastcall TOrderBookList::InitString( void )
 	HeaderString[11] = Mdcomponentstrings_MD_ORDERBOOK_SELL_OFF;///'賣出'
 	HeaderString[12] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(賣出)'
 	HeaderString[13] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
-	HeaderString[14] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(OCO)'
+	HeaderString[14] = Mdcomponentstrings_MD_ORDERBOOK_CANCELOCO;///'刪單(OCO)'
 	HeaderString[15] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
 	HeaderString[16] = Mdcomponentstrings_MD_ORDERBOOK_FILL_SELL;///'賣成'
 }
@@ -374,7 +374,7 @@ void __fastcall TOrderBookList::CalSize( void )
 	SetCompactCol(ShortColWidth);
 	SetFillCol(FillWidth);
 	SetConditionCol(OrderWidth);
-	SetSmartOrderCol(OrderWidth);
+	SetSmartOrderCol(OrderWidth + 20);
 	CalFilledColSize( BufferBmp->Canvas );    ///< Filled price col
 	ColWidths[ BUY_ORDER_COL ]  = OrderWidth;
 	ColWidths[ SELL_ORDER_COL ] = OrderWidth;
@@ -2454,6 +2454,8 @@ void __fastcall TOrderBookList::ConditionOrderColMouseDown( Classes::TShiftState
 		Side = nsOrderMessageDefine::sBuy;
 		if( FOnDeleteStopOrder != NULL && Shift.Contains( ssRight ) )
 		{
+			if( FCancelByRightClick == false)
+				return;
 			if( Y == 1 )
 				DeleteAllStopOrder( nsOrderMessageDefine::sBuy );
 			else
@@ -2483,6 +2485,8 @@ void __fastcall TOrderBookList::ConditionOrderColMouseDown( Classes::TShiftState
 		Side = nsOrderMessageDefine::sSell;
 		if( FOnDeleteStopOrder != NULL && Shift.Contains( ssRight ) )
 		{
+            if( FCancelByRightClick == false)
+				return;
 			if( Y == 1 )
 				DeleteAllStopOrder( nsOrderMessageDefine::sSell );
 			else
@@ -2550,6 +2554,8 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y )
 {
+	if( FCancelByRightClick == false)
+		return;
 	if(Y < 0)
 		return;
 
