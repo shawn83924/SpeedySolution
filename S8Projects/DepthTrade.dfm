@@ -265,8 +265,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 196
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -291,8 +291,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 224
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -317,8 +317,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -398,8 +398,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -427,8 +427,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2161,8 +2161,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -2235,7 +2235,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = ColorTabSheet
+      ActivePage = SettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2267,7 +2267,7 @@ object DepthForm: TDepthForm
           Width = 202
           Height = 620
           HorzScrollBar.Range = 170
-          VertScrollBar.Range = 868
+          VertScrollBar.Range = 950
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alClient
@@ -2276,7 +2276,7 @@ object DepthForm: TDepthForm
           OnMouseWheel = ScrollBoxMouseWheel
           object CountLabel: TLabel
             Left = 8
-            Top = 441
+            Top = 557
             Width = 72
             Height = 23
             Margins.Left = 5
@@ -2287,7 +2287,7 @@ object DepthForm: TDepthForm
           end
           object MarketLabel: TLabel
             Left = 8
-            Top = 280
+            Top = 396
             Width = 90
             Height = 23
             Margins.Left = 5
@@ -2304,7 +2304,7 @@ object DepthForm: TDepthForm
           end
           object Label2: TLabel
             Left = 8
-            Top = 226
+            Top = 342
             Width = 72
             Height = 23
             Margins.Left = 5
@@ -2389,7 +2389,7 @@ object DepthForm: TDepthForm
           end
           object CxlBeforeNewLabel: TLabel
             Left = 8
-            Top = 334
+            Top = 450
             Width = 126
             Height = 23
             Margins.Left = 5
@@ -2405,8 +2405,8 @@ object DepthForm: TDepthForm
             ParentFont = False
           end
           object Bevel8: TBevel
-            Left = 7
-            Top = 221
+            Left = 8
+            Top = 337
             Width = 163
             Height = 12
             Margins.Left = 4
@@ -2416,8 +2416,8 @@ object DepthForm: TDepthForm
             Shape = bsTopLine
           end
           object Bevel5: TBevel
-            Left = 7
-            Top = 503
+            Left = 8
+            Top = 618
             Width = 163
             Height = 12
             Margins.Left = 4
@@ -2428,7 +2428,7 @@ object DepthForm: TDepthForm
           end
           object SliceOrderLabel: TLabel
             Left = 8
-            Top = 388
+            Top = 504
             Width = 108
             Height = 23
             Margins.Left = 5
@@ -2445,7 +2445,7 @@ object DepthForm: TDepthForm
           end
           object TickLabel: TLabel
             Left = 8
-            Top = 472
+            Top = 586
             Width = 72
             Height = 23
             Margins.Left = 5
@@ -2454,9 +2454,43 @@ object DepthForm: TDepthForm
             Margins.Bottom = 5
             Caption = #38291#38548#27284#20301
           end
+          object OrderByOneClickLabel: TLabel
+            Left = 8
+            Top = 225
+            Width = 108
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #21934#25802#28369#40736#19979#21934
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
+          object CancelByRightClickLabel: TLabel
+            Left = 8
+            Top = 281
+            Width = 72
+            Height = 23
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Caption = #21491#37749#21034#21934
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -18
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = [fsBold]
+            ParentFont = False
+          end
           object MarketToggleSwitch: TToggleSwitch
             Left = 8
-            Top = 303
+            Top = 419
             Width = 78
             Height = 24
             Margins.Left = 5
@@ -2478,7 +2512,7 @@ object DepthForm: TDepthForm
           end
           object LotsComboBox: TComboBox
             Left = 8
-            Top = 248
+            Top = 364
             Width = 117
             Height = 30
             Margins.Left = 5
@@ -2558,7 +2592,7 @@ object DepthForm: TDepthForm
           end
           object ExchangeComboBox: TComboBox
             Left = 8
-            Top = 510
+            Top = 629
             Width = 162
             Height = 27
             BevelInner = bvNone
@@ -2605,7 +2639,7 @@ object DepthForm: TDepthForm
           end
           object CxlBeforeNewToggleSwitch: TToggleSwitch
             Left = 8
-            Top = 357
+            Top = 473
             Width = 78
             Height = 24
             Margins.Left = 5
@@ -2651,7 +2685,7 @@ object DepthForm: TDepthForm
           end
           object SliceOrderSwitch: TToggleSwitch
             Left = 8
-            Top = 410
+            Top = 526
             Width = 78
             Height = 24
             Margins.Left = 5
@@ -2674,7 +2708,7 @@ object DepthForm: TDepthForm
           end
           object StepCountEdit: TEdit
             Left = 86
-            Top = 439
+            Top = 555
             Width = 39
             Height = 27
             Margins.Left = 5
@@ -2697,7 +2731,7 @@ object DepthForm: TDepthForm
           end
           object StepEdit: TEdit
             Left = 86
-            Top = 470
+            Top = 586
             Width = 39
             Height = 27
             Margins.Left = 5
@@ -2713,16 +2747,16 @@ object DepthForm: TDepthForm
             MaxLength = 2
             ParentFont = False
             TabOrder = 10
-            Text = '2'
+            Text = '5'
             OnKeyUp = EditKeyUp
             OnMouseActivate = EditMouseActivate
             OnMouseDown = EditMouseDown
           end
           object SymbolListBox: TListBox
             Left = 8
-            Top = 543
+            Top = 662
             Width = 162
-            Height = 314
+            Height = 285
             Style = lbVirtual
             ExtendedSelect = False
             ItemHeight = 20
@@ -2732,7 +2766,7 @@ object DepthForm: TDepthForm
           end
           object StepUpDown: TUpDown
             Left = 125
-            Top = 470
+            Top = 586
             Width = 31
             Height = 27
             Margins.Left = 5
@@ -2742,13 +2776,13 @@ object DepthForm: TDepthForm
             Associate = StepEdit
             Min = 1
             Max = 5
-            Position = 2
+            Position = 5
             TabOrder = 12
             OnChangingEx = StepUpDownChangingEx
           end
           object StepCountUpDown: TUpDown
             Left = 125
-            Top = 439
+            Top = 555
             Width = 31
             Height = 27
             Margins.Left = 5
@@ -2761,6 +2795,52 @@ object DepthForm: TDepthForm
             Position = 1
             TabOrder = 13
             OnChangingEx = StepCountUpDownChangingEx
+          end
+          object OrderByOneClickSwitch: TToggleSwitch
+            Left = 8
+            Top = 248
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 14
+            ThumbWidth = 20
+            OnClick = OrderByOneClickSwitchClick
+          end
+          object CancelByRightClickSwitch: TToggleSwitch
+            Left = 8
+            Top = 304
+            Width = 78
+            Height = 24
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
+            Font.Charset = ANSI_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -17
+            Font.Name = #24494#36575#27491#40657#39636
+            Font.Style = []
+            ParentFont = False
+            StateCaptions.CaptionOn = #38283#21855
+            StateCaptions.CaptionOff = #38364#38281
+            SwitchHeight = 18
+            SwitchWidth = 38
+            TabOrder = 15
+            ThumbWidth = 20
+            OnClick = FillQtyToggleSwitchClick
           end
         end
       end
@@ -5167,7 +5247,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800A0010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800A4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
