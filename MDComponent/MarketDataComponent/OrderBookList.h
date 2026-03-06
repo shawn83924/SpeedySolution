@@ -202,7 +202,6 @@ private:
 	int				FBestFitWidth;
 	TGridCoord		FMouseCoord;
 	TGridCoord		FMouseDownCoord;
-	bool			FCancelMouseDown;
 	nsOrderMessageDefine::SideEnum				FCancelSide;
 	Graphics::TBitmap* FPlusBmp;
 	Graphics::TBitmap* FMinusBmp;
@@ -393,7 +392,6 @@ private:
 	void __fastcall DrawOCOQty( Graphics::TBitmap* Bmp,	Types::TRect* ARect, int ACol, int ARow, TColor TextColor);
 	void __fastcall MouseOverCell( const TGridCoord& Coord );
 	DYNAMIC void __fastcall MouseDown(Controls::TMouseButton Button, Classes::TShiftState Shift, int X, int Y);
-	DYNAMIC void __fastcall MouseUp(Controls::TMouseButton Button, Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall MouseMove(Classes::TShiftState Shift, int X, int Y);
 	DYNAMIC void __fastcall KeyDown(System::Word &Key, Classes::TShiftState Shift);
 	void __fastcall MouseLeave( System::TObject* Sender );
