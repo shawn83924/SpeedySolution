@@ -3094,7 +3094,15 @@ void __fastcall TDepthForm::OrderByOneClickSwitchClick(TObject *Sender)
 	if(OrderByOneClickSwitch->State == tssOff)
 		OrderBookList->OrderByOneClick = false;
 	else
-        OrderBookList->OrderByOneClick = true;
+		OrderBookList->OrderByOneClick = true;
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TDepthForm::CancelByRightClickSwitchClick(TObject *Sender)
+{
+    if(CancelByRightClickSwitch->State == tssOff)
+		OrderBookList->CancelByRightClick = false;
+	else
+		OrderBookList->CancelByRightClick = true;
+}
+//---------------------------------------------------------------------------
