@@ -312,6 +312,7 @@ __published:	// IDE-managed Components
 	void __fastcall OrderBookListNewOCOOrder(TObject *Sender, SideEnum side, double Price);
 	void __fastcall OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage);
 	void __fastcall OrderByOneClickSwitchClick(TObject *Sender);
+	void __fastcall CancelByRightClickSwitchClick(TObject *Sender);
 
 
 

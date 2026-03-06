@@ -36,7 +36,7 @@ object DepthForm: TDepthForm
     BearPrice = 6339.000000000000000000
     FillPrice = 7293.000000000000000000
     ClickQty = 1
-    BestFitWidth = 606
+    BestFitWidth = 768
     ShowFillQty = True
     ShowDerivedPx = True
     EnableHotTracks = True
@@ -173,21 +173,21 @@ object DepthForm: TDepthForm
     OnTick = OrderBookListTick
     ColWidths = (
       71
-      40
+      67
       0
       0
-      40
-      40
+      67
+      67
       68
       0
       71
       0
       68
-      40
-      40
+      67
+      67
       0
       0
-      40
+      67
       71)
   end
   object pnlToolbar: TPanel
@@ -2238,7 +2238,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = ColorTabSheet
+      ActivePage = SettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -2843,7 +2843,7 @@ object DepthForm: TDepthForm
             SwitchWidth = 38
             TabOrder = 15
             ThumbWidth = 20
-            OnClick = FillQtyToggleSwitchClick
+            OnClick = CancelByRightClickSwitchClick
           end
         end
       end
@@ -5252,7 +5252,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800B4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800A4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

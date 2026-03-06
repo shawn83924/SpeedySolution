@@ -446,6 +446,9 @@ private:
 	void __fastcall ConditionOrderColMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColLeftMouseDown( Classes::TShiftState Shift, int X, int Y );
 	void __fastcall OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y );
+	void __fastcall OCODelColLeftMouseDown( Classes::TShiftState Shift, int X, int Y );
+	void __fastcall CancelPairingOCO( void );
+    void __fastcall DeletePairingOCO( double price, SideEnum side );
 	void __fastcall SetOCOQtyArray(nsOrderMessageDefine::SideEnum side, int index, int Qty, bool isAdd );
 	void __fastcall MarkPrice( int Tick, bool IsMark1 );
 	void __fastcall SetBuyStopTick( int Tick );
