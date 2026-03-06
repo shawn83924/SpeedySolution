@@ -40,6 +40,8 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FAskDepth5Color( clBlack )
 ,FBuyBKColor( clNavy )
 ,FSellBKColor( clNavy )
+,FBuyDelBKColor( clNavy )
+,FSellDelBKColor( clNavy )
 ,FFixedRowColor( clBlack )
 ,FFixedRowBKColor( clWhite )
 ,FFixedRowBKEndColor( clWhite )
@@ -94,6 +96,8 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 ,FSellConditionColBKColor( (TColor)0x00763A0A )
 ,FBuyOCOColColor( clBlack )
 ,FBuyOCOColBKColor( clWhite )
+,FBuyOCODelColColor( clBlack )
+,FBuyOCODelColBKColor( clWhite )
 ,FSellOCOColColor( clBlack )
 ,FSellOCOColBKColor( clWhite )
 ,FDayHFrameColor( clRed )
@@ -241,7 +245,7 @@ void __fastcall TOrderBookList::InitString( void )
 	HeaderString[ 1] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
 	HeaderString[ 2] = Mdcomponentstrings_MD_ORDERBOOK_CANCELOCO;///'刪單(OCO)'
 	HeaderString[ 3] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
-	HeaderString[ 4] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(賣出)'
+	HeaderString[ 4] = Mdcomponentstrings_MD_ORDERBOOK_BUYCANCEL;///'刪(買進)'
 	HeaderString[ 5] = Mdcomponentstrings_MD_ORDERBOOK_BUY_IN;////'買進'
 	HeaderString[ 6] = Mdcomponentstrings_MD_ORDERBOOK_BUY_ORDER;///'委買'
 	HeaderString[ 7] = Mdcomponentstrings_MD_ORDERBOOK_BUY;///'買'
@@ -249,7 +253,7 @@ void __fastcall TOrderBookList::InitString( void )
 	HeaderString[ 9] = Mdcomponentstrings_MD_ORDERBOOK_SELL;///'賣'
 	HeaderString[10] = Mdcomponentstrings_MD_ORDERBOOK_SELL_ORDER;///'委賣'
 	HeaderString[11] = Mdcomponentstrings_MD_ORDERBOOK_SELL_OFF;///'賣出'
-	HeaderString[12] = Mdcomponentstrings_MD_ORDERBOOK_CANCEL;///'刪(賣出)'
+	HeaderString[12] = Mdcomponentstrings_MD_ORDERBOOK_SELLCANCEL;///'刪(賣出)'
 	HeaderString[13] = Mdcomponentstrings_MD_ORDERBOOK_OCO;///'OCO'
 	HeaderString[14] = Mdcomponentstrings_MD_ORDERBOOK_CANCELOCO;///'刪單(OCO)'
 	HeaderString[15] = Mdcomponentstrings_MD_ORDERBOOK_STOPPX;///'觸價'
@@ -364,7 +368,7 @@ void __fastcall TOrderBookList::CalSize( void )
 	ShortColWidth = BufferBmp->Canvas->TextWidth( HeaderString[BUY_CONDITION_COL] ) + 4; ///< width: 觸價
 	LongColWidth  = BufferBmp->Canvas->TextWidth( HeaderText ) + 4;      ///< width: 買成(999)
 	QtyWidth      = BufferBmp->Canvas->TextWidth( L"9999(99)" ) + 4;     ///< width: 9999(99)
-	OrderWidth    = BufferBmp->Canvas->TextWidth( L"9999" ) + 4;         ///< width: 9999
+	OrderWidth    = BufferBmp->Canvas->TextWidth( L"9999999" ) + 4;         ///< width: 9999999
 	DefaultRowHeight = BufferBmp->Canvas->TextHeight( HeaderText ) + 2;  ///< Height of
 	if( LongColWidth >= OrderWidth ) ///< FillQtyWidth
 		FillWidth = LongColWidth;
@@ -374,10 +378,12 @@ void __fastcall TOrderBookList::CalSize( void )
 	SetCompactCol(ShortColWidth);
 	SetFillCol(FillWidth);
 	SetConditionCol(OrderWidth);
-	SetSmartOrderCol(OrderWidth + 20);
+	SetSmartOrderCol(OrderWidth);
 	CalFilledColSize( BufferBmp->Canvas );    ///< Filled price col
 	ColWidths[ BUY_ORDER_COL ]  = OrderWidth;
 	ColWidths[ SELL_ORDER_COL ] = OrderWidth;
+	ColWidths[ BUY_DEL_BTN_COL ] = OrderWidth;
+	ColWidths[ SELL_DEL_BTN_COL ] = OrderWidth;
 	ColWidths[ BUY_MK_COL ]     = QtyWidth;
 	ColWidths[ SELL_MK_COL ]    = QtyWidth;
 	FBestFitWidth = COL_COUNT;// + 2;
@@ -526,8 +532,6 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 	FSellConditionQty.Length = RowCount;
 	FBuyOCOQty.Length = RowCount;
 	FSellOCOQty.Length = RowCount;
-	FBuyOCODelQty.Length = RowCount;
-	FSellOCODelQty.Length= RowCount;
 
 	for( register int i = 0; i < DEPTH_COUNT; i++ )
 	{
@@ -548,8 +552,6 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 		FSellConditionQty[i] = -1;
 		FBuyOCOQty[i] = 0;
 		FSellOCOQty[i] = 0;
-		FBuyOCODelQty[i]= -1;
-        FSellOCODelQty[i]= -1;
 	}
 	if( FSettingMode == true )
 	{
@@ -896,14 +898,13 @@ void _fastcall TOrderBookList::DrawCell(int ACol, int ARow, const Types::TRect &
 		case BUY_FILL_COL		: DrawBuyFillCol( ARow, ARect, AState ); break;
 		case BUY_ORDER_COL		: DrawBuyOrderCol( ARow, ARect, AState ); break;
 		case BUY_MK_COL			: DrawBuyMKCol( ARow, ARect, AState ); break;
-		case PRICE_COL			: DrawTick( ARow, ARect, AState );
-								  break;
+		case PRICE_COL			: DrawTick( ARow, ARect, AState ); break;
 		case SELL_MK_COL		: DrawSellMKCol( ARow, ARect, AState ); break;
 		case SELL_ORDER_COL		: DrawSellOrderCol( ARow, ARect, AState ); break;
 		case BUY_DEL_BTN_COL	:
+		case SELL_DEL_BTN_COL	: DrawDelCol( ACol, ARow, ARect, AState ); break;
 		case BUY_ORDER_BTN_COL	:
-		case SELL_ORDER_BTN_COL	:
-		case SELL_DEL_BTN_COL	: DrawButtonCol( ACol, ARow, ARect, AState ); break;
+		case SELL_ORDER_BTN_COL	: DrawButtonCol( ACol, ARow, ARect, AState ); break;
 		case SELL_FILL_COL		: DrawSellFillCol( ARow, ARect, AState ); break;
 		case BUY_CONDITION_COL	:
 		case SELL_CONDITION_COL	: DrawConditionCol( ACol, ARow, ARect, AState ); break;
@@ -1066,16 +1067,6 @@ void __fastcall TOrderBookList::DrawSumRow( int Col, const Types::TRect &ARect, 
 		Qty = FTotalOCOBuyQty;
 	else if( Col == SELL_OCO_COL )
 		Qty = FTotalOCOSellQty;
-	else if( Col == BUY_DEL_BTN_COL || Col == SELL_DEL_BTN_COL )
-	{
-		if( FMouseCoord.Y == 1 && Col == FMouseCoord.X )
-			FBufferBmp->Canvas->StretchDraw( PaintRect, FMinusLightBmp );
-		else
-			FBufferBmp->Canvas->StretchDraw( PaintRect, FMinusDarkBmp );
-		DrawGridLine( FBufferBmp, PaintRect );
-		Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
-		return;
-	}
 	else if( Col == BUY_FILL_COL )
 	{
 		Px = FBuyAvgFillPx;
@@ -1147,6 +1138,13 @@ void __fastcall TOrderBookList::DrawSumRow( int Col, const Types::TRect &ARect, 
 	else if( Col == BUY_FILL_COL || Col == SELL_FILL_COL )
 	{
 		TTextFormat Formats;
+
+		Formats <<tfSingleLine<<tfCenter<<tfVerticalCenter<<tfEndEllipsis;
+		FBufferBmp->Canvas->TextRect( PaintRect, Text, Formats );
+	}
+	else if( Col == BUY_DEL_BTN_COL || Col == SELL_DEL_BTN_COL )
+	{
+        TTextFormat Formats;
 
 		Formats <<tfSingleLine<<tfCenter<<tfVerticalCenter<<tfEndEllipsis;
 		FBufferBmp->Canvas->TextRect( PaintRect, Text, Formats );
@@ -1486,7 +1484,7 @@ void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRe
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::DrawOCODelCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState )
 {
-    if( ARow <= 0 )
+	if( ARow <= 0 )
 		return;
 
 	TRect PaintRect = Rect( 0, 0, ARect.Width(), DefaultRowHeight );
@@ -1496,23 +1494,21 @@ void __fastcall TOrderBookList::DrawOCODelCol( int ACol, int ARow, const Types::
 		FBufferBmp->Height = DefaultRowHeight;
 	}
 
-	TColor FrontColor, BKColor;
+	TColor BKColor;
 	bool isHotTrack = 	FEnableHotTracks &&
 						!FCancelMouseDown &&
 						ARow == FMouseCoord.Y &&
 						ACol == FMouseCoord.X;
 	if (isHotTrack)
 	{
-		FrontColor = FHotTracksColor;
-		BKColor    = FHotTracksBKColor;
+		BKColor = FHotTracksBKColor;
 	}
 	else
 	{
 		bool isBuyCol = (ACol == BUY_OCODEL_COL);
-		FrontColor = isBuyCol ? FBuyOCODelColColor : FSellOCODelColColor;
 		BKColor    = isBuyCol ? FBuyOCODelColBKColor : FSellOCODelColBKColor;
 	}
-    FBufferBmp->Canvas->Brush->Color = BKColor;
+	FBufferBmp->Canvas->Brush->Color = BKColor;
 	FBufferBmp->Canvas->FillRect( PaintRect );
 
 	DrawGridLine( FBufferBmp, PaintRect );
@@ -1788,6 +1784,39 @@ void __fastcall TOrderBookList::DrawSellOrderCol( int Row, const Types::TRect &A
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DrawDelCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState )
+{
+	if( ARow <= 0 )
+		return;
+
+    TRect PaintRect = Rect( 0, 0, ARect.Width(), DefaultRowHeight );
+	if( FBufferBmp->Width != ARect.Width() || FBufferBmp->Height != DefaultRowHeight )
+	{
+		FBufferBmp->Width = ARect.Width();
+		FBufferBmp->Height = DefaultRowHeight;
+	}
+
+	TColor BKColor;
+	bool isHotTrack = 	FEnableHotTracks &&
+						!FCancelMouseDown &&
+						ARow == FMouseCoord.Y &&
+						ACol == FMouseCoord.X;
+	if (isHotTrack)
+	{
+		BKColor = FHotTracksBKColor;
+	}
+	else
+	{
+		bool isBuyCol = (ACol == BUY_DEL_BTN_COL);
+		BKColor = isBuyCol ? FBuyDelBKColor : FSellDelBKColor;
+	}
+	FBufferBmp->Canvas->Brush->Color = BKColor;
+	FBufferBmp->Canvas->FillRect( PaintRect );
+
+	DrawGridLine( FBufferBmp, PaintRect );
+	Canvas->Draw( ARect.Left, ARect.Top, FBufferBmp );
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetFont( TFont* Font )
 {
 	FFont->Assign( Font );
@@ -1819,6 +1848,18 @@ void __fastcall TOrderBookList::SetSellBKColor( TColor Color )
 {
 	FSellBKColor = Color;
 	InvalidateCol( SELL_ORDER_COL );
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetBuyDelBKColor( TColor Color )
+{
+	FBuyDelBKColor = Color;
+	InvalidateCol( BUY_DEL_BTN_COL );
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetSellDelBKColor( TColor Color )
+{
+	FSellDelBKColor = Color;
+	InvalidateCol( SELL_DEL_BTN_COL );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetFillColor( TColor Color )
