@@ -2590,6 +2590,55 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 		FOnNewOCO(this, nsOrderMessageDefine::sSell,GetPxFromIndex( Y ));
 }
 //---------------------------------------------------------------------------
+void __fastcall TOrderBookList::OCODelColLeftMouseDown( Classes::TShiftState Shift, int X, int Y )
+{
+	double price = GetPxFromIndex(Y);
+
+	if (FIsPairingOCO && FCurrentPairOCO->ConditionPrice1 == price )
+	{
+		CancelPairingOCO();
+		return;
+	}
+
+	SideEnum side = (X == BUY_OCODEL_COL)? sBuy : sSell;
+	DeletePairingOCO(price, side);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::CancelPairingOCO( void )
+{
+	if( !FIsPairingOCO )
+		return;
+
+	int orderQty = FCurrentPairOCO->OrderQty1;
+	double price = FCurrentPairOCO->ConditionPrice1;
+	SideEnum orderSide = FCurrentPairOCO->OrderSide1;
+
+	delete FCurrentPairOCO;
+	FCurrentPairOCO = NULL;
+	FIsPairingOCO = false;
+
+	ColName colName = (orderSide == sBuy)? BUY_OCO_COL : SELL_OCO_COL;
+	InvalidateCellRect( colName, GetRowIndex(price) );
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DeletePairingOCO( double price, SideEnum side )
+{
+	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
+	{
+		OCOPair* pair = FOCOPairs[i];
+		bool match1	= (pair->ConditionPrice1 == price && pair->OrderSide1 == side);
+		bool match2 = (pair->ConditionPrice2 == price && pair->OrderSide2 == side);
+
+		if (!match1 && !match2)
+			continue;
+
+		SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, false);
+		SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, false);
+		FOCOPairs.erase( FOCOPairs.begin() + i );
+		delete pair;
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y )
 {
 	if( FCancelByRightClick == false)
@@ -2597,11 +2646,15 @@ void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift
 	if(Y < 0)
 		return;
 
-	if(FIsPairingOCO)
+	double price = GetPxFromIndex(Y);
+	if (FIsPairingOCO && FCurrentPairOCO->ConditionPrice1 == price )
 	{
-        //目前沒定義下oco過程中按右鍵的情境，這邊直接返回處理
+		CancelPairingOCO();
 		return;
 	}
+
+	SideEnum side = (X == BUY_OCO_COL)? sBuy : sSell;
+	DeletePairingOCO(price, side);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBuyStopTick( int Tick )
@@ -2897,6 +2950,9 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 				break;
 			case BUY_OCO_COL:
 			case SELL_OCO_COL: OCOColLeftMouseDown( Shift, Coord.X, Coord.Y );
+				break;
+			case BUY_OCODEL_COL:
+			case SELL_OCODEL_COL: OCODelColLeftMouseDown( Shift, Coord.X, Coord.Y );
 				break;
 			case PRICE_COL:
 							CellR = CellRect( Coord.X, Coord.Y );
@@ -3852,7 +3908,7 @@ void __fastcall TOrderBookList::UpdateOCOOrderQty( nsOrderMessageDefine::SideEnu
 		return;
 	}
 
-    // is sub
+	// is sub
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetOCOQtyArray(
@@ -3861,27 +3917,22 @@ void __fastcall TOrderBookList::SetOCOQtyArray(
 	int Qty,
 	bool isAdd)
 {
-	if(isAdd)
-	{
-		if(side == nsOrderMessageDefine::sBuy)
-		{
-			FBuyOCOQty[index] += Qty;
-			FTotalOCOBuyQty += Qty;
-			InvalidateCellRect( BUY_OCO_COL, index );
-			InvalidateCellRect( BUY_OCO_COL, 1 );
-		}
-		if(side == nsOrderMessageDefine::sSell)
-		{
-			FSellOCOQty[index] += Qty;
-			FTotalOCOSellQty += Qty;
-			InvalidateCellRect( SELL_OCO_COL, index );
-			InvalidateCellRect( SELL_OCO_COL, 1 );
-		}
+	int sign = isAdd ? 1 : -1;
 
-		return;
+	if (side == nsOrderMessageDefine::sBuy)
+	{
+		FBuyOCOQty[index] += sign * Qty;
+		FTotalOCOBuyQty   += sign * Qty;
+		InvalidateCellRect(BUY_OCO_COL, index);
+		InvalidateCellRect(BUY_OCO_COL, 1);
 	}
-	// is sub
-	//這部分等確定規則再做
+	else if (side == nsOrderMessageDefine::sSell)
+	{
+        FSellOCOQty[index] += sign * Qty;
+        FTotalOCOSellQty   += sign * Qty;
+        InvalidateCellRect(SELL_OCO_COL, index);
+        InvalidateCellRect(SELL_OCO_COL, 1);
+    }
 }
 //---------------------------------------------------------------------------
 double __fastcall TOrderBookList::GetBullPrice( int BetterSellTick )
