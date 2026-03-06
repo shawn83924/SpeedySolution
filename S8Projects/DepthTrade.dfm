@@ -36,14 +36,16 @@ object DepthForm: TDepthForm
     BearPrice = 6339.000000000000000000
     FillPrice = 7293.000000000000000000
     ClickQty = 1
-    BestFitWidth = 526
+    BestFitWidth = 606
     ShowFillQty = True
     ShowDerivedPx = True
     EnableHotTracks = True
     BuyBKColor = clWhite
     BuyColor = clNavy
+    BuyDelBKColor = clNavy
     SellBKColor = clWhite
     SellColor = clNavy
+    SellDelBKColor = clNavy
     TickUpperColor = clRed
     TickLowerColor = clGreen
     TickBKColor = 16185078
@@ -74,6 +76,7 @@ object DepthForm: TDepthForm
     SellFillBKColor = clWhite
     BuyOCOColBKColor = clWhite
     SellOCOColBKColor = clWhite
+    BuyOCODelColBKColor = clWhite
     DayHColor = clRed
     DayLColor = clGreen
     AvgPxColor = clWhite
@@ -173,7 +176,7 @@ object DepthForm: TDepthForm
       40
       0
       0
-      0
+      40
       40
       68
       0
@@ -181,7 +184,7 @@ object DepthForm: TDepthForm
       0
       68
       40
-      0
+      40
       0
       0
       40
@@ -265,8 +268,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 196
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -291,8 +294,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 224
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -317,8 +320,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -398,8 +401,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -427,8 +430,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2161,8 +2164,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -2235,7 +2238,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = SettingTabSheet
+      ActivePage = ColorTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -4823,6 +4826,7 @@ object DepthForm: TDepthForm
               #22996#36023#25991#23383#38991#33394
               #36023#36914#32972#26223#38991#33394
               #36023#36914#25991#23383#38991#33394
+              #21034#21934#32972#26223#38991#33394
               #25104#20132#32972#26223#38991#33394
               #25104#20132#25991#23383#38991#33394
               #35320#20729#32972#26223#38991#33394
@@ -4895,6 +4899,7 @@ object DepthForm: TDepthForm
               #22996#36067#25991#23383#38991#33394
               #36067#20986#32972#26223#38991#33394
               #36067#20986#25991#23383#38991#33394
+              #21034#21934#32972#26223#38991#33394
               #25104#20132#32972#26223#38991#33394
               #25104#20132#25991#23383#38991#33394
               #35320#20729#32972#26223#38991#33394
@@ -5247,7 +5252,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800A4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800B4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
