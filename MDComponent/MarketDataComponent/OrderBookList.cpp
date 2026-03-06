@@ -1019,7 +1019,7 @@ void __fastcall TOrderBookList::DrawSumRow( int Col, const Types::TRect &ARect, 
 
 	FBufferBmp->Canvas->Brush->Style = bsClear;
 	FBufferBmp->Canvas->Font->Assign( FFont );
-	if( FMouseCoord.Y == 1 && Col == FMouseCoord.X && !FCancelMouseDown &&
+	if( FMouseCoord.Y == 1 && Col == FMouseCoord.X &&
 		( FEnableHotTracks && ( Col == BUY_CONDITION_COL || Col == SELL_CONDITION_COL ) ||
 		( FIsCompact && ( Col == BUY_ORDER_COL || Col == SELL_ORDER_COL ) ) ) )
 	{
@@ -1414,7 +1414,7 @@ void __fastcall TOrderBookList::DrawConditionCol( int ACol, int ARow, const Type
 			FBufferBmp->Height = DefaultRowHeight;
 		}
 
-		if( FEnableHotTracks && !FCancelMouseDown && ARow == FMouseCoord.Y && ACol == FMouseCoord.X )
+		if( FEnableHotTracks && ARow == FMouseCoord.Y && ACol == FMouseCoord.X )
 		{
 			FrontColor = FHotTracksColor;
 			BKColor = FHotTracksBKColor;
@@ -1459,7 +1459,6 @@ void __fastcall TOrderBookList::DrawOCOCol( int ACol, int ARow, const Types::TRe
 
 	TColor FrontColor, BKColor;
 	bool isHotTrack = 	FEnableHotTracks &&
-						!FCancelMouseDown &&
 						ARow == FMouseCoord.Y &&
 						ACol == FMouseCoord.X;
 	if (isHotTrack)
@@ -1496,7 +1495,6 @@ void __fastcall TOrderBookList::DrawOCODelCol( int ACol, int ARow, const Types::
 
 	TColor BKColor;
 	bool isHotTrack = 	FEnableHotTracks &&
-						!FCancelMouseDown &&
 						ARow == FMouseCoord.Y &&
 						ACol == FMouseCoord.X;
 	if (isHotTrack)
@@ -1621,7 +1619,7 @@ void __fastcall TOrderBookList::DrawBuyMKCol( int Row, const Types::TRect &ARect
 			FBufferBmp->Height = DefaultRowHeight;
 		}
 
-		if( FEnableHotTracks && !FCancelMouseDown && Row == FMouseCoord.Y && FMouseCoord.X == BUY_MK_COL )
+		if( FEnableHotTracks && Row == FMouseCoord.Y && FMouseCoord.X == BUY_MK_COL )
 		{
 			FrontColor = FHotTracksColor;
 			BKColor = FHotTracksBKColor;
@@ -1656,7 +1654,7 @@ void __fastcall TOrderBookList::DrawSellMKCol( int Row, const Types::TRect &ARec
 			FBufferBmp->Height = DefaultRowHeight;
 		}
 
-		if( FEnableHotTracks && !FCancelMouseDown && Row == FMouseCoord.Y && SELL_MK_COL == FMouseCoord.X )
+		if( FEnableHotTracks && Row == FMouseCoord.Y && SELL_MK_COL == FMouseCoord.X )
 		{
 			FrontColor = FHotTracksColor;
 			BKColor = FHotTracksBKColor;
@@ -1734,7 +1732,7 @@ void __fastcall TOrderBookList::DrawBuyOrderCol( int Row, const Types::TRect &AR
 			FBufferBmp->Height = DefaultRowHeight;
 		}
 
-		if( FEnableHotTracks && !FCancelMouseDown && Row == FMouseCoord.Y && BUY_ORDER_COL == FMouseCoord.X )
+		if( FEnableHotTracks && Row == FMouseCoord.Y && BUY_ORDER_COL == FMouseCoord.X )
 		{
 			FrontColor = FHotTracksColor;
 			BKColor = FHotTracksBKColor;
@@ -1765,7 +1763,7 @@ void __fastcall TOrderBookList::DrawSellOrderCol( int Row, const Types::TRect &A
 			FBufferBmp->Height = DefaultRowHeight;
 		}
 
-		if( FEnableHotTracks && !FCancelMouseDown && Row == FMouseCoord.Y && SELL_ORDER_COL == FMouseCoord.X )
+		if( FEnableHotTracks && Row == FMouseCoord.Y && SELL_ORDER_COL == FMouseCoord.X )
 		{
 			FrontColor = FHotTracksColor;
 			BKColor = FHotTracksBKColor;
@@ -1798,7 +1796,6 @@ void __fastcall TOrderBookList::DrawDelCol( int ACol, int ARow, const Types::TRe
 
 	TColor BKColor;
 	bool isHotTrack = 	FEnableHotTracks &&
-						!FCancelMouseDown &&
 						ARow == FMouseCoord.Y &&
 						ACol == FMouseCoord.X;
 	if (isHotTrack)
@@ -2705,66 +2702,6 @@ void __fastcall TOrderBookList::CreateCursor( int HotspotX, int HotspotY, int Ca
 	Screen->Cursors[5] = CreateIconIndirect(iconInfo.get());
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderBookList::MouseUp(Controls::TMouseButton Button, Classes::TShiftState Shift, int X, int Y)
-{
-	TCustomGrid::MouseUp( Button, Shift, X, Y );
-	TGridCoord Coord = MouseCoord( X, Y );
-
-	if(	FCancelMouseDown == true )
-	{
-		FCancelMouseDown = false;
-		Screen->Cursor = crDefault;
-	}
-	if( Button == mbLeft ) ///< Mouse left button down
-	{
-		int Qty;
-		double SelPx = GetPxFromIndex( Coord.Y );
-
-		if( FMouseDownCoord.X == Coord.X )
-		{
-			nsOrderMessageDefine::SideEnum side;
-			switch( Coord.X )
-			{
-				case BUY_ORDER_COL:
-					side = nsOrderMessageDefine::sBuy;
-					if( FMouseDownCoord.Y == Coord.Y ) ///< Cancel
-					{
-						Qty = FUserBuyQty[Coord.Y];
-						if( Qty > 0 && FOnReduceQty != NULL )
-							FOnReduceQty( this, side, SelPx, Qty );
-					}
-					else ///< Replace PX
-					{
-						double OldPx = GetPxFromIndex( FMouseDownCoord.Y );
-						double NewPx = GetPxFromIndex( Coord.Y );
-
-						if( FOnReplacePx != NULL )
-							FOnReplacePx( this, side, OldPx, NewPx );
-					}
-					break;
-				case SELL_ORDER_COL:
-					side = nsOrderMessageDefine::sSell;
-					if( FMouseDownCoord.Y == Coord.Y ) ///< Cancel
-					{
-						Qty = FUserSellQty[Coord.Y];
-						if( Qty > 0 && FOnReduceQty != NULL )
-							FOnReduceQty( this, side, SelPx, Qty );
-					}
-					else ///< Replace PX
-					{
-						double OldPx = GetPxFromIndex( FMouseDownCoord.Y );
-						double NewPx = GetPxFromIndex( Coord.Y );
-
-						if( FOnReplacePx != NULL )
-							FOnReplacePx( this, side, OldPx, NewPx );
-					}
-					break;
-				default: break;
-			}
-		}
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::GetPrices( bool IsUp, TDoubleDynArray& PriceArray, int Times, int Step, int Offset  )
 {
 	int PxIndex = FFillRowIndex;
@@ -2887,28 +2824,6 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 
 		switch( Coord.X )
 		{
-			case BUY_ORDER_COL:
-				 CancelQty = FUserBuyQty[ Coord.Y ];
-				 if( CancelQty > 0 )
-				 {
-					CellR = CellRect( Coord.X, Coord.Y );
-					CreateCursor( X - CellR.Left , Y - CellR.Top, CancelQty, true );
-					FCancelMouseDown = true;
-					FMouseDownCoord  = Coord;
-					FCancelSide      = nsOrderMessageDefine::sSell;
-				 }
-				 break;
-			case SELL_ORDER_COL:
-				 CancelQty = FUserSellQty[ Coord.Y ];
-				 if( CancelQty > 0 )
-				 {
-					CellR = CellRect( Coord.X, Coord.Y );
-					CreateCursor( X - CellR.Left, Y - CellR.Top, CancelQty, false );
-					FCancelMouseDown = true;
-					FMouseDownCoord  = Coord;
-					FCancelSide      = nsOrderMessageDefine::sBuy;
-				 }
-				 break;
 			case BUY_DEL_BTN_COL:
 				Qty = FUserBuyQty[Coord.Y];
 				if( Qty > 0 && FOnReduceQty != NULL && IsCompact == false )
@@ -2995,9 +2910,31 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 	}
 	else if( Button == mbRight )  ///< Mouse right button down
 	{
-		if( Coord.X == BUY_CONDITION_COL || Coord.X == SELL_CONDITION_COL )
+		if( Coord.X == BUY_ORDER_COL )
+		{
+			if( FCancelByRightClick == false)
+				return;
+			int Qty = FUserBuyQty[Coord.Y];
+			if( Qty <= 0 || FOnReduceQty == NULL || IsCompact != false )
+				return;
+
+            double SelPx = GetPxFromIndex( Coord.Y );
+			FOnReduceQty( this, nsOrderMessageDefine::sBuy, SelPx, Qty );
+		}
+		else if( Coord.X == SELL_ORDER_COL )
+		{
+        	if( FCancelByRightClick == false)
+				return;
+			int Qty = FUserSellQty[Coord.Y];
+			if( Qty <= 0 || FOnReduceQty == NULL || IsCompact != false )
+				return;
+
+            double SelPx = GetPxFromIndex( Coord.Y );
+			FOnReduceQty( this, nsOrderMessageDefine::sSell, SelPx, Qty );
+		}
+		else if( Coord.X == BUY_CONDITION_COL || Coord.X == SELL_CONDITION_COL )
 			ConditionOrderColMouseDown( Shift, Coord.X, Coord.Y );
-		if( Coord.X == BUY_OCO_COL || Coord.X == SELL_OCO_COL)
+		else if( Coord.X == BUY_OCO_COL || Coord.X == SELL_OCO_COL)
 			OCOColRightMouseDown( Shift, Coord.X, Coord.Y );
 		else
 		{
@@ -3019,28 +2956,20 @@ void __fastcall TOrderBookList::MouseMove(Classes::TShiftState Shift, int X, int
 		FNeedCenterFill = false;
 	else
 		FNeedCenterFill = true;
-	if( FCancelMouseDown == false )
-	{
-		TGridCoord OrigCoord = FMouseCoord;
 
-		FMouseCoord = Coord;
-		InvalidateCellRect( OrigCoord.X, OrigCoord.Y );
-		switch( Coord.X )
-		{
-			case BUY_ORDER_BTN_COL:
-			case SELL_ORDER_BTN_COL:
-			case BUY_DEL_BTN_COL:
-			case SELL_DEL_BTN_COL:
-				MouseOverCell( Coord );
-				break;
-			default:break;
-		}
-	}
-	else
+	TGridCoord OrigCoord = FMouseCoord;
+	FMouseCoord = Coord;
+	InvalidateCellRect( OrigCoord.X, OrigCoord.Y );
+	switch( Coord.X )
 	{
-		if( Screen->Cursor ==  crDefault )
-			Screen->Cursor = TCursor( 5 );
-    }
+		case BUY_ORDER_BTN_COL:
+		case SELL_ORDER_BTN_COL:
+		case BUY_DEL_BTN_COL:
+		case SELL_DEL_BTN_COL:
+			MouseOverCell( Coord );
+			break;
+		default:break;
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::MouseOverCell( const TGridCoord& Coord )
@@ -3580,8 +3509,24 @@ void __fastcall TOrderBookList::WndProc( TMessage &Msg )
 			if(FOrderByOneClick == false)
 				return;
 			break;
+		case WM_LBUTTONUP:
+            if(FOrderByOneClick == false)
+				return;
+			break;
 		case WM_LBUTTONDBLCLK:
 			if(FOrderByOneClick == true)
+				return;
+            break;
+		case WM_RBUTTONDOWN:
+			if(FOrderByOneClick == false)
+				return;
+			break;
+		case WM_RBUTTONUP:
+			if(FOrderByOneClick == false)
+				return;
+			break;
+		case WM_RBUTTONDBLCLK:
+            if(FOrderByOneClick == true)
 				return;
 			break;
 	}
