@@ -57,6 +57,7 @@ TColor BidDepth5BKColor[2]       = {clWhite,RGB(53,53,53)};
 TColor BidDepth5Color[2]         = {RGB(248,152,154),RGB(255,166,166)};
 TColor BuyBKColor[2]             = {clWhite,RGB(53,53,53)};
 TColor BuyColor[2]               = {clBlack,clWhite};
+TColor BuyDelBKColor[2]          = {clWhite,RGB(53,53,53)};
 TColor BuyFillBKColor[2]         = {clWhite,RGB(53,53,53)};
 TColor BuyFillColor[2]           = {clBlack,clWhite};
 TColor BuyConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
@@ -69,6 +70,7 @@ TColor AskDepth5BKColor[2]        = {clWhite,RGB(53,53,53)};
 TColor AskDepth5Color[2]          = {RGB(124,186,63),RGB(149,255,116)};
 TColor SellBKColor[2]             = {clWhite,RGB(53,53,53)};
 TColor SellColor[2]               = {clBlack,clWhite};
+TColor SellDelBKColor[2]          = {clWhite,RGB(53,53,53)};
 TColor SellFillBKColor[2]         = {clWhite,RGB(53,53,53)};
 TColor SellFillColor[2]           = {clBlack,clWhite};
 TColor SellConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
@@ -1471,6 +1473,7 @@ void __fastcall TDepthForm::LoadColor( void )
 	OrderBookList->BidDepth5Color    = BidDepth5Color[DorL];
 	OrderBookList->BuyBKColor        = BuyBKColor[DorL];
 	OrderBookList->BuyColor          = BuyColor[DorL];
+	OrderBookList->BuyDelBKColor     = BuyDelBKColor[DorL];
 	OrderBookList->BuyFillBKColor    = BuyFillBKColor[DorL];
 	OrderBookList->BuyFillColor      = BuyFillColor[DorL];
 	OrderBookList->BuyConditionColBKColor = BuyConditionColBKColor[DorL];
@@ -1483,6 +1486,7 @@ void __fastcall TDepthForm::LoadColor( void )
 	OrderBookList->AskDepth5Color    = AskDepth5Color[DorL];
 	OrderBookList->SellBKColor       = SellBKColor[DorL];
 	OrderBookList->SellColor         = SellColor[DorL];
+	OrderBookList->SellDelBKColor    = SellDelBKColor[DorL];
 	OrderBookList->SellFillBKColor   = SellFillBKColor[DorL];
 	OrderBookList->SellFillColor     = SellFillColor[DorL];
 	OrderBookList->SellConditionColBKColor = SellConditionColBKColor[DorL];
@@ -1594,14 +1598,18 @@ void __fastcall TDepthForm::SaveColorToConfig( const String& Name, bool DorL )
         g_Config.SetIntegerProperty(Name, "BuyDepthColColor", OrderBookList->BidDepth5Color);
         BidDepth5Color[DorL] = OrderBookList->BidDepth5Color;
     }
-    if (BuyBKColor[DorL] != OrderBookList->BuyBKColor) {
-        g_Config.SetIntegerProperty(Name, "BuyColBKColor", OrderBookList->BuyBKColor);
-        BuyBKColor[DorL] = OrderBookList->BuyBKColor;
+	if (BuyBKColor[DorL] != OrderBookList->BuyBKColor) {
+		g_Config.SetIntegerProperty(Name, "BuyColBKColor", OrderBookList->BuyBKColor);
+		BuyBKColor[DorL] = OrderBookList->BuyBKColor;
     }
     if (BuyColor[DorL] != OrderBookList->BuyColor) {
         g_Config.SetIntegerProperty(Name, "BuyColColor", OrderBookList->BuyColor);
         BuyColor[DorL] = OrderBookList->BuyColor;
-    }
+	}
+	if (BuyDelBKColor[DorL] != OrderBookList->BuyDelBKColor) {
+		g_Config.SetIntegerProperty(Name, "BuyDelColBKColor", OrderBookList->BuyDelBKColor);
+		BuyDelBKColor[DorL] = OrderBookList->BuyDelBKColor;
+	}
     if (BuyFillBKColor[DorL] != OrderBookList->BuyFillBKColor) {
         g_Config.SetIntegerProperty(Name, "BuyFillBKColor", OrderBookList->BuyFillBKColor);
         BuyFillBKColor[DorL] = OrderBookList->BuyFillBKColor;
@@ -1642,15 +1650,19 @@ void __fastcall TDepthForm::SaveColorToConfig( const String& Name, bool DorL )
     if (AskDepth5Color[DorL] != OrderBookList->AskDepth5Color) {
         g_Config.SetIntegerProperty(Name, "SellDepthColColor", OrderBookList->AskDepth5Color);
         AskDepth5Color[DorL] = OrderBookList->AskDepth5Color;
-    }
-    if (SellBKColor[DorL] != OrderBookList->SellBKColor) {
-        g_Config.SetIntegerProperty(Name, "SellColBKColor", OrderBookList->SellBKColor);
-        SellBKColor[DorL] = OrderBookList->SellBKColor;
-    }
+	}
+	if (SellBKColor[DorL] != OrderBookList->SellBKColor) {
+		g_Config.SetIntegerProperty(Name, "SellColBKColor", OrderBookList->SellBKColor);
+		SellBKColor[DorL] = OrderBookList->SellBKColor;
+	}
     if (SellColor[DorL] != OrderBookList->SellColor) {
-        g_Config.SetIntegerProperty(Name, "SellColColor", OrderBookList->SellColor);
+		g_Config.SetIntegerProperty(Name, "SellColColor", OrderBookList->SellColor);
         SellColor[DorL] = OrderBookList->SellColor;
-    }
+	}
+	if (SellDelBKColor[DorL] != OrderBookList->SellDelBKColor) {
+		g_Config.SetIntegerProperty(Name, "SellDelColBKColor", OrderBookList->SellDelBKColor);
+		SellDelBKColor[DorL] = OrderBookList->SellDelBKColor;
+	}
     if (SellFillBKColor[DorL] != OrderBookList->SellFillBKColor) {
         g_Config.SetIntegerProperty(Name, "SellFillBKColor", OrderBookList->SellFillBKColor);
         SellFillBKColor[DorL] = OrderBookList->SellFillBKColor;
@@ -1761,13 +1773,14 @@ TColor __fastcall TDepthForm::GetBuyColor( int Index )
 		case 1: return OrderBookList->BidDepth5Color;
 		case 2: return OrderBookList->BuyBKColor;
 		case 3: return OrderBookList->BuyColor;
-		case 4: return OrderBookList->BuyFillBKColor;
-		case 5: return OrderBookList->BuyFillColor;
-		case 6: return OrderBookList->BuyConditionColBKColor;
-		case 7: return OrderBookList->BuyConditionColColor;
-		case 8: return OrderBookList->BuyOCOColBKColor;
-		case 9: return OrderBookList->BuyOCOColColor;
-		case 10:return OrderBookList->BuyOCODelColBKColor;
+		case 4: return OrderBookList->BuyDelBKColor;
+		case 5: return OrderBookList->BuyFillBKColor;
+		case 6: return OrderBookList->BuyFillColor;
+		case 7: return OrderBookList->BuyConditionColBKColor;
+		case 8: return OrderBookList->BuyConditionColColor;
+		case 9: return OrderBookList->BuyOCOColBKColor;
+		case 10: return OrderBookList->BuyOCOColColor;
+		case 11:return OrderBookList->BuyOCODelColBKColor;
 		default: return clWhite;
 	}
 }
@@ -1780,13 +1793,14 @@ void __fastcall TDepthForm::SetBuyColor( int Index, TColor Color )
 		case 1: OrderBookList->BidDepth5Color = Color;break;
 		case 2: OrderBookList->BuyBKColor = Color;break;
 		case 3: OrderBookList->BuyColor = Color;break;
-		case 4: OrderBookList->BuyFillBKColor = Color;break;
-		case 5: OrderBookList->BuyFillColor = Color;break;
-		case 6: OrderBookList->BuyConditionColBKColor = Color;break;
-		case 7: OrderBookList->BuyConditionColColor = Color;break;
-		case 8: OrderBookList->BuyOCOColBKColor = Color;break;
-		case 9: OrderBookList->BuyOCOColColor = Color;break;
-		case 10:OrderBookList->BuyOCODelColBKColor = Color;break;
+		case 4: OrderBookList->BuyDelBKColor = Color;break;
+		case 5: OrderBookList->BuyFillBKColor = Color;break;
+		case 6: OrderBookList->BuyFillColor = Color;break;
+		case 7: OrderBookList->BuyConditionColBKColor = Color;break;
+		case 8: OrderBookList->BuyConditionColColor = Color;break;
+		case 9: OrderBookList->BuyOCOColBKColor = Color;break;
+		case 10: OrderBookList->BuyOCOColColor = Color;break;
+		case 11:OrderBookList->BuyOCODelColBKColor = Color;break;
 		default: break;
 	}
 }
@@ -1799,13 +1813,14 @@ TColor __fastcall TDepthForm::GetSellColor( int Index )
 		case 1: return OrderBookList->AskDepth5Color;
 		case 2: return OrderBookList->SellBKColor;
 		case 3: return OrderBookList->SellColor;
-		case 4: return OrderBookList->SellFillBKColor;
-		case 5: return OrderBookList->SellFillColor;
-		case 6: return OrderBookList->SellConditionColBKColor;
-		case 7: return OrderBookList->SellConditionColColor;
-		case 8: return OrderBookList->SellOCOColBKColor;
-		case 9: return OrderBookList->SellOCOColColor;
-		case 10:return OrderBookList->SellOCODelColBKColor;
+		case 4: return OrderBookList->SellDelBKColor;
+		case 5: return OrderBookList->SellFillBKColor;
+		case 6: return OrderBookList->SellFillColor;
+		case 7: return OrderBookList->SellConditionColBKColor;
+		case 8: return OrderBookList->SellConditionColColor;
+		case 9: return OrderBookList->SellOCOColBKColor;
+		case 10: return OrderBookList->SellOCOColColor;
+		case 11:return OrderBookList->SellOCODelColBKColor;
 		default: return clWhite;
 	}
 }
@@ -1818,13 +1833,14 @@ void __fastcall TDepthForm::SetSellColor( int Index, TColor Color )
 		case 1: OrderBookList->AskDepth5Color = Color;break;
 		case 2: OrderBookList->SellBKColor = Color;break;
 		case 3: OrderBookList->SellColor = Color;break;
-		case 4: OrderBookList->SellFillBKColor = Color;break;
-		case 5: OrderBookList->SellFillColor = Color;break;
-		case 6: OrderBookList->SellConditionColBKColor = Color;break;
-		case 7: OrderBookList->SellConditionColColor = Color;break;
-		case 8: OrderBookList->SellOCOColBKColor = Color;break;
-		case 9: OrderBookList->SellOCOColColor = Color;break;
-		case 10:OrderBookList->SellOCODelColBKColor = Color;break;
+		case 4: OrderBookList->SellDelBKColor = Color;break;
+		case 5: OrderBookList->SellFillBKColor = Color;break;
+		case 6: OrderBookList->SellFillColor = Color;break;
+		case 7: OrderBookList->SellConditionColBKColor = Color;break;
+		case 8: OrderBookList->SellConditionColColor = Color;break;
+		case 9: OrderBookList->SellOCOColBKColor = Color;break;
+		case 10: OrderBookList->SellOCOColColor = Color;break;
+		case 11:OrderBookList->SellOCODelColBKColor = Color;break;
 		default: break;
 	}
 }
@@ -1904,6 +1920,7 @@ void __fastcall TDepthForm::DefColorButtonClick(TObject *Sender)
 	OrderBookList->BidDepth5Color    = BidDepth5Color[DorL];
 	OrderBookList->BuyBKColor        = BuyBKColor[DorL];
 	OrderBookList->BuyColor          = BuyColor[DorL];
+    OrderBookList->BuyDelBKColor     = BuyDelBKColor[DorL];
 	OrderBookList->BuyFillBKColor    = BuyFillBKColor[DorL];
 	OrderBookList->BuyFillColor      = BuyFillColor[DorL];
 	OrderBookList->BuyConditionColBKColor = BuyConditionColBKColor[DorL];
@@ -1916,6 +1933,7 @@ void __fastcall TDepthForm::DefColorButtonClick(TObject *Sender)
 	OrderBookList->AskDepth5Color    = AskDepth5Color[DorL];
 	OrderBookList->SellBKColor       = SellBKColor[DorL];
 	OrderBookList->SellColor         = SellColor[DorL];
+	OrderBookList->SellDelBKColor    = SellDelBKColor[DorL];
 	OrderBookList->SellFillBKColor   = SellFillBKColor[DorL];
 	OrderBookList->SellFillColor     = SellFillColor[DorL];
 	OrderBookList->SellConditionColBKColor = SellConditionColBKColor[DorL];
@@ -1962,6 +1980,7 @@ void __fastcall TDepthForm::LoadDefColor( bool DorL )
 	BidDepth5Color[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"BuyDepthColColor", BidDepth5Color[DorL]);
 	BuyBKColor[DorL]        = (TColor)g_Config.GetIntegerProperty(Name,"BuyColBKColor", BuyBKColor[DorL]);
 	BuyColor[DorL]          = (TColor)g_Config.GetIntegerProperty(Name,"BuyColColor",BuyColor[DorL] );
+	BuyDelBKColor[DorL]     = (TColor)g_Config.GetIntegerProperty(Name,"BuyDelColBKColor", BuyDelBKColor[DorL]);
 	BuyFillBKColor[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"BuyFillBKColor" ,BuyFillBKColor[DorL]);
 	BuyFillColor[DorL]      = (TColor)g_Config.GetIntegerProperty(Name,"BuyFillColor" ,BuyFillColor[DorL]);
 	BuyConditionColBKColor[DorL] = (TColor)g_Config.GetIntegerProperty(Name,"BuyStopBKColor" ,BuyConditionColBKColor[DorL]);
@@ -1974,6 +1993,7 @@ void __fastcall TDepthForm::LoadDefColor( bool DorL )
 	AskDepth5Color[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"SellDepthColColor", AskDepth5Color[DorL]);
 	SellBKColor[DorL]       = (TColor)g_Config.GetIntegerProperty(Name,"SellColBKColor",SellBKColor[DorL] );
 	SellColor[DorL]         = (TColor)g_Config.GetIntegerProperty(Name,"SellColColor", SellColor[DorL] );
+	SellDelBKColor[DorL]    = (TColor)g_Config.GetIntegerProperty(Name,"SellDelColBKColor", SellDelBKColor[DorL] );
 	SellFillBKColor[DorL]   = (TColor)g_Config.GetIntegerProperty(Name,"SellFillBKColor" ,SellFillBKColor[DorL]);
 	SellFillColor[DorL]     = (TColor)g_Config.GetIntegerProperty(Name,"SellFillColor" ,SellFillColor[DorL]);
 	SellConditionColBKColor[DorL] = (TColor)g_Config.GetIntegerProperty(Name,"SellStopBKColor" ,SellConditionColBKColor[DorL]);
@@ -2025,6 +2045,7 @@ void __fastcall TDepthForm::CopyThis( TDepthForm* NewDepth )
 	NewDepth->OrderBookList->BidDepth5Color    = OrderBookList->BidDepth5Color;
 	NewDepth->OrderBookList->BuyBKColor        = OrderBookList->BuyBKColor;
 	NewDepth->OrderBookList->BuyColor          = OrderBookList->BuyColor;
+	NewDepth->OrderBookList->BuyDelBKColor     = OrderBookList->BuyDelBKColor;
 	NewDepth->OrderBookList->BuyFillBKColor    = OrderBookList->BuyFillBKColor;
 	NewDepth->OrderBookList->BuyFillColor      = OrderBookList->BuyFillColor;
 	NewDepth->OrderBookList->BuyConditionColBKColor = OrderBookList->BuyConditionColBKColor;
@@ -2037,6 +2058,7 @@ void __fastcall TDepthForm::CopyThis( TDepthForm* NewDepth )
 	NewDepth->OrderBookList->AskDepth5Color    = OrderBookList->AskDepth5Color;
 	NewDepth->OrderBookList->SellBKColor       = OrderBookList->SellBKColor;
 	NewDepth->OrderBookList->SellColor         = OrderBookList->SellColor;
+	NewDepth->OrderBookList->SellDelBKColor    = OrderBookList->SellDelBKColor;
 	NewDepth->OrderBookList->SellFillBKColor   = OrderBookList->SellFillBKColor;
 	NewDepth->OrderBookList->SellFillColor     = OrderBookList->SellFillColor;
 	NewDepth->OrderBookList->SellConditionColBKColor = OrderBookList->SellConditionColBKColor;

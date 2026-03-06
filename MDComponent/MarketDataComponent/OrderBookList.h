@@ -126,6 +126,8 @@ private:
 	TColor 			FBuyColor;
 	TColor 			FSellBKColor;
 	TColor 			FSellColor;
+	TColor          FBuyDelBKColor;
+	TColor          FSellDelBKColor;
 	TColor 			FBidDepth5BKColor;
 	TColor 			FBidDepth5Color;
 	TColor 			FAskDepth5BKColor;
@@ -182,8 +184,6 @@ private:
 	TIntegerDynArray	FSellConditionQty;
 	TIntegerDynArray	FBuyOCOQty;
 	TIntegerDynArray	FSellOCOQty;
-	TIntegerDynArray    FBuyOCODelQty;
-    TIntegerDynArray    FSellOCODelQty;
 	bool			FIsCompact;
 	bool			FShowFilled;
 	bool			FCenterFillPrice;
@@ -354,6 +354,7 @@ private:
 	void __fastcall DrawButtonCol( int Col, int Row, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawBuyOrderCol( int Row, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawSellOrderCol( int Row, const Types::TRect &ARect, TGridDrawState AState );
+	void __fastcall DrawDelCol( int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawBuyFillCol( int Row, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawSellFillCol( int Row, const Types::TRect &ARect, TGridDrawState AState );
 	void __fastcall DrawGradientBar( TCanvas* canvas, TRect& dRect,TColor UpCol, TColor DownCol );
@@ -366,6 +367,8 @@ private:
 	void __fastcall SetFont( TFont* Font );
 	void __fastcall SetBuyBKColor( TColor Color );
 	void __fastcall SetSellBKColor( TColor Color );
+	void __fastcall SetBuyDelBKColor( TColor Color );
+    void __fastcall SetSellDelBKColor( TColor Color );
 	void __fastcall SetFillColor( TColor Color );
 	void __fastcall SetFillBKColor( TColor Color );
 	void __fastcall SetFixedRowColor( TColor Color );
@@ -556,8 +559,10 @@ __published:
 	///< Color
 	__property TColor BuyBKColor = { read = FBuyBKColor, write = SetBuyBKColor };
 	__property TColor BuyColor  = { read = FBuyColor, write = FBuyColor };
+	__property TColor BuyDelBKColor = { read = FBuyDelBKColor, write = SetBuyDelBKColor };
 	__property TColor SellBKColor = { read = FSellBKColor, write = SetSellBKColor };
 	__property TColor SellColor = { read = FSellColor, write = FSellColor };
+	__property TColor SellDelBKColor = { read = FSellDelBKColor, write = SetSellDelBKColor };
 	__property TColor TickUpperColor = { read = FTickUpperColor, write = FTickUpperColor };
 	__property TColor TickLowerColor = { read = FTickLowerColor, write = FTickLowerColor };
 	__property TColor TickBKColor = { read = FTickBKColor, write = FTickBKColor };
