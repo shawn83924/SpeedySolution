@@ -89,6 +89,7 @@ typedef void __fastcall (__closure *TOnNetPositionUpdateEvent)(System::TObject* 
 typedef void __fastcall (__closure *TOnNewConditionOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Px, nsOrderMessageDefine::OrderTypeEnum Type, double OrderPrice );
 typedef void __fastcall (__closure *TOnNewOCOFailEvent)(System::TObject* Sender, const AnsiString& ErrorMessage);
 typedef void __fastcall (__closure *TOnNewOCOEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price);
+typedef void __fastcall (__closure *TOnOCOPriceMatchEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, int Qty, double Price);
 typedef void __fastcall (__closure *TOnNewPingPongOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price, int Qty, int Tick );
 typedef void __fastcall (__closure *TOnDeleteStopOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double StopPx );
 typedef void __fastcall (__closure *TOnCenterEvent)(System::TObject* Sender );
@@ -262,8 +263,6 @@ private:
 	bool FDeleteOCOByRightClick;
 	OCOPair* FCurrentPairOCO;
 	std::vector<OCOPair*> FOCOPairs;
-	nsOrderMessageDefine::OrderTypeEnum FBuyOCOOrderType;
-    nsOrderMessageDefine::OrderTypeEnum FSellOCOOrderType;
 	///< Auto Stop-loss Take-Profit
 	bool   FAutoStopLoss;
 	bool   FAutoTakeProfit;
@@ -305,6 +304,7 @@ private:
 	TOnNewConditionOrderEvent FOnNewConditionOrder;
 	TOnNewOCOFailEvent FOnNewOCOFail;
 	TOnNewOCOEvent FOnNewOCO;
+	TOnOCOPriceMatchEvent FOnOCOPriceMatch;
 
 	TOnDeleteStopOrderEvent FOnDeleteStopOrder;
 	TOnCenterEvent FOnCenterPx;
@@ -515,6 +515,7 @@ public:
 	bool __fastcall HasWorkingOrder( void );
 	double __fastcall GetBullPrice( int BetterSellTick );
 	void PriceAlarm( int MarkPxIndex, bool& MarkPxAlarm, bool MarkPxHigher, double MarkPx );
+	void __fastcall OrderingOCO( void );
 public:
 	static int    __fastcall SyncCount( void );
 	static TForm* __fastcall GetSyncForm( int i );
@@ -524,7 +525,7 @@ public:
 	virtual void __fastcall UpdateOrder( AnsiString Symbol, double Price, nsOrderMessageDefine::SideEnum side, int Qty, nsOrderMessageDefine::OrderTypeEnum Type );
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty );
-    void __fastcall UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty , bool isAdd);
+	void __fastcall UpdateOCOQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty , bool isAdd);
 __published:
 	__property UnicodeString Symbol = { read = FSymbol, write = FSymbol };
 	__property UnicodeString Exchange = { read = FExchange, write = FExchange };
@@ -675,7 +676,8 @@ __published:
 	__property TOnNewPingPongOrderEvent OnNewPingPongOrder = { read = FOnNewPingPongOrder, write = FOnNewPingPongOrder };
 	__property TOnNewConditionOrderEvent OnNewConditionOrder = { read = FOnNewConditionOrder, write = FOnNewConditionOrder };
 	__property TOnNewOCOFailEvent OnNewOCOFail = { read = FOnNewOCOFail, write = FOnNewOCOFail };
-    __property TOnNewOCOEvent OnNewOCO = { read = FOnNewOCO, write = FOnNewOCO };
+	__property TOnNewOCOEvent OnNewOCO = { read = FOnNewOCO, write = FOnNewOCO };
+	__property TOnOCOPriceMatchEvent OnOCOPriceMatch = { read = FOnOCOPriceMatch, write = FOnOCOPriceMatch };
 	__property TOnDeleteStopOrderEvent OnDeleteStopOrder = { read = FOnDeleteStopOrder, write = FOnDeleteStopOrder };
 	__property TOnCenterEvent OnCenterPx = { read = FOnCenterPx, write = FOnCenterPx };
 	__property TOnStepChangeEvent OnStepChange = { read = FOnStepChange, write = FOnStepChange };

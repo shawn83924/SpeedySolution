@@ -3079,7 +3079,7 @@ void __fastcall TDepthForm::OrderBookListNewOCOOrder(
 	SideEnum side,
 	double Price)
 {
-	OrderBookList->UpdateOCOOrderQty(side, Price, LotsPerOrderEdit->Text.ToInt(), true);
+	OrderBookList->UpdateOCOQty(side, Price, LotsPerOrderEdit->Text.ToInt(), true);
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage)
@@ -3104,5 +3104,36 @@ void __fastcall TDepthForm::CancelByRightClickSwitchClick(TObject *Sender)
 		OrderBookList->CancelByRightClick = false;
 	else
 		OrderBookList->CancelByRightClick = true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::OrderBookListOCOPriceMatch(
+	TObject *Sender,
+	SideEnum side,
+	int Qty,
+	double Price)
+{
+	if( gOrderStore->IsReady() == false )
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
+		return;
+	}
+
+	AnsiString Sym( FSym );
+	UFC::BufferedLog::Printf( " -----[OrderBookList::OCOPriceMatch] Symbol[%s] Qty[%d]", Sym.c_str(), Qty );
+	nsOrderMessageDefine::OrderTypeEnum orderType;
+	switch(FOCOType)
+	{
+		case 0:
+			orderType = nsOrderMessageDefine::otLimit;
+			break;
+		case 1:
+			orderType = nsOrderMessageDefine::otMarket;
+			break;
+		case 2:
+			orderType = nsOrderMessageDefine::otMarketWithProtection;
+			break;
+	}
+
+	PlaceOrder( side, Price, Qty, orderType, true );
 }
 //---------------------------------------------------------------------------

@@ -640,6 +640,7 @@ void __fastcall TOrderBookList::SetFillPrice( double Price )
 			else
 				InvalidateCellRect( PRICE_COL, FFillRowIndex + i );
 		}
+		OrderingOCO();
 	}
 }
 //---------------------------------------------------------------------------
@@ -3245,6 +3246,8 @@ bool __fastcall TOrderBookList::UpdateFill( void )
 		///< Update the price column.
 		if( NeedPaint == true )
 			InvalidateColumn( PRICE_COL, TopRow , TopRow + VisibleRowCount );
+
+        OrderingOCO();
 	}
 	else ///< Fill Price not chinged. update only one cell
 	{
@@ -3285,10 +3288,49 @@ void __fastcall TOrderBookList::ForceUpdateFill( void )
 {
 	FFillPx       = FLastFillPx;
 	FFillRowIndex = GetRowIndex( FLastFillPx );
+	OrderingOCO();
 	///< Force center price
 	CenterFillPx( true );
 	///< Update the price column.
 	InvalidateColumn( PRICE_COL, TopRow , TopRow + VisibleRowCount );
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::OrderingOCO( void )
+{
+	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
+	{
+		OCOPair* pair = FOCOPairs[i];
+		bool match1	= (pair->ConditionPrice1 >= FFillPx && pair->ConditionPrice2 >= FFillPx);
+		bool match2 = (pair->ConditionPrice1 <= FFillPx && pair->ConditionPrice2 <= FFillPx);
+
+		if (!match1 || !match2)
+			continue;
+
+		int orderQty;
+		int matchPrice;
+		SideEnum side;
+		double diff1 = std::fabs(pair->ConditionPrice1 - FFillPx);
+		double diff2 = std::fabs(pair->ConditionPrice2 - FFillPx);
+		if( diff1 < diff2)
+		{
+			orderQty = pair->OrderQty1;
+			matchPrice = pair->ConditionPrice1;
+			side = pair->OrderSide1;
+		}
+		else
+		{
+			orderQty = pair->OrderQty2;
+			matchPrice = pair->ConditionPrice2;
+			side = pair->OrderSide2;
+		}
+
+		SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, false);
+		SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, false);
+		FOCOPairs.erase( FOCOPairs.begin() + i );
+		delete pair;
+
+		FOnOCOPriceMatch( this, side, orderQty, matchPrice);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::UpdateTimer( const UFC::AnsiString& Time )
@@ -3871,7 +3913,7 @@ double __fastcall TOrderBookList::GetAskPrice( int depth )
 	return 0.0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderBookList::UpdateOCOOrderQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty ,bool isAdd)
+void __fastcall TOrderBookList::UpdateOCOQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty ,bool isAdd)
 {
 	if(isAdd)
 	{
