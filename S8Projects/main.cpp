@@ -1596,8 +1596,8 @@ void __fastcall TMainForm::LoginSimBroker( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 {
-	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
-	FLoginBroker = g_Config.BrokerConfig( 0 );
+	FSpeedyCfg = g_Config.SpeedyConfig( 1, 0 );
+	FLoginBroker = g_Config.BrokerConfig( 1 );
 
 	if( FLoginBroker == NULL || FSpeedyCfg == NULL )
 	{
