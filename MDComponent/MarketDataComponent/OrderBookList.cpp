@@ -2880,12 +2880,12 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 		{
 			case BUY_DEL_BTN_COL:
 				Qty = FUserBuyQty[Coord.Y];
-				if( Qty > 0 && FOnReduceQty != NULL && IsCompact == false )
+				if( Qty > 0 && FOnReduceQty != NULL)
 					FOnReduceQty( this, nsOrderMessageDefine::sBuy, SelPx, Qty );
 				break;
 			case SELL_DEL_BTN_COL:
 				Qty = FUserSellQty[Coord.Y];
-				if( Qty > 0 && FOnReduceQty != NULL && IsCompact == false )
+				if( Qty > 0 && FOnReduceQty != NULL)
 					FOnReduceQty( this, nsOrderMessageDefine::sSell, SelPx, Qty );
 				break;
 			case BUY_MK_COL:
@@ -2972,7 +2972,7 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 			if( FCancelByRightClick == false)
 				return;
 			int Qty = FUserBuyQty[Coord.Y];
-			if( Qty <= 0 || FOnReduceQty == NULL || IsCompact != false )
+			if( Qty <= 0 || FOnReduceQty == NULL )
 				return;
 
             double SelPx = GetPxFromIndex( Coord.Y );
@@ -2983,7 +2983,7 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
         	if( FCancelByRightClick == false)
 				return;
 			int Qty = FUserSellQty[Coord.Y];
-			if( Qty <= 0 || FOnReduceQty == NULL || IsCompact != false )
+			if( Qty <= 0 || FOnReduceQty == NULL )
 				return;
 
             double SelPx = GetPxFromIndex( Coord.Y );
