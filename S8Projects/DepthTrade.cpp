@@ -3079,6 +3079,12 @@ void __fastcall TDepthForm::OrderBookListNewOCOOrder(
 	SideEnum side,
 	double Price)
 {
+	if( gOrderStore->IsReady() == false )
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
+		return;
+	}
+
 	OrderBookList->UpdateOCOQty(side, Price, LotsPerOrderEdit->Text.ToInt(), true);
 }
 //---------------------------------------------------------------------------
@@ -3112,12 +3118,6 @@ void __fastcall TDepthForm::OrderBookListOCOPriceMatch(
 	int Qty,
 	double Price)
 {
-	if( gOrderStore->IsReady() == false )
-	{
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
-		return;
-	}
-
 	AnsiString Sym( FSym );
 	UFC::BufferedLog::Printf( " -----[OrderBookList::OCOPriceMatch] Symbol[%s] Qty[%d]", Sym.c_str(), Qty );
 	nsOrderMessageDefine::OrderTypeEnum orderType;
