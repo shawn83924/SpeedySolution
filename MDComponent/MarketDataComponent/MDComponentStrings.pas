@@ -94,6 +94,16 @@ resourcestring
   MD_MDLIST_UP_DOWN_RATE = '漲跌幅';
   MD_MDLIST_FILL_TIME = '成交時間';
 
+  MD_OCODLIST_DELETE = '刪';
+  MD_OCODLIST_STATUS = '狀態';
+  MD_OCODLIST_SYMBOL = '商品';
+  MD_OCODLIST_QTY1   = '委量一';
+  MD_OCODLIST_PRICE1 = '價一';
+  MD_OCODLIST_SIDE1  = '買賣一';
+  MD_OCODLIST_QTY2   = '委量二';
+  MD_OCODLIST_PRICE2 = '價二';
+  MD_OCODLIST_SIDE2  = '買賣二';
+
   MD_ORDERBOOK_FILL_BUY = '買成';
   MD_ORDERBOOK_FILL_SELL = '賣成';
   MD_ORDERBOOK_STOPPX = '觸價';

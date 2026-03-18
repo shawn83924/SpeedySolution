@@ -5224,6 +5224,7 @@ object DepthForm: TDepthForm
       Width = 66
       Height = 26
       TabOrder = 1
+      OnClick = OCODetailBtnClick
       Anchors = [akTop, akRight, akBottom]
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWindowText

@@ -307,6 +307,12 @@
             <VirtualFolder>{B3BF3D52-1440-4783-9C55-D785A516CBAF}</VirtualFolder>
             <BuildOrder>27</BuildOrder>
         </CppCompile>
+        <CppCompile Include="OCODetail.cpp">
+            <Form>OCODetailForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>OCODetail.h</DependentOn>
+            <BuildOrder>46</BuildOrder>
+        </CppCompile>
         <CppCompile Include="OrderConfirm.cpp">
             <VirtualFolder>{B30ABE23-D3EC-49B5-8284-7FEE5BE036B5}</VirtualFolder>
             <Form>OrdConfirmForm</Form>
@@ -401,6 +407,7 @@
             <DependentOn>WebBrowserForm.h</DependentOn>
             <BuildOrder>36</BuildOrder>
         </CppCompile>
+        <FormResources Include="OCODetail.dfm"/>
         <FormResources Include="OrderConfirm.dfm"/>
         <FormResources Include="Roomi.dfm"/>
         <FormResources Include="SearchUnit.dfm"/>

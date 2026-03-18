@@ -3137,3 +3137,13 @@ void __fastcall TDepthForm::OrderBookListOCOPriceMatch(
 	PlaceOrder( side, Price, Qty, orderType, true );
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::OCODetailBtnClick(TObject *Sender)
+{
+	TOCODetailForm* dataListForm;
+	dataListForm = new TOCODetailForm( this );
+	dataListForm->Tag = MainForm->PageControl->ActivePageIndex;
+	dataListForm->Parent = MainForm->PageControl->ActivePage;
+	dataListForm->Show();
+	dataListForm->SetActive(true);
+    dataListForm->SetData();
+}

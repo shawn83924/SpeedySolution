@@ -23,6 +23,7 @@
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
 #include "SettingOCODlg.h"
+#include "OCODetail.h"
 //---------------------------------------------------------------------------
 class TDepthForm : public TForm, public TClientForm, public TOrderQtyListener, public IOrderFilled
 {
@@ -315,6 +316,7 @@ __published:	// IDE-managed Components
 	void __fastcall CancelByRightClickSwitchClick(TObject *Sender);
 	void __fastcall OrderBookListOCOPriceMatch(TObject *Sender, SideEnum side, int Qty,
           double Price);
+	void __fastcall OCODetailBtnClick(TObject *Sender);
 
 
 
