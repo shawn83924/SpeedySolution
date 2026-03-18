@@ -179,6 +179,24 @@ extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_UP_DOWN_RATE;
 #define Mdcomponentstrings_MD_MDLIST_UP_DOWN_RATE System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_UP_DOWN_RATE)
 extern DELPHI_PACKAGE System::ResourceString _MD_MDLIST_FILL_TIME;
 #define Mdcomponentstrings_MD_MDLIST_FILL_TIME System::LoadResourceString(&Mdcomponentstrings::_MD_MDLIST_FILL_TIME)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_DELETE;
+#define Mdcomponentstrings_MD_OCODLIST_DELETE System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_DELETE)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_STATUS;
+#define Mdcomponentstrings_MD_OCODLIST_STATUS System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_STATUS)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_SYMBOL;
+#define Mdcomponentstrings_MD_OCODLIST_SYMBOL System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_SYMBOL)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_QTY1;
+#define Mdcomponentstrings_MD_OCODLIST_QTY1 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_QTY1)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_PRICE1;
+#define Mdcomponentstrings_MD_OCODLIST_PRICE1 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_PRICE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_SIDE1;
+#define Mdcomponentstrings_MD_OCODLIST_SIDE1 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_SIDE1)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_QTY2;
+#define Mdcomponentstrings_MD_OCODLIST_QTY2 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_QTY2)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_PRICE2;
+#define Mdcomponentstrings_MD_OCODLIST_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_PRICE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_SIDE2;
+#define Mdcomponentstrings_MD_OCODLIST_SIDE2 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_SIDE2)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_BUY;
 #define Mdcomponentstrings_MD_ORDERBOOK_FILL_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_FILL_BUY)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_SELL;

@@ -7,6 +7,7 @@
 #include "MarketDataStore.h"
 #include "OrderStore.h"
 #include "StopOrderSetting.h"
+#include "OCODataStore.h"
 #include <SysUtils.hpp>
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -66,17 +67,6 @@ public:
 	virtual void __fastcall UpdateQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 	virtual void __fastcall UpdateStopOrderQty( nsOrderMessageDefine::SideEnum side, double Price, int Qty ) = 0;
 };*/
-//---------------------------------------------------------------------------
-class OCOPair
-{
-public:
-	int OrderQty1;
-	double ConditionPrice1;
-	SideEnum OrderSide1;
-	int OrderQty2;
-	double ConditionPrice2;
-	SideEnum OrderSide2;
-};
 //---------------------------------------------------------------------------
 typedef void __fastcall (__closure *TOnStepChangeEvent)(System::TObject* Sender, int Step );
 typedef void __fastcall (__closure *TOnNewOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price, int Qty );
