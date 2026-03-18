@@ -182,6 +182,16 @@
         <DelphiCompile Include="MDComponentStrings.pas">
             <BuildOrder>37</BuildOrder>
         </DelphiCompile>
+        <CppCompile Include="OCODataList.cpp">
+            <VirtualFolder>{407D815D-E2C4-48AB-87E2-2B333CF80473}</VirtualFolder>
+            <DependentOn>OCODataList.h</DependentOn>
+            <BuildOrder>41</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="OCODataStore.cpp">
+            <VirtualFolder>{407D815D-E2C4-48AB-87E2-2B333CF80473}</VirtualFolder>
+            <DependentOn>OCODataStore.h</DependentOn>
+            <BuildOrder>42</BuildOrder>
+        </CppCompile>
         <CppCompile Include="OptionsGreeks.cpp">
             <VirtualFolder>{407D815D-E2C4-48AB-87E2-2B333CF80473}</VirtualFolder>
             <DependentOn>OptionsGreeks.h</DependentOn>
