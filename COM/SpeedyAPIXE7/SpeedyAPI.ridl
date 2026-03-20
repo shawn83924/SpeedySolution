@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/1/26 ¤U¤È 05:10:55 (- $Rev: 12980 $, 1024708203).
+// File generated on 2026/3/20 ¤U¤È 04:12:33 (- $Rev: 12980 $, 759952281).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -42,6 +42,8 @@ library SpeedyAPI
   interface IOrderConnection;
   dispinterface IOrderConnectionEvents;
   coclass OrderConnection;
+  interface ITriggeringCondition;
+  coclass TriggeringCondition;
 
 
   [
@@ -474,6 +476,19 @@ library SpeedyAPI
     cpWrongPassword = 9,
     cpSameAsPrevious = 10,
     cpLockedTryAgain = 11
+  };
+
+  [
+    uuid(78F32B0B-9EB5-40A0-B4A5-43FBA6BF2F3E)
+  ]
+  enum LogicalComparisonOperatorEnum
+  {
+    lcoEQ = 0,
+    lcoNE = 1,
+    lcoGT = 2,
+    lcoGE = 3,
+    lcoLE = 4,
+    lcoLT = 5
   };
 
   [
@@ -1495,6 +1510,52 @@ library SpeedyAPI
   };
 
   [
+    uuid(BF2E3D89-00C9-4860-A4AB-C0C3671CC54F),
+    helpstring("Dispatch interface for TriggeringCondition Object"),
+    dual,
+    oleautomation
+  ]
+  interface ITriggeringCondition: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall BeginEditing(void);
+    [id(0x000000CA)]
+    HRESULT _stdcall EndEditing(void);
+    [id(0x000000CB)]
+    HRESULT _stdcall MatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CC)]
+    HRESULT _stdcall SellSideMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CD)]
+    HRESULT _stdcall BuySideMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CE)]
+    HRESULT _stdcall LastMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CF)]
+    HRESULT _stdcall BidPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000D0)]
+    HRESULT _stdcall AskPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000D1)]
+    HRESULT _stdcall VolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D2)]
+    HRESULT _stdcall PeriodAccumVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int period_in_tenth_sec, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D3)]
+    HRESULT _stdcall BidVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D4)]
+    HRESULT _stdcall AskVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D5)]
+    HRESULT _stdcall AccumVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D6)]
+    HRESULT _stdcall AnyTop5BidVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D7)]
+    HRESULT _stdcall AnyTop5AskVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D8)]
+    HRESULT _stdcall Conjunction([in] unsigned int* signal_list, [in] unsigned int count, [in, defaultvalue(False)] VARIANT_BOOL inverter_on, [out, retval] unsigned int* id);
+    [id(0x000000D9)]
+    HRESULT _stdcall GetLastErrMsg([out, retval] BSTR* lastErrMsg);
+    [id(0x000000DA)]
+    HRESULT _stdcall ToExpression([out, retval] BSTR* condition);
+  };
+
+  [
     uuid(1AE89F65-E901-4703-81E5-87A562181F4C),
     helpstring("Events interface for OrderConnection Object")
   ]
@@ -1628,6 +1689,15 @@ library SpeedyAPI
   {
     [default] interface IOrderConnection;
     [default, source] dispinterface IOrderConnectionEvents;
+  };
+
+  [
+    uuid(F2933AA9-EF84-47AB-AF7F-00D7003EC692),
+    helpstring("TriggeringCondition Object")
+  ]
+  coclass TriggeringCondition
+  {
+    [default] interface ITriggeringCondition;
   };
 
 };
