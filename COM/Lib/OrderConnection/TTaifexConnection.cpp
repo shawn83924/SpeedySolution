@@ -50,12 +50,13 @@ const UFC::AnsiString SUBJECT_FT_OPT            = "TO.FT.OPT";
 //------------------------------------------------------------------------------
 // Order confirm subjects
 //------------------------------------------------------------------------------
-const UFC::AnsiString SUBJECT_CONFIRM_FUT       = "CONFIRM.FUT";
-const UFC::AnsiString SUBJECT_CONFIRM_OPT       = "CONFIRM.OPT";
-const UFC::AnsiString SUBJECT_CONFIRM_TSE       = "CONFIRM.TSE";
-const UFC::AnsiString SUBJECT_CONFIRM_OTC       = "CONFIRM.OTC";
-const UFC::AnsiString SUBJECT_CONFIRM_ES        = "CONFIRM.ES";
-const UFC::AnsiString SUBJECT_CONFIRM_FOREIGN   = "CONFIRM.PATS";
+const UFC::AnsiString SUBJECT_CONFIRM_FUT        = "CONFIRM.FUT";
+const UFC::AnsiString SUBJECT_CONFIRM_OPT        = "CONFIRM.OPT";
+const UFC::AnsiString SUBJECT_CONFIRM_TSE        = "CONFIRM.TSE";
+const UFC::AnsiString SUBJECT_CONFIRM_OTC        = "CONFIRM.OTC";
+const UFC::AnsiString SUBJECT_CONFIRM_ES         = "CONFIRM.ES";
+const UFC::AnsiString SUBJECT_CONFIRM_FOREIGN    = "CONFIRM.PATS";
+const UFC::AnsiString SUBJECT_TOUCH_RESPONSE     = "TOUCH.RESPONSE";// added bu Kenny to support Touch Order. 2026/03/12
 //------------------------------------------------------------------------------
 // Order filled subjects
 //------------------------------------------------------------------------------
@@ -70,9 +71,6 @@ const UFC::AnsiString SUBJECT_FILE_DOWNLOAD     = "FILE.DOWNLOAD";
 const UFC::AnsiString SUBJECT_NEWS_REQUEST      = "NEWS.REQUEST";
 const UFC::AnsiString SUBJECT_NEWS_RESPONSE     = "NEWS.RESPONSE";
 //------------------------------------------------------------------------------
-const UFC::AnsiString SUBJECT_TSE_STRATEGY      = "TO.TSE.STRATEGY";
-const UFC::AnsiString SUBJECT_OTC_STRATEGY      = "TO.OTC.STRATEGY";
-//-------------------------------------------------------------------------------
 
 void TTaifexConnection::InitGlobal()
 {
@@ -149,6 +147,7 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FOnOTCFill( &TTaifexConnection::ReceiveOTCExecuteMessage )
 ,FOnESFill( &TTaifexConnection::ReceiveESExecuteMessage )
 ,FOnForeignFill( &TTaifexConnection::ReceiveForeignExecuteMessage )
+,FOnTouchOrderResponse(&TTaifexConnection::ReceiveTouchOrderResponse) // added by Kenny to support Touch Order. 2026/03/16
 ,FTransport( NULL )
 ,FAdminListener( NULL )
 ,FTWSERender( &TTaifexConnection::RenderTWSET010 )
@@ -240,6 +239,7 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
 ,FOnOTCFill( &TTaifexConnection::ReceiveOTCExecuteMessage )
 ,FOnESFill( &TTaifexConnection::ReceiveESExecuteMessage )
 ,FOnForeignFill( &TTaifexConnection::ReceiveForeignExecuteMessage )
+,FOnTouchOrderResponse(&TTaifexConnection::ReceiveTouchOrderResponse) // added by Kenny to support Touch Order. 2026/03/16
 ,FTransport( NULL )
 ,FAdminListener( NULL )
 ,FTWSERender( &TTaifexConnection::RenderTWSET010 )
@@ -1171,7 +1171,7 @@ void LogonThread::Execute( void )
     LogonMsg.SetIntegerValue( "Ver",FVersion );
     
 #ifdef NO_DMA_PRIVILEDGE
-    LogonMsg.SetIntegerValue( "DMA","0" );
+    LogonMsg.SetStringValue( "DMA","0" );
 #endif
     
     if( FEncode == FALSE )
@@ -1248,41 +1248,41 @@ bool TTaifexConnection::CheckPassword( const UFC::AnsiString& Password, const UF
 	///< Login first
 	if( FIsLogon == false )
 	{
-		Result = crNotLogin;
-		return false;
+            Result = crNotLogin;
+            return false;
 	}
 	///< Password length should >= 8
 	if( NewPassword.Length() < 8 )
 	{
-		Result = crLengthNeeds8;
-		return false;
+            Result = crLengthNeeds8;
+            return false;
 	}
 	///< The new password must be different from the old password
 	if( Password == NewPassword )
 	{
-		Result = crSameAsOld;
-		return false;
+            Result = crSameAsOld;
+            return false;
 	}
 	///< Must contain numbers, symbols, and English uppercase and lowercase letters
 	for( int i=0; i < NewPassword.Length(); i++ )
 	{
-		char ch = NewPassword[i];
+            char ch = NewPassword[i];
 
-		if( ch >='0' && ch <= '9') HasNumber = true;
-		if( ch >='a' && ch <= 'z') LowerChar = true;
-		if( ch >='A' && ch <= 'Z') UpperChar = true;
-		if((ch >='!' && ch <= '/') || (ch >=':' && ch <= '@') ||
-		   (ch >='[' && ch <= '`') || (ch >='{' && ch <= '~')) HasSymbol = true;
+            if( ch >='0' && ch <= '9') HasNumber = true;
+            if( ch >='a' && ch <= 'z') LowerChar = true;
+            if( ch >='A' && ch <= 'Z') UpperChar = true;
+            if((ch >='!' && ch <= '/') || (ch >=':' && ch <= '@') ||
+               (ch >='[' && ch <= '`') || (ch >='{' && ch <= '~')) HasSymbol = true;
 	}
 	if( HasNumber == false || HasSymbol == false || UpperChar == false || LowerChar == false )
 	{
-		if( HasNumber == false )
-			Result = crNeedsNumbers;
-		else if( HasSymbol == false )
-			Result = crNeedsSymbols;
-		else if( UpperChar == false || LowerChar == false )
-			Result = crUpperLowerCase;
-		return false;
+            if( HasNumber == false )
+                Result = crNeedsNumbers;
+            else if( HasSymbol == false )
+                Result = crNeedsSymbols;
+            else if( UpperChar == false || LowerChar == false )
+                Result = crUpperLowerCase;
+            return false;
 	}
 	return true;
 }
@@ -1294,9 +1294,9 @@ void TTaifexConnection::ChangePassword( const UFC::AnsiString& Password, const U
 
 	if( CheckPassword( Password, NewPassword, Result ) == false )
 	{
-		if( FListener != NULL )
-			FListener->OnChangePassword( Result );
-		return;
+            if( FListener != NULL )
+		FListener->OnChangePassword( Result );
+            return;
 	}
 	Glog->fprintf( " User:[%s] Change password.", FID.c_str() );
 	PwdMsg.SetIntegerValue( "CMD", CMD_CHANGE_PASSWORD );
@@ -1556,6 +1556,13 @@ void TTaifexConnection::AddForeignExReportListener( const UFC::AnsiString& Liste
     }
 }
 //---------------------------------------------------------------------------
+//  added by Kenny to support Touch Order. 2026/03/16
+void TTaifexConnection::AddTouchOrderResponseListener(const UFC::AnsiString& ListenKey)
+{
+    Glog->fprintf(" - Add Touch Order Response Listerner.");
+    AddExecListener(SUBJECT_TOUCH_RESPONSE, ListenKey, &FOnTouchOrderResponse);///< Touch Order response
+}
+//---------------------------------------------------------------------------
 void TTaifexConnection::CreateReportListener( void )
 {
     if( FTriggerExec == TRUE )
@@ -1568,6 +1575,7 @@ void TTaifexConnection::CreateReportListener( void )
 			AddTAIFEXReportListener( ListenKey );
             AddTWSEReportListener( ListenKey );
             AddForeignExReportListener( ListenKey );
+            AddTouchOrderResponseListener(ListenKey); // added by Kenny to support Touch Order. 2026/03/16
         }
 		else  ///< Subscribes all IDs execution report.
         {
@@ -1577,6 +1585,7 @@ void TTaifexConnection::CreateReportListener( void )
                 AddTAIFEXReportListener( ListenKey );
                 AddTWSEReportListener( ListenKey );
                 AddForeignExReportListener( ListenKey );
+                AddTouchOrderResponseListener(ListenKey); // added by Kenny to support Touch Order. 2026/03/16
             }
         }
     }

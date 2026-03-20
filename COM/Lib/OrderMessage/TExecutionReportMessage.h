@@ -86,6 +86,9 @@ private:
     
     UFC::PHashedList<UFC::AnsiString, UFC::AnsiString*> FExecutionAttributes;
 
+    nsOrderMessageDefine::TouchOrderResponseTypeEnum FTouchOrderRespType; // added by Kenny to support Touch Order. 2026/03/16
+    UFC::AnsiString FTouchOrderResponse;                                  // added by Kenny to support Touch Order. 2026/03/16
+
 public:
     TExecutionReportMessage( void );
     TExecutionReportMessage( TExecutionReportMessage& Ref );
@@ -167,7 +170,9 @@ public:
     void SetFixCxlRejReason( long Value )                                                     { FFixCxlRejReason = Value; }
     void SetFixOrdRejReason( long Value )                                                     { FFixOrdRejReason = Value; }
     void SetAttribute(const char* Key, const char* Value);
-        
+    void SetTouchOrderResponse(const char* response)                                          { FTouchOrderResponse = response; } // added by Kenny to support Touch Order. 2026/03/16
+    void SetTouchOrderRespType(nsOrderMessageDefine::TouchOrderResponseTypeEnum value)        { FTouchOrderRespType = value; }    // added by Kenny to support Touch Order. 2026/03/16
+
     const char*                                     GetSrc( void )                      {return FSrc.c_str(); }
     const char*                                     GetLINBRN( void )                   {return FLINBRN.c_str(); }
     const char*                                     GetMaturityMonthYear( void )        {return FMaturityMonthYear.c_str(); }
@@ -246,6 +251,8 @@ public:
     UFCType::Int32                                  GetAttributeCount()                 { return FExecutionAttributes.ItemCount(); }
     BOOL                                            GetAttribute( UFCType::Int32 index, UFC::AnsiString& key, UFC::AnsiString& value );
     BOOL                                            GetAttribute( const UFC::AnsiString& key, UFC::AnsiString& value );
+    const char* GetTouchOrderResponse()                                                 { return FTouchOrderResponse.Length() ? FTouchOrderResponse.c_str() : ""; } // added by Kenny to support Touch Order. 2026/03/16
+    nsOrderMessageDefine::TouchOrderResponseTypeEnum GetTouchOrderRespType()            { return FTouchOrderRespType; }                                             // added by Kenny to support Touch Order. 2026/03/16
 };
 //--------------------------------------------------------------------------
 #endif

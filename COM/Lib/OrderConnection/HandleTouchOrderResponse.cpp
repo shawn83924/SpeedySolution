@@ -1,0 +1,20 @@
+#include "TTaifexConnection.h"
+
+void  TTaifexConnection::ReceiveTouchOrderResponse(MTree* pTree)
+{
+    int type = nsOrderMessageDefine::TouchOrderResponseTypeEnum::tortNone;
+    UFC::AnsiString Response;
+
+    if (!pTree->get("TYPE", type) || !pTree->get("RESPONSE", Response))
+        return;
+    
+    nsOrderMessageDefine::TouchOrderResponseTypeEnum resp_type = 
+        static_cast<nsOrderMessageDefine::TouchOrderResponseTypeEnum>(type);
+
+    TExecutionReportMessage ExecutionReport;
+    ExecutionReport.SetTouchOrderRespType(resp_type);
+    if (Response.Length())
+        ExecutionReport.SetTouchOrderResponse(Response.c_str());
+
+    TrigerOnExecutionReport(&ExecutionReport, edSpeedyGenerate);
+}

@@ -21,6 +21,7 @@
 #include "../OrderMessage/TOrderStatusRequest.h"
 #include "../MarketDataMessage/TNewsMessage.h"
 #include "../OrderMessage/TNetworkID.h"
+#include "../OrderMessage/TTouchOrderCommand.h"  // add by Kenny to support TouchOrder management. 2026/03/11
 //------------------------------------------------------------------------------
 #include "../EmbadedResource.h"
 #include "../../SpeedyAPIXE7/MessageDataFormat.h"
@@ -396,6 +397,7 @@ private: ///< Callback functions and container
 	EventFunc                       FOnOTCFill;
 	EventFunc                       FOnESFill;
 	EventFunc                       FOnForeignFill;
+	EventFunc                       FOnTouchOrderResponse; // added by Kenny to support Touch Order. 2026/03/16
 	UFC::PHashMap<UFC::AnsiString, EventFunc*> FCallbackFuncs;
 private: ///< ExecID hash set.
 	UFC::PStringHashedSet           FFUTExecIDSet; ///< TAIFEX Futures
@@ -658,6 +660,7 @@ private:
 	void                            CreateReportListener( void );
 	void                            AddTAIFEXReportListener( const UFC::AnsiString& ListenKey );
 	void                            AddTWSEReportListener( const UFC::AnsiString& ListenKey );
+	void                            AddTouchOrderResponseListener(const UFC::AnsiString& ListenKey); // addded by Kenny to support Touch Order. 2026/03/16
 	void                            AddForeignExReportListener( const UFC::AnsiString& ListenKey );
 	LogonResult                     CreateShareMemory( MTree* pTree, int CIDBits, UFC::AnsiString& ReplyString );
 public:
@@ -719,6 +722,7 @@ private: ///< Handle Executions
 	void                            ReceiveCNExecuteMessage( MTree* pTree );
 	void                        	ReceiveForeignExecuteMessage( MTree* pTree );
 	///<
+	void                            ReceiveTouchOrderResponse(MTree* pTree); // added by Kenny to support Touch Order. 2026/03/16
 	void                            UpdateTMPFields( UFC::AnsiString& TMPExtStr, TExecutionReportMessage& ExecutionReport, int Precision );
 	void                            ReceiveNews( MTree* pTree );
 	void                            RemoveListener( TMdListener*& Listener );
@@ -890,6 +894,11 @@ public:  ///< Public functions for order placement.
 	void                            RequestFile( nsOrderMessageDefine::MarketEnum Market, BOOL IsMorningSession, int ReqID, const char* Body );
 	int                             SendNewsRequest( TNewsMessage* ReqMsg );
 	int                             SendNewsRequest( const UFC::AnsiString& FuncStr, const UFC::AnsiString& DataStr, int Count,int index );
+	/**
+	* To Add,Pause,Active,Remove,Query TouchOrder
+	*   @param TouchOrderCmd command to control touch order   
+	*/
+	BOOL                            TouchOrderControl(TTouchOrderCommand* TouchOrderCmd); // added by Kenny to support touch order management.
 public: ///< Functions to setup order connection.
 	bool                            GetEnablePendingNewAck( void )      { return FEnablePendingNewAck; }
 	void                            SetEnablePendingNewAck( bool Value ){ FEnablePendingNewAck = Value; }
@@ -928,9 +937,6 @@ public: ///< Functions to setup order connection.
 	const UFC::AnsiString&          GetCMID( void )                { return FCMID; }
 	const UFC::AnsiString&          GetUserName( void )            { return FUserName; }
 	void                            Stdout( BOOL ToStdOut );
-
-public: ///< Functions to control touch order (added by Kenny 2026/01/15)
-	BOOL                            CancelTouchOrder(const char* touch_order_id);
 
 public:
 	/** Constructor for COM only.
