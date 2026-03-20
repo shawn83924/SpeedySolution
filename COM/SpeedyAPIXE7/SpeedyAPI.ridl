@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/3/20 ¤U¤È 04:12:33 (- $Rev: 12980 $, 759952281).
+// File generated on 2026/3/20 ¤U¤È 08:15:02 (- $Rev: 12980 $, 774501890).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -44,6 +44,8 @@ library SpeedyAPI
   coclass OrderConnection;
   interface ITriggeringCondition;
   coclass TriggeringCondition;
+  interface ITouchOrderCommand;
+  coclass TouchOrderCommand;
 
 
   [
@@ -489,6 +491,27 @@ library SpeedyAPI
     lcoGE = 3,
     lcoLE = 4,
     lcoLT = 5
+  };
+
+  [
+    uuid(B92CCD96-DF1D-4166-8A98-092582D94799)
+  ]
+  enum TouchedOrderCommandEnum
+  {
+    tocNew = 0,
+    tocPause = 1,
+    tocActive = 2,
+    tocKill = 3,
+    tocQuery = 4
+  };
+
+  [
+    uuid(8F9E202D-5463-4F4A-8C99-C841C7EFC663)
+  ]
+  enum PriceDependOnEnum
+  {
+    pdoNone = 0,
+    pdoMatch = 1
   };
 
   [
@@ -1552,7 +1575,51 @@ library SpeedyAPI
     [id(0x000000D9)]
     HRESULT _stdcall GetLastErrMsg([out, retval] BSTR* lastErrMsg);
     [id(0x000000DA)]
-    HRESULT _stdcall ToExpression([out, retval] BSTR* condition);
+    HRESULT _stdcall ToExpression([out, retval] BSTR* triggeringCondition);
+    [propget, id(0x000000DB)]
+    HRESULT _stdcall Instance([out, retval] VARIANT* Value);
+  };
+
+  [
+    uuid(97E11FE1-41CB-4491-99FC-31FF25986E5B),
+    helpstring("Dispatch interface for TouchOrderCommand Object"),
+    dual,
+    oleautomation
+  ]
+  interface ITouchOrderCommand: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall SetCmdType([in] enum TouchedOrderCommandEnum toc_type);
+    [id(0x000000CA)]
+    HRESULT _stdcall SetMarket([in] enum MarketEnum market);
+    [id(0x000000CB)]
+    HRESULT _stdcall SetSymbol([in] BSTR symbol);
+    [id(0x000000CC)]
+    HRESULT _stdcall SetSide([in] enum SideEnum side);
+    [id(0x000000CD)]
+    HRESULT _stdcall SetTouchOrderID([in] BSTR id);
+    [id(0x000000CE)]
+    HRESULT _stdcall SetPrice([in] BSTR price);
+    [id(0x000000CF)]
+    HRESULT _stdcall SetFloatingOrderPrice([in] enum PriceDependOnEnum depend_on, [in] int ticks);
+    [id(0x000000D0)]
+    HRESULT _stdcall SetUserData([in] BSTR data);
+    [id(0x000000D1)]
+    HRESULT _stdcall SetTriggeredActionNewOrder([in] INewOrderMessage* order);
+    [id(0x000000D2)]
+    HRESULT _stdcall SetTriggeredActionCancelOrder([in] ICancelOrderMessage* order);
+    [id(0x000000D3)]
+    HRESULT _stdcall SetTriggeredActionReplaceOrder([in] IReplaceOrderMessage* order);
+    [id(0x000000D4)]
+    HRESULT _stdcall SetTriggeredActionTouchOrderCmd([in] ITouchOrderCommand* toc);
+    [propget, id(0x000000D5)]
+    HRESULT _stdcall Instance([out, retval] VARIANT* Value);
+    [id(0x000000D6)]
+    HRESULT _stdcall SetTriggeredActionMsg([in] BSTR msg);
+    [id(0x000000D7)]
+    HRESULT _stdcall SetTriggeringCondition([in] ITriggeringCondition* ttc);
+    [id(0x000000D8)]
+    HRESULT _stdcall GetNID([out, retval] __int64* NID);
   };
 
   [
@@ -1698,6 +1765,15 @@ library SpeedyAPI
   coclass TriggeringCondition
   {
     [default] interface ITriggeringCondition;
+  };
+
+  [
+    uuid(E392E9A5-F3C0-41A1-83B6-656585F4DE64),
+    helpstring("TouchOrderCommand Object")
+  ]
+  coclass TouchOrderCommand
+  {
+    [default] interface ITouchOrderCommand;
   };
 
 };

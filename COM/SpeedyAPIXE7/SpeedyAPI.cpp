@@ -16,6 +16,8 @@
 #include "OrderStatusRequestMessageImpl.h"
 #include "NewsMessageImpl.h"
 #include "OrderConnectionImpl.h"
+#include "TriggeringConditionImpl.h"
+#include "TouchOrderCommandImpl.h"
 #pragma package(smart_init)
 #pragma link "System.Win.ComServ"
 // -----------------------------------------------------------------------------

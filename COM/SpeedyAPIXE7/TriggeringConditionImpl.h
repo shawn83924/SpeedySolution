@@ -52,5 +52,6 @@ protected:
           unsigned* id));
   STDMETHOD(GetLastErrMsg(BSTR* lastErrMsg));
   STDMETHOD(ToExpression(BSTR* triggeringCondition));
+  STDMETHOD(get_Instance(VARIANT* Value));
 };
 #endif //TriggeringConditionImplH

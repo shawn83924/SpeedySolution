@@ -600,6 +600,16 @@
             <Form>TaifexDataFormat.res</Form>
             <BuildOrder>38</BuildOrder>
         </ResourceCompile>
+        <CppCompile Include="TouchOrderCommandImpl.cpp">
+            <CoClasses>TouchOrderCommand</CoClasses>
+            <DependentOn>TouchOrderCommandImpl.h</DependentOn>
+            <BuildOrder>80</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="TriggeringConditionImpl.cpp">
+            <CoClasses>TriggeringCondition</CoClasses>
+            <DependentOn>TriggeringConditionImpl.h</DependentOn>
+            <BuildOrder>79</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\..\ExchangeUtility\Utility_Exc.cpp">
             <VirtualFolder>{A41D5817-0117-4313-99A9-BF80309951BF}</VirtualFolder>
             <BuildOrder>75</BuildOrder>

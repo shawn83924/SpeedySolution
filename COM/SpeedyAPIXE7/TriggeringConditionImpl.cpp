@@ -117,15 +117,6 @@ STDMETHODIMP TTriggeringConditionImpl::VolumeComp(LogicalComparisonOperatorEnum 
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTriggeringConditionImpl::PeriodAccumVolumeComp(LogicalComparisonOperatorEnum op,
           unsigned period_in_tenth_sec, unsigned volume, unsigned* id)
-
-
-
-
-
-
-
-
-
 {
 	LogicalComparisonOperator Operator = static_cast<LogicalComparisonOperator>(static_cast<int>(op));
 	*id = FCondition.PeriodAccumVolumeComp(Operator, period_in_tenth_sec, volume);
@@ -195,4 +186,14 @@ STDMETHODIMP TTriggeringConditionImpl::ToExpression(BSTR* triggeringCondition)
 	WideString wideCondition(AnsiCondition.c_str());
 	*triggeringCondition = wideCondition.Copy();
     return S_OK;
+}
+// ---------------------------------------------------------------------------
+STDMETHODIMP TTriggeringConditionImpl::get_Instance(VARIANT* Value)
+{
+	VARIANT ConditionInstance;
+	ConditionInstance.vt = VT_BYREF;
+	ConditionInstance.byref = &FCondition;
+	*Value = ConditionInstance;
+
+	return S_OK;
 }
