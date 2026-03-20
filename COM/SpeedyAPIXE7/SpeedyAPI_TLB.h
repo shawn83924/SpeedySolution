@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/3/20 ¤U¤È 08:11:39 from Type Library described below.
+// File generated on 2026/3/20 ¤U¤È 08:53:00 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3079,6 +3079,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                       BSTR* Result/*[in,out]*/,
                                                       VARIANT_BOOL* SUCCEED/*[out,retval]*/) = 0; // [244]
+  virtual HRESULT STDMETHODCALLTYPE TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                                      VARIANT_BOOL* Result/*[out,retval]*/) = 0; // [245]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3229,6 +3231,13 @@ public:
     VARIANT_BOOL SUCCEED;
     OLECHECK(this->GetMarginPosition(BrokerID, Account, Result, (VARIANT_BOOL*)&SUCCEED));
     return SUCCEED;
+  }
+
+  VARIANT_BOOL __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+  {
+    VARIANT_BOOL Result;
+    OLECHECK(this->TouchOrderControl(TouchOrderCmd, (VARIANT_BOOL*)&Result));
+    return Result;
   }
 
 
@@ -6315,6 +6324,9 @@ public:
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                BSTR* Result/*[in,out]*/);
+  HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                               VARIANT_BOOL* Result/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -6495,6 +6507,9 @@ public:
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                BSTR* Result/*[in,out]*/);
+  HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
+                                               , VARIANT_BOOL* Result/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -18768,6 +18783,21 @@ TCOMIOrderConnectionT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/
   return SUCCEED;
 }
 
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                            VARIANT_BOOL* Result/*[out,retval]*/)
+{
+  return (*this)->TouchOrderControl(TouchOrderCmd, Result);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMIOrderConnectionT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+{
+  VARIANT_BOOL Result;
+  OLECHECK(this->TouchOrderControl(TouchOrderCmd/*[in]*/, (VARIANT_BOOL*)&Result));
+  return Result;
+}
+
 // *********************************************************************//
 // DispIntf:  IOrderConnection
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -19594,6 +19624,24 @@ IOrderConnectionDispT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/
   VARIANT_BOOL SUCCEED;
   this->GetMarginPosition(BrokerID, Account, Result, (VARIANT_BOOL*)&SUCCEED);
   return SUCCEED;
+}
+
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
+                                            , VARIANT_BOOL* Result/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("TouchOrderControl"), DISPID(245));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ITouchOrderCommand*)TouchOrderCmd /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(Result /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+IOrderConnectionDispT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+{
+  VARIANT_BOOL Result;
+  this->TouchOrderControl(TouchOrderCmd, (VARIANT_BOOL*)&Result);
+  return Result;
 }
 
 // *********************************************************************//

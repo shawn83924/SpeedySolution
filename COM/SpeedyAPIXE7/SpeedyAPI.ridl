@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/3/20 ¤U¤È 08:15:02 (- $Rev: 12980 $, 774501890).
+// File generated on 2026/3/20 ¤U¤È 08:53:38 (- $Rev: 12980 $, 776817125).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1530,6 +1530,8 @@ library SpeedyAPI
     HRESULT _stdcall ChangePassword([in] BSTR Password, [in] BSTR NewPassword);
     [id(0x000000F4)]
     HRESULT _stdcall GetMarginPosition([in] BSTR BrokerID, [in] BSTR Account, [in, out] BSTR* Result, [out, retval] VARIANT_BOOL* SUCCEED);
+    [id(0x000000F5)]
+    HRESULT _stdcall TouchOrderControl([in] ITouchOrderCommand* TouchOrderCmd, [out, retval] VARIANT_BOOL* Result);
   };
 
   [

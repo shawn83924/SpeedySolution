@@ -1267,5 +1267,21 @@ STDMETHODIMP TOrderConnectionImpl::GetMarginPosition(BSTR BrokerID, BSTR Account
 	return S_OK;
 }
 //-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::TouchOrderControl(ITouchOrderCommand* TouchOrderCmd,
+		  VARIANT_BOOL* Result)
+{
+	if( FConnection == NULL )
+	{
+		*Result = VARIANT_FALSE;
+		return S_OK;
+	}
 
+	VARIANT CommandInstance;
+	TouchOrderCmd->get_Instance(&CommandInstance);
+	if(CommandInstance.byref != NULL)
+		*Result = FConnection->TouchOrderControl( static_cast<TTouchOrderCommand*>(CommandInstance.byref) );
+	else
+		*Result = VARIANT_FALSE;
 
+	return S_OK;
+}
