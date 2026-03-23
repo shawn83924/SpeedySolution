@@ -926,6 +926,16 @@ STDMETHODIMP TExecutionReportMessageImpl::get_PartID(long* Value)
 	return S_OK;
 }
 //------------------------------------------------------------------------------
+STDMETHODIMP TExecutionReportMessageImpl::GetTouchOrderResponse(BSTR* Value)
+{
+	WideString response( FMessage.GetTouchOrderResponse() );
+	*Value = response.Copy();
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TExecutionReportMessageImpl::GetTouchOrderRespType(TouchOrderResponseTypeEnum* Value)
+{
+	*Value = (TouchOrderResponseTypeEnum)( FMessage.GetTouchOrderRespType() );
+	return S_OK;
 
-
-
+}

@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/3/20 ¤U¤È 08:53:00 from Type Library described below.
+// File generated on 2026/3/23 ¤W¤È 10:26:04 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -129,6 +129,7 @@ extern __declspec (package) const GUID GUID_ChangePasswordEnum;
 extern __declspec (package) const GUID GUID_LogicalComparisonOperatorEnum;
 extern __declspec (package) const GUID GUID_TouchedOrderCommandEnum;
 extern __declspec (package) const GUID GUID_PriceDependOnEnum;
+extern __declspec (package) const GUID GUID_TouchOrderResponseTypeEnum;
 
 // *********************************************************************//
 // Forward declaration of types defined in TypeLibrary
@@ -165,6 +166,7 @@ enum class    ChangePasswordEnum;
 enum class    LogicalComparisonOperatorEnum;
 enum class    TouchedOrderCommandEnum;
 enum class    PriceDependOnEnum;
+enum class    TouchOrderResponseTypeEnum;
 interface DECLSPEC_UUID("{EB336D21-43FC-43EE-9E3F-6FEEC1F334FF}") IBaseMessage;
 typedef TComInterface<IBaseMessage, &IID_IBaseMessage> IBaseMessagePtr;
 
@@ -601,6 +603,15 @@ enum class PriceDependOnEnum
 {
   pdoNone = 0,
   pdoMatch = 1
+};
+
+enum class TouchOrderResponseTypeEnum
+{
+  tortNone = 0,
+  tortOrderConfirm = 1,
+  tortStatusUpdate = 2,
+  tortQueryResult = 3,
+  tortOrderReject = 4
 };
 
 // *********************************************************************//
@@ -2232,6 +2243,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE get_CancelByExchange(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [328]
   virtual HRESULT STDMETHODCALLTYPE get_IsReplacePx(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [329]
   virtual HRESULT STDMETHODCALLTYPE get_PartID(long* Value/*[out,retval]*/) = 0; // [330]
+  virtual HRESULT STDMETHODCALLTYPE GetTouchOrderResponse(BSTR* Value/*[out,retval]*/) = 0; // [331]
+  virtual HRESULT STDMETHODCALLTYPE GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/) = 0; // [332]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -2673,6 +2686,20 @@ public:
   {
     long Value;
     OLECHECK(this->get_PartID((long*)&Value));
+    return Value;
+  }
+
+  BSTR __fastcall GetTouchOrderResponse(void)
+  {
+    BSTR Value = 0;
+    OLECHECK(this->GetTouchOrderResponse((BSTR*)&Value));
+    return Value;
+  }
+
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void)
+  {
+    Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+    OLECHECK(this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value));
     return Value;
   }
 
@@ -5499,6 +5526,10 @@ public:
   VARIANT_BOOL    __fastcall get_IsReplacePx(void);
   HRESULT         __fastcall get_PartID(long* Value/*[out,retval]*/);
   long            __fastcall get_PartID(void);
+  HRESULT         __fastcall GetTouchOrderResponse(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetTouchOrderResponse(void);
+  HRESULT         __fastcall GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/);
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void);
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   BSTR            OrderID = {read = get_OrderID, write = set_OrderID};
@@ -5767,6 +5798,10 @@ public:
   VARIANT_BOOL    __fastcall get_IsReplacePx(void);
   HRESULT         __fastcall get_PartID(long* Value/*[out,retval]*/);
   long            __fastcall get_PartID(void);
+  HRESULT         __fastcall GetTouchOrderResponse(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetTouchOrderResponse(void);
+  HRESULT         __fastcall GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/);
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
   HRESULT         __fastcall get_Account(BSTR* Value/*[out,retval]*/);
@@ -15475,6 +15510,34 @@ TCOMIExecutionReportMessageT<T>::get_PartID(void)
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderResponse(BSTR* Value/*[out,retval]*/)
+{
+  return (*this)->GetTouchOrderResponse(Value);
+}
+
+template <class T> BSTR __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderResponse(void)
+{
+  BSTR Value = 0;
+  OLECHECK(this->GetTouchOrderResponse((BSTR*)&Value));
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/)
+{
+  return (*this)->GetTouchOrderRespType(Value);
+}
+
+template <class T> Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderRespType(void)
+{
+  Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+  OLECHECK(this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value));
+  return Value;
+}
+
 // *********************************************************************//
 // DispIntf:  IExecutionReportMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -16773,6 +16836,38 @@ IExecutionReportMessageDispT<T>::get_PartID(void)
 {
   long Value;
   this->get_PartID((long*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderResponse(BSTR* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetTouchOrderResponse"), DISPID(331));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderResponse(void)
+{
+  BSTR Value;
+  this->GetTouchOrderResponse((BSTR*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetTouchOrderRespType"), DISPID(332));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr((int*)Value /*[VT_USERDEFINED:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderRespType(void)
+{
+  Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+  this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value);
   return Value;
 }
 

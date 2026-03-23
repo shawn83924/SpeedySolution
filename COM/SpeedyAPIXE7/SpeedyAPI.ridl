@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/3/20 ¤U¤È 08:53:38 (- $Rev: 12980 $, 776817125).
+// File generated on 2026/3/23 ¤W¤È 10:26:05 (- $Rev: 12980 $, 998364875).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -512,6 +512,18 @@ library SpeedyAPI
   {
     pdoNone = 0,
     pdoMatch = 1
+  };
+
+  [
+    uuid(3D6694AF-DA4E-4D2A-AB88-FCD13BBD2644)
+  ]
+  enum TouchOrderResponseTypeEnum
+  {
+    tortNone = 0,
+    tortOrderConfirm = 1,
+    tortStatusUpdate = 2,
+    tortQueryResult = 3,
+    tortOrderReject = 4
   };
 
   [
@@ -1292,6 +1304,10 @@ library SpeedyAPI
     HRESULT _stdcall IsReplacePx([out, retval] VARIANT_BOOL* Value);
     [propget, id(0x0000014A)]
     HRESULT _stdcall PartID([out, retval] long* Value);
+    [id(0x0000014B)]
+    HRESULT _stdcall GetTouchOrderResponse([out, retval] BSTR* Value);
+    [id(0x0000014C)]
+    HRESULT _stdcall GetTouchOrderRespType([out, retval] enum TouchOrderResponseTypeEnum* Value);
   };
 
   [
