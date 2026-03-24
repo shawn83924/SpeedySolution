@@ -20,6 +20,7 @@ __fastcall TOCODataList::TOCODataList(TComponent* Owner)
 	FBufferBmp = new Graphics::TBitmap();
 	FDeleteBmp = new Graphics::TBitmap();
 	FColumn0BMP= new Graphics::TBitmap();
+	FMouseDownItem = NULL;
 
 	ViewStyle = vsReport;
 	OwnerDraw = true;
@@ -70,7 +71,7 @@ void __fastcall TOCODataList::InitialCol( void )
 	Columns->EndUpdate();
 }
 //---------------------------------------------------------------------------
-TListColumn* __fastcall TOCODataList::AddColField( int Field, int width )
+TListColumn* __fastcall TOCODataList::AddColField( int Field )
 {
 	TListColumn* NewCol;
 
@@ -78,19 +79,26 @@ TListColumn* __fastcall TOCODataList::AddColField( int Field, int width )
 	NewCol = (TListColumn*)Columns->Add();
 	NewCol->Caption = HeaderString[ Field ];
 	NewCol->Tag = Field;
-	SetColWidth(  NewCol, HeaderString[Field] );
+	SetColWidth( NewCol, HeaderString[Field] );
 	return NewCol;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::SetColWidth( TListColumn* NewCol, const String& ColName )
+void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const String& ColName )
 {
+	if(Col->Tag == 0)
+	{
+		Col->Width	  = 55;
+		Col->MinWidth = 55;
+		Col->MaxWidth = 55;
+		return;
+	}
 	int curWidth = FBufferBmp->Canvas->TextWidth( ColName ) + 24;
-	NewCol->Width = curWidth;
+	Col->Width = curWidth;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::SetColWidth( TListColumn* NewCol, const int width )
+void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const int width )
 {
-	NewCol->Width = width;
+	Col->Width = width;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::SetDeleteBmp(Graphics::TBitmap* deleteBmp)
@@ -245,13 +253,27 @@ void __fastcall TOCODataList::DrawIcon( TRect& ItemRect )
 	FColumn0BMP->Canvas->StretchDraw( DrawRect, FDeleteBmp);
 }
 //---------------------------------------------------------------------------
+bool __fastcall TOCODataList::IsMouseInDeleteIcon( void )
+{
+	TPoint CurPosition = CalcCursorPos();
+	TListItem *CurItemPtr = this->GetItemAt(CurPosition.x, CurPosition.y);
+	if(CurItemPtr == NULL)
+		return false;
+
+	TRect itemRect = CurItemPtr->DisplayRect(drBounds);
+	if ((CurPosition.x < itemRect.left) || (CurPosition.x >= itemRect.Height()))
+		return false;
+
+    return true;
+}
+//---------------------------------------------------------------------------
 void __fastcall TOCODataList::AddData(OCOPair* pair)
 {
 	Items->BeginUpdate();
 	TListItem* item = Items->Add();
 	item->Data = pair;
 
-	item->Caption = L"";
+	item->Caption = HeaderString[0];
 	RefreshSubItem( item, pair);
 	Items->EndUpdate();
 	item->MakeVisible( false );
@@ -265,14 +287,75 @@ void __fastcall TOCODataList::RefreshSubItem(TListItem* ItemPtr, OCOPair* pair)
 		ItemPtr->SubItems->Add( pair->GetStringField(i) );
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::Click(void)
+void __fastcall TOCODataList::WndProc(TMessage& Message)
 {
-	TPoint CurPosition = CalcCursorPos();
-	//get clicked item
-	TListItem *CurItemPtr = this->GetItemAt(CurPosition.x, CurPosition.y);
-	if(CurItemPtr == NULL)
-		TControl::Click();
+	switch (Message.Msg)
+	{
+		case WM_LBUTTONDOWN:
+        {
+			int X = LOWORD(Message.LParam);
+			int Y = HIWORD(Message.LParam);
+			OnLeftMouseDown(X,Y);
 
+			if (FIsDownInDelImg)
+				return;
+			break;
+		}
+		case WM_LBUTTONUP:
+		{
+			int X = LOWORD(Message.LParam);
+			int Y = HIWORD(Message.LParam);
+			OnLeftMouseUp(X,Y);
+			break;
+		}
+	}
+	TCustomListView::WndProc(Message);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::Edit(const TLVItem &Item)
+{
+	// Do nothing ¡X suppress inline editing entirely
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::OnLeftMouseDown(int X, int Y)// set left down Item
+{
+	TListItem* CurItemPtr = this->GetItemAt(X, Y);
+	if(CurItemPtr == NULL)
+	{
+		FMouseDownItem = NULL;
+		FIsDownInDelImg = false;
+		return;
+	}
+
+	FMouseDownItem = CurItemPtr;
+	FIsDownInDelImg = IsMouseInDeleteIcon();
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::OnLeftMouseUp(int X, int Y)
+{
+	TListItem* CurItemPtr = this->GetItemAt(X, Y);
+	if(CurItemPtr == NULL)
+		return;
+
+	if(FIsDownInDelImg && (CurItemPtr == FMouseDownItem) && IsMouseInDeleteIcon())
+    {
+		DeleteItem(CurItemPtr);
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::DeleteItem(TListItem* ItemPtr)
+{
+    if(ItemPtr == NULL)
+        return;
+
+    OCOPair* pair = (OCOPair*)ItemPtr->Data;
+    if(pair != NULL)
+        delete pair;
+
+	Items->BeginUpdate();
+    ItemPtr->Data = NULL;
+    ItemPtr->Delete();
+	Items->EndUpdate();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::TestFunctionForAddData(void)

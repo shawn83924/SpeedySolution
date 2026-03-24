@@ -14,7 +14,7 @@ class PACKAGE TOCODataList : public TCustomListView
 private:
 	void __fastcall InitString( void );
 	void __fastcall InitialCol( void );
-	TListColumn* __fastcall AddColField( int Field, int width = 0 );
+	TListColumn* __fastcall AddColField( int Field );
 	void __fastcall SetColWidth( TListColumn* NewCol, const String& ColName );
 	void __fastcall SetColWidth( TListColumn* NewCol, const int width );
 	void __fastcall SetDeleteBmp( Graphics::TBitmap* deleteBmp );
@@ -32,16 +32,22 @@ private:
 	void __fastcall SetDelBMPCanvasColor(TCanvas* canvas, bool isSelected);
 	void __fastcall DrawBar( TCanvas* canvas, TRect& dRect, TColor BarColor );
 	void __fastcall DrawIcon( TRect& ItemRect );
+	bool __fastcall IsMouseInDeleteIcon( void );
+	void __fastcall OnLeftMouseDown(int X, int Y);
+	void __fastcall OnLeftMouseUp(int X, int Y);
+	void __fastcall DeleteItem( TListItem* ItemPtr);
 private:
 	static String HeaderString[];
 	Graphics::TBitmap* FBufferBmp;
 	Graphics::TBitmap* FDeleteBmp;
 	Graphics::TBitmap* FColumn0BMP;
+	TListItem* FMouseDownItem;
+	bool FIsDownInDelImg;
 
 protected:
 	virtual void __fastcall Loaded(void);
-	DYNAMIC void __fastcall Click(void);
-
+	virtual void __fastcall WndProc(TMessage& Message);
+    DYNAMIC void __fastcall Edit(const TLVItem &Item);
 public:
 	__fastcall TOCODataList(TComponent* Owner);
 	__fastcall ~TOCODataList(void);
