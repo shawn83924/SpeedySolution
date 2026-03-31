@@ -9,12 +9,14 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     std::string cmd_node;
     std::string action;
     std::string scene;
+    std::string expression;
 
     if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
     {
         cmd_node = "act=N";
         action = toc->GetTriggeredAction();
         scene = toc->GetTriggeringCondition();
+        expression = toc->GetTriggerExpression();
 
         if (action.empty() || scene.empty())
             return FALSE;        
@@ -42,19 +44,29 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
         std::string toid = toc->GetTouchOrderID();
         if (!toid.empty())
         {
-            cmd_node += "toid=";
+            cmd_node += "^toid=";
             cmd_node += toid;
         }
     }
 
     nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
-    if (nsOrderMessageDefine::mTSE != market && nsOrderMessageDefine::mOTC != market)
+    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd && 
+        nsOrderMessageDefine::mTSE != market && 
+        nsOrderMessageDefine::mOTC != market)
     {
         return FALSE;
     }
 
-    long long NID = GenerateNID(nsOrderMessageDefine::MessageTypeEnum::mtNew);
-    toc->SetNID(NID); 
+    std::string symbol = toc->GetSymbol();
+    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd && symbol.empty())
+        return FALSE;
+
+    long long NID = 0;
+    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
+    {
+        NID = GenerateNID(nsOrderMessageDefine::MessageTypeEnum::mtNew);
+        toc->SetNID(NID);
+    }
 
     MTHandle        MHandle;
     MApp* MBusClient = FTransport->GetMApp();
@@ -65,12 +77,17 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
         MBusClient->WriteString(MHandle, "MARKET", "OTC");
 
     MBusClient->WriteString(MHandle, "ID", FID);
-    MBusClient->WriteInt64(MHandle, "NID", NID);
+    
+    if (NID)
+        MBusClient->WriteInt64(MHandle, "NID", NID);
+    
     MBusClient->WriteInt32(MHandle, "CID", FCurrentConnectionID);
     MBusClient->WriteString(MHandle, "COMMAND", cmd_node.c_str());
     
     if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
     {
+        MBusClient->WriteString(MHandle, "SYMBOL", symbol.c_str());
+
         std::string user_data = toc->GetUserData();
         if (!user_data.empty())
             MBusClient->WriteString(MHandle, "USER_DATA", user_data.c_str());
@@ -80,6 +97,8 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     {
         MBusClient->WriteString(MHandle, "ACTION", action.c_str());
         MBusClient->WriteString(MHandle, "SCENE", scene.c_str());
+        MBusClient->WriteString(MHandle, "EXPRESSION", expression.c_str());
     }
+
     return MBusClient->EndSend(MHandle);
 }

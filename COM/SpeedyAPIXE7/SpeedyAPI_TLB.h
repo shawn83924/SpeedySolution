@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/3/23 ¤W¤È 10:26:04 from Type Library described below.
+// File generated on 2026/3/31 ¤U¤È 04:20:15 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3583,22 +3583,62 @@ public:
   virtual HRESULT STDMETHODCALLTYPE SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/,
                                                           int ticks/*[in]*/) = 0; // [207]
   virtual HRESULT STDMETHODCALLTYPE SetUserData(BSTR data/*[in]*/) = 0; // [208]
-  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/) = 0; // [209]
-  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/) = 0; // [210]
-  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/) = 0; // [211]
-  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/) = 0; // [212]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                               VARIANT_BOOL* value/*[out,retval]*/) = 0; // [209]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                                  VARIANT_BOOL* value/*[out,retval]*/) = 0; // [210]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                                   VARIANT_BOOL* value/*[out,retval]*/) = 0; // [211]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                                    VARIANT_BOOL* value/*[out,retval]*/) = 0; // [212]
   virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [213]
-  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionMsg(BSTR msg/*[in]*/) = 0; // [214]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                          VARIANT_BOOL* value/*[out,retval]*/) = 0; // [214]
   virtual HRESULT STDMETHODCALLTYPE SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/) = 0; // [215]
   virtual HRESULT STDMETHODCALLTYPE GetNID(__int64* NID/*[out,retval]*/) = 0; // [216]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
+
+  VARIANT_BOOL __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionNewOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionCancelOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionReplaceOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionTouchOrderCmd(toc, (VARIANT_BOOL*)&value));
+    return value;
+  }
 
   VARIANT __fastcall get_Instance(void)
   {
     VARIANT Value;
     OLECHECK(this->get_Instance((VARIANT*)&Value));
     return Value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionMsg(msg, (VARIANT_BOOL*)&value));
+    return value;
   }
 
   __int64 __fastcall GetNID(void)
@@ -6826,13 +6866,23 @@ public:
   HRESULT         __fastcall SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/,
                                                    int ticks/*[in]*/);
   HRESULT         __fastcall SetUserData(BSTR data/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                        VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                           VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                            VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                             VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
-  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                   VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
@@ -6892,13 +6942,23 @@ public:
   HRESULT         __fastcall SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/
                                                    , int ticks/*[in]*/);
   HRESULT         __fastcall SetUserData(BSTR data/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
-  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/
+                                                        , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/
+                                                           , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/
+                                                            , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/
+                                                             , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
-  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                   VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
@@ -20523,27 +20583,63 @@ TCOMITouchOrderCommandT<T>::SetUserData(BSTR data/*[in]*/)
 }
 
 template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                       VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionNewOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITouchOrderCommandT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
 {
-  return (*this)->SetTriggeredActionNewOrder(order);
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionNewOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                          VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionCancelOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITouchOrderCommandT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
 {
-  return (*this)->SetTriggeredActionCancelOrder(order);
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionCancelOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                           VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionReplaceOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITouchOrderCommandT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
 {
-  return (*this)->SetTriggeredActionReplaceOrder(order);
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionReplaceOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                            VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionTouchOrderCmd(toc, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITouchOrderCommandT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
 {
-  return (*this)->SetTriggeredActionTouchOrderCmd(toc);
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionTouchOrderCmd(toc/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 template <class T> HRESULT __fastcall
@@ -20561,9 +20657,18 @@ TCOMITouchOrderCommandT<T>::get_Instance(void)
 }
 
 template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                  VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionMsg(msg, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITouchOrderCommandT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/)
 {
-  return (*this)->SetTriggeredActionMsg(msg);
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionMsg(msg/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 template <class T> HRESULT __fastcall
@@ -20666,39 +20771,75 @@ ITouchOrderCommandDispT<T>::SetUserData(BSTR data/*[in]*/)
 }
 
 template <class T> HRESULT __fastcall
-ITouchOrderCommandDispT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+ITouchOrderCommandDispT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/
+                                                       , VARIANT_BOOL* value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("SetTriggeredActionNewOrder"), DISPID(209));
   TAutoArgs<1> _args;
   _args[1] = (LPDISPATCH)(Speedyapi_tlb::INewOrderMessage*)order /*[VT_USERDEFINED:1]*/;
-  return OleFunction(_dispid, _args);
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionNewOrder(order, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 template <class T> HRESULT __fastcall
-ITouchOrderCommandDispT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+ITouchOrderCommandDispT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/
+                                                          , VARIANT_BOOL* value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("SetTriggeredActionCancelOrder"), DISPID(210));
   TAutoArgs<1> _args;
   _args[1] = (LPDISPATCH)(Speedyapi_tlb::ICancelOrderMessage*)order /*[VT_USERDEFINED:1]*/;
-  return OleFunction(_dispid, _args);
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionCancelOrder(order, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 template <class T> HRESULT __fastcall
-ITouchOrderCommandDispT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+ITouchOrderCommandDispT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/
+                                                           , VARIANT_BOOL* value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("SetTriggeredActionReplaceOrder"), DISPID(211));
   TAutoArgs<1> _args;
   _args[1] = (LPDISPATCH)(Speedyapi_tlb::IReplaceOrderMessage*)order /*[VT_USERDEFINED:1]*/;
-  return OleFunction(_dispid, _args);
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionReplaceOrder(order, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 template <class T> HRESULT __fastcall
-ITouchOrderCommandDispT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+ITouchOrderCommandDispT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/
+                                                            , VARIANT_BOOL* value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("SetTriggeredActionTouchOrderCmd"), DISPID(212));
   TAutoArgs<1> _args;
   _args[1] = (LPDISPATCH)(Speedyapi_tlb::ITouchOrderCommand*)toc /*[VT_USERDEFINED:1]*/;
-  return OleFunction(_dispid, _args);
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionTouchOrderCmd(toc, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 template <class T> HRESULT __fastcall
@@ -20718,12 +20859,21 @@ ITouchOrderCommandDispT<T>::get_Instance(void)
 }
 
 template <class T> HRESULT __fastcall
-ITouchOrderCommandDispT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/)
+ITouchOrderCommandDispT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                  VARIANT_BOOL* value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("SetTriggeredActionMsg"), DISPID(214));
   TAutoArgs<1> _args;
   _args[1] = msg /*[VT_BSTR:0]*/;
-  return OleFunction(_dispid, _args);
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionMsg(msg, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 template <class T> HRESULT __fastcall

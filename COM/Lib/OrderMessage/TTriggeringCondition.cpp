@@ -3,8 +3,10 @@
 #include <sstream>
 #include <queue>
 
-const size_t MAX_PRIMITIVE_SIGNAL_NUM = 64;
-const size_t MAX_LOGIC_GATE_NUM     = 64;
+const size_t       MAX_PRIMITIVE_SIGNAL_NUM = 16;
+const size_t       MAX_LOGIC_GATE_NUM       = 16;
+const unsigned int MAX_SIGNAL_IN_NUM        = 16;
+
 
 bool TTriggeringCondition::StringToDecimal(const char* price, unsigned int& integer_part, unsigned int& decimal_part)
 {
@@ -52,7 +54,7 @@ bool TTriggeringCondition::CheckPrimitivePreCondition()
     return true;
 }
 
-bool TTriggeringCondition::CheckLogicGatePreCondition()
+bool TTriggeringCondition::CheckLogicGatePreCondition(unsigned int input_num)
 {
     if (!CheckEditingMode())
         return false;
@@ -60,6 +62,12 @@ bool TTriggeringCondition::CheckLogicGatePreCondition()
     if (logic_gates.size() >= MAX_LOGIC_GATE_NUM)
     {
         lastErrMsg = std::string{ "Too many Logic Gates! Limitation is " } + std::to_string(MAX_LOGIC_GATE_NUM);
+        return false;
+    }
+
+    if (input_num > MAX_SIGNAL_IN_NUM)
+    {
+        lastErrMsg = std::string{ "Too many signal input! Limitation is " } + std::to_string(MAX_SIGNAL_IN_NUM);
         return false;
     }
 
@@ -109,6 +117,9 @@ std::string TTriggeringCondition::PrimitiveSignalToExpression(const TTriggeringC
         break;
     case PrimitiveSignal::PrimitiveSignalType::AnyTop5AskVolumeComp:
         ss << "${any_ask_volume}";
+        break;
+    default:
+        ss << "${unknown_item}";
         break;
     }
 
@@ -188,6 +199,23 @@ std::string TTriggeringCondition::SignalIDToExpression(SignalID signal_id, bool 
     }
 }
 
+SignalID TTriggeringCondition::AddPrimitiveSignal(const TTriggeringCondition::PrimitiveSignal& primitive_signal)
+{
+    auto key = primitive_signal.ToString();
+    auto iter = primitive_set.find(key);
+    if (iter == primitive_set.end())
+    {
+        auto primitive_signal_index = primitive_signals.size();
+        primitive_signals.push_back(primitive_signal);
+
+        unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
+        primitive_set.insert(std::make_pair(key, signal_id));
+        return signal_id;
+    }
+    else
+        return iter->second;
+}
+
 bool TTriggeringCondition::EndEditing()
 {
     if (primitive_signals.size() == 1)
@@ -250,11 +278,22 @@ SignalID TTriggeringCondition::MatchPriceComp(LogicalComparisonOperator op, cons
         return 0;
     
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::RealTimePriceComp, op, decimal_number.first, decimal_number.second);
-    auto primitive_signal_index = primitive_signals.size();
-    primitive_signals.push_back(primitive_signal);    
+    return AddPrimitiveSignal(primitive_signal);
+    /*
+    auto key = primitive_signal.ToString();
+    auto iter = primitive_set.find(key);
+    if (iter == primitive_set.end())
+    {
+        auto primitive_signal_index = primitive_signals.size();
+        primitive_signals.push_back(primitive_signal);
 
-    unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
-    return signal_id;
+        unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
+        primitive_set.insert(std::make_pair(key, signal_id));
+        return signal_id;
+    }
+    else
+        return iter->second;
+    */
 }
 
 // 比較內盤成交價
@@ -269,11 +308,14 @@ SignalID TTriggeringCondition::SellSideMatchPriceComp(LogicalComparisonOperator 
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::SellSidePriceComp, op, decimal_number.first, decimal_number.second);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較外盤成交價
@@ -288,11 +330,14 @@ SignalID TTriggeringCondition::BuySideMatchPriceComp(LogicalComparisonOperator o
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::BuySidePriceComp, op, decimal_number.first, decimal_number.second);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較最後成交價
@@ -307,11 +352,14 @@ SignalID TTriggeringCondition::LastMatchPriceComp(LogicalComparisonOperator op, 
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::LastPriceComp, op, decimal_number.first, decimal_number.second);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較買進價
@@ -326,11 +374,14 @@ SignalID TTriggeringCondition::BidPriceComp(LogicalComparisonOperator op, const 
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::BidPriceComp, op, decimal_number.first, decimal_number.second);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較賣出價
@@ -345,11 +396,14 @@ SignalID TTriggeringCondition::AskPriceComp(LogicalComparisonOperator op, const 
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::AskPriceComp, op, decimal_number.first, decimal_number.second);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);
     
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較單量
@@ -359,11 +413,14 @@ SignalID TTriggeringCondition::VolumeComp(LogicalComparisonOperator op, unsigned
         return 0;
         
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::VolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);
     
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較單位時間內的累積量
@@ -373,11 +430,14 @@ SignalID TTriggeringCondition::PeriodAccumVolumeComp(LogicalComparisonOperator o
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::PeriodAccumVolumeComp, op, period_in_tenth_sec, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較委買量
@@ -387,11 +447,14 @@ SignalID TTriggeringCondition::BidVolumeComp(LogicalComparisonOperator op, unsig
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::BidVolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較委賣量
@@ -401,11 +464,14 @@ SignalID TTriggeringCondition::AskVolumeComp(LogicalComparisonOperator op, unsig
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::AskVolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較總量
@@ -415,11 +481,14 @@ SignalID TTriggeringCondition::AccumVolumeComp(LogicalComparisonOperator op, uns
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::AccumVolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較五檔其中一檔委買量
@@ -429,11 +498,14 @@ SignalID TTriggeringCondition::AnyTop5BidVolumeComp(LogicalComparisonOperator op
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::AnyTop5BidVolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);    
 
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 // 比較五檔其中一檔委賣量
@@ -443,16 +515,19 @@ SignalID TTriggeringCondition::AnyTop5AskVolumeComp(LogicalComparisonOperator op
         return 0;
 
     PrimitiveSignal primitive_signal(PrimitiveSignal::PrimitiveSignalType::AnyTop5AskVolumeComp, op, 0, volume);
+    return AddPrimitiveSignal(primitive_signal);
+    /*
     auto primitive_signal_index = primitive_signals.size();
     primitive_signals.push_back(primitive_signal);
     
     unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
     return signal_id;
+    */
 }
 
 SignalID TTriggeringCondition::Conjunction(SignalID* signal_id_list, unsigned int count, bool inverter_on)
 {
-    if (!CheckLogicGatePreCondition())
+    if (!CheckLogicGatePreCondition(count))
         return 0;
 
     std::vector<SignalID> signals_in;
@@ -500,6 +575,9 @@ SignalID TTriggeringCondition::Conjunction(SignalID* signal_id_list, unsigned in
     return signal_id;
 }
 
+// Note: 
+//        TTriggeringCondition::ToExpression() 是輸出「使用者可讀」的觸價條件設定
+//        TTriggeringCondition::ToString() 是輸出供「程式解析」用的觸價條件設定
 const char* TTriggeringCondition::ToExpression()
 {
     if (editing_mode)
@@ -548,7 +626,43 @@ std::string TTriggeringCondition::ToString()
     }
 
     // the format of output string
-    // SignalID:PrimitiveSignal.ToString(),..,SignalID:ConjunctionGate.ToString();SignalID:SignalID,...,SignalID:SignalID;
+    // triggering condition (scene)  ---> 訊號組成列表;訊號關聯性列表;
+    // 訊號組成列表                    ---> 訊號單元1,訊號單元2,.....訊號單元N
+    //
+    // 訊號單元                       ---> [訊號代碼]:[價格比較項目識別碼]#[比較運算子識別碼]$[指定價格整數部位].[指定價格小數部位]  => 比較價格
+    //                               ---> [訊號代碼]:[數量比較項目識別碼]#[比較運算子識別碼]$[0].[指定數量限制]                  => 比較數量
+    //                               ---> [訊號代碼]:[數量比較項目識別碼]#[比較運算子識別碼]$[指定累積時間].[指定數量限制]         => 比較指定時間內累積數量
+    //                               ---> [訊號代碼]:D => disjunction, 「OR」邏輯閘
+    //                               ---> [訊號代碼]:C => conjunction, 「AND」邏輯閘
+    // 
+    // 比較項目識別碼 PrimitiveSignal::ToString(PrimitiveSignalType)
+    //     'p'    比較成交價(有成交才算)
+    //     'ssp'  比較內盤成交價
+    //     'bsp'  比較外盤成交價
+    //     'lp'   比較最後成交價
+    //     'bp'   比較買進價
+    //     'ap'   比較賣出價
+    //     'pacv'  比較單位時間內的累積量
+    //     'v'    比較單量
+    //     'bv'   比較委買量
+    //     'av'   比較委賣量
+    //     'acv'  比較總量
+    //     'a5bv' 比較五檔其中一檔委買量
+    //     'a5av' 比較五檔其中一檔委賣量
+    // 
+    // 比較運算子識別碼 PrimitiveSignal::ToString(LogicalComparisonOperator)
+    //     'eq'   等於
+    //     'ne'   不等於
+    //     'gt'   大於
+    //     'ge'   大於或等於
+    //     'le'   小於或等於
+    //     'lt'   小於
+    // 
+    // 訊號關聯性列表                  ---> [標的訊號代碼:來源訊號代碼],[標的訊號代碼:來源訊號代碼],.....,[標的訊號代碼:來源訊號代碼] 
+    // 
+    // 訊號代碼編碼原則
+    //                  0b00000001xxxxxxxx   -> 訊號是價、量比較結果輸出
+    //                  0b00000010xxxxxxxx   -> 訊號是 OR, AND 運算結果輸出
     std::stringstream ss;
     for (size_t i = 0; i < primitive_signals.size(); ++i)
     {

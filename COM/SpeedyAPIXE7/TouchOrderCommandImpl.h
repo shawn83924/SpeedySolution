@@ -30,12 +30,12 @@ public:
   STDMETHOD(SetPrice(BSTR price));
   STDMETHOD(SetFloatingOrderPrice(PriceDependOnEnum depend_on, int ticks));
   STDMETHOD(SetUserData(BSTR data));
-  STDMETHOD(SetTriggeredActionNewOrder(INewOrderMessage* order));
-  STDMETHOD(SetTriggeredActionCancelOrder(ICancelOrderMessage* order));
-  STDMETHOD(SetTriggeredActionReplaceOrder(IReplaceOrderMessage* order));
-  STDMETHOD(SetTriggeredActionTouchOrderCmd(ITouchOrderCommand* toc));
+  STDMETHOD(SetTriggeredActionNewOrder(INewOrderMessage* order, VARIANT_BOOL* value));
+  STDMETHOD(SetTriggeredActionCancelOrder(ICancelOrderMessage* order, VARIANT_BOOL* value));
+  STDMETHOD(SetTriggeredActionReplaceOrder(IReplaceOrderMessage* order, VARIANT_BOOL* value));
+  STDMETHOD(SetTriggeredActionTouchOrderCmd(ITouchOrderCommand* toc, VARIANT_BOOL* value));
   STDMETHOD(get_Instance(VARIANT* Value));
-  STDMETHOD(SetTriggeredActionMsg(BSTR msg));
+  STDMETHOD(SetTriggeredActionMsg(BSTR msg, VARIANT_BOOL* value));
   STDMETHOD(SetTriggeringCondition(ITriggeringCondition* ttc));
   STDMETHOD(GetNID(__int64* NID));
   __fastcall TTouchOrderCommandImpl();

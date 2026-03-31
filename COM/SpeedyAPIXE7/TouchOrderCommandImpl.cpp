@@ -115,39 +115,45 @@ STDMETHODIMP TTouchOrderCommandImpl::SetUserData(BSTR data)
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionNewOrder(INewOrderMessage* order)
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionNewOrder(INewOrderMessage* order,
+          VARIANT_BOOL* value)
 {
 	VARIANT MessageInstance;
 	order->get_Instance( &MessageInstance );
 	if( MessageInstance.byref != NULL )
-		FCommand->SetTriggeredAction( static_cast<TNewOrderMessage*>(MessageInstance.byref) );
+		*value = FCommand->SetTriggeredAction( static_cast<TNewOrderMessage*>(MessageInstance.byref) );
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionCancelOrder(ICancelOrderMessage* order)
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionCancelOrder(ICancelOrderMessage* order,
+          VARIANT_BOOL* value)
 {
 	VARIANT MessageInstance;
 	order->get_Instance( &MessageInstance );
 	if( MessageInstance.byref != NULL )
-		FCommand->SetTriggeredAction( static_cast<TCancelOrderMessage*>(MessageInstance.byref) );
+		*value = FCommand->SetTriggeredAction( static_cast<TCancelOrderMessage*>(MessageInstance.byref) );
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionReplaceOrder(IReplaceOrderMessage* order)
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionReplaceOrder(IReplaceOrderMessage* order,
+          VARIANT_BOOL* value)
+
 {
 	VARIANT MessageInstance;
 	order->get_Instance( &MessageInstance );
 	if( MessageInstance.byref != NULL )
-		FCommand->SetTriggeredAction( static_cast<TReplaceOrderMessage*>(MessageInstance.byref));
+		*value = FCommand->SetTriggeredAction( static_cast<TReplaceOrderMessage*>(MessageInstance.byref));
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionTouchOrderCmd(ITouchOrderCommand* toc)
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionTouchOrderCmd(ITouchOrderCommand* toc,
+          VARIANT_BOOL* value)
+
 {
 	VARIANT MessageInstance;
 	toc->get_Instance( &MessageInstance );
 	if( MessageInstance.byref != NULL )
-		FCommand->SetTriggeredAction( static_cast<TTouchOrderCommand*>(MessageInstance.byref));
+		*value = FCommand->SetTriggeredAction( static_cast<TTouchOrderCommand*>(MessageInstance.byref));
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
@@ -160,10 +166,11 @@ STDMETHODIMP TTouchOrderCommandImpl::get_Instance(VARIANT* Value)
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionMsg(BSTR msg)
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionMsg(BSTR msg, VARIANT_BOOL* value)
+
 {
 	AnsiString Msg(msg);
-	FCommand->SetTriggeredAction(Msg.c_str());
+	*value = FCommand->SetTriggeredAction(Msg.c_str());
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
