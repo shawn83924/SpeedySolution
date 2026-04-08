@@ -43,6 +43,7 @@
 #include <Xml.XMLDoc.hpp>
 #include <System.JSON.hpp>
 #include "CAChecker.h"
+#include "OrderStore_OCO.h"
 //#include "ContractViewer.h"
 //---------------------------------------------------------------------------
 class	TBrokerConfig;
@@ -361,6 +362,7 @@ public:
 	TOrderStore  *OrderStore;
 	ISpVoice*     FVoice;
 	TCAChecker*   FCAChecker;
+	TOrderStore_OCO *OrderStore_OCO;
 private:
 	UFC::List<TGraphButton*>  FHotkeys;
 	UFC::List<TGraphButton*>  FTabs;
@@ -435,6 +437,8 @@ private:
 	void __fastcall SelectSymbol( TObject* Sender, TSelectActionType Type, const String& Ex, const String& Sym );
 	void __fastcall SystemInfo( void );
 	void __fastcall UpdateAutoCancel( void );
+	void __fastcall OnOrderOCOFailed(System::TObject* Sender, const String& ReplyMessage);
+	void __fastcall GetOCOOrderProperty(System::TObject* Sender, int& OrderType, int& LimitOrderTick);
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 	__fastcall ~TMainForm( void );

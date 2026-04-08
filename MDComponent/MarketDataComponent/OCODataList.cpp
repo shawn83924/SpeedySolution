@@ -7,8 +7,8 @@
 #include "OCODataList.h"
 #include "MDComponentStrings.hpp"
 #pragma package(smart_init)
-const int NumberOfListViewColumn = 9;
-String TOCODataList::HeaderString[NumberOfListViewColumn];/* = {"刪","狀態","商品","委量一","價一","買賣一","委量二","價二","買賣二"}; */
+const int NumberOfListViewColumn = 10;
+String TOCODataList::HeaderString[NumberOfListViewColumn];/* = {"刪","狀態","商品","委量一","價一","買賣一","委量二","價二","買賣二","備註"}; */
 //---------------------------------------------------------------------------
 // ValidCtrCheck is used to assure that the components created do not have
 // any pure virtual functions.
@@ -49,6 +49,7 @@ void __fastcall TOCODataList::InitString( void )
 	HeaderString[6] = Mdcomponentstrings_MD_OCODLIST_QTY2;   // 委量二
 	HeaderString[7] = Mdcomponentstrings_MD_OCODLIST_PRICE2; // 價二
 	HeaderString[8] = Mdcomponentstrings_MD_OCODLIST_SIDE2;  // 買賣二
+    HeaderString[9] = Mdcomponentstrings_MD_OCODLIST_NOTES;  // 備註
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::Loaded(void)
@@ -160,7 +161,7 @@ void __fastcall TOCODataList::AdvancedCustomDrawItem(
 		bool &DefaultDraw)
 {
 	DefaultDraw = false;
-	OCOPair* pair = (OCOPair*)Item->Data;
+	TOCOPair* pair = (TOCOPair*)Item->Data;
 	if(pair == NULL)
 	{
 		DefaultDraw = true;
@@ -267,7 +268,7 @@ bool __fastcall TOCODataList::IsMouseInDeleteIcon( void )
     return true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::AddData(OCOPair* pair)
+void __fastcall TOCODataList::AddData(TOCOPair* pair)
 {
 	Items->BeginUpdate();
 	TListItem* item = Items->Add();
@@ -279,7 +280,7 @@ void __fastcall TOCODataList::AddData(OCOPair* pair)
 	item->MakeVisible( false );
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::RefreshSubItem(TListItem* ItemPtr, OCOPair* pair)
+void __fastcall TOCODataList::RefreshSubItem(TListItem* ItemPtr, TOCOPair* pair)
 {
     if( ItemPtr->SubItems->Count > 0 )
 		ItemPtr->SubItems->Clear();
@@ -348,7 +349,7 @@ void __fastcall TOCODataList::DeleteItem(TListItem* ItemPtr)
     if(ItemPtr == NULL)
         return;
 
-    OCOPair* pair = (OCOPair*)ItemPtr->Data;
+	TOCOPair* pair = (TOCOPair*)ItemPtr->Data;
     if(pair != NULL)
         delete pair;
 
@@ -362,7 +363,7 @@ void __fastcall TOCODataList::TestFunctionForAddData(void)
 {
 	for( int i = 0; i < 10 ; i++ )
 	{
-		OCOPair* pair = new OCOPair();
+		TOCOPair* pair = new TOCOPair();
 		pair->OrderQty1 = i;
 		pair->OrderQty2 = i+1;
 		pair->ConditionPrice1 = i + 200;
