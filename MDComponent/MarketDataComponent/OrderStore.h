@@ -459,6 +459,22 @@ public: ///< Order placement
 				   int TickCount,
 				   double StopPx,
 				   char TWSEOrdType );
+	bool NewOrder( nsOrderMessageDefine::MarketEnum Market,
+				   const String& Exchange,
+				   const String& Symbol,
+				   nsOrderMessageDefine::SideEnum Side,
+				   double Px,
+				   int Qty,
+				   nsOrderMessageDefine::OrderTypeEnum OrderType,
+				   nsOrderMessageDefine::TimeInForceEnum TimeInForce,
+				   nsOrderMessageDefine::PositionEffectEnum PositionEffect,
+				   nsOrderMessageDefine::EventTypeEnum EventType,//= evtNone
+				   double StrikePx, // = 0.0
+				   int TickCount,
+				   double StopPx,
+				   const UFC::AnsiString& StrategyName,
+				   char TWSEOrdType,
+				   UFCType::Int64& NID );
 	UFCType::Int64 NewOrder( const UFC::AnsiString& FieldValueStr,
 							 const UFC::AnsiString& StrategyName,
 							 int TickCount = 0);

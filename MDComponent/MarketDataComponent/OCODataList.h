@@ -7,7 +7,7 @@
 #include <System.Classes.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.Controls.hpp>
-#include "OCODataStore.h"
+#include "OrderStore_OCO.h"
 //---------------------------------------------------------------------------
 class PACKAGE TOCODataList : public TCustomListView
 {
@@ -51,8 +51,8 @@ protected:
 public:
 	__fastcall TOCODataList(TComponent* Owner);
 	__fastcall ~TOCODataList(void);
-	void __fastcall AddData(OCOPair* pair);
-	void __fastcall RefreshSubItem(TListItem* ItemPtr, OCOPair* pair);
+	void __fastcall AddData(TOCOPair* pair);
+	void __fastcall RefreshSubItem(TListItem* ItemPtr, TOCOPair* pair);
 
 	void __fastcall TestFunctionForAddData(void);
 __published:

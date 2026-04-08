@@ -187,11 +187,6 @@
             <DependentOn>OCODataList.h</DependentOn>
             <BuildOrder>41</BuildOrder>
         </CppCompile>
-        <CppCompile Include="OCODataStore.cpp">
-            <VirtualFolder>{407D815D-E2C4-48AB-87E2-2B333CF80473}</VirtualFolder>
-            <DependentOn>OCODataStore.h</DependentOn>
-            <BuildOrder>42</BuildOrder>
-        </CppCompile>
         <CppCompile Include="OptionsGreeks.cpp">
             <VirtualFolder>{407D815D-E2C4-48AB-87E2-2B333CF80473}</VirtualFolder>
             <DependentOn>OptionsGreeks.h</DependentOn>
@@ -231,6 +226,11 @@
             <VirtualFolder>{2566A16F-7433-4258-8011-AC70E2397E90}</VirtualFolder>
             <DependentOn>OrderStore.h</DependentOn>
             <BuildOrder>21</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="OrderStore_OCO.cpp">
+            <VirtualFolder>{2566A16F-7433-4258-8011-AC70E2397E90}</VirtualFolder>
+            <DependentOn>OrderStore_OCO.h</DependentOn>
+            <BuildOrder>43</BuildOrder>
         </CppCompile>
         <CppCompile Include="OrderStore_StopOrder.cpp">
             <VirtualFolder>{2566A16F-7433-4258-8011-AC70E2397E90}</VirtualFolder>

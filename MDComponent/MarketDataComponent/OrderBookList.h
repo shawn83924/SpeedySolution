@@ -7,7 +7,7 @@
 #include "MarketDataStore.h"
 #include "OrderStore.h"
 #include "StopOrderSetting.h"
-#include "OCODataStore.h"
+#include "OrderStore_OCO.h"
 #include <SysUtils.hpp>
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -90,7 +90,10 @@ typedef void __fastcall (__closure *TOnTick)(System::TObject* Sender, const Ansi
 
 typedef void __fastcall (__closure *TOnAutoStopEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double Price, int Qty );
 //---------------------------------------------------------------------------
-class PACKAGE TOrderBookList : public TCustomGrid, /*public IOrderInfoListener,*/ public IMarketDataListener, public TPositionChangeListener
+class PACKAGE TOrderBookList : 	public TCustomGrid, /*public IOrderInfoListener,*/
+								public IMarketDataListener,
+								public TPositionChangeListener,
+                                public IOCOOrderStoreListener
 {
 private:
 	double 			FBullPx;
@@ -203,6 +206,7 @@ private:
 	Graphics::TBitmap* FAlarmBmp;
 	Graphics::TBitmap* FAlarmedBmp;
 	TCMarketDataStore* FStore;
+	TOrderStore_OCO*   FOCOStore;
 	UnicodeString FSubscribeExchange;
 	UnicodeString FSubscribeSymbol;
 	bool IsLoaded;
@@ -251,8 +255,8 @@ private:
 	bool FShowOCO;
 	bool FIsPairingOCO;
 	bool FDeleteOCOByRightClick;
-	OCOPair* FCurrentPairOCO;
-	std::vector<OCOPair*> FOCOPairs;
+	TOCOPair* FCurrentPairOCO;
+	std::vector<TOCOPair*> FOCOPairs;
 	///< Auto Stop-loss Take-Profit
 	bool   FAutoStopLoss;
 	bool   FAutoTakeProfit;
@@ -332,6 +336,10 @@ private:
 	virtual void OnMarketDataUpdate( ClosingMarketData* Msg );
 	virtual void OnMarketDataUpdate( UnderlyingIndexInfo* Msg );
 	virtual void OnMarketDataUpdate( SumOfOrderInfo* Msg );
+	virtual AnsiString GetEx( void );
+	virtual AnsiString GetSymbol( void );
+	virtual void OnOCOOrderUpdate(TOCOPair* Pair, OCOUpdateType Type);
+    virtual void OnUnPairingOCO(void);
 private:
 	void __fastcall InitString( void );
 	void __fastcall SetCompact( bool IsCompact );
@@ -481,6 +489,7 @@ public:
 	void __fastcall ScrollUp( int Tick );
 	void __fastcall ScrollDown( int Tick );
 	void __fastcall Subscribe( TCMarketDataStore* Store = NULL );
+	void __fastcall SetOCOStore( TOrderStore_OCO* Store = NULL );
 	void __fastcall SetBetterEnable( bool Enable );
 	void __fastcall Unsubscribe( void );
 	void __fastcall OpenStopOrderSettingForm( void );
@@ -607,6 +616,7 @@ __published:
 	__property Graphics::TBitmap *PlusBmp = { read = FPlusBmp, write = SetPlusBmp };
 	__property Graphics::TBitmap *MinusBmp = { read = FMinusBmp, write = SetMinusBmp };
 	__property TCMarketDataStore* Store = { read = FStore, write = Subscribe };
+	__property TOrderStore_OCO*   OCOStore = { read = FOCOStore, write = SetOCOStore };
 	__property Align;
 	__property OnMouseDown;
 	__property OnKeyDown;

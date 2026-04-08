@@ -51,12 +51,14 @@
 #pragma link "RoundFormExRes"
 #pragma link "GraphPanel"
 #pragma link "SHDocVw_OCX"
+#pragma link "OrderStore_OCO"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 TMainForm *MainForm;
 //---------------------------------------------------------------------------
 TCMarketDataStore* gMarketDataStore = NULL;
 TOrderStore*       gOrderStore = NULL;
+TOrderStore_OCO*   gOrderStore_OCO = NULL;
 DSAudio            gDSAudio;
 TUnifyUser         gUser;
 extern bool        GSimMatch;
@@ -155,6 +157,11 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	OrderStore->OnFloatingProfit  =	OrderStoreFloatingProfit;
 	OrderStore->OrderLogPath      = g_Config.GetCurrentDir( ) + "log";
 	OrderStore->MarketDataTimerInterval = 250;
+	///< Create OrderStore_OCO
+	OrderStore_OCO = new TOrderStore_OCO( this, CMarketDataStore, OrderStore);
+	gOrderStore_OCO = OrderStore_OCO;
+	OrderStore_OCO->OnOrderOCOFailed = OnOrderOCOFailed;
+	OrderStore_OCO->GetOrderProperty = GetOCOOrderProperty;
 
 	FCAChecker = new TCAChecker( this );
 	FCAChecker->OnCACheckFail =	CACheckFail;
@@ -220,6 +227,7 @@ __fastcall TMainForm::~TMainForm( void )
 	delete CMarketDataStore;
 	delete ChartsStore;
 	delete OrderStore;
+	delete OrderStore_OCO;
 
 	delete FCAChecker;
 	delete SelectContractForm;
@@ -3052,6 +3060,20 @@ void __fastcall TMainForm::UpdateAutoCancel( void )
 		CxlWorkingButton->Selected = false;
 		CancelAllTimer->Enabled = false;
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::OnOrderOCOFailed(System::TObject* Sender, const String& ReplyMessage)
+{
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ReplyMessage );
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::GetOCOOrderProperty(
+	System::TObject* Sender,
+	int& OrderType,
+	int& LimitOrderTick)
+{
+	OrderType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
+    LimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CxlWorkingButtonClick(TObject *Sender)

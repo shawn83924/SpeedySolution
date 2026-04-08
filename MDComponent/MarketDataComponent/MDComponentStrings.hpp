@@ -197,6 +197,8 @@ extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_PRICE2;
 #define Mdcomponentstrings_MD_OCODLIST_PRICE2 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_PRICE2)
 extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_SIDE2;
 #define Mdcomponentstrings_MD_OCODLIST_SIDE2 System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_SIDE2)
+extern DELPHI_PACKAGE System::ResourceString _MD_OCODLIST_NOTES;
+#define Mdcomponentstrings_MD_OCODLIST_NOTES System::LoadResourceString(&Mdcomponentstrings::_MD_OCODLIST_NOTES)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_BUY;
 #define Mdcomponentstrings_MD_ORDERBOOK_FILL_BUY System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERBOOK_FILL_BUY)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERBOOK_FILL_SELL;
@@ -375,6 +377,8 @@ extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3
 #define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3 System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_TEXT3)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_STOP_ORDER_NEW_ERROR;
 #define Mdcomponentstrings_MD_ORDERSTORE_STOP_ORDER_NEW_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_STOP_ORDER_NEW_ERROR)
+extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_OCO_ORDER_NEW_ERROR;
+#define Mdcomponentstrings_MD_ORDERSTORE_OCO_ORDER_NEW_ERROR System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_OCO_ORDER_NEW_ERROR)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA;
 #define Mdcomponentstrings_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA System::LoadResourceString(&Mdcomponentstrings::_MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_DATA)
 extern DELPHI_PACKAGE System::ResourceString _MD_ORDERSTORE_QUERY_TAIFEX_OI_NO_ORDER_DATA;

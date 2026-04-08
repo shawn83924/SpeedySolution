@@ -893,6 +893,79 @@ bool TOrderStore::NewOrder( nsOrderMessageDefine::MarketEnum Market,
 	}
 }  //TOrderStore::NewOrder
 //---------------------------------------------------------------------------
+bool TOrderStore::NewOrder( nsOrderMessageDefine::MarketEnum Market,
+							const String& Exchange,
+							const String& Symbol,
+							nsOrderMessageDefine::SideEnum Side,
+							double Px,
+							int Qty,
+							nsOrderMessageDefine::OrderTypeEnum      OrderType,
+							nsOrderMessageDefine::TimeInForceEnum    TimeInForce,
+							nsOrderMessageDefine::PositionEffectEnum PositionEffect,
+							nsOrderMessageDefine::EventTypeEnum      EventType,
+							double StrikePx,
+							int TickCount,
+							double StopPx,
+							const UFC::AnsiString& StrategyName,
+							char TWSEOrdType,
+							UFCType::Int64& NID )
+{
+	UFCType::Int64 Begin = UFC::GetTickCountUS();
+	if (FAdapter == NULL )        throw OSConnectionNotExistException();
+	if (!FAdapter->IsConnected()) throw OSConnectionNotConnectedException();
+	if (!FAdapter->IsLogon())     throw OSConnectionNotLogonException();
+
+	try
+	{
+		bool   IsAccepted = true;
+		String marketAccount;
+
+		if( FOnNewOrder != NULL )
+			FOnNewOrder(this, Exchange, Symbol, Side, Px, Qty, OrderType, TimeInForce, PositionEffect, IsAccepted);
+		if( IsAccepted )
+		{
+			switch(  Market )
+			{
+				case nsOrderMessageDefine::mTSE:
+				case nsOrderMessageDefine::mOTC: marketAccount = FTWSEAccount;
+												 break;
+				default:                         marketAccount = FAccount;
+												 break;
+			}
+			NID = FAdapter->NewSingleOrder(
+				Market,
+				Exchange,
+				Symbol,
+				Side,
+				Px,
+				Qty,
+				OrderType,
+				TimeInForce,
+				PositionEffect,
+				EventType,
+				StrikePx,
+				marketAccount,
+				FActiveExecutive,
+				FIBID,
+				TickCount,
+				StopPx,
+				StrategyName,
+				TWSEOrdType );
+
+		}
+		UFC::BufferedLog::Printf( " [TOrderStore::NewOrder] use[%d]us", UFC::GetTickCountUS() - Begin );
+		return IsAccepted;
+	}
+	catch( UFC::Exception& x)
+	{
+		throw x;
+	}
+	catch (...)
+	{
+		 throw OSNewOrderException();
+	}
+}  //TOrderStore::NewOrder
+//---------------------------------------------------------------------------
 UFCType::Int64 TOrderStore::NewOrder( const UFC::AnsiString& FieldValueStr,
 									  const UFC::AnsiString& StrategyName,
 									  int TickCount )

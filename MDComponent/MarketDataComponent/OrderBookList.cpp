@@ -2626,7 +2626,7 @@ void __fastcall TOrderBookList::DeletePairingOCO( double price, SideEnum side )
 {
 	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
 	{
-		OCOPair* pair = FOCOPairs[i];
+		TOCOPair* pair = FOCOPairs[i];
 		bool match1	= (pair->ConditionPrice1 == price && pair->OrderSide1 == side);
 		bool match2 = (pair->ConditionPrice2 == price && pair->OrderSide2 == side);
 
@@ -3299,7 +3299,7 @@ void __fastcall TOrderBookList::OrderingOCO( void )
 {
 	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
 	{
-		OCOPair* pair = FOCOPairs[i];
+		TOCOPair* pair = FOCOPairs[i];
 		bool match1	= (pair->ConditionPrice1 >= FFillPx && pair->ConditionPrice2 >= FFillPx);
 		bool match2 = (pair->ConditionPrice1 <= FFillPx && pair->ConditionPrice2 <= FFillPx);
 
@@ -3369,7 +3369,8 @@ void __fastcall TOrderBookList::UpdateTimer( const UFC::AnsiString& Time )
 void TOrderBookList::OnMarketDataUpdate( MarketDataMessage* Msg )
 {
 	double NewPrice    = Msg->GetTradePrice();
-
+	Msg->GetSymbol();
+	Msg->GetExchange();
 	if( NewPrice <= FBullPx && NewPrice >= FBearPx )
 	{
 		///< Update Filled
@@ -3473,6 +3474,26 @@ void TOrderBookList::OnMarketDataUpdate( UnderlyingIndexInfo* Msg ) {}
 //---------------------------------------------------------------------------
 void TOrderBookList::OnMarketDataUpdate( SumOfOrderInfo* Msg ) {}
 //---------------------------------------------------------------------------
+AnsiString TOrderBookList::GetEx( void )
+{
+	return FExchange.c_str();
+}
+//---------------------------------------------------------------------------
+AnsiString TOrderBookList::GetSymbol( void )
+{
+	return FSymbol.c_str();
+}
+//---------------------------------------------------------------------------
+void TOrderBookList::OnOCOOrderUpdate(TOCOPair* Pair, OCOUpdateType Type)
+{
+
+}
+//---------------------------------------------------------------------------
+void TOrderBookList::OnUnPairingOCO(void)
+{
+
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
 {
 	if( Store != NULL && FStore != Store  )
@@ -3490,6 +3511,14 @@ void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
 		FSubscribeExchange = FExchange;
 		FSubscribeSymbol   = FSymbol;
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SetOCOStore( TOrderStore_OCO* Store )
+{
+	if(Store == NULL)
+		return;
+
+    FOCOStore = Store;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetCenterFillPrice( bool CenterFill )
@@ -3920,7 +3949,7 @@ void __fastcall TOrderBookList::UpdateOCOQty( nsOrderMessageDefine::SideEnum sid
 		// first click
 		if(!FIsPairingOCO)
 		{
-			FCurrentPairOCO = new OCOPair();
+			FCurrentPairOCO = new TOCOPair();
 			FCurrentPairOCO->OrderQty1 = Qty;
 			FCurrentPairOCO->ConditionPrice1 = Price;
 			FCurrentPairOCO->OrderSide1 = side;
