@@ -1,3 +1,4 @@
+**.obj
 /.idea/
 /BC Projects/__history/
 /BC Projects/Win32/
@@ -11,3 +12,7 @@
 /S8Projects/__recovery/
 /S8Projects/Win32/Debug/
 /S8Projects/Win32/Release/
+/S8Projects/Release/
+/StarWaveAPILib/Win32/Release_Obj/
+/UFC/
+/VCL/Win32/Release_Obj/
