@@ -199,7 +199,6 @@ __fastcall TOrderBookList::TOrderBookList(TComponent* Owner)
 	FTimer->OnTimer = OnUpdateTimer;
 	if( ComponentState.Contains( csDesigning ) )
 		InitialGrid( FBullPx, FBearPx, FFillPx, FDigit );
-	FOCOPairs.resize(0);
 }
 //---------------------------------------------------------------------------
 __fastcall TOrderBookList::~TOrderBookList()
@@ -235,8 +234,6 @@ __fastcall TOrderBookList::~TOrderBookList()
 	FSellConditionQty.Length = 0;
 	FBuyOCOQty.Length  = 0;
 	FSellOCOQty.Length = 0;
-	if(FCurrentPairOCO != NULL)
-		delete FCurrentPairOCO;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::InitString( void )
@@ -640,7 +637,6 @@ void __fastcall TOrderBookList::SetFillPrice( double Price )
 			else
 				InvalidateCellRect( PRICE_COL, FFillRowIndex + i );
 		}
-		OrderingOCO();
 	}
 }
 //---------------------------------------------------------------------------
@@ -2558,32 +2554,6 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 		return;
 	if(Y == FFillRowIndex)
 		return;
-	/*
-	if(FNetPosition <= 0)
-	{
-		FOnNewOCOFail( this, Mdcomponentstrings_MD_ORDERBOOK_NOPOSITION);
-		return;
-	}
-	*/
-	// first select oco price
-	if(!FIsPairingOCO)
-	{
-		if(X == BUY_OCO_COL)
-			FOnNewOCO(this, nsOrderMessageDefine::sBuy,	GetPxFromIndex( Y ));
-		if(X == SELL_OCO_COL)
-			FOnNewOCO(this, nsOrderMessageDefine::sSell,GetPxFromIndex( Y ));
-
-		return;
-	}
-
-	// second select oco price
-	int firstIndex = GetRowIndex( FCurrentPairOCO->ConditionPrice1 );
-	if( (firstIndex > FFillRowIndex && Y > FFillRowIndex) ||
-		(firstIndex < FFillRowIndex && Y < FFillRowIndex))
-	{
-        FOnNewOCOFail( this, Mdcomponentstrings_MD_ORDERBOOK_INVALIDOCOPRICE);
-		return;
-	}
 
 	if(X == BUY_OCO_COL)
 		FOnNewOCO(this, nsOrderMessageDefine::sBuy,	GetPxFromIndex( Y ));
@@ -2594,50 +2564,23 @@ void __fastcall TOrderBookList::OCOColLeftMouseDown( Classes::TShiftState Shift,
 void __fastcall TOrderBookList::OCODelColLeftMouseDown( Classes::TShiftState Shift, int X, int Y )
 {
 	double price = GetPxFromIndex(Y);
+	SideEnum side = (X == BUY_OCODEL_COL)? sBuy : sSell;
 
 	if (FIsPairingOCO && FCurrentPairOCO->ConditionPrice1 == price )
 	{
-		CancelPairingOCO();
+		FOCOStore->CancelPairingOCO(
+			FExchange.c_str(),
+			FSymbol.c_str(),
+			side,
+			price);
 		return;
 	}
 
-	SideEnum side = (X == BUY_OCODEL_COL)? sBuy : sSell;
-	DeletePairingOCO(price, side);
-}
-//---------------------------------------------------------------------------
-void __fastcall TOrderBookList::CancelPairingOCO( void )
-{
-	if( !FIsPairingOCO )
-		return;
-
-	int orderQty = FCurrentPairOCO->OrderQty1;
-	double price = FCurrentPairOCO->ConditionPrice1;
-	SideEnum orderSide = FCurrentPairOCO->OrderSide1;
-
-	delete FCurrentPairOCO;
-	FCurrentPairOCO = NULL;
-	FIsPairingOCO = false;
-
-	ColName colName = (orderSide == sBuy)? BUY_OCO_COL : SELL_OCO_COL;
-	InvalidateCellRect( colName, GetRowIndex(price) );
-}
-//---------------------------------------------------------------------------
-void __fastcall TOrderBookList::DeletePairingOCO( double price, SideEnum side )
-{
-	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
-	{
-		TOCOPair* pair = FOCOPairs[i];
-		bool match1	= (pair->ConditionPrice1 == price && pair->OrderSide1 == side);
-		bool match2 = (pair->ConditionPrice2 == price && pair->OrderSide2 == side);
-
-		if (!match1 && !match2)
-			continue;
-
-		SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, false);
-		SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, false);
-		FOCOPairs.erase( FOCOPairs.begin() + i );
-		delete pair;
-	}
+	FOCOStore->DeleteOCO(
+		FExchange.c_str(),
+		FSymbol.c_str(),
+		side,
+		price);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift, int X, int Y )
@@ -2648,14 +2591,22 @@ void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift
 		return;
 
 	double price = GetPxFromIndex(Y);
+	SideEnum side = (X == BUY_OCO_COL)? sBuy : sSell;
 	if (FIsPairingOCO && FCurrentPairOCO->ConditionPrice1 == price )
 	{
-		CancelPairingOCO();
+		FOCOStore->CancelPairingOCO(
+			FExchange.c_str(),
+			FSymbol.c_str(),
+			side,
+			price);
 		return;
 	}
 
-	SideEnum side = (X == BUY_OCO_COL)? sBuy : sSell;
-	DeletePairingOCO(price, side);
+	FOCOStore->DeleteOCO(
+		FExchange.c_str(),
+		FSymbol.c_str(),
+		side,
+		price);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBuyStopTick( int Tick )
@@ -3246,8 +3197,6 @@ bool __fastcall TOrderBookList::UpdateFill( void )
 		///< Update the price column.
 		if( NeedPaint == true )
 			InvalidateColumn( PRICE_COL, TopRow , TopRow + VisibleRowCount );
-
-        OrderingOCO();
 	}
 	else ///< Fill Price not chinged. update only one cell
 	{
@@ -3288,49 +3237,10 @@ void __fastcall TOrderBookList::ForceUpdateFill( void )
 {
 	FFillPx       = FLastFillPx;
 	FFillRowIndex = GetRowIndex( FLastFillPx );
-	OrderingOCO();
 	///< Force center price
 	CenterFillPx( true );
 	///< Update the price column.
 	InvalidateColumn( PRICE_COL, TopRow , TopRow + VisibleRowCount );
-}
-//---------------------------------------------------------------------------
-void __fastcall TOrderBookList::OrderingOCO( void )
-{
-	for (int i = FOCOPairs.size() - 1; i >= 0; --i)
-	{
-		TOCOPair* pair = FOCOPairs[i];
-		bool match1	= (pair->ConditionPrice1 >= FFillPx && pair->ConditionPrice2 >= FFillPx);
-		bool match2 = (pair->ConditionPrice1 <= FFillPx && pair->ConditionPrice2 <= FFillPx);
-
-		if (!match1 || !match2)
-			continue;
-
-		int orderQty;
-		int matchPrice;
-		SideEnum side;
-		double diff1 = std::fabs(pair->ConditionPrice1 - FFillPx);
-		double diff2 = std::fabs(pair->ConditionPrice2 - FFillPx);
-		if( diff1 < diff2)
-		{
-			orderQty = pair->OrderQty1;
-			matchPrice = pair->ConditionPrice1;
-			side = pair->OrderSide1;
-		}
-		else
-		{
-			orderQty = pair->OrderQty2;
-			matchPrice = pair->ConditionPrice2;
-			side = pair->OrderSide2;
-		}
-
-		SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, false);
-		SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, false);
-		FOCOPairs.erase( FOCOPairs.begin() + i );
-		delete pair;
-
-		FOnOCOPriceMatch( this, side, orderQty, matchPrice);
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::UpdateTimer( const UFC::AnsiString& Time )
@@ -3484,14 +3394,60 @@ AnsiString TOrderBookList::GetSymbol( void )
 	return FSymbol.c_str();
 }
 //---------------------------------------------------------------------------
-void TOrderBookList::OnOCOOrderUpdate(TOCOPair* Pair, OCOUpdateType Type)
+void TOrderBookList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 {
+	if(pair == NULL)
+		return;
 
-}
-//---------------------------------------------------------------------------
-void TOrderBookList::OnUnPairingOCO(void)
-{
+	if(Type == OCOUpdateType::New)
+	{
+		//Is pairing OCO
+		if(pair->State == OCOState::None)
+		{
+			FIsPairingOCO = true;
+			FCurrentPairOCO = pair;
+			int col = (pair->OrderSide1 == SideEnum::sBuy)? BUY_OCO_COL : SELL_OCO_COL ;
+			InvalidateCellRect( col, GetRowIndex(pair->ConditionPrice1));
+			return;
+		}
 
+		if(pair->State != OCOState::Pending)
+			return;
+
+		// Set OCO data to qty array
+		SetOCOQtyArrayByPair(pair, true);
+	}
+	else if(Type == OCOUpdateType::Edit)
+	{
+		// Is pairing OCO
+		if(	pair == FCurrentPairOCO)
+		{
+			FIsPairingOCO = false;
+			FCurrentPairOCO = NULL;
+			//If cancel pairing OCO, just return
+			if(pair->State == OCOState::Canceled)
+				return;
+			//From pairing OCO to pending OCO
+			if(pair->State == OCOState::Pending)
+			{
+				SetOCOQtyArrayByPair(pair, true);
+			}
+			return;
+		}
+		// If OCO is form pending to triggered or canceled
+		if(	pair->State == OCOState::Triggered ||
+			pair->State == OCOState::Canceled)
+		{
+			SetOCOQtyArrayByPair(pair, false);
+		}
+	}
+	else if(Type == OCOUpdateType::Delete)
+	{
+		if(pair->State != OCOState::Pending)
+			return;
+
+		SetOCOQtyArrayByPair(pair, false);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
@@ -3511,6 +3467,18 @@ void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
 		FSubscribeExchange = FExchange;
 		FSubscribeSymbol   = FSymbol;
 	}
+
+	if(FOCOStore != NULL)
+	{
+		for( register int i = 0; i < RowCount; i++ )
+		{
+			FBuyOCOQty[i] = 0;
+			FSellOCOQty[i] = 0;
+		}
+		FTotalOCOBuyQty = 0;
+		FTotalOCOSellQty= 0;
+		FOCOStore->Subscribe(this);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetOCOStore( TOrderStore_OCO* Store )
@@ -3518,7 +3486,7 @@ void __fastcall TOrderBookList::SetOCOStore( TOrderStore_OCO* Store )
 	if(Store == NULL)
 		return;
 
-    FOCOStore = Store;
+	FOCOStore = Store;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetCenterFillPrice( bool CenterFill )
@@ -3544,6 +3512,9 @@ void __fastcall TOrderBookList::Unsubscribe( void )
 	UFC::AnsiString TempSymbol( FSymbol.c_str());
 
 	FStore->Unsubscribe( TempExchange, TempSymbol, this );
+
+	if(FOCOStore != NULL)
+        FOCOStore->UnSubscribe(this);
 }
 //---------------------------------------------------------------------------
 void TOrderBookList::OnFill(int Position, double BuyArvPx, double SellArvPx, int BuyQty, int SellQty,
@@ -3942,44 +3913,10 @@ double __fastcall TOrderBookList::GetAskPrice( int depth )
 	return 0.0;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderBookList::UpdateOCOQty( nsOrderMessageDefine::SideEnum side , double Price, int Qty ,bool isAdd)
+void __fastcall TOrderBookList::SetOCOQtyArrayByPair(TOCOPair* pair, bool isAdd)
 {
-	if(isAdd)
-	{
-		// first click
-		if(!FIsPairingOCO)
-		{
-			FCurrentPairOCO = new TOCOPair();
-			FCurrentPairOCO->OrderQty1 = Qty;
-			FCurrentPairOCO->ConditionPrice1 = Price;
-			FCurrentPairOCO->OrderSide1 = side;
-			FIsPairingOCO = true;
-			return;
-		}
-
-		// second click
-		FIsPairingOCO = false;
-		SetOCOQtyArray(
-			FCurrentPairOCO->OrderSide1,
-			GetRowIndex(FCurrentPairOCO->ConditionPrice1),
-			FCurrentPairOCO->OrderQty1,
-			true);
-		SetOCOQtyArray(
-			side,
-			GetRowIndex(Price),
-			Qty,
-			true);
-
-		FCurrentPairOCO->OrderQty2 = Qty;
-		FCurrentPairOCO->ConditionPrice2 = Price;
-		FCurrentPairOCO->OrderSide2 = side;
-
-		FOCOPairs.push_back(FCurrentPairOCO);
-		FCurrentPairOCO = NULL;
-		return;
-	}
-
-	// is sub
+	SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, isAdd);
+	SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, isAdd);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetOCOQtyArray(
@@ -4002,7 +3939,7 @@ void __fastcall TOrderBookList::SetOCOQtyArray(
         FSellOCOQty[index] += sign * Qty;
         FTotalOCOSellQty   += sign * Qty;
         InvalidateCellRect(SELL_OCO_COL, index);
-        InvalidateCellRect(SELL_OCO_COL, 1);
+		InvalidateCellRect(SELL_OCO_COL, 1);
     }
 }
 //---------------------------------------------------------------------------

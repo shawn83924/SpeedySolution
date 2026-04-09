@@ -34,7 +34,7 @@ public:
 	AnsiString StrategyName;
     UFCType::Int64 NID;
     System::UnicodeString Caption;
-    OCOState State;
+	OCOState State;
 	int OrderQty1;
 	double ConditionPrice1;
 	SideEnum OrderSide1;
@@ -56,7 +56,6 @@ public:
 	virtual AnsiString GetEx( void ) = 0;
 	virtual AnsiString GetSymbol( void ) = 0;
 	virtual void OnOCOOrderUpdate(TOCOPair* Pair, OCOUpdateType Type) = 0;
-    virtual void OnUnPairingOCO(void) = 0;
 };
 //---------------------------------------------------------------------------
 class PACKAGE TOrderStore_OCO : public TComponent, public IMarketDataListener, public TOrderMessageListener
@@ -81,6 +80,7 @@ private:
 private:
 	void __fastcall SubscribeMarketDataStore(IOCOOrderStoreListener* Listener);
 	void __fastcall UnsubscribeMarketDataStore(IOCOOrderStoreListener* Listener);
+	bool __fastcall CheckListenersHaveSameExchangeAndSymbol(const AnsiString Ex, const AnsiString Symbol);
 	bool __fastcall UpdateLastPrice(const AnsiString& Ex, const AnsiString& Sym, double LastPrice);
 	void __fastcall RemoveLastPrice(const AnsiString& Ex, const AnsiString& Sym);
 	void __fastcall SendAllDataToListener(IOCOOrderStoreListener* Listener);
@@ -89,7 +89,6 @@ private:
 		const AnsiString& Sym,
 		TOCOPair* Pair,
 		OCOUpdateType Type);
-	void __fastcall SendUnPairToListener(const AnsiString& Ex, const AnsiString& Sym);
 	std::list<TOCOPair*>* __fastcall GetPriceMatchPairs(
 		const AnsiString& Ex,
 		const AnsiString& Sym,
@@ -149,8 +148,8 @@ public:
 		TCMarketDataStore* MarketDataStore,
 		TOrderStore* OrderStore);
 	__fastcall ~TOrderStore_OCO();
-	void __fastcall Register(IOCOOrderStoreListener* Listener);
-	void __fastcall UnRegister(IOCOOrderStoreListener* Listener);
+	void __fastcall Subscribe(IOCOOrderStoreListener* Listener);
+	void __fastcall UnSubscribe(IOCOOrderStoreListener* Listener);
 	void __fastcall OrderOCO(
 		const AnsiString& Caption,
 		const AnsiString& Ex,
