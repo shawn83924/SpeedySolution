@@ -29,22 +29,26 @@ __fastcall TOrderStore_OCO::~TOrderStore_OCO()
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderStore_OCO::Register(IOCOOrderStoreListener* Listener)
+void __fastcall TOrderStore_OCO::Subscribe(IOCOOrderStoreListener* Listener)
 {
 	//Check Listener is exist in FListeners.
 	//If exist, remove it and add again.
 	if(std::find(FListeners.begin(), FListeners.end(), Listener) != FListeners.end())
-		UnRegister(Listener);
+		UnSubscribe(Listener);
 
 	FListeners.push_back(Listener);
 	SendAllDataToListener(Listener);
 	SubscribeMarketDataStore(Listener);
 }
 //---------------------------------------------------------------------------
-void __fastcall TOrderStore_OCO::UnRegister(IOCOOrderStoreListener* Listener)
+void __fastcall TOrderStore_OCO::UnSubscribe(IOCOOrderStoreListener* Listener)
 {
+	if(std::find(FListeners.begin(), FListeners.end(), Listener) == FListeners.end())
+        return;
+
 	FListeners.remove(Listener);
-	UnsubscribeMarketDataStore(Listener);
+	if( !CheckListenersHaveSameExchangeAndSymbol(Listener->GetEx(), Listener->GetSymbol()) )
+		UnsubscribeMarketDataStore(Listener);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderStore_OCO::SubscribeMarketDataStore(IOCOOrderStoreListener* Listener)
@@ -67,6 +71,21 @@ void __fastcall TOrderStore_OCO::UnsubscribeMarketDataStore(IOCOOrderStoreListen
 	FMarketDataStore->Unsubscribe(Ex, Sym, this);
 }
 //---------------------------------------------------------------------------
+bool __fastcall TOrderStore_OCO::CheckListenersHaveSameExchangeAndSymbol(
+	const AnsiString Ex,
+	const AnsiString Symbol)
+{
+	for( std::list<IOCOOrderStoreListener*>::iterator it = FListeners.begin(); it != FListeners.end(); ++it )
+	{
+		IOCOOrderStoreListener* Listener = *it;
+		if( Listener->GetEx() == Ex && Listener->GetSymbol() == Symbol )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderStore_OCO::OrderOCO(
 	const AnsiString& Caption,
 	const AnsiString& Ex,
@@ -76,17 +95,31 @@ void __fastcall TOrderStore_OCO::OrderOCO(
 	int Qty)
 {
 	int position = GetHoldPosition(Ex, Sym);
+	/*
 	if( position <= 0)
 	{
 		OnOrderOCOFailed(this, Mdcomponentstrings_MD_ORDERBOOK_NOPOSITION);
 		return;
 	}
+    */
 	AnsiString key = Ex + "_" + Sym;
+	double fillPrice = FLastPriceMap[key];
+	if(fillPrice == Price)
+	{
+		OnOrderOCOFailed(this, Mdcomponentstrings_MD_ORDERBOOK_INVALIDOCOPRICE);
+		return;
+	}
 	// Find FPairingOCO have any key match Ex_Sym
 	// If find pair, update pair's property and remove from FPairingOCO and insert to FOCOPairs
 	if( FPairingOCO.find(key) != FPairingOCO.end() )
 	{
 		TOCOPair* pair = FPairingOCO[key];
+		if(	(pair->ConditionPrice1 > fillPrice && Price > fillPrice) ||
+			(pair->ConditionPrice1 < fillPrice && Price < fillPrice) )
+		{
+            OnOrderOCOFailed(this, Mdcomponentstrings_MD_ORDERBOOK_INVALIDOCOPRICE);
+			return;
+		}
 		pair->OrderQty2 = Qty;
 		pair->ConditionPrice2 = Price;
 		pair->OrderSide2 = Side;
@@ -95,7 +128,7 @@ void __fastcall TOrderStore_OCO::OrderOCO(
 		FOCOPairs.push_back( pair );
 		FPairingOCO.erase(key);
 
-		SendDataToListener(Ex, Sym, pair, true);
+		SendDataToListener(Ex, Sym, pair, OCOUpdateType::Edit);
 		return;
 	}
 
@@ -107,6 +140,8 @@ void __fastcall TOrderStore_OCO::OrderOCO(
 	pair->Caption = Caption;
 	pair->Ex = Ex;
 	pair->Symbol = Sym;
+	FPairingOCO[key] = pair;
+	SendDataToListener(Ex, Sym, pair, OCOUpdateType::New);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderStore_OCO::CancelPairingOCO(
@@ -128,7 +163,8 @@ void __fastcall TOrderStore_OCO::CancelPairingOCO(
 		return;
 
 	FPairingOCO.erase(it);
-	SendUnPairToListener(Ex, Sym);
+	pair->State = OCOState::Canceled;
+	SendDataToListener(Ex, Sym, pair, OCOUpdateType::Edit);
 	delete pair;
 }
 //---------------------------------------------------------------------------
@@ -227,6 +263,7 @@ void __fastcall TOrderStore_OCO::SendAllDataToListener(IOCOOrderStoreListener* L
 {
 	AnsiString Ex( Listener->GetEx().c_str() );
 	AnsiString Sym( Listener->GetSymbol().c_str() );
+
 	//send FOCOPairs data
 	for( std::list<TOCOPair*>::iterator it = FOCOPairs.begin(); it != FOCOPairs.end(); ++it )
 	{
@@ -235,14 +272,15 @@ void __fastcall TOrderStore_OCO::SendAllDataToListener(IOCOOrderStoreListener* L
 			continue;
 
 		if(pair->Ex == Ex && pair->Symbol == Sym )
-			Listener->OnOCOOrderUpdate( pair, true );
+			Listener->OnOCOOrderUpdate( pair, OCOUpdateType::New );
 	}
+
 	// send FPairingOCO data
 	AnsiString key = Ex + "_" + Sym;
 	if( FPairingOCO.find(key) != FPairingOCO.end() )
 	{
 		TOCOPair* pair = FPairingOCO[key];
-		Listener->OnOCOOrderUpdate( pair, true );
+		Listener->OnOCOOrderUpdate( pair, OCOUpdateType::New );
 	}
 }
 //---------------------------------------------------------------------------
@@ -258,17 +296,6 @@ void __fastcall TOrderStore_OCO::SendDataToListener(
 		if( Listener->GetEx() != Ex || Listener->GetSymbol() != Sym )
 			continue;
 		Listener->OnOCOOrderUpdate( Pair, Type );
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TOrderStore_OCO::SendUnPairToListener(const AnsiString& Ex, const AnsiString& Sym)
-{
-	for( std::list<IOCOOrderStoreListener*>::iterator it = FListeners.begin(); it != FListeners.end(); ++it )
-	{
-		IOCOOrderStoreListener* Listener = *it;
-		if( Listener->GetEx() != Ex || Listener->GetSymbol() != Sym )
-			continue;
-		Listener->OnUnPairingOCO();
 	}
 }
 //---------------------------------------------------------------------------

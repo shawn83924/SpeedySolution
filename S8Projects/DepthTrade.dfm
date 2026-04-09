@@ -166,7 +166,6 @@ object DepthForm: TDepthForm
     OnNewConditionOrder = OrderBookListNewConditionOrder
     OnNewOCOFail = OrderBookListNewOCOFail
     OnNewOCO = OrderBookListNewOCOOrder
-    OnOCOPriceMatch = OrderBookListOCOPriceMatch
     OnDeleteStopOrder = OrderBookListDeleteStopOrder
     OnCenterPx = OrderBookListCenterPx
     OnAutoStopLoss = OrderBookListAutoStopLoss
