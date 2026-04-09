@@ -314,8 +314,6 @@ __published:	// IDE-managed Components
 	void __fastcall OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage);
 	void __fastcall OrderByOneClickSwitchClick(TObject *Sender);
 	void __fastcall CancelByRightClickSwitchClick(TObject *Sender);
-	void __fastcall OrderBookListOCOPriceMatch(TObject *Sender, SideEnum side, int Qty,
-          double Price);
 	void __fastcall OCODetailBtnClick(TObject *Sender);
 
 

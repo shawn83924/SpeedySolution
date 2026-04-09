@@ -23,6 +23,7 @@ TDepthForm *DepthForm;
 //---------------------------------------------------------------------------
 extern TOrderStore*       gOrderStore;
 extern TCMarketDataStore* gMarketDataStore;
+extern TOrderStore_OCO*   gOrderStore_OCO;
 extern DSAudio            gDSAudio;
 extern bool               GSimMatch;
 extern bool               gNuclear;
@@ -111,6 +112,7 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 ,RegCount( 0 )
 {
 	OrderBookList->Store = gMarketDataStore;
+	OrderBookList->OCOStore = gOrderStore_OCO;
 	Parent = FParent;
 	ToolSV->UseAnimation = false;
 	ToolSV->Opened = false;
@@ -3085,7 +3087,13 @@ void __fastcall TDepthForm::OrderBookListNewOCOOrder(
 		return;
 	}
 
-	OrderBookList->UpdateOCOQty(side, Price, LotsPerOrderEdit->Text.ToInt(), true);
+	gOrderStore_OCO->OrderOCO(
+		Caption,
+		FEx,
+		FSym,
+		side,
+		Price,
+		LotsPerOrderEdit->Text.ToInt());
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOCOFail(TObject *Sender, const AnsiString &ErrorMessage)
@@ -3110,31 +3118,6 @@ void __fastcall TDepthForm::CancelByRightClickSwitchClick(TObject *Sender)
 		OrderBookList->CancelByRightClick = false;
 	else
 		OrderBookList->CancelByRightClick = true;
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::OrderBookListOCOPriceMatch(
-	TObject *Sender,
-	SideEnum side,
-	int Qty,
-	double Price)
-{
-	AnsiString Sym( FSym );
-	UFC::BufferedLog::Printf( " -----[OrderBookList::OCOPriceMatch] Symbol[%s] Qty[%d]", Sym.c_str(), Qty );
-	nsOrderMessageDefine::OrderTypeEnum orderType;
-	switch(FOCOType)
-	{
-		case 0:
-			orderType = nsOrderMessageDefine::otLimit;
-			break;
-		case 1:
-			orderType = nsOrderMessageDefine::otMarket;
-			break;
-		case 2:
-			orderType = nsOrderMessageDefine::otMarketWithProtection;
-			break;
-	}
-
-	PlaceOrder( side, Price, Qty, orderType, true );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OCODetailBtnClick(TObject *Sender)
