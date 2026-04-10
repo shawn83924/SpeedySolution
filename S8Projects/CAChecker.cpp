@@ -26,10 +26,11 @@ TCAChecker::TCAChecker( TComponent* Owner )
 ,FOwner( Owner )
 ,FCheckResult(false)
 ,FCAObject( NULL )
+,FBrokerType( BrokerType::None )
 ,FPFXFile( L"C:\\src\\S8Projects\\Win32\\Debug\\52883910.pfx" )
 ,FPFXFilePassword( L"52883910" )
 ,FLocalIP( L"127.0.0.1" )
-,FURL( "http://ekeytest.emega.com.tw:8080/VA/StockP1VerifySign.jsp" )
+,FURL( "" )
 {
 	FHTTP = new TIdHTTP( FOwner );
 	FSSLIOHandler = new TIdSSLIOHandlerSocketOpenSSL( FOwner );
@@ -64,32 +65,39 @@ bool TCAChecker::InitialCheckerAndTest( String& Reason /* out */ )
 		String sign;
 
 		if( FCAObject == NULL )
-			FCAObject = new TMEGASECCAPI( FOwner );
-		if( FCAObject != NULL )
-		{
-			String Content( L"CATest" );
-			int    Err = Sign( Content, sign );
+			FCAObject = new TSECCAPI( FBrokerType, FOwner );
 
-			if( Err != 0 )
+		String Content( L"CATest" );
+		int Err = Sign( Content, sign );
+
+		if( Err != 0 )
+		{
+			Reason = ToErrorMessage( Err );//L"讀取失敗,請確認CA憑證已正確安裝,並未過期.";
+			FCheckResult = false;
+			FInitOK      = false;
+			FSync        = false;
+			if( FOnCACheckFail != NULL )
+				FOnCACheckFail( this, Reason ); ///<
+			return false;
+		}
+		else
+		{
+			FCASerial    = FCAObject->GetCASerial();
+			switch (FBrokerType)
 			{
-				Reason = ToErrorMessage( Err );//L"讀取失敗,請確認CA憑證已正確安裝,並未過期.";
-				FCheckResult = false;
-				FInitOK      = false;
-				FSync        = false;
-				if( FOnCACheckFail != NULL )
-					FOnCACheckFail( this, Reason ); ///<
-				return false;
+				case MEGA:
+					FInitOK = PostMEGA(Content, sign, L"F", Reason, true);
+					break;
+				case Capital:
+					FInitOK = PostCapital();
+					break;
 			}
-			else
-			{
-				FCASerial    = FCAObject->CGCAPIStockGetSN();
-				FInitOK      = Post( Content, sign, L"F", Reason, true );
-				FCheckResult = FInitOK;
-				FSync        = !FInitOK;
-				if( FInitOK == true && FIsRunning == false )
-					Start();
-				return FInitOK;
-			}
+
+			FCheckResult = FInitOK;
+			FSync        = !FInitOK;
+			if( FInitOK == true && FIsRunning == false )
+				Start();
+			return FInitOK;
 		}
 	}
 	else  ///< Skip CA check
@@ -101,6 +109,14 @@ bool TCAChecker::InitialCheckerAndTest( String& Reason /* out */ )
 		return true;
 	}
 	return false;
+}
+//---------------------------------------------------------------------------
+TSECCAPI* TCAChecker::CreateNewFCAObject( BrokerType BType, TComponent* Owner )
+{
+	if(BType == BrokerType::None)
+		return NULL;
+
+	return new TSECCAPI(BType, Owner);
 }
 //---------------------------------------------------------------------------
 void TCAChecker::EscapeDataString( UTF8String& EscStr )
@@ -144,26 +160,24 @@ void TCAChecker::EscapeDataString( UTF8String& EscStr )
 //---------------------------------------------------------------------------
 int TCAChecker::Sign( const String& Content, String& Sign )
 {
-	if( FCAObject != NULL )
-	{
-		AnsiString AnsiData( Content );
-		UFC::PLockObject Lock( FSignCS );
+	if( FCAObject == NULL )
+		return 0;
 
-		UTF8String Signed = FCAObject->CGCAPIStockPFXPureSign(FPFXFile.c_str(),
-															 FPFXFilePassword.c_str(),
-															 Content.c_str(),
-															 FSignSubject.c_str(),
-															 0x2,
-															 0x10004, ///< USE CG_ALGOR_SHA256
-															 0x80);
+	AnsiString AnsiData( Content );
+	UFC::PLockObject Lock( FSignCS );
 
+	UTF8String Signed = FCAObject->GetSigned(	FPFXFile.c_str(),
+												FPFXFilePassword.c_str(),
+												Content.c_str(),
+												FSignSubject.c_str(),
+												0x2,
+												0x10004, ///< USE CG_ALGOR_SHA256
+												0x80);
 
-		EscapeDataString( Signed );
-		//UFC::BufferedLog::Printf( " CA data[%s] Sign[%s]", AnsiData.c_str(),  Signed.c_str( ));
-		Sign = Signed;
-		return FCAObject->GetErrorCode();
-	}
-	return 0;
+	EscapeDataString( Signed );
+	//UFC::BufferedLog::Printf( " CA data[%s] Sign[%s]", AnsiData.c_str(),  Signed.c_str( ));
+	Sign = Signed;
+	return FCAObject->GetErrorCode();
 }
 //---------------------------------------------------------------------------
 bool TCAChecker::HandleResultDoc( TMemoryStream* Result, bool IsTest, String& Reason )
@@ -195,7 +209,7 @@ void TCAChecker::EmptyQueueAndTriggerError( String& ErrReason )
 		FOnCACheckFail( this, ErrReason );
 }
 //---------------------------------------------------------------------------
-bool TCAChecker::Post( const String& Content, const String& sign, const String& BizCode, String& Reason, bool IsTest )
+bool TCAChecker::PostMEGA( const String& Content, const String& sign, const String& BizCode, String& Reason, bool IsTest )
 {
 	try
 	{
@@ -235,6 +249,11 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 		EmptyQueueAndTriggerError( Reason );// '不明的HTTP錯誤!'
 		return false;
 	}
+}
+//---------------------------------------------------------------------------
+bool TCAChecker::PostCapital()
+{
+	return true;
 }
 //---------------------------------------------------------------------------
 void TCAChecker::ClearAndLog( void )
@@ -293,10 +312,17 @@ void TCAChecker::Work( CheckData* Data )
 		case ctOptions:
 		case ctInternational: BizCode =	L"F";break;
 	}
+
 	if( Sign( Content, sign ) != 0 )
+	{
 		FCheckResult = false;
-	else
-		Post( Content, sign, BizCode, Reason );
+		return;
+	}
+
+	if( FBrokerType == MEGA )
+		PostMEGA( Content, sign, BizCode, Reason );
+	if( FBrokerType == Capital)
+		PostCapital();
 }
 //---------------------------------------------------------------------------
 bool TCAChecker::SignAgrement( const String& Content, String& Reason )
@@ -313,8 +339,10 @@ bool TCAChecker::SignAgrement( const String& Content, String& Reason )
 	if( ErrorCode ==0 )
 	{
 		UFC::BufferedLog::Printf( " [CA] Sync Signed OK!" );
-		if( Post( Content, sign, L"F",Reason ) == true )
-			return true;
+		if( FBrokerType == MEGA )
+			return PostMEGA( Content, sign, L"F", Reason );
+		if( FBrokerType == Capital)
+			return PostCapital();
 	}
 	else
 	{
@@ -362,13 +390,20 @@ bool TCAChecker::Check( ComType Type, const String& Content, String& Reason )
 				case ctInternational: BizCode =	L"F";break;
 			}
 			UFC::BufferedLog::Printf( " [CA] Sync Signed OK!" );
-			 if( Post( Content, sign, BizCode, Reason ) == true )
-			 {
+
+			bool PostResult = false;
+			if( FBrokerType == MEGA )
+				PostResult = PostMEGA( Content, sign, BizCode, Reason );
+			if( FBrokerType == Capital)
+				PostResult = PostCapital();
+
+			if( PostResult == true )
+			{
 				FSync = false;
 				return true;
-			 }
-			 else
-				return false;
+			}
+
+			return false;
 		 }
 		 else
 		 {
@@ -489,6 +524,21 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 	{
 		RejectMsg = "OK!";
 		CanSend = true;
+	}
+}
+//---------------------------------------------------------------------------
+void TCAChecker::SetBrokerType(TBrokerConfig* BrokerConfig)
+{
+	String brokerID = BrokerConfig->GetBrokerID();
+	if(brokerID == L"F030000")
+	{
+		FBrokerType = MEGA;
+		FURL = "http://ekeytest.emega.com.tw:8080/VA/StockP1VerifySign.jsp";
+	}
+
+	if(brokerID == L"F020000")
+	{
+        FBrokerType = Capital;
 	}
 }
 //---------------------------------------------------------------------------
