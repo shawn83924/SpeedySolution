@@ -31,7 +31,7 @@ public:
   // ITriggeringCondition
 protected:
   STDMETHOD(BeginEditing());
-  STDMETHOD(EndEditing());
+  STDMETHOD(EndEditing(VARIANT_BOOL* Value));
   STDMETHOD(MatchPriceComp(LogicalComparisonOperatorEnum op, BSTR price, unsigned* id));
   STDMETHOD(SellSideMatchPriceComp(LogicalComparisonOperatorEnum op, BSTR price, unsigned* id));
   STDMETHOD(BuySideMatchPriceComp(LogicalComparisonOperatorEnum op, BSTR price, unsigned* id));
@@ -48,7 +48,7 @@ protected:
           unsigned* id));
   STDMETHOD(AnyTop5AskVolumeComp(LogicalComparisonOperatorEnum op, unsigned volume,
           unsigned* id));
-  STDMETHOD(Conjunction(unsigned* signal_list, unsigned count, VARIANT_BOOL inverter_on,
+  STDMETHOD(Conjunction(LPSAFEARRAY signal_list, unsigned count, VARIANT_BOOL inverter_on,
           unsigned* id));
   STDMETHOD(GetLastErrMsg(BSTR* lastErrMsg));
   STDMETHOD(ToExpression(BSTR* triggeringCondition));

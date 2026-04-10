@@ -45,9 +45,9 @@ STDMETHODIMP TTriggeringConditionImpl::BeginEditing()
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTriggeringConditionImpl::EndEditing()
+STDMETHODIMP TTriggeringConditionImpl::EndEditing(VARIANT_BOOL* Value)
 {
-	FCondition.EndEditing();
+	*Value = FCondition.EndEditing();
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
@@ -163,10 +163,18 @@ STDMETHODIMP TTriggeringConditionImpl::AnyTop5AskVolumeComp(LogicalComparisonOpe
 	return S_OK;
 }
 // ---------------------------------------------------------------------------
-STDMETHODIMP TTriggeringConditionImpl::Conjunction(unsigned* signal_list, unsigned count,
+STDMETHODIMP TTriggeringConditionImpl::Conjunction(LPSAFEARRAY signal_list, unsigned count,
           VARIANT_BOOL inverter_on, unsigned* id)
 {
-	*id = FCondition.Conjunction(signal_list, count, inverter_on);
+	// 從 SAFEARRAY 取得資料指標
+	SignalID* pData = nullptr;
+	HRESULT hr = SafeArrayAccessData(signal_list, (void**)&pData);
+	if (FAILED(hr))
+		return hr;
+
+	*id = FCondition.Conjunction(pData, count, inverter_on);
+
+	SafeArrayUnaccessData(signal_list);
 	return S_OK;
 }
 // ---------------------------------------------------------------------------

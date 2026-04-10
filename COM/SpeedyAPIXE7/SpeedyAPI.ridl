@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/3/31 ¤U¤È 04:20:17 (- $Rev: 12980 $, 1710830484).
+// File generated on 2026/4/10 ¤U¤È 05:45:12 (- $Rev: 12980 $, 2579939390).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1589,7 +1589,7 @@ library SpeedyAPI
     [id(0x000000D7)]
     HRESULT _stdcall AnyTop5AskVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
     [id(0x000000D8)]
-    HRESULT _stdcall Conjunction([in] unsigned int* signal_list, [in] unsigned int count, [in, defaultvalue(False)] VARIANT_BOOL inverter_on, [out, retval] unsigned int* id);
+    HRESULT _stdcall Conjunction([in] SAFEARRAY(long) signal_list, [in] unsigned int count, [in, defaultvalue(False)] VARIANT_BOOL inverter_on, [out, retval] unsigned int* id);
     [id(0x000000D9)]
     HRESULT _stdcall GetLastErrMsg([out, retval] BSTR* lastErrMsg);
     [id(0x000000DA)]
