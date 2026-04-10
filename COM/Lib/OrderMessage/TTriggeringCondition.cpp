@@ -190,7 +190,9 @@ std::string TTriggeringCondition::SignalIDToExpression(SignalID signal_id, bool 
             ss << SignalIDToExpression(signal_id, false);
         }
 
-        ss << ")";
+        if (!is_root)
+            ss << ")";
+
         return ss.str();
     }
     else // primitive signal

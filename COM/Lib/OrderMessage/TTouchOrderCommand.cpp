@@ -389,6 +389,8 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TTouchOrderCommand* toc)
         else
             FTriggeredAction.insert(std::make_pair("buy_sell_code", "A"));
 
+        // 觸價刪觸價單不需要指定觸價單單號. removed on 2026/04/07
+        /*
         std::string toid = GetTouchOrderID();
         if (toid.empty())
             toid = toc->GetTouchOrderID();
@@ -400,6 +402,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TTouchOrderCommand* toc)
         }
 
         FTriggeredAction["order_no"] = toid;
+        */
 
         return TRUE;
     }

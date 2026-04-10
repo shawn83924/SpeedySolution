@@ -6,6 +6,9 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
 {
     TTouchOrderCommand::TouchedOrderCommandEnum cmd = toc->GetCmdType();
     
+    Glog->fprintf("----- TouchOrder Control ------------");
+    Glog->fprintf("  [CmdType]:%d", cmd);
+
     std::string cmd_node;
     std::string action;
     std::string scene;
@@ -72,25 +75,40 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     MApp* MBusClient = FTransport->GetMApp();
     MBusClient->BeginSend(MHandle, SUBJECT_TOUCH_REQUEST, FID);
     if (nsOrderMessageDefine::mTSE == market)
+    {
         MBusClient->WriteString(MHandle, "MARKET", "TSE");
+        Glog->fprintf("  [MARKET]:TSE");
+    }
     else
+    {
         MBusClient->WriteString(MHandle, "MARKET", "OTC");
+        Glog->fprintf("  [MARKET]:OTC");
+    }
 
     MBusClient->WriteString(MHandle, "ID", FID);
+    Glog->fprintf("  [ID]:%s", FID.c_str());
     
     if (NID)
+    {
         MBusClient->WriteInt64(MHandle, "NID", NID);
+        Glog->fprintf("  [NID]:%lld", NID);
+    }
     
     MBusClient->WriteInt32(MHandle, "CID", FCurrentConnectionID);
     MBusClient->WriteString(MHandle, "COMMAND", cmd_node.c_str());
+    Glog->fprintf("  [COMMAND]:%s", cmd_node.c_str());
     
     if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
     {
         MBusClient->WriteString(MHandle, "SYMBOL", symbol.c_str());
+        Glog->fprintf("  [SYMBOL]:%s", symbol.c_str());
 
         std::string user_data = toc->GetUserData();
         if (!user_data.empty())
+        {
             MBusClient->WriteString(MHandle, "USER_DATA", user_data.c_str());
+            Glog->fprintf("  [USER_DATA]:%s", user_data.c_str());
+        }
     }
 
     if (!action.empty() && !scene.empty())
@@ -98,6 +116,9 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
         MBusClient->WriteString(MHandle, "ACTION", action.c_str());
         MBusClient->WriteString(MHandle, "SCENE", scene.c_str());
         MBusClient->WriteString(MHandle, "EXPRESSION", expression.c_str());
+        Glog->fprintf("  [ACTION]:%s", action.c_str());
+        Glog->fprintf("  [SCENE]:%s", scene.c_str());
+        Glog->fprintf("  [EXPRESSION]:%s", expression.c_str());
     }
 
     return MBusClient->EndSend(MHandle);
