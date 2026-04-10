@@ -3468,17 +3468,33 @@ void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
 		FSubscribeSymbol   = FSymbol;
 	}
 
-	if(FOCOStore != NULL)
+	SubscribeOCOStore();
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::SubscribeOCOStore(void)
+{
+	if(FOCOStore == NULL)
+		return;
+
+	for( register int i = 0; i < RowCount; i++ )
 	{
-		for( register int i = 0; i < RowCount; i++ )
-		{
-			FBuyOCOQty[i] = 0;
-			FSellOCOQty[i] = 0;
-		}
-		FTotalOCOBuyQty = 0;
-		FTotalOCOSellQty= 0;
-		FOCOStore->Subscribe(this);
+		FBuyOCOQty[i] = 0;
+		FSellOCOQty[i] = 0;
 	}
+
+	FTotalOCOBuyQty = 0;
+	FTotalOCOSellQty= 0;
+	FIsPairingOCO = false;
+    FCurrentPairOCO = NULL;
+	FOCOStore->Subscribe(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::UnsubscribeOCOStore(void)
+{
+	if(FOCOStore == NULL)
+		return;
+
+	FOCOStore->UnSubscribe(this);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetOCOStore( TOrderStore_OCO* Store )
@@ -3512,9 +3528,7 @@ void __fastcall TOrderBookList::Unsubscribe( void )
 	UFC::AnsiString TempSymbol( FSymbol.c_str());
 
 	FStore->Unsubscribe( TempExchange, TempSymbol, this );
-
-	if(FOCOStore != NULL)
-        FOCOStore->UnSubscribe(this);
+	UnsubscribeOCOStore();
 }
 //---------------------------------------------------------------------------
 void TOrderBookList::OnFill(int Position, double BuyArvPx, double SellArvPx, int BuyQty, int SellQty,
