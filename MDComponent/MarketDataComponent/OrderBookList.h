@@ -461,6 +461,8 @@ private:
 	int __fastcall GetAskQty( int depth );
 	double __fastcall GetBidPrice( int depth );
 	double __fastcall GetAskPrice( int depth );
+	void __fastcall SubscribeOCOStore(void);
+	void __fastcall UnsubscribeOCOStore(void);
 protected:
 	void _fastcall DrawCell(int ACol, int ARow, const Types::TRect &ARect, TGridDrawState AState );
 	virtual void __fastcall Loaded(void);
