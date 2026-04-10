@@ -22,6 +22,7 @@ PClientSocket::PClientSocket(  )
 ,FIPAddress( "" )
 ,FPort( 0 )
 ,FIsConnected( FALSE )
+,FBusyCheck(FALSE)
 ,FListener( NULL )
 ,FData( 0 )
 {
@@ -35,6 +36,7 @@ PClientSocket::PClientSocket( const AnsiString & Address, Int32 Port, BOOL Threa
 ,FIPAddress( Address )
 ,FPort( Port )
 ,FIsConnected( FALSE )
+,FBusyCheck(FALSE)
 ,FListener( NULL )
 ,FData( 0 )
 {
@@ -304,48 +306,120 @@ BOOL PClientSocket::CheckDataArrived( struct timeval& SelectTime )
     }
 }
 //---------------------------------------------------------------------------
-void PClientSocket::Execute( void )
+BOOL PClientSocket::CheckDataArrivedBusy( void )
 {
-	Int32 Count = 0;
+#ifdef __LINUX
+    char OneByte;
 
-	while ( IsTerminated() == FALSE )
-	{
-		if ( FIsConnected == FALSE  )
-		{
-			UFC::SleepMS( 100 );
-			continue;
-		}
-		try
-		{
-			struct timeval SelectTimeout = {1,0};///< Select timeout 1 sec
+    Int32 RecvSize = recv( FFD, (char*)&OneByte, 1, MSG_PEEK|MSG_DONTWAIT );
+    if( RecvSize < 0 )
+    {            
+        if( errno == EINTR )
+        {
+            BufferedLog::Printf("####### Interrupt #########");
+            return FALSE;
+        }
+        else if( errno == EAGAIN )
+        {
+            return FALSE;
+        }
+        else if( errno == EPIPE )
+        {
+            BufferedLog::Printf( " [BusyCheckData] RecvBuffer from a broken Pipe." );
+            return FALSE;
+        }
+        else
+        {
+            BufferedLog::Printf( " [BusyCheckData] Recv error code[%d].", errno );
+            return FALSE;
+        }
+    }
+    else if( RecvSize == 0 )
+    {
+        BufferedLog::Printf(" [BusyCheckData] The connection has been gracefully closed.");
+        return FALSE;
+    }
+    // Data arrived in blocking mode.
+    return TRUE;
+#else    
+    struct timeval SelectTimeout = {1,0};///< Select timeout 1 sec
 
-			if( CheckDataArrived( SelectTimeout ) == TRUE )
-			{
-                Count++;
-                if( FListener != NULL )
-                {
-                    if( FListener->OnDataArrived( this ) == FALSE )
-                        Disconnect();
-                }
-                else
-                    this->Purge();
-                if( Count%50 == 0 )
-                    UFC::PThread::PThread_Yield( );
+    return CheckDataArrived( SelectTimeout );
+#endif    
+}
+//---------------------------------------------------------------------------
+void PClientSocket::Process( int& Count )
+{
+    try
+    {
+        struct timeval SelectTimeout = {1,0};///< Select timeout 1 sec
+
+        if( CheckDataArrived( SelectTimeout ) == TRUE )
+        {
+            Count++;
+            if( FListener != NULL )
+            {
+                if( FListener->OnDataArrived( this ) == FALSE )
+                    Disconnect();
             }
             else
-            {
-                Count = 0;
-                if( FListener != NULL )
-                    FListener->OnIdle( this );
-            }
+                this->Purge();
+            if( Count%50 == 0 )
+                UFC::PThread::PThread_Yield( );
         }
-        catch( SocketException & e )
+        else
         {
-            BufferedLog::Printf(" Socket exception in Excute function. what(): [%s]", e.what() );
-			//Disconnect();
-            Disconnect( TRUE, TRUE ); // modify by joe
-		}
-	};
+            Count = 0;
+            if( FListener != NULL )
+                FListener->OnIdle( this );
+        }
+    }
+    catch( SocketException & e )
+    {
+        BufferedLog::Printf(" Socket exception in Excute function. what(): [%s]", e.what() );
+        Disconnect( TRUE, TRUE ); // modify by joe
+    }    
+}
+//---------------------------------------------------------------------------
+void PClientSocket::ProcessBusy( int& Count )
+{
+    try
+    {
+        if( CheckDataArrivedBusy( ) == TRUE )
+        {
+            Count++;
+            if( FListener != NULL )
+            {
+                if( FListener->OnDataArrived( this ) == FALSE )
+                    Disconnect();
+            }
+            else
+                this->Purge();
+        }        
+    }
+    catch( SocketException & e )
+    {
+        BufferedLog::Printf(" Socket exception in Excute function. what(): [%s]", e.what() );
+        Disconnect( TRUE, TRUE ); // modify by joe
+    }    
+}
+//---------------------------------------------------------------------------
+void PClientSocket::Execute( void )
+{
+    Int32 Count = 0;
+
+    while ( IsTerminated() == FALSE )
+    {
+        if( FIsConnected == TRUE  )
+        {
+            if( FBusyCheck == FALSE )
+                Process( Count );
+            else
+                ProcessBusy( Count );
+        }
+        else
+            UFC::SleepMS( 100 );
+    };
 }
 //---------------------------------------------------------------------------
 const Int32 PClientSocket::GetPeerID( void )
@@ -459,6 +533,16 @@ void PClientSocket::UpdateIPAddress( const UFC::AnsiString& LocalIP,const UFC::A
 {
     FIPAddress = LocalIP;
     FSocketIPAddress = PeerIP;
+}
+//---------------------------------------------------------------------------
+void  PClientSocket::SetThreadAffinity( int CPUID )
+{
+    this->PThread_setaffinity( CPUID );
+}        
+//---------------------------------------------------------------------------
+void PClientSocket::SetBusyloopCheck( bool IsBusy )
+{
+    FBusyCheck = IsBusy;
 }
 //---------------------------------------------------------------------------
 }

@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 #include <math.h>
 #include <bitset>
 #include "Utility.h"
@@ -154,7 +154,6 @@ Lookup::Lookup()
 	FDigiMap.Add( "XIO",  tdtTXFLike );
 	FDigiMap.Add( "MXF",  tdtTXFLike );
 	FDigiMap.Add( "T5F",  tdtTXFLike );
-	FDigiMap.Add( "TMF",  tdtTXFLike );
 
 	FDigiMap.Add( "FXF", tdtFXFLike );
 	FDigiMap.Add( "MSF", tdtFXFLike );
@@ -1258,7 +1257,7 @@ int __fastcall GenerateTicks( const UFC::AnsiString& Exchange,
 		if( Symbol.Length() == 5 || Symbol.Length() == 8 ) /// Futures, Fix tick.
 		{
 			double TickPx = BullPx;
-			if( Prefix == "TX" || Prefix == "MX" || Prefix == "T5" || Prefix == "XI" || Prefix == "TM" )
+			if( Prefix == "TX" || Prefix == "MX" || Prefix == "T5" || Prefix == "XI" )
 				Tick = 1;
 			else if( Prefix == "EX" || Prefix == "GT" )
 				Tick = 0.05;

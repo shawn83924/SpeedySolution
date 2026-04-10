@@ -38,6 +38,7 @@ void MarketDataConnection::OnTWSEMessage( const UFC::AnsiString& Exchange, const
 			case mtCombinenationProductClosingMarketData: break;
 			case mtQuoteRequest: break;
 			case mtFullSnapShot: break;
+			case mtAdvancedMsg: OnTWSEAdvancedMessage(Exchange, Symbol, (Market)mkt, &Stream, Data);  break;
 			default: break;
 		}
 	}
@@ -163,23 +164,35 @@ void MarketDataConnection::OnTWSEOpen( const UFC::AnsiString& Exchange, const UF
 void MarketDataConnection::OnTWSEIndex( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream )
 {
 	UFC::NDouble Px;
+	UFC::NDouble OpenPx;
+	UFC::NDouble HighPx;
+	UFC::NDouble LowPx;
+	UFC::NDouble ClosePx;
 	UFC::UDateTime Time;
 	UFC::NInt32 TotalQty;
 	UFC::NInt32 TotalCount;
 	UFC::NInt64 TotalAmount;
 	UFC::AnsiString MessageTime;
-
+	
 	Time.LoadFromStream( Stream );
 	Px.LoadFromStream( Stream );
 	TotalQty.LoadFromStream( Stream );
 	TotalCount.LoadFromStream( Stream );
 	TotalAmount.LoadFromStream( Stream );
+	OpenPx.LoadFromStream(Stream);
+	HighPx.LoadFromStream(Stream);
+	LowPx.LoadFromStream(Stream);
+	ClosePx.LoadFromStream(Stream);
 
 	ToTimeStamp( Time, MessageTime );
 
 	UnderlyingIndexInfo Info( Exchange, mkt, Symbol );
 
 	Info.SetIndexValue( Px.ToDouble() );
+	Info.SetOpenValue( OpenPx.ToDouble() );
+	Info.SetHighValue( HighPx.ToDouble() );
+	Info.SetLowValue( LowPx.ToDouble() );
+	Info.SetCloseValue( ClosePx.ToDouble() );
 	Info.SetTotalQty( TotalQty.ToInt32() );
 	Info.SetTotalCount( TotalCount.ToInt32());
 	Info.SetTotalAmount( TotalAmount.ToInt64( ));
@@ -219,6 +232,14 @@ void MarketDataConnection::OnTWSEClose( const UFC::AnsiString& Exchange, const U
 	FListener->OnMarketDataMessage( Exchange, Symbol, &CloseData );
 	UFC::BufferedLog::DebugPrintf( UFC::dlInformation, " [%s] OnTWSEClose() Open[%0.2f] High[%0.2f] Low[%0.2f] Close[%0.2f] TotalQty[%d] MessageTime[%s]",
 		Symbol.c_str(), OpenPx.ToDouble(), HighPx.ToDouble(), LowPx.ToDouble(), LastPx.ToDouble(), TotalQty.ToInt32(), TimeStr.c_str() );
+}
+//------------------------------------------------------------------------------
+void MarketDataConnection::OnTWSEAdvancedMessage(const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, MTree* Data)
+{
+	AdvancedMessage AdvancedMessageData(Exchange, mkt, Symbol, Stream, Data);
+	FAdvancedListener->OnMarketDataMessage(Exchange, Symbol, &AdvancedMessageData);
+	UFC::BufferedLog::DebugPrintf(UFC::dlInformation, " [%s] OnTWSEAdvancedMessage() FunctionCoe[%d]",
+		Symbol.c_str(), AdvancedMessageData.GetFunctionCode());
 }
 //------------------------------------------------------------------------------
 

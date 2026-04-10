@@ -118,6 +118,13 @@ protected:
   STDMETHOD(set_CAPlainText(BSTR Value));
   STDMETHOD(get_CASignature(BSTR* Value));
   STDMETHOD(set_CASignature(BSTR Value));
+  STDMETHOD(ClearStopLoss());
+  STDMETHOD(ClearTakeProfit());
+  STDMETHOD(get_StopOrderError(BSTR* Value));
+  STDMETHOD(SetStopLoss(VARIANT_BOOL IsTrailingStop, long Ticks, BSTR StopPrice, BSTR OrderPrice,
+          VARIANT_BOOL* Succeed));
+  STDMETHOD(SetTakeProfit(VARIANT_BOOL IsTrailingStop, long Ticks, BSTR StopPrice, BSTR OrderPrice,
+		  VARIANT_BOOL* Succeed));
 };
 
 

@@ -36,7 +36,7 @@ enum rmCheckResult
 	rmResultPass = 0,
 	rmWarningWaterLevel
 };
-
+//------------------------------------------------------------------------------
 class CheckData
 {
 public: ///< In 

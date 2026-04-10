@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{7D41E875-E573-4DD9-B62D-46290A8C6DDB}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="DataStore.lib">DataStore.bdsproj</Projects>
+      <Projects Name="DataStoreTest.exe">DataStoreTest\DataStoreTest.bdsproj</Projects>
+      <Projects Name="Targets">DataStore.lib DataStoreTest.exe</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+  <StarTeamAssociation></StarTeamAssociation>
+  <StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+</BorlandProject>

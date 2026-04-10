@@ -199,7 +199,7 @@ const double MColumn::ToDouble( void )
 	}
 	else if ( FDefinition->FType == ctInt64 ) ///< ctInt64
 	{
-		int int64Value;
+		Int64 int64Value;
 		memcpy( &int64Value, FData, sizeof(Int64) );
 		Result = (double)int64Value;
 	}

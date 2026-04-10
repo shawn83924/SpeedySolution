@@ -682,6 +682,31 @@ SequanceNoType PSharedSequanceNo<SequanceNoType>::GetNextValue(SequanceNoType In
 
 typedef PSharedSequanceNo<UFCType::Int64> PInt64SeqNo;
 typedef PSharedSequanceNo<UFCType::Int32> PInt32SeqNo;
+
+int TryAndLockObjectForRead(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 WarningDebugLevel, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForRead(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, UFC::BufferedLog* LogPtr);
+int TryAndLockObjectForRead(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForRead(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, UFC::BufferedLog* LogPtr);
+
+int TryAndLockObjectForRead(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 WarningDebugLevel, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForRead(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, UFC::BufferedLog* LogPtr);
+int TryAndLockObjectForRead(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForRead(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, UFC::BufferedLog* LogPtr);
+
+int TryAndLockObjectForWrite(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 WarningDebugLevel, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForWrite(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int TryAndLockObjectForWrite(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForWrite(PReadWriteLock* RWLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, BufferedLog* LogPtr);
+
+int TryAndLockObjectForWrite(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 WarningDebugLevel, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForWrite(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int TryAndLockObjectForWrite(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObjectForWrite(CBasicRWLockObject* ObjPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, BufferedLog* LogPtr);
+
+int TryAndLockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 WarningDebugLevel, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, BufferedLog* LogPtr);
+int TryAndLockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
+int UnlockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, BufferedLog* LogPtr);
 }  //namespace UFC
 #endif /* if (defined(__LINUX) || defined(__AIX)) */
 #endif /* PSHAREDDATA_H */

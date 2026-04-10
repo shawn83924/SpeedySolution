@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2025/4/25 ¤U¤È 05:13:31 (- $Rev: 12980 $, 596450625).
+// File generated on 2026/1/26 ¤U¤È 05:10:55 (- $Rev: 12980 $, 1024708203).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -672,6 +672,16 @@ library SpeedyAPI
     HRESULT _stdcall CAPlainText([out, retval] BSTR* Value);
     [propput, id(0x00000143)]
     HRESULT _stdcall CAPlainText([in] BSTR Value);
+    [id(0x00000146)]
+    HRESULT _stdcall ClearStopLoss(void);
+    [id(0x00000147)]
+    HRESULT _stdcall ClearTakeProfit(void);
+    [propget, id(0x00000148)]
+    HRESULT _stdcall StopOrderError([out, retval] BSTR* Value);
+    [id(0x00000149)]
+    HRESULT _stdcall SetStopLoss([in] VARIANT_BOOL IsTrailingStop, [in] long Ticks, [in] BSTR StopPrice, [in] BSTR OrderPrice, [out, retval] VARIANT_BOOL* Succeed);
+    [id(0x00000144)]
+    HRESULT _stdcall SetTakeProfit([in] VARIANT_BOOL IsTrailingStop, [in] long Ticks, [in] BSTR StopPrice, [in] BSTR OrderPrice, [out, retval] VARIANT_BOOL* Succeed);
   };
 
   [
