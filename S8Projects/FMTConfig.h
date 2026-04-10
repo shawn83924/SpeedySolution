@@ -176,6 +176,22 @@ public:
 	virtual TBrokerUser* GetAccount( void );
 };
 //---------------------------------------------------------------------------
+class TCapitalService : public TBrokerService
+{
+private:
+	String  FBaseURL;
+	TBrokerUser FAccounts;
+	bool    FLoginOK;
+public:
+	TCapitalService(const String& BaseURL );
+	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
+	virtual bool ChangePassword( const String& NewPassword, String& Msg ){return false;}
+	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
+	virtual void ClearPosition( const String& ID );
+	virtual bool SignAgreememt( const String& Account, TCAChecker* CAChecker, String& Msg );
+	virtual TBrokerUser* GetAccount( void );
+};
+//---------------------------------------------------------------------------
 typedef enum
 {
   hatTAIFEX,
