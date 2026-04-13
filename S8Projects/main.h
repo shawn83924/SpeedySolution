@@ -438,7 +438,8 @@ private:
 	void __fastcall SystemInfo( void );
 	void __fastcall UpdateAutoCancel( void );
 	void __fastcall OnOrderOCOFailed(System::TObject* Sender, const String& ReplyMessage);
-	void __fastcall GetOCOOrderProperty(System::TObject* Sender, int& OrderType, int& LimitOrderTick);
+	void __fastcall OnPropertyUpdate(System::TObject* Sender, int OrderType, int LimitOrderTick);
+	void __fastcall SetOCOOrderProperty();
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 	__fastcall ~TMainForm( void );

@@ -61,10 +61,10 @@ public:
 class PACKAGE TOrderStore_OCO : public TComponent, public IMarketDataListener, public TOrderMessageListener
 {
 typedef void __fastcall (__closure *TOnOrderOCOFailed)(System::TObject* Sender, const String& ReplyMessage);
-typedef void __fastcall (__closure *TGetOrderProperty)(
+typedef void __fastcall (__closure *TOnPropertyUpdate)(
 	System::TObject* Sender,
-	int& OrderType,
-	int& LimitOrderTick);
+	int OrderType,
+	int LimitOrderTick);
 
 private:
 	std::list<TOCOPair*> FOCOPairs;
@@ -73,10 +73,12 @@ private:
 	TOrderStore* FOrderStore;
 	std::list<IOCOOrderStoreListener*> FListeners;
 	std::map<AnsiString, double> FLastPriceMap;
-    int FStrategyNum;
+	int FStrategyNum;
+	int FOCOType;
+	int FLimitOrderTick;
 	// Event
 	TOnOrderOCOFailed FOnOrderOCOFailed;
-	TGetOrderProperty FGetOrderProperty;
+	TOnPropertyUpdate FOnPropertyUpdate;
 private:
 	void __fastcall SubscribeMarketDataStore(IOCOOrderStoreListener* Listener);
 	void __fastcall UnsubscribeMarketDataStore(IOCOOrderStoreListener* Listener);
@@ -172,10 +174,12 @@ public:
 		const AnsiString& Sym,
 		nsOrderMessageDefine::SideEnum Side,
 		const double Price);
-
+	void __fastcall SetOCOProperty(int OCOType, int LimitOrderTick);
 __published:
 	__property TOnOrderOCOFailed OnOrderOCOFailed = { read = FOnOrderOCOFailed, write = FOnOrderOCOFailed };
-	__property TGetOrderProperty GetOrderProperty = { read = FGetOrderProperty, write = FGetOrderProperty };
+	__property TOnPropertyUpdate OnPropertyUpdate = { read = FOnPropertyUpdate, write = FOnPropertyUpdate };
+	__property int OCOType = { read = FOCOType };
+	__property int LimitOrderTick = { read = FLimitOrderTick };
 };
 //---------------------------------------------------------------------------
 #endif

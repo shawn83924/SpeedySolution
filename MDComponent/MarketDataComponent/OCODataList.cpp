@@ -280,6 +280,30 @@ void __fastcall TOCODataList::AddData(TOCOPair* pair)
 	item->MakeVisible( false );
 }
 //---------------------------------------------------------------------------
+void __fastcall TOCODataList::EditData(TOCOPair* pair)
+{
+	TListItem* item = this->FindData(0, pair, true, false);
+	if(item == NULL)
+		return;
+
+	Items->BeginUpdate();
+	RefreshSubItem( item, pair);
+	Items->EndUpdate();
+	item->MakeVisible( false );
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::DeleteData(TOCOPair* pair)
+{
+	TListItem* item = this->FindData(0, pair, true, false);
+	if(item == NULL)
+		return;
+
+	Items->BeginUpdate();
+	item->Data = NULL;
+	item->Delete();
+	Items->EndUpdate();
+}
+//---------------------------------------------------------------------------
 void __fastcall TOCODataList::RefreshSubItem(TListItem* ItemPtr, TOCOPair* pair)
 {
     if( ItemPtr->SubItems->Count > 0 )
@@ -344,19 +368,49 @@ void __fastcall TOCODataList::OnLeftMouseUp(int X, int Y)
 	}
 }
 //---------------------------------------------------------------------------
+//Need to remove
 void __fastcall TOCODataList::DeleteItem(TListItem* ItemPtr)
 {
-    if(ItemPtr == NULL)
-        return;
+	if(ItemPtr == NULL)
+		return;
 
 	TOCOPair* pair = (TOCOPair*)ItemPtr->Data;
-    if(pair != NULL)
-        delete pair;
+	if(pair != NULL)
+		delete pair;
 
 	Items->BeginUpdate();
-    ItemPtr->Data = NULL;
-    ItemPtr->Delete();
+	ItemPtr->Data = NULL;
+	ItemPtr->Delete();
 	Items->EndUpdate();
+}
+//---------------------------------------------------------------------------
+AnsiString TOCODataList::GetEx( void )
+{
+	return AnsiString("");
+}
+//---------------------------------------------------------------------------
+AnsiString TOCODataList::GetSymbol( void )
+{
+    return AnsiString("");
+}
+//---------------------------------------------------------------------------
+void TOCODataList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
+{
+	if(pair == NULL)
+		return;
+
+	if(Type == OCOUpdateType::New)
+	{
+		AddData(pair);
+	}
+	else if(Type == OCOUpdateType::Edit)
+	{
+		EditData(pair);
+	}
+	else if(Type == OCOUpdateType::Delete)
+	{
+		DeleteData(pair);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::TestFunctionForAddData(void)
@@ -372,7 +426,7 @@ void __fastcall TOCODataList::TestFunctionForAddData(void)
 		pair->OrderSide1 = nsOrderMessageDefine::sSell;
 		pair->Symbol = L"2330";
 
-        AddData(pair);
+		AddData(pair);
 	}
 }
 //---------------------------------------------------------------------------

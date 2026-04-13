@@ -1086,7 +1086,6 @@ void __fastcall TDepthForm::SaveProperty( const String& Profile )
 
 	g_Config.SetIntegerProperty( Profile ,"ExchangeComboBox", ExchangeComboBox->ItemIndex);
 	SaveTFT();
-	SaveOCOSetting();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::ApplyStopTick( int StopTick, int ProfitTick )
@@ -1182,7 +1181,6 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	LoadColor();
 	LoadStopSetting();
 	LoadTFT();
-	LoadOCOSetting();
 	AdjuestFont( );
 }
 //---------------------------------------------------------------------------
@@ -1499,12 +1497,6 @@ void __fastcall TDepthForm::LoadColor( void )
 	OrderBookList->Repaint();
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::LoadOCOSetting( void )
-{
-	FOCOType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
-	FLimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
-}
-//---------------------------------------------------------------------------
 void __fastcall TDepthForm::SaveDefColor( void  )
 {
 	String Name;
@@ -1694,12 +1686,6 @@ void __fastcall TDepthForm::SaveColorToConfig( const String& Name, bool DorL )
 		g_Config.SetIntegerProperty(Name, "SellOCODelColBKColor", OrderBookList->SellOCODelColBKColor);
 		SellOCODelColBKColor[DorL] = OrderBookList->SellOCODelColBKColor;
 	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TDepthForm::SaveOCOSetting( void )
-{
-	g_Config.SetIntegerProperty( "Setting", "OCOType", FOCOType);
-	g_Config.SetIntegerProperty( "Setting", "LimitOrderTick", FLimitOrderTick);
 }
 //---------------------------------------------------------------------------
 TColor __fastcall TDepthForm::GetFixColor( int Index )
@@ -3065,15 +3051,18 @@ void __fastcall TDepthForm::SmartOrderTabsChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SettingOCOBtnClick(TObject *Sender)
 {
-	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(this, FOCOType, FLimitOrderTick);
+	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(
+		this,
+		gOrderStore_OCO->OCOType,
+		gOrderStore_OCO->LimitOrderTick);
+
 	int showResult = dlg->ShowModal();
 	if(showResult == mrCancel)
 		return;
 
-	FOCOType = dlg->GetOrderType();
-	FLimitOrderTick = dlg->GetLimitOrderTick();
-	SaveOCOSetting();
-	ContractViewerForm->LoadDepthOCO(this);
+	gOrderStore_OCO->SetOCOProperty(
+		dlg->GetOrderType(),
+		dlg->GetLimitOrderTick());
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOCOOrder(

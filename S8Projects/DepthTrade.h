@@ -353,8 +353,6 @@ private:	// User declarations
 	int FPostSizeOffset;
 	int FNuclearUpperLots;
 	int FNuclearLowerLots;
-	int FOCOType;
-	int FLimitOrderTick;
     int FRangeMarketOrderTick;
 	UFC::PHashMap<TButton*,TPanel*>  FExpBtn2Panel;
 	static UFC::List<BasicInformation*> FCustomMDList[];
@@ -420,11 +418,9 @@ public:		// User declarations
 	void __fastcall LoadStopSetting( void );
 	void __fastcall LoadHotkey( void );
 	void __fastcall LoadColor( void );
-    void __fastcall LoadOCOSetting( void );
 	void __fastcall SaveStopSetting( void );
 	void __fastcall SaveDefColor( void );
 	void __fastcall SaveColorToConfig( const String& Name, bool DorL );
-    void __fastcall SaveOCOSetting( void );
 	void __fastcall LoadDefColor( bool DorL );
 	void __fastcall ShowDepth( int L,int T );
 	void __fastcall ShowDepth( int L,int T, const String& Profile  );
