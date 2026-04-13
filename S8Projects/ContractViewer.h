@@ -204,7 +204,6 @@ public:		// User declarations
 	void __fastcall CenterPx( TDepthForm* Who );
 	void __fastcall ActiveClient( TClientForm* ActForm );
 	void __fastcall LoadDepthColor( TDepthForm* Who );
-	void __fastcall LoadDepthOCO( TDepthForm* Who );
 	void __fastcall LoadStopSetting( TClientForm* Who );
 	void __fastcall OrderStoreReady( void );
 	void __fastcall LoadChartColor( TLineChartForm* Who );

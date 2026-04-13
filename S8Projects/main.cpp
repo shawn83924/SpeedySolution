@@ -161,7 +161,8 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	OrderStore_OCO = new TOrderStore_OCO( this, CMarketDataStore, OrderStore);
 	gOrderStore_OCO = OrderStore_OCO;
 	OrderStore_OCO->OnOrderOCOFailed = OnOrderOCOFailed;
-	OrderStore_OCO->GetOrderProperty = GetOCOOrderProperty;
+	OrderStore_OCO->OnPropertyUpdate = OnPropertyUpdate;
+	SetOCOOrderProperty();
 
 	FCAChecker = new TCAChecker( this );
 	FCAChecker->OnCACheckFail =	CACheckFail;
@@ -3067,13 +3068,20 @@ void __fastcall TMainForm::OnOrderOCOFailed(System::TObject* Sender, const Strin
 	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ReplyMessage );
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::GetOCOOrderProperty(
+void __fastcall TMainForm::OnPropertyUpdate(
 	System::TObject* Sender,
-	int& OrderType,
-	int& LimitOrderTick)
+	int OrderType,
+	int LimitOrderTick)
 {
-	OrderType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
-    LimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
+	g_Config.SetIntegerProperty( "Setting", "OCOType", gOrderStore_OCO->OCOType);
+	g_Config.SetIntegerProperty( "Setting", "LimitOrderTick", gOrderStore_OCO->LimitOrderTick);
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::SetOCOOrderProperty()
+{
+	int OrderType = g_Config.GetIntegerProperty( "Setting", "OCOType", 0 );
+	int LimitOrderTick = g_Config.GetIntegerProperty( "Setting", "LimitOrderTick", 0 );
+	gOrderStore_OCO->SetOCOProperty(OrderType, LimitOrderTick);
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CxlWorkingButtonClick(TObject *Sender)

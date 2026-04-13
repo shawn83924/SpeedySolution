@@ -231,6 +231,14 @@ void __fastcall TOrderStore_OCO::DeleteOCO(
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TOrderStore_OCO::SetOCOProperty(int OCOType, int LimitOrderTick)
+{
+	FOCOType = OCOType;
+	FLimitOrderTick = LimitOrderTick;
+	if(OnPropertyUpdate != NULL)
+		OnPropertyUpdate(this, FOCOType, FLimitOrderTick);
+}
+//---------------------------------------------------------------------------
 bool __fastcall TOrderStore_OCO::UpdateLastPrice(const AnsiString& Ex, const AnsiString& Sym, double LastPrice)
 {
 	AnsiString key = Ex + "_" + Sym;
@@ -389,15 +397,11 @@ bool __fastcall TOrderStore_OCO::OrderingOCO(
 	if( Side == nsOrderMessageDefine::sSell && OrderQty > holdPosition )
 		return false;
 
-	int OCOType = 0;
-	int LimitOrderTick = 0;
 	PositionEffectEnum pe = nsOrderMessageDefine::peAuto;
 	char twseOrdType = '0';
-	if( GetOrderProperty != NULL )
-		GetOrderProperty(this, OCOType, LimitOrderTick);
 
 	nsOrderMessageDefine::OrderTypeEnum orderType;
-    switch(OCOType)
+	switch(FOCOType)
 	{
 		case 0:
 			orderType = nsOrderMessageDefine::otLimit;
@@ -407,7 +411,7 @@ bool __fastcall TOrderStore_OCO::OrderingOCO(
 			orderType = nsOrderMessageDefine::otMarket;
 			AnsiString ex = Ex;
 			AnsiString sym = Sym;
-			Price = GetTickPrice(ex, sym, Side, Price, LimitOrderTick);
+			Price = GetTickPrice(ex, sym, Side, Price, FLimitOrderTick);
 			break;
 		}
 		case 2:
