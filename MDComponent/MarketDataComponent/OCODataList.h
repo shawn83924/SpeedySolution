@@ -9,7 +9,7 @@
 #include <Vcl.Controls.hpp>
 #include "OrderStore_OCO.h"
 //---------------------------------------------------------------------------
-class PACKAGE TOCODataList : public TCustomListView
+class PACKAGE TOCODataList : public TCustomListView, public IOCOOrderStoreListener
 {
 private:
 	void __fastcall InitString( void );
@@ -35,7 +35,11 @@ private:
 	bool __fastcall IsMouseInDeleteIcon( void );
 	void __fastcall OnLeftMouseDown(int X, int Y);
 	void __fastcall OnLeftMouseUp(int X, int Y);
+	//need to remove
 	void __fastcall DeleteItem( TListItem* ItemPtr);
+	virtual AnsiString GetEx( void );
+	virtual AnsiString GetSymbol( void );
+	virtual void OnOCOOrderUpdate(TOCOPair* Pair, OCOUpdateType Type);
 private:
 	static String HeaderString[];
 	Graphics::TBitmap* FBufferBmp;
@@ -52,8 +56,10 @@ public:
 	__fastcall TOCODataList(TComponent* Owner);
 	__fastcall ~TOCODataList(void);
 	void __fastcall AddData(TOCOPair* pair);
+	void __fastcall EditData(TOCOPair* pair);
+	void __fastcall DeleteData(TOCOPair* pair);
 	void __fastcall RefreshSubItem(TListItem* ItemPtr, TOCOPair* pair);
-
+	// Need to remove
 	void __fastcall TestFunctionForAddData(void);
 __published:
     __property Font;
