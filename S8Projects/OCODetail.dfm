@@ -5,7 +5,7 @@ object OCODetailForm: TOCODetailForm
   BorderStyle = bsSizeToolWin
   Caption = 'OCODetailForm'
   ClientHeight = 299
-  ClientWidth = 680
+  ClientWidth = 797
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -16,12 +16,13 @@ object OCODetailForm: TOCODetailForm
   GlassFrame.SheetOfGlass = True
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 23
   object OCODataList: TOCODataList
     Left = 0
     Top = 0
-    Width = 680
+    Width = 797
     Height = 299
     Align = alClient
     ViewStyle = vsReport
@@ -66,6 +67,7 @@ object OCODetailForm: TOCODetailForm
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
       FFFFFFFFFFFFFFFFFFFF}
+    ExplicitWidth = 680
   end
   object RoundFormEx: TRoundFormEx
     Resource = MainForm.RoundFormExRes

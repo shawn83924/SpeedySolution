@@ -56,6 +56,9 @@ void __fastcall TOrderStore_OCO::SubscribeMarketDataStore(IOCOOrderStoreListener
 	if(FMarketDataStore == NULL)
 		return;
 
+	if(Listener->GetEx().IsEmpty() || Listener->GetSymbol().IsEmpty())
+		return;
+
 	UFC::AnsiString Ex( Listener->GetEx().c_str() );
 	UFC::AnsiString Sym( Listener->GetSymbol().c_str() );
 	FMarketDataStore->Subscribe(Ex, Sym, this);
@@ -215,20 +218,25 @@ void __fastcall TOrderStore_OCO::DeleteOCO(
 		if( !matchFirst && !matchSecond )
 			continue;
 
-		if(pair->State == OCOState::Triggered)
-		{
-			TExecution* orderData = pair->OrderData;
-			FOrderStore->CancelOrder(
-				orderData->GetMarket(),
-				orderData->GetExchangeCode(),
-				orderData->GetOrderID(),
-				s888::ConvertUnicodeToUFCAnsiStr( orderData->GetStrategyName())
-				);
-		}
-		FOCOPairs.erase(it);
-		SendDataToListener(Ex, Sym, pair, OCOUpdateType::Delete);
-		delete pair;
+		DeleteOCO(pair);
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderStore_OCO::DeleteOCO(TOCOPair* pair)
+{
+    if(pair->State == OCOState::Triggered)
+	{
+		TExecution* orderData = pair->OrderData;
+		FOrderStore->CancelOrder(
+			orderData->GetMarket(),
+			orderData->GetExchangeCode(),
+			orderData->GetOrderID(),
+			s888::ConvertUnicodeToUFCAnsiStr( orderData->GetStrategyName())
+			);
+	}
+	FOCOPairs.remove(pair);
+	SendDataToListener(pair->Ex,pair->Symbol, pair, OCOUpdateType::Delete);
+	delete pair;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderStore_OCO::SetOCOProperty(int OCOType, int LimitOrderTick)
@@ -272,6 +280,28 @@ void __fastcall TOrderStore_OCO::SendAllDataToListener(IOCOOrderStoreListener* L
 	AnsiString Ex( Listener->GetEx().c_str() );
 	AnsiString Sym( Listener->GetSymbol().c_str() );
 
+	// If Listenser is OCODetail, send all pair
+	if(Ex.IsEmpty() && Sym.IsEmpty())
+	{
+		//send all FOCOPairs data
+		for( std::list<TOCOPair*>::iterator it = FOCOPairs.begin(); it != FOCOPairs.end(); ++it )
+		{
+			TOCOPair* pair = *it;
+			if(pair == NULL)
+				continue;
+			Listener->OnOCOOrderUpdate( pair, OCOUpdateType::New );
+		}
+		//send all FPairingOCO data
+		for( std::map<AnsiString, TOCOPair*>::iterator it = FPairingOCO.begin(); it != FPairingOCO.end(); ++it )
+		{
+			TOCOPair* pair = it->second;
+			if(pair == NULL)
+				continue;
+			Listener->OnOCOOrderUpdate( pair, OCOUpdateType::New );
+		}
+		return;
+	}
+
 	//send FOCOPairs data
 	for( std::list<TOCOPair*>::iterator it = FOCOPairs.begin(); it != FOCOPairs.end(); ++it )
 	{
@@ -301,9 +331,11 @@ void __fastcall TOrderStore_OCO::SendDataToListener(
 	for( std::list<IOCOOrderStoreListener*>::iterator it = FListeners.begin(); it != FListeners.end(); ++it )
 	{
 		IOCOOrderStoreListener* Listener = *it;
-		if( Listener->GetEx() != Ex || Listener->GetSymbol() != Sym )
-			continue;
-		Listener->OnOCOOrderUpdate( Pair, Type );
+		bool isGlobalListener = Listener->GetEx().IsEmpty() && Listener->GetSymbol().IsEmpty();
+		bool matchesExSym = Listener->GetEx() == Ex && Listener->GetSymbol() == Sym;
+
+		if (matchesExSym || isGlobalListener)
+			Listener->OnOCOOrderUpdate(Pair, Type);
 	}
 }
 //---------------------------------------------------------------------------
@@ -668,7 +700,7 @@ __fastcall TOCOPair::TOCOPair(void)
 //---------------------------------------------------------------------------
 UnicodeString __fastcall TOCOPair::GetStringField(int index)
 {
-	UnicodeString ResultString;
+	UnicodeString ResultString("");
 	switch(index)
 	{
 		case 1:
@@ -683,38 +715,37 @@ UnicodeString __fastcall TOCOPair::GetStringField(int index)
 			else if(State = OCOState::Failed)
 				ResultString = L"成交失敗";
 			else if(State = OCOState::Canceled)
-                ResultString = L"已取消";
+				ResultString = L"已取消";
+			break;
 		case 2:
 			ResultString = Caption;
 			break;
 		case 3:
-			ResultString = Symbol.c_str();
-			break;
-		case 4:
 			ResultString = IntToStr(OrderQty1);
 			break;
-		case 5:
+		case 4:
 			ResultString = FloatToStr(ConditionPrice1);
 			break;
-		case 6:
-			if(OrderSide1 == nsOrderMessageDefine::sBuy)
+		case 5:
+            if(OrderSide1 == nsOrderMessageDefine::sBuy)
 				ResultString = L"委買";
 			else
 				ResultString = L"委賣";
 			break;
-		case 7:
+		case 6:
 			ResultString = IntToStr(OrderQty2);
 			break;
-		case 8:
+		case 7:
 			ResultString = FloatToStr(ConditionPrice2);
 			break;
-		case 9:
+		case 8:
 			if(OrderSide2 == nsOrderMessageDefine::sBuy)
 				ResultString = L"委買";
 			else
 				ResultString = L"委賣";
 			break;
-
+		case 9:
+			break;
 	}
 
 	return ResultString;
