@@ -8,6 +8,7 @@
 #include "MDComponentStrings.hpp"
 #pragma package(smart_init)
 const int NumberOfListViewColumn = 10;
+int TOCODataList::HeaderWidth[NumberOfListViewColumn] = 	   { 50	,  70  , 120  ,   80   ,  70  ,   80   ,   80   ,  70  ,   80   ,  50 };
 String TOCODataList::HeaderString[NumberOfListViewColumn];/* = {"刪","狀態","商品","委量一","價一","買賣一","委量二","價二","買賣二","備註"}; */
 //---------------------------------------------------------------------------
 // ValidCtrCheck is used to assure that the components created do not have
@@ -35,7 +36,27 @@ __fastcall TOCODataList::~TOCODataList()
 {
 	delete FBufferBmp;
 	delete FDeleteBmp;
-    delete FColumn0BMP;
+	delete FColumn0BMP;
+	if(FOCOStore!= NULL)
+		FOCOStore->UnSubscribe(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::SubscribeStore(TOrderStore_OCO* OCOStore)
+{
+	if(OCOStore == NULL)
+		return;
+
+    ResetItem();
+	FOCOStore = OCOStore;
+	FOCOStore->Subscribe(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::UnSubscribeStore(void)
+{
+	if(FOCOStore == NULL)
+		return;
+
+	FOCOStore->UnSubscribe(this);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::InitString( void )
@@ -62,14 +83,19 @@ void __fastcall TOCODataList::Loaded(void)
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::InitialCol( void )
 {
-	TListColumn* NewCol;
-
 	Columns->BeginUpdate();
 	Columns->Clear();
 	for( register int i = 0; i < NumberOfListViewColumn; i++ )
 		AddColField(i);
 
 	Columns->EndUpdate();
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODataList::ResetItem( void )
+{
+	Items->BeginUpdate();
+	Items->Clear();
+	Items->EndUpdate();
 }
 //---------------------------------------------------------------------------
 TListColumn* __fastcall TOCODataList::AddColField( int Field )
@@ -80,11 +106,11 @@ TListColumn* __fastcall TOCODataList::AddColField( int Field )
 	NewCol = (TListColumn*)Columns->Add();
 	NewCol->Caption = HeaderString[ Field ];
 	NewCol->Tag = Field;
-	SetColWidth( NewCol, HeaderString[Field] );
+	SetColWidth( NewCol, HeaderWidth[Field] );
 	return NewCol;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const String& ColName )
+void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const int ColWidth )
 {
 	if(Col->Tag == 0)
 	{
@@ -93,13 +119,8 @@ void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const String& ColNa
 		Col->MaxWidth = 55;
 		return;
 	}
-	int curWidth = FBufferBmp->Canvas->TextWidth( ColName ) + 24;
-	Col->Width = curWidth;
-}
-//---------------------------------------------------------------------------
-void __fastcall TOCODataList::SetColWidth( TListColumn* Col, const int width )
-{
-	Col->Width = width;
+
+	Col->Width = ColWidth;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::SetDeleteBmp(Graphics::TBitmap* deleteBmp)
@@ -270,6 +291,13 @@ bool __fastcall TOCODataList::IsMouseInDeleteIcon( void )
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::AddData(TOCOPair* pair)
 {
+	if(pair->State == OCOState::None)
+	{
+		AnsiString key = pair->Symbol + "_" + pair->Ex;
+		FPairingOCO[key] = pair;
+		return;
+	}
+
 	Items->BeginUpdate();
 	TListItem* item = Items->Add();
 	item->Data = pair;
@@ -282,6 +310,15 @@ void __fastcall TOCODataList::AddData(TOCOPair* pair)
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::EditData(TOCOPair* pair)
 {
+	// If this pair's state is from OCOState:None to OCOState:Pending
+	// Add this pair and edit this pair.
+	AnsiString key = pair->Symbol + "_" + pair->Ex;
+	if(FPairingOCO.find(key) != FPairingOCO.end())
+	{
+		AddData(pair);
+		FPairingOCO.erase(key);
+	}
+
 	TListItem* item = this->FindData(0, pair, true, false);
 	if(item == NULL)
 		return;
@@ -294,6 +331,14 @@ void __fastcall TOCODataList::EditData(TOCOPair* pair)
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::DeleteData(TOCOPair* pair)
 {
+	// If this pair's state is OCOState:None, remove it
+	AnsiString key = pair->Symbol + "_" + pair->Ex;
+	if(FPairingOCO.find(key) != FPairingOCO.end())
+	{
+		FPairingOCO.erase(key);
+        return;
+	}
+
 	TListItem* item = this->FindData(0, pair, true, false);
 	if(item == NULL)
 		return;
@@ -375,13 +420,8 @@ void __fastcall TOCODataList::DeleteItem(TListItem* ItemPtr)
 		return;
 
 	TOCOPair* pair = (TOCOPair*)ItemPtr->Data;
-	if(pair != NULL)
-		delete pair;
 
-	Items->BeginUpdate();
-	ItemPtr->Data = NULL;
-	ItemPtr->Delete();
-	Items->EndUpdate();
+	FOCOStore->DeleteOCO(pair);
 }
 //---------------------------------------------------------------------------
 AnsiString TOCODataList::GetEx( void )
@@ -410,23 +450,6 @@ void TOCODataList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 	else if(Type == OCOUpdateType::Delete)
 	{
 		DeleteData(pair);
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TOCODataList::TestFunctionForAddData(void)
-{
-	for( int i = 0; i < 10 ; i++ )
-	{
-		TOCOPair* pair = new TOCOPair();
-		pair->OrderQty1 = i;
-		pair->OrderQty2 = i+1;
-		pair->ConditionPrice1 = i + 200;
-		pair->ConditionPrice2 = i + 400;
-		pair->OrderSide1 = nsOrderMessageDefine::sBuy;
-		pair->OrderSide1 = nsOrderMessageDefine::sSell;
-		pair->Symbol = L"2330";
-
-		AddData(pair);
 	}
 }
 //---------------------------------------------------------------------------
