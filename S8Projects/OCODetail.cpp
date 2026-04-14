@@ -11,6 +11,8 @@
 #pragma resource "*.dfm"
 TOCODetailForm *OCODetailForm;
 //---------------------------------------------------------------------------
+extern TOrderStore_OCO*   gOrderStore_OCO;
+//---------------------------------------------------------------------------
 __fastcall TOCODetailForm::TOCODetailForm(TComponent* Owner)
 	: TForm(Owner)
 {
@@ -36,9 +38,9 @@ void __fastcall TOCODetailForm::FormCreate(TObject *Sender)
     Position = poMainFormCenter;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODetailForm::SetData(void)
+
+void __fastcall TOCODetailForm::FormShow(TObject *Sender)
 {
-    OCODataList->TestFunctionForAddData();
+	OCODataList->SubscribeStore(gOrderStore_OCO);
 }
 //---------------------------------------------------------------------------
-

@@ -174,6 +174,7 @@ public:
 		const AnsiString& Sym,
 		nsOrderMessageDefine::SideEnum Side,
 		const double Price);
+	void __fastcall DeleteOCO(TOCOPair* pair);
 	void __fastcall SetOCOProperty(int OCOType, int LimitOrderTick);
 __published:
 	__property TOnOrderOCOFailed OnOrderOCOFailed = { read = FOnOrderOCOFailed, write = FOnOrderOCOFailed };

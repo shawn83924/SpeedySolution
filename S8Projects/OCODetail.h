@@ -18,10 +18,10 @@ __published:	// IDE-managed Components
 	TOCODataList *OCODataList;
 	TRoundFormEx *RoundFormEx;
 	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TOCODetailForm(TComponent* Owner);
-	void __fastcall SetData(void);
 public:
 	virtual TMDFormType __fastcall Type( void )            { return mdfList; }
 	virtual void        __fastcall SetActive( bool value ) { RoundFormEx->Active = value; }

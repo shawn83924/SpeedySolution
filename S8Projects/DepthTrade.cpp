@@ -3117,5 +3117,4 @@ void __fastcall TDepthForm::OCODetailBtnClick(TObject *Sender)
 	dataListForm->Parent = MainForm->PageControl->ActivePage;
 	dataListForm->Show();
 	dataListForm->SetActive(true);
-    dataListForm->SetData();
 }
