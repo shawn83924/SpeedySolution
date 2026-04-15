@@ -167,7 +167,7 @@ void __fastcall TOrderStore_OCO::CancelPairingOCO(
 
 	FPairingOCO.erase(it);
 	pair->State = OCOState::Canceled;
-	SendDataToListener(Ex, Sym, pair, OCOUpdateType::Edit);
+	SendDataToListener(Ex, Sym, pair, OCOUpdateType::Delete);
 	delete pair;
 }
 //---------------------------------------------------------------------------
