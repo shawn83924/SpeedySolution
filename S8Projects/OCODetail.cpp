@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "OCODetail.h"
+#include "ContractViewer.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "OCODataList"
@@ -42,5 +43,21 @@ void __fastcall TOCODetailForm::FormCreate(TObject *Sender)
 void __fastcall TOCODetailForm::FormShow(TObject *Sender)
 {
 	OCODataList->SubscribeStore(gOrderStore_OCO);
+}
+//---------------------------------------------------------------------------
+void __fastcall TOCODetailForm::WndProc( TMessage &Msg )
+{
+	switch( Msg.Msg )
+	{
+		case WM_ERASEBKGND:
+			 Msg.Result = 1;
+			 return;
+		case WM_MOUSEACTIVATE:
+			 BringToFront();
+			 ContractViewerForm->ActiveClient( this );
+			 Msg.Result = MA_ACTIVATE;
+			 return;
+	}
+	inherited::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
