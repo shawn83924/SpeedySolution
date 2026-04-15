@@ -1192,13 +1192,13 @@ void __fastcall TOrderBookList::DrawTick( int Row, const Types::TRect &ARect, TG
 	FBufferBmp->Canvas->Font->Assign( FFont );
 	if( Row == 2 ) ///< Bull Price
 	{
-		FBufferBmp->Canvas->Brush->Color = clRed;
-		FBufferBmp->Canvas->Font->Color = clWhite;
+		FBufferBmp->Canvas->Brush->Color = clWebHotPink;
+		FBufferBmp->Canvas->Font->Color = clBlack;
 	}
 	else if( Row == RowCount - 1 ) ///< Bear Price
 	{
-		FBufferBmp->Canvas->Brush->Color = clGreen;
-		FBufferBmp->Canvas->Font->Color = clWhite;
+		FBufferBmp->Canvas->Brush->Color = clWebLawnGreen;
+		FBufferBmp->Canvas->Font->Color = clBlack;
 	}
 	else if( ( Row == FFillRowIndex + FBetterStep ) && FBetterStep != 0 )  ///< Butter Buy
 	{
