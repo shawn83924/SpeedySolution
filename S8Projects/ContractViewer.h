@@ -155,6 +155,7 @@ private:	// User declarations
 	TContractListForm*  __fastcall FirstContractListForm( int Group );
 	TExecutionForm*  __fastcall FirstExecutionForm( int Group );
 	TExecutionForm*  __fastcall FirstExecutionForm( void );
+    TOCODetailForm* __fastcall FirstOCODetailForm( void );
 	void __fastcall AddCatalog( void );
 	void __fastcall ClearList( TStringList* ClearKeys );
 public:		// User declarations
@@ -196,6 +197,7 @@ public:		// User declarations
 	int  __fastcall  OpenTBarOrderBookForm( String Exchange, String Symbol, int Index );
 	void  __fastcall OpenTBarForm( void );
 	void  __fastcall OpenExecutionForm( void );
+	void __fastcall OpenOCODetailForm( void );
 	void  __fastcall CloseExecutionForm( void );
 	TContractListForm*  __fastcall OpenMarketDataListForm( int Page = -1, bool Load = false );
 	TLineChartForm*     __fastcall OpenKBarForm(  const String& Ex, const String& Sym, int Page = -1 );
