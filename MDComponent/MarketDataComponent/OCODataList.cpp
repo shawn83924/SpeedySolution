@@ -413,7 +413,6 @@ void __fastcall TOCODataList::OnLeftMouseUp(int X, int Y)
 	}
 }
 //---------------------------------------------------------------------------
-//Need to remove
 void __fastcall TOCODataList::DeleteItem(TListItem* ItemPtr)
 {
 	if(ItemPtr == NULL)

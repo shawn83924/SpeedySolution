@@ -3424,9 +3424,6 @@ void TOrderBookList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 		{
 			FIsPairingOCO = false;
 			FCurrentPairOCO = NULL;
-			//If cancel pairing OCO, just return
-			if(pair->State == OCOState::Canceled)
-				return;
 			//From pairing OCO to pending OCO
 			if(pair->State == OCOState::Pending)
 			{
@@ -3443,6 +3440,14 @@ void TOrderBookList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 	}
 	else if(Type == OCOUpdateType::Delete)
 	{
+		if(pair == FCurrentPairOCO)
+		{
+            FIsPairingOCO = false;
+			FCurrentPairOCO = NULL;
+			int col = (pair->OrderSide1 == SideEnum::sBuy)? BUY_OCO_COL : SELL_OCO_COL ;
+			InvalidateCellRect( col, GetRowIndex(pair->ConditionPrice1));
+			return;
+		}
 		if(pair->State != OCOState::Pending)
 			return;
 
