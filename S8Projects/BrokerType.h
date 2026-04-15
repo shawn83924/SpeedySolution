@@ -2,7 +2,7 @@
 #define BROKER_TYPE_H
 
 enum BrokerType {
-    None,
+	BtNone,
     MEGA,
     Capital
 };
