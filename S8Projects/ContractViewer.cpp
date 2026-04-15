@@ -1175,6 +1175,20 @@ TExecutionForm*  __fastcall TContractViewerForm::FirstExecutionForm( int Group )
 	return NULL;
 }
 //---------------------------------------------------------------------------
+TOCODetailForm* __fastcall TContractViewerForm::FirstOCODetailForm( void )
+{
+	TOCODetailForm* detailForm;
+	for( register int i = 0; i < FFormList.ItemCount(); i++ )
+	{
+		if(FFormList[i]->Type() == mdfOCO)
+		{
+			detailForm = dynamic_cast<TOCODetailForm*>( FFormList[i]->GetTForm() );
+			return detailForm;
+		}
+	}
+    return NULL;
+}
+//---------------------------------------------------------------------------
 TExecutionForm*  __fastcall TContractViewerForm::FirstExecutionForm( void )
 {
 	TExecutionForm* ExecForm;
@@ -1236,6 +1250,28 @@ void  __fastcall TContractViewerForm::OpenExecutionForm( void )
 		OldExecForm->Show();
 		ActiveClient( OldExecForm );
 	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractViewerForm::OpenOCODetailForm( void )
+{
+	TOCODetailForm* detailForm;
+	if( ClientCount( mdfOCO ) == 0 )
+	{
+		detailForm = new TOCODetailForm( this );
+		detailForm->Tag = MainForm->PageControl->ActivePageIndex;
+		detailForm->Parent = MainForm->PageControl->ActivePage;
+		detailForm->OnClose = OnClientClose;
+		FFormList.Add( detailForm );
+	}
+	else
+	{
+		detailForm = FirstOCODetailForm();
+		detailForm->SetFocus();
+		detailForm->BringToFront();
+	}
+
+	detailForm->Show();
+	detailForm->SetActive(true);
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractViewerForm::CloseExecutionForm( void )

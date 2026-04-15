@@ -20,10 +20,11 @@ __published:	// IDE-managed Components
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
+	void __fastcall WndProc( TMessage &Msg );
 public:		// User declarations
 	__fastcall TOCODetailForm(TComponent* Owner);
 public:
-	virtual TMDFormType __fastcall Type( void )            { return mdfList; }
+	virtual TMDFormType __fastcall Type( void )            { return mdfOCO; }
 	virtual void        __fastcall SetActive( bool value ) { RoundFormEx->Active = value; }
 	virtual bool        __fastcall IsActive( void )        { return RoundFormEx->Active; }
 	virtual TForm*      __fastcall GetTForm( void )         { return this; }

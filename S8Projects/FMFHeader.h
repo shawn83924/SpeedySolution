@@ -8,7 +8,8 @@ typedef enum
 	mdfDepth,
 	mdfList,
 	mdfKBar,
-	mdfExec
+	mdfExec,
+    mdfOCO
 
 }TMDFormType;
 //---------------------------------------------------------------------------
