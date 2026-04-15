@@ -38,7 +38,6 @@ private:
 	bool __fastcall IsMouseInDeleteIcon( void );
 	void __fastcall OnLeftMouseDown(int X, int Y);
 	void __fastcall OnLeftMouseUp(int X, int Y);
-	//need to remove
 	void __fastcall DeleteItem( TListItem* ItemPtr);
 	virtual AnsiString GetEx( void );
 	virtual AnsiString GetSymbol( void );
