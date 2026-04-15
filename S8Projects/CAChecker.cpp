@@ -26,7 +26,7 @@ TCAChecker::TCAChecker( TComponent* Owner )
 ,FOwner( Owner )
 ,FCheckResult(false)
 ,FCAObject( NULL )
-,FBrokerType( BrokerType::None )
+,FBrokerType( BrokerType::BtNone )
 ,FPFXFile( L"C:\\src\\S8Projects\\Win32\\Debug\\52883910.pfx" )
 ,FPFXFilePassword( L"52883910" )
 ,FLocalIP( L"127.0.0.1" )
@@ -113,7 +113,7 @@ bool TCAChecker::InitialCheckerAndTest( String& Reason /* out */ )
 //---------------------------------------------------------------------------
 TSECCAPI* TCAChecker::CreateNewFCAObject( BrokerType BType, TComponent* Owner )
 {
-	if(BType == BrokerType::None)
+	if(BType == BrokerType::BtNone)
 		return NULL;
 
 	return new TSECCAPI(BType, Owner);
@@ -538,7 +538,7 @@ void TCAChecker::SetBrokerType(TBrokerConfig* BrokerConfig)
 
 	if(brokerID == L"F020000")
 	{
-        FBrokerType = Capital;
+		FBrokerType = Capital;
 	}
 }
 //---------------------------------------------------------------------------
