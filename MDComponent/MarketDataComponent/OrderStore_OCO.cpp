@@ -356,7 +356,7 @@ std::list<TOCOPair*>* __fastcall TOrderStore_OCO::GetPriceMatchPairs(
 
 		bool match1	= (pair->ConditionPrice1 >= FillPrice && pair->ConditionPrice2 >= FillPrice);
 		bool match2 = (pair->ConditionPrice1 <= FillPrice && pair->ConditionPrice2 <= FillPrice);
-		if( !match1 || !match2 )
+		if( !match1 && !match2 )
 			continue;
 
 		MatchPairs->push_back( pair );
