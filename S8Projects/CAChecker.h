@@ -8,6 +8,9 @@
 #include <XMLDoc.hpp>
 #include <OleCtrls.hpp>
 #include "OrderStore.h"
+#include "FMTConfig.h"
+#include "BrokerType.h"
+#include "SECCAPI.h"
 //---------------------------------------------------------------------------
 #include <IdBaseComponent.hpp>
 #include <IdComponent.hpp>
@@ -49,7 +52,8 @@ class TCAChecker: public UFC::PThread, public ICACheckListener
 private:
 	UFC::PtrQueue<CheckData> FQueue;
 	UFC::PCriticalSection FSignCS;
-	TMEGASECCAPI* FCAObject;
+	TSECCAPI* FCAObject;
+	BrokerType FBrokerType;
 	TIdHTTP*      FHTTP;
 	TIdSSLIOHandlerSocketOpenSSL* FSSLIOHandler;
 	TComponent* FOwner;
@@ -83,14 +87,17 @@ public:
 							   TBaseMessage* Msg,
 							   bool& CanSend,
 							   UFC::AnsiString& RejectMsg );
+	void SetBrokerType(TBrokerConfig* BrokerConfig);
 private:
 	void EscapeDataString( UTF8String& EscStr );
+	TSECCAPI* CreateNewFCAObject( BrokerType BType, TComponent* Owner);
 	virtual void Execute( void );
 private:
 	void EmptyQueueAndTriggerError( String& Reason );
 	bool HandleResultDoc( TMemoryStream* Result, bool IsTest, String& Reason );
 	int  Sign( const String& Content, String& Sign );
-	bool Post( const String& Content, const String& sign, const String& BizCode, String& Reason, bool IsTest = false );
+	bool PostMEGA( const String& Content, const String& sign, const String& BizCode, String& Reason, bool IsTest = false );
+    bool PostCapital();
 	void ClearAndLog( void );
     const String& ToErrorMessage( int code );
 public:

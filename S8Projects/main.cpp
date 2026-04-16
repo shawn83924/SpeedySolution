@@ -1599,89 +1599,92 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
 	FLoginBroker = g_Config.BrokerConfig( 0 );
 
-	if( FLoginBroker != NULL && FSpeedyCfg != NULL )
+	if( FLoginBroker == NULL || FSpeedyCfg == NULL )
 	{
-		String errMsg;
-		String LogFilePrefix;
+		TUnifyDlgs::MessageDialog( "Speedy Unify", L"錯誤的連線設定" );
+		catMenuItems->Enabled = true;
+		return;
+	}
 
-		if( FLoginBroker->GetService()->LoginBroker( IDEdit->Text, PasswordEdit->Text, errMsg ) == true )
-		{
-			gUser.LoginUserID         = IDEdit->Text;
-			LogFilePrefix.printf( L"SU_%s", IDEdit->Text );
-			FLoginBroker->GetService()->ClearPosition( IDEdit->Text );
-			OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
-		#ifdef __TO_TEST
-			OrderStore->IP            = "192.168.0.22";
-			OrderStore->Port          = 45678;
-			OrderStore->BrokerID      = "F001000";
-			OrderStore->TWSEBrokerID  = "7000";
-			OrderStore->ClearMemberID = "F001";
-		#else
-            if( GVIPServer == true )
-			{
-				OrderStore->IP      = FSpeedyCfg->GetVIPIP();
-				OrderStore->Port    = FSpeedyCfg->VIPPort;
-			}
-			else
-			{
-				OrderStore->IP      = FSpeedyCfg->GetIP();
-				OrderStore->Port    = FSpeedyCfg->Port;
-			}
-			OrderStore->ClearMemberID = FSpeedyCfg->CMID;
-		#endif
-			TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
-			String NameTag;
+	String errMsg;
+	if( FLoginBroker->GetService()->LoginBroker( IDEdit->Text, PasswordEdit->Text, errMsg ) == false )
+	{
+		TUnifyDlgs::MessageDialog( "Speedy Unify", errMsg );
+		catMenuItems->Enabled = true;
+		return;
+	}
 
-			FFutAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TAIFEX", 0 );
-			FTseAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TWSE", 0 );
-
-			if( User->FuturesAccountCount() > 0 )
-			{
-				if( User->FuturesAccountCount() <= FFutAccIndex )
-					FFutAccIndex = 0;
-				TAccountInfo* FutAcc = User->FuturesAccount( FFutAccIndex );
-				OrderStore->Account  = FutAcc->Account;
-				OrderStore->BrokerID = FutAcc->BrokerID;
-				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
-				gUser.AccountType = hatTAIFEX;
-			}
-			if( User->StockAccountCount() > 0 )
-			{
-				if( User->StockAccountCount() <= FTseAccIndex )
-					FTseAccIndex = 0;
-				TAccountInfo* StocAcc = User->StockAccount( FTseAccIndex );
-				OrderStore->TWSEAccount   = StocAcc->Account;
-				OrderStore->TWSEBrokerID  = StocAcc->BrokerID;
-				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount, User->GetName() );
-				gUser.AccountType = hatTWSE;
-			}
-			if( User->FuturesAccountCount() > 0 && User->StockAccountCount() > 0 )
-				gUser.AccountType = hatBoth;
-			if( FSpeedyCfg->IsProxy == false ) ///< Logon Speedy
-				FProxyLogon = false;
-			else
-				FProxyLogon = true;
-			OrderStore->ID          = gUser.LoginUserID; //OrderStore->Account; //
-			OrderStore->Password    = PasswordEdit->Text;
-			OrderStore->TryVersion  = gIsExpired;
-			OrderStore->Version     = LoginForm->Version;
-			StatusLabel->Caption    = L"連線"+ BrokerComboBoxEx->Text +L"...";
-			CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
-           	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
-			PaintStatusBar( );
-			SaveIDPassword( BrokerComboBoxEx->ItemIndex ); ///< Save account
-			s888::CTaifexFeeQueryObject*     FeeObj = new s888::CTaifexFeeQueryObject( L"TaifexFee.xml", gUser.LoginUserID );//OrderStore->Account  );
-			s888::CTaifexTaxRateQueryObject* TaxObj = new s888::CTaifexTaxRateQueryObject( L"TaifexTax.xml" );
-			delete FeeObj;
-			delete TaxObj;
-			OrderStore->Connect();
-		}
-		else
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg );
+	String LogFilePrefix;
+	FCAChecker->SetBrokerType( FLoginBroker );
+	gUser.LoginUserID         = IDEdit->Text;
+	LogFilePrefix.printf( L"SU_%s", IDEdit->Text );
+	FLoginBroker->GetService()->ClearPosition( IDEdit->Text );
+	OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
+#ifdef __TO_TEST
+	OrderStore->IP            = "192.168.0.22";
+	OrderStore->Port          = 45678;
+	OrderStore->BrokerID      = "F001000";
+	OrderStore->TWSEBrokerID  = "7000";
+	OrderStore->ClearMemberID = "F001";
+#else
+	if( GVIPServer == true )
+	{
+		OrderStore->IP      = FSpeedyCfg->GetVIPIP();
+		OrderStore->Port    = FSpeedyCfg->VIPPort;
 	}
 	else
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"錯誤的連線設定" );
+	{
+		OrderStore->IP      = FSpeedyCfg->GetIP();
+		OrderStore->Port    = FSpeedyCfg->Port;
+	}
+	OrderStore->ClearMemberID = FSpeedyCfg->CMID;
+#endif
+	TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
+	String NameTag;
 
+	FFutAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TAIFEX", 0 );
+	FTseAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TWSE", 0 );
+
+	if( User->FuturesAccountCount() > 0 )
+	{
+		if( User->FuturesAccountCount() <= FFutAccIndex )
+			FFutAccIndex = 0;
+		TAccountInfo* FutAcc = User->FuturesAccount( FFutAccIndex );
+		OrderStore->Account  = FutAcc->Account;
+		OrderStore->BrokerID = FutAcc->BrokerID;
+		FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
+		gUser.AccountType = hatTAIFEX;
+	}
+	if( User->StockAccountCount() > 0 )
+	{
+		if( User->StockAccountCount() <= FTseAccIndex )
+			FTseAccIndex = 0;
+		TAccountInfo* StocAcc = User->StockAccount( FTseAccIndex );
+		OrderStore->TWSEAccount   = StocAcc->Account;
+		OrderStore->TWSEBrokerID  = StocAcc->BrokerID;
+		FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount, User->GetName() );
+		gUser.AccountType = hatTWSE;
+	}
+	if( User->FuturesAccountCount() > 0 && User->StockAccountCount() > 0 )
+		gUser.AccountType = hatBoth;
+	if( FSpeedyCfg->IsProxy == false ) ///< Logon Speedy
+		FProxyLogon = false;
+	else
+		FProxyLogon = true;
+	OrderStore->ID          = gUser.LoginUserID; //OrderStore->Account; //
+	OrderStore->Password    = PasswordEdit->Text;
+	OrderStore->TryVersion  = gIsExpired;
+	OrderStore->Version     = LoginForm->Version;
+	StatusLabel->Caption    = L"連線"+ BrokerComboBoxEx->Text +L"...";
+	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
+	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
+	PaintStatusBar( );
+	SaveIDPassword( BrokerComboBoxEx->ItemIndex ); ///< Save account
+	s888::CTaifexFeeQueryObject*     FeeObj = new s888::CTaifexFeeQueryObject( L"TaifexFee.xml", gUser.LoginUserID );//OrderStore->Account  );
+	s888::CTaifexTaxRateQueryObject* TaxObj = new s888::CTaifexTaxRateQueryObject( L"TaifexTax.xml" );
+	delete FeeObj;
+	delete TaxObj;
+	OrderStore->Connect();
 	catMenuItems->Enabled = true;
 }
 //---------------------------------------------------------------------------
