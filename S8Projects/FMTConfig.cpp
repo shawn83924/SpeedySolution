@@ -219,6 +219,20 @@ void Config::LoadSpeedySetting( const char* FileName )  ///< Speedy Unify
 	ClearBrokers();
 	for( int i = 0; i  < SettingsFile.SectionCount(); i ++ )
 		m_Brokers.Add( new TBrokerConfig( SettingsFile.GetSection(i)) );
+    #ifdef _DEBUG
+	UFC::Section* capitalSection = new UFC::Section( "群益期貨" );
+	capitalSection->SetValue( "BrokerID",  "F020000" );
+	capitalSection->SetValue( "TWSEBrokerID",  "2210" );
+	capitalSection->SetValue( "CMID",  "F020" );
+	capitalSection->SetValue( "Count",  "1" );
+	capitalSection->SetValue( "Name1",  "網際網路" );
+	capitalSection->SetValue( "IsProxy1", "1" );
+	capitalSection->SetValue( "IP1", "192.168.0.97" );
+	capitalSection->SetValue( "Port1", "45678" );
+	capitalSection->SetValue( "VIPIP1", "192.168.0.97" );
+	capitalSection->SetValue( "VIPPort1", "45678" );
+	m_Brokers.Add( new TBrokerConfig(capitalSection) );
+	#endif
 	m_OrderStoreRecoverOverlapSecond = 90;
 }
 //------------------------------------------------------------------------------
