@@ -166,6 +166,10 @@
             <DependentOn>AskRoomi.h</DependentOn>
             <BuildOrder>40</BuildOrder>
         </CppCompile>
+        <None Include="BrokerType.h">
+            <VirtualFolder>{27F2331C-FF02-4AEC-ACDD-68136D4B53C5}</VirtualFolder>
+            <BuildOrder>47</BuildOrder>
+        </None>
         <CppCompile Include="CAChecker.cpp">
             <VirtualFolder>{27F2331C-FF02-4AEC-ACDD-68136D4B53C5}</VirtualFolder>
             <DependentOn>CAChecker.h</DependentOn>
@@ -335,6 +339,11 @@
             <FormType>dfm</FormType>
             <DependentOn>SearchUnit.h</DependentOn>
             <BuildOrder>34</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="SECCAPI.cpp">
+            <VirtualFolder>{27F2331C-FF02-4AEC-ACDD-68136D4B53C5}</VirtualFolder>
+            <DependentOn>SECCAPI.h</DependentOn>
+            <BuildOrder>46</BuildOrder>
         </CppCompile>
         <CppCompile Include="SelAccount.cpp">
             <Form>DefAccForm</Form>
