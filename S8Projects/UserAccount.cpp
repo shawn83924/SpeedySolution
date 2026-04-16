@@ -225,6 +225,11 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 		FIconIndex = 0;
 		FService = new TMegaService( ServiceURL.c_str() );
 	}
+    else if( FBrokerID == L"F020000" ) ///< Capital Futures
+	{
+		FIconIndex = 2;
+		FService = new TCapitalService( ServiceURL.c_str() );
+	}
 	else
 	{
 		FIconIndex = 0;

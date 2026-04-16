@@ -178,6 +178,10 @@
             <DependentOn>CancelWorkingTimeForm.h</DependentOn>
             <BuildOrder>42</BuildOrder>
         </CppCompile>
+        <CppCompile Include="CapitalService.cpp">
+            <VirtualFolder>{B3BF3D52-1440-4783-9C55-D785A516CBAF}</VirtualFolder>
+            <BuildOrder>45</BuildOrder>
+        </CppCompile>
         <CppCompile Include="CASetting.cpp">
             <VirtualFolder>{27F2331C-FF02-4AEC-ACDD-68136D4B53C5}</VirtualFolder>
             <Form>CASettingForm</Form>
