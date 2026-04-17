@@ -3065,7 +3065,7 @@ void __fastcall TMainForm::UpdateAutoCancel( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OnOrderOCOFailed(System::TObject* Sender, const String& ReplyMessage)
 {
-	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ReplyMessage );
+	//TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ReplyMessage );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OnPropertyUpdate(

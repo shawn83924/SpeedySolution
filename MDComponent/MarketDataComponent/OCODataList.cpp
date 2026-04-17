@@ -291,7 +291,7 @@ bool __fastcall TOCODataList::IsMouseInDeleteIcon( void )
 //---------------------------------------------------------------------------
 void __fastcall TOCODataList::AddData(TOCOPair* pair)
 {
-	if(pair->State == OCOState::None)
+	if(pair->State == OCOState::ocoNone)
 	{
 		AnsiString key = pair->Symbol + "_" + pair->Ex;
 		FPairingOCO[key] = pair;

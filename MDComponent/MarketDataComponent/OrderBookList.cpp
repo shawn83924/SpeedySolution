@@ -3402,7 +3402,7 @@ void TOrderBookList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 	if(Type == OCOUpdateType::New)
 	{
 		//Is pairing OCO
-		if(pair->State == OCOState::None)
+		if(pair->State == OCOState::ocoNone)
 		{
 			FIsPairingOCO = true;
 			FCurrentPairOCO = pair;
@@ -3432,8 +3432,9 @@ void TOrderBookList::OnOCOOrderUpdate(TOCOPair* pair, OCOUpdateType Type)
 			return;
 		}
 		// If OCO is form pending to triggered or canceled
-		if(	pair->State == OCOState::Triggered ||
-			pair->State == OCOState::Canceled)
+		if(	pair->State == OCOState::Triggered 	||
+			pair->State == OCOState::Canceled	||
+			pair->State == OCOState::Failed)
 		{
 			SetOCOQtyArrayByPair(pair, false);
 		}
@@ -3934,6 +3935,19 @@ double __fastcall TOrderBookList::GetAskPrice( int depth )
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetOCOQtyArrayByPair(TOCOPair* pair, bool isAdd)
 {
+	const bool havePair = (FOCOPairs.find(pair) != FOCOPairs.end());
+
+	// No-op cases:
+	// 1) adding an existing pair
+	// 2) removing a non-existing pair
+	if (isAdd == havePair)
+		return;
+
+	if (isAdd)
+		FOCOPairs.insert(pair);
+	else
+		FOCOPairs.erase(pair);
+
 	SetOCOQtyArray(pair->OrderSide1, GetRowIndex(pair->ConditionPrice1), pair->OrderQty1, isAdd);
 	SetOCOQtyArray(pair->OrderSide2, GetRowIndex(pair->ConditionPrice2), pair->OrderQty2, isAdd);
 }

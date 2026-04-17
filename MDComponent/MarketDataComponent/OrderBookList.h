@@ -255,6 +255,7 @@ private:
 	bool FIsPairingOCO;
 	bool FDeleteOCOByRightClick;
 	TOCOPair* FCurrentPairOCO;
+	std::set<TOCOPair*> FOCOPairs;
 	///< Auto Stop-loss Take-Profit
 	bool   FAutoStopLoss;
 	bool   FAutoTakeProfit;
