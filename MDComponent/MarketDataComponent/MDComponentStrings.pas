@@ -6,7 +6,7 @@ uses Windows;
 
 { Strings for CandleStickChart }
 resourcestring
-  MD_SpeedyUnify_AppName = 'Mega Unify';
+  MD_SpeedyUnify_AppName = '兆期Pro';
   MD_CANDEL_FILL = '成交:%s';
   MD_CANDEL_FILL_EMPTY = '成交:-----';
   MD_CANDEL_HIGH_LOW = '漲跌:%s';
