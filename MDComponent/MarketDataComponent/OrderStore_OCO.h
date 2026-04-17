@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------
 typedef enum
 {
-    None,
+    ocoNone,
 	Pending,
 	Triggered,
 	Filled,
@@ -124,6 +124,7 @@ private:
 		int Step);
 	AnsiString __fastcall GetStrategyName(void);
 	TOCOPair* __fastcall GetMatchedPairFromExecution(TExecution* OrderRootPtr);
+	void __fastcall SetPairState(TOCOPair* pair, OrderStatusEnum orderState);
 
 	// IMarketDataListener
 	virtual Classes::TStringList* __fastcall GetSymbols( void );

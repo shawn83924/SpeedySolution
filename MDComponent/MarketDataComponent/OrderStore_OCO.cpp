@@ -139,7 +139,7 @@ void __fastcall TOrderStore_OCO::OrderOCO(
 	pair->OrderQty1 = Qty;
 	pair->ConditionPrice1 = Price;
 	pair->OrderSide1 = Side;
-	pair->State = OCOState::None;
+	pair->State = OCOState::ocoNone;
 	pair->Caption = Caption;
 	pair->Ex = Ex;
 	pair->Symbol = Sym;
@@ -407,6 +407,7 @@ void __fastcall TOrderStore_OCO::OrderingOCO(std::list<TOCOPair*>* TOCOPairs, do
 			pair->State = OCOState::Failed;
 			SendDataToListener( pair->Ex, pair->Symbol, pair, OCOUpdateType::Edit );
 			OnOrderOCOFailed(this, Mdcomponentstrings_MD_ORDERSTORE_OCO_ORDER_NEW_ERROR);
+			UFC::BufferedLog::Printf( "OrderOCOFail:%s ", pair->Caption);
 			continue;
 		}
 
@@ -553,10 +554,35 @@ TOCOPair* __fastcall TOrderStore_OCO::GetMatchedPairFromExecution(TExecution* Or
 		if(pair == NULL)
 			continue;
 
+		if( pair->StrategyName != OrderRootPtr->GetStrategyName())
+			continue;
+
 		if( pair->NID != OrderRootPtr->GetNID())
 			continue;
 
         return pair;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderStore_OCO::SetPairState(TOCOPair* pair, OrderStatusEnum orderState)
+{
+	switch (orderState)
+	{
+		case nsOrderMessageDefine::osPartiallyFilled:
+			pair->State = OCOState::PartialFilled;
+			break;
+		case nsOrderMessageDefine::osFilled:
+			pair->State = OCOState::Filled;
+			break;
+		case nsOrderMessageDefine::osCanceled:
+			pair->State = OCOState::Canceled;
+			break;
+		case nsOrderMessageDefine::osRejected:
+		case nsOrderMessageDefine::osExpired:
+			pair->State = OCOState::Failed;
+			break;
+		default:
+			break;
 	}
 }
 //---------------------------------------------------------------------------
@@ -640,18 +666,7 @@ void TOrderStore_OCO::OrderMessageArrived( TExecution* OrderRootPtr )
 	if(pair == NULL)
 		return;
 
-	switch (OrderRootPtr->GetOrderStatus())
-	{
-		case nsOrderMessageDefine::osPartiallyFilled:
-			pair->State = PartialFilled;
-			break;
-		case nsOrderMessageDefine::osFilled:
-			pair->State = Filled;
-			break;
-		default:
-			break;
-	}
-
+	SetPairState(pair, OrderRootPtr->GetOrderStatus());
 	pair->OrderData = OrderRootPtr;
 	SendDataToListener( pair->Ex, pair->Symbol, pair, OCOUpdateType::Edit );
 }
@@ -665,8 +680,8 @@ void TOrderStore_OCO::DeleteRejectedOrderRoot( TExecution* OrderRootPtr)
 	if(pair == NULL)
 		return;
 
+	SetPairState(pair, OrderRootPtr->GetOrderStatus());
 	pair->OrderData = OrderRootPtr;
-	pair->State = Failed;
 	SendDataToListener( pair->Ex, pair->Symbol, pair, OCOUpdateType::Edit );
 }
 //---------------------------------------------------------------------------
@@ -710,11 +725,11 @@ UnicodeString __fastcall TOCOPair::GetStringField(int index)
 				ResultString = L"已觸發";
 			else if(State == OCOState::Filled)
 				ResultString = L"已成交";
-			else if(State = OCOState::PartialFilled)
+			else if(State == OCOState::PartialFilled)
 				ResultString = L"部分成交";
-			else if(State = OCOState::Failed)
+			else if(State == OCOState::Failed)
 				ResultString = L"成交失敗";
-			else if(State = OCOState::Canceled)
+			else if(State == OCOState::Canceled)
 				ResultString = L"已取消";
 			break;
 		case 2:
