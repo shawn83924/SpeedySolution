@@ -781,7 +781,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.CaptionFont.Style = [fsBold]
       SizeFitBmp = True
       ImageList = MainForm.ToolImageList
-      ImageIndex = 21
+      ImageIndex = 27
     end
   end
   object CandleStickChart: TCandleStickChart
