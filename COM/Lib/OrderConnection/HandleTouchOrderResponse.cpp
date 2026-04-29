@@ -17,6 +17,7 @@ void  TTaifexConnection::ReceiveTouchOrderResponse(MTree* pTree)
         static_cast<nsOrderMessageDefine::TouchOrderResponseTypeEnum>(type);
 
     TExecutionReportMessage ExecutionReport;
+    ExecutionReport.SetExecType(nsOrderMessageDefine::ExecTypeEnum::etNone);
     ExecutionReport.SetTouchOrderRespType(resp_type);
     if (Response.Length())
         ExecutionReport.SetTouchOrderResponse(Response.c_str());
