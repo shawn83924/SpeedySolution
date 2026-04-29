@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/4/10 ¤U¤È 05:45:12 (- $Rev: 12980 $, 2579939390).
+// File generated on 2026/4/29 ¤U¤È 04:31:09 (- $Rev: 12980 $, 608883953).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1561,7 +1561,7 @@ library SpeedyAPI
     [id(0x000000C9)]
     HRESULT _stdcall BeginEditing(void);
     [id(0x000000CA)]
-    HRESULT _stdcall EndEditing(void);
+    HRESULT _stdcall EndEditing([out, retval] VARIANT_BOOL* Value);
     [id(0x000000CB)]
     HRESULT _stdcall MatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
     [id(0x000000CC)]

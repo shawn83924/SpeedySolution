@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/3/31 ¤U¤È 04:20:15 from Type Library described below.
+// File generated on 2026/4/29 ¤U¤È 04:31:08 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3379,7 +3379,7 @@ interface ITriggeringCondition  : public IDispatch
 {
 public:
   virtual HRESULT STDMETHODCALLTYPE BeginEditing(void) = 0; // [201]
-  virtual HRESULT STDMETHODCALLTYPE EndEditing(void) = 0; // [202]
+  virtual HRESULT STDMETHODCALLTYPE EndEditing(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [202]
   virtual HRESULT STDMETHODCALLTYPE MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                                    BSTR price/*[in]*/, unsigned* id/*[out,retval]*/) = 0; // [203]
   virtual HRESULT STDMETHODCALLTYPE SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
@@ -3416,7 +3416,7 @@ public:
   virtual HRESULT STDMETHODCALLTYPE AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                                          unsigned volume/*[in]*/,
                                                          unsigned* id/*[out,retval]*/) = 0; // [215]
-  virtual HRESULT STDMETHODCALLTYPE Conjunction(unsigned* signal_list/*[in]*/,
+  virtual HRESULT STDMETHODCALLTYPE Conjunction(LPSAFEARRAY signal_list/*[in]*/,
                                                 unsigned count/*[in]*/,
                                                 VARIANT_BOOL inverter_on/*[in,def]*/,
                                                 unsigned* id/*[out,retval]*/) = 0; // [216]
@@ -3425,6 +3425,13 @@ public:
   virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [219]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
+
+  VARIANT_BOOL __fastcall EndEditing(void)
+  {
+    VARIANT_BOOL Value;
+    OLECHECK(this->EndEditing((VARIANT_BOOL*)&Value));
+    return Value;
+  }
 
   unsigned __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                      BSTR price/*[in]*/)
@@ -3531,7 +3538,7 @@ public:
     return id;
   }
 
-  unsigned __fastcall Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+  unsigned __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                   VARIANT_BOOL inverter_on/*[in,def]*/)
   {
     unsigned id;
@@ -6652,7 +6659,8 @@ public:
   TCOMITriggeringConditionT& operator=(const TCOMITriggeringConditionT& src) { Bind(src, true); return *this;}
 
   HRESULT         __fastcall BeginEditing(void);
-  HRESULT         __fastcall EndEditing(void);
+  HRESULT         __fastcall EndEditing(VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall EndEditing(void);
   HRESULT         __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                             BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
   unsigned        __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
@@ -6710,10 +6718,10 @@ public:
                                                   unsigned* id/*[out,retval]*/);
   unsigned        __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                                   unsigned volume/*[in]*/);
-  HRESULT         __fastcall Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+  HRESULT         __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                          VARIANT_BOOL inverter_on/*[in,def]*/,
                                          unsigned* id/*[out,retval]*/);
-  unsigned        __fastcall Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+  unsigned        __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                          VARIANT_BOOL inverter_on/*[in,def]*/);
   HRESULT         __fastcall GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/);
   BSTR            __fastcall GetLastErrMsg(void);
@@ -6769,7 +6777,8 @@ public:
   }
 
   HRESULT         __fastcall BeginEditing();
-  HRESULT         __fastcall EndEditing();
+  HRESULT         __fastcall EndEditing(VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall EndEditing(void);
   HRESULT         __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
                                             , BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
   unsigned        __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
@@ -6829,10 +6838,10 @@ public:
                                                   unsigned* id/*[out,retval]*/);
   unsigned        __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
                                                   unsigned volume/*[in]*/);
-  HRESULT         __fastcall Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+  HRESULT         __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                          VARIANT_BOOL inverter_on/*[in,def]*/,
                                          unsigned* id/*[out,retval]*/);
-  unsigned        __fastcall Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+  unsigned        __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                          VARIANT_BOOL inverter_on/*[in,def]*/);
   HRESULT         __fastcall GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/);
   BSTR            __fastcall GetLastErrMsg(void);
@@ -19893,9 +19902,17 @@ TCOMITriggeringConditionT<T>::BeginEditing(void)
 }
 
 template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::EndEditing(VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  return (*this)->EndEditing(Value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
 TCOMITriggeringConditionT<T>::EndEditing(void)
 {
-  return (*this)->EndEditing();
+  VARIANT_BOOL Value;
+  OLECHECK(this->EndEditing((VARIANT_BOOL*)&Value));
+  return Value;
 }
 
 template <class T> HRESULT __fastcall
@@ -20113,7 +20130,7 @@ TCOMITriggeringConditionT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalCompari
 }
 
 template <class T> HRESULT __fastcall
-TCOMITriggeringConditionT<T>::Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+TCOMITriggeringConditionT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                           VARIANT_BOOL inverter_on/*[in,def]*/,
                                           unsigned* id/*[out,retval]*/)
 {
@@ -20121,7 +20138,7 @@ TCOMITriggeringConditionT<T>::Conjunction(unsigned* signal_list/*[in]*/, unsigne
 }
 
 template <class T> unsigned __fastcall
-TCOMITriggeringConditionT<T>::Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+TCOMITriggeringConditionT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                           VARIANT_BOOL inverter_on/*[in,def]*/)
 {
   unsigned id;
@@ -20184,10 +20201,19 @@ ITriggeringConditionDispT<T>::BeginEditing()
 }
 
 template <class T> HRESULT __fastcall
-ITriggeringConditionDispT<T>::EndEditing()
+ITriggeringConditionDispT<T>::EndEditing(VARIANT_BOOL* Value/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("EndEditing"), DISPID(202));
-  return OleFunction(_dispid);
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITriggeringConditionDispT<T>::EndEditing(void)
+{
+  VARIANT_BOOL Value;
+  this->EndEditing((VARIANT_BOOL*)&Value);
+  return Value;
 }
 
 template <class T> HRESULT __fastcall
@@ -20460,20 +20486,20 @@ ITriggeringConditionDispT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalCompari
 }
 
 template <class T> HRESULT __fastcall
-ITriggeringConditionDispT<T>::Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+ITriggeringConditionDispT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                           VARIANT_BOOL inverter_on/*[in,def]*/,
                                           unsigned* id/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("Conjunction"), DISPID(216));
   TAutoArgs<3> _args;
-  _args[1] = signal_list /*[VT_UINT:1]*/;
+  _args[1] = signal_list /*[VT_SAFEARRAY:0]*/;
   _args[2] = count /*[VT_UINT:0]*/;
   _args[3] = inverter_on /*[VT_BOOL:0]*/;
   return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
 }
 
 template <class T> unsigned __fastcall
-ITriggeringConditionDispT<T>::Conjunction(unsigned* signal_list/*[in]*/, unsigned count/*[in]*/,
+ITriggeringConditionDispT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
                                           VARIANT_BOOL inverter_on/*[in,def]*/)
 {
   unsigned id;
