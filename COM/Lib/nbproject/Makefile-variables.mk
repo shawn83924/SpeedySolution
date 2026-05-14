@@ -38,22 +38,6 @@ CND_ARTIFACT_PATH_LINUX_Release1_dynamic_64=/Speedy/lib/libSpeedyAPI1_64.so
 CND_PACKAGE_DIR_LINUX_Release1_dynamic_64=dist/LINUX_Release1_dynamic_64/GNU-Linux/package
 CND_PACKAGE_NAME_LINUX_Release1_dynamic_64=libLib.so.tar
 CND_PACKAGE_PATH_LINUX_Release1_dynamic_64=dist/LINUX_Release1_dynamic_64/GNU-Linux/package/libLib.so.tar
-# LINUX_Debug_dynamic_64 configuration
-CND_PLATFORM_LINUX_Debug_dynamic_64=GNU-Linux
-CND_ARTIFACT_DIR_LINUX_Debug_dynamic_64=/Speedy/lib
-CND_ARTIFACT_NAME_LINUX_Debug_dynamic_64=libSpeedyAPI_64D.so
-CND_ARTIFACT_PATH_LINUX_Debug_dynamic_64=/Speedy/lib/libSpeedyAPI_64D.so
-CND_PACKAGE_DIR_LINUX_Debug_dynamic_64=dist/LINUX_Debug_dynamic_64/GNU-Linux/package
-CND_PACKAGE_NAME_LINUX_Debug_dynamic_64=libLib.so.tar
-CND_PACKAGE_PATH_LINUX_Debug_dynamic_64=dist/LINUX_Debug_dynamic_64/GNU-Linux/package/libLib.so.tar
-# LINUX_Release_dynamic configuration
-CND_PLATFORM_LINUX_Release_dynamic=GNU-Linux
-CND_ARTIFACT_DIR_LINUX_Release_dynamic=/MBus/lib
-CND_ARTIFACT_NAME_LINUX_Release_dynamic=libSpeedyAPI.so
-CND_ARTIFACT_PATH_LINUX_Release_dynamic=/MBus/lib/libSpeedyAPI.so
-CND_PACKAGE_DIR_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux/package
-CND_PACKAGE_NAME_LINUX_Release_dynamic=libLib.so.tar
-CND_PACKAGE_PATH_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux/package/libLib.so.tar
 # LINUX_Release configuration
 CND_PLATFORM_LINUX_Release=GNU-Linux
 CND_ARTIFACT_DIR_LINUX_Release=/MBus/lib
@@ -62,6 +46,14 @@ CND_ARTIFACT_PATH_LINUX_Release=/MBus/lib/libSpeedyAPI.a
 CND_PACKAGE_DIR_LINUX_Release=dist/LINUX_Release/GNU-Linux/package
 CND_PACKAGE_NAME_LINUX_Release=Lib.tar
 CND_PACKAGE_PATH_LINUX_Release=dist/LINUX_Release/GNU-Linux/package/Lib.tar
+# LINUX_Release_dynamic configuration
+CND_PLATFORM_LINUX_Release_dynamic=GNU-Linux
+CND_ARTIFACT_DIR_LINUX_Release_dynamic=/MBus/lib
+CND_ARTIFACT_NAME_LINUX_Release_dynamic=libSpeedyAPI.so
+CND_ARTIFACT_PATH_LINUX_Release_dynamic=/MBus/lib/libSpeedyAPI.so
+CND_PACKAGE_DIR_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux/package
+CND_PACKAGE_NAME_LINUX_Release_dynamic=libLib.so.tar
+CND_PACKAGE_PATH_LINUX_Release_dynamic=dist/LINUX_Release_dynamic/GNU-Linux/package/libLib.so.tar
 # AIX_Debug configuration
 CND_PLATFORM_AIX_Debug=GNU-Linux
 CND_ARTIFACT_DIR_AIX_Debug=/MBus/lib

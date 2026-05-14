@@ -46,6 +46,7 @@ STDMETHODIMP TTriggeringConditionImpl::BeginEditing()
 }
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTriggeringConditionImpl::EndEditing(VARIANT_BOOL* Value)
+
 {
 	*Value = FCondition.EndEditing();
 	return S_OK;
@@ -166,7 +167,6 @@ STDMETHODIMP TTriggeringConditionImpl::AnyTop5AskVolumeComp(LogicalComparisonOpe
 STDMETHODIMP TTriggeringConditionImpl::Conjunction(LPSAFEARRAY signal_list, unsigned count,
           VARIANT_BOOL inverter_on, unsigned* id)
 {
-	// 從 SAFEARRAY 取得資料指標
 	SignalID* pData = nullptr;
 	HRESULT hr = SafeArrayAccessData(signal_list, (void**)&pData);
 	if (FAILED(hr))

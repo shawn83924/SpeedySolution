@@ -1,12 +1,11 @@
 #include "TTaifexConnection.h"
 #include "TLicenseKey.h"
 #include "RecoverThread.h"
-
+//------------------------------------------------------------------------------
 #ifdef WIN32
 #include "../CA/UniFSCCAObject.h"
 #include "../CA/MLTWCAObject.h"
 #endif
-
 //------------------------------------------------------------------------------
 BOOL              UseRes;
 UFC::BufferedLog* GStdout = NULL;
@@ -71,7 +70,6 @@ const UFC::AnsiString SUBJECT_FILE_DOWNLOAD     = "FILE.DOWNLOAD";
 const UFC::AnsiString SUBJECT_NEWS_REQUEST      = "NEWS.REQUEST";
 const UFC::AnsiString SUBJECT_NEWS_RESPONSE     = "NEWS.RESPONSE";
 //------------------------------------------------------------------------------
-
 void TTaifexConnection::InitGlobal()
 {
     if( GStdout == NULL )        
@@ -121,8 +119,7 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FAppName( AppName )
 ,FUniquekey( "" )
 ,FCMID( "F999" )
-,FIsTWSENewVersion( FALSE )
-,FIsTWSEExNewVersion( FALSE )
+,FIsTWSE8DigiVersion( FALSE ) ///< Default 6 digi fill sequence
 ,FNewFutSymbol(  FALSE  )
 ,FEnablePendingNewAck( TRUE )
 ,FTriggerExec( TRUE )
@@ -150,7 +147,7 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FOnTouchOrderResponse(&TTaifexConnection::ReceiveTouchOrderResponse) // added by Kenny to support Touch Order. 2026/03/16
 ,FTransport( NULL )
 ,FAdminListener( NULL )
-,FTWSERender( &TTaifexConnection::RenderTWSET010 )
+,FTWSERender( &TTaifexConnection::RenderTWSET010Ex )
 ,FExchangeError( NULL )
 ,FFUTSymbol( NULL )
 ,FOPTSymbol( NULL )
@@ -164,14 +161,14 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FApiCAObjPtr( 0 )
 ,FNeedCheckOrdQty0( true )
 {
-	InitGlobal();
+    InitGlobal();
 #ifdef _USE_RES
-	UseRes = TRUE; ///< Use the message format file in resource.
+    UseRes = TRUE; ///< Use the message format file in resource.
 #else
-	UseRes = FALSE; ///< Use the message format file in file.
+    UseRes = FALSE; ///< Use the message format file in file.
 #endif
-	if( UFC::BufferedLogData::FLogObject != NULL && Glog == GStdout )
-		Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
+    if( UFC::BufferedLogData::FLogObject != NULL && Glog == GStdout )
+        Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
     FLogonEvent   = new UFC::PEvent();
     FRequestEvent = new UFC::PEvent();
     if( FUseAPI == atSpeedy )
@@ -180,8 +177,8 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
         FSupportSellSide.Add( ssTAIFEX );
         FSupportSellSide.Add( ssTSEOTC );
         SetLanguage( mlEnglish );
-		FCallbackFuncs.Add( SUBJECT_ADMIN,        &FOnAdminMsg   ); ///< Admin message
-		FCallbackFuncs.Add( SUBJECT_NEWS_RESPONSE,&FOnNewsMsg    ); ///< News
+        FCallbackFuncs.Add( SUBJECT_ADMIN,        &FOnAdminMsg   ); ///< Admin message
+        FCallbackFuncs.Add( SUBJECT_NEWS_RESPONSE,&FOnNewsMsg    ); ///< News
         FCallbackFuncs.Add( SUBJECT_RECOVER,      &FOnRecoverMsg ); ///< Recover executions
         UFC::SleepMS( 5 );
     }
@@ -213,8 +210,7 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
 ,FAppName( AppName )
 ,FUniquekey( "" )
 ,FCMID( "F999" )
-,FIsTWSENewVersion( FALSE )
-,FIsTWSEExNewVersion( FALSE )
+,FIsTWSE8DigiVersion( FALSE )
 ,FNewFutSymbol( FALSE )
 ,FEnablePendingNewAck( TRUE )
 ,FTriggerExec( TRUE )
@@ -242,7 +238,7 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
 ,FOnTouchOrderResponse(&TTaifexConnection::ReceiveTouchOrderResponse) // added by Kenny to support Touch Order. 2026/03/16
 ,FTransport( NULL )
 ,FAdminListener( NULL )
-,FTWSERender( &TTaifexConnection::RenderTWSET010 )
+,FTWSERender( &TTaifexConnection::RenderTWSET010Ex )
 ,FExchangeError( NULL )
 ,FFUTSymbol( NULL )
 ,FOPTSymbol( NULL )
@@ -293,23 +289,12 @@ TTaifexConnection::~TTaifexConnection( void )
 #ifdef WIN32
 //	if ( FCAObjPtr != 0 ) delete FCAObjPtr;
 #endif
-//	if (Glog != NULL)
-//		Glog->FlushToFile();
-	UFC::BufferedLog::FlushToFile();
+    UFC::BufferedLog::FlushToFile();
 }
 //------------------------------------------------------------------------------
-void TTaifexConnection::SetTWSENewVersion( bool IsNew, bool IsNewEx )
+void TTaifexConnection::SetTWSE8DigiSeqVersion( bool Is8Digi )
 {
-    FIsTWSENewVersion = IsNew;
-    FIsTWSEExNewVersion = IsNewEx;
-    if( FIsTWSENewVersion == true )
-    {
-        FTWSERender = &TTaifexConnection::RenderTWSET010Ex;
-	}
-	else
-	{
-		FTWSERender = &TTaifexConnection::RenderTWSET010;
-	}
+    FIsTWSE8DigiVersion = Is8Digi;
 }
 //------------------------------------------------------------------------------
 void TTaifexConnection::SetLogFile( const char* FileName )
@@ -329,42 +314,42 @@ void TTaifexConnection::SetLogFile( const char* FileName )
         }
         if( OldLogObj != GStdout && OldLogObj != UFC::BufferedLogData::FLogObject)
             delete OldLogObj; ///< Close old file
-		else
-			OldLogObj->FlushToFile();
-		Glog->fprintf( " Build Date[%s]", __DATE__ );
-	}
-	catch( UFC::FileException&  )
-	{
-		Glog->fprintf( " Open log file [%s] failed.", FileName );
-	}
+        else
+            OldLogObj->FlushToFile();
+        Glog->fprintf( " Build Date[%s]", __DATE__ );
+    }
+    catch( UFC::FileException&  )
+    {
+        Glog->fprintf( " Open log file [%s] failed.", FileName );
+    }
 }
 //------------------------------------------------------------------------------
 void TTaifexConnection::SetLogFileEx( const char* FileName )
 {
-	try
-	{
-		UFC::BufferedLog* OldLogObj = Glog;
+    try
+    {
+        UFC::BufferedLog* OldLogObj = Glog;
 
-		if ( FileName == NULL || (FileName != NULL && strcmp( FileName, "" ) == 0))
-		{
-			Glog = GStdout ;
-			Glog->SetToStdout(FALSE);
-		}
-		else
-		{
-			Glog = new UFC::BufferedLog( FileName, 10240, TRUE );
-			UFC::BufferedLog::SetLogObject( Glog );
-		}
-		if( OldLogObj != GStdout && OldLogObj != UFC::BufferedLogData::FLogObject)
-			delete OldLogObj; ///< Close old file
-		else
-			OldLogObj->FlushToFile();
-		Glog->fprintf( " Build Date[%s]", __DATE__ );
-	}
-	catch( UFC::FileException&  )
-	{
-			Glog->fprintf( " Open log file [%s] failed.", FileName );
-	}
+        if ( FileName == NULL || (FileName != NULL && strcmp( FileName, "" ) == 0))
+        {
+            Glog = GStdout ;
+            Glog->SetToStdout(FALSE);
+        }
+        else
+        {
+            Glog = new UFC::BufferedLog( FileName, 10240, TRUE );
+            UFC::BufferedLog::SetLogObject( Glog );
+        }
+        if( OldLogObj != GStdout && OldLogObj != UFC::BufferedLogData::FLogObject)
+            delete OldLogObj; ///< Close old file
+        else
+            OldLogObj->FlushToFile();
+        Glog->fprintf( " Build Date[%s]", __DATE__ );
+    }
+    catch( UFC::FileException&  )
+    {
+        Glog->fprintf( " Open log file [%s] failed.", FileName );
+    }
 }
 //------------------------------------------------------------------------------
 BOOL TTaifexConnection::CheckDecimalLocatorSetting( UFC::UiniFile* ini, const UFC::AnsiString& Sect )
@@ -525,36 +510,24 @@ void TTaifexConnection::SetTSEDataFormatResourceID( DWORD T010, DWORD O010, DWOR
 {
     if( FSupportSellSide.Exists( ssTSEOTC ) == TRUE )
     {
+        ///< New Order for Normal,Odd,Post trading session
         LoadDataFormatFromResourceFile( T010, ResourceType, FTSET010Format );
-        FTSET010Render.SetDataFormat( &FTSET010Format );
-        LoadDataFormatFromResourceFile( O010, ResourceType, FTSEO010Format );
-        FTSEO010Render.SetDataFormat( &FTSEO010Format );
-        LoadDataFormatFromResourceFile( P010, ResourceType, FTSEP010Format );
-        FTSEP010Render.SetDataFormat( &FTSEP010Format );
-        LoadDataFormatFromResourceFile( T020, ResourceType, FTSET020Format );
-        FTSET020Parser.SetDataFormat( &FTSET020Format );
-        LoadDataFormatFromResourceFile( T020, ResourceType, FTSET020Format );
-        FTSET020Parser.SetDataFormat( &FTSET020Format );
-        LoadDataFormatFromResourceFile( O020, ResourceType, FTSEO020Format );
-        FTSEO020Parser.SetDataFormat( &FTSEO020Format );
-        LoadDataFormatFromResourceFile( P020, ResourceType, FTSEP020Format );
-        FTSEP020Parser.SetDataFormat( &FTSEP020Format );
-        LoadDataFormatFromResourceFile( R030, ResourceType, FTSEC030Format );
-        FTSEC030Parser.SetDataFormat( &FTSEC030Format );
-        LoadDataFormatFromResourceFile( R030, ResourceType, FTSEC030Format );
-        FTSEC030Parser.SetDataFormat( &FTSEC030Format );
-
+        FTSET010Render.SetDataFormat( &FTSET010Format );        
         LoadDataFormatFromResourceFile( O010 + 100, ResourceType, FTSEO010ExFormat );
         FTSEO010ExRender.SetDataFormat( &FTSEO010ExFormat );
         LoadDataFormatFromResourceFile( P010 + 100, ResourceType, FTSEP010ExFormat );
         FTSEP010ExRender.SetDataFormat( &FTSEP010ExFormat );
-        LoadDataFormatFromResourceFile( T020 + 100, ResourceType, FTSET020ExFormat );
+        ///< Confirm execution.
+        LoadDataFormatFromResourceFile( T020 + 100, ResourceType, FTSET020ExFormat );        
         FTSET020ExParser.SetDataFormat( &FTSET020ExFormat );
         LoadDataFormatFromResourceFile( O020 + 100, ResourceType, FTSEO020ExFormat );
         FTSEO020ExParser.SetDataFormat( &FTSEO020ExFormat );
         LoadDataFormatFromResourceFile( P020 + 100, ResourceType, FTSEP020ExFormat );
         FTSEP020ExParser.SetDataFormat( &FTSEP020ExFormat );
-        LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FTSER03ExFormat );
+        ///< Filled execution.
+        LoadDataFormatFromResourceFile( R030, ResourceType, FTSER03ExFormat ); ///< 8 Digi Sequence
+        FTSER03Parser.SetDataFormat( &FTSER03Format );
+        LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FTSER03ExFormat );///< 6 Digi Sequence
         FTSER03ExParser.SetDataFormat( &FTSER03ExFormat );
     }
 }
@@ -562,27 +535,9 @@ void TTaifexConnection::SetTSEDataFormatResourceID( DWORD T010, DWORD O010, DWOR
 void TTaifexConnection::SetTSEDataFormatResourceID2( DWORD A010, DWORD V010, DWORD E010,DWORD Ex010, DWORD A020, DWORD V020, DWORD E020, DWORD Ex020,const char* ResourceType )
 {
     if( FSupportSellSide.Exists( ssTSEOTC ) == TRUE )
-    {
-        int VerDiff = 0;
-
-        LoadDataFormatFromResourceFile( A010 + VerDiff, ResourceType, FTSEA010Format );
-        FTSEA010Render.SetDataFormat( &FTSEA010Format );
-        LoadDataFormatFromResourceFile( V010 + VerDiff, ResourceType, FTSEV010Format );
-        FTSEV010Render.SetDataFormat( &FTSEV010Format );
-        LoadDataFormatFromResourceFile( E010 + VerDiff, ResourceType, FTSEE010Format );
-        FTSEE010Render.SetDataFormat( &FTSEE010Format );
-        LoadDataFormatFromResourceFile( Ex010 + VerDiff, ResourceType, FTSEEx010Format );
-        FTSEEx010Render.SetDataFormat( &FTSEEx010Format );
-        LoadDataFormatFromResourceFile( A020 + VerDiff, ResourceType, FTSEA020Format );
-        FTSEA020Parser.SetDataFormat( &FTSEA020Format );
-        LoadDataFormatFromResourceFile( V020 + VerDiff, ResourceType, FTSEV020Format );
-        FTSEV020Parser.SetDataFormat( &FTSEV020Format );
-        LoadDataFormatFromResourceFile( E020 + VerDiff, ResourceType, FTSEE020Format );
-        FTSEE020Parser.SetDataFormat( &FTSEE020Format );
-        LoadDataFormatFromResourceFile( Ex020 + VerDiff, ResourceType, FTSEEx020Format );
-        FTSEEx020Parser.SetDataFormat( &FTSEEx020Format );
-
-        VerDiff = 100;
+    {        
+        int VerDiff = 100;
+        ///< New Order
         LoadDataFormatFromResourceFile( A010 + VerDiff, ResourceType, FTSEA010ExFormat );
         FTSEA010ExRender.SetDataFormat( &FTSEA010ExFormat );
         LoadDataFormatFromResourceFile( V010 + VerDiff, ResourceType, FTSEV010ExFormat );
@@ -591,6 +546,7 @@ void TTaifexConnection::SetTSEDataFormatResourceID2( DWORD A010, DWORD V010, DWO
         FTSEE010ExRender.SetDataFormat( &FTSEE010ExFormat );
         LoadDataFormatFromResourceFile( Ex010 + VerDiff, ResourceType, FTSEEx010ExFormat );
         FTSEEx010ExRender.SetDataFormat( &FTSEEx010ExFormat );
+        ///< Comfirm
         LoadDataFormatFromResourceFile( A020 + VerDiff, ResourceType, FTSEA020ExFormat );
         FTSEA020ExParser.SetDataFormat( &FTSEA020ExFormat );
         LoadDataFormatFromResourceFile( V020 + VerDiff, ResourceType, FTSEV020ExFormat );
@@ -599,40 +555,31 @@ void TTaifexConnection::SetTSEDataFormatResourceID2( DWORD A010, DWORD V010, DWO
         FTSEE020ExParser.SetDataFormat( &FTSEE020ExFormat );
         LoadDataFormatFromResourceFile( Ex020 + VerDiff, ResourceType, FTSEEx020ExFormat );
         FTSEEx020ExParser.SetDataFormat( &FTSEEx020ExFormat );
-
     }
 }
 //------------------------------------------------------------------------------
 void TTaifexConnection::SetOTCDataFormatResourceID( DWORD T010, DWORD O010, DWORD P010, DWORD T020, DWORD O020, DWORD P020, DWORD R030, const char* ResourceType )
 {
     if( FSupportSellSide.Exists( ssTSEOTC ) == TRUE )
-    {
+    {       
+        ///< New Order for Normal,Odd,Post trading session      
         LoadDataFormatFromResourceFile( T010, ResourceType, FOTCT010Format );
         FOTCT010Render.SetDataFormat( &FOTCT010Format );
-        LoadDataFormatFromResourceFile( O010, ResourceType, FOTCO010Format );
-        FOTCO010Render.SetDataFormat( &FOTCO010Format );
-        LoadDataFormatFromResourceFile( P010, ResourceType, FOTCP010Format );
-        FOTCP010Render.SetDataFormat( &FOTCP010Format );
-        LoadDataFormatFromResourceFile( T020, ResourceType, FOTCT020Format );
-        FOTCT020Parser.SetDataFormat( &FOTCT020Format );
-        LoadDataFormatFromResourceFile( O020, ResourceType, FOTCO020Format );
-        FOTCO020Parser.SetDataFormat( &FOTCO020Format );
-        LoadDataFormatFromResourceFile( P020, ResourceType, FOTCP020Format );
-        FOTCP020Parser.SetDataFormat( &FOTCP020Format );
-        LoadDataFormatFromResourceFile( R030, ResourceType, FOTCC030Format );
-        FOTCC030Parser.SetDataFormat( &FOTCC030Format );
-
         LoadDataFormatFromResourceFile( O010 + 100, ResourceType, FOTCO010ExFormat );
         FOTCO010ExRender.SetDataFormat( &FOTCO010ExFormat );
         LoadDataFormatFromResourceFile( P010 + 100, ResourceType, FOTCP010ExFormat );
         FOTCP010ExRender.SetDataFormat( &FOTCP010ExFormat );
+        ///< Confirm execution.
         LoadDataFormatFromResourceFile( T020 + 100, ResourceType, FOTCT020ExFormat );
         FOTCT020ExParser.SetDataFormat( &FOTCT020ExFormat );
         LoadDataFormatFromResourceFile( O020 + 100, ResourceType, FOTCO020ExFormat );
         FOTCO020ExParser.SetDataFormat( &FOTCO020ExFormat );
         LoadDataFormatFromResourceFile( P020 + 100, ResourceType, FOTCP020ExFormat );
         FOTCP020ExParser.SetDataFormat( &FOTCP020ExFormat );
-        LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FOTCR03ExFormat );
+        ///< Filled execution.
+        LoadDataFormatFromResourceFile( R030 , ResourceType, FOTCR03ExFormat ); ///< 8 Digi Sequence
+        FOTCR03Parser.SetDataFormat( &FOTCR03Format );
+        LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FOTCR03ExFormat ); ///< 6 Digi Sequence
         FOTCR03ExParser.SetDataFormat( &FOTCR03ExFormat );
     }
 }
@@ -641,22 +588,8 @@ void TTaifexConnection::SetOTCDataFormatResourceID2( DWORD V010, DWORD E010, DWO
 {
     if( FSupportSellSide.Exists( ssTSEOTC ) == TRUE )
     {
-        int VerDiff = 0;
-
-        LoadDataFormatFromResourceFile( V010 + VerDiff, ResourceType, FOTCV010Format );
-        FOTCV010Render.SetDataFormat( &FOTCV010Format );
-        LoadDataFormatFromResourceFile( E010 + VerDiff, ResourceType, FOTCE010Format );
-        FOTCE010Render.SetDataFormat( &FOTCE010Format );
-        LoadDataFormatFromResourceFile( Ex010 + VerDiff, ResourceType, FOTCEx010Format );
-        FOTCEx010Render.SetDataFormat( &FOTCEx010Format );
-        LoadDataFormatFromResourceFile( V020 + VerDiff, ResourceType, FOTCV020Format );
-        FOTCV020Parser.SetDataFormat( &FOTCV020Format );
-        LoadDataFormatFromResourceFile( E020 + VerDiff, ResourceType, FOTCE020Format );
-        FOTCE020Parser.SetDataFormat( &FOTCE020Format );
-        LoadDataFormatFromResourceFile( Ex020 + VerDiff, ResourceType, FOTCEx020Format );
-        FOTCEx020Parser.SetDataFormat( &FOTCEx020Format );
-
-        VerDiff = 100;
+        int VerDiff = 100;
+        
         LoadDataFormatFromResourceFile( V010 + VerDiff, ResourceType, FOTCV010ExFormat );
         FOTCV010ExRender.SetDataFormat( &FOTCV010ExFormat );
         LoadDataFormatFromResourceFile( E010 + VerDiff, ResourceType, FOTCE010ExFormat );
@@ -796,31 +729,31 @@ void TTaifexConnection::ReceiveNews( MTree* pTree )
     Int32            NewsID;
     Int32            MsgCount = 1;
     Int32            MsgIndex = 1;
-	UFC::AnsiString  NewsData,Func;
-	TNewsMessage     NewsMsg;
+    UFC::AnsiString  NewsData,Func;
+    TNewsMessage     NewsMsg;
 
-	if( pTree->get( "UID", NewsID ) )
-	{
-		NewsMsg.SetID( NewsID );
-		if( pTree->get( "FUNC", Func ) )
-			NewsMsg.SetHeadline( Func.c_str( ) );
-		if( pTree->get( "DATA", NewsData ) )
-			NewsMsg.SetText( NewsData.c_str( ) );
-		if( pTree->get( "COUNT", MsgCount ) )
-			NewsMsg.SetMsgCount( MsgCount );
-		if( pTree->get( "INDEX", MsgIndex ) )
-			NewsMsg.SetMsgNum( MsgIndex );
-		if( Func == "ReqFUTMargin" )
-		{
-			if( FLastReqUID == NewsID )
-			{
-				FResponseData = NewsData;
-                    FRequestEvent->SetEvent();
-			}
-			return;
+    if( pTree->get( "UID", NewsID ) )
+    {
+        NewsMsg.SetID( NewsID );
+        if( pTree->get( "FUNC", Func ) )
+            NewsMsg.SetHeadline( Func.c_str( ) );
+        if( pTree->get( "DATA", NewsData ) )
+            NewsMsg.SetText( NewsData.c_str( ) );
+        if( pTree->get( "COUNT", MsgCount ) )
+            NewsMsg.SetMsgCount( MsgCount );
+        if( pTree->get( "INDEX", MsgIndex ) )
+            NewsMsg.SetMsgNum( MsgIndex );
+        if( Func == "ReqFUTMargin" )
+        {
+            if( FLastReqUID == NewsID )
+            {
+                FResponseData = NewsData;
+                FRequestEvent->SetEvent();
+            }
+            return;
         }
-		if( FListener != NULL )
-			FListener->OnNews( &NewsMsg );
+        if( FListener != NULL )
+            FListener->OnNews( &NewsMsg );
     }
 }
 //---------------------------------------------------------------------------
@@ -839,9 +772,9 @@ void TTaifexConnection::ReceiveRecoverExecution( MTree* pTree )
             switch( RMkt )
             {
                 case rmFutures:     	ReceiveFutConfirmMessage( pTree ); break;///< Order confirmed
-                case rmOption:			ReceiveOptConfirmMessage( pTree ); break;///< Order confirmed
-                case rmTSE: 			ReceiveTSEConfirmMessage( pTree ); break;///< Order confirmed
-                case rmOTC:				ReceiveOTCConfirmMessage( pTree ); break;///< Order confirmed
+                case rmOption:		ReceiveOptConfirmMessage( pTree ); break;///< Order confirmed
+                case rmTSE: 		ReceiveTSEConfirmMessage( pTree ); break;///< Order confirmed
+                case rmOTC:		ReceiveOTCConfirmMessage( pTree ); break;///< Order confirmed
                 case rmForeignFutures:  ///< Foreign Futures/Options/Stock
                 case rmForeignOptions:
                 case rmForeignStock:    ReceiveForeignConfirmMessage( pTree );break;///< Order confirmed
@@ -854,10 +787,10 @@ void TTaifexConnection::ReceiveRecoverExecution( MTree* pTree )
                 return; ///< Recover confirm only, but receive filled
             switch( RMkt )
             {
-                case rmFutures:			ReceiveFutExecuteMessage( pTree ); break;///< Execution Report
-                case rmOption:			ReceiveOptExecuteMessage( pTree ); break;///< Execution Report
-                case rmTSE:				ReceiveTSEExecuteMessage( pTree ); break;///< Execution Report
-                case rmOTC:				ReceiveOTCExecuteMessage( pTree ); break;///< Execution Report
+                case rmFutures:		ReceiveFutExecuteMessage( pTree ); break;///< Execution Report
+                case rmOption:		ReceiveOptExecuteMessage( pTree ); break;///< Execution Report
+                case rmTSE:		ReceiveTSEExecuteMessage( pTree ); break;///< Execution Report
+                case rmOTC:		ReceiveOTCExecuteMessage( pTree ); break;///< Execution Report
                 case rmForeignFutures:  ///< Foreign Futures/Options/Stock
                 case rmForeignOptions:
                 case rmForeignStock:	ReceiveForeignExecuteMessage( pTree );break;///< Execution Report
@@ -933,7 +866,6 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
         ///< ACCOUNT: Exchange account.( could be "Account1,Account2,Account3..." )
         ///< Token1 default: SpeedyProxy
         ///< Token2 default: 601008
-//        UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
         UFC::AnsiString id( ID ), passwd2( PASSWD ), TradeDate = "", TimeNow = "";
         int MAppFD = FTransport->GetMApp()->GetSocketHandle();
 
@@ -1047,7 +979,7 @@ void TTaifexConnection::Logon( const char* ID,
         ///< ID:      Logon AE ID .
         ///< PASSWD:  password for ID
         ///< ACCOUNT: Exchange account.
-        UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
+        //UFC::AnsiString LocalIpAddress = FTransport->GetMApp()->GetLocalIPAddress();
         UFC::AnsiString id( FIDs[0] );
         UFC::AnsiString passwd( PASSWD );
         UFC::AnsiString Account( ACCOUNT );
@@ -1376,7 +1308,7 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
     if( CMD == CMD_LOGON_REPLY )
     {
         int             CIDBits = Msg.GetIntegerValue( "BITS", 9 );
-        int             TWSENew;
+        int             Use6DigiSeq;
         LogonResult     Result = lrFailed;
         UFC::AnsiString ReplyString = Msg.GetStringValue( "MSG" );
 
@@ -1394,23 +1326,22 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
             FIsDMA       = Msg.GetIntegerValue( "DMA", 0 );
             FUseNID64    = Msg.GetIntegerValue( "NID64", 0 );
             FLocalIP     = Msg.GetStringValue( "ClientIP" );
-            TWSENew      = Msg.GetIntegerValue( "TWSE_NEW", 1 );///< Default old version
+            Use6DigiSeq  = Msg.GetIntegerValue( "SEQ_6", 1 );
 
             Glog->fprintf( " Encode order message[%s]", (FEncode == 1)?"Yes":"No" );
             Glog->fprintf( " Throughput limit [%d]Orders per sec.", FOrderPerSec );
-            if( TWSENew == 0 ) ///< New version
-                SetTWSENewVersion( TRUE, TRUE );   ///< After 2020/03/23
-            else if( TWSENew == 1 ) ///< Old version
-                SetTWSENewVersion( FALSE, FALSE ); ///< Before 2020/03/02
+            Glog->fprintf( " %d digi filled sequence.", (Use6DigiSeq==1)? 6: 8 );
+            if( Use6DigiSeq == TRUE ) ///< Default use 6 digi seq
+                SetTWSE8DigiSeqVersion( FALSE );
             else
-                SetTWSENewVersion( FALSE, TRUE );  ///< Between 2020/03/02 and  2020/03/23
+                SetTWSE8DigiSeqVersion( TRUE );                
             if( FAdmin == 1 )    ///< In Logon func: FID = FUserName = Logon ID.
                 FID = FUserName; ///< In LogonProxy func: FID = Account, FUserName = Logon ID.
             FUserName = Msg.GetStringValue( "NAME", FUserName.c_str() );
             ///< Add Recover listeners.
-			AddRecoverListener();
+            AddRecoverListener();
             ///< Add Execution reports listener.
-			CreateReportListener( );
+            CreateReportListener( );
             ///< Init seq share memory.
             Result = CreateShareMemory( pTree, CIDBits, ReplyString );
             UFC::BufferedLog::Printf( " NID use [%d]bits rule", CIDBits );
@@ -1444,15 +1375,15 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
         int Rtn = Msg.GetIntegerValue( "RESULT", 0 );
         
         Glog->fprintf( " Change Password result[%d]", Rtn );
-		if( Rtn == -1 )
-			Result = crWrongPassword;
-		else if( Rtn == -2 )
-			Result = crLockedTryAgain;
-		else if( Rtn == -3 )
-			Result = crSameAsPrevious;
-		else if( Rtn == 1 )
-			Result = crModifyOk;
-		else
+        if( Rtn == -1 )
+            Result = crWrongPassword;
+        else if( Rtn == -2 )
+            Result = crLockedTryAgain;
+        else if( Rtn == -3 )
+            Result = crSameAsPrevious;
+        else if( Rtn == 1 )
+            Result = crModifyOk;
+        else
             Result = crFailed;
         if( FListener != NULL )
             FListener->OnChangePassword( Result );
@@ -1499,14 +1430,14 @@ void TTaifexConnection::AddTAIFEXReportListener( const UFC::AnsiString& ListenKe
         Glog->fprintf( " Support TAIFEX" );
         if( FReportType == rdConfirm || FReportType == rdBoth )///< Add confirm listener.
         {
-			Glog->fprintf( " - Add TAIFEX Confirm Listerner." );
-			AddExecListener( SUBJECT_CONFIRM_FUT, ListenKey, &FOnFutConfirm ); ///< Futures Confirm
-			AddExecListener( SUBJECT_CONFIRM_OPT, ListenKey, &FOnOptConfirm ); ///< Option Confirm
-		}
-		if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
-		{
-			Glog->fprintf( " - Add TAIFEX Filled Listerner." );
-			AddExecListener( SUBJECT_FILL_FUT, ListenKey, &FOnFutFill ); ///< Futures filled
+            Glog->fprintf( " - Add TAIFEX Confirm Listerner." );
+            AddExecListener( SUBJECT_CONFIRM_FUT, ListenKey, &FOnFutConfirm ); ///< Futures Confirm
+            AddExecListener( SUBJECT_CONFIRM_OPT, ListenKey, &FOnOptConfirm ); ///< Option Confirm
+        }
+        if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
+        {
+            Glog->fprintf( " - Add TAIFEX Filled Listerner." );
+            AddExecListener( SUBJECT_FILL_FUT, ListenKey, &FOnFutFill ); ///< Futures filled
             AddExecListener( SUBJECT_FILL_OPT, ListenKey, &FOnOptFill ); ///< Option filled
         }
     }
@@ -1519,16 +1450,16 @@ void TTaifexConnection::AddTWSEReportListener( const UFC::AnsiString& ListenKey 
     {
         Glog->fprintf( " Support TWSE/OTC/ES" );
         if( FReportType == rdConfirm || FReportType == rdBoth )///< Add confirm listener.
-		{
-			Glog->fprintf( " - Add TSE/OTC Confirm Listerner." );
-			AddExecListener( SUBJECT_CONFIRM_TSE, ListenKey, &FOnTSEConfirm ); ///< TSE Confirm
-			AddExecListener( SUBJECT_CONFIRM_OTC, ListenKey, &FOnOTCConfirm ); ///< OTC Confirm
-			AddExecListener( SUBJECT_CONFIRM_ES, ListenKey, &FOnESConfirm );   ///< ES Confirm
-		}
+        {
+            Glog->fprintf( " - Add TSE/OTC Confirm Listerner." );
+            AddExecListener( SUBJECT_CONFIRM_TSE, ListenKey, &FOnTSEConfirm ); ///< TSE Confirm
+            AddExecListener( SUBJECT_CONFIRM_OTC, ListenKey, &FOnOTCConfirm ); ///< OTC Confirm
+            AddExecListener( SUBJECT_CONFIRM_ES, ListenKey, &FOnESConfirm );   ///< ES Confirm
+        }
 
-		if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
-		{
-			Glog->fprintf( " - Add TSE/OTC Filled Listerner." );
+        if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
+        {
+            Glog->fprintf( " - Add TSE/OTC Filled Listerner." );
             AddExecListener( SUBJECT_FILL_TSE, ListenKey, &FOnTSEFill); ///< TSE filled
             AddExecListener( SUBJECT_FILL_OTC, ListenKey, &FOnOTCFill); ///< OTC filled
             AddExecListener( SUBJECT_FILL_ES,  ListenKey, &FOnESFill);  ///< ESfilled
@@ -1544,13 +1475,12 @@ void TTaifexConnection::AddForeignExReportListener( const UFC::AnsiString& Liste
         Glog->fprintf( " Support Foreign Exchange" );
         if( FReportType == rdConfirm || FReportType == rdBoth )///< Add confirm listener.
         {
-			Glog->fprintf( " - Add Foreign Confirm Listerner." );
-			AddExecListener( SUBJECT_CONFIRM_FOREIGN, ListenKey, &FOnForeignConfirm );///< PATS Confirm
-		}
-
-		if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
-		{
-			Glog->fprintf( " - Add Foreign Filled Listerner." );
+            Glog->fprintf( " - Add Foreign Confirm Listerner." );
+            AddExecListener( SUBJECT_CONFIRM_FOREIGN, ListenKey, &FOnForeignConfirm );///< PATS Confirm
+        }
+        if( FReportType == rdFill || FReportType == rdBoth )///< Add fill listener.
+        {
+            Glog->fprintf( " - Add Foreign Filled Listerner." );
             AddExecListener( SUBJECT_FILL_FOREIGN, ListenKey, &FOnForeignFill );      ///< PATS filled
         }
     }
@@ -1572,16 +1502,16 @@ void TTaifexConnection::CreateReportListener( void )
         if( FAdmin == 1 ) ///< Admin receive all execution
         {
             ListenKey = "all";
-			AddTAIFEXReportListener( ListenKey );
+            AddTAIFEXReportListener( ListenKey );
             AddTWSEReportListener( ListenKey );
             AddForeignExReportListener( ListenKey );
             AddTouchOrderResponseListener(ListenKey); // added by Kenny to support Touch Order. 2026/03/16
         }
-		else  ///< Subscribes all IDs execution report.
+        else  ///< Subscribes all IDs execution report.
         {
             for( int i = 0;i < FIDs.ItemCount(); i++ )
             {
-				ListenKey = FIDs[i];
+                ListenKey = FIDs[i];
                 AddTAIFEXReportListener( ListenKey );
                 AddTWSEReportListener( ListenKey );
                 AddForeignExReportListener( ListenKey );
@@ -1612,8 +1542,8 @@ void TTaifexConnection::Logoff( void )
         FIsLogon = false;
         FID      = "";
         FToken   = "";
-		FAdmin   = 0;
-		FIsDMA   = 0;
+        FAdmin   = 0;
+        FIsDMA   = 0;
         FNetworkID.Uninit();
         ///< Listeners for Administration.
         RemoveListener( FAdminListener );
@@ -1635,9 +1565,9 @@ void TTaifexConnection::Logoff( void )
         {
             for( int i = 0 ;i < FExecListeners.ItemCount(); i++ )
             {
-                     DelListener = FExecListeners[i];
-                     if( DelListener != NULL )
-                             delete DelListener;
+                DelListener = FExecListeners[i];
+                if( DelListener != NULL )
+                    delete DelListener;
             }
             FExecListeners.Clear();
         }
@@ -1710,10 +1640,10 @@ void TTaifexConnection::DoRecover(  const char* ID,
     Msg.SetStringValue( "ID",     ID );
     Msg.SetIntegerValue( "ADMIN", FAdmin );    
     if( RecoverYYYYMMDD.Length() > 0 )
-	    UFC::BufferedLog::Printf( " Recover( ID[%s] Time[%s]~[%s] Execution[%s][%s][%d] Date[%s])", ID, BeginTime, ETime.c_str(), DataTypeStr(Type), MarketStr(Market), SessionStr(Session), RecoverYYYYMMDD.c_str() );
+        UFC::BufferedLog::Printf( " Recover( ID[%s] Time[%s]~[%s] Execution[%s][%s][%d] Date[%s])", ID, BeginTime, ETime.c_str(), DataTypeStr(Type), MarketStr(Market), SessionStr(Session), RecoverYYYYMMDD.c_str() );
     else    
         UFC::BufferedLog::Printf( " Recover( ID[%s] Time[%s]~[%s] Execution[%s][%s][%s] Date[Today])", ID, BeginTime, ETime.c_str(), DataTypeStr(Type), MarketStr(Market), SessionStr(Session) );
-	FTransport->Send( SUBJECT_ADMIN.c_str(), FUniquekey.c_str(), &Msg );
+    FTransport->Send( SUBJECT_ADMIN.c_str(), FUniquekey.c_str(), &Msg );
 }
 //---------------------------------------------------------------------------
 void TTaifexConnection::RecoverFromLocalFile( const char* BeginTime, RecoverDataType Type, RecoverMarket Market, RecoverSession SessionType  )
@@ -1953,14 +1883,14 @@ void TTaifexConnection::FillRejectMsg( nsOrderMessageDefine::CxlRejResponseToEnu
                                         const UFC::AnsiString& ErrMsg,
                                         TExecutionReportMessage* Msg )
 {
-	UFC::AnsiString ErrorStr;
+    UFC::AnsiString ErrorStr;
 
-        GetRejectMsg( StatusCode, ErrMsg, Msg, ErrorStr );        	
-	///< Set error message to execution report message.
-	Msg->SetText( ErrorStr );
-	Msg->SetOrderStatus( nsOrderMessageDefine::osRejected );
-	Msg->SetExecType( nsOrderMessageDefine::etRejected );
-	Msg->SetCxlRejResponseTo( CxlRejResponseTo );
+    GetRejectMsg( StatusCode, ErrMsg, Msg, ErrorStr );        	
+    ///< Set error message to execution report message.
+    Msg->SetText( ErrorStr );
+    Msg->SetOrderStatus( nsOrderMessageDefine::osRejected );
+    Msg->SetExecType( nsOrderMessageDefine::etRejected );
+    Msg->SetCxlRejResponseTo( CxlRejResponseTo );
 }
 //---------------------------------------------------------------------------
 void TTaifexConnection::Reject( nsOrderMessageDefine::CxlRejResponseToEnum CxlRejResponseTo,
@@ -1979,7 +1909,7 @@ void TTaifexConnection::Reject( nsOrderMessageDefine::CxlRejResponseToEnum CxlRe
     ExecutionReport.SetSymbol( Msg->GetSymbol() );
     ExecutionReport.SetMarket( Msg->GetMarket() );
     ExecutionReport.SetUserData( UDD.c_str() );
-	ExecutionReport.SetNID( Msg->GetNID() );
+    ExecutionReport.SetNID( Msg->GetNID() );
     ExecutionReport.SetOrderID( Msg->GetOrderID() );
     ExecutionReport.SetPositionEffect( Msg->GetPositionEffect() );
     ExecutionReport.SetOrderStatus( nsOrderMessageDefine::osRejected );
@@ -1990,10 +1920,10 @@ void TTaifexConnection::Reject( nsOrderMessageDefine::CxlRejResponseToEnum CxlRe
     ExecutionReport.SetTradingSessionID( TradingSession );
     ExecutionReport.SetPrice( Msg->GetPrice() );
     ExecutionReport.SetOrderQty( Msg->GetOrderQty() );
-	ExecutionReport.SetSide( Msg->GetSide() );
-	Glog->fprintf( " Reject Reason[%s]", ErrMsg.c_str() );
-	TrigerOnExecutionReport( &ExecutionReport, edSpeedyGenerate );
-	Glog->fprintf( " NID[%d] Callback Reject OnExecutionReport.", Msg->GetNID() );
+    ExecutionReport.SetSide( Msg->GetSide() );
+    Glog->fprintf( " Reject Reason[%s]", ErrMsg.c_str() );
+    TrigerOnExecutionReport( &ExecutionReport, edSpeedyGenerate );
+    Glog->fprintf( " NID[%d] Callback Reject OnExecutionReport.", Msg->GetNID() );
 }
 //---------------------------------------------------------------------------
 void TTaifexConnection::TrigerOnExecutionReport( TExecutionReportMessage* ExecutionReport, ExecDup PosDup )
@@ -2167,43 +2097,42 @@ bool TTaifexConnection::CheckCALogonData( const UFC::AnsiString& LogonData, CARe
 	{
 		if( FApiCAObjPtr->IsWorking() )
 		{
-            CAResult.SetCAObj( FApiCAObjPtr );
-			if (FApiCAObjPtr->GenerateLogonSignatureAndCAData(LogonData, CAResult) == 0)
-			{
-				isSuccess = true;
-				Glog->fprintf( " %s() PlainText[%s].", __func__, CAResult.GetPlainText().c_str() );
-				Glog->fprintf( " %s() Subject[%s].", __func__, CAResult.GetSubject().c_str() );
-				Glog->fprintf( " %s() NotBefore[%s].", __func__, CAResult.GetNotBefore().c_str() );
-				Glog->fprintf( " %s() NotAfter[%s].", __func__, CAResult.GetNotAfter().c_str() );
-				Glog->fprintf( " %s() SerialNumber[%s].", __func__, CAResult.GetSerialNumber().c_str() );
-			}
-			else
-				Glog->fprintf( " %s() Error:%s.", __func__, CAResult.GetResultMsg().c_str() );
+                    CAResult.SetCAObj( FApiCAObjPtr );
+                    if (FApiCAObjPtr->GenerateLogonSignatureAndCAData(LogonData, CAResult) == 0)
+                    {
+                        isSuccess = true;
+                        Glog->fprintf( " %s() PlainText[%s].", __func__, CAResult.GetPlainText().c_str() );
+                        Glog->fprintf( " %s() Subject[%s].", __func__, CAResult.GetSubject().c_str() );
+                        Glog->fprintf( " %s() NotBefore[%s].", __func__, CAResult.GetNotBefore().c_str() );
+                        Glog->fprintf( " %s() NotAfter[%s].", __func__, CAResult.GetNotAfter().c_str() );
+                        Glog->fprintf( " %s() SerialNumber[%s].", __func__, CAResult.GetSerialNumber().c_str() );
+                    }
+                    else
+                        Glog->fprintf( " %s() Error:%s.", __func__, CAResult.GetResultMsg().c_str() );
 		}
 		else
-			checkMsg.Printf( "CA Object is not Working." );
+                    checkMsg.Printf( "CA Object is not Working." );
 		CAResult.SetResultMsg(checkMsg);
 	}
 	else
 	{
-		Glog->fprintf( " %s() No CA Object.", __func__ );
-		isSuccess = true;
+            Glog->fprintf( " %s() No CA Object.", __func__ );
+            isSuccess = true;
 	}
-
 	return isSuccess;
 }  //TTaifexConnection::CheckCALogonData()
 //---------------------------------------------------------------------------
 void  TTaifexConnection::Stdout( BOOL ToStdOut )
 {
-	if( ToStdOut == false )
-	{
-		UFC::BufferedLog::SetPrintToStdout( FALSE );
-		Glog->SetToStdout(FALSE);
-	}
-	else
-	{
-		UFC::BufferedLog::SetPrintToStdout( TRUE );
-		Glog->SetToStdout(TRUE);
-	}
+    if( ToStdOut == false )
+    {
+        UFC::BufferedLog::SetPrintToStdout( FALSE );
+        Glog->SetToStdout(FALSE);
+    }
+    else
+    {
+        UFC::BufferedLog::SetPrintToStdout( TRUE );
+        Glog->SetToStdout(TRUE);
+    }
 }
 //---------------------------------------------------------------------------

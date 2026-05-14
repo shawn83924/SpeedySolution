@@ -29,15 +29,15 @@
 //------------------------------------------------------------------------------
 //#ifdef __UNICA_WIN
 #ifdef WIN32
-	#include "../CA/ApiCADllObject.h"
-	#include "../CA/CABasicObjects.h"
-/// Allen Modify at 20190615
-#ifndef _MSC_VER
+    #include "../CA/ApiCADllObject.h"
+    #include "../CA/CABasicObjects.h"
+    /// Allen Modify at 20190615
+    #ifndef _MSC_VER
 	#include "../CA/CACGCObject.h"
-#endif
+    #endif
 #else
-	#include "../CA/ApiCADllObject.h"
-	#include "../CA/CABasicObjects.h"
+    #include "../CA/ApiCADllObject.h"
+    #include "../CA/CABasicObjects.h"
 #endif
 //------------------------------------------------------------------------------
 const int SPEEDY_API_PROXY_VERSION   = 3050801;
@@ -45,9 +45,9 @@ const int SPEEDY_API_GATEWAY_VERSION = 30508;
 //------------------------------------------------------------------------------
 typedef enum
 {
-	edNewExecution       = 0,
-	edPossibleDuplicate  = 1,
-	edSpeedyGenerate     = 2
+    edNewExecution       = 0,
+    edPossibleDuplicate  = 1,
+    edSpeedyGenerate     = 2
 
 } ExecDup;
 //------------------------------------------------------------------------------
@@ -62,78 +62,78 @@ typedef enum
 //------------------------------------------------------------------------------
 typedef enum
 {
-	crModifyOk       = 0,
-	crFailed         = 1,
-	crNotLogin       = 2, ///< API side
-	crSameAsOld      = 3, ///< API side
-	crLengthNeeds8   = 4, ///< API side
-	crNeedsNumbers   = 5, ///< API side
-	crNeedsSymbols   = 6, ///< API side
-	crUpperLowerCase = 7, ///< API side
-	crRequestTimeOut = 8,
-	crWrongPassword  = 9,
-	crSameAsPrevious = 10,
-	crLockedTryAgain = 11
+    crModifyOk       = 0,
+    crFailed         = 1,
+    crNotLogin       = 2, ///< API side
+    crSameAsOld      = 3, ///< API side
+    crLengthNeeds8   = 4, ///< API side
+    crNeedsNumbers   = 5, ///< API side
+    crNeedsSymbols   = 6, ///< API side
+    crUpperLowerCase = 7, ///< API side
+    crRequestTimeOut = 8,
+    crWrongPassword  = 9,
+    crSameAsPrevious = 10,
+    crLockedTryAgain = 11
 
 } ChangePwdResult;
 //------------------------------------------------------------------------------
 typedef enum
 {
-	ssTAIFEX          = 0,
-	ssTSEOTC          = 1,
-	ssForeignExchange = 2
+    ssTAIFEX          = 0,
+    ssTSEOTC          = 1,
+    ssForeignExchange = 2
 
 } SellSideType;
 //------------------------------------------------------------------------------
 typedef enum
 {
-	mlEnglish = 0, ///< Error message in English
-	mlChinese = 1  ///< Error message in Chinese
+    mlEnglish = 0, ///< Error message in English
+    mlChinese = 1  ///< Error message in Chinese
 
 } MessageLanguage;
 //------------------------------------------------------------------------------
 typedef enum
 {
-	ctSendOrder       = 0, ///< Can place order only.(New/Cancel/Replace/Quote)
-	ctRecvExecution   = 1, ///< Only receive execution reports.
-	ctBoth            = 2, ///< Can place order and receive executions.
-	ctRecvFillOnly    = 3, ///< Only receive filled executions.
-	ctRecvComfirmOnly = 4  ///< Only receive confirm executions.
+    ctSendOrder       = 0, ///< Can place order only.(New/Cancel/Replace/Quote)
+    ctRecvExecution   = 1, ///< Only receive execution reports.
+    ctBoth            = 2, ///< Can place order and receive executions.
+    ctRecvFillOnly    = 3, ///< Only receive filled executions.
+    ctRecvComfirmOnly = 4  ///< Only receive confirm executions.
 
 } ConnectionType;
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	rmFutures        =  0,
-	rmOption         =  1,
-	rmTSE            =  2,
-	rmOTC            =  3,
-	rmAll            =  4,
-	rmForeignFutures =  5,
-	rmForeignOptions =  6,
-	rmForeignStock   =  7
+    rmFutures        =  0,
+    rmOption         =  1,
+    rmTSE            =  2,
+    rmOTC            =  3,
+    rmAll            =  4,
+    rmForeignFutures =  5,
+    rmForeignOptions =  6,
+    rmForeignStock   =  7
 
 } RecoverMarket;
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	rsNormal      =  0,
-	rsOffHour     =  1,
-	rsAll         =  2,
+    rsNormal      =  0,
+    rsOffHour     =  1,
+    rsAll         =  2,
     rsPrevOffHour =  3 
 
 } RecoverSession;
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	cmTWFutures      =  0,
-	cmTWOptions      =  1,
-	cmTWSE           =  2,
-	cmOTC            =  3,	
-	cmForeignFutures =  4,
+    cmTWFutures      =  0,
+    cmTWOptions      =  1,
+    cmTWSE           =  2,
+    cmOTC            =  3,	
+    cmForeignFutures =  4,
     cmForeignOptions =  5,
-	cmCNFutures      =  6,	
-	cmCNOptions      =  7,
+    cmCNFutures      =  6,	
+    cmCNOptions      =  7,
     cmAll            =  8
 
 } CancelMarket;
@@ -149,36 +149,36 @@ typedef enum
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	rdConfirm = 0, ///< Recover order confirmation
-	rdFill    = 1, ///< Recover order filled execution.
-	rdBoth    = 2
+    rdConfirm = 0, ///< Recover order confirmation
+    rdFill    = 1, ///< Recover order filled execution.
+    rdBoth    = 2
 
 } RecoverDataType;
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	smtNew           = 0,
-	smtCancel        = 1,
-	smtReplace       = 2,
-	smtQuoteNew      = 3,
-	smtQuoteCancel   = 4,
-	smtQuoteRequest  = 5
+    smtNew           = 0,
+    smtCancel        = 1,
+    smtReplace       = 2,
+    smtQuoteNew      = 3,
+    smtQuoteCancel   = 4,
+    smtQuoteRequest  = 5
 
 } SendMessageType;
 //----------------------------------------------------------------------------------------------------------------------
 typedef enum
 {
-	atSpeedy        = 0, ///< Taiwan MDBS Speedy API
-	atCTP           = 1, ///< China CTP API
-	atFemas         = 2, ///< China Femas API
-	atKSft          = 3, ///< China SunGard API. (Futures/Options)
-	atKStrd         = 4, ///< China SunGard API. (Futures/Options/Stock-Options Integrated version)
-	atHSctp         = 5, ///< China HundSun API. (Futures/Options) (CTP Like version)
-	atHSufxFutOpt   = 6, ///< China HundSun API. (Futures/Options) (Native UFX API)
-	atHSufxStockOpt = 7, ///< China HundSun API. (Stock-Option)    (Native UFX API)
-	atKNctp         = 8, ///< China KingNew API. (CTP Like version)
-	atCliOpt        = 9, ///< China maCliOpt API (CTP Like version)
-	atJasStk        = 10 ///< Taiwan Jasper API. (Stock)
+    atSpeedy        = 0, ///< Taiwan MDBS Speedy API
+    atCTP           = 1, ///< China CTP API
+    atFemas         = 2, ///< China Femas API
+    atKSft          = 3, ///< China SunGard API. (Futures/Options)
+    atKStrd         = 4, ///< China SunGard API. (Futures/Options/Stock-Options Integrated version)
+    atHSctp         = 5, ///< China HundSun API. (Futures/Options) (CTP Like version)
+    atHSufxFutOpt   = 6, ///< China HundSun API. (Futures/Options) (Native UFX API)
+    atHSufxStockOpt = 7, ///< China HundSun API. (Stock-Option)    (Native UFX API)
+    atKNctp         = 8, ///< China KingNew API. (CTP Like version)
+    atCliOpt        = 9, ///< China maCliOpt API (CTP Like version)
+    atJasStk        = 10 ///< Taiwan Jasper API. (Stock)
 
 } APIType;
 //------------------------------------------------------------------------------
@@ -364,8 +364,7 @@ private:
 	UFC::AnsiString                 FUniquekey;
 	UFC::AnsiString                 FCMID;
 	UFC::AnsiString                 FUserName;
-	bool                            FIsTWSENewVersion;
-	bool                            FIsTWSEExNewVersion;
+	bool                            FIsTWSE8DigiVersion;
 	bool                            FNewFutSymbol;
 	bool                            FEnablePendingNewAck;
 	bool                            FTriggerExec;
@@ -456,41 +455,11 @@ private:
 	///<
 	///< TSE T010,O010,P010 Rendera for NewOrder( Normal,Odd,Post session)
 	UFC::TFixedFormat               FTSET010Format;
-	UFC::TRenderData                FTSET010Render;
-	UFC::TFixedFormat               FTSEO010Format;
-	UFC::TRenderData                FTSEO010Render;
-	UFC::TFixedFormat               FTSEP010Format;
-	UFC::TRenderData                FTSEP010Render;
-	///< TSE T020,O020,P020 Parser for confirm execution( Normal,Odd,Post session)
-	UFC::TFixedFormat               FTSET020Format;
-	UFC::TParseData                 FTSET020Parser;
-	UFC::TFixedFormat               FTSEO020Format;
-	UFC::TParseData                 FTSEO020Parser;
-	UFC::TFixedFormat               FTSEP020Format;
-	UFC::TParseData                 FTSEP020Parser;
+	UFC::TRenderData                FTSET010Render;	
 	///< OTC T010,O010,P010 Render for NewOrder( Normal,Odd,Post session)
 	UFC::TFixedFormat               FOTCT010Format;
 	UFC::TRenderData                FOTCT010Render;
-	UFC::TFixedFormat               FOTCO010Format;
-	UFC::TRenderData                FOTCO010Render;
-	UFC::TFixedFormat               FOTCP010Format;
-	UFC::TRenderData                FOTCP010Render;
-	///< OTC T020,O020,P020 Parser for confirm execution( Normal,Odd,Post session)
-	UFC::TFixedFormat               FOTCT020Format;
-	UFC::TParseData                 FOTCT020Parser;
-	UFC::TFixedFormat               FOTCO020Format;
-	UFC::TParseData                 FOTCO020Parser;
-	UFC::TFixedFormat               FOTCP020Format;
-	UFC::TParseData                 FOTCP020Parser;
-	///< TSE A010, V010, E010, Ex010 Render
-	UFC::TFixedFormat               FTSEA010Format;
-	UFC::TRenderData                FTSEA010Render;
-	UFC::TFixedFormat               FTSEV010Format;
-	UFC::TRenderData                FTSEV010Render;
-	UFC::TFixedFormat               FTSEE010Format;
-	UFC::TRenderData                FTSEE010Render;
-	UFC::TFixedFormat               FTSEEx010Format;
-	UFC::TRenderData                FTSEEx010Render;
+	///< TSE A010, V010, E010, Ex010 Render        
 	UFC::TFixedFormat               FTSEA010ExFormat; ///< New for 2020/03/02
 	UFC::TRenderData                FTSEA010ExRender; ///< New for 2020/03/02
 	UFC::TFixedFormat               FTSEV010ExFormat; ///< New for 2020/03/02
@@ -499,15 +468,7 @@ private:
 	UFC::TRenderData                FTSEE010ExRender; ///< New for 2020/03/02
 	UFC::TFixedFormat               FTSEEx010ExFormat;///< New for 2020/03/02
 	UFC::TRenderData                FTSEEx010ExRender;///< New for 2020/03/02
-	///< TSE A020, V020, E020, Ex020 Parser
-	UFC::TFixedFormat               FTSEA020Format;
-	UFC::TParseData                 FTSEA020Parser;
-	UFC::TFixedFormat               FTSEV020Format;
-	UFC::TParseData                 FTSEV020Parser;
-	UFC::TFixedFormat               FTSEE020Format;
-	UFC::TParseData                 FTSEE020Parser;
-	UFC::TFixedFormat               FTSEEx020Format;
-	UFC::TParseData                 FTSEEx020Parser;
+	///< TSE A020, V020, E020, Ex020 Parser	
 	UFC::TFixedFormat               FTSEA020ExFormat; ///< New for 2020/03/02
 	UFC::TParseData                 FTSEA020ExParser; ///< New for 2020/03/02
 	UFC::TFixedFormat               FTSEV020ExFormat; ///< New for 2020/03/02
@@ -516,48 +477,27 @@ private:
 	UFC::TParseData                 FTSEE020ExParser; ///< New for 2020/03/02
 	UFC::TFixedFormat               FTSEEx020ExFormat;///< New for 2020/03/02
 	UFC::TParseData                 FTSEEx020ExParser;///< New for 2020/03/02
-	///< OTC V010, E010, Ex010 Render
-	UFC::TFixedFormat               FOTCV010Format;
-	UFC::TRenderData                FOTCV010Render;
-	UFC::TFixedFormat               FOTCE010Format;
-	UFC::TRenderData                FOTCE010Render;
-	UFC::TFixedFormat               FOTCEx010Format;
-	UFC::TRenderData                FOTCEx010Render;
+	///< OTC V010, E010, Ex010 Render	
 	UFC::TFixedFormat               FOTCV010ExFormat; ///< New for 2020/03/02
 	UFC::TRenderData                FOTCV010ExRender; ///< New for 2020/03/02
 	UFC::TFixedFormat               FOTCE010ExFormat; ///< New for 2020/03/02
 	UFC::TRenderData                FOTCE010ExRender; ///< New for 2020/03/02
 	UFC::TFixedFormat               FOTCEx010ExFormat;///< New for 2020/03/02
 	UFC::TRenderData                FOTCEx010ExRender;///< New for 2020/03/02
-	///< OTC V020, E020, Ex020 Parser
-	UFC::TFixedFormat               FOTCV020Format;
-	UFC::TParseData                 FOTCV020Parser;
-	UFC::TFixedFormat               FOTCE020Format;
-	UFC::TParseData                 FOTCE020Parser;
-	UFC::TFixedFormat               FOTCEx020Format;
-	UFC::TParseData                 FOTCEx020Parser;
+	///< OTC V020, E020, Ex020 Parser	
 	UFC::TFixedFormat               FOTCV020ExFormat; ///< New for 2020/03/02
 	UFC::TParseData                 FOTCV020ExParser; ///< New for 2020/03/02
 	UFC::TFixedFormat               FOTCE020ExFormat; ///< New for 2020/03/02
 	UFC::TParseData                 FOTCE020ExParser; ///< New for 2020/03/02
 	UFC::TFixedFormat               FOTCEx020ExFormat;///< New for 2020/03/02
-	UFC::TParseData                 FOTCEx020ExParser;///< New for 2020/03/02
-	///< Parsers and DataFormat for Execution.
-	///< Filled Execution Parser and DataFormat object.
-	UFC::TFixedFormat               FTSEC030Format;
-	UFC::TParseData                 FTSEC030Parser;
-	UFC::TFixedFormat               FOTCC030Format;
-	UFC::TParseData                 FOTCC030Parser;
-	///< New version for 2020/03 continuely match.(Normal)
+	UFC::TParseData                 FOTCEx020ExParser;///< New for 2020/03/02	        
+	
+        ///< New version for 2020/03 continuely match.(Normal/Odd/Post)
 	UFC::TFixedFormat               FTSET020ExFormat; ///< New for 2020/03/23
 	UFC::TParseData                 FTSET020ExParser; ///< New for 2020/03/23
 	UFC::TFixedFormat               FOTCT020ExFormat; ///< New for 2020/03/23
 	UFC::TParseData                 FOTCT020ExParser; ///< New for 2020/03/23
-	UFC::TFixedFormat               FTSER03ExFormat;  ///< New for 2020/03/23
-	UFC::TParseData                 FTSER03ExParser;  ///< New for 2020/03/23
-	UFC::TFixedFormat               FOTCR03ExFormat;  ///< New for 2020/03/23
-	UFC::TParseData                 FOTCR03ExParser;  ///< New for 2020/03/23
-	///< New version for 2020/03 continuely match.(Odd/Post)
+        
 	UFC::TFixedFormat               FTSEO010ExFormat; ///< New for 2020/03/23
 	UFC::TRenderData                FTSEO010ExRender; ///< New for 2020/03/23
 	UFC::TFixedFormat               FOTCO010ExFormat; ///< New for 2020/03/23
@@ -577,7 +517,17 @@ private:
 	UFC::TParseData                 FTSEP020ExParser; ///< New for 2020/03/23
 	UFC::TFixedFormat               FOTCP020ExFormat; ///< New for 2020/03/23
 	UFC::TParseData                 FOTCP020ExParser; ///< New for 2020/03/23
-    ///< Render function pointor
+        
+        ///< Filled Execution Parser and DataFormat object.
+        UFC::TFixedFormat               FTSER03Format;  ///< New for 2020/06/15 8 digi fill sequence
+	UFC::TParseData                 FTSER03Parser;  ///< New for 2020/06/15 8 digi fill sequence
+	UFC::TFixedFormat               FOTCR03Format;  ///< New for 2020/06/15 8 digi fill sequence
+	UFC::TParseData                 FOTCR03Parser;  ///< New for 2020/06/15 8 digi fill sequence
+	UFC::TFixedFormat               FTSER03ExFormat;  ///< New for 2026/03/23
+	UFC::TParseData                 FTSER03ExParser;  ///< New for 2026/03/23
+	UFC::TFixedFormat               FOTCR03ExFormat;  ///< New for 2026/03/23
+	UFC::TParseData                 FOTCR03ExParser;  ///< New for 2026/03/23        
+        ///< Render function pointor
 	TWSERenderFunc                  FTWSERender;
 	///< Error code ini file.
 	UFC::UiniFile*                  FExchangeError;
@@ -608,7 +558,6 @@ private:
 	bool RenderTAIFEXReplaceOrder( TReplaceOrderMessage* Msg, char* R010, UFC::AnsiString& Source );
 	bool RenderTAIFEXOrderStatus( TOrderStatusRequest* Msg, char* R010, UFC::AnsiString& Source );
 
-	bool RenderTWSET010( int Func, TBaseMessage* Msg, char* T010, char Ex, char Ot );
 	bool RenderTWSET010Ex( int Func, TBaseMessage* Msg, char* T010, char Ex, char Ot );
 	bool RenderTWSEO110Ex( int Func, TBaseMessage* Msg, char* R010 );
 
@@ -701,8 +650,8 @@ private:
 public:
 	void                            ReceiveRecoverExecution( MTree* pTree );
 	void                            ReceiveAdminMessage( MTree* pTree );
-	bool 			            	IsTAIFEXSucceed( const UFC::AnsiString& StatusCode );
-	bool 		            		IsTWSESucceed( const UFC::AnsiString& StatusCode );
+	bool    	            	IsTAIFEXSucceed( const UFC::AnsiString& StatusCode );
+	bool 	            		IsTWSESucceed( const UFC::AnsiString& StatusCode );
 private: ///< Handle Executions
 	///< Confirm messages
 	void                            ReceiveFutConfirmMessage( MTree* pTree );
@@ -991,42 +940,32 @@ public:
 
 	bool IsTWOptions( const UFC::AnsiString& Symbol );
 	bool IsTWFutures( const UFC::AnsiString& Symbol );
-    void CancelWorking( CancelMarket Market, const UFC::AnsiString& AE, const UFC::AnsiString& Account, const UFC::AnsiString& UserData, const UFC::AnsiString& ProdID, const UFC::AnsiString& CancelUDD );
-
+        void CancelWorking( CancelMarket Market, const UFC::AnsiString& AE, const UFC::AnsiString& Account, const UFC::AnsiString& UserData, const UFC::AnsiString& ProdID, const UFC::AnsiString& CancelUDD );
+        UFC::BufferedLog* GetLogObj() { return Glog; }
+	const UFC::AnsiString& GetLocalIP( void ) { return FLocalIP; }
+	void SetTWSE8DigiSeqVersion( bool Is8Digi );        
+	bool IsTWSE8DigiSeq( void ) { return FIsTWSE8DigiVersion; }
+	void SetThroughput( int PerSec ) { FOrderPerSec = PerSec; }
+	void ChangePassword( const UFC::AnsiString& Password, const UFC::AnsiString& NewPassword );
+	bool MarginPositionRequest( const UFC::AnsiString& BrokerID, const UFC::AnsiString& Account, UFC::AnsiString& Result );
+	bool GetFNeedCheckOrdQty0() { return FNeedCheckOrdQty0; };
+	void SetFNeedCheckOrdQty0( bool NewValue ) { FNeedCheckOrdQty0 = NewValue; };        
+public: ///< CA Functions
 	UFC::AnsiString GetCAPFXFilePathName() {return FCAPFXFilePathName;};
 	void SetCAPFXFilePathName(const UFC::AnsiString& NewValue) {FCAPFXFilePathName = NewValue;};
-
 	UFC::AnsiString GetCAPassword() {return FCAPassword;};
 	void SetCAPassword(const UFC::AnsiString& NewValue) {FCAPassword = NewValue;};
-
 	UFC::AnsiString GetCADLLFileName() {return FCADLLFileName;};
 	void SetCADLLFileName(const UFC::AnsiString& NewValue) {FCADLLFileName = NewValue;};
-
 	UFC::AnsiString GetCAOrganizationalUnit() {return FCAOrganizationalUnit;};
 	void SetCAOrganizationalUnit(const UFC::AnsiString& NewValue) {FCAOrganizationalUnit = NewValue;};
-
 	UFC::AnsiString GetCACommonName() {return FCACommonName;};
 	void SetCACommonName(const UFC::AnsiString& NewValue) {FCACommonName = NewValue;};
-
 	void CreateCAObject();
 	void DeleteCAObject();
 	bool CreateUniFSCAObject();
 	bool CreateMLTWCAObject();
 	bool CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult );
-	UFC::BufferedLog* GetLogObj() { return Glog; }
-
-	const UFC::AnsiString& GetLocalIP( void ) { return FLocalIP; }
-	void SetTWSENewVersion( bool IsNew, bool InNewEx );
-	bool IsTWSENewVersion( void ) { return FIsTWSENewVersion; }
-	bool IsTWSEExNewVersion( void ) { return FIsTWSEExNewVersion; }
-	void SetThroughput( int PerSec ) { FOrderPerSec = PerSec; }
-
-	void ChangePassword( const UFC::AnsiString& Password, const UFC::AnsiString& NewPassword );
-	bool MarginPositionRequest( const UFC::AnsiString& BrokerID, const UFC::AnsiString& Account, UFC::AnsiString& Result );
-
-
-	bool GetFNeedCheckOrdQty0() { return FNeedCheckOrdQty0; };
-	void SetFNeedCheckOrdQty0( bool NewValue ) { FNeedCheckOrdQty0 = NewValue; };
 };
 //------------------------------------------------------------------------------
 #endif

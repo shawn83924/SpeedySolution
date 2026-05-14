@@ -25,44 +25,44 @@ BOOL TTaifexConnection::ParseUserID( const UFC::AnsiString& String, UFC::AnsiStr
 //---------------------------------------------------------------------------
 UFC::TRecord* TTaifexConnection::ParseExecuteReport( nsOrderMessageDefine::MarketEnum Market, const UFC::AnsiString& ExecuteMessage )
 {
-	int Length = ExecuteMessage.Length();
-	char Type = ExecuteMessage[0];
+    int Length = ExecuteMessage.Length();
+    char Type = ExecuteMessage[0];
 
-	if( Market == nsOrderMessageDefine::mTWFutures || Market == nsOrderMessageDefine::mTWOptions )
-	{
-		switch( Type )
-		{
-			case '1':///< Filled OPT Single
-				if( FReportType == rdConfirm ) ///< Confirm Only! Skip Filled
-				    return NULL;
-				return FC030Parser.Parse( ExecuteMessage.c_str(), Length );
-			case '2':///< Multi-leg order filled.
-				if( FReportType == rdConfirm ) ///< Confirm Only! Skip Filled
-				    return NULL;
-				return FC030MParser.Parse( ExecuteMessage.c_str(), Length );
-			case '3':///< Canceled/ Replace
-				if( FReportType == rdFill ) ///< Filled Only! Skip Cancel.
-				    return NULL;
-				return FC030CRParser.Parse( ExecuteMessage.c_str(), Length );
-			case '4':///< Quote Canceled/ Replace
-				if( FReportType == rdFill ) ///< Filled Only! Skip Replace.
-				    return NULL;
-				return FC030QCRParser.Parse( ExecuteMessage.c_str(), Length );
-		}
+    if( Market == nsOrderMessageDefine::mTWFutures || Market == nsOrderMessageDefine::mTWOptions )
+    {
+        switch( Type )
+        {
+            case '1':///< Filled OPT Single
+                    if( FReportType == rdConfirm ) ///< Confirm Only! Skip Filled
+                        return NULL;
+                    return FC030Parser.Parse( ExecuteMessage.c_str(), Length );
+            case '2':///< Multi-leg order filled.
+                    if( FReportType == rdConfirm ) ///< Confirm Only! Skip Filled
+                        return NULL;
+                    return FC030MParser.Parse( ExecuteMessage.c_str(), Length );
+            case '3':///< Canceled/ Replace
+                    if( FReportType == rdFill ) ///< Filled Only! Skip Cancel.
+                        return NULL;
+                    return FC030CRParser.Parse( ExecuteMessage.c_str(), Length );
+            case '4':///< Quote Canceled/ Replace
+                    if( FReportType == rdFill ) ///< Filled Only! Skip Replace.
+                        return NULL;
+                    return FC030QCRParser.Parse( ExecuteMessage.c_str(), Length );
+        }
     }
-	else if( Market == nsOrderMessageDefine::mTSE || Market == nsOrderMessageDefine::mES )
-	{
-		if( FIsTWSENewVersion == true )
-			return FTSER03ExParser.Parse( ExecuteMessage.c_str(), Length );
-		else
-			return FTSEC030Parser.Parse( ExecuteMessage.c_str(), Length );
-	}
-	else if( Market == nsOrderMessageDefine::mOTC )
-	{
-		if( FIsTWSENewVersion == true )
-			return FOTCR03ExParser.Parse( ExecuteMessage.c_str(), Length );
-		else
-			return FOTCC030Parser.Parse( ExecuteMessage.c_str(), Length );
+    else if( Market == nsOrderMessageDefine::mTSE || Market == nsOrderMessageDefine::mES )
+    {
+        if( FIsTWSE8DigiVersion == TRUE ) ///< New 8 digi sequence format
+            return FTSER03Parser.Parse( ExecuteMessage.c_str(), Length );
+        else
+            return FTSER03ExParser.Parse( ExecuteMessage.c_str(), Length );
+    }
+    else if( Market == nsOrderMessageDefine::mOTC )
+    {
+        if( FIsTWSE8DigiVersion == TRUE ) ///< New 8 digi sequence format
+            return FOTCR03Parser.Parse( ExecuteMessage.c_str(), Length );
+        else
+            return FOTCR03ExParser.Parse( ExecuteMessage.c_str(), Length );
     }
     return NULL;
 }
@@ -516,7 +516,7 @@ void TTaifexConnection::ReceiveTSEExecuteMessage( MTree* pTree )
             pRecord->GetField( "Side", Side ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = (FIsTWSENewVersion == true ) ? 4 : 2;
+            int Precision = 4;
             int SideInt;
 
             ExecutionReport.SetMarket( nsOrderMessageDefine::mTSE );
@@ -603,7 +603,7 @@ void TTaifexConnection::ReceiveOTCExecuteMessage( MTree* pTree )
             pRecord->GetField( "Side", Side ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = (FIsTWSENewVersion == true ) ? 4 : 2;
+            int Precision = 4;
             int SideInt;
 
             ExecutionReport.SetMarket( nsOrderMessageDefine::mOTC );
@@ -689,7 +689,7 @@ void TTaifexConnection::ReceiveESExecuteMessage( MTree* pTree )
             pRecord->GetField( "Side", Side ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = (FIsTWSENewVersion == true )? 4 : 2;
+            int Precision = 4;
             int SideInt;
 
             ExecutionReport.SetMarket( nsOrderMessageDefine::mES );

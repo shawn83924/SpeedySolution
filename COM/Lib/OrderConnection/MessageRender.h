@@ -25,28 +25,6 @@ public:
 	char* ToString();
 };
 //---------------------------------------------------------------------------
-class TWSET01
-{
-public:
-	char Header[14];
-	char BrokerID[4];        /* Broker ID */
-	char PVCID[2];
-	char OrderNo[5];         /* order # */
-	char InvestorAcno[7];    /* investor account # */
-	char InvestorFlag;       /* investor flag */
-	char StockID[6];         /* Stock ID */
-	char OrderPrice[6];      /* order price */
-	char OrderQty[3];        /* quantity */
-	char BuySellCode;        /* B/S code */
-	char ExchangeCode;
-	char OrderType;          /* order type */
-	char End;
-public:
-	TWSET01( void );
-	void SetFunction( BOOL IsTSE, int Func );
-	char* ToString();
-};
-//---------------------------------------------------------------------------
 class TWSET01Ex
 {
 public:
@@ -56,8 +34,8 @@ public:
 	char OrderNo[5];         ///< order #
 	char InvestorAcno[7];    ///< investor account #
 	char InvestorFlag;       ///< investor flag. ' ': Normal 'A': auto
-							 ///<                'D': DMA    'I': internet
-							 ///<                'V': Voice  'P': API
+				 ///<                'D': DMA    'I': internet
+				 ///<                'V': Voice  'P': API
 	char StockID[6];         ///< Stock ID
 	char OrderPrice[9];      ///< *New* order price 9(4)v2 to 9(5)v4
 	char OrderQty[6];        ///< *New* quantity  9(4) to 9(6)

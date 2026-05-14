@@ -165,7 +165,6 @@
         <BCC_StackFrames>false</BCC_StackFrames>
         <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
-        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <Debugger_HostApplication>C:\src\COM\CSharpTest\SpeedyOrderClient3\Debug\SpeedyOrderClient3.exe</Debugger_HostApplication>
@@ -649,7 +648,11 @@
                 <Source>
                     <Source Name="MainSource">SpeedyAPI.cpp</Source>
                 </Source>
-                <Excluded_Packages/>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="C:\MBus\lib\MDComponent.bpl">MB C++Builder Components 2010</Excluded_Packages>
+                </Excluded_Packages>
                 <VFOLDERS>
                     <VFOLDER ID="{837938E6-19E3-4F26-92CF-3560DB3DD33E}" name="Base"/>
                     <VFOLDER ID="{A41D5817-0117-4313-99A9-BF80309951BF}" name="China Support">
