@@ -31,7 +31,7 @@ DEFAULTCONF=LINUX_Release_64
 CONF=${DEFAULTCONF}
 
 # All Configurations
-ALLCONFS=LINUX_Release_64 LINUX_Debug_64 LINUX_Release_dynamic_64 LINUX_Release1_dynamic_64 LINUX_Debug_dynamic_64 LINUX_Release_dynamic LINUX_Release AIX_Debug AIX_Release 
+ALLCONFS=LINUX_Release_64 LINUX_Debug_64 LINUX_Release_dynamic_64 LINUX_Release1_dynamic_64 LINUX_Release LINUX_Release_dynamic AIX_Debug AIX_Release 
 
 
 # build

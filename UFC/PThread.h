@@ -476,17 +476,17 @@ public:
     virtual void GenerateMainIndexKey(UFC::RWLockTypeEnum LockType = UFC::rwNotLock) {};
     virtual UFC::AnsiString ToString(UFC::RWLockTypeEnum LockType = UFC::rwNotLock) {return GetFieldValue<UFC::AnsiString>(FMainIndexKey, LockType);};
 };  //CMainKeyObject
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CFOMainKeyObjectLess  //Compare Function Object
 {
 public:
-	CFOMainKeyObjectLess() {};
-	~CFOMainKeyObjectLess() {};
+    CFOMainKeyObjectLess() {};
+    ~CFOMainKeyObjectLess() {};
 
-	bool operator()(CMainKeyObject* MainKeyObjPtr1, CMainKeyObject* MainKeyObjPtr2)
-		{return MainKeyObjPtr1->GetMainIndexKey(UFC::rwLockForRead) < MainKeyObjPtr2->GetMainIndexKey(UFC::rwLockForRead);};
+    bool operator()(CMainKeyObject* MainKeyObjPtr1, CMainKeyObject* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey(UFC::rwLockForRead) < MainKeyObjPtr2->GetMainIndexKey(UFC::rwLockForRead);};
 };  //CFOMainKeyObjectLess
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CFOMainKeyObjectLessEqual  //Compare Function Object
 {
 public:
@@ -496,7 +496,7 @@ public:
     bool operator()(CMainKeyObject* MainKeyObjPtr1, CMainKeyObject* MainKeyObjPtr2)
         {return MainKeyObjPtr1->GetMainIndexKey(UFC::rwLockForRead) <= MainKeyObjPtr2->GetMainIndexKey(UFC::rwLockForRead);};
 };  //CFOMainKeyObjectLessEqual
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CFOMainKeyObjectGreater  //Compare Function Object
 {
 public:
@@ -506,7 +506,7 @@ public:
     bool operator()(CMainKeyObject* MainKeyObjPtr1, CMainKeyObject* MainKeyObjPtr2)
         {return MainKeyObjPtr1->GetMainIndexKey(UFC::rwLockForRead) > MainKeyObjPtr2->GetMainIndexKey(UFC::rwLockForRead);};
 };  //CFOMainKeyObjectGreater
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CFOMainKeyObjectGreaterEqual  //Compare Function Object
 {
 public:
@@ -516,7 +516,7 @@ public:
     bool operator()(CMainKeyObject* MainKeyObjPtr1, CMainKeyObject* MainKeyObjPtr2)
         {return MainKeyObjPtr1->GetMainIndexKey(UFC::rwLockForRead) >= MainKeyObjPtr2->GetMainIndexKey(UFC::rwLockForRead);};
 };  //CFOMainKeyObjectGreaterEqual
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CFOMainKeyObjectEqual  //Compare Function Object
 {
 private:
@@ -528,6 +528,133 @@ public:
 
     bool operator()(CMainKeyObject* MainKeyObjPtr) {return MainKeyObjPtr->GetMainIndexKey(UFC::rwLockForRead) == FCompareKey;};
 };  //CFOMainKeyObjectEqual
+
+//------------------------------------------------------------------------------
+class CMainKeyObjectL : public CBasicRWLockObject
+{
+protected:
+    UFC::AnsiString FMainIndexKey;
+    
+public:
+    CMainKeyObjectL(bool NeedLock);
+    CMainKeyObjectL(bool NeedLock, const UFC::AnsiString MainIndexKey);
+    
+    virtual UFC::AnsiString GetMainIndexKey() {return FMainIndexKey;};
+    virtual UFC::AnsiString GetMainIndexKey_L(UFC::RWLockTypeEnum LockType) {return GetFieldValue<UFC::AnsiString>(FMainIndexKey, LockType);};
+    virtual void SetMainIndexKey(const UFC::AnsiString& NewValue) {FMainIndexKey = NewValue;};
+    virtual void SetMainIndexKey_L(const UFC::AnsiString& NewValue, UFC::RWLockTypeEnum LockType) {SetFieldValue<UFC::AnsiString>(NewValue, FMainIndexKey, LockType);};
+    
+    virtual void GenerateMainIndexKey() {};
+    virtual void GenerateMainIndexKey_L(UFC::RWLockTypeEnum LockType);
+    
+    virtual UFC::AnsiString ToString() {return FMainIndexKey;};
+    virtual UFC::AnsiString ToString_L(UFC::RWLockTypeEnum LockType);
+};  //CMainKeyObjectL
+
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_Less  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_Less() {};
+    ~CFOMainKeyObjectL_Less() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey() < MainKeyObjPtr2->GetMainIndexKey();};
+};  //CFOMainKeyObjectL_Less
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_LessL  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_LessL() {};
+    ~CFOMainKeyObjectL_LessL() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey_L(UFC::rwLockForRead) < MainKeyObjPtr2->GetMainIndexKey_L(UFC::rwLockForRead);};
+};  //CFOMainKeyObjectL_LessL
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_LessEqual  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_LessEqual() {};
+    ~CFOMainKeyObjectL_LessEqual() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey() <= MainKeyObjPtr2->GetMainIndexKey();};
+};  //CFOMainKeyObjectL_LessEqual
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_LessEqualL  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_LessEqualL() {};
+    ~CFOMainKeyObjectL_LessEqualL() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey_L(UFC::rwLockForRead) <= MainKeyObjPtr2->GetMainIndexKey_L(UFC::rwLockForRead);};
+};  //CFOMainKeyObjectL_LessEqual
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_Greater  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_Greater() {};
+    ~CFOMainKeyObjectL_Greater() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey() > MainKeyObjPtr2->GetMainIndexKey();};
+};  //CFOMainKeyObjectL_Greater
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_GreaterL  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_GreaterL() {};
+    ~CFOMainKeyObjectL_GreaterL() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey_L(UFC::rwLockForRead) > MainKeyObjPtr2->GetMainIndexKey_L(UFC::rwLockForRead);};
+};  //CFOMainKeyObjectL_GreaterL
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_GreaterEqual  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_GreaterEqual() {};
+    ~CFOMainKeyObjectL_GreaterEqual() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey() >= MainKeyObjPtr2->GetMainIndexKey();};
+};  //CFOMainKeyObjectL_GreaterEqual
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_GreaterEqualL  //Compare Function Object
+{
+public:
+    CFOMainKeyObjectL_GreaterEqualL() {};
+    ~CFOMainKeyObjectL_GreaterEqualL() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr1, CMainKeyObjectL* MainKeyObjPtr2)
+        {return MainKeyObjPtr1->GetMainIndexKey_L(UFC::rwLockForRead) >= MainKeyObjPtr2->GetMainIndexKey_L(UFC::rwLockForRead);};
+};  //CFOMainKeyObjectL_GreaterEqualL
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_Equal  //Compare Function Object
+{
+private:
+    UFC::AnsiString FCompareKey;
+
+public:
+    CFOMainKeyObjectL_Equal(const UFC::AnsiString& CompareKey):FCompareKey(CompareKey) {};
+    ~CFOMainKeyObjectL_Equal() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr) {return MainKeyObjPtr->GetMainIndexKey() == FCompareKey;};
+};  //CFOMainKeyObjectL_Equal
+//------------------------------------------------------------------------------
+class CFOMainKeyObjectL_EqualL  //Compare Function Object
+{
+private:
+    UFC::AnsiString FCompareKey;
+
+public:
+    CFOMainKeyObjectL_EqualL(const UFC::AnsiString& CompareKey):FCompareKey(CompareKey) {};
+    ~CFOMainKeyObjectL_EqualL() {};
+
+    bool operator()(CMainKeyObjectL* MainKeyObjPtr) {return MainKeyObjPtr->GetMainIndexKey_L(UFC::rwLockForRead) == FCompareKey;};
+};  //CFOMainKeyObjectL_EqualL
 
 //---------------------------------------------------------------------------
 class PConditionMutex
@@ -558,6 +685,7 @@ public:
     void Unlock();
 #else  //defined(__LINUX) || defined(__AIX)
     int Lock();
+    int TryAndLock(const AnsiString& FuncName, const AnsiString& ObjName, void* LogPtr);
     int Unlock();
 #endif
     

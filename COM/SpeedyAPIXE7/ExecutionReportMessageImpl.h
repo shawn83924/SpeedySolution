@@ -150,6 +150,8 @@ protected:
   STDMETHOD(get_CancelByExchange(VARIANT_BOOL* Value));
   STDMETHOD(get_IsReplacePx(VARIANT_BOOL* Value));
   STDMETHOD(get_PartID(long* Value));
+  STDMETHOD(GetTouchOrderResponse(BSTR* Value));
+  STDMETHOD(GetTouchOrderRespType(TouchOrderResponseTypeEnum* Value));
 };
 
 

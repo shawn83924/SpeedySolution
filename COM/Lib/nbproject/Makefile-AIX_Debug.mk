@@ -49,9 +49,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/OrderConnection/HandleExchangeFilled.o \
 	${OBJECTDIR}/OrderConnection/HandleForeignExchangeConfirm.o \
 	${OBJECTDIR}/OrderConnection/HandleForeignExchangeFilled.o \
+	${OBJECTDIR}/OrderConnection/HandleTouchOrderResponse.o \
 	${OBJECTDIR}/OrderConnection/MessageRender.o \
 	${OBJECTDIR}/OrderConnection/RecoverThread.o \
 	${OBJECTDIR}/OrderConnection/SendMessageToExchange.o \
+	${OBJECTDIR}/OrderConnection/SendTouchOrderCmd.o \
 	${OBJECTDIR}/OrderConnection/TTaifexConnection.o \
 	${OBJECTDIR}/OrderMessage/TBaseMessage.o \
 	${OBJECTDIR}/OrderMessage/TCancelOrderMessage.o \
@@ -62,7 +64,9 @@ OBJECTFILES= \
 	${OBJECTDIR}/OrderMessage/TQuoteCancelMessage.o \
 	${OBJECTDIR}/OrderMessage/TQuoteMessage.o \
 	${OBJECTDIR}/OrderMessage/TQuoteRequestMessage.o \
-	${OBJECTDIR}/OrderMessage/TReplaceOrderMessage.o
+	${OBJECTDIR}/OrderMessage/TReplaceOrderMessage.o \
+	${OBJECTDIR}/OrderMessage/TTouchOrderCommand.o \
+	${OBJECTDIR}/OrderMessage/TTriggeringCondition.o
 
 
 # C Compiler Flags
@@ -161,6 +165,11 @@ ${OBJECTDIR}/OrderConnection/HandleForeignExchangeFilled.o: OrderConnection/Hand
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderConnection/HandleForeignExchangeFilled.o OrderConnection/HandleForeignExchangeFilled.cpp
 
+${OBJECTDIR}/OrderConnection/HandleTouchOrderResponse.o: OrderConnection/HandleTouchOrderResponse.cpp
+	${MKDIR} -p ${OBJECTDIR}/OrderConnection
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderConnection/HandleTouchOrderResponse.o OrderConnection/HandleTouchOrderResponse.cpp
+
 ${OBJECTDIR}/OrderConnection/MessageRender.o: OrderConnection/MessageRender.cpp
 	${MKDIR} -p ${OBJECTDIR}/OrderConnection
 	${RM} "$@.d"
@@ -175,6 +184,11 @@ ${OBJECTDIR}/OrderConnection/SendMessageToExchange.o: OrderConnection/SendMessag
 	${MKDIR} -p ${OBJECTDIR}/OrderConnection
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderConnection/SendMessageToExchange.o OrderConnection/SendMessageToExchange.cpp
+
+${OBJECTDIR}/OrderConnection/SendTouchOrderCmd.o: OrderConnection/SendTouchOrderCmd.cpp
+	${MKDIR} -p ${OBJECTDIR}/OrderConnection
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderConnection/SendTouchOrderCmd.o OrderConnection/SendTouchOrderCmd.cpp
 
 ${OBJECTDIR}/OrderConnection/TTaifexConnection.o: OrderConnection/TTaifexConnection.cpp
 	${MKDIR} -p ${OBJECTDIR}/OrderConnection
@@ -230,6 +244,16 @@ ${OBJECTDIR}/OrderMessage/TReplaceOrderMessage.o: OrderMessage/TReplaceOrderMess
 	${MKDIR} -p ${OBJECTDIR}/OrderMessage
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderMessage/TReplaceOrderMessage.o OrderMessage/TReplaceOrderMessage.cpp
+
+${OBJECTDIR}/OrderMessage/TTouchOrderCommand.o: OrderMessage/TTouchOrderCommand.cpp
+	${MKDIR} -p ${OBJECTDIR}/OrderMessage
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderMessage/TTouchOrderCommand.o OrderMessage/TTouchOrderCommand.cpp
+
+${OBJECTDIR}/OrderMessage/TTriggeringCondition.o: OrderMessage/TTriggeringCondition.cpp
+	${MKDIR} -p ${OBJECTDIR}/OrderMessage
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -D__AIX -I../../Migo -I../../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OrderMessage/TTriggeringCondition.o OrderMessage/TTriggeringCondition.cpp
 
 # Subprojects
 .build-subprojects:

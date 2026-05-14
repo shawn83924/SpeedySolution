@@ -250,6 +250,16 @@ typedef enum
 	lcktUnlock		= 2,  
 } LockTypeEnum;
 //--------------------------------------------------------------------------
+// added by Kenny to support Touch Order. 2026/03/16
+typedef enum
+{
+   tortNone = 0,
+   tortOrderConfirm,
+   tortStatusUpdate,
+   tortQueryResult,
+   tortOrderReject,
+} TouchOrderResponseTypeEnum;
+//--------------------------------------------------------------------------
 } //namespace nsOrderMessageDefine
 //--------------------------------------------------------------------------
 #endif

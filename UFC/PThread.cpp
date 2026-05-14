@@ -626,7 +626,7 @@ AnsiString GetLockMessageByCode(int LockCode)
         case EPIPE:   errMsg.Printf("%d_EPIPE:Broken pipe", EPIPE);                       break;  //32
         case EDOM:    errMsg.Printf("%d_EDOM:Math argument out of domain of func", EDOM); break;  //33
         case ERANGE:  errMsg.Printf("%d_ERANGE:Math result not representable", ERANGE);   break;  //34
-        default:      errMsg = "Unknown Error";
+        default:      errMsg.Printf("%d_Unknown Error", LockCode);
     }
     return errMsg;
 }  //GetLockMessageByCode()
@@ -1020,6 +1020,35 @@ CMainKeyObject::CMainKeyObject(bool NeedLock, const UFC::AnsiString MainIndexKey
 {
 }  //CMainKeyObject::CMainKeyObject()
 
+//------------------------------ CMainKeyObjectL ------------------------------_
+//------------------------------------------------------------------------------
+CMainKeyObjectL::CMainKeyObjectL(bool NeedLock)
+:CBasicRWLockObject(NeedLock)
+,FMainIndexKey("")
+{
+}  //CMainKeyObjectL::CMainKeyObjectL()
+//------------------------------------------------------------------------------
+CMainKeyObjectL::CMainKeyObjectL(bool NeedLock, const UFC::AnsiString MainIndexKey)
+:UFC::CBasicRWLockObject(NeedLock)
+,FMainIndexKey(MainIndexKey)
+{
+}  //CMainKeyObjectL::CMainKeyObjectL()
+//------------------------------------------------------------------------------
+void CMainKeyObjectL::GenerateMainIndexKey_L(UFC::RWLockTypeEnum LockType)
+{
+    if (FRWLockPtr != 0) FRWLockPtr->Lock(LockType);
+    GenerateMainIndexKey();
+    if (FRWLockPtr != 0) FRWLockPtr->Unlock(LockType);
+}  //CMainKeyObjectL::GenerateMainIndexKey_L()
+//------------------------------------------------------------------------------
+UFC::AnsiString CMainKeyObjectL::ToString_L(UFC::RWLockTypeEnum LockType)
+{
+    if (FRWLockPtr != 0) FRWLockPtr->Lock(LockType);
+    UFC::AnsiString objStr = ToString();
+    if (FRWLockPtr != 0) FRWLockPtr->Unlock(LockType);
+    return objStr;
+}  //CMainKeyObjectL::ToString_L()
+
 //------------------------------ PConditionMutex -------------------------------
 //------------------------------------------------------------------------------
 PConditionMutex::PConditionMutex()
@@ -1090,6 +1119,27 @@ int PConditionMutex::Lock()
     }
     return errorNo;
 }  //PConditionMutex::Lock()
+//------------------------------------------------------------------------------
+int PConditionMutex::TryAndLock(const AnsiString& FuncName, const AnsiString& ObjName, void* LogPtr)
+{
+    BufferedLog* logPtr = static_cast<BufferedLog*>(LogPtr);
+    int errorNo = pthread_mutex_trylock(&FMutex);
+    if (errorNo == EBUSY)
+    {
+        logPtr->Printf(" %s() Waiting %s Write Lock.", FuncName.c_str(), ObjName.c_str());
+        logPtr->Flush();
+        errorNo = pthread_mutex_lock(&FMutex);
+        if (errorNo == 0)
+            logPtr->Printf(" %s() Lock %s for Write.", FuncName.c_str(), ObjName.c_str());
+        else
+            logPtr->Printf(" %s() Lock %s for Write failed:%s.", FuncName.c_str(), ObjName.c_str(), GetLockMessageByCode(errorNo).c_str());        
+    }
+    else if (errorNo != 0)
+        logPtr->Printf(" %s() Try Lock %s for Write failed:%s.", FuncName.c_str(), ObjName.c_str(), GetLockMessageByCode(errorNo).c_str());        
+    logPtr->Flush();
+    
+    return errorNo;    
+}  //PConditionMutex::TryAndLock()
 //------------------------------------------------------------------------------
 int PConditionMutex::Unlock()
 {

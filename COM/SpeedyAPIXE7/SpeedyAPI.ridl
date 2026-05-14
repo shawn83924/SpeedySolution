@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2025/4/25 ¤U¤È 05:13:31 (- $Rev: 12980 $, 596450625).
+// File generated on 2026/5/14 ¤W¤È 10:54:18 (- $Rev: 12980 $, 52774312).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -42,6 +42,10 @@ library SpeedyAPI
   interface IOrderConnection;
   dispinterface IOrderConnectionEvents;
   coclass OrderConnection;
+  interface ITriggeringCondition;
+  coclass TriggeringCondition;
+  interface ITouchOrderCommand;
+  coclass TouchOrderCommand;
 
 
   [
@@ -477,6 +481,52 @@ library SpeedyAPI
   };
 
   [
+    uuid(78F32B0B-9EB5-40A0-B4A5-43FBA6BF2F3E)
+  ]
+  enum LogicalComparisonOperatorEnum
+  {
+    lcoEQ = 0,
+    lcoNE = 1,
+    lcoGT = 2,
+    lcoGE = 3,
+    lcoLE = 4,
+    lcoLT = 5
+  };
+
+  [
+    uuid(B92CCD96-DF1D-4166-8A98-092582D94799)
+  ]
+  enum TouchedOrderCommandEnum
+  {
+    tocNew = 0,
+    tocPause = 1,
+    tocActive = 2,
+    tocKill = 3,
+    tocQuery = 4
+  };
+
+  [
+    uuid(8F9E202D-5463-4F4A-8C99-C841C7EFC663)
+  ]
+  enum PriceDependOnEnum
+  {
+    pdoNone = 0,
+    pdoMatch = 1
+  };
+
+  [
+    uuid(3D6694AF-DA4E-4D2A-AB88-FCD13BBD2644)
+  ]
+  enum TouchOrderResponseTypeEnum
+  {
+    tortNone = 0,
+    tortOrderConfirm = 1,
+    tortStatusUpdate = 2,
+    tortQueryResult = 3,
+    tortOrderReject = 4
+  };
+
+  [
     uuid(EB336D21-43FC-43EE-9E3F-6FEEC1F334FF),
     helpstring("Dispatch interface for BaseMessage Object"),
     dual,
@@ -672,6 +722,16 @@ library SpeedyAPI
     HRESULT _stdcall CAPlainText([out, retval] BSTR* Value);
     [propput, id(0x00000143)]
     HRESULT _stdcall CAPlainText([in] BSTR Value);
+    [id(0x00000146)]
+    HRESULT _stdcall ClearStopLoss(void);
+    [id(0x00000147)]
+    HRESULT _stdcall ClearTakeProfit(void);
+    [propget, id(0x00000148)]
+    HRESULT _stdcall StopOrderError([out, retval] BSTR* Value);
+    [id(0x00000149)]
+    HRESULT _stdcall SetStopLoss([in] VARIANT_BOOL IsTrailingStop, [in] long Ticks, [in] BSTR StopPrice, [in] BSTR OrderPrice, [out, retval] VARIANT_BOOL* Succeed);
+    [id(0x00000144)]
+    HRESULT _stdcall SetTakeProfit([in] VARIANT_BOOL IsTrailingStop, [in] long Ticks, [in] BSTR StopPrice, [in] BSTR OrderPrice, [out, retval] VARIANT_BOOL* Succeed);
   };
 
   [
@@ -1244,6 +1304,10 @@ library SpeedyAPI
     HRESULT _stdcall IsReplacePx([out, retval] VARIANT_BOOL* Value);
     [propget, id(0x0000014A)]
     HRESULT _stdcall PartID([out, retval] long* Value);
+    [id(0x0000014B)]
+    HRESULT _stdcall GetTouchOrderResponse([out, retval] BSTR* Value);
+    [id(0x0000014C)]
+    HRESULT _stdcall GetTouchOrderRespType([out, retval] enum TouchOrderResponseTypeEnum* Value);
   };
 
   [
@@ -1482,6 +1546,98 @@ library SpeedyAPI
     HRESULT _stdcall ChangePassword([in] BSTR Password, [in] BSTR NewPassword);
     [id(0x000000F4)]
     HRESULT _stdcall GetMarginPosition([in] BSTR BrokerID, [in] BSTR Account, [in, out] BSTR* Result, [out, retval] VARIANT_BOOL* SUCCEED);
+    [id(0x000000F5)]
+    HRESULT _stdcall TouchOrderControl([in] ITouchOrderCommand* TouchOrderCmd, [out, retval] VARIANT_BOOL* Result);
+  };
+
+  [
+    uuid(BF2E3D89-00C9-4860-A4AB-C0C3671CC54F),
+    helpstring("Dispatch interface for TriggeringCondition Object"),
+    dual,
+    oleautomation
+  ]
+  interface ITriggeringCondition: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall BeginEditing(void);
+    [id(0x000000CA)]
+    HRESULT _stdcall EndEditing([out, retval] VARIANT_BOOL* Value);
+    [id(0x000000CB)]
+    HRESULT _stdcall MatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CC)]
+    HRESULT _stdcall SellSideMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CD)]
+    HRESULT _stdcall BuySideMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CE)]
+    HRESULT _stdcall LastMatchPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000CF)]
+    HRESULT _stdcall BidPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000D0)]
+    HRESULT _stdcall AskPriceComp([in] enum LogicalComparisonOperatorEnum op, [in] BSTR price, [out, retval] unsigned int* id);
+    [id(0x000000D1)]
+    HRESULT _stdcall VolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D2)]
+    HRESULT _stdcall PeriodAccumVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int period_in_tenth_sec, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D3)]
+    HRESULT _stdcall BidVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D4)]
+    HRESULT _stdcall AskVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D5)]
+    HRESULT _stdcall AccumVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D6)]
+    HRESULT _stdcall AnyTop5BidVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D7)]
+    HRESULT _stdcall AnyTop5AskVolumeComp([in] enum LogicalComparisonOperatorEnum op, [in] unsigned int volume, [out, retval] unsigned int* id);
+    [id(0x000000D8)]
+    HRESULT _stdcall Conjunction([in] SAFEARRAY(long) signal_list, [in] unsigned int count, [in, defaultvalue(False)] VARIANT_BOOL inverter_on, [out, retval] unsigned int* id);
+    [id(0x000000D9)]
+    HRESULT _stdcall GetLastErrMsg([out, retval] BSTR* lastErrMsg);
+    [id(0x000000DA)]
+    HRESULT _stdcall ToExpression([out, retval] BSTR* triggeringCondition);
+    [propget, id(0x000000DB)]
+    HRESULT _stdcall Instance([out, retval] VARIANT* Value);
+  };
+
+  [
+    uuid(97E11FE1-41CB-4491-99FC-31FF25986E5B),
+    helpstring("Dispatch interface for TouchOrderCommand Object"),
+    dual,
+    oleautomation
+  ]
+  interface ITouchOrderCommand: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall SetCmdType([in] enum TouchedOrderCommandEnum toc_type);
+    [id(0x000000CA)]
+    HRESULT _stdcall SetMarket([in] enum MarketEnum market);
+    [id(0x000000CB)]
+    HRESULT _stdcall SetSymbol([in] BSTR symbol);
+    [id(0x000000CC)]
+    HRESULT _stdcall SetSide([in] enum SideEnum side);
+    [id(0x000000CD)]
+    HRESULT _stdcall SetTouchOrderID([in] BSTR id);
+    [id(0x000000CE)]
+    HRESULT _stdcall SetPrice([in] BSTR price);
+    [id(0x000000CF)]
+    HRESULT _stdcall SetFloatingOrderPrice([in] enum PriceDependOnEnum depend_on, [in] int ticks);
+    [id(0x000000D0)]
+    HRESULT _stdcall SetUserData([in] BSTR data);
+    [id(0x000000D1)]
+    HRESULT _stdcall SetTriggeredActionNewOrder([in] INewOrderMessage* order, [out, retval] VARIANT_BOOL* value);
+    [id(0x000000D2)]
+    HRESULT _stdcall SetTriggeredActionCancelOrder([in] ICancelOrderMessage* order, [out, retval] VARIANT_BOOL* value);
+    [id(0x000000D3)]
+    HRESULT _stdcall SetTriggeredActionReplaceOrder([in] IReplaceOrderMessage* order, [out, retval] VARIANT_BOOL* value);
+    [id(0x000000D4)]
+    HRESULT _stdcall SetTriggeredActionTouchOrderCmd([in] ITouchOrderCommand* toc, [out, retval] VARIANT_BOOL* value);
+    [propget, id(0x000000D5)]
+    HRESULT _stdcall Instance([out, retval] VARIANT* Value);
+    [id(0x000000D6)]
+    HRESULT _stdcall SetTriggeredActionMsg([in] BSTR msg, [out, retval] VARIANT_BOOL* value);
+    [id(0x000000D7)]
+    HRESULT _stdcall SetTriggeringCondition([in] ITriggeringCondition* ttc);
+    [id(0x000000D8)]
+    HRESULT _stdcall GetNID([out, retval] __int64* NID);
   };
 
   [
@@ -1618,6 +1774,24 @@ library SpeedyAPI
   {
     [default] interface IOrderConnection;
     [default, source] dispinterface IOrderConnectionEvents;
+  };
+
+  [
+    uuid(F2933AA9-EF84-47AB-AF7F-00D7003EC692),
+    helpstring("TriggeringCondition Object")
+  ]
+  coclass TriggeringCondition
+  {
+    [default] interface ITriggeringCondition;
+  };
+
+  [
+    uuid(E392E9A5-F3C0-41A1-83B6-656585F4DE64),
+    helpstring("TouchOrderCommand Object")
+  ]
+  coclass TouchOrderCommand
+  {
+    [default] interface ITouchOrderCommand;
   };
 
 };

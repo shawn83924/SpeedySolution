@@ -10,6 +10,7 @@ BaseMessage::BaseMessage( MsgType Type, const UFC::AnsiString& Exchange, Market 
 ,FMarket( mkt )
 ,FSymbol( Symbol )
 ,FSequence(0)
+,FExchangeFormat(0)
 {
 	UFC::GetTimeString( FTime, TRUE );
 	for(int i = 0; i < MAX_TICK_COUNT_NO; i++)
@@ -33,6 +34,7 @@ void BaseMessage::CopyBase( const BaseMessage& Msg )
 	FSequence = Msg.FSequence;
 	FTime     = Msg.FTime;
 	FVersion  = Msg.FVersion;
+	FExchangeFormat = Msg.FExchangeFormat;
 	for( register int i = 0; i < MAX_TICK_COUNT_NO; i++)
 	{
 		FTickCountUS[i] = Msg.FTickCountUS[i];
@@ -231,6 +233,7 @@ MarketDataMessage::MarketDataMessage( const UFC::AnsiString& Exchange, Market mk
 ,FOpenInterest(0)
 ,FBuyTotalQty(0)
 ,FSellTotalQty(0)
+,FPreCloseQty(0)
 ,FTradeTime( "--:--:--.---" )
 ,FTradeDate( "--------" )
 ,FPreClosePx( 0 )
@@ -267,27 +270,23 @@ MarketDataMessage::MarketDataMessage( const MarketDataMessage& Msg )
 	FTradingSession = Msg.FTradingSession;
 	FLastFilled  = Msg.FLastFilled;
 	FLastDepth   = Msg.FLastDepth;
-	if( FExchange == "HKEx" )
+	FLastNTrade  = Msg.FLastNTrade;
+	FPreCloseQty = Msg.FPreCloseQty;
+	for( int i = 0; i < FLastNTrade; i++ )
 	{
-		FLastNTrade  = Msg.FLastNTrade;
-		for( register int i = 0; i < FLastNTrade; i++ )
-		{
-			FTrdTime[i] = Msg.FTrdTime[i];
-			FTrdPx[i]   = Msg.FTrdPx[i];
-			FTrdQty[i]  = Msg.FTrdQty[i];
-			FTrdType[i] = Msg.FTrdType[i];
-		}
-		FSuspensionIndicator = Msg.FSuspensionIndicator;
-		memcpy( BuyNumOfOrders,  Msg.BuyNumOfOrders  ,sizeof(UInt32)*MAX_DEPTH );
-		memcpy( SellNumOfOrders, Msg.SellNumOfOrders ,sizeof(UInt32)*MAX_DEPTH );
+		FTrdTime[i] = Msg.FTrdTime[i];
+		FTrdPx[i]   = Msg.FTrdPx[i];
+		FTrdQty[i]  = Msg.FTrdQty[i];
+		FTrdType[i] = Msg.FTrdType[i];
 	}
+	FSuspensionIndicator = Msg.FSuspensionIndicator;
 }
 //---------------------------------------------------------------------------
 MarketDataMessage::MarketDataMessage( UFC::PStream* Stream )
 {
 	UFC::UDateTime 	DateTime;
 	UFC::Int8		CMarket, DFlag, Range;
-	UFC::NInt32     NMatchQty, NBuyTotalQty, NSellTotalQty, NTotalQty, NOpenInterest, NBuyTotalCount, NSellTotalCount, NLastNTrd, NSuspensionIndicator;
+	UFC::NInt32     NMatchQty, NBuyTotalQty, NSellTotalQty, NTotalQty, NOpenInterest, NBuyTotalCount, NSellTotalCount, NLastNTrd, NSuspensionIndicator, PreCloseQty;
 	UFC::NDouble    NMatchPx, NOpenPx, NHighPx, NLowPx, NSettlementPx, NClosePx, NPreClosePx, NSettlePx;
 	UFC::NDouble	BullPx, BearPx, RefPx, StrikePx;
 
@@ -306,7 +305,7 @@ MarketDataMessage::MarketDataMessage( UFC::PStream* Stream )
     FTradePx = NMatchPx.ToDouble();
 
     NMatchQty.LoadFromStream( Stream );
-	FTradeQty = NMatchQty.ToInt32();
+    FTradeQty = NMatchQty.ToInt32();
 
     FDepth.LoadFromStream( Stream );
 
@@ -369,7 +368,7 @@ MarketDataMessage::MarketDataMessage( UFC::PStream* Stream )
 
     NPreClosePx.LoadFromStream( Stream );
 
-	if( FExchange == "TWSE" || FExchange == "OTC" || FExchange == "TWSEOdd" || FExchange == "OTCOdd" || FExchange == "HKEx" )
+    if(FExchange == "TAIFEX" || FExchange == "TWSE" || FExchange == "OTC" || FExchange == "TWSEOdd" || FExchange == "OTCOdd" || FExchange == "HKEx" )
         FPreClosePx = NPreClosePx.ToDouble();
     else
         FPreClosePx = 0;
@@ -398,43 +397,35 @@ MarketDataMessage::MarketDataMessage( UFC::PStream* Stream )
 	FSettleMonth.LoadFromStream( Stream );
 	FEndDate.LoadFromStream( Stream );
 
-	if( FExchange == "HKEx" )
+	///< Last N trade, up to 10 trade.(for HKEx)
+	NLastNTrd.LoadFromStream( Stream );
+	FLastNTrade = NLastNTrd.ToInt32();
+	if( FLastNTrade > 10 )
+		FLastNTrade = 10;
+	for( int i = 0; i < FLastNTrade; i++)
 	{
-		///< Last N trade, up to 10 trade.(for HKEx)
-		NLastNTrd.LoadFromStream( Stream );
-		FLastNTrade = NLastNTrd.ToInt32();
-		if( FLastNTrade > 10 )
-			FLastNTrade = 10;
-		for( int i = 0; i < FLastNTrade; i++)
-		{
-			UFC::NInt32  TrdTime;
-			UFC::NDouble TrdPx;
-			UFC::NInt32  TrdQty;
-			UFC::NInt32  TrdType;
+		UFC::NInt32  TrdTime;
+		UFC::NDouble TrdPx;
+		UFC::NInt32  TrdQty;
+		UFC::NInt32  TrdType;
 
-			TrdTime.LoadFromStream( Stream );
-			TrdPx.LoadFromStream( Stream );
-			TrdQty.LoadFromStream( Stream );
-			TrdType.LoadFromStream( Stream );
-			FTrdTime[i] = TrdTime.ToInt32();
-			FTrdPx[i]   = TrdPx.ToDouble();
-			FTrdQty[i]  = TrdQty.ToInt32();
-			FTrdType[i] = TrdType.ToInt32();
-		}
-		NSuspensionIndicator.LoadFromStream( Stream );
-		Stream->Read( BuyNumOfOrders, sizeof(UInt32)*MAX_DEPTH );
-		Stream->Read( SellNumOfOrders, sizeof(UInt32)*MAX_DEPTH );
-		FSuspensionIndicator = NSuspensionIndicator.ToInt32();
+		TrdTime.LoadFromStream( Stream );
+		TrdPx.LoadFromStream( Stream );
+		TrdQty.LoadFromStream( Stream );
+		TrdType.LoadFromStream( Stream );
+		FTrdTime[i] = TrdTime.ToInt32();
+		FTrdPx[i]   = TrdPx.ToDouble();
+		FTrdQty[i]  = TrdQty.ToInt32();
+		FTrdType[i] = TrdType.ToInt32();
 	}
-	else
-	{
-		FLastNTrade = 0;
-		memset( BuyNumOfOrders, sizeof( UFCType::UInt32)*MAX_DEPTH, 0 );
-		memset( SellNumOfOrders, sizeof( UFCType::UInt32)*MAX_DEPTH, 0 );
-	}
+	NSuspensionIndicator.LoadFromStream( Stream );
+	FSuspensionIndicator = NSuspensionIndicator.ToInt32();
 	FTradingSession = tsNormal;
 	FLastFilled = 0;
 	FLastDepth = 0;
+
+	PreCloseQty.LoadFromStream( Stream );
+	FPreCloseQty = PreCloseQty.ToInt32();
 }
 //---------------------------------------------------------------------------
 void MarketDataMessage::CopyFilled( MatchInfo& Matched )
@@ -462,6 +453,10 @@ UnderlyingIndexInfo::UnderlyingIndexInfo( const UFC::AnsiString& Exchange, Marke
 ,FBuyValue( 0 )
 ,FSellValue( 0 )
 ,FFixValue( 0 )
+,FHighValue( 0 )
+,FLowValue( 0 )
+,FOpenValue( 0 )
+,FCloseValue( 0 )
 ,FTotalQty( 0 )
 ,FTotalCount( 0 )
 ,FTotalAmount( 0 )
@@ -500,4 +495,57 @@ ErrorMessage::ErrorMessage( const UFC::AnsiString& Exchange, Market mkt )
 ErrorMessage::ErrorMessage( const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol )
 :BaseMessage( mtErrorMsg, Exchange, mkt, Symbol )
 {}
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+// Advanced Message
+//---------------------------------------------------------------------------
+AdvancedMessage::AdvancedMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol, UFC::PStream* Data, MTree* TreeData)
+:BaseMessage(mtAdvancedMsg, Exchange, mkt, Symbol)
+,FAdvancedData( Data )
+{
+	if (!TreeData->get("FunctionCode", FFunctionCode)) 
+	{
+		FFunctionCode = 0;
+	}
+}
+//---------------------------------------------------------------------------
+//// class  TAIFEXBasicMessage
+////---------------------------------------------------------------------------
+//TAIFEXBasicMessage::TAIFEXBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
+//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
+//{
+//
+//}
+////---------------------------------------------------------------------------
+//// class  TAIFEXSystemMessage
+////---------------------------------------------------------------------------
+//TAIFEXSystemMessage::TAIFEXSystemMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
+//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
+//{
+//
+//}
+////---------------------------------------------------------------------------
+//// class  TWSEBasicMessage
+////---------------------------------------------------------------------------
+//TWSEBasicMessage::TWSEBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
+//	:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
+//{
+//
+//}
+////---------------------------------------------------------------------------
+//// class  TWSEOrderStatsMessage
+////---------------------------------------------------------------------------
+//TWSEOrderStatsMessage::TWSEOrderStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol) 
+//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
+//{
+//
+//}
+////---------------------------------------------------------------------------
+//// class  TWSETradeStatsMessage
+////---------------------------------------------------------------------------
+//TWSETradeStatsMessage::TWSETradeStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol) 
+//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
+//{
+//
+//}
 //---------------------------------------------------------------------------

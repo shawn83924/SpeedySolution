@@ -10,10 +10,10 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2025/4/28 ¤W¤È 11:21:11 from Type Library described below.
+// File generated on 2026/5/14 ¤W¤È 10:54:07 from Type Library described below.
 
 // ************************************************************************  //
-// Type Lib: C:\src\COM\SpeedyAPIXE7\SpeedyAPI (1)
+// Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
 // LIBID: {4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA}
 // LCID: 0
 // Helpfile:
@@ -93,6 +93,10 @@ extern __declspec (package) const GUID CLSID_NewsMessage;
 extern __declspec (package) const GUID IID_IOrderConnection;
 extern __declspec (package) const GUID DIID_IOrderConnectionEvents;
 extern __declspec (package) const GUID CLSID_OrderConnection;
+extern __declspec (package) const GUID IID_ITriggeringCondition;
+extern __declspec (package) const GUID CLSID_TriggeringCondition;
+extern __declspec (package) const GUID IID_ITouchOrderCommand;
+extern __declspec (package) const GUID CLSID_TouchOrderCommand;
 extern __declspec (package) const GUID GUID_RecoverTypeEnum;
 extern __declspec (package) const GUID GUID_RecoverMarketEnum;
 extern __declspec (package) const GUID GUID_MessageLanguageEnum;
@@ -122,6 +126,10 @@ extern __declspec (package) const GUID GUID_CancelMarketEnum;
 extern __declspec (package) const GUID GUID_CancelWorkingResultEnum;
 extern __declspec (package) const GUID GUID_RecoverSessionEnum;
 extern __declspec (package) const GUID GUID_ChangePasswordEnum;
+extern __declspec (package) const GUID GUID_LogicalComparisonOperatorEnum;
+extern __declspec (package) const GUID GUID_TouchedOrderCommandEnum;
+extern __declspec (package) const GUID GUID_PriceDependOnEnum;
+extern __declspec (package) const GUID GUID_TouchOrderResponseTypeEnum;
 
 // *********************************************************************//
 // Forward declaration of types defined in TypeLibrary
@@ -155,6 +163,10 @@ enum class    CancelMarketEnum;
 enum class    CancelWorkingResultEnum;
 enum class    RecoverSessionEnum;
 enum class    ChangePasswordEnum;
+enum class    LogicalComparisonOperatorEnum;
+enum class    TouchedOrderCommandEnum;
+enum class    PriceDependOnEnum;
+enum class    TouchOrderResponseTypeEnum;
 interface DECLSPEC_UUID("{EB336D21-43FC-43EE-9E3F-6FEEC1F334FF}") IBaseMessage;
 typedef TComInterface<IBaseMessage, &IID_IBaseMessage> IBaseMessagePtr;
 
@@ -191,6 +203,12 @@ typedef TComInterface<IOrderConnection, &IID_IOrderConnection> IOrderConnectionP
 interface DECLSPEC_UUID("{1AE89F65-E901-4703-81E5-87A562181F4C}") IOrderConnectionEvents;
 typedef TComInterface<IOrderConnectionEvents, &DIID_IOrderConnectionEvents> IOrderConnectionEventsPtr;
 
+interface DECLSPEC_UUID("{BF2E3D89-00C9-4860-A4AB-C0C3671CC54F}") ITriggeringCondition;
+typedef TComInterface<ITriggeringCondition, &IID_ITriggeringCondition> ITriggeringConditionPtr;
+
+interface DECLSPEC_UUID("{97E11FE1-41CB-4491-99FC-31FF25986E5B}") ITouchOrderCommand;
+typedef TComInterface<ITouchOrderCommand, &IID_ITouchOrderCommand> ITouchOrderCommandPtr;
+
 
 // *********************************************************************//
 // Declaration of CoClasses defined in Type Library
@@ -222,6 +240,10 @@ typedef INewsMessage NewsMessage;
 typedef INewsMessagePtr NewsMessagePtr;
 typedef IOrderConnection OrderConnection;
 typedef IOrderConnectionPtr OrderConnectionPtr;
+typedef ITriggeringCondition TriggeringCondition;
+typedef ITriggeringConditionPtr TriggeringConditionPtr;
+typedef ITouchOrderCommand TouchOrderCommand;
+typedef ITouchOrderCommandPtr TouchOrderCommandPtr;
 
 #define LIBID_OF_BaseMessage (&LIBID_SpeedyAPI)
 #define LIBID_OF_NewOrderMessage (&LIBID_SpeedyAPI)
@@ -234,6 +256,8 @@ typedef IOrderConnectionPtr OrderConnectionPtr;
 #define LIBID_OF_OrderStatusRequestMessage (&LIBID_SpeedyAPI)
 #define LIBID_OF_NewsMessage (&LIBID_SpeedyAPI)
 #define LIBID_OF_OrderConnection (&LIBID_SpeedyAPI)
+#define LIBID_OF_TriggeringCondition (&LIBID_SpeedyAPI)
+#define LIBID_OF_TouchOrderCommand (&LIBID_SpeedyAPI)
 
 // *********************************************************************//
 // Declaration of Enumerations defined in Type Library
@@ -556,6 +580,40 @@ enum class ChangePasswordEnum
   cpLockedTryAgain = 11
 };
 
+enum class LogicalComparisonOperatorEnum
+{
+  lcoEQ = 0,
+  lcoNE = 1,
+  lcoGT = 2,
+  lcoGE = 3,
+  lcoLE = 4,
+  lcoLT = 5
+};
+
+enum class TouchedOrderCommandEnum
+{
+  tocNew = 0,
+  tocPause = 1,
+  tocActive = 2,
+  tocKill = 3,
+  tocQuery = 4
+};
+
+enum class PriceDependOnEnum
+{
+  pdoNone = 0,
+  pdoMatch = 1
+};
+
+enum class TouchOrderResponseTypeEnum
+{
+  tortNone = 0,
+  tortOrderConfirm = 1,
+  tortStatusUpdate = 2,
+  tortQueryResult = 3,
+  tortOrderReject = 4
+};
+
 // *********************************************************************//
 // Interface: IBaseMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -799,6 +857,17 @@ public:
   virtual HRESULT STDMETHODCALLTYPE set_CASignature(BSTR Value/*[in]*/) = 0; // [322]
   virtual HRESULT STDMETHODCALLTYPE get_CAPlainText(BSTR* Value/*[out,retval]*/) = 0; // [323]
   virtual HRESULT STDMETHODCALLTYPE set_CAPlainText(BSTR Value/*[in]*/) = 0; // [323]
+  virtual HRESULT STDMETHODCALLTYPE ClearStopLoss(void) = 0; // [326]
+  virtual HRESULT STDMETHODCALLTYPE ClearTakeProfit(void) = 0; // [327]
+  virtual HRESULT STDMETHODCALLTYPE get_StopOrderError(BSTR* Value/*[out,retval]*/) = 0; // [328]
+  virtual HRESULT STDMETHODCALLTYPE SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/,
+                                                long Ticks/*[in]*/, BSTR StopPrice/*[in]*/,
+                                                BSTR OrderPrice/*[in]*/,
+                                                VARIANT_BOOL* Succeed/*[out,retval]*/) = 0; // [329]
+  virtual HRESULT STDMETHODCALLTYPE SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/,
+                                                  long Ticks/*[in]*/, BSTR StopPrice/*[in]*/,
+                                                  BSTR OrderPrice/*[in]*/,
+                                                  VARIANT_BOOL* Succeed/*[out,retval]*/) = 0; // [324]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -1033,6 +1102,29 @@ public:
     return Value;
   }
 
+  BSTR __fastcall get_StopOrderError(void)
+  {
+    BSTR Value = 0;
+    OLECHECK(this->get_StopOrderError((BSTR*)&Value));
+    return Value;
+  }
+
+  VARIANT_BOOL __fastcall SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                      BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+  {
+    VARIANT_BOOL Succeed;
+    OLECHECK(this->SetStopLoss(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed));
+    return Succeed;
+  }
+
+  VARIANT_BOOL __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                        BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+  {
+    VARIANT_BOOL Succeed;
+    OLECHECK(this->SetTakeProfit(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed));
+    return Succeed;
+  }
+
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   Speedyapi_tlb::OrderTypeEnum OrderType = {read = get_OrderType, write = set_OrderType};
@@ -1067,6 +1159,7 @@ public:
   __property   BSTR            CASessionID = {read = get_CASessionID, write = set_CASessionID};
   __property   BSTR            CASignature = {read = get_CASignature, write = set_CASignature};
   __property   BSTR            CAPlainText = {read = get_CAPlainText, write = set_CAPlainText};
+  __property   BSTR            StopOrderError = {read = get_StopOrderError};
 
 #endif //   __TLB_NO_INTERFACE_WRAPPERS
 
@@ -2150,6 +2243,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE get_CancelByExchange(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [328]
   virtual HRESULT STDMETHODCALLTYPE get_IsReplacePx(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [329]
   virtual HRESULT STDMETHODCALLTYPE get_PartID(long* Value/*[out,retval]*/) = 0; // [330]
+  virtual HRESULT STDMETHODCALLTYPE GetTouchOrderResponse(BSTR* Value/*[out,retval]*/) = 0; // [331]
+  virtual HRESULT STDMETHODCALLTYPE GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/) = 0; // [332]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -2594,6 +2689,20 @@ public:
     return Value;
   }
 
+  BSTR __fastcall GetTouchOrderResponse(void)
+  {
+    BSTR Value = 0;
+    OLECHECK(this->GetTouchOrderResponse((BSTR*)&Value));
+    return Value;
+  }
+
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void)
+  {
+    Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+    OLECHECK(this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value));
+    return Value;
+  }
+
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   BSTR            OrderID = {read = get_OrderID, write = set_OrderID};
@@ -2997,6 +3106,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                       BSTR* Result/*[in,out]*/,
                                                       VARIANT_BOOL* SUCCEED/*[out,retval]*/) = 0; // [244]
+  virtual HRESULT STDMETHODCALLTYPE TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                                      VARIANT_BOOL* Result/*[out,retval]*/) = 0; // [245]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3149,6 +3260,13 @@ public:
     return SUCCEED;
   }
 
+  VARIANT_BOOL __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+  {
+    VARIANT_BOOL Result;
+    OLECHECK(this->TouchOrderControl(TouchOrderCmd, (VARIANT_BOOL*)&Result));
+    return Result;
+  }
+
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -3252,6 +3370,297 @@ interface IOrderConnectionEvents : public TDispWrapper<IDispatch>
 
 
 };
+// *********************************************************************//
+// Interface: ITriggeringCondition
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {BF2E3D89-00C9-4860-A4AB-C0C3671CC54F}
+// *********************************************************************//
+interface ITriggeringCondition  : public IDispatch
+{
+public:
+  virtual HRESULT STDMETHODCALLTYPE BeginEditing(void) = 0; // [201]
+  virtual HRESULT STDMETHODCALLTYPE EndEditing(VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [202]
+  virtual HRESULT STDMETHODCALLTYPE MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   BSTR price/*[in]*/, unsigned* id/*[out,retval]*/) = 0; // [203]
+  virtual HRESULT STDMETHODCALLTYPE SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                           BSTR price/*[in]*/,
+                                                           unsigned* id/*[out,retval]*/) = 0; // [204]
+  virtual HRESULT STDMETHODCALLTYPE BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                          BSTR price/*[in]*/,
+                                                          unsigned* id/*[out,retval]*/) = 0; // [205]
+  virtual HRESULT STDMETHODCALLTYPE LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                       BSTR price/*[in]*/,
+                                                       unsigned* id/*[out,retval]*/) = 0; // [206]
+  virtual HRESULT STDMETHODCALLTYPE BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                 BSTR price/*[in]*/, unsigned* id/*[out,retval]*/) = 0; // [207]
+  virtual HRESULT STDMETHODCALLTYPE AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                 BSTR price/*[in]*/, unsigned* id/*[out,retval]*/) = 0; // [208]
+  virtual HRESULT STDMETHODCALLTYPE VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                               unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/) = 0; // [209]
+  virtual HRESULT STDMETHODCALLTYPE PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                          unsigned period_in_tenth_sec/*[in]*/,
+                                                          unsigned volume/*[in]*/,
+                                                          unsigned* id/*[out,retval]*/) = 0; // [210]
+  virtual HRESULT STDMETHODCALLTYPE BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/) = 0; // [211]
+  virtual HRESULT STDMETHODCALLTYPE AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/) = 0; // [212]
+  virtual HRESULT STDMETHODCALLTYPE AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    unsigned volume/*[in]*/,
+                                                    unsigned* id/*[out,retval]*/) = 0; // [213]
+  virtual HRESULT STDMETHODCALLTYPE AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                         unsigned volume/*[in]*/,
+                                                         unsigned* id/*[out,retval]*/) = 0; // [214]
+  virtual HRESULT STDMETHODCALLTYPE AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                         unsigned volume/*[in]*/,
+                                                         unsigned* id/*[out,retval]*/) = 0; // [215]
+  virtual HRESULT STDMETHODCALLTYPE Conjunction(LPSAFEARRAY signal_list/*[in]*/,
+                                                unsigned count/*[in]*/,
+                                                VARIANT_BOOL inverter_on/*[in,def]*/,
+                                                unsigned* id/*[out,retval]*/) = 0; // [216]
+  virtual HRESULT STDMETHODCALLTYPE GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/) = 0; // [217]
+  virtual HRESULT STDMETHODCALLTYPE ToExpression(BSTR* triggeringCondition/*[out,retval]*/) = 0; // [218]
+  virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [219]
+
+#if !defined(__TLB_NO_INTERFACE_WRAPPERS)
+
+  VARIANT_BOOL __fastcall EndEditing(void)
+  {
+    VARIANT_BOOL Value;
+    OLECHECK(this->EndEditing((VARIANT_BOOL*)&Value));
+    return Value;
+  }
+
+  unsigned __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                     BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->MatchPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->SellSideMatchPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->BuySideMatchPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                         BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->LastMatchPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                   BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->BidPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                   BSTR price/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->AskPriceComp(op, price, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                 unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->VolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned period_in_tenth_sec/*[in]*/,
+                                            unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->PeriodAccumVolumeComp(op, period_in_tenth_sec, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                    unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->BidVolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                    unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->AskVolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                      unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->AccumVolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->AnyTop5BidVolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/)
+  {
+    unsigned id;
+    OLECHECK(this->AnyTop5AskVolumeComp(op, volume, (unsigned*)&id));
+    return id;
+  }
+
+  unsigned __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                  VARIANT_BOOL inverter_on/*[in,def]*/)
+  {
+    unsigned id;
+    OLECHECK(this->Conjunction(signal_list, count, inverter_on, (unsigned*)&id));
+    return id;
+  }
+
+  BSTR __fastcall GetLastErrMsg(void)
+  {
+    BSTR lastErrMsg = 0;
+    OLECHECK(this->GetLastErrMsg((BSTR*)&lastErrMsg));
+    return lastErrMsg;
+  }
+
+  BSTR __fastcall ToExpression(void)
+  {
+    BSTR triggeringCondition = 0;
+    OLECHECK(this->ToExpression((BSTR*)&triggeringCondition));
+    return triggeringCondition;
+  }
+
+  VARIANT __fastcall get_Instance(void)
+  {
+    VARIANT Value;
+    OLECHECK(this->get_Instance((VARIANT*)&Value));
+    return Value;
+  }
+
+
+
+#endif //   __TLB_NO_INTERFACE_WRAPPERS
+
+};
+
+// *********************************************************************//
+// Interface: ITouchOrderCommand
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {97E11FE1-41CB-4491-99FC-31FF25986E5B}
+// *********************************************************************//
+interface ITouchOrderCommand  : public IDispatch
+{
+public:
+  virtual HRESULT STDMETHODCALLTYPE SetCmdType(Speedyapi_tlb::TouchedOrderCommandEnum toc_type/*[in]*/) = 0; // [201]
+  virtual HRESULT STDMETHODCALLTYPE SetMarket(Speedyapi_tlb::MarketEnum market/*[in]*/) = 0; // [202]
+  virtual HRESULT STDMETHODCALLTYPE SetSymbol(BSTR symbol/*[in]*/) = 0; // [203]
+  virtual HRESULT STDMETHODCALLTYPE SetSide(Speedyapi_tlb::SideEnum side/*[in]*/) = 0; // [204]
+  virtual HRESULT STDMETHODCALLTYPE SetTouchOrderID(BSTR id/*[in]*/) = 0; // [205]
+  virtual HRESULT STDMETHODCALLTYPE SetPrice(BSTR price/*[in]*/) = 0; // [206]
+  virtual HRESULT STDMETHODCALLTYPE SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/,
+                                                          int ticks/*[in]*/) = 0; // [207]
+  virtual HRESULT STDMETHODCALLTYPE SetUserData(BSTR data/*[in]*/) = 0; // [208]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                               VARIANT_BOOL* value/*[out,retval]*/) = 0; // [209]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                                  VARIANT_BOOL* value/*[out,retval]*/) = 0; // [210]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                                   VARIANT_BOOL* value/*[out,retval]*/) = 0; // [211]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                                    VARIANT_BOOL* value/*[out,retval]*/) = 0; // [212]
+  virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [213]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                          VARIANT_BOOL* value/*[out,retval]*/) = 0; // [214]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/) = 0; // [215]
+  virtual HRESULT STDMETHODCALLTYPE GetNID(__int64* NID/*[out,retval]*/) = 0; // [216]
+
+#if !defined(__TLB_NO_INTERFACE_WRAPPERS)
+
+  VARIANT_BOOL __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionNewOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionCancelOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionReplaceOrder(order, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionTouchOrderCmd(toc, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  VARIANT __fastcall get_Instance(void)
+  {
+    VARIANT Value;
+    OLECHECK(this->get_Instance((VARIANT*)&Value));
+    return Value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredActionMsg(msg, (VARIANT_BOOL*)&value));
+    return value;
+  }
+
+  __int64 __fastcall GetNID(void)
+  {
+    __int64 NID;
+    OLECHECK(this->GetNID((__int64*)&NID));
+    return NID;
+  }
+
+
+
+#endif //   __TLB_NO_INTERFACE_WRAPPERS
+
+};
+
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 // *********************************************************************//
 // SmartIntf: TCOMIBaseMessage
@@ -3519,6 +3928,20 @@ public:
   HRESULT         __fastcall get_CAPlainText(BSTR* Value/*[out,retval]*/);
   BSTR            __fastcall get_CAPlainText(void);
   HRESULT         __fastcall set_CAPlainText(BSTR Value/*[in]*/);
+  HRESULT         __fastcall ClearStopLoss(void);
+  HRESULT         __fastcall ClearTakeProfit(void);
+  HRESULT         __fastcall get_StopOrderError(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall get_StopOrderError(void);
+  HRESULT         __fastcall SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                         BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                         VARIANT_BOOL* Succeed/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                         BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                           BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                           VARIANT_BOOL* Succeed/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                           BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   Speedyapi_tlb::OrderTypeEnum OrderType = {read = get_OrderType, write = set_OrderType};
@@ -3553,6 +3976,7 @@ public:
   __property   BSTR            CASessionID = {read = get_CASessionID, write = set_CASessionID};
   __property   BSTR            CASignature = {read = get_CASignature, write = set_CASignature};
   __property   BSTR            CAPlainText = {read = get_CAPlainText, write = set_CAPlainText};
+  __property   BSTR            StopOrderError = {read = get_StopOrderError};
 };
 typedef TCOMINewOrderMessageT<INewOrderMessage> TCOMINewOrderMessage;
 
@@ -3698,6 +4122,20 @@ public:
   HRESULT         __fastcall get_CAPlainText(BSTR* Value/*[out,retval]*/);
   BSTR            __fastcall get_CAPlainText(void);
   HRESULT         __fastcall set_CAPlainText(BSTR Value/*[in]*/);
+  HRESULT         __fastcall ClearStopLoss();
+  HRESULT         __fastcall ClearTakeProfit();
+  HRESULT         __fastcall get_StopOrderError(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall get_StopOrderError(void);
+  HRESULT         __fastcall SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                         BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                         VARIANT_BOOL* Succeed/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                         BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                           BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                           VARIANT_BOOL* Succeed/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                           BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
   HRESULT         __fastcall get_Account(BSTR* Value/*[out,retval]*/);
@@ -3767,6 +4205,7 @@ public:
   __property   BSTR            CASessionID = {read = get_CASessionID, write = set_CASessionID};
   __property   BSTR            CASignature = {read = get_CASignature, write = set_CASignature};
   __property   BSTR            CAPlainText = {read = get_CAPlainText, write = set_CAPlainText};
+  __property   BSTR            StopOrderError = {read = get_StopOrderError};
 
   __property   BSTR            Account = {read = get_Account, write = set_Account};
   __property   BSTR            AE = {read = get_AE, write = set_AE};
@@ -5134,6 +5573,10 @@ public:
   VARIANT_BOOL    __fastcall get_IsReplacePx(void);
   HRESULT         __fastcall get_PartID(long* Value/*[out,retval]*/);
   long            __fastcall get_PartID(void);
+  HRESULT         __fastcall GetTouchOrderResponse(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetTouchOrderResponse(void);
+  HRESULT         __fastcall GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/);
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void);
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   BSTR            OrderID = {read = get_OrderID, write = set_OrderID};
@@ -5402,6 +5845,10 @@ public:
   VARIANT_BOOL    __fastcall get_IsReplacePx(void);
   HRESULT         __fastcall get_PartID(long* Value/*[out,retval]*/);
   long            __fastcall get_PartID(void);
+  HRESULT         __fastcall GetTouchOrderResponse(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetTouchOrderResponse(void);
+  HRESULT         __fastcall GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/);
+  Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall GetTouchOrderRespType(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
   HRESULT         __fastcall get_Account(BSTR* Value/*[out,retval]*/);
@@ -5959,6 +6406,9 @@ public:
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                BSTR* Result/*[in,out]*/);
+  HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                               VARIANT_BOOL* Result/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -6139,6 +6589,9 @@ public:
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
                                                BSTR* Result/*[in,out]*/);
+  HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
+                                               , VARIANT_BOOL* Result/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -6191,6 +6644,336 @@ public:
 
 };
 typedef IOrderConnectionEventsDispT<IOrderConnectionEvents> IOrderConnectionEventsDisp;
+
+// *********************************************************************//
+// SmartIntf: TCOMITriggeringCondition
+// Interface: ITriggeringCondition
+// *********************************************************************//
+template <class T /* ITriggeringCondition */ >
+class TCOMITriggeringConditionT : public TComInterface<ITriggeringCondition>, public TComInterfaceBase<IUnknown>
+{
+public:
+  TCOMITriggeringConditionT() {}
+  TCOMITriggeringConditionT(ITriggeringCondition *intf, bool addRef = false) : TComInterface<ITriggeringCondition>(intf, addRef) {}
+  TCOMITriggeringConditionT(const TCOMITriggeringConditionT& src) : TComInterface<ITriggeringCondition>(src) {}
+  TCOMITriggeringConditionT& operator=(const TCOMITriggeringConditionT& src) { Bind(src, true); return *this;}
+
+  HRESULT         __fastcall BeginEditing(void);
+  HRESULT         __fastcall EndEditing(VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall EndEditing(void);
+  HRESULT         __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            BSTR price/*[in]*/);
+  HRESULT         __fastcall SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/);
+  HRESULT         __fastcall BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   BSTR price/*[in]*/);
+  HRESULT         __fastcall LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                BSTR price/*[in]*/);
+  HRESULT         __fastcall BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/);
+  HRESULT         __fastcall AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/);
+  HRESULT         __fastcall VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                        unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                        unsigned volume/*[in]*/);
+  HRESULT         __fastcall PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned period_in_tenth_sec/*[in]*/,
+                                                   unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned period_in_tenth_sec/*[in]*/,
+                                                   unsigned volume/*[in]*/);
+  HRESULT         __fastcall BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/);
+  HRESULT         __fastcall AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/);
+  HRESULT         __fastcall AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             unsigned volume/*[in]*/);
+  HRESULT         __fastcall AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/);
+  HRESULT         __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/);
+  HRESULT         __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                         VARIANT_BOOL inverter_on/*[in,def]*/,
+                                         unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                         VARIANT_BOOL inverter_on/*[in,def]*/);
+  HRESULT         __fastcall GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrMsg(void);
+  HRESULT         __fastcall ToExpression(BSTR* triggeringCondition/*[out,retval]*/);
+  BSTR            __fastcall ToExpression(void);
+  HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
+  VARIANT         __fastcall get_Instance(void);
+
+};
+typedef TCOMITriggeringConditionT<ITriggeringCondition> TCOMITriggeringCondition;
+
+// *********************************************************************//
+// DispIntf:  ITriggeringCondition
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {BF2E3D89-00C9-4860-A4AB-C0C3671CC54F}
+// *********************************************************************//
+template<class T>
+class ITriggeringConditionDispT : public TAutoDriver<ITriggeringCondition>
+{
+public:
+  ITriggeringConditionDispT(){}
+
+  ITriggeringConditionDispT(ITriggeringCondition *pintf)
+  {
+    TAutoDriver<ITriggeringCondition>::Bind(pintf, false);
+  }
+
+  ITriggeringConditionDispT(ITriggeringConditionPtr pintf)
+  {
+    TAutoDriver<ITriggeringCondition>::Bind(pintf, true);
+  }
+
+  ITriggeringConditionDispT& operator=(ITriggeringCondition *pintf)
+  {
+    TAutoDriver<ITriggeringCondition>::Bind(pintf, false);
+    return *this;
+  }
+
+  ITriggeringConditionDispT& operator=(ITriggeringConditionPtr pintf)
+  {
+    TAutoDriver<ITriggeringCondition>::Bind(pintf, true);
+    return *this;
+  }
+
+  HRESULT BindDefault()
+  {
+    return OLECHECK(Bind(CLSID_TriggeringCondition));
+  }
+
+  HRESULT BindRunning()
+  {
+    return BindToActive(CLSID_TriggeringCondition);
+  }
+
+  HRESULT         __fastcall BeginEditing();
+  HRESULT         __fastcall EndEditing(VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall EndEditing(void);
+  HRESULT         __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                            , BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            BSTR price/*[in]*/);
+  HRESULT         __fastcall SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                    , BSTR price/*[in]*/,
+                                                    unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/);
+  HRESULT         __fastcall BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                   , BSTR price/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   BSTR price/*[in]*/);
+  HRESULT         __fastcall LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                , BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                BSTR price/*[in]*/);
+  HRESULT         __fastcall BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/);
+  HRESULT         __fastcall AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                          BSTR price/*[in]*/);
+  HRESULT         __fastcall VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                        unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                        unsigned volume/*[in]*/);
+  HRESULT         __fastcall PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                   , unsigned period_in_tenth_sec/*[in]*/,
+                                                   unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned period_in_tenth_sec/*[in]*/,
+                                                   unsigned volume/*[in]*/);
+  HRESULT         __fastcall BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/);
+  HRESULT         __fastcall AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           unsigned volume/*[in]*/);
+  HRESULT         __fastcall AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                             , unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             unsigned volume/*[in]*/);
+  HRESULT         __fastcall AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                  , unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/);
+  HRESULT         __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                  , unsigned volume/*[in]*/,
+                                                  unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                  unsigned volume/*[in]*/);
+  HRESULT         __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                         VARIANT_BOOL inverter_on/*[in,def]*/,
+                                         unsigned* id/*[out,retval]*/);
+  unsigned        __fastcall Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                         VARIANT_BOOL inverter_on/*[in,def]*/);
+  HRESULT         __fastcall GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrMsg(void);
+  HRESULT         __fastcall ToExpression(BSTR* triggeringCondition/*[out,retval]*/);
+  BSTR            __fastcall ToExpression(void);
+  HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
+  VARIANT         __fastcall get_Instance(void);
+
+};
+typedef ITriggeringConditionDispT<ITriggeringCondition> ITriggeringConditionDisp;
+
+// *********************************************************************//
+// SmartIntf: TCOMITouchOrderCommand
+// Interface: ITouchOrderCommand
+// *********************************************************************//
+template <class T /* ITouchOrderCommand */ >
+class TCOMITouchOrderCommandT : public TComInterface<ITouchOrderCommand>, public TComInterfaceBase<IUnknown>
+{
+public:
+  TCOMITouchOrderCommandT() {}
+  TCOMITouchOrderCommandT(ITouchOrderCommand *intf, bool addRef = false) : TComInterface<ITouchOrderCommand>(intf, addRef) {}
+  TCOMITouchOrderCommandT(const TCOMITouchOrderCommandT& src) : TComInterface<ITouchOrderCommand>(src) {}
+  TCOMITouchOrderCommandT& operator=(const TCOMITouchOrderCommandT& src) { Bind(src, true); return *this;}
+
+  HRESULT         __fastcall SetCmdType(Speedyapi_tlb::TouchedOrderCommandEnum toc_type/*[in]*/);
+  HRESULT         __fastcall SetMarket(Speedyapi_tlb::MarketEnum market/*[in]*/);
+  HRESULT         __fastcall SetSymbol(BSTR symbol/*[in]*/);
+  HRESULT         __fastcall SetSide(Speedyapi_tlb::SideEnum side/*[in]*/);
+  HRESULT         __fastcall SetTouchOrderID(BSTR id/*[in]*/);
+  HRESULT         __fastcall SetPrice(BSTR price/*[in]*/);
+  HRESULT         __fastcall SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/,
+                                                   int ticks/*[in]*/);
+  HRESULT         __fastcall SetUserData(BSTR data/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                        VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                           VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                            VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                             VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
+  HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
+  VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                   VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
+  HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
+  HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
+  __int64         __fastcall GetNID(void);
+
+};
+typedef TCOMITouchOrderCommandT<ITouchOrderCommand> TCOMITouchOrderCommand;
+
+// *********************************************************************//
+// DispIntf:  ITouchOrderCommand
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {97E11FE1-41CB-4491-99FC-31FF25986E5B}
+// *********************************************************************//
+template<class T>
+class ITouchOrderCommandDispT : public TAutoDriver<ITouchOrderCommand>
+{
+public:
+  ITouchOrderCommandDispT(){}
+
+  ITouchOrderCommandDispT(ITouchOrderCommand *pintf)
+  {
+    TAutoDriver<ITouchOrderCommand>::Bind(pintf, false);
+  }
+
+  ITouchOrderCommandDispT(ITouchOrderCommandPtr pintf)
+  {
+    TAutoDriver<ITouchOrderCommand>::Bind(pintf, true);
+  }
+
+  ITouchOrderCommandDispT& operator=(ITouchOrderCommand *pintf)
+  {
+    TAutoDriver<ITouchOrderCommand>::Bind(pintf, false);
+    return *this;
+  }
+
+  ITouchOrderCommandDispT& operator=(ITouchOrderCommandPtr pintf)
+  {
+    TAutoDriver<ITouchOrderCommand>::Bind(pintf, true);
+    return *this;
+  }
+
+  HRESULT BindDefault()
+  {
+    return OLECHECK(Bind(CLSID_TouchOrderCommand));
+  }
+
+  HRESULT BindRunning()
+  {
+    return BindToActive(CLSID_TouchOrderCommand);
+  }
+
+  HRESULT         __fastcall SetCmdType(Speedyapi_tlb::TouchedOrderCommandEnum toc_type/*[in]*/);
+  HRESULT         __fastcall SetMarket(Speedyapi_tlb::MarketEnum market/*[in]*/);
+  HRESULT         __fastcall SetSymbol(BSTR symbol/*[in]*/);
+  HRESULT         __fastcall SetSide(Speedyapi_tlb::SideEnum side/*[in]*/);
+  HRESULT         __fastcall SetTouchOrderID(BSTR id/*[in]*/);
+  HRESULT         __fastcall SetPrice(BSTR price/*[in]*/);
+  HRESULT         __fastcall SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/
+                                                   , int ticks/*[in]*/);
+  HRESULT         __fastcall SetUserData(BSTR data/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/
+                                                        , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/
+                                                           , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/
+                                                            , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/);
+  HRESULT         __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/
+                                                             , VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/);
+  HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
+  VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                   VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredActionMsg(BSTR msg/*[in]*/);
+  HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
+  HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
+  __int64         __fastcall GetNID(void);
+
+};
+typedef ITouchOrderCommandDispT<ITouchOrderCommand> ITouchOrderCommandDisp;
 
 // *********************************************************************//
 // SmartIntf: TCOMIBaseMessage
@@ -7392,6 +8175,68 @@ TCOMINewOrderMessageT<T>::set_CAPlainText(BSTR Value/*[in]*/)
   return (*this)->set_CAPlainText(Value);
 }
 
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::ClearStopLoss(void)
+{
+  return (*this)->ClearStopLoss();
+}
+
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::ClearTakeProfit(void)
+{
+  return (*this)->ClearTakeProfit();
+}
+
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::get_StopOrderError(BSTR* Value/*[out,retval]*/)
+{
+  return (*this)->get_StopOrderError(Value);
+}
+
+template <class T> BSTR __fastcall
+TCOMINewOrderMessageT<T>::get_StopOrderError(void)
+{
+  BSTR Value = 0;
+  OLECHECK(this->get_StopOrderError((BSTR*)&Value));
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                      BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                      VARIANT_BOOL* Succeed/*[out,retval]*/)
+{
+  return (*this)->SetStopLoss(IsTrailingStop, Ticks, StopPrice, OrderPrice, Succeed);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMINewOrderMessageT<T>::SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                      BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+{
+  VARIANT_BOOL Succeed;
+  OLECHECK(this->SetStopLoss(IsTrailingStop/*[in]*/, Ticks/*[in]*/, StopPrice/*[in]*/,
+                             OrderPrice/*[in]*/, (VARIANT_BOOL*)&Succeed));
+  return Succeed;
+}
+
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                        BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                        VARIANT_BOOL* Succeed/*[out,retval]*/)
+{
+  return (*this)->SetTakeProfit(IsTrailingStop, Ticks, StopPrice, OrderPrice, Succeed);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMINewOrderMessageT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                        BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+{
+  VARIANT_BOOL Succeed;
+  OLECHECK(this->SetTakeProfit(IsTrailingStop/*[in]*/, Ticks/*[in]*/, StopPrice/*[in]*/,
+                               OrderPrice/*[in]*/, (VARIANT_BOOL*)&Succeed));
+  return Succeed;
+}
+
 // *********************************************************************//
 // DispIntf:  INewOrderMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -8220,6 +9065,82 @@ INewOrderMessageDispT<T>::set_CAPlainText(BSTR Value/*[in]*/)
   TAutoArgs<1> _args;
   _args[1] = Value /*[VT_BSTR:0]*/;
   return OlePropertyPut(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::ClearStopLoss()
+{
+  _TDispID _dispid(*this, OLETEXT("ClearStopLoss"), DISPID(326));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::ClearTakeProfit()
+{
+  _TDispID _dispid(*this, OLETEXT("ClearTakeProfit"), DISPID(327));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::get_StopOrderError(BSTR* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("StopOrderError"), DISPID(328));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BSTR:1]*/, _args, OlePropertyGet(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+INewOrderMessageDispT<T>::get_StopOrderError(void)
+{
+  BSTR Value;
+  this->get_StopOrderError((BSTR*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                      BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                      VARIANT_BOOL* Succeed/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetStopLoss"), DISPID(329));
+  TAutoArgs<4> _args;
+  _args[1] = IsTrailingStop /*[VT_BOOL:0]*/;
+  _args[2] = Ticks /*[VT_I4:0]*/;
+  _args[3] = StopPrice /*[VT_BSTR:0]*/;
+  _args[4] = OrderPrice /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(Succeed /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+INewOrderMessageDispT<T>::SetStopLoss(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                      BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+{
+  VARIANT_BOOL Succeed;
+  this->SetStopLoss(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed);
+  return Succeed;
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                        BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/,
+                                        VARIANT_BOOL* Succeed/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTakeProfit"), DISPID(324));
+  TAutoArgs<4> _args;
+  _args[1] = IsTrailingStop /*[VT_BOOL:0]*/;
+  _args[2] = Ticks /*[VT_I4:0]*/;
+  _args[3] = StopPrice /*[VT_BSTR:0]*/;
+  _args[4] = OrderPrice /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(Succeed /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+INewOrderMessageDispT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
+                                        BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/)
+{
+  VARIANT_BOOL Succeed;
+  this->SetTakeProfit(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed);
+  return Succeed;
 }
 
 template <class T> HRESULT __fastcall
@@ -14658,6 +15579,34 @@ TCOMIExecutionReportMessageT<T>::get_PartID(void)
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderResponse(BSTR* Value/*[out,retval]*/)
+{
+  return (*this)->GetTouchOrderResponse(Value);
+}
+
+template <class T> BSTR __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderResponse(void)
+{
+  BSTR Value = 0;
+  OLECHECK(this->GetTouchOrderResponse((BSTR*)&Value));
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/)
+{
+  return (*this)->GetTouchOrderRespType(Value);
+}
+
+template <class T> Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall
+TCOMIExecutionReportMessageT<T>::GetTouchOrderRespType(void)
+{
+  Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+  OLECHECK(this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value));
+  return Value;
+}
+
 // *********************************************************************//
 // DispIntf:  IExecutionReportMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -15956,6 +16905,38 @@ IExecutionReportMessageDispT<T>::get_PartID(void)
 {
   long Value;
   this->get_PartID((long*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderResponse(BSTR* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetTouchOrderResponse"), DISPID(331));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderResponse(void)
+{
+  BSTR Value;
+  this->GetTouchOrderResponse((BSTR*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderRespType(Speedyapi_tlb::TouchOrderResponseTypeEnum* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetTouchOrderRespType"), DISPID(332));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr((int*)Value /*[VT_USERDEFINED:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> Speedyapi_tlb::TouchOrderResponseTypeEnum __fastcall
+IExecutionReportMessageDispT<T>::GetTouchOrderRespType(void)
+{
+  Speedyapi_tlb::TouchOrderResponseTypeEnum Value;
+  this->GetTouchOrderRespType((Speedyapi_tlb::TouchOrderResponseTypeEnum*)&Value);
   return Value;
 }
 
@@ -17966,6 +18947,21 @@ TCOMIOrderConnectionT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/
   return SUCCEED;
 }
 
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
+                                            VARIANT_BOOL* Result/*[out,retval]*/)
+{
+  return (*this)->TouchOrderControl(TouchOrderCmd, Result);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMIOrderConnectionT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+{
+  VARIANT_BOOL Result;
+  OLECHECK(this->TouchOrderControl(TouchOrderCmd/*[in]*/, (VARIANT_BOOL*)&Result));
+  return Result;
+}
+
 // *********************************************************************//
 // DispIntf:  IOrderConnection
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -18794,6 +19790,24 @@ IOrderConnectionDispT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/
   return SUCCEED;
 }
 
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
+                                            , VARIANT_BOOL* Result/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("TouchOrderControl"), DISPID(245));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ITouchOrderCommand*)TouchOrderCmd /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(Result /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+IOrderConnectionDispT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/)
+{
+  VARIANT_BOOL Result;
+  this->TouchOrderControl(TouchOrderCmd, (VARIANT_BOOL*)&Result);
+  return Result;
+}
+
 // *********************************************************************//
 // DispIntf:  IOrderConnectionEvents
 // Flags:     (0)
@@ -18875,6 +19889,1042 @@ IOrderConnectionEventsDispT<T>::OnChangePasswordReply(Speedyapi_tlb::ChangePassw
   _args[1] = (int)Result /*[VT_USERDEFINED:0]*/;
   _args[2] = Message /*[VT_BSTR:0]*/;
   return OleFunction(_dispid, _args);
+}
+
+// *********************************************************************//
+// SmartIntf: TCOMITriggeringCondition
+// Interface: ITriggeringCondition
+// *********************************************************************//
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::BeginEditing(void)
+{
+  return (*this)->BeginEditing();
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::EndEditing(VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  return (*this)->EndEditing(Value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITriggeringConditionT<T>::EndEditing(void)
+{
+  VARIANT_BOOL Value;
+  OLECHECK(this->EndEditing((VARIANT_BOOL*)&Value));
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->MatchPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->MatchPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                     BSTR price/*[in]*/,
+                                                     unsigned* id/*[out,retval]*/)
+{
+  return (*this)->SellSideMatchPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                     BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->SellSideMatchPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->BuySideMatchPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->BuySideMatchPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                 BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->LastMatchPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                 BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->LastMatchPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->BidPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->BidPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->AskPriceComp(op, price, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->AskPriceComp(op/*[in]*/, price/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                         unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->VolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                         unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->VolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    unsigned period_in_tenth_sec/*[in]*/,
+                                                    unsigned volume/*[in]*/,
+                                                    unsigned* id/*[out,retval]*/)
+{
+  return (*this)->PeriodAccumVolumeComp(op, period_in_tenth_sec, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    unsigned period_in_tenth_sec/*[in]*/,
+                                                    unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->PeriodAccumVolumeComp(op/*[in]*/, period_in_tenth_sec/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->BidVolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->BidVolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->AskVolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->AskVolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                              unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  return (*this)->AccumVolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                              unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->AccumVolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/)
+{
+  return (*this)->AnyTop5BidVolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->AnyTop5BidVolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/)
+{
+  return (*this)->AnyTop5AskVolumeComp(op, volume, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/)
+{
+  unsigned id;
+  OLECHECK(this->AnyTop5AskVolumeComp(op/*[in]*/, volume/*[in]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                          VARIANT_BOOL inverter_on/*[in,def]*/,
+                                          unsigned* id/*[out,retval]*/)
+{
+  return (*this)->Conjunction(signal_list, count, inverter_on, id);
+}
+
+template <class T> unsigned __fastcall
+TCOMITriggeringConditionT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                          VARIANT_BOOL inverter_on/*[in,def]*/)
+{
+  unsigned id;
+  OLECHECK(this->Conjunction(signal_list/*[in]*/, count/*[in]*/, inverter_on/*[in,def]*/, (unsigned*)&id));
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/)
+{
+  return (*this)->GetLastErrMsg(lastErrMsg);
+}
+
+template <class T> BSTR __fastcall
+TCOMITriggeringConditionT<T>::GetLastErrMsg(void)
+{
+  BSTR lastErrMsg = 0;
+  OLECHECK(this->GetLastErrMsg((BSTR*)&lastErrMsg));
+  return lastErrMsg;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::ToExpression(BSTR* triggeringCondition/*[out,retval]*/)
+{
+  return (*this)->ToExpression(triggeringCondition);
+}
+
+template <class T> BSTR __fastcall
+TCOMITriggeringConditionT<T>::ToExpression(void)
+{
+  BSTR triggeringCondition = 0;
+  OLECHECK(this->ToExpression((BSTR*)&triggeringCondition));
+  return triggeringCondition;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::get_Instance(VARIANT* Value/*[out,retval]*/)
+{
+  return (*this)->get_Instance(Value);
+}
+
+template <class T> VARIANT __fastcall
+TCOMITriggeringConditionT<T>::get_Instance(void)
+{
+  VARIANT Value;
+  OLECHECK(this->get_Instance((VARIANT*)&Value));
+  return Value;
+}
+
+// *********************************************************************//
+// DispIntf:  ITriggeringCondition
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {BF2E3D89-00C9-4860-A4AB-C0C3671CC54F}
+// *********************************************************************//
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::BeginEditing()
+{
+  _TDispID _dispid(*this, OLETEXT("BeginEditing"), DISPID(201));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::EndEditing(VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("EndEditing"), DISPID(202));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITriggeringConditionDispT<T>::EndEditing(void)
+{
+  VARIANT_BOOL Value;
+  this->EndEditing((VARIANT_BOOL*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                             , BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("MatchPriceComp"), DISPID(203));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::MatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                             BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->MatchPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                     , BSTR price/*[in]*/,
+                                                     unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SellSideMatchPriceComp"), DISPID(204));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::SellSideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                     BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->SellSideMatchPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                    , BSTR price/*[in]*/,
+                                                    unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("BuySideMatchPriceComp"), DISPID(205));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::BuySideMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->BuySideMatchPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                 , BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("LastMatchPriceComp"), DISPID(206));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::LastMatchPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                 BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->LastMatchPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("BidPriceComp"), DISPID(207));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::BidPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->BidPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("AskPriceComp"), DISPID(208));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = price /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::AskPriceComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                           BSTR price/*[in]*/)
+{
+  unsigned id;
+  this->AskPriceComp(op, price, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                         unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("VolumeComp"), DISPID(209));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::VolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                         unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->VolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                    , unsigned period_in_tenth_sec/*[in]*/,
+                                                    unsigned volume/*[in]*/,
+                                                    unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("PeriodAccumVolumeComp"), DISPID(210));
+  TAutoArgs<3> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = period_in_tenth_sec /*[VT_UINT:0]*/;
+  _args[3] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::PeriodAccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                    unsigned period_in_tenth_sec/*[in]*/,
+                                                    unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->PeriodAccumVolumeComp(op, period_in_tenth_sec, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                            , unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("BidVolumeComp"), DISPID(211));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->BidVolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                            , unsigned volume/*[in]*/, unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("AskVolumeComp"), DISPID(212));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                            unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->AskVolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                              , unsigned volume/*[in]*/,
+                                              unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("AccumVolumeComp"), DISPID(213));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::AccumVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                              unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->AccumVolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                   , unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("AnyTop5BidVolumeComp"), DISPID(214));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::AnyTop5BidVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->AnyTop5BidVolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/
+                                                   , unsigned volume/*[in]*/,
+                                                   unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("AnyTop5AskVolumeComp"), DISPID(215));
+  TAutoArgs<2> _args;
+  _args[1] = (int)op /*[VT_USERDEFINED:0]*/;
+  _args[2] = volume /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::AnyTop5AskVolumeComp(Speedyapi_tlb::LogicalComparisonOperatorEnum op/*[in]*/,
+                                                   unsigned volume/*[in]*/)
+{
+  unsigned id;
+  this->AnyTop5AskVolumeComp(op, volume, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                          VARIANT_BOOL inverter_on/*[in,def]*/,
+                                          unsigned* id/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("Conjunction"), DISPID(216));
+  TAutoArgs<3> _args;
+  _args[1] = signal_list /*[VT_SAFEARRAY:0]*/;
+  _args[2] = count /*[VT_UINT:0]*/;
+  _args[3] = inverter_on /*[VT_BOOL:0]*/;
+  return OutRetValSetterPtr(id /*[VT_UINT:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> unsigned __fastcall
+ITriggeringConditionDispT<T>::Conjunction(LPSAFEARRAY signal_list/*[in]*/, unsigned count/*[in]*/,
+                                          VARIANT_BOOL inverter_on/*[in,def]*/)
+{
+  unsigned id;
+  this->Conjunction(signal_list, count, inverter_on, (unsigned*)&id);
+  return id;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetLastErrMsg"), DISPID(217));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(lastErrMsg /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+ITriggeringConditionDispT<T>::GetLastErrMsg(void)
+{
+  BSTR lastErrMsg;
+  this->GetLastErrMsg((BSTR*)&lastErrMsg);
+  return lastErrMsg;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::ToExpression(BSTR* triggeringCondition/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("ToExpression"), DISPID(218));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(triggeringCondition /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+ITriggeringConditionDispT<T>::ToExpression(void)
+{
+  BSTR triggeringCondition;
+  this->ToExpression((BSTR*)&triggeringCondition);
+  return triggeringCondition;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::get_Instance(VARIANT* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("Instance"), DISPID(219));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_VARIANT:1]*/, _args, OlePropertyGet(_dispid, _args));
+}
+
+template <class T> VARIANT __fastcall
+ITriggeringConditionDispT<T>::get_Instance(void)
+{
+  VARIANT Value;
+  this->get_Instance((VARIANT*)&Value);
+  return Value;
+}
+
+// *********************************************************************//
+// SmartIntf: TCOMITouchOrderCommand
+// Interface: ITouchOrderCommand
+// *********************************************************************//
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetCmdType(Speedyapi_tlb::TouchedOrderCommandEnum toc_type/*[in]*/)
+{
+  return (*this)->SetCmdType(toc_type);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetMarket(Speedyapi_tlb::MarketEnum market/*[in]*/)
+{
+  return (*this)->SetMarket(market);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetSymbol(BSTR symbol/*[in]*/)
+{
+  return (*this)->SetSymbol(symbol);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetSide(Speedyapi_tlb::SideEnum side/*[in]*/)
+{
+  return (*this)->SetSide(side);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTouchOrderID(BSTR id/*[in]*/)
+{
+  return (*this)->SetTouchOrderID(id);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetPrice(BSTR price/*[in]*/)
+{
+  return (*this)->SetPrice(price);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/,
+                                                  int ticks/*[in]*/)
+{
+  return (*this)->SetFloatingOrderPrice(depend_on, ticks);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetUserData(BSTR data/*[in]*/)
+{
+  return (*this)->SetUserData(data);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/,
+                                                       VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionNewOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionNewOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/,
+                                                          VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionCancelOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionCancelOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/,
+                                                           VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionReplaceOrder(order, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionReplaceOrder(order/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/,
+                                                            VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionTouchOrderCmd(toc, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionTouchOrderCmd(toc/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::get_Instance(VARIANT* Value/*[out,retval]*/)
+{
+  return (*this)->get_Instance(Value);
+}
+
+template <class T> VARIANT __fastcall
+TCOMITouchOrderCommandT<T>::get_Instance(void)
+{
+  VARIANT Value;
+  OLECHECK(this->get_Instance((VARIANT*)&Value));
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                  VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredActionMsg(msg, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredActionMsg(msg/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/)
+{
+  return (*this)->SetTriggeringCondition(ttc);
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::GetNID(__int64* NID/*[out,retval]*/)
+{
+  return (*this)->GetNID(NID);
+}
+
+template <class T> __int64 __fastcall
+TCOMITouchOrderCommandT<T>::GetNID(void)
+{
+  __int64 NID;
+  OLECHECK(this->GetNID((__int64*)&NID));
+  return NID;
+}
+
+// *********************************************************************//
+// DispIntf:  ITouchOrderCommand
+// Flags:     (4416) Dual OleAutomation Dispatchable
+// GUID:      {97E11FE1-41CB-4491-99FC-31FF25986E5B}
+// *********************************************************************//
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetCmdType(Speedyapi_tlb::TouchedOrderCommandEnum toc_type/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetCmdType"), DISPID(201));
+  TAutoArgs<1> _args;
+  _args[1] = (int)toc_type /*[VT_USERDEFINED:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetMarket(Speedyapi_tlb::MarketEnum market/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetMarket"), DISPID(202));
+  TAutoArgs<1> _args;
+  _args[1] = (int)market /*[VT_USERDEFINED:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetSymbol(BSTR symbol/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetSymbol"), DISPID(203));
+  TAutoArgs<1> _args;
+  _args[1] = symbol /*[VT_BSTR:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetSide(Speedyapi_tlb::SideEnum side/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetSide"), DISPID(204));
+  TAutoArgs<1> _args;
+  _args[1] = (int)side /*[VT_USERDEFINED:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTouchOrderID(BSTR id/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTouchOrderID"), DISPID(205));
+  TAutoArgs<1> _args;
+  _args[1] = id /*[VT_BSTR:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetPrice(BSTR price/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetPrice"), DISPID(206));
+  TAutoArgs<1> _args;
+  _args[1] = price /*[VT_BSTR:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetFloatingOrderPrice(Speedyapi_tlb::PriceDependOnEnum depend_on/*[in]*/
+                                                  , int ticks/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetFloatingOrderPrice"), DISPID(207));
+  TAutoArgs<2> _args;
+  _args[1] = (int)depend_on /*[VT_USERDEFINED:0]*/;
+  _args[2] = ticks /*[VT_INT:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetUserData(BSTR data/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetUserData"), DISPID(208));
+  TAutoArgs<1> _args;
+  _args[1] = data /*[VT_BSTR:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/
+                                                       , VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredActionNewOrder"), DISPID(209));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::INewOrderMessage*)order /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionNewOrder(Speedyapi_tlb::INewOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionNewOrder(order, (VARIANT_BOOL*)&value);
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/
+                                                          , VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredActionCancelOrder"), DISPID(210));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ICancelOrderMessage*)order /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionCancelOrder(Speedyapi_tlb::ICancelOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionCancelOrder(order, (VARIANT_BOOL*)&value);
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/
+                                                           , VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredActionReplaceOrder"), DISPID(211));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::IReplaceOrderMessage*)order /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionReplaceOrder(Speedyapi_tlb::IReplaceOrderMessage* order/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionReplaceOrder(order, (VARIANT_BOOL*)&value);
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/
+                                                            , VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredActionTouchOrderCmd"), DISPID(212));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ITouchOrderCommand*)toc /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionTouchOrderCmd(Speedyapi_tlb::ITouchOrderCommand* toc/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionTouchOrderCmd(toc, (VARIANT_BOOL*)&value);
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::get_Instance(VARIANT* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("Instance"), DISPID(213));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_VARIANT:1]*/, _args, OlePropertyGet(_dispid, _args));
+}
+
+template <class T> VARIANT __fastcall
+ITouchOrderCommandDispT<T>::get_Instance(void)
+{
+  VARIANT Value;
+  this->get_Instance((VARIANT*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/,
+                                                  VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredActionMsg"), DISPID(214));
+  TAutoArgs<1> _args;
+  _args[1] = msg /*[VT_BSTR:0]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredActionMsg(BSTR msg/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredActionMsg(msg, (VARIANT_BOOL*)&value);
+  return value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeringCondition"), DISPID(215));
+  TAutoArgs<1> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ITriggeringCondition*)ttc /*[VT_USERDEFINED:1]*/;
+  return OleFunction(_dispid, _args);
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::GetNID(__int64* NID/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetNID"), DISPID(216));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(NID /*[VT_I8:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> __int64 __fastcall
+ITouchOrderCommandDispT<T>::GetNID(void)
+{
+  __int64 NID;
+  this->GetNID((__int64*)&NID);
+  return NID;
 }
 
 // *********************************************************************//
@@ -18961,6 +21011,20 @@ typedef TCoClassCreatorT<TCOMINewsMessage, INewsMessage, &CLSID_NewsMessage, &II
 // Interface: TCOMIOrderConnection
 // *********************************************************************//
 typedef TCoClassCreatorT<TCOMIOrderConnection, IOrderConnection, &CLSID_OrderConnection, &IID_IOrderConnection> CoOrderConnection;
+
+// *********************************************************************//
+// COCLASS DEFAULT INTERFACE CREATOR
+// CoClass  : TriggeringCondition
+// Interface: TCOMITriggeringCondition
+// *********************************************************************//
+typedef TCoClassCreatorT<TCOMITriggeringCondition, ITriggeringCondition, &CLSID_TriggeringCondition, &IID_ITriggeringCondition> CoTriggeringCondition;
+
+// *********************************************************************//
+// COCLASS DEFAULT INTERFACE CREATOR
+// CoClass  : TouchOrderCommand
+// Interface: TCOMITouchOrderCommand
+// *********************************************************************//
+typedef TCoClassCreatorT<TCOMITouchOrderCommand, ITouchOrderCommand, &CLSID_TouchOrderCommand, &IID_ITouchOrderCommand> CoTouchOrderCommand;
 #endif  //   __TLB_NO_INTERFACE_WRAPPERS
 
 

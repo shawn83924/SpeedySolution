@@ -87,6 +87,7 @@ MarketDataConnection::MarketDataConnection( HINSTANCE Instance,
 ,FInstance( Instance )
 ,FAppName( AppName )
 ,FListener( pListener )
+,FAdvancedListener( NULL )
 ,FIsDebugMode( IsDebugMode )
 ,FIsDebugPerformance( IsDebugPerformance )
 ,FTickCount( 0 )
@@ -107,7 +108,9 @@ MarketDataConnection::MarketDataConnection( HINSTANCE Instance,
 ,FOnNews( &MarketDataConnection::OnNews )
 ,FOnRecoverFinished( &MarketDataConnection::OnRecoverFinished )
 ,FOnLoginReply( &MarketDataConnection::OnLoginReply )
+,FIsAdvancedMode( FALSE )
 ,FAppVersion( "2.0.0.99" )
+,FServerMode( "MDBS" )
 {
     if( FIsDebugMode )
     {
@@ -1395,7 +1398,7 @@ bool MarketDataConnection::CanRegExchange( const UFC::AnsiString& Exchange )
 //---------------------------------------------------------------------------
 void MarketDataConnection::OnLoginReply( const UFC::AnsiString& Subject, const UFC::AnsiString& Key,MTree* Data )
 {
-    UFC::AnsiString  LogonErrMsg;
+    UFC::AnsiString  LogonErrMsg, ServerMode;
     int              Result = 0;
     int              LimitReg = 0;
     bool             LogonOK = false;
@@ -1440,6 +1443,12 @@ void MarketDataConnection::OnLoginReply( const UFC::AnsiString& Subject, const U
        }
        //else
        //	Data->get( "Message", LogonErrMsg );
+       if (Data->get("ServerMode", ServerMode) == TRUE)
+       {
+           FServerMode = ServerMode;
+           if (ServerMode == "MEGA")
+               FIsAdvancedMode == TRUE;
+       }
     }
     else
         LogonErrMsg = "Missing value Result or Limit.";

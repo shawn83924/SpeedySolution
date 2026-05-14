@@ -94,6 +94,12 @@ public:
     virtual void OnRecoverFinished( const UFC::AnsiString& Exchange, const UFC::AnsiString& ProductID, int Count ) = 0;
 };
 //------------------------------------------------------------------------------
+class IAdvancedMarketDataEventListener
+{
+public:
+    virtual void OnMarketDataMessage(const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, AdvancedMessage* Msg) = 0;
+};
+//------------------------------------------------------------------------------
 class MarketDataConnection : public UFC::PThread, public MessageListener, public MAppListener
 {
 private:
@@ -119,9 +125,12 @@ private:
     BOOL                        FIsDebugMode;
     BOOL                        FIsDebugPerformance;
     BOOL                        FLimitSubscribe;
+    BOOL                        FIsAdvancedMode;
     UFC::AnsiString				FAppVersion;
+    UFC::AnsiString				FServerMode;
 private:
     IMarketDataConnectionEventListener* FListener;
+    IAdvancedMarketDataEventListener*   FAdvancedListener;
 private: ///< Impelment interface MAppListener
     virtual void                    OnMAppConnected( void );
     virtual void                    OnMAppDisconnected( void );
@@ -221,6 +230,7 @@ private:
     void OnTWSEOpen( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
     void OnTWSEIndex( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
     void OnTWSEClose( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
+    void OnTWSEAdvancedMessage(const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, MTree* Data);
     ///< TWSE/OTC Message Handler
     void OnHKExMessage( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, MTree* Data );
     void OnHKExTrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );

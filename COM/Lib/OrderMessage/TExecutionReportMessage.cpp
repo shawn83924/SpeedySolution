@@ -69,6 +69,8 @@ TExecutionReportMessage::TExecutionReportMessage( void )
 ,FFixCxlRejResponseTo( -1 )
 ,FFixCxlRejReason( -1 )
 ,FFixOrdRejReason( -1 )
+,FTouchOrderRespType( nsOrderMessageDefine::tortNone)
+,FTouchOrderResponse( "" )
 {
     SetMessageType( nsOrderMessageDefine::mtExecutionReport );
 }
@@ -149,6 +151,8 @@ TExecutionReportMessage::TExecutionReportMessage( TExecutionReportMessage& Ref )
 ,FFixCxlRejResponseTo( -1 )
 ,FFixCxlRejReason( -1 )
 ,FFixOrdRejReason( -1 )
+,FTouchOrderRespType( Ref.FTouchOrderRespType )
+,FTouchOrderResponse( Ref.FTouchOrderResponse )
 {
     SetMessageType( nsOrderMessageDefine::mtExecutionReport );
 }

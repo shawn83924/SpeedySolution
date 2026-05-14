@@ -32,11 +32,11 @@ bool CMLTWCAObject::CreateActiveXCAObject()
 #if !defined(_WIN64)
    if (ITWCAAPIImpl::CreateInstance(&FTWCAObjPtr))
 	{
-		FLogPtr->fprintf("%s() Create TWCA Object Success.", __func__);
+		FLogPtr->fprintf(" %s() Create TWCA Object Success.", __func__);
 		isSuccess = true;
 	}
 	else
-		FLogPtr->fprintf("%s() Create TWCA Object Failed.", __func__);
+		FLogPtr->fprintf(" %s() Create TWCA Object Failed.", __func__);
 #else
 	FLogPtr->fprintf("%s() TWCA Object not Support 64 bit Program.", __func__);
 #endif //#if !defined(_WIN64)
@@ -72,12 +72,14 @@ int CMLTWCAObject::GenerateSignatureAndCAData(const UFC::AnsiString& PlainText, 
 			}
 			else
 			{
+				FLogPtr->fprintf(" %s() SignPkcs7:%d", __func__, signatureErrCode);
 				ResultData.SetResultMsg(UFC::AnsiString(FTWCAObjPtr->GetErrorMsg()));
-				resultCode = selectCode;
 			}
+			resultCode = signatureErrCode;
 		}
 		else
 		{
+			FLogPtr->fprintf(" %s() SelectSigner:%d", __func__, selectCode);
 			ResultData.SetResultMsg(UFC::AnsiString(FTWCAObjPtr->GetErrorMsg()));
 			resultCode = selectCode;
 		}
@@ -93,7 +95,7 @@ int CMLTWCAObject::GenerateSignatureAndCAData(const UFC::AnsiString& PlainText, 
 	ResultData.SetResultMsg("TWCA Object not Support none Windows Program.");
 #endif  //#ifdef WIN32
 	ResultData.SetErrorCode(resultCode);
-	FLogPtr->fprintf(" %s() %s", __func__, ResultData.GetResultMsg().c_str());
+	FLogPtr->fprintf(" %s() %d:%s", __func__, resultCode, ResultData.GetResultMsg().c_str());
 
 	return resultCode;
 }  //CMLTWCAObject::GenerateSignatureAndCAData()

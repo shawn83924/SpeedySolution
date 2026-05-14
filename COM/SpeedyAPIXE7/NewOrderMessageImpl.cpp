@@ -226,7 +226,7 @@ STDMETHODIMP TNewOrderMessageImpl::get_MaturityMonthYear(BSTR* Value)
 STDMETHODIMP TNewOrderMessageImpl::get_OrderQty(long* Value)
 {
     *Value = FMessage.GetOrderQty();
-    return S_OK;
+	return S_OK;
 };
 //------------------------------------------------------------------------------
 STDMETHODIMP TNewOrderMessageImpl::get_OrderType(OrderTypeEnum* Value)
@@ -714,6 +714,45 @@ STDMETHODIMP TNewOrderMessageImpl::set_CASignature(BSTR Value)
 	return S_OK;
 }
 //------------------------------------------------------------------------------
-
-
-
+STDMETHODIMP TNewOrderMessageImpl::ClearStopLoss()
+{
+	FMessage.ClearStopLoss();
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TNewOrderMessageImpl::ClearTakeProfit()
+{
+	FMessage.ClearTakeProfit();
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TNewOrderMessageImpl::get_StopOrderError(BSTR* Value)
+{
+	WideString Error( FMessage.GetStopOrderError() );
+	*Value = Error.Copy();
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TNewOrderMessageImpl::SetStopLoss(VARIANT_BOOL IsTrailingStop, long Ticks,
+		  BSTR StopPrice, BSTR OrderPrice, VARIANT_BOOL* Succeed)
+{
+    AnsiString stopPrice( StopPrice );
+	AnsiString orderPrice( OrderPrice );
+	*Succeed = FMessage.SetStopLoss(IsTrailingStop,
+									Ticks,
+									stopPrice.c_str(),
+									orderPrice.c_str());
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TNewOrderMessageImpl::SetTakeProfit(VARIANT_BOOL IsTrailingStop, long Ticks,
+          BSTR StopPrice, BSTR OrderPrice, VARIANT_BOOL* Succeed)
+{
+		AnsiString stopPrice( StopPrice );
+	AnsiString orderPrice( OrderPrice );
+	*Succeed = FMessage.SetTakeProfit(	IsTrailingStop,
+										Ticks,
+										stopPrice.c_str(),
+										orderPrice.c_str());
+	return S_OK;
+}

@@ -1484,25 +1484,3 @@ BOOL TTaifexConnection::SendToOrderServerEx( nsOrderMessageDefine::MarketEnum Ma
         MBusClient->WriteString( MHandle, "STRATEGY", StopPriceStrategy );
     return MBusClient->EndSend( MHandle );
 }
-//---------------------------------------------------------------------------
-BOOL  TTaifexConnection::CancelTouchOrder(const char* touch_order_id)
-{
-    if (!touch_order_id || (touch_order_id[0] != 'T' && touch_order_id[0] != 'O'))
-        return FALSE;
-
-    UFC::AnsiString PublishKey;
-    MTHandle        MHandle;
-    MApp* MBusClient = FTransport->GetMApp();
-    
-    PublishKey = FID;
-    if ('T' == touch_order_id[0])
-        MBusClient->BeginSend(MHandle, SUBJECT_TSE_STRATEGY, PublishKey);
-    else
-        MBusClient->BeginSend(MHandle, SUBJECT_OTC_STRATEGY, PublishKey);
-
-    UFC::AnsiString order;
-    order.Printf("cmd=cxl&oid=%s", touch_order_id);
-
-    MBusClient->WriteString(MHandle, "ORDER", order);
-    return MBusClient->EndSend(MHandle);
-}

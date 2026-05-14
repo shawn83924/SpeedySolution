@@ -2,6 +2,8 @@
 #include "TTaifexConnection.h"
 #include "MessageRender.h"
 //---------------------------------------------------------------------------
+// Fast TAIFEX R01 class
+//---------------------------------------------------------------------------
 TAIFEXR01::TAIFEXR01( void )
 :End( 0 )
 {
@@ -9,22 +11,65 @@ TAIFEXR01::TAIFEXR01( void )
 //---------------------------------------------------------------------------
 void TAIFEXR01::SetFunction( int Func )
 {
-	switch( Func )
-	{
-		case 1:  memcpy( Header, "30010012115900" , 14 );break;
-		case 2:  memcpy( Header, "30020012125900" , 14 );break;
-		case 3:  memcpy( Header, "30030012135900" , 14 );break;
-		case 4:  memcpy( Header, "30040012145900" , 14 );break;
-		case 5:  memcpy( Header, "30050012155900" , 14 );break;
-		case 6:  memcpy( Header, "30060012165900" , 14 );break;
-		default: memcpy( Header, "30000012165900" , 14 );break;
-	}
-	End = 0;
+    switch( Func )
+    {
+        case 1:  memcpy( Header, "30010012115900" , 14 );break;
+        case 2:  memcpy( Header, "30020012125900" , 14 );break;
+        case 3:  memcpy( Header, "30030012135900" , 14 );break;
+        case 4:  memcpy( Header, "30040012145900" , 14 );break;
+        case 5:  memcpy( Header, "30050012155900" , 14 );break;
+        case 6:  memcpy( Header, "30060012165900" , 14 );break;
+        default: memcpy( Header, "30000012165900" , 14 );break;
+    }
+    End = 0;
 }
 //---------------------------------------------------------------------------
 char* TAIFEXR01::ToString()
 {
-	return Header;
+    return Header;
+}
+//---------------------------------------------------------------------------
+// Fast TWSE T01 class
+//---------------------------------------------------------------------------
+TWSET01Ex::TWSET01Ex( void )
+:End( 0 )
+{
+}
+//---------------------------------------------------------------------------
+void TWSET01Ex::SetFunction( BOOL IsTSE, int Func )
+{
+	char  Data[ 16 ];
+	Int32 Now = UFC::GetHHMMSS();
+	Int32 System = (IsTSE == TRUE) ? 30 : 93;
+
+/// Allen modify at 20190615
+#ifdef _MSC_VER
+	_snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
+#else
+	snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
+#endif
+	memcpy( Header, Data , 14 );
+	End = 0;
+}
+//---------------------------------------------------------------------------
+void TWSET01Ex::SetIntradayOddFunc( BOOL IsTSE, int Func )
+{
+	char  Data[ 16 ];
+	Int32 Now = UFC::GetHHMMSS();
+	Int32 System = (IsTSE == TRUE) ? 33 : 83;
+
+#ifdef _MSC_VER
+	_snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
+#else
+	snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
+#endif
+	memcpy( Header, Data , 14 );
+	End = 0;
+}
+//---------------------------------------------------------------------------
+char* TWSET01Ex::ToString()
+{
+    return Header;
 }
 //---------------------------------------------------------------------------
 //
@@ -306,143 +351,40 @@ bool TTaifexConnection::RenderForeignReplaceOrder( TReplaceOrderMessage* Msg, ch
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderChinaNewOrder( TNewOrderMessage* Msg, char* R010 )
 {
-	UFC::NameValueMessage GLHQMessage("^\n");
+    UFC::NameValueMessage GLHQMessage("^\n");
 
-	GLHQMessage.Append( "cmd", "0");
-	GLHQMessage.Append( "exh", Msg->GetExchangeCode());
-	FillChinaOrderBase( Msg, &GLHQMessage);
-	strcpy( R010, GLHQMessage.ToString().c_str() );
-	return true;
+    GLHQMessage.Append( "cmd", "0");
+    GLHQMessage.Append( "exh", Msg->GetExchangeCode());
+    FillChinaOrderBase( Msg, &GLHQMessage);
+    strcpy( R010, GLHQMessage.ToString().c_str() );
+    return true;
 }
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderChinaCancelOrder( TCancelOrderMessage* Msg, char* R010 )
 {
-	UFC::NameValueMessage GLHQMessage("^\n");
+    UFC::NameValueMessage GLHQMessage("^\n");
 
-	GLHQMessage.Append("cmd", "1");
-	GLHQMessage.Append("exh", Msg->GetExchangeCode());
-	FillChinaOrderBase( Msg, &GLHQMessage);
-	strcpy( R010, GLHQMessage.ToString().c_str() );
-	return true;
+    GLHQMessage.Append("cmd", "1");
+    GLHQMessage.Append("exh", Msg->GetExchangeCode());
+    FillChinaOrderBase( Msg, &GLHQMessage);
+    strcpy( R010, GLHQMessage.ToString().c_str() );
+    return true;
 }
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderChinaReplaceOrder( TReplaceOrderMessage* Msg, char* R010 )
 {
-	UFC::NameValueMessage GLHQMessage("^\n");
+    UFC::NameValueMessage GLHQMessage("^\n");
 
-	GLHQMessage.Append("cmd", "2");
-	GLHQMessage.Append("exh", Msg->GetExchangeCode());
-	FillChinaOrderBase( Msg, &GLHQMessage);
-	strcpy( R010, GLHQMessage.ToString().c_str() );
-	return true;
+    GLHQMessage.Append("cmd", "2");
+    GLHQMessage.Append("exh", Msg->GetExchangeCode());
+    FillChinaOrderBase( Msg, &GLHQMessage);
+    strcpy( R010, GLHQMessage.ToString().c_str() );
+    return true;
 }
 //---------------------------------------------------------------------------
 //
 //   For TWSE/OTC
 //
-//---------------------------------------------------------------------------
-TWSET01::TWSET01( void )
-:End( 0 )
-{
-}
-//---------------------------------------------------------------------------
-void TWSET01::SetFunction( BOOL IsTSE, int Func )
-{
-    char  Data[ 16 ];
-    Int32 Now = UFC::GetHHMMSS();
-    Int32 System = (IsTSE == TRUE) ? 30 : 93;
-
-/// Allen modify at 20190615
-#ifdef _MSC_VER
-    _snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#else
-    snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#endif
-    memcpy( Header, Data , 14 );
-    End = 0;
-}
-//---------------------------------------------------------------------------
-char* TWSET01::ToString()
-{
-	return Header;
-}
-//---------------------------------------------------------------------------
-TWSET01Ex::TWSET01Ex( void )
-:End( 0 )
-{
-}
-//---------------------------------------------------------------------------
-void TWSET01Ex::SetFunction( BOOL IsTSE, int Func )
-{
-	char  Data[ 16 ];
-	Int32 Now = UFC::GetHHMMSS();
-	Int32 System = (IsTSE == TRUE) ? 30 : 93;
-
-/// Allen modify at 20190615
-#ifdef _MSC_VER
-	_snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#else
-	snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#endif
-	memcpy( Header, Data , 14 );
-	End = 0;
-}
-//---------------------------------------------------------------------------
-void TWSET01Ex::SetIntradayOddFunc( BOOL IsTSE, int Func )
-{
-	char  Data[ 16 ];
-	Int32 Now = UFC::GetHHMMSS();
-	Int32 System = (IsTSE == TRUE) ? 33 : 83;
-
-#ifdef _MSC_VER
-	_snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#else
-	snprintf( Data, 16, "%02d%02d00%06d00", System, Func, Now );
-#endif
-	memcpy( Header, Data , 14 );
-	End = 0;
-}
-//---------------------------------------------------------------------------
-char* TWSET01Ex::ToString()
-{
-    return Header;
-}
-//---------------------------------------------------------------------------
-bool TTaifexConnection::RenderTWSET010( int Func, TBaseMessage* Msg, char* R010, char EC, char OT )
-{
-    TWSET01*        T01 = reinterpret_cast<TWSET01*>( R010 );
-    UFC::AnsiString BrokerID( Msg->GetBrokerID() );
-    UFC::AnsiString Symbol( Msg->GetSymbol() );
-    int  	    Price = UFC::DoubleToInt( Msg->GetPrice(), 2 );
-    char            Buf[16];
-
-    if( Msg->GetMarket() == nsOrderMessageDefine::mTSE || Msg->GetMarket() == nsOrderMessageDefine::mES )
-        T01->SetFunction( TRUE,  Func );
-    else
-        T01->SetFunction( FALSE, Func );
-    Symbol.PadThis( 6, ' ' );
-    if( BrokerID.Length() < 4 )
-        BrokerID = GetBrokerID( Msg->GetMarket() );
-    BrokerID.PadThis( 4, ' ' );
-    memcpy( T01->BrokerID,     BrokerID.c_str(),  4 );    ///< Broker ID
-    strcpy( T01->PVCID, "  " );                           ///< PVCID
-    memcpy( T01->OrderNo,      Msg->GetOrderID(), 5 );    ///< Order ID
-    memcpy( T01->InvestorAcno, Msg->GetAccount(), 7 );    ///< Investor account
-    T01->InvestorFlag = Msg->GetAccountFlag()[0];         ///< Investor flag
-    memcpy( T01->StockID, Symbol.c_str(),   6 );          ///< Stock ID
-    
-    sprintf( Buf, "%06d",Price );             ///< Order price
-    memcpy( T01->OrderPrice, Buf, 9 );
-    sprintf( Buf,  "%03d",(int)Msg->GetOrderQty() );///< Order quantity
-    memcpy( T01->OrderQty, Buf, 3 );
-    if( Msg->GetSide() == nsOrderMessageDefine::sBuy)     ///< Buy/Sell code.
-        T01->BuySellCode = 'B';
-    else
-        T01->BuySellCode = 'S';
-    T01->ExchangeCode = EC;                               ///< Exchange Code.
-    T01->OrderType    = OT;                               ///< Order Type.
-    return true;
-}
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderTWSET010Ex( int Func, TBaseMessage* Msg, char* R010, char EC, char OT )
 {
@@ -531,65 +473,65 @@ bool TTaifexConnection::RenderTWSEO110Ex( int Func, TBaseMessage* Msg, char* R01
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderTSEOTCNewOrder( TNewOrderMessage* Msg, char* R010 )
 {
-	int iSide;
+    int iSide;
 
-	if( Msg->GetSide() == nsOrderMessageDefine::sBuy)
-		iSide = 1; ///< Buy
-	else
-		iSide = 2;///< Sell
-	if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
-		return (this->*FTWSERender)( iSide, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] );
-	else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
-			return RenderTWSEO110Ex( iSide, Msg, R010 );
+    if( Msg->GetSide() == nsOrderMessageDefine::sBuy)
+        iSide = 1; ///< Buy
+    else
+        iSide = 2;///< Sell
+    if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
+        return (this->*FTWSERender)( iSide, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] );
+    else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
+        return RenderTWSEO110Ex( iSide, Msg, R010 );
 
-	UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
+    UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
 
-	if( R010Render != NULL )
-	{
-		UFC::PLockObject Locker( FRenderCS );
+    if( R010Render != NULL )
+    {
+        UFC::PLockObject Locker( FRenderCS );
 
-		FillOrderBase( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render );
-		FillNewOrderFunctionCode( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render );
-		strcpy( R010, R010Render->Render().c_str() );
-		return true;
-	}
-	return false;
+        FillOrderBase( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render );
+        FillNewOrderFunctionCode( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render );
+        strcpy( R010, R010Render->Render().c_str() );
+        return true;
+    }
+    return false;
 }
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderTSEOTCCancelOrder( TCancelOrderMessage* Msg, char* R010)
 {
-	if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
-		return (this->*FTWSERender)( 4, Msg, R010,  Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Cancel
-	else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
-		return RenderTWSEO110Ex( 4, Msg, R010 );
+    if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
+        return (this->*FTWSERender)( 4, Msg, R010,  Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Cancel
+    else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
+        return RenderTWSEO110Ex( 4, Msg, R010 );
 
-	UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
+    UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
 
-	if( R010Render != NULL )
-	{
-		UFC::PLockObject Locker( FRenderCS );
+    if( R010Render != NULL )
+    {
+        UFC::PLockObject Locker( FRenderCS );
 
-		FillOrderBase( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render);
-		FillCancelOrderFunctionCode( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render);
-		strcpy( R010, R010Render->Render().c_str() );
-		return true;
-	}
-	return false;
+        FillOrderBase( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render);
+        FillCancelOrderFunctionCode( Msg->GetTradingSessionID(), Msg->GetMarket(), Msg, R010Render);
+        strcpy( R010, R010Render->Render().c_str() );
+        return true;
+    }
+    return false;
 }
 //---------------------------------------------------------------------------
 bool TTaifexConnection::RenderTSEOTCReplaceOrder( TReplaceOrderMessage* Msg, char* R010 )
 {
-	if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
-	{
-		if( Msg->GetOrderQty() == 0 )
-			return (this->*FTWSERender)(6, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Replace Px
-		else
-			return (this->*FTWSERender)(3, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Replace Qty
-	}
-	else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
-		return RenderTWSEO110Ex( 3, Msg, R010 );
+    if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
+    {
+        if( Msg->GetOrderQty() == 0 )
+            return (this->*FTWSERender)(6, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Replace Px
+        else
+            return (this->*FTWSERender)(3, Msg, R010, Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< Replace Qty
+    }
+    else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
+        return RenderTWSEO110Ex( 3, Msg, R010 );
 
-	UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
+    UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
 
     if( R010Render != NULL )
     {
@@ -606,9 +548,9 @@ bool TTaifexConnection::RenderTSEOTCReplaceOrder( TReplaceOrderMessage* Msg, cha
 bool TTaifexConnection::RenderTSEOTCOrderStatus( TOrderStatusRequest* Msg, char* R010 )
 {
     if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsNormal )
-		return (this->*FTWSERender)( 5, Msg, R010,  Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< OrderStatus request
-	else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
-		return RenderTWSEO110Ex( 5, Msg, R010 );
+        return (this->*FTWSERender)( 5, Msg, R010,  Msg->GetTSEExchangeCode()[0], Msg->GetTSEOrderType()[0] ); ///< OrderStatus request
+    else if( Msg->GetTradingSessionID() == nsOrderMessageDefine::tsIntradayOdd )
+        return RenderTWSEO110Ex( 5, Msg, R010 );
 
     UFC::TRenderData*  R010Render = GetR010Render( Msg->GetMarket(), Msg->GetTradingSessionID() );
 

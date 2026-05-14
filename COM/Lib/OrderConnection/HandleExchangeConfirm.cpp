@@ -59,71 +59,38 @@ UFC::TRenderData* TTaifexConnection::GetR010Render( nsOrderMessageDefine::Market
     switch( Market )
     {
         case nsOrderMessageDefine::mTWFutures:
-		case nsOrderMessageDefine::mTWOptions: return &FR010Render;
-		case nsOrderMessageDefine::mES:        return &FTSET010Render;
-		case nsOrderMessageDefine::mTSE:
-				switch( TradingSession )
-				{
-						case nsOrderMessageDefine::tsAuto:
-						case nsOrderMessageDefine::tsNormal:
-						case nsOrderMessageDefine::tsIntradayOdd: return &FTSET010Render;
-						case nsOrderMessageDefine::tsOddLot:  if( FIsTWSENewVersion == TRUE )
-																  return &FTSEO010ExRender;
-															  else
-																  return &FTSEO010Render;
-						case nsOrderMessageDefine::tsOffHour: if( FIsTWSENewVersion == TRUE )
-																  return &FTSEP010ExRender;
-															  else
-																  return &FTSEP010Render;
-						case nsOrderMessageDefine::tsAuction: if( FIsTWSEExNewVersion == TRUE )
-																  return &FTSEA010ExRender;
-															  else
-																  return &FTSEA010Render;
-						case nsOrderMessageDefine::tsLend:    if( FIsTWSEExNewVersion == TRUE )
-																  return &FTSEV010ExRender;
-															  else
-																  return &FTSEV010Render;
-						case nsOrderMessageDefine::tsTender:  if( FIsTWSEExNewVersion == TRUE )
-																  return &FTSEE010ExRender;
-															  else
-																  return &FTSEE010Render;
-						case nsOrderMessageDefine::tsTenderEx:if( FIsTWSEExNewVersion == TRUE )
-																  return &FTSEEx010ExRender;
-															  else
-																  return &FTSEEx010Render;
-						default : break;
-				}
-		case nsOrderMessageDefine::mOTC:
-				switch( TradingSession )
-				{
-						case nsOrderMessageDefine::tsAuto:
-						case nsOrderMessageDefine::tsNormal:
-						case nsOrderMessageDefine::tsIntradayOdd:return &FOTCT010Render;
-						case nsOrderMessageDefine::tsOddLot:  if( FIsTWSENewVersion == TRUE )
-																  return &FOTCO010ExRender;
-															  else
-																  return &FOTCO010Render;
-						case nsOrderMessageDefine::tsOffHour: if( FIsTWSENewVersion == TRUE )
-																  return &FOTCP010ExRender;
-															  else
-																  return &FOTCP010Render;
-						case nsOrderMessageDefine::tsLend:    if( FIsTWSEExNewVersion == TRUE )
-																  return &FOTCV010ExRender;
-															  else
-																  return &FOTCV010Render;
-						case nsOrderMessageDefine::tsTender:  if( FIsTWSEExNewVersion == TRUE )
-																  return &FOTCE010ExRender;
-															  else
-																  return &FOTCE010Render;
-						case nsOrderMessageDefine::tsTenderEx:if( FIsTWSEExNewVersion == TRUE )
-																  return &FOTCEx010ExRender;
-															  else
-																  return &FOTCEx010Render;
-						default : return NULL;
-                }
-                default: break;
-	}
-	return NULL;
+        case nsOrderMessageDefine::mTWOptions: return &FR010Render;
+        case nsOrderMessageDefine::mES:        return &FTSET010Render;
+        case nsOrderMessageDefine::mTSE:
+                                        switch( TradingSession )
+                                        {
+                                            case nsOrderMessageDefine::tsAuto:
+                                            case nsOrderMessageDefine::tsNormal:
+                                            case nsOrderMessageDefine::tsIntradayOdd: return &FTSET010Render;
+                                            case nsOrderMessageDefine::tsOddLot:      return &FTSEO010ExRender;
+                                            case nsOrderMessageDefine::tsOffHour:     return &FTSEP010ExRender;
+                                            case nsOrderMessageDefine::tsAuction:     return &FTSEA010ExRender;
+                                            case nsOrderMessageDefine::tsLend:        return &FTSEV010ExRender;
+                                            case nsOrderMessageDefine::tsTender:      return &FTSEE010ExRender;
+                                            case nsOrderMessageDefine::tsTenderEx:    return &FTSEEx010ExRender;															  
+                                            default : return NULL;
+                                        }
+        case nsOrderMessageDefine::mOTC:
+                                        switch( TradingSession )
+                                        {
+                                            case nsOrderMessageDefine::tsAuto:
+                                            case nsOrderMessageDefine::tsNormal:
+                                            case nsOrderMessageDefine::tsIntradayOdd:return &FOTCT010Render;
+                                            case nsOrderMessageDefine::tsOddLot:   return &FOTCO010ExRender;
+                                            case nsOrderMessageDefine::tsOffHour:  return &FOTCP010ExRender;
+                                            case nsOrderMessageDefine::tsLend:     return &FOTCV010ExRender;															  
+                                            case nsOrderMessageDefine::tsTender:   return &FOTCE010ExRender;															  
+                                            case nsOrderMessageDefine::tsTenderEx: return &FOTCEx010ExRender;															  
+                                            default : return NULL;
+                                        }
+        default: break;
+    }
+    return NULL;
 }
 //---------------------------------------------------------------------------
 UFC::TRecord* TTaifexConnection::ParseConfirmReport( nsOrderMessageDefine::MarketEnum Market, nsOrderMessageDefine::MessageTypeEnum MessageType, const UFC::AnsiString& ConfirmMessage )
@@ -155,35 +122,14 @@ UFC::TRecord* TTaifexConnection::ParseConfirmReport( nsOrderMessageDefine::Marke
             case nsOrderMessageDefine::mtOrderStatusRequest:
                 switch( GetMessageTradeingSession( ConfirmMessage ) )
                 {
-                    case nsOrderMessageDefine::tsNormal:  if( FIsTWSENewVersion == TRUE )
-															  return FTSET020ExParser.Parse( ConfirmMessage.c_str(), Length );
-														  else
-															  return FTSET020Parser.Parse( ConfirmMessage.c_str(), Length );
-					case nsOrderMessageDefine::tsOddLot:  if( FIsTWSENewVersion == TRUE )
-															  return FTSEO020ExParser.Parse( ConfirmMessage.c_str(), Length );
-														  else
-															  return FTSEO020Parser.Parse( ConfirmMessage.c_str(), Length );
-					case nsOrderMessageDefine::tsIntradayOdd: return FTSET020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                    case nsOrderMessageDefine::tsOffHour: if( FIsTWSENewVersion == TRUE )
-                                                              return FTSEP020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                                                          else
-                                                              return FTSEP020Parser.Parse( ConfirmMessage.c_str(), Length );
-                    case nsOrderMessageDefine::tsAuction: if( FIsTWSEExNewVersion == TRUE )
-                                                              return FTSEA020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                                                          else
-                                                              return FTSEA020Parser.Parse( ConfirmMessage.c_str(), Length );
-                    case nsOrderMessageDefine::tsLend:    if( FIsTWSEExNewVersion == TRUE )
-                                                              return FTSEV020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                                                          else
-                                                              return FTSEV020Parser.Parse( ConfirmMessage.c_str(), Length );
-                    case nsOrderMessageDefine::tsTender:  if( FIsTWSEExNewVersion == TRUE )
-                                                              return FTSEE020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                                                          else
-                                                              return FTSEE020Parser.Parse( ConfirmMessage.c_str(), Length );
-                    case nsOrderMessageDefine::tsTenderEx:if( FIsTWSEExNewVersion == TRUE )
-                                                              return FTSEEx020ExParser.Parse( ConfirmMessage.c_str(), Length );
-                                                          else
-                                                              return FTSEEx020Parser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsNormal:      return FTSET020ExParser.Parse( ConfirmMessage.c_str(), Length );														  
+                    case nsOrderMessageDefine::tsOddLot:      return FTSEO020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsIntradayOdd: return FTSET020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsOffHour:     return FTSEP020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsAuction:     return FTSEA020ExParser.Parse( ConfirmMessage.c_str(), Length );                                                          
+                    case nsOrderMessageDefine::tsLend:        return FTSEV020ExParser.Parse( ConfirmMessage.c_str(), Length );                                                          
+                    case nsOrderMessageDefine::tsTender:      return FTSEE020ExParser.Parse( ConfirmMessage.c_str(), Length );                                                          
+                    case nsOrderMessageDefine::tsTenderEx:    return FTSEEx020ExParser.Parse( ConfirmMessage.c_str(), Length );                                                          
                     default : break;
                 }
                 break;
@@ -199,36 +145,18 @@ UFC::TRecord* TTaifexConnection::ParseConfirmReport( nsOrderMessageDefine::Marke
             case nsOrderMessageDefine::mtReplacePx:
             case nsOrderMessageDefine::mtCancel:
             case nsOrderMessageDefine::mtOrderStatusRequest:
-                    switch( GetMessageTradeingSession( ConfirmMessage ) )
-                    {
-						case nsOrderMessageDefine::tsNormal:  if( FIsTWSENewVersion == TRUE )
-																  return FOTCT020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCT020Parser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsOddLot:  if( FIsTWSENewVersion == TRUE )
-																  return FOTCO020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCO020Parser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsIntradayOdd: return FOTCT020ExParser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsOffHour: if( FIsTWSENewVersion == TRUE )
-																  return FOTCP020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCP020Parser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsLend:    if( FIsTWSEExNewVersion == TRUE )
-																  return FOTCV020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCV020Parser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsTender:  if( FIsTWSEExNewVersion == TRUE )
-																  return FOTCE020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCE020Parser.Parse( ConfirmMessage.c_str(), Length );
-						case nsOrderMessageDefine::tsTenderEx:if( FIsTWSEExNewVersion == TRUE )
-																  return FOTCEx020ExParser.Parse( ConfirmMessage.c_str(), Length );
-															  else
-																  return FOTCEx020Parser.Parse( ConfirmMessage.c_str(), Length );
-						default : break;
-                    }
-                    break;
+                switch( GetMessageTradeingSession( ConfirmMessage ) )
+                {
+                    case nsOrderMessageDefine::tsNormal:      return FOTCT020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsOddLot:      return FOTCO020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsIntradayOdd: return FOTCT020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsOffHour:     return FOTCP020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsLend:        return FOTCV020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsTender:      return FOTCE020ExParser.Parse( ConfirmMessage.c_str(), Length );
+                    case nsOrderMessageDefine::tsTenderEx:    return FOTCEx020ExParser.Parse( ConfirmMessage.c_str(), Length );															  
+                    default : break;
+                }
+                break;
             default: break;
         }
     }
@@ -303,94 +231,84 @@ int TTaifexConnection::GetTAIFEXPricePrecision( nsOrderMessageDefine::MarketEnum
 int TTaifexConnection::GetPricePrecision( nsOrderMessageDefine::MarketEnum Market, nsOrderMessageDefine::TradingSessionIDEnum TradeSession, const UFC::AnsiString& Symbol )
 {
     UFC::AnsiString PriceDigi;
+    
     if( Market  == nsOrderMessageDefine::mTWFutures )
     {
         int Digi = 2;
-		if( FFUTSymbol != NULL )
-		{
-			UFC::AnsiString futSecName,prodID;
-			UFC::Section*   secPtr;
+        if( FFUTSymbol != NULL )
+        {
+            UFC::AnsiString futSecName,prodID;
+            UFC::Section*   secPtr;
 
-			if( Symbol[4] == 'X' && Symbol[3] == 'F' ) ///< Is FLEX
-			{
-				futSecName = "FLEX";
-				prodID = Symbol.SubString( 0, 5 );
-			}
-			else
-			{
-				futSecName = "FuturesProducts";
-				prodID = Symbol.SubString( 0, 3 );
-			}
-			if( (secPtr = FFUTSymbol->GetSection(futSecName)) != NULL )
-			{
-				if( secPtr->GetValue( prodID, PriceDigi ) == TRUE )
-					Digi = PriceDigi.ToInt();
-				else
-					Glog->fprintf( " *** Can not find price decimal locator for Futures Prod[%s] Symbol:%s. %d***", prodID.c_str(), Symbol.c_str(), secPtr->ItemCount() );
-			}
-			else
-				Glog->fprintf( " *** Futures price decimal locator Section[%s] not Exist. ***", futSecName.c_str() );
-		}
-		else
-			Glog->fprintf( " *** Futures price decimal locator table not Exist. ***" );
-		return Digi;
-	}
-	else if( Market  == nsOrderMessageDefine::mTWOptions )
-	{
-		int Digi = 3;
-		if( FOPTSymbol != NULL )
-		{
-			UFC::AnsiString optSecName,prodID;
-			UFC::Section*   secPtr;
+            if( Symbol[4] == 'X' && Symbol[3] == 'F' ) ///< Is FLEX
+            {
+                futSecName = "FLEX";
+                prodID = Symbol.SubString( 0, 5 );
+            }
+            else
+            {
+                futSecName = "FuturesProducts";
+                prodID = Symbol.SubString( 0, 3 );
+            }
+            if( (secPtr = FFUTSymbol->GetSection(futSecName)) != NULL )
+            {
+                if( secPtr->GetValue( prodID, PriceDigi ) == TRUE )
+                    Digi = PriceDigi.ToInt();
+                else
+                    Glog->fprintf( " *** Can not find price decimal locator for Futures Prod[%s] Symbol:%s. %d***", prodID.c_str(), Symbol.c_str(), secPtr->ItemCount() );
+            }
+            else
+                Glog->fprintf( " *** Futures price decimal locator Section[%s] not Exist. ***", futSecName.c_str() );
+        }
+        else
+            Glog->fprintf( " *** Futures price decimal locator table not Exist. ***" );
+        return Digi;
+    }
+    else if( Market  == nsOrderMessageDefine::mTWOptions )
+    {
+        int Digi = 3;
+        if( FOPTSymbol != NULL )
+        {
+            UFC::AnsiString optSecName,prodID;
+            UFC::Section*   secPtr;
 
-			if( Symbol[4] == 'X' && Symbol[3] == 'O') ///< Is FLEX
-			{
-				optSecName = "FLEX";
-				prodID = Symbol.SubString( 0, 5 );
-			}
-			else
-			{
-				optSecName = "OptionProducts";
-				prodID = Symbol.SubString( 0, 3 );
-			}
-			if( (secPtr = FOPTSymbol->GetSection(optSecName)) != NULL )
-			{
-				if( secPtr->GetValue( prodID, PriceDigi ) == TRUE )
-					Digi = PriceDigi.ToInt();
-				else
-					Glog->fprintf( " *** Can not find price decimal locator for Options Prod[%s] Symbol:%s. %d***", prodID.c_str(), Symbol.c_str(), secPtr->ItemCount() );
-			}
-			else
-				Glog->fprintf( " *** Options price decimal locator Section[%s] not Exist. ***", optSecName.c_str() );
-		}
-		else
-			Glog->fprintf( " *** Options price decimal locator table not Exist. ***" );
-		return Digi;
-	}
-	else ///< TSE or OTC
-	{
-		switch( TradeSession )
-		{
-			case nsOrderMessageDefine::tsNormal:
-			case nsOrderMessageDefine::tsOddLot:
-			case nsOrderMessageDefine::tsOffHour:
-				if( FIsTWSENewVersion == true )///< New version price 9(5)V9(4) 2020/03/23
-					return 4;
-				return 2;///< price 9(4)V9(2)
-			case nsOrderMessageDefine::tsIntradayOdd:
-				return 4;
-			case nsOrderMessageDefine::tsAuction:
-			case nsOrderMessageDefine::tsTender:
-			case nsOrderMessageDefine::tsTenderEx:
-				if( FIsTWSEExNewVersion == true )///< New version price 9(5)V9(4) 2020/03/02
-					return 4;
-				return 2;///< price 9(4)V9(2)
-			case nsOrderMessageDefine::tsLend:    ///< Lend session price 9(3)V9(4) new version 9(4)V9(4)
-				return 4;
-			default:
-				if( FIsTWSENewVersion == true )///< New version price 9(5)V9(4)
-					return 4;
-				return 2;
+            if( Symbol[4] == 'X' && Symbol[3] == 'O') ///< Is FLEX
+            {
+                optSecName = "FLEX";
+                prodID = Symbol.SubString( 0, 5 );
+            }
+            else
+            {
+                optSecName = "OptionProducts";
+                prodID = Symbol.SubString( 0, 3 );
+            }
+            if( (secPtr = FOPTSymbol->GetSection(optSecName)) != NULL )
+            {
+                if( secPtr->GetValue( prodID, PriceDigi ) == TRUE )
+                    Digi = PriceDigi.ToInt();
+                else
+                    Glog->fprintf( " *** Can not find price decimal locator for Options Prod[%s] Symbol:%s. %d***", prodID.c_str(), Symbol.c_str(), secPtr->ItemCount() );
+            }
+            else
+                Glog->fprintf( " *** Options price decimal locator Section[%s] not Exist. ***", optSecName.c_str() );
+        }
+        else
+            Glog->fprintf( " *** Options price decimal locator table not Exist. ***" );
+        return Digi;
+    }
+    else ///< TSE or OTC
+    {
+        switch( TradeSession )
+        {
+            case nsOrderMessageDefine::tsNormal:///< New version price 9(5)V9(4) 2020/03/23
+            case nsOrderMessageDefine::tsOddLot:
+            case nsOrderMessageDefine::tsOffHour: 
+            case nsOrderMessageDefine::tsIntradayOdd:
+            case nsOrderMessageDefine::tsAuction: 
+            case nsOrderMessageDefine::tsTender:
+            case nsOrderMessageDefine::tsTenderEx:	
+            case nsOrderMessageDefine::tsLend:   return 4;
+            default: return 4;
         }
     }
 }
@@ -1414,7 +1332,7 @@ void  TTaifexConnection::ReceiveTSEConfirmMessage( MTree* pTree )
 	if( (pRecord != NULL) && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
+            int Precision = 4;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
             if( pTree->get( "CKEY", CDKey ) == TRUE )
@@ -1602,7 +1520,7 @@ void  TTaifexConnection::ReceiveOTCConfirmMessage( MTree* pTree )
             if( pRecord != NULL && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
             {
                 TExecutionReportMessage ExecutionReport;
-                int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
+                int Precision =4;
 
                 Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
                 if( pTree->get( "CKEY", CDKey ) == TRUE )
@@ -1762,7 +1680,7 @@ void  TTaifexConnection::ReceiveESConfirmMessage( MTree* pTree )
         if( (pRecord != NULL) && pRecord->GetField( "OrderID", OID ) && pRecord->GetField( "FunctionCode", Func ) && pRecord->GetField( "AfterQty", Value ) )
         {
             TExecutionReportMessage ExecutionReport;
-            int Precision = ( FIsTWSENewVersion == true ) ? 4 : 2;
+            int Precision = 4;
 
             Glog->fprintf( " CONFIRM[%u][%s]", (UInt32)NID, ConfirmMessage.c_str() );
             if( pTree->get( "CKEY", CDKey ) == TRUE )

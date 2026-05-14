@@ -146,6 +146,9 @@ protected:// IOrderConnection
 
   STDMETHOD(GetMarginPosition(BSTR BrokerID, BSTR Account, BSTR* Result, VARIANT_BOOL* SUCCEED));
 
+
+  STDMETHOD(TouchOrderControl(ITouchOrderCommand* TouchOrderCmd, VARIANT_BOOL* Result));
+
 };
 // ---------------------------------------------------------------------------
 class EventHandler :public  IOrderConnectionEventListener

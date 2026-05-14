@@ -51,10 +51,11 @@ protected:
     AnsiString		    FIPAddress;       ///< Store the peer IP address.
     Int32		    FPort;            ///< Connection port.
     BOOL		    FIsConnected;
+    BOOL                    FBusyCheck;
     SocketClientListener*   FListener;
 private:
     fd_set	  	    FReadSet;
-    Int64               FData;
+    Int64                   FData;
     QUEUE                   FWriteQueue;
     void                    PickFront( std::string& Data );
     void                    PopFront( void );
@@ -63,6 +64,9 @@ private:
     void                    UpdateLocalIPAddress();
     void                    UpdatePeerIPAddress();
     BOOL                    CheckDataArrived( struct timeval& SelectTime );
+    BOOL                    CheckDataArrivedBusy( void );
+    void                    Process( int& Count );
+    void                    ProcessBusy( int& Count );
 public:
     ///< Create a new ClientSocket.
     PClientSocket( );
@@ -99,6 +103,8 @@ public:
     ///< Function to Get/Set user data.
     Int64               GetUserData()             { return FData; }
     void                SetUserData( Int64 Data ) { FData = Data; }
+    void                SetThreadAffinity( int CPUID );
+    void                SetBusyloopCheck( bool IsBusy );
 };
 //------------------------------------------------------------------------------
 }
