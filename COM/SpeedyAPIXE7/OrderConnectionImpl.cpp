@@ -1247,7 +1247,7 @@ STDMETHODIMP TOrderConnectionImpl::ChangePassword(BSTR Password, BSTR NewPasswor
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::GetMarginPosition(BSTR BrokerID, BSTR Account,
-		  BSTR* Result, VARIANT_BOOL* SUCCEED)
+          BSTR* Value, VARIANT_BOOL* SUCCEED)
 {
 	if( FConnection != NULL )
 	{
@@ -1257,7 +1257,7 @@ STDMETHODIMP TOrderConnectionImpl::GetMarginPosition(BSTR BrokerID, BSTR Account
 		bool Rtn = FConnection->MarginPositionRequest( AnsiBrokerID.c_str(), AnsiAccount.c_str(),ResultStr );
 		WideString WResult( ResultStr.c_str() );
 
-		*Result = WResult.Copy();
+		*Value = WResult.Copy();
 		if( Rtn == true )
 			*SUCCEED = VARIANT_TRUE;
 		else

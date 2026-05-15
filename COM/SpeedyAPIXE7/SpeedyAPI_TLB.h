@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/5/14 ¤W¤È 10:54:07 from Type Library described below.
+// File generated on 2026/5/15 ¤W¤È 11:23:47 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3104,7 +3104,7 @@ public:
   virtual HRESULT STDMETHODCALLTYPE get_LocalIP(BSTR* Value/*[out,retval]*/) = 0; // [242]
   virtual HRESULT STDMETHODCALLTYPE ChangePassword(BSTR Password/*[in]*/, BSTR NewPassword/*[in]*/) = 0; // [243]
   virtual HRESULT STDMETHODCALLTYPE GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                                      BSTR* Result/*[in,out]*/,
+                                                      BSTR* Value/*[in,out]*/,
                                                       VARIANT_BOOL* SUCCEED/*[out,retval]*/) = 0; // [244]
   virtual HRESULT STDMETHODCALLTYPE TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
                                                       VARIANT_BOOL* Result/*[out,retval]*/) = 0; // [245]
@@ -3253,10 +3253,10 @@ public:
   }
 
   VARIANT_BOOL __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                            BSTR* Result/*[in,out]*/)
+                                            BSTR* Value/*[in,out]*/)
   {
     VARIANT_BOOL SUCCEED;
-    OLECHECK(this->GetMarginPosition(BrokerID, Account, Result, (VARIANT_BOOL*)&SUCCEED));
+    OLECHECK(this->GetMarginPosition(BrokerID, Account, Value, (VARIANT_BOOL*)&SUCCEED));
     return SUCCEED;
   }
 
@@ -6402,10 +6402,10 @@ public:
   BSTR            __fastcall get_LocalIP(void);
   HRESULT         __fastcall ChangePassword(BSTR Password/*[in]*/, BSTR NewPassword/*[in]*/);
   HRESULT         __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                               BSTR* Result/*[in,out]*/,
+                                               BSTR* Value/*[in,out]*/,
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                               BSTR* Result/*[in,out]*/);
+                                               BSTR* Value/*[in,out]*/);
   HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
                                                VARIANT_BOOL* Result/*[out,retval]*/);
   VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
@@ -6585,10 +6585,10 @@ public:
   BSTR            __fastcall get_LocalIP(void);
   HRESULT         __fastcall ChangePassword(BSTR Password/*[in]*/, BSTR NewPassword/*[in]*/);
   HRESULT         __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                               BSTR* Result/*[in,out]*/,
+                                               BSTR* Value/*[in,out]*/,
                                                VARIANT_BOOL* SUCCEED/*[out,retval]*/);
   VARIANT_BOOL    __fastcall GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                               BSTR* Result/*[in,out]*/);
+                                               BSTR* Value/*[in,out]*/);
   HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
                                                , VARIANT_BOOL* Result/*[out,retval]*/);
   VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
@@ -18932,18 +18932,18 @@ TCOMIOrderConnectionT<T>::ChangePassword(BSTR Password/*[in]*/, BSTR NewPassword
 
 template <class T> HRESULT __fastcall
 TCOMIOrderConnectionT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                            BSTR* Result/*[in,out]*/,
+                                            BSTR* Value/*[in,out]*/,
                                             VARIANT_BOOL* SUCCEED/*[out,retval]*/)
 {
-  return (*this)->GetMarginPosition(BrokerID, Account, Result, SUCCEED);
+  return (*this)->GetMarginPosition(BrokerID, Account, Value, SUCCEED);
 }
 
 template <class T> VARIANT_BOOL __fastcall
 TCOMIOrderConnectionT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                            BSTR* Result/*[in,out]*/)
+                                            BSTR* Value/*[in,out]*/)
 {
   VARIANT_BOOL SUCCEED;
-  OLECHECK(this->GetMarginPosition(BrokerID/*[in]*/, Account/*[in]*/, Result/*[in,out]*/, (VARIANT_BOOL*)&SUCCEED));
+  OLECHECK(this->GetMarginPosition(BrokerID/*[in]*/, Account/*[in]*/, Value/*[in,out]*/, (VARIANT_BOOL*)&SUCCEED));
   return SUCCEED;
 }
 
@@ -19770,23 +19770,23 @@ IOrderConnectionDispT<T>::ChangePassword(BSTR Password/*[in]*/, BSTR NewPassword
 
 template <class T> HRESULT __fastcall
 IOrderConnectionDispT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                            BSTR* Result/*[in,out]*/,
+                                            BSTR* Value/*[in,out]*/,
                                             VARIANT_BOOL* SUCCEED/*[out,retval]*/)
 {
   _TDispID _dispid(*this, OLETEXT("GetMarginPosition"), DISPID(244));
   TAutoArgs<3> _args;
   _args[1] = BrokerID /*[VT_BSTR:0]*/;
   _args[2] = Account /*[VT_BSTR:0]*/;
-  _args[3] = Result /*[VT_BSTR:1]*/;
+  _args[3] = Value /*[VT_BSTR:1]*/;
   return OutRetValSetterPtr(SUCCEED /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
 }
 
 template <class T> VARIANT_BOOL __fastcall
 IOrderConnectionDispT<T>::GetMarginPosition(BSTR BrokerID/*[in]*/, BSTR Account/*[in]*/,
-                                            BSTR* Result/*[in,out]*/)
+                                            BSTR* Value/*[in,out]*/)
 {
   VARIANT_BOOL SUCCEED;
-  this->GetMarginPosition(BrokerID, Account, Result, (VARIANT_BOOL*)&SUCCEED);
+  this->GetMarginPosition(BrokerID, Account, Value, (VARIANT_BOOL*)&SUCCEED);
   return SUCCEED;
 }
 
