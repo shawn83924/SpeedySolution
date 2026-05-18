@@ -167,7 +167,7 @@ STDMETHODIMP TTriggeringConditionImpl::AnyTop5AskVolumeComp(LogicalComparisonOpe
 STDMETHODIMP TTriggeringConditionImpl::Conjunction(LPSAFEARRAY signal_list, unsigned count,
           VARIANT_BOOL inverter_on, unsigned* id)
 {
-	SignalID* pData = nullptr;
+	SignalID* pData = NULL;
 	HRESULT hr = SafeArrayAccessData(signal_list, (void**)&pData);
 	if (FAILED(hr))
 		return hr;
