@@ -2640,9 +2640,9 @@ void __fastcall TMainForm::UnifyLicense( void )
 	else
 	{
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [啟蒙學員試用版]    " );
+			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [啟蒙學員試用版]    ").c_str() );
 		else
-			FCopyRights.printf( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [試用版]    " );
+			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [試用版]    ").c_str() );
 		EnableUnifyLicense( false );
 	}
 	if( Support( Nuclear1Key, YYYYMMDD ) == true || Support( Nuclear2Key, YYYYMMDD ) || Support( Nuclear2Key, YYYYMMDD ) )
@@ -2828,7 +2828,7 @@ void __fastcall TMainForm::SystemInfo( void )
 	int             AppVer = g_Config.GetVersion();
 
 	///< Unify Version
-	Msg.printf( Mdcomponentstrings_MD_SpeedyUnify_AppName + L" 版本: %d.%d.%d",AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
+	Msg.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L" 版本: %d.%d.%d").c_str() ,AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
 	SUVerLabel->Caption = Msg;
 	///< OS Version
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
