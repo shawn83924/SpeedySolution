@@ -455,62 +455,71 @@ bool Config::UserRightsInfo( void )
 	String Data;
 
 	GenData( Data );
-	if( MDBSRequest( ResultStream, L"IUN_O_14", Data ) )
+	if( !MDBSRequest(ResultStream, L"IUN_O_14", Data) )
 	{
-		bool IsOk = false;
-		String ResponseJSON;
-		if( GetResponseJSON( ResultStream, ResponseJSON ) )
-		{
-			TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
-			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
-			if( lpRoot != NULL )
-			{
-				String ResultStr  = lpRoot->Values[L"result"]->Value();
-				String MessageStr = lpRoot->Values[L"message"]->Value();
-				if( ResultStr == L"0" )
-				{
-					MainForm->ClearProductInfo();
-					TJSONArray* PurchaseList = dynamic_cast<TJSONArray*>( lpRoot->Values[L"purchaseList"] );
-					TJSONArray* ProjectList = dynamic_cast<TJSONArray*>( lpRoot->Values[L"projectList"] );
-					String ID,ExpDate;
-					if( PurchaseList != NULL )
-					{
-						for( int i = 0; i < PurchaseList->Count; i++ )
-						{
-							 TJSONObject *lpItem = dynamic_cast<TJSONObject *>(PurchaseList->Items[i]);
-							 ID = lpItem->Values[L"schedule_id"]->Value();
-							 ExpDate = lpItem->Values[L"expire_date"]->Value();
-							 if( ExpDate.Length() == 0 )
-								 ExpDate = L"2099:10:10";
-							 if( ID.Length() > 0  )
-								 MainForm->UseLastLicense( MainForm->FPurchaseList, ID, ExpDate );
-						}
-					}
-					if( ProjectList != NULL )
-					{
-						for( int i = 0; i < ProjectList->Count; i++ )
-						{
-							 TJSONObject *lpItem = dynamic_cast<TJSONObject *>(ProjectList->Items[i]);
-							 ID = lpItem->Values[L"project_id"]->Value();
-							 ExpDate = lpItem->Values[L"expire_date"]->Value();
-							 if( ExpDate.Length() == 0 )
-								 ExpDate = L"2099:10:10";
-							 if( ID.Length() > 0  )
-								 MainForm->UseLastLicense( MainForm->FProductList, ID, ExpDate );
-						}
-					}
-					MainForm->UnifyLicense();
-					IsOk = true;
-				}
-				else
-					TUnifyDlgs::MessageDialog( L"購買權限", MessageStr );
-			}
-		}
+		delete ResultStream;
+		return false;
+	}
+
+	bool IsOk = false;
+	String ResponseJSON;
+	if( !GetResponseJSON(ResultStream, ResponseJSON) )
+	{
 		delete ResultStream;
 		return IsOk;
 	}
+
+	TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
+	TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
+	if( lpRoot == NULL )
+	{
+		delete ResultStream;
+		return IsOk;
+	}
+
+	String ResultStr  = lpRoot->Values[L"result"]->Value();
+	String MessageStr = lpRoot->Values[L"message"]->Value();
+	if( ResultStr != L"0" )
+	{
+		TUnifyDlgs::MessageDialog(L"購買權限", MessageStr);
+		delete ResultStream;
+		return IsOk;
+	}
+
+	MainForm->ClearProductInfo();
+	TJSONArray *PurchaseList = dynamic_cast<TJSONArray *>(lpRoot->Values[L"purchaseList"]);
+	TJSONArray *ProjectList = dynamic_cast<TJSONArray *>(lpRoot->Values[L"projectList"]);
+	String ID, ExpDate;
+	if (PurchaseList != NULL)
+	{
+		for (int i = 0; i < PurchaseList->Count; i++)
+		{
+			TJSONObject *lpItem = dynamic_cast<TJSONObject *>(PurchaseList->Items[i]);
+			ID = lpItem->Values[L"schedule_id"]->Value();
+			ExpDate = lpItem->Values[L"expire_date"]->Value();
+			if (ExpDate.Length() == 0)
+				ExpDate = L"2099:10:10";
+			if (ID.Length() > 0)
+				MainForm->UseLastLicense(MainForm->FPurchaseList, ID, ExpDate);
+		}
+	}
+	if (ProjectList != NULL)
+	{
+		for (int i = 0; i < ProjectList->Count; i++)
+		{
+			TJSONObject *lpItem = dynamic_cast<TJSONObject *>(ProjectList->Items[i]);
+			ID = lpItem->Values[L"project_id"]->Value();
+			ExpDate = lpItem->Values[L"expire_date"]->Value();
+			if (ExpDate.Length() == 0)
+				ExpDate = L"2099:10:10";
+			if (ID.Length() > 0)
+				MainForm->UseLastLicense(MainForm->FProductList, ID, ExpDate);
+		}
+	}
+	MainForm->UnifyLicense();
+	IsOk = true;
 	delete ResultStream;
-	return false;
+	return IsOk;
 }
 //---------------------------------------------------------------------------
 

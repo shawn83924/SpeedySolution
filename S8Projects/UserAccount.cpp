@@ -119,7 +119,7 @@ void TSpeedyConfig::SetVIPIPS( const String& IPStr )
 String TSpeedyConfig::GetIP( void )
 {
 	if( FIndex == -1 )
-		FIndex = gUser.UserID.ToInt() % FIPs.ItemCount();
+		FIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % FIPs.ItemCount();
 	FIndex = FIndex % FIPs.ItemCount();
 	String IP = FIPs[ FIndex ].c_str();
 	FIndex++;
@@ -129,7 +129,7 @@ String TSpeedyConfig::GetIP( void )
 String TSpeedyConfig::GetVIPIP( void )
 {
 	if( FIndex == -1 )
-		FIndex = gUser.UserID.ToInt() % FVIPIPs.ItemCount();
+		FIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % FVIPIPs.ItemCount();
 	FIndex = FIndex % FVIPIPs.ItemCount();
 	String IP = FVIPIPs[ FIndex ].c_str();
 	FIndex++;

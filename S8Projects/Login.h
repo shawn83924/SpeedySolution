@@ -71,7 +71,7 @@ private:	// User declarations
 	bool __fastcall CheckFreeTry( void );
 	void __fastcall OnNCHitTest( TMessage &Message );
 	void __fastcall WndProc( TMessage &Msg );
-	bool __fastcall RequestLogon( const String& ID, const String& Password, TMemoryStream* OutStream );
+	bool __fastcall RequestLogon( const String& ID, const String& Password);
 	void __fastcall GenData( const String& ID, const String& Password, String& Out );
 	bool __fastcall GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON );
 	void __fastcall LoadIDPassword( void );

@@ -197,7 +197,6 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	g_Config.LoadStarWaveSettingIni();
 	if( Logon() )
 	{
-		g_Config.UserRightsInfo();
 		if( Tranning == true ) ///< Traning room not production.
 		{
 			if( CheckFreeTry() == false )
@@ -337,34 +336,15 @@ bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& Resp
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::Logon( void )
 {
-	TMemoryStream* ResultStream = new TMemoryStream();
-	if( RequestLogon( IDEdit->Text, PasswordEdit->Text, ResultStream ) )
+	if( !RequestLogon(IDEdit->Text, PasswordEdit->Text) )
 	{
-		bool IsOk = false;
-		String ResponseJSON;
-		if( GetResponseJSON( ResultStream, ResponseJSON ) )
-		{
-			TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
-			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
-			if( lpRoot != NULL )
-			{
-				String ResultStr  = lpRoot->Values[L"result"]->Value();
-				UTF8String MessageStr( lpRoot->Values[L"message"]->Value() );
-				if( ResultStr == L"0" )
-				{
-					gUser.UserID   = IDEdit->Text;
-					g_Config.LoadUserInfo( lpRoot );
-					StatusLabel->Caption = L"登入成功!";
-					IsOk = true;
-				}
-				else
-				   StatusLabel->Caption = L"登入失敗:" + MessageStr;
-			}
-		}
-		delete ResultStream;
-		return IsOk;
+		StatusLabel->Caption = L"登入失敗:";
+		return false;
 	}
-	return false;
+
+	gUser.UserID   = IDEdit->Text;
+	StatusLabel->Caption = L"登入成功!";
+	return true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::GenData( const String& ID, const String& Password, String& Out )
@@ -375,37 +355,17 @@ void __fastcall TLoginForm::GenData( const String& ID, const String& Password, S
 	Out.printf( L"{\"account\":\"%s\",\"pwd\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}",ID,Password,CheckSum );
 }
 //---------------------------------------------------------------------------
-bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Password, TMemoryStream* OutStream )
+bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Password)
 {
-	TIdSSLIOHandlerSocketOpenSSL* SSLIOHandler = new TIdSSLIOHandlerSocketOpenSSL( NULL );
-	TIdHTTP*                      pHTTP        = new TIdHTTP( NULL );
-	TMemoryStream*                SourceStream = new TMemoryStream();
-	String                        URL,Msg,Data;
-	bool                          Result = true;
-
-	try
+	TBrokerConfig* loginBroker = g_Config.BrokerConfig( 0 );
+	String errMsg;
+	if (loginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
 	{
-		String URLPrefix = g_Config.GetLogonURL();
+		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
+		return false;
+	}
 
-		GenData( ID, Password, Data );
-		URL.printf( L"%s?data=%s&txid=IUN_O_01&vender=UnifyAP",URLPrefix, Data );
-		if( URL.Pos( L"https" ) != 0 ) ///< Use https
-		{
-			SSLIOHandler->SSLOptions->Method = sslvSSLv23;
-			pHTTP->IOHandler = SSLIOHandler;
-		}
-		pHTTP->ConnectTimeout = 90000; ///< 90 sec IIS default(Paul said)
-		pHTTP->Post( pHTTP->URL->URLEncode( URL ), SourceStream, OutStream );
-	}
-	catch( Exception& ex )
-	{
-		Result = false;
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ex.ToString() );
-	}
-	delete SSLIOHandler;
-	delete pHTTP;
-	delete SourceStream;;
-	return Result;
+	return true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::FormShow(TObject *Sender)
