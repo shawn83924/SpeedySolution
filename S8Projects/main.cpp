@@ -104,23 +104,6 @@ const int    MD_SERVER_PORT    = 34567;
 const String CHART_SERVER_IP   = L"10.1.8.82";//L"203.75.198.98";//L"61.220.47.67"; //L"60.250.82.135";
 const int    CHART_SERVER_PORT = 34569;
 //---------------------------------------------------------------------------
-__fastcall TokenExpiredThread::TokenExpiredThread()
-:TThread( false )
-{
-	FreeOnTerminate = true;
-}
-//---------------------------------------------------------------------------
-void __fastcall TokenExpiredThread::Check( )
-{
-   MainForm->HandleTokenExpired();
-}
-//---------------------------------------------------------------------------
-void __fastcall TokenExpiredThread::Execute( )
-{
-   if( g_Config.TokenExpired( ) == false )
-	   Synchronize( Check );
-}
-//---------------------------------------------------------------------------
 __fastcall TMainForm::TMainForm(TComponent* Owner)
 : TForm(Owner)
 ,FSelectedFuncText( NULL )
@@ -131,7 +114,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 ,FUILoaded( false )
 ,FForceClose( false )
 ,FRequestWeb( false )
-,FTimerCount( 0 )
 ,FNetBalance( 0 )
 ,FLoginUserStr( L"交易帳號:尚未登入" )
 ,FCopyRights( L"Copyright© 2020 MDBS, All Rights Reserved.  " )
@@ -1626,23 +1608,26 @@ void __fastcall TMainForm::LoginSimBroker( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 {
-	FSpeedyCfg = g_Config.SpeedyConfig( BrokerComboBoxEx->ItemIndex, LinkComboBoxEx->ItemIndex );
-	FLoginBroker = g_Config.BrokerConfig( BrokerComboBoxEx->ItemIndex );
+	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
+	FLoginBroker = g_Config.BrokerConfig( 0 );
 
 	if( FLoginBroker == NULL || FSpeedyCfg == NULL )
 	{
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, L"錯誤的連線設定");
 		return;
 	}
-	String errMsg;
-	String LogFilePrefix;
 
+	//IDEdit: 登入帳號
+	//PasswordEdit:	登入密碼，之後都要換成其他的輸入來源
+	String errMsg;
 	if (FLoginBroker->GetService()->LoginBroker(IDEdit->Text, PasswordEdit->Text, errMsg) != true)
 	{
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
 		return;
 	}
 	gUser.LoginUserID = IDEdit->Text;
+
+	String LogFilePrefix;
 	LogFilePrefix.printf(L"SU_%s", IDEdit->Text);
 	FLoginBroker->GetService()->ClearPosition(IDEdit->Text);
 	OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
@@ -2668,23 +2653,11 @@ void __fastcall TMainForm::UseLastLicense( UFC::PHashMap<String,UnifyProductInfo
 		InfoMap.Add( ID, NewInfo );
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::HandleTokenExpired( void )
-{
-	PreventIdleTimer->Enabled = false;
-	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"同樣帳號在別的地方登入,您將被強制登出,請注意您的帳號密碼安全!" );
-	Visible = false;
-	CloseAll( );
-	Show();
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::PreventIdleTimerTimer(TObject *Sender)
 {
 	UFCType::Int32 Now = UFC::GetHHMMSS();
 
 	SetThreadExecutionState( ES_DISPLAY_REQUIRED|ES_SYSTEM_REQUIRED );
-	FTimerCount++;
-	if( FTimerCount %3 == 0 )
-		new TokenExpiredThread();
 
 	if( Now >= 140000 && Now <= 140500  && OrderStore != NULL && OrderStore->IsLogon() == true && OrderStore->HasStopOrder() == true )
 		OrderStore->CancelAllStopOrder();

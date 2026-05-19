@@ -394,7 +394,6 @@ private:
 	bool FConnectFailed;
 	bool FRequestWeb;
 	int  FWebFunc;
-	int  FTimerCount;
 	int  FFutAccIndex;
 	int  FTseAccIndex;
     double FNetBalance;
@@ -462,7 +461,6 @@ public:		// User declarations
 	int __fastcall  CloseBetterTick( void );
 	void __fastcall InitOrderStore( void );
 	void __fastcall LoadImage( const String& ImgFile );
-	void __fastcall HandleTokenExpired( void );
 	bool __fastcall UserRightsInfo( void );
 	void __fastcall LoadUserInfo( TJSONObject *lpRoot );
 	void __fastcall UpdateAccount( bool IsFut );
@@ -483,15 +481,6 @@ public:
 	bool __fastcall EnablePxAlarm( void ) { return PxAlarmSoundSwitch->Selected; }
 	bool __fastcall EnableLowPxAlarm( void ) { return LowPxAlarmSoundSwitch->Selected; }
 	void __fastcall LoadingProgress( int Percent,  const String& Msg );
-};
-//---------------------------------------------------------------------------
-class TokenExpiredThread : public TThread
-{
-private:
-	void _fastcall Check();
-public:
-	__fastcall TokenExpiredThread( void );
-	void __fastcall Execute( void );
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TMainForm *MainForm;
