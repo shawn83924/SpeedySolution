@@ -525,7 +525,7 @@ void TTaifexConnection::SetTSEDataFormatResourceID( DWORD T010, DWORD O010, DWOR
         LoadDataFormatFromResourceFile( P020 + 100, ResourceType, FTSEP020ExFormat );
         FTSEP020ExParser.SetDataFormat( &FTSEP020ExFormat );
         ///< Filled execution.
-        LoadDataFormatFromResourceFile( R030, ResourceType, FTSER03ExFormat ); ///< 8 Digi Sequence
+        LoadDataFormatFromResourceFile( R030, ResourceType, FTSER03Format ); ///< 8 Digi Sequence
         FTSER03Parser.SetDataFormat( &FTSER03Format );
         LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FTSER03ExFormat );///< 6 Digi Sequence
         FTSER03ExParser.SetDataFormat( &FTSER03ExFormat );
