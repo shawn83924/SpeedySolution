@@ -1095,6 +1095,9 @@
         <CppCompile Include="OrderConnection\HandleForeignExchangeFilled.cpp">
             <BuildOrder>51</BuildOrder>
         </CppCompile>
+        <CppCompile Include="OrderConnection\HandleTouchOrderResponse.cpp">
+            <BuildOrder>52</BuildOrder>
+        </CppCompile>
         <CppCompile Include="OrderConnection\MessageRender.cpp">
             <BuildOrder>49</BuildOrder>
         </CppCompile>
