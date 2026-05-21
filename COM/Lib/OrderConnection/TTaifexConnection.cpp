@@ -577,7 +577,7 @@ void TTaifexConnection::SetOTCDataFormatResourceID( DWORD T010, DWORD O010, DWOR
         LoadDataFormatFromResourceFile( P020 + 100, ResourceType, FOTCP020ExFormat );
         FOTCP020ExParser.SetDataFormat( &FOTCP020ExFormat );
         ///< Filled execution.
-        LoadDataFormatFromResourceFile( R030 , ResourceType, FOTCR03ExFormat ); ///< 8 Digi Sequence
+        LoadDataFormatFromResourceFile( R030 , ResourceType, FOTCR03Format ); ///< 8 Digi Sequence
         FOTCR03Parser.SetDataFormat( &FOTCR03Format );
         LoadDataFormatFromResourceFile( R030 + 100, ResourceType, FOTCR03ExFormat ); ///< 6 Digi Sequence
         FOTCR03ExParser.SetDataFormat( &FOTCR03ExFormat );
