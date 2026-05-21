@@ -708,11 +708,11 @@ public:
 class AdvancedMessage : public  BaseMessage
 {
 protected:
-	Int32			FFunctionCode;
+	UFC::Int32			FFunctionCode;
 	UFC::PStream*   FAdvancedData;
 public:
 	AdvancedMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol, UFC::PStream* Data, MTree* TreeData);
-	Int32 GetFunctionCode() { return FFunctionCode; }
+	UFC::Int32 GetFunctionCode() { return FFunctionCode; }
 	UFC::PStream* GetAdvancedData(){return FAdvancedData;}
 };
 //// class  TAIFEXBasicMessage
