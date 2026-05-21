@@ -144,7 +144,8 @@ protected:// IOrderConnection
   STDMETHOD(get_LocalIP(BSTR* Value));
   STDMETHOD(ChangePassword(BSTR Password, BSTR NewPassword));
 
-  STDMETHOD(GetMarginPosition(BSTR BrokerID, BSTR Account, BSTR* Result, VARIANT_BOOL* SUCCEED));
+  STDMETHOD(GetMarginPosition(BSTR BrokerID, BSTR Account, BSTR* Value, VARIANT_BOOL* SUCCEED));
+
 
 
   STDMETHOD(TouchOrderControl(ITouchOrderCommand* TouchOrderCmd, VARIANT_BOOL* Result));

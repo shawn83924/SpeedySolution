@@ -1,19 +1,30 @@
-#include "TTriggeringCondition.h"
+﻿#include "TTriggeringCondition.h"
 
 #include <sstream>
 #include <queue>
+#include <cstdlib>
 
 const size_t       MAX_PRIMITIVE_SIGNAL_NUM = 16;
 const size_t       MAX_LOGIC_GATE_NUM       = 16;
 const unsigned int MAX_SIGNAL_IN_NUM        = 16;
 
+namespace
+{
+    template <typename T>
+    std::string ToStringCompat(const T& value)
+    {
+        std::ostringstream os;
+        os << value;
+        return os.str();
+    }
+}
 
 bool TTriggeringCondition::StringToDecimal(const char* price, unsigned int& integer_part, unsigned int& decimal_part)
 {
     std::string s_price = price;
     std::string s_integer_part;
-    std::string s_decimal_part{ "0000" };
-    auto npos = s_price.find('.');
+    std::string s_decimal_part( "0000" );
+    std::string::size_type npos = s_price.find('.');
     if (npos == std::string::npos)
         s_integer_part = s_price;
     else
@@ -28,8 +39,8 @@ bool TTriggeringCondition::StringToDecimal(const char* price, unsigned int& inte
 
     try
     {
-        integer_part = std::stoi(s_integer_part);
-        decimal_part = std::stoi(s_decimal_part);
+		integer_part = std::atoi(s_integer_part.c_str());
+		decimal_part = std::atoi(s_decimal_part.c_str());
     }
     catch (...)
     {
@@ -47,7 +58,7 @@ bool TTriggeringCondition::CheckPrimitivePreCondition()
 
     if (primitive_signals.size() >= MAX_PRIMITIVE_SIGNAL_NUM)
     {
-        lastErrMsg = std::string{ "Too many Primitive Signals! Limitation is " } + std::to_string(MAX_PRIMITIVE_SIGNAL_NUM);
+        lastErrMsg = std::string("Too many Primitive Signals! Limitation is ") + ToStringCompat(MAX_PRIMITIVE_SIGNAL_NUM);
         return false;
     }
 
@@ -61,13 +72,13 @@ bool TTriggeringCondition::CheckLogicGatePreCondition(unsigned int input_num)
 
     if (logic_gates.size() >= MAX_LOGIC_GATE_NUM)
     {
-        lastErrMsg = std::string{ "Too many Logic Gates! Limitation is " } + std::to_string(MAX_LOGIC_GATE_NUM);
+        lastErrMsg = std::string("Too many Logic Gates! Limitation is ") + ToStringCompat(MAX_LOGIC_GATE_NUM);
         return false;
     }
 
     if (input_num > MAX_SIGNAL_IN_NUM)
     {
-        lastErrMsg = std::string{ "Too many signal input! Limitation is " } + std::to_string(MAX_SIGNAL_IN_NUM);
+        lastErrMsg = std::string("Too many signal input! Limitation is ") + ToStringCompat(MAX_SIGNAL_IN_NUM);
         return false;
     }
 
@@ -180,14 +191,16 @@ std::string TTriggeringCondition::SignalIDToExpression(SignalID signal_id, bool 
         if (logic_gates[item_index].inverter_on)
             op = " || ";
 
-        for (const auto& signal_id : logic_gates[item_index].input_from)
-        {   
+        const std::vector<SignalID>& inputs = logic_gates[item_index].input_from;
+        for (size_t i = 0; i < inputs.size(); ++i)
+        {
+            SignalID input_signal_id = inputs[i];
             if (first_item)
                 first_item = false;
             else
                 ss << op;
 
-            ss << SignalIDToExpression(signal_id, false);
+            ss << SignalIDToExpression(input_signal_id, false);
         }
 
         if (!is_root)
@@ -203,11 +216,11 @@ std::string TTriggeringCondition::SignalIDToExpression(SignalID signal_id, bool 
 
 SignalID TTriggeringCondition::AddPrimitiveSignal(const TTriggeringCondition::PrimitiveSignal& primitive_signal)
 {
-    auto key = primitive_signal.ToString();
-    auto iter = primitive_set.find(key);
+    std::string key = primitive_signal.ToString();
+    std::map<std::string, SignalID>::iterator iter = primitive_set.find(key);
     if (iter == primitive_set.end())
     {
-        auto primitive_signal_index = primitive_signals.size();
+        size_t primitive_signal_index = primitive_signals.size();
         primitive_signals.push_back(primitive_signal);
 
         unsigned int signal_id = static_cast<unsigned int>(primitive_signal_index) | 0x0100;
@@ -242,7 +255,7 @@ bool TTriggeringCondition::EndEditing()
         {
             editing_mode = false;
             syntax_error = true;
-            lastErrMsg = std::string{ "Primitive signal " } + std::to_string(signal_id) + " is unused.";
+            lastErrMsg = std::string("Primitive signal ") + ToStringCompat(signal_id) + " is unused.";
             return false;
         }
     }
@@ -568,12 +581,12 @@ SignalID TTriggeringCondition::Conjunction(SignalID* signal_id_list, unsigned in
     logic_gates.push_back(std::move(logic_gate));
     unsigned int signal_id = static_cast<unsigned int>(logic_gate_index) | 0x0200;
 
-    for (auto& primitive_index : primitives_in)
-         primitive_signals[primitive_index].output_to.push_back(signal_id);
-    
-    for (auto& logic_gate_index : logic_gates_in)
-        logic_gates[logic_gate_index].output_to.push_back(signal_id);
-    
+    for (std::set<unsigned int>::iterator it = primitives_in.begin(); it != primitives_in.end(); ++it)
+        primitive_signals[*it].output_to.push_back(signal_id);
+
+    for (std::set<unsigned int>::iterator it = logic_gates_in.begin(); it != logic_gates_in.end(); ++it)
+        logic_gates[*it].output_to.push_back(signal_id);
+
     return signal_id;
 }
 
@@ -618,13 +631,13 @@ std::string TTriggeringCondition::ToString()
     if (editing_mode)
     {
         lastErrMsg = "Instruction is not available when editing mode is on.";
-        return std::string{};
+        return std::string();
     }
 
     if (syntax_error)
     {
         lastErrMsg = "Instruction is not available when syntax error exist.";
-        return std::string{};
+        return std::string();
     }
 
     // the format of output string
@@ -691,25 +704,27 @@ std::string TTriggeringCondition::ToString()
 
     ss << ";";
     
-    bool first_item{ true };
+    bool first_item = true;
     while (!gate_queue.empty())
     {
         SignalID root_signal_id = gate_queue.front();
         gate_queue.pop();
 
         unsigned int root_gate_index = root_signal_id & 0xFF;
-        for (const auto& signal_id : logic_gates[root_gate_index].input_from)
+        const std::vector<SignalID>& inputs = logic_gates[root_gate_index].input_from;
+        for (size_t i = 0; i < inputs.size(); ++i)
         {
-            unsigned int category = (signal_id >> 8) & 0x03;
+            SignalID input_signal_id = inputs[i];
+            unsigned int category = (input_signal_id >> 8) & 0x03;
             if (2 == category) // logic gate
-                gate_queue.push(signal_id);
+                gate_queue.push(input_signal_id);
 
             if (first_item)
                 first_item = false;
             else
                 ss << ",";
 
-            ss << std::to_string(root_signal_id) << ":" << signal_id;
+            ss << root_signal_id << ":" << input_signal_id;
         }
     }
 

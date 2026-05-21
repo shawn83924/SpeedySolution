@@ -1,5 +1,25 @@
-#include "TTouchOrderCommand.h"
+﻿#include "TTouchOrderCommand.h"
 #include <sstream>
+#include <cstdlib>  // strtod
+#include <cerrno>   // errno, ERANGE
+
+namespace
+{
+    template <typename T>
+    std::string ToStringCompat(const T& value)
+    {
+        std::ostringstream os;
+        os << value;
+        return os.str();
+    }
+
+    std::string BuildMatchPriceWithTicks(int ticks)
+    {
+        if (ticks < 0)
+            return std::string("${match_price}") + ToStringCompat(ticks);
+        return std::string("${match_price}+") + ToStringCompat(ticks);
+    }
+}
 
 // 原意為設定觸價後刪委託單/改價/刪觸價單時所針對的委託/觸價單買賣別，現在保留介面供其他用途，請透過下列方式指定買賣別
 //   .觸價後刪委託單請透過 TCancelOrderMessage 物件的 SetSide() 來指定
@@ -54,7 +74,9 @@ void TTouchOrderCommand::SetPrice(const char* price)
     // 確認一下 price 是否是正確的數值格式
     try
     {
-        double dbl_price = std::stod(price);
+        errno = 0;
+        char* endptr = 0;
+        double dbl_price = strtod(price, &endptr);
         if (dbl_price == 0.0)
         {
             FPrice.clear();
@@ -73,9 +95,9 @@ void TTouchOrderCommand::SetPrice(const char* price)
         return;
 
     std::map<std::string, std::string>::iterator iter = FTriggeredAction.find("action");
-    if (iter == FTriggeredAction.end() || 
-        (iter->second != "twse_cancel" && 
-         iter->second != "twse_replace" && 
+    if (iter == FTriggeredAction.end() ||
+        (iter->second != "twse_cancel" &&
+         iter->second != "twse_replace" &&
          iter->second != "twse_new"))
         return;
 
@@ -107,12 +129,7 @@ void TTouchOrderCommand::SetFloatingOrderPrice(PriceDependOnEnum depend_on, int 
     if (!FTicks)
         FTriggeredAction["price"] = "${match_price}";
     else
-    {
-        if (FTicks < 0)
-            FTriggeredAction["price"] = std::string{ "${match_price}" } + std::to_string(FTicks);
-        else
-            FTriggeredAction["price"] = std::string{ "${match_price}+" } + std::to_string(FTicks);
-    }
+        FTriggeredAction["price"] = BuildMatchPriceWithTicks(FTicks);
 }
 
 BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
@@ -217,12 +234,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
         if (!FTicks)
             FTriggeredAction["price"] = "${match_price}";
         else
-        {
-            if (FTicks < 0)
-                FTriggeredAction["price"] = std::string{ "${match_price}" } + std::to_string(FTicks);
-            else
-                FTriggeredAction["price"] = std::string{ "${match_price}+" } + std::to_string(FTicks);
-        }
+            FTriggeredAction["price"] = BuildMatchPriceWithTicks(FTicks);
     }
     else if (!FPrice.empty())
     {
@@ -230,7 +242,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
     }
     else
     {
-        std::string s_price = std::to_string(order->GetPrice());                
+        std::string s_price = ToStringCompat(order->GetPrice());
         FTriggeredAction.insert(std::make_pair("price", s_price));
     }
 
@@ -238,7 +250,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
     long order_qty = order->GetOrderQty();
     if (order_qty)
     {
-        std::string s_qty = std::to_string(order_qty);
+        std::string s_qty = ToStringCompat(order_qty);
         FTriggeredAction.insert(std::make_pair("quantity", s_qty));
     }
     else
@@ -302,7 +314,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
         double price = order->GetPrice();
         if (price != 0)
         {
-            std::string s_price = std::to_string(price);
+            std::string s_price = ToStringCompat(price);
             FTriggeredAction.insert(std::make_pair("price", s_price));
         }
     }
@@ -338,12 +350,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
         if (!FTicks)
             FTriggeredAction["price"] = "${match_price}";
         else
-        {
-            if (FTicks < 0)
-                FTriggeredAction["price"] = std::string{ "${match_price}" } + std::to_string(FTicks);
-            else
-                FTriggeredAction["price"] = std::string{ "${match_price}+" } + std::to_string(FTicks);
-        }
+            FTriggeredAction["price"] = BuildMatchPriceWithTicks(FTicks);
     }
     else if (!FPrice.empty())
     {
@@ -358,7 +365,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
             return FALSE;
         }
 
-        std::string s_price = std::to_string(price);
+        std::string s_price = ToStringCompat(price);
         FTriggeredAction.insert(std::make_pair("price", s_price));
     }    
 
@@ -485,4 +492,3 @@ std::string TTouchOrderCommand::GetTriggeredAction()
     return ss.str();
     */
 }
-

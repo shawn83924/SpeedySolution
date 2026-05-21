@@ -52,6 +52,7 @@ UFC::TRecord* TTaifexConnection::ParseExecuteReport( nsOrderMessageDefine::Marke
     }
     else if( Market == nsOrderMessageDefine::mTSE || Market == nsOrderMessageDefine::mES )
     {
+        ///< 8digi Seq Length 68, 6digi Seq Length 66
         if( FIsTWSE8DigiVersion == TRUE ) ///< New 8 digi sequence format
             return FTSER03Parser.Parse( ExecuteMessage.c_str(), Length );
         else

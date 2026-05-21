@@ -1,4 +1,6 @@
 #pragma once
+#ifndef TTOUCHORDERCOMMAND_H
+#define TTOUCHORDERCOMMAND_H
 
 #include "TNewOrderMessage.h"
 #include "TCancelOrderMessage.h"
@@ -139,3 +141,5 @@ public:
     std::string GetTriggerExpression()          { return FTriggerExpression; }
     std::string GetTriggeredAction();
 };
+
+#endif
