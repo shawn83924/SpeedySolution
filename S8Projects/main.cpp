@@ -834,8 +834,10 @@ void __fastcall TMainForm::CMarketDataStoreContractDownloadCompleted(int Count, 
 	FDownloadOK = true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::Connect( void )
+void __fastcall TMainForm::Connect( const String& ID, const String& Password )
 {
+	FID = ID;
+	FPassword = Password;
 	FDownloadOK = false;
 	FConnectFailed = false;
 	LoginForm->StatusLabel->Caption = L"連線行情伺服器...";
@@ -855,26 +857,27 @@ void __fastcall TMainForm::Connect( void )
 	CMarketDataStore->IP   = ServerIP;
 	CMarketDataStore->Port = Port;
 	CMarketDataStore->Connect( 5 );
-	if( CMarketDataStore->IsConnected() == true )
+	if( CMarketDataStore->IsConnected() != true )
 	{
-		LoginForm->StatusLabel->Caption = L"連線線圖伺服器...";
-		Application->ProcessMessages();
-		if( GUseFixIP == true )
-		{
-			ServerIP = CHART_SERVER_IP;
-			Port     = CHART_SERVER_PORT;
-		}
-		else if( GVIPServer == true )
-			ServerIP = g_Config.GetVIPChartServerIP( Port );
-		else
-			ServerIP = g_Config.GetChartServerIP( Port );
-		ChartsStore->IP   = ServerIP;
-		ChartsStore->Port = Port;
-		ChartsStore->Connect( 5 );
-		if( ChartsStore->IsConnected() == false )
-			FConnectFailed = true;
+		FConnectFailed = true;
+		return;
 	}
+	LoginForm->StatusLabel->Caption = L"連線線圖伺服器...";
+	Application->ProcessMessages();
+	if (GUseFixIP == true)
+	{
+		ServerIP = CHART_SERVER_IP;
+		Port = CHART_SERVER_PORT;
+	}
+	else if (GVIPServer == true)
+		ServerIP = g_Config.GetVIPChartServerIP(Port);
 	else
+		ServerIP = g_Config.GetChartServerIP(Port);
+	ChartsStore->IP = ServerIP;
+	ChartsStore->Port = Port;
+	ChartsStore->Connect(5);
+
+	if (ChartsStore->IsConnected() == false)
 		FConnectFailed = true;
 }
 //---------------------------------------------------------------------------
@@ -977,31 +980,6 @@ bool __fastcall TMainForm::SettingPanel( bool Open )
 		ShowTabs( true );
 	}
 	return true;
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::LoadBrokers( void )
-{
-	TBrokerConfig*  Config;
-	BrokerComboBoxEx->ItemsEx->Clear();
-	LinkComboBoxEx->Items->Clear();
-
-	for( int i = 0; i < g_Config.BrokerCount(); i ++ )
-	{
-		Config = g_Config.BrokerConfig( i );
-		TComboExItem* NewBroker = BrokerComboBoxEx->ItemsEx->Add();
-		NewBroker->Caption = Config->GetName();
-		NewBroker->ImageIndex = Config->GetIconIndex();
-		if( i == 0 )
-		{
-			for( int j = 0; j <Config->Count(); j++ )
-			{
-				TSpeedyConfig* ConnCfg = Config->GetConfig(j);
-				LinkComboBoxEx->Items->Add( ConnCfg->Name );
-			}
-		}
-	}
-	BrokerComboBoxEx->ItemIndex = 0;
-	LinkComboBoxEx->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::InitOrderStore( void )
@@ -1116,11 +1094,11 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 {
 	FormShowTimer->Enabled = false;
 	catMenuItems->Enabled = false;
-	LoadBrokers( );
 	LoadWavesSetting();
 	LoadProperties( );
 	EnableNuclear();
 	SettingPanel( false );
+	Login( FID, FPassword );
 	catMenuItems->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -1606,7 +1584,7 @@ void __fastcall TMainForm::LoginSimBroker( void )
 	OrderStore->Connect();
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
+void __fastcall TMainForm::Login(const String& ID, const String& Password)
 {
 	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
 	FLoginBroker = g_Config.BrokerConfig( 0 );
@@ -1617,19 +1595,17 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 		return;
 	}
 
-	//IDEdit: 登入帳號
-	//PasswordEdit:	登入密碼，之後都要換成其他的輸入來源
 	String errMsg;
-	if (FLoginBroker->GetService()->LoginBroker(IDEdit->Text, PasswordEdit->Text, errMsg) != true)
+	if (FLoginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
 	{
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
 		return;
 	}
-	gUser.LoginUserID = IDEdit->Text;
+	gUser.LoginUserID = ID;
 
 	String LogFilePrefix;
-	LogFilePrefix.printf(L"SU_%s", IDEdit->Text);
-	FLoginBroker->GetService()->ClearPosition(IDEdit->Text);
+	LogFilePrefix.printf(L"SU_%s", ID);
+	FLoginBroker->GetService()->ClearPosition(ID);
 	OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
 #ifdef __TO_TEST
 	OrderStore->IP = "192.168.0.22";
@@ -2230,7 +2206,7 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 		FRecovering = false;
 		OrderStore->SubscribeAllPosStatisticRecSymbol( false, true );
 		///< Load hold position
-		TBrokerConfig*  BrokerCfg = g_Config.BrokerConfig( BrokerComboBoxEx->ItemIndex );
+		TBrokerConfig*  BrokerCfg = g_Config.BrokerConfig( 0 );
 		String          Msg;
 
 		if( GSimMatch == false )

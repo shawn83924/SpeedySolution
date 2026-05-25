@@ -281,7 +281,6 @@ __published:	// IDE-managed Components
 	void __fastcall OnNCHitTest( TMessage &Message );
 	void __fastcall actLoginExecute(TObject *Sender);
 	void __fastcall actExecExecute(TObject *Sender);
-	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall CancelButtonClick(TObject *Sender);
 	void __fastcall Tab1ButtonClick(TObject *Sender);
 	void __fastcall actReportExecute(TObject *Sender);
@@ -439,6 +438,7 @@ public:
 	void __fastcall UnifyLicense( void );
 	void __fastcall ClearProductInfo( void );
 	void __fastcall UseLastLicense( UFC::PHashMap<String,UnifyProductInfo*>& InfoList, const String& ID, const String& ExpDate );
+    void __fastcall Login(const String& ID, const String& Password);
 private:
 	void __fastcall SelectSymbol( TObject* Sender, TSelectActionType Type, const String& Ex, const String& Sym );
 	void __fastcall SystemInfo( void );
@@ -447,10 +447,9 @@ public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 	__fastcall ~TMainForm( void );
 	bool __fastcall SettingPanel( bool Open );
-	void __fastcall Connect( void );
+	void __fastcall Connect( const String& ID, const String& Password );
 	bool __fastcall Ready( void );
 	bool __fastcall ConnectionFailed( void ) { return FConnectFailed; }
-	void __fastcall LoadBrokers( void );
 	void __fastcall LoadMainFormPosition( void );
 	void __fastcall LoadProperties( void );
 	void __fastcall SaveProperties( void );

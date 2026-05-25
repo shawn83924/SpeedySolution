@@ -66,55 +66,66 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 	bool   Result = false;
 
 	FAccounts.ClearAccounts();
-	if( RequestLogon( ResultStream, Msg ) == true )
+	if( RequestLogon(ID, Password, ResultStream, Msg) != true )
 	{
-		if( GetResponseJSON( ResultStream, ResponseJSON ) == true )
-		{
-			TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
-			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
-			if( lpRoot != NULL )
-			{
-				String ResultStr  = lpRoot->Values[L"result"]->Value();
-				String MessageStr = lpRoot->Values[L"message"]->Value();
-				if( ResultStr == L"0" )
-				{
-					TJSONValue *lpDataList = lpRoot->GetValue( L"dataList" );
-					TJSONArray *AccountArray;
-
-					if( lpDataList != NULL &&
-						(AccountArray = dynamic_cast<TJSONArray*>(lpDataList))!= NULL &&
-						AccountArray->Count > 0 )
-					{
-						for( int i=0;i< AccountArray->Count; i++ )
-						{
-							 TJSONObject *AccItem = dynamic_cast<TJSONObject *>(AccountArray->Items[i]);
-							 String  account       = AccItem->Values[L"account"]->Value();
-							 String  branch_id     = AccItem->Values[L"branch_id"]->Value();
-							 String  account_type  = AccItem->Values[L"account_type"]->Value();
-							 String  dayTrade      = AccItem->Values[L"day_trade"]->Value();
-							 String  BrokerID      = BrenchToBrokrtID( branch_id.ToInt());
-
-							 if( account_type == L"1" ) ///< Stock Account
-								 FAccounts.FStockAccounts.Add( new TAccountInfo(account,BrokerID,dayTrade ) );
-							 else if( account_type == L"2" ) ///< Futures Account
-								 FAccounts.FFutAccounts.Add( new TAccountInfo(account,BrokerID,dayTrade ) );
-						}
-						FAccounts.FName  = lpRoot->Values[L"name"]->Value();
-						FAccounts.FIDNO  = lpRoot->Values[L"idno"]->Value();
-						Msg    = MessageStr;
-						Result = true;
-					}
-					else
-						Msg = L"沒有可用的下單帳號";
-				}
-				else
-				{
-				   if( ToErrorMessage( ResultStr,  Msg ) == false )
-					   Msg = MessageStr;
-				}
-			}
-		}
+		delete ResultStream;
+		return Result;
 	}
+
+	if( GetResponseJSON(ResultStream, ResponseJSON) != true )
+	{
+		delete ResultStream;
+		return Result;
+	}
+
+	TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
+	TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
+	if( lpRoot == NULL )
+	{
+		delete ResultStream;
+		return Result;
+	}
+
+	String ResultStr  = lpRoot->Values[L"result"]->Value();
+	String MessageStr = lpRoot->Values[L"message"]->Value();
+	if( ResultStr != L"0" )
+	{
+		if( ToErrorMessage( ResultStr,  Msg ) == false )
+			Msg = MessageStr;
+		delete ResultStream;
+		return Result;
+	}
+
+	TJSONValue *lpDataList = lpRoot->GetValue( L"dataList" );
+	TJSONArray *AccountArray;
+
+	if( lpDataList == NULL ||
+		(AccountArray = dynamic_cast<TJSONArray *>(lpDataList)) == NULL ||
+		AccountArray->Count <= 0 )
+	{
+		Msg = L"沒有可用的下單帳號";
+		delete ResultStream;
+		return Result;
+	}
+
+	for (int i = 0; i < AccountArray->Count; i++)
+	{
+		TJSONObject *AccItem = dynamic_cast<TJSONObject *>(AccountArray->Items[i]);
+		String account = AccItem->Values[L"account"]->Value();
+		String branch_id = AccItem->Values[L"branch_id"]->Value();
+		String account_type = AccItem->Values[L"account_type"]->Value();
+		String dayTrade = AccItem->Values[L"day_trade"]->Value();
+		String BrokerID = BrenchToBrokrtID(branch_id.ToInt());
+
+		if (account_type == L"1") ///< Stock Account
+			FAccounts.FStockAccounts.Add(new TAccountInfo(account, BrokerID, dayTrade));
+		else if (account_type == L"2") ///< Futures Account
+			FAccounts.FFutAccounts.Add(new TAccountInfo(account, BrokerID, dayTrade));
+	}
+	FAccounts.FName = lpRoot->Values[L"name"]->Value();
+	FAccounts.FIDNO = lpRoot->Values[L"idno"]->Value();
+	Msg = MessageStr;
+	Result = true;
 	delete ResultStream;
 	return Result;
 }
@@ -168,7 +179,11 @@ void TMegaService::GenData2( const String& ID, const String& Password, const Str
 	Out = Base64Encode( Param );  ///< Base64 Encode
 }
 //---------------------------------------------------------------------------
-bool TMegaService::RequestLogon( TMemoryStream* OutStream, String& Msg )
+bool TMegaService::RequestLogon(
+	const String& ID,
+	const String& Password,
+	TMemoryStream* OutStream,
+	String& Msg )
 {
 	TIdSSLIOHandlerSocketOpenSSL* SSLIOHandler = new TIdSSLIOHandlerSocketOpenSSL( NULL );
 	TIdHTTP*                      pHTTP        = new TIdHTTP( NULL );
@@ -178,7 +193,7 @@ bool TMegaService::RequestLogon( TMemoryStream* OutStream, String& Msg )
 
 	try
 	{
-		GenData( FID, FPassword, Data );
+		GenData( ID, Password, Data );
 		URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_01", FBaseURL, Data );
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{

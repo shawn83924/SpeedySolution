@@ -148,12 +148,12 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 
 	FBrokerName = Sect->GetSectionName().c_str();
 	///< TAIFEX broker ID
-	if( Sect->GetValue( "BrokerID", Value ) == false )
-		Value = "F002000";
+	if( Sect->GetValue( "BrokerID", Value ) == true )
+		UFC::BufferedLog::Printf( "%s: Can not get BrokerID", FBrokerName.c_str() );
 	FBrokerID = Value.c_str();
 	///< TWSE broker ID
 	if( Sect->GetValue( "TWSEBrokerID", Value ) == false )
-		Value = "7000";
+		UFC::BufferedLog::Printf( "%s: Can not get TWSEBrokerID", FBrokerName.c_str() );
 	FTWSEBrokerID = Value.c_str();
 	///< Clear member ID
 	if( Sect->GetValue( "CMID", Value ) == false )
@@ -161,59 +161,71 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 	else
 		FCMID = Value.c_str();
 	if( Sect->GetValue( "ServiceURL", ServiceURL ) == false )
-		ServiceURL = "http://210.202.76.87/futuresTreasureApi/";
+		UFC::BufferedLog::Printf( "%s: Can not get ServiceURL", FBrokerName.c_str() );
 
 	if( Sect->GetValue( "Count", Value ) == true )
 		Count = Value.ToInt();
-	for( int i = 1; i <= Count; i++)
+	for( int i = 1; i <= Count; ++i )
 	{
-		UFC::AnsiString tag1,tag2,tag3,tag4,tag5,tag6,tag7,tagVIP2,tagVIP3;
-		UFC::AnsiString Name,IP,Port,IsProxy,Broker,CM,VIPIP,VIPPort;
+		UFC::AnsiString nameTag, ipTag, portTag, isProxyTag, brokerTag, cmTag, twseBrokerTag, vipIpTag, vipPortTag;
+		UFC::AnsiString name, ip, port, isProxy, broker, cm, vipIp, vipPort;
 
-		tag1.Printf( "Name%d", i );
-		tag2.Printf( "IP%d", i );
-		tag3.Printf( "Port%d", i );
-		tagVIP2.Printf( "VIPIP%d", i );
-		tagVIP3.Printf( "VIPPort%d", i );
-		tag4.Printf( "IsProxy%d", i );
-		tag5.Printf( "BrokerID%d", i );
-		tag6.Printf( "CMID%d", i );
-		tag7.Printf( "TWSEBrokerID%d", i );
-		if( Sect->GetValue( tag1, Name ) == true &&
-			Sect->GetValue( tag2, IP ) == true &&
-			Sect->GetValue( tag3, Port ) == true &&
-			Sect->GetValue( tag4, IsProxy ) == true )
-		{
-			TSpeedyConfig* NewConfig = new TSpeedyConfig();
-			NewConfig->Name    = Name.c_str();
-			///< Set Order Server IP/port.
-			NewConfig->SetIPS( IP.c_str() );
-			NewConfig->Port    = Port.ToInt();
-			///< Set VIP Order Server IP/port.
-			if( Sect->GetValue( tagVIP2, VIPIP ) == true )
-				NewConfig->SetVIPIPS( VIPIP.c_str() );
-			else
-				NewConfig->SetIPS( IP.c_str() );
-			if( Sect->GetValue( tagVIP3, VIPPort ) == true )
-				NewConfig->VIPPort = VIPPort.ToInt();
-			else
-				NewConfig->VIPPort = Port.ToInt();
-            ///< Proxy or Gateway
-			NewConfig->IsProxy = IsProxy.ToInt();
-			if( Sect->GetValue( tag5, Broker ) == true )
-				NewConfig->BrokerID = Broker.c_str();
-			else
-				NewConfig->BrokerID = FBrokerID;
-			if( Sect->GetValue( tag6, CM ) == true )
-				NewConfig->CMID = CM.c_str();
-			else
-				NewConfig->CMID = FCMID;
-			if( Sect->GetValue( tag7, Broker ) == true )
-				NewConfig->TWSEBrokerID = Broker.c_str();
-			else
-				NewConfig->TWSEBrokerID = FTWSEBrokerID;
-			FConfigs.Add( NewConfig );
-		}
+		nameTag.Printf( "Name%d", i );
+		ipTag.Printf( "IP%d", i );
+		portTag.Printf( "Port%d", i );
+		vipIpTag.Printf( "VIPIP%d", i );
+		vipPortTag.Printf( "VIPPort%d", i );
+		isProxyTag.Printf( "IsProxy%d", i );
+		brokerTag.Printf( "BrokerID%d", i );
+		cmTag.Printf( "CMID%d", i );
+		twseBrokerTag.Printf( "TWSEBrokerID%d", i );
+
+		const bool hasRequiredFields =
+			Sect->GetValue( nameTag, name ) == true &&
+			Sect->GetValue( ipTag, ip ) == true &&
+			Sect->GetValue( portTag, port ) == true &&
+			Sect->GetValue( isProxyTag, isProxy ) == true;
+
+		if( !hasRequiredFields )
+			continue;
+
+		TSpeedyConfig* newConfig = new TSpeedyConfig();
+		newConfig->Name = name.c_str();
+
+		///< Set Order Server IP/port.
+		newConfig->SetIPS( ip.c_str() );
+		newConfig->Port = port.ToInt();
+
+		///< Set VIP Order Server IP/port.
+		if( Sect->GetValue( vipIpTag, vipIp ) == true )
+			newConfig->SetVIPIPS( vipIp.c_str() );
+		else
+			newConfig->SetIPS( ip.c_str() ); // keep original behavior
+
+		if( Sect->GetValue( vipPortTag, vipPort ) == true )
+			newConfig->VIPPort = vipPort.ToInt();
+		else
+			newConfig->VIPPort = port.ToInt();
+
+		///< Proxy or Gateway
+		newConfig->IsProxy = isProxy.ToInt();
+
+		if( Sect->GetValue( brokerTag, broker ) == true )
+			newConfig->BrokerID = broker.c_str();
+		else
+			newConfig->BrokerID = FBrokerID;
+
+		if( Sect->GetValue( cmTag, cm ) == true )
+			newConfig->CMID = cm.c_str();
+		else
+			newConfig->CMID = FCMID;
+
+		if( Sect->GetValue( twseBrokerTag, broker ) == true )
+			newConfig->TWSEBrokerID = broker.c_str();
+		else
+			newConfig->TWSEBrokerID = FTWSEBrokerID;
+
+		FConfigs.Add( newConfig );
 	}
 	if( FBrokerID == L"F002000" ) ///< SinoPac
 	{

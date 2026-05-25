@@ -195,34 +195,36 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 
 
 	g_Config.LoadStarWaveSettingIni();
-	if( Logon() )
+	if( !Logon() )
 	{
-		if( Tranning == true ) ///< Traning room not production.
-		{
-			if( CheckFreeTry() == false )
-			{
-				LoginButton->Enabled = true;
-				return;
-            }
-		}
-		if( gIsExpired == true && NeedLicense == true) ///< Traning room production. but no license
+		LoginButton->Enabled = true;
+		g_Config.SetBoolProperty("Setting","SaveID",AccountCheckBox->Checked);
+		g_Config.SetBoolProperty("Setting","SavePassword",SavePasswordCheckBox->Checked );
+		return;
+	}
+	if (Tranning == true) ///< Traning room not production.
+	{
+		if (CheckFreeTry() == false)
 		{
 			LoginButton->Enabled = true;
-			StatusLabel->Caption = L"謝謝您的試用!想開啟實盤模擬功能,請訂閱正式版.";
 			return;
 		}
-		ActivityIndicator->Visible = true;
-		ActivityIndicator->Animate = true;
-		IDEdit->Visible = false;
-		PasswordEdit->Visible = false;
-		FWaitCount = 0;
-		MainForm->Connect();
-		WaitTimer->Enabled = true;
-		///< Save ID/Password
-		SaveIDPassword( );
 	}
-	else
+	if (gIsExpired == true && NeedLicense == true) ///< Traning room production. but no license
+	{
 		LoginButton->Enabled = true;
+		StatusLabel->Caption = L"謝謝您的試用!想開啟實盤模擬功能,請訂閱正式版.";
+		return;
+	}
+	ActivityIndicator->Visible = true;
+	ActivityIndicator->Animate = true;
+	IDEdit->Visible = false;
+	PasswordEdit->Visible = false;
+	FWaitCount = 0;
+	MainForm->Connect(IDEdit->Text, PasswordEdit->Text);
+	WaitTimer->Enabled = true;
+	///< Save ID/Password
+	SaveIDPassword();
 	g_Config.SetBoolProperty("Setting","SaveID",AccountCheckBox->Checked);
 	g_Config.SetBoolProperty("Setting","SavePassword",SavePasswordCheckBox->Checked );
 }
