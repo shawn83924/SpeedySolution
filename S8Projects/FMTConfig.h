@@ -160,7 +160,7 @@ private:
 	void GenData( const String& ID, const String& Password, String& Out );
 	void GenData( const String& ID, const String& Password, const String& IB, String& Out );
 	void GenData2( const String& ID, const String& Password, const String& IB, String& Out );
-	bool RequestLogon( TMemoryStream* OutStream, String& Msg );
+	bool RequestLogon( const String& ID, const String& Password, TMemoryStream* OutStream, String& Msg );
 	bool RequestPosition(  bool IsTAIFEX, const String& Account, TMemoryStream* OutStream, String& Msg );
 	void AddPosition( const String& Account, TJSONArray *PosArray );
 	void AddStockPosition( const String& Account, TJSONArray *PosArray );
