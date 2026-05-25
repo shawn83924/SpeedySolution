@@ -1404,7 +1404,6 @@ void __fastcall TMainForm::actLoginExecute(TObject *Sender)
 			BrokerComboBoxEx->ItemIndex = 0;
 			SettingPageControl->ActivePage = BrokerTabSheet;
 			SettingPanel( true );
-			LoadIDPassword( BrokerComboBoxEx->ItemIndex );
 		}
 		else
 		{
@@ -1512,26 +1511,6 @@ void __fastcall TMainForm::CheckAgreement( void )
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
 		OrderStore->Disconnect( true );
 	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::LoadIDPassword( int BrokerN )
-{
-	String NameTag;
-	///< load account
-	NameTag.printf( L"Account%d", BrokerN );
-	IDEdit->Text =  g_Config.GetBase64StringProperty( "OrderAccount", NameTag, L"" );
-	NameTag.printf( L"Password%d", BrokerN );
-	PasswordEdit->Text =  g_Config.GetBase64StringProperty( "OrderAccount", NameTag, L"" );
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::SaveIDPassword( int BrokerN )
-{
-	String NameTag;
-	///< Save account
-	NameTag.printf( L"Account%d", BrokerN );
-	g_Config.SetBase64StringProperty( "OrderAccount", NameTag, IDEdit->Text );
-	NameTag.printf( L"Password%d", BrokerN );
-	g_Config.SetBase64StringProperty( "OrderAccount", NameTag, PasswordEdit->Text );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoginSimBroker( void )
@@ -1657,15 +1636,14 @@ void __fastcall TMainForm::Login(const String& ID, const String& Password)
 		FProxyLogon = false;
 	else
 		FProxyLogon = true;
-	OrderStore->ID = gUser.LoginUserID; //OrderStore->Account; //
-	OrderStore->Password = PasswordEdit->Text;
+	OrderStore->ID = ID; //OrderStore->Account; //
+	OrderStore->Password = Password;
 	OrderStore->TryVersion = gIsExpired;
 	OrderStore->Version = LoginForm->Version;
 	StatusLabel->Caption = L"連線" + BrokerComboBoxEx->Text + L"...";
 	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth(FLoginUserStr);
 	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
 	PaintStatusBar();
-	SaveIDPassword(BrokerComboBoxEx->ItemIndex); ///< Save account
 	s888::CTaifexFeeQueryObject *FeeObj = new s888::CTaifexFeeQueryObject(L"TaifexFee.xml", gUser.LoginUserID);
 	//OrderStore->Account  );
 	s888::CTaifexTaxRateQueryObject *TaxObj = new s888::CTaifexTaxRateQueryObject(L"TaifexTax.xml");
@@ -1949,7 +1927,6 @@ void __fastcall TMainForm::BrokerComboBoxExChange(TObject *Sender)
 		LinkComboBoxEx->Items->Add( ConnCfg->Name );
 	}
 	LinkComboBoxEx->ItemIndex = 0;
-	LoadIDPassword( SelBroker );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::NewOrdSoundButtonClick(TObject *Sender)

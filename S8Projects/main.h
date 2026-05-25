@@ -419,8 +419,6 @@ private:
 	void __fastcall LiveUpdate( void );
 	void __fastcall CACheckFail( TCAChecker* Sender, UnicodeString& Reason );
 	void __fastcall PrintLogHeader( void );
-	void __fastcall LoadIDPassword( int BrokerN );
-	void __fastcall SaveIDPassword( int BrokerN );
 	void __fastcall OSNotSupport( const AnsiString& OSStr );
 	void __fastcall LoginSimBroker( void );
 	void __fastcall CheckAgreement( void );
