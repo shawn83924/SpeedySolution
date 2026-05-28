@@ -18,23 +18,23 @@ static inline void ValidCtrCheck(TGraphButtonV2 *)
 //---------------------------------------------------------------------------
 __fastcall TGraphButtonV2::TGraphButtonV2(TComponent* Owner)
 	:	TCustomControl(Owner),
-		CaptureFlag(false)
+		CaptureFlag(false),
+		FMouseDown(false),
+		SelectedFlag(false),
+		FIsFocused(false),
+		AlignType(caCenter)
 {
-	ParentWin = dynamic_cast<TWinControl*>(Owner);
 	FFontInfo = new TFontAttrib();
 	FFontInfo->OnChange = FontPropertyChange;
-    InitialGraph();
-	Width = 32;
+	InitialGraph();
+	DoubleBuffered = true;
+	Width  = 32;
 	Height = 32;
 }
 //---------------------------------------------------------------------------
 __fastcall TGraphButtonV2::~TGraphButtonV2(void)
 {
-	if (FFontInfo != NULL)
-	{
-		delete FFontInfo;
-		FFontInfo = NULL;
-	}
+	delete FFontInfo;
 	delete FNormalGraph;
 	delete FHoverGraph;
 	delete FDownGraph;
@@ -44,134 +44,140 @@ __fastcall TGraphButtonV2::~TGraphButtonV2(void)
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonV2::InitialGraph(void)
 {
-	FNormalGraph	= new TPicture();
-	FHoverGraph		= new TPicture();
-	FDownGraph		= new TPicture();
-	FDisableGraph	= new TPicture();
-	FSelectedGraph	= new TPicture();
-	FNormalGraph	->OnChange = GraphChanged;
-	FHoverGraph		->OnChange = GraphChanged;
-	FDownGraph		->OnChange = GraphChanged;
-	FSelectedGraph	->OnChange = GraphChanged;
-	FSelectedGraph	->OnChange = GraphChanged;
+	FNormalGraph   = new TPicture();
+	FHoverGraph    = new TPicture();
+	FDownGraph     = new TPicture();
+	FDisableGraph  = new TPicture();
+	FSelectedGraph = new TPicture();
+	FNormalGraph  ->OnChange = GraphChanged;
+	FHoverGraph   ->OnChange = GraphChanged;
+	FDownGraph    ->OnChange = GraphChanged;
+	FDisableGraph ->OnChange = GraphChanged;
+	FSelectedGraph->OnChange = GraphChanged;
 }
 //---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetNormalGraph(TPicture* graph)
+// ── Property setters ───────────────────────────────────────────────────────
+//---------------------------------------------------------------------------
+void __fastcall TGraphButtonV2::SetGraph(TPicture* &target, TPicture* graph)
 {
-	FNormalGraph->Assign(graph);
+	target->Assign(graph);
+	Invalidate();
+}
+
+void __fastcall TGraphButtonV2::SetNormalGraph (TPicture* g) { SetGraph(FNormalGraph,   g); }
+void __fastcall TGraphButtonV2::SetHoverGraph  (TPicture* g) { SetGraph(FHoverGraph,    g); }
+void __fastcall TGraphButtonV2::SetDownGraph   (TPicture* g) { SetGraph(FDownGraph,     g); }
+void __fastcall TGraphButtonV2::SetDisableGraph(TPicture* g) { SetGraph(FDisableGraph,  g); }
+void __fastcall TGraphButtonV2::SetSelectedGraph(TPicture* g){ SetGraph(FSelectedGraph, g); }
+
+void __fastcall TGraphButtonV2::SetSelectFlag(bool Value)      { SelectedFlag = Value;          Invalidate(); }
+void __fastcall TGraphButtonV2::SetText(const String Value)    { CaptionText  = Value;          Invalidate(); }
+void __fastcall TGraphButtonV2::SetAlignType(CaptionAlign Value){ AlignType   = Value;          Invalidate(); }
+void __fastcall TGraphButtonV2::SetFontAttrib(TFontAttrib *Value){ FFontInfo->Assign(Value);    Invalidate(); }
+void __fastcall TGraphButtonV2::GraphChanged(TObject*)         {                                Invalidate(); }
+void __fastcall TGraphButtonV2::FontPropertyChange(TObject*)   {                                Invalidate(); }
+
+void __fastcall TGraphButtonV2::SetFocused(bool Value)
+{
+	if (Value != FIsFocused) { FIsFocused = Value; Invalidate(); }
 }
 //---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetHoverGraph(TPicture* graph)
-{
-	FHoverGraph->Assign(graph);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetDownGraph(TPicture* graph)
-{
-	FDownGraph->Assign(graph);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetDisableGraph(TPicture* graph)
-{
-	FDisableGraph->Assign(graph);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetSelectedGraph(TPicture* graph)
-{
-	FSelectedGraph->Assign(graph);
-}
+// ── Paint parent background (for PNG transparency) ─────────────────────────
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonV2::PaintParent(void)
 {
-	 int SaveIndex;
-	 HDC DC;
+	if (Parent == NULL)
+		return;
+	int SaveIndex = SaveDC(Canvas->Handle);
+	SetViewportOrgEx(Canvas->Handle, -Left, -Top, NULL);
+	Parent->Perform(WM_ERASEBKGND, (WPARAM)Canvas->Handle, 0);
+	Parent->Perform(WM_PAINT, (WPARAM)Canvas->Handle, 0);
+	RestoreDC(Canvas->Handle, SaveIndex);
+}
+//---------------------------------------------------------------------------
+// ── Draw text with alignment and optional shadow ───────────────────────────
+//---------------------------------------------------------------------------
+void __fastcall TGraphButtonV2::DrawCaption(void)
+{
+	if (CaptionText.IsEmpty()) return;
 
-	 if (HandleAllocated())
-	 {
-		 DC = GetDC(Handle);
-		 if (DC == NULL) return;
-		 SaveIndex = SaveDC(DC);
-		 SetViewportOrgEx(DC, -Left, -Top, NULL);
-		 Parent->Perform(WM_ERASEBKGND, (int)DC, 0);
-		 RestoreDC(DC, SaveIndex);
-		 ReleaseDC(Handle, DC);
-	 }
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::FontPropertyChange(TObject*)
-{
-	Invalidate();
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::GraphChanged(TObject* Sender)
-{
-	Invalidate();
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetFontAttrib(TFontAttrib *Value)
-{
-	FFontInfo->Assign(Value);
-	FontPropertyChange(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetAlignType(CaptionAlign Value)
-{
-	AlignType = Value;
-	FontPropertyChange(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetSelectFlag(bool Value)
-{
-	SelectedFlag = Value;
-	FontPropertyChange(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetBtnStyle(ButtonStyle Value)
-{
-	FBtnStyle = Value;
-	FontPropertyChange(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetText(const String Value)
-{
-	CaptionText = Value;
-	FontPropertyChange(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::Click(void)
-{
-	if (CaptureFlag)
+	Canvas->Font->Assign(FFontInfo->CaptionFont);
+	Canvas->Brush->Style = bsClear;
+
+	int textW = Canvas->TextWidth(CaptionText);
+	int textH = Canvas->TextHeight(CaptionText);
+	int offsetY = (textH < Height) ? (Height - textH) / 2 : 0;
+	int offsetX;
+
+	switch (AlignType)
 	{
-		ReleaseCapture();
-		CaptureFlag = false;
-		Paint();
+		case caLeft:   offsetX = 2; break;
+		case caRight:  offsetX = (textW < Width) ? Width - textW - 2 : 0; break;
+		case caCenter:
+		default:       offsetX = (textW < Width) ? (Width - textW) / 2 : 0; break;
 	}
-	TCustomControl::Click();
+
+	// Shadow
+	if (FFontInfo->ShadowOffsetPixels != ::soNone)
+	{
+		int off = (int)FFontInfo->ShadowOffsetPixels;
+		Canvas->Font->Color = FFontInfo->FontShadowColor;
+		Canvas->TextOut(offsetX + off, offsetY + off, CaptionText);
+	}
+
+	// Main text
+	Canvas->Font->Color = Enabled ? FFontInfo->FontColor : clGrayText;
+	Canvas->TextOut(offsetX, offsetY, CaptionText);
 }
 //---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::KeyDown(Word &Key, TShiftState Shift)
+// ── Core paint ─────────────────────────────────────────────────────────────
+//---------------------------------------------------------------------------
+void __fastcall TGraphButtonV2::Paint(void)
 {
-	if (Key == VK_RETURN)
-		Click();
-	TCustomControl::KeyDown(Key, Shift);
+	// 1. Paint parent background so PNG alpha channels look correct
+	PaintParent();
+
+	// 2. Select picture by state priority:
+	//    Disabled > MouseDown > Selected > Hover > Normal
+	TPicture* picture;
+	if (!Enabled)
+		picture = FDisableGraph;
+	else if (FMouseDown)
+		picture = FDownGraph;
+	else if (SelectedFlag)
+		picture = FSelectedGraph;
+	else if (CaptureFlag)
+		picture = FHoverGraph;
+	else
+		picture = FNormalGraph;
+
+	// 3. Draw background image (stretch to fill)
+	if (picture->Graphic != NULL && !picture->Graphic->Empty)
+		Canvas->StretchDraw(ClientRect, picture->Graphic);
+
+	// 4. Draw caption on top
+	DrawCaption();
 }
+//---------------------------------------------------------------------------
+// ── Mouse / keyboard events ────────────────────────────────────────────────
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonV2::MouseMove(TShiftState Shift, int X, int Y)
 {
-	if (!CaptureFlag)
+	const bool outside = (X < 0 || Y < 0 || X > Width || Y > Height);
+
+	if (!CaptureFlag && !outside)
 	{
-		if (HandleAllocated())
-			SetCapture(Handle);
+		if (HandleAllocated()) SetCapture(Handle);
 		CaptureFlag = true;
-		Paint();
-		if (FOnMouseMoveIn != NULL)
-			FOnMouseMoveIn(this);
+		Invalidate();
+		if (FOnMouseMoveIn != NULL) FOnMouseMoveIn(this);
 	}
-	if ((X < 0) || (Y < 0) || (X > Width) || (Y > Height))
+	else if (CaptureFlag && outside)
 	{
 		ReleaseCapture();
 		CaptureFlag = false;
-		Paint();
+		FMouseDown  = false;
+		Invalidate();
 	}
 	else
 	{
@@ -182,7 +188,10 @@ void __fastcall TGraphButtonV2::MouseMove(TShiftState Shift, int X, int Y)
 void __fastcall TGraphButtonV2::MouseDown(TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 	if (Button == mbLeft)
-		PaintButton(FFontInfo->FontColor, FFontInfo->FontShadowColor, bsMouseDown);
+	{
+		FMouseDown = true;
+		Invalidate();
+	}
 	SetFocus();
 	TCustomControl::MouseDown(Button, Shift, X, Y);
 }
@@ -190,126 +199,49 @@ void __fastcall TGraphButtonV2::MouseDown(TMouseButton Button, TShiftState Shift
 void __fastcall TGraphButtonV2::MouseUp(TMouseButton Button, TShiftState Shift, int X, int Y)
 {
 	if (Button == mbLeft)
-		Paint();
+	{
+		FMouseDown = false;
+		Invalidate();
+	}
 	TCustomControl::MouseUp(Button, Shift, X, Y);
 }
 //---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::PaintButton(TColor Front, TColor Back, ButtonState State)
+void __fastcall TGraphButtonV2::Click(void)
 {
-	register int OffsetX = 0, OffsetY;
-	register int TextHPixels, TextVPixels;
-	TCanvas *canvas;
-
-	if (!HandleAllocated())
-		return;
-	canvas = new TCanvas();
-	canvas->Handle = GetDC(Handle);
-	canvas->Brush->Style = bsClear;
-	canvas->Font->Assign(FFontInfo->CaptionFont);
-	TextVPixels = canvas->TextHeight(CaptionText);
-	if (TextVPixels > Height)
-		OffsetY = 0;
-	else
-		OffsetY = (Height - TextVPixels) / 2;
-
-	switch (AlignType)
-	{
-		case caCenter:
-			if (TextHPixels > Width)
-				OffsetX = 0;
-			else
-				OffsetX = (Width - TextHPixels) / 2;
-			break;
-		case caRight:
-			OffsetX = Width - TextHPixels;
-			break;
-	}
-	// paint graph
-	/*
-	...
-	*/
-	if (FFontInfo->ShadowOffsetPixels != ::soNone)
-	{
-		canvas->Font->Color = Back;
-		canvas->TextOut(OffsetX + (int)FFontInfo->ShadowOffsetPixels,
-		                OffsetY + (int)FFontInfo->ShadowOffsetPixels,
-		                CaptionText);
-	}
-	canvas->Font->Color = Front;
-	canvas->TextOut(OffsetX, OffsetY, CaptionText);
-	ReleaseDC(Handle, canvas->Handle);
-	delete canvas;
+	TCustomControl::Click();
 }
 //---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::Paint(void)
+void __fastcall TGraphButtonV2::KeyDown(Word &Key, TShiftState Shift)
 {
-	const bool isWindowsStyle = (BtnStyle == bsWindows);
-	const bool isHoverState = isWindowsStyle ? IsFocused : CaptureFlag;
-
-	if (!Enabled)
-	{
-		PaintButton(FFontInfo->HighlightFontColor, FFontInfo->HighlightShadowColor, bsDisableState);
-	}
-	else if (SelectedFlag)
-	{
-		PaintButton(FFontInfo->SelectedFontColor, FFontInfo->HighlightShadowColor, bsSelectedState);
-	}
-	else if (isHoverState)
-	{
-		PaintButton(FFontInfo->HighlightFontColor, FFontInfo->HighlightShadowColor, bsMouseOver);
-	}
-	else
-	{
-		PaintButton(FFontInfo->FontColor, FFontInfo->FontShadowColor, bsNormalState);
-	}
+	if (Key == VK_RETURN) Click();
+	TCustomControl::KeyDown(Key, Shift);
+}
+//---------------------------------------------------------------------------
+// ── Window message handling ────────────────────────────────────────────────
+//---------------------------------------------------------------------------
+void __fastcall TGraphButtonV2::WMEraseBkgnd(TMessage &Msg)
+{
+	// We paint everything ourselves in Paint(); suppress default erase.
+	Msg.Result = 1;
 }
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonV2::WMLosingCapture(TMessage &)
 {
 	CaptureFlag = false;
-	Paint();
+	Invalidate();
 	if (FOnMouseMoveOut != NULL)
 		FOnMouseMoveOut(this);
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::WMEraseBkgnd(TMessage &Msg)
-{
-	Paint();
-	Msg.Result = 1;
-}
-//---------------------------------------------------------------------------
-void __fastcall TGraphButtonV2::SetFocused(bool Value)
-{
-	if (Value != FIsFocused)
-	{
-		FIsFocused = Value;
-		Paint();
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonV2::WndProc(TMessage &Msg)
 {
 	switch (Msg.Msg)
 	{
-		case WM_SETFOCUS:
-			Msg.Result = 0;
-			IsFocused = true;
-			TCustomControl::WndProc(Msg);
-			break;
-		case WM_KILLFOCUS:
-			Msg.Result = 0;
-			IsFocused = false;
-			TCustomControl::WndProc(Msg);
-			break;
-		case WM_CAPTURECHANGED:
-			WMLosingCapture(Msg);
-			break;
-		case WM_ERASEBKGND:
-			WMEraseBkgnd(Msg);
-			break;
-		default:
-			TCustomControl::WndProc(Msg);
-			break;
+		case WM_SETFOCUS:       IsFocused = true;  TCustomControl::WndProc(Msg); break;
+		case WM_KILLFOCUS:      IsFocused = false; TCustomControl::WndProc(Msg); break;
+		case WM_CAPTURECHANGED: WMLosingCapture(Msg); break;
+		case WM_ERASEBKGND:     WMEraseBkgnd(Msg);   break;
+		default:                TCustomControl::WndProc(Msg); break;
 	}
 }
 //---------------------------------------------------------------------------
