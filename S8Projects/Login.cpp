@@ -17,6 +17,8 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GraphButton"
+#pragma link "GraphButtonV2"
+#pragma link "GraphToggle"
 #pragma resource "*.dfm"
 TLoginForm *LoginForm;
 //---------------------------------------------------------------------------
@@ -55,7 +57,6 @@ __fastcall TLoginForm::TLoginForm(TComponent* Owner)
 
 	APVerStr.printf(L"版本: %d.%d.%d", AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100 );
 	FVersion.printf(L"%d.%d.%d", AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100 );
-	VersionLabel->Caption = APVerStr;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::WndProc( TMessage &Msg )
@@ -221,8 +222,8 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	}
 	else
 		LoginButton->Enabled = true;
-	g_Config.SetBoolProperty("Setting","SaveID",AccountCheckBox->Checked);
-	g_Config.SetBoolProperty("Setting","SavePassword",SavePasswordCheckBox->Checked );
+	g_Config.SetIntegerProperty("Setting","SaveID", (int)SaveAccountToggle->State);
+	g_Config.SetIntegerProperty("Setting","SavePassword", (int)SavePasswordToggle->State);
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
@@ -270,18 +271,24 @@ void __fastcall TLoginForm::LabelMouseLeave(TObject *Sender)
 {
 	TLabel* Label = dynamic_cast< TLabel* >( Sender);
 	if( Label != NULL)
-		Label->Font->Color = clSilver;
+		Label->Font->Color = clBlack;
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TLoginForm::SaveAccountLabelClick(TObject *Sender)
 {
-	AccountCheckBox->Checked = ! AccountCheckBox->Checked;
+	if( SaveAccountToggle->State == tssOff )
+		SaveAccountToggle->State = tssOn;
+	else
+		SaveAccountToggle->State = tssOff;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::SavePasswordLabelClick(TObject *Sender)
 {
-	SavePasswordCheckBox->Checked = ! SavePasswordCheckBox->Checked;
+	if( SavePasswordToggle->State == tssOff )
+		SavePasswordToggle->State = tssOn;
+	else
+		SavePasswordToggle->State = tssOff;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::AtAOELabelClick(TObject *Sender)
@@ -377,8 +384,8 @@ void __fastcall TLoginForm::FormShow(TObject *Sender)
 {
    NetworkComboBox->Items->Clear();
    NetworkComboBox->Items->AddStrings( g_Config.GetInternetConfigNames() );
-   AccountCheckBox->Checked      = g_Config.GetBoolProperty("Setting","SaveID",true);
-   SavePasswordCheckBox->Checked = g_Config.GetBoolProperty("Setting","SavePassword",true);
+   SaveAccountToggle->State      = (TToggleSwitchState)g_Config.GetIntegerProperty("Setting", "SaveID", 0);
+   SavePasswordToggle->State    =  (TToggleSwitchState)g_Config.GetIntegerProperty("Setting","SavePassword", 0);
    NetworkComboBox->ItemIndex	 = g_Config.GetIntegerProperty("Setting","InternetConfig", 0 );
    ExLabel->Visible = true;
    LoadIDPassword();
@@ -399,12 +406,12 @@ void __fastcall TLoginForm::PasswordEditEnter(TObject *Sender)
 void __fastcall TLoginForm::LoadIDPassword( void )
 {
    ///< Account saved ?
-   if( AccountCheckBox->Checked == true ) ///< Yes
+   if( SaveAccountToggle->State == tssOn )
 	   IDEdit->Text	= g_Config.GetBase64StringProperty("Setting","ID","會員帳號" );
    else
 	   IDEdit->Text	= L"";
    ///< Password saved ?
-   if( SavePasswordCheckBox->Checked == true ) ///< Yes
+   if( SavePasswordToggle->State == tssOn )
 	   PasswordEdit->Text = g_Config.GetBase64StringProperty("Setting","Password","123456" );
    else
 	   PasswordEdit->Text	= "";
@@ -413,10 +420,10 @@ void __fastcall TLoginForm::LoadIDPassword( void )
 void __fastcall TLoginForm::SaveIDPassword( void )
 {
 	///< Account saved ?
-	if( AccountCheckBox->Checked == true )
+	if( SaveAccountToggle->State == tssOn )
 		g_Config.SetBase64StringProperty("Setting","ID",IDEdit->Text );
 	///< Password saved ?
-	if( SavePasswordCheckBox->Checked == true )
+	if( SavePasswordToggle->State == tssOn )
 		g_Config.SetBase64StringProperty("Setting","Password", PasswordEdit->Text );
 }
 //---------------------------------------------------------------------------
@@ -434,4 +441,5 @@ void __fastcall TLoginForm::CalendarButtonClick(TObject *Sender)
 	delete BrowserForm;
 }
 //---------------------------------------------------------------------------
+
 
