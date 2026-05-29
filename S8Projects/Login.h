@@ -26,6 +26,8 @@
 #include <IdHTTP.hpp>
 #include "GraphButton.h"
 #include <Vcl.Buttons.hpp>
+#include "GraphButtonV2.h"
+#include "GraphToggle.h"
 //---------------------------------------------------------------------------
 class	TBrokerConfig;
 //---------------------------------------------------------------------------
@@ -36,22 +38,24 @@ __published:	// IDE-managed Components
 	TActivityIndicator *ActivityIndicator;
 	TEdit *IDEdit;
 	TEdit *PasswordEdit;
-	TCheckBox *AccountCheckBox;
-	TCheckBox *SavePasswordCheckBox;
 	TLabel *StatusLabel;
 	TTimer *WaitTimer;
 	TGraphButton *LoginButton;
-	TGraphButton *ExitButton;
 	TLabel *ResetPasswordLabel;
 	TLabel *SaveAccountLabel;
 	TLabel *SavePasswordLabel;
 	TLabel *EnvLabel;
-	TLabel *VersionLabel;
 	TComboBox *NetworkComboBox;
 	TSpeedButton *CalendarButton;
 	TCheckBox *AtAOECheckBox;
 	TLabel *AtAOELabel;
 	TLabel *ExLabel;
+	TImage *BGImage1;
+	TGraphButtonV2 *ExitButton;
+	TGraphToggle *SaveAccountToggle;
+	TImage *LogoImage;
+	TImage *BGImage2;
+	TGraphToggle *SavePasswordToggle;
 	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall WaitTimerTimer(TObject *Sender);
 	void __fastcall ExitButtonClick(TObject *Sender);
