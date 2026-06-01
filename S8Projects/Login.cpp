@@ -19,6 +19,7 @@
 #pragma link "GraphButton"
 #pragma link "GraphButtonV2"
 #pragma link "GraphToggle"
+#pragma link "AlignEdit"
 #pragma resource "*.dfm"
 TLoginForm *LoginForm;
 //---------------------------------------------------------------------------
@@ -212,8 +213,8 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 		}
 		ActivityIndicator->Visible = true;
 		ActivityIndicator->Animate = true;
-		IDEdit->Visible = false;
-		PasswordEdit->Visible = false;
+		IDEdit->Enabled = false;
+		PasswordEdit->Enabled = false;
 		FWaitCount = 0;
 		MainForm->Connect();
 		WaitTimer->Enabled = true;
@@ -234,8 +235,8 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 		WaitTimer->Enabled = false;
 		MainForm->InitOrderStore();
 		LoginButton->Enabled = true;
-		IDEdit->Visible = true;
-		PasswordEdit->Visible = true;
+		IDEdit->Enabled = true;
+		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
 		this->ModalResult = mrOk;
@@ -245,8 +246,8 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 		LoginButton->Enabled = true;
 		WaitTimer->Enabled = false;
 		this->ModalResult = mrNone;//Cancel;
-		IDEdit->Visible = true;
-		PasswordEdit->Visible = true;
+		IDEdit->Enabled = true;
+		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
 		StatusLabel->Caption = L"連線失敗,請檢查網路!";
