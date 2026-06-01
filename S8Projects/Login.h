@@ -28,6 +28,7 @@
 #include <Vcl.Buttons.hpp>
 #include "GraphButtonV2.h"
 #include "GraphToggle.h"
+#include "AlignEdit.h"
 //---------------------------------------------------------------------------
 class	TBrokerConfig;
 //---------------------------------------------------------------------------
@@ -36,11 +37,8 @@ class TLoginForm : public TForm
 __published:	// IDE-managed Components
 	TImage *BKImage;
 	TActivityIndicator *ActivityIndicator;
-	TEdit *IDEdit;
-	TEdit *PasswordEdit;
 	TLabel *StatusLabel;
 	TTimer *WaitTimer;
-	TGraphButton *LoginButton;
 	TLabel *ResetPasswordLabel;
 	TLabel *SaveAccountLabel;
 	TLabel *SavePasswordLabel;
@@ -56,6 +54,9 @@ __published:	// IDE-managed Components
 	TImage *LogoImage;
 	TImage *BGImage2;
 	TGraphToggle *SavePasswordToggle;
+	TAlignEdit *IDEdit;
+	TAlignEdit *PasswordEdit;
+	TGraphButtonV2 *LoginButton;
 	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall WaitTimerTimer(TObject *Sender);
 	void __fastcall ExitButtonClick(TObject *Sender);
