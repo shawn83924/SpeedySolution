@@ -16,6 +16,7 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GraphButton"
+#pragma link "AlignEdit"
 #pragma resource "*.dfm"
 TLoginForm *LoginForm;
 //---------------------------------------------------------------------------
@@ -198,8 +199,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	if( !Logon() )
 	{
 		LoginButton->Enabled = true;
-		g_Config.SetBoolProperty("Setting","SaveID",AccountCheckBox->Checked);
-		g_Config.SetBoolProperty("Setting","SavePassword",SavePasswordCheckBox->Checked );
+		g_Config.SetBoolProperty("Setting","SaveLoginInfo",AccountCheckBox->Checked);
 		return;
 	}
 	if (Tranning == true) ///< Traning room not production.
@@ -225,8 +225,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	WaitTimer->Enabled = true;
 	///< Save ID/Password
 	SaveIDPassword();
-	g_Config.SetBoolProperty("Setting","SaveID",AccountCheckBox->Checked);
-	g_Config.SetBoolProperty("Setting","SavePassword",SavePasswordCheckBox->Checked );
+	g_Config.SetBoolProperty("Setting","SaveLoginInfo",AccountCheckBox->Checked);;
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
@@ -283,42 +282,9 @@ void __fastcall TLoginForm::SaveAccountLabelClick(TObject *Sender)
 	AccountCheckBox->Checked = ! AccountCheckBox->Checked;
 }
 //---------------------------------------------------------------------------
-void __fastcall TLoginForm::SavePasswordLabelClick(TObject *Sender)
-{
-	SavePasswordCheckBox->Checked = ! SavePasswordCheckBox->Checked;
-}
-//---------------------------------------------------------------------------
 void __fastcall TLoginForm::AtAOELabelClick(TObject *Sender)
 {
 	 AtAOECheckBox->Checked = ! AtAOECheckBox->Checked;
-}
-//---------------------------------------------------------------------------
-void __fastcall TLoginForm::JoinMemberLabelClick(TObject *Sender)
-{
-	BrowserForm = new TBrowserForm( this );
-	BrowserForm->Caption = L"成為新會員";
-	BrowserForm->WebBrowser->Navigate( g_Config.GetRegisterURL( ) );
-	BrowserForm->WaitLoading( );
-	if( BrowserForm->ShowModal() == mrOk )
-	{
-		IDEdit->Text = BrowserForm->LoginID;
-		PasswordEdit->Text = L"";
-	}
-	delete BrowserForm;
-}
-//---------------------------------------------------------------------------
-void __fastcall TLoginForm::ResetPasswordLabelClick(TObject *Sender)
-{
-	BrowserForm = new TBrowserForm( this );
-	BrowserForm->Caption = L"忘記密碼";
-	BrowserForm->WebBrowser->Navigate( g_Config.GetForgetPasswordURL( ) );
-	BrowserForm->WaitLoading( );
-	if( BrowserForm->ShowModal() == mrOk )
-	{
-		IDEdit->Text = BrowserForm->LoginID;
-		PasswordEdit->Text = L"";
-	}
-	delete BrowserForm;
 }
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON )
@@ -338,7 +304,7 @@ bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& Resp
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::Logon( void )
 {
-	if( !RequestLogon(IDEdit->Text, Edit1->Text, PasswordEdit->Text) )
+	if( !RequestLogon(IDEdit->Text, AccountEdit->Text, PasswordEdit->Text) )
 	{
 		StatusLabel->Caption = L"登入失敗:";
 		return false;
@@ -377,47 +343,38 @@ void __fastcall TLoginForm::FormShow(TObject *Sender)
 {
    NetworkComboBox->Items->Clear();
    NetworkComboBox->Items->AddStrings( g_Config.GetInternetConfigNames() );
-   AccountCheckBox->Checked      = g_Config.GetBoolProperty("Setting","SaveID",true);
-   SavePasswordCheckBox->Checked = g_Config.GetBoolProperty("Setting","SavePassword",true);
+   AccountCheckBox->Checked      = g_Config.GetBoolProperty("Setting","SaveLoginInfo",true);
    NetworkComboBox->ItemIndex	 = g_Config.GetIntegerProperty("Setting","InternetConfig", 0 );
    ExLabel->Visible = true;
    LoadIDPassword();
 }
 //---------------------------------------------------------------------------
-void __fastcall TLoginForm::IDEditEnter(TObject *Sender)
-{
-	if( IDEdit->Text == L"會員帳號" )
-		IDEdit->Text = "";
-}
-//---------------------------------------------------------------------------
-void __fastcall TLoginForm::PasswordEditEnter(TObject *Sender)
-{
-	if( PasswordEdit->Text == L"123456" )
-		PasswordEdit->Text = "";
-}
-//---------------------------------------------------------------------------
 void __fastcall TLoginForm::LoadIDPassword( void )
 {
-   ///< Account saved ?
-   if( AccountCheckBox->Checked == true ) ///< Yes
-	   IDEdit->Text	= g_Config.GetBase64StringProperty("Setting","ID","會員帳號" );
+   if( AccountCheckBox->Checked == true )
+   {
+	   IDEdit->Text	= g_Config.GetBase64StringProperty("Setting", "ID", "" );
+	   AccountEdit->Text = g_Config.GetBase64StringProperty("Setting", "Account", "" );
+	   PasswordEdit->Text = g_Config.GetBase64StringProperty("Setting", "Password", "" );
+   }
    else
+   {
 	   IDEdit->Text	= L"";
-   ///< Password saved ?
-   if( SavePasswordCheckBox->Checked == true ) ///< Yes
-	   PasswordEdit->Text = g_Config.GetBase64StringProperty("Setting","Password","123456" );
-   else
-	   PasswordEdit->Text	= "";
+	   AccountEdit->Text = "";
+	   PasswordEdit->Text = "";
+   }
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::SaveIDPassword( void )
 {
 	///< Account saved ?
-	if( AccountCheckBox->Checked == true )
-		g_Config.SetBase64StringProperty("Setting","ID",IDEdit->Text );
-	///< Password saved ?
-	if( SavePasswordCheckBox->Checked == true )
-		g_Config.SetBase64StringProperty("Setting","Password", PasswordEdit->Text );
+	if( AccountCheckBox->Checked == false )
+		return;
+
+	g_Config.SetBase64StringProperty("Setting","ID",IDEdit->Text );
+	g_Config.SetBase64StringProperty("Setting","Account",AccountEdit->Text );
+	g_Config.SetBase64StringProperty("Setting","Password", PasswordEdit->Text );
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::CalendarButtonClick(TObject *Sender)
