@@ -28,6 +28,7 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FImagePosX = 0;
 	FImagePosY = 0;
 	FEditorClientColor = clWindow;
+	FTextHint = L"";
 	FOnChange = NULL;
 
 	StyleElements = TStyleElements();
@@ -40,6 +41,7 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FEditor->Align = alNone;
 	FEditor->TabStop = false;
 	FEditor->Text = L"";
+	FEditor->TextHint = FTextHint;
 	FEditor->Alignment = FAlignment;
 	FEditor->AutoSize = true;
 	FEditor->StyleElements = StyleElements;
@@ -184,6 +186,23 @@ void __fastcall TAlignEdit::SetText(const UnicodeString Value)
 {
 	if (FEditor != NULL)
 		FEditor->Text = Value;
+}
+//---------------------------------------------------------------------------
+UnicodeString __fastcall TAlignEdit::GetTextHint(void)
+{
+	if (FEditor == NULL)
+		return FTextHint;
+	return FEditor->TextHint;
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::SetTextHint(const UnicodeString Value)
+{
+	if (FTextHint == Value)
+		return;
+
+	FTextHint = Value;
+	if (FEditor != NULL)
+		FEditor->TextHint = Value;
 }
 //---------------------------------------------------------------------------
 WideChar __fastcall TAlignEdit::GetPasswordChar(void)
