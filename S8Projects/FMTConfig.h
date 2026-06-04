@@ -135,6 +135,10 @@ class TBrokerService
 {
 public:
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg ) = 0;
+	virtual bool LoginBroker(	const String& ID,
+								const String& Account,
+								const String& Password,
+								String& Msg ) = 0;
 	virtual bool ChangePassword( const String& NewPassword, String& Msg ) = 0;
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg ) = 0;
 	virtual void ClearPosition( const String& ID ) = 0;
@@ -169,6 +173,33 @@ private:
 public:
 	TMegaService( const String& BaseURL );
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
+	virtual bool LoginBroker( const String& ID, const String& Account, const String& Password, String& Msg );
+	virtual bool ChangePassword( const String& NewPassword, String& Msg ){return false;}
+	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
+	virtual void ClearPosition( const String& ID );
+	virtual bool SignAgreememt( const String& Account, TCAChecker* CAChecker, String& Msg );
+	virtual TBrokerUser* GetAccount( void );
+};
+//---------------------------------------------------------------------------
+class TLiteService : public TBrokerService
+{
+private:
+	String FBrokerID;
+	String FFutAccount;
+	String FStockAccount;
+	String FIP;
+    String FPort;
+	String FBaseURL;
+	String FID;
+	String FAccount;
+	String FPassword;
+	TBrokerUser FAccounts;
+private:
+	void LoadConfigSetting(const char* FileName);
+public:
+	TLiteService( void );
+	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
+	virtual bool LoginBroker( const String& ID, const String& Account, const String& Password, String& Msg );
 	virtual bool ChangePassword( const String& NewPassword, String& Msg ){return false;}
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
 	virtual void ClearPosition( const String& ID );

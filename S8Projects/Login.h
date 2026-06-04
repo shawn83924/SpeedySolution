@@ -51,6 +51,7 @@ __published:	// IDE-managed Components
 	TCheckBox *AtAOECheckBox;
 	TLabel *AtAOELabel;
 	TLabel *ExLabel;
+	TEdit *Edit1;
 	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall WaitTimerTimer(TObject *Sender);
 	void __fastcall ExitButtonClick(TObject *Sender);
@@ -71,7 +72,10 @@ private:	// User declarations
 	bool __fastcall CheckFreeTry( void );
 	void __fastcall OnNCHitTest( TMessage &Message );
 	void __fastcall WndProc( TMessage &Msg );
-	bool __fastcall RequestLogon( const String& ID, const String& Password);
+	bool __fastcall RequestLogon(
+		const String& ID,
+        const String& Account,
+		const String& Password);
 	void __fastcall GenData( const String& ID, const String& Password, String& Out );
 	bool __fastcall GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON );
 	void __fastcall LoadIDPassword( void );

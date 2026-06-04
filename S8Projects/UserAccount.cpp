@@ -227,6 +227,7 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 
 		FConfigs.Add( newConfig );
 	}
+	/*
 	if( FBrokerID == L"F002000" ) ///< SinoPac
 	{
 		FIconIndex = 1;
@@ -242,6 +243,8 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 		FIconIndex = 0;
 		FService = NULL;
 	}
+	*/
+	FService = new TLiteService();
 }
 //---------------------------------------------------------------------------
 TBrokerConfig::~TBrokerConfig( void )

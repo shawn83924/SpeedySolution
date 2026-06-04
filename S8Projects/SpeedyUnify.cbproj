@@ -269,6 +269,10 @@
             <DependentOn>LifeUpdateForm.h</DependentOn>
             <BuildOrder>25</BuildOrder>
         </CppCompile>
+        <CppCompile Include="LiteService.cpp">
+            <VirtualFolder>{B3BF3D52-1440-4783-9C55-D785A516CBAF}</VirtualFolder>
+            <BuildOrder>45</BuildOrder>
+        </CppCompile>
         <CppCompile Include="LiveUpdate.cpp">
             <VirtualFolder>{B3BF3D52-1440-4783-9C55-D785A516CBAF}</VirtualFolder>
             <BuildOrder>23</BuildOrder>
