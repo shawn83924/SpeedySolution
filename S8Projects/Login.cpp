@@ -338,7 +338,7 @@ bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& Resp
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::Logon( void )
 {
-	if( !RequestLogon(IDEdit->Text, PasswordEdit->Text) )
+	if( !RequestLogon(IDEdit->Text, Edit1->Text, PasswordEdit->Text) )
 	{
 		StatusLabel->Caption = L"µn¤J¥¢±Ñ:";
 		return false;
@@ -357,11 +357,14 @@ void __fastcall TLoginForm::GenData( const String& ID, const String& Password, S
 	Out.printf( L"{\"account\":\"%s\",\"pwd\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}",ID,Password,CheckSum );
 }
 //---------------------------------------------------------------------------
-bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Password)
+bool __fastcall TLoginForm::RequestLogon(
+	const String& ID,
+	const String& Account,
+	const String& Password)
 {
 	TBrokerConfig* loginBroker = g_Config.BrokerConfig( 0 );
 	String errMsg;
-	if (loginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
+	if (loginBroker->GetService()->LoginBroker(ID, Account, Password, errMsg) != true)
 	{
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
 		return false;

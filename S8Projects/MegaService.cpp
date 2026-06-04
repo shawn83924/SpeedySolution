@@ -62,7 +62,6 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 	FID       = ID;
 	FPassword = Password;
 	TMemoryStream* ResultStream = new TMemoryStream();
-	String ResponseJSON;
 	bool   Result = false;
 
 	FAccounts.ClearAccounts();
@@ -72,6 +71,7 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 		return Result;
 	}
 
+	String ResponseJSON;
 	if( GetResponseJSON(ResultStream, ResponseJSON) != true )
 	{
 		delete ResultStream;
@@ -128,6 +128,14 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 	Result = true;
 	delete ResultStream;
 	return Result;
+}
+//---------------------------------------------------------------------------
+bool TMegaService::LoginBroker(	const String& ID,
+								const String& Account,
+								const String& Password,
+								String& Msg )
+{
+    return false;
 }
 //---------------------------------------------------------------------------
 bool TMegaService::GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON )
