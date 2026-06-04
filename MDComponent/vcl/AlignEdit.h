@@ -18,6 +18,7 @@ private:
 	TEdit *FEditor;
 	TPicture *FImagePicture;
 	TColor FEditorClientColor;
+	UnicodeString FTextHint;
 	TAlignment FAlignment;
 	TEditVertAlign FVertAlign;
 	int FEditorHeight;
@@ -31,6 +32,8 @@ private:
 
 	UnicodeString __fastcall GetText(void);
 	void __fastcall SetText(const UnicodeString Value);
+	UnicodeString __fastcall GetTextHint(void);
+	void __fastcall SetTextHint(const UnicodeString Value);
 	WideChar __fastcall GetPasswordChar(void);
 	void __fastcall SetPasswordChar(const WideChar Value);
 	bool __fastcall GetReadOnly(void);
@@ -67,6 +70,7 @@ public:
 	__fastcall virtual ~TAlignEdit(void);
 __published:
 	__property UnicodeString Text = { read = GetText, write = SetText };
+	__property UnicodeString TextHint = { read = GetTextHint, write = SetTextHint };
 	__property WideChar PasswordChar = { read = GetPasswordChar, write = SetPasswordChar, default = 0 };
 	__property bool ReadOnly = { read = GetReadOnly, write = SetReadOnly, default = false };
 	__property int MaxLength = { read = GetMaxLength, write = SetMaxLength, default = 0 };
