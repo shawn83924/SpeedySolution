@@ -135,7 +135,7 @@ bool TMegaService::LoginBroker(	const String& ID,
 								const String& Password,
 								String& Msg )
 {
-    return false;
+    return true;
 }
 //---------------------------------------------------------------------------
 bool TMegaService::GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON )

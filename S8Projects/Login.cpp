@@ -56,6 +56,7 @@ __fastcall TLoginForm::TLoginForm(TComponent* Owner)
 	APVerStr.printf(L"版本: %d.%d.%d", AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100 );
 	FVersion.printf(L"%d.%d.%d", AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100 );
 	VersionLabel->Caption = APVerStr;
+	MainForm->InitOrderStore();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::WndProc( TMessage &Msg )
@@ -218,10 +219,11 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	}
 	ActivityIndicator->Visible = true;
 	ActivityIndicator->Animate = true;
-	IDEdit->Visible = false;
-	PasswordEdit->Visible = false;
+	IDEdit->Enabled = false;
+	AccountEdit->Enabled = false;
+	PasswordEdit->Enabled = false;
 	FWaitCount = 0;
-	MainForm->Connect(IDEdit->Text, PasswordEdit->Text);
+	MainForm->Connect();
 	WaitTimer->Enabled = true;
 	///< Save ID/Password
 	SaveIDPassword();
@@ -234,10 +236,10 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 	if( MainForm->Ready() == true )
 	{
 		WaitTimer->Enabled = false;
-		MainForm->InitOrderStore();
 		LoginButton->Enabled = true;
-		IDEdit->Visible = true;
-		PasswordEdit->Visible = true;
+		IDEdit->Enabled = true;
+		AccountEdit->Enabled = true;
+		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
 		this->ModalResult = mrOk;
@@ -247,8 +249,9 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 		LoginButton->Enabled = true;
 		WaitTimer->Enabled = false;
 		this->ModalResult = mrNone;//Cancel;
-		IDEdit->Visible = true;
-		PasswordEdit->Visible = true;
+		IDEdit->Enabled = true;
+		AccountEdit->Enabled = true;
+		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
 		StatusLabel->Caption = L"連線失敗,請檢查網路!";

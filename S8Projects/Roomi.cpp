@@ -25,9 +25,6 @@ void __fastcall TRoomiForm::FormCreate(TObject *Sender)
 	AnsiString Token( gUser.Token );
 	Height = Screen->PrimaryMonitor->Height * 0.8;
 	Width  = (int)((double)Height/4.0 * 2.4);
-
-	Roome_Init( Handle, "roome_assets.zip");
-	Roome_Login("", MainForm->LoginID.c_str(), Token.c_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TRoomiForm::FormPaint(TObject *Sender)
