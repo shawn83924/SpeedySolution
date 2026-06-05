@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 #include "FMTConfig.h"
 #include "OrderStore.h"
+#include "Login.h"
 
 //---------------------------------------------------------------------------
 extern TOrderStore* gOrderStore;
@@ -38,20 +39,55 @@ bool TLiteService::LoginBroker(
 	const String& Password,
 	String& Msg )
 {
+	gOrderStore->OnConnect = OrderStoreConnect;
+	gOrderStore->OnLogonOK = OrderStoreLogonOK;
+	gOrderStore->OnLogonFailed = OrderStoreLogonFailed;
+
 	FID = ID;
-	FAccount = Account;
+	FStockAccount = Account;
 	FPassword = Password;
-	FAccounts.ClearAccounts();
-	FAccounts.FName = ID;
-	FAccounts.FIDNO = Account;
-	Msg = L"";
-	return true;
+
+	gOrderStore->ID = FID;
+	gOrderStore->TWSEAccount = FStockAccount;
+	gOrderStore->Password = FPassword;
+	gOrderStore->IP = FIP;
+	gOrderStore->Port = FPort;
+	gOrderStore->TWSEBrokerID = FStockBrokerID;
+	gOrderStore->BrokerID = FFutBrokerID;
+	gOrderStore->ClearMemberID = FClearMemberID;
+	gOrderStore->Version       = LoginForm->Version;
+	gOrderStore->TryVersion    = FTryVersion;
+    String LogFilePrefix;
+	LogFilePrefix.printf(L"SU_%s", FID);
+	gOrderStore->OrderLogFileNamePrefix = LogFilePrefix;
+
+	gOrderStore->Connect();
+	const DWORD startTick = GetTickCount();
+    const DWORD timeoutMs = 5000;
+
+	while (!FWaitConnectDone)
+	{
+		// 重要：讓訊息循環跑，callback 才有機會被派送
+		Application->ProcessMessages();
+		Sleep(10);
+
+		if (GetTickCount() - startTick >= timeoutMs)
+			break;
+	}
+
+	if (!FWaitConnectDone)
+	{
+		Msg = L"連線逾時";
+		return false;
+	}
+
+    Msg = FWaitConnectMsg;
+	return FWaitConnectOK;
 }
 //---------------------------------------------------------------------------
 bool TLiteService::GetPosition( bool IsTAIFEX, const String& Account, String& Msg )
 {
-	Msg = L"TLiteService::GetPosition 尚未實作";
-	return false;
+	return true;
 }
 //--------------------------------------------------------------------------
 void TLiteService::ClearPosition( const String& ID )
@@ -82,20 +118,15 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 	UFC::UiniFile   config( FileName, true );
 	UFC::AnsiString value;
 
-	if(config.GetValue( "Setting","BrokerID", value))
-		FBrokerID = value.c_str();
+	if(config.GetValue( "Setting","FutBrokerID", value))
+		FFutBrokerID = value.c_str();
 	else
-		UFC::BufferedLog::Printf( " 找不到 BrokerID" );
+		UFC::BufferedLog::Printf( " 找不到 FutBrokerID" );
 
-	if(config.GetValue( "Setting","FutAccount", value))
-		FFutAccount = value.c_str();
+	if(config.GetValue( "Setting","StockBrokerID", value))
+		FStockBrokerID = value.c_str();
 	else
-		UFC::BufferedLog::Printf( " 找不到 FutAccount" );
-
-	if(config.GetValue( "Setting","StockAccount", value))
-		FStockAccount = value.c_str();
-	else
-		UFC::BufferedLog::Printf( " 找不到 StockAccount" );
+		UFC::BufferedLog::Printf( " 找不到 StockBrokerID" );
 
 	if(config.GetValue( "Setting","IP", value))
 		FIP = value.c_str();
@@ -103,7 +134,49 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 		UFC::BufferedLog::Printf( " 找不到 IP" );
 
 	if(config.GetValue( "Setting","Port", value))
-		FPort = value.c_str();
+		FPort = StrToIntDef(String(value.c_str()), 0);
 	else
 		UFC::BufferedLog::Printf( " 找不到 Port" );
+
+	if(config.GetValue( "Setting","ClearMemberID", value))
+		FClearMemberID = value.c_str();
+	else
+		UFC::BufferedLog::Printf( " 找不到 ClearMemberID" );
+
+	if(config.GetValue( "Setting","TryVersion", value))
+		FTryVersion = (value.c_str() == "0")? false : true;
+	else
+		UFC::BufferedLog::Printf( " 找不到 TryVersion" );
+
+	if(config.GetValue( "Setting","ProxyLogon", value))
+		FProxyLogon = (value.c_str() == "0")? false : true;
+	else
+		UFC::BufferedLog::Printf( " 找不到 ProxyLogon" );
+}
+//--------------------------------------------------------------------------
+void __fastcall TLiteService::OrderStoreConnect(TObject *Sender)
+{
+	if( FProxyLogon == true )
+		gOrderStore->LogonProxy();
+	else
+		gOrderStore->LogonPropTrade();
+}
+//--------------------------------------------------------------------------
+void __fastcall TLiteService::OrderStoreLogonOK(
+		TObject *Sender,
+		const UnicodeString &ReplyMessage,
+		int CID)
+{
+	FWaitConnectDone = true;
+	FWaitConnectOK = true;
+	FWaitConnectMsg = L"登入成功";
+}
+//--------------------------------------------------------------------------
+void __fastcall TLiteService::OrderStoreLogonFailed(
+		TObject *Sender,
+		const UnicodeString &ReplyMessage,
+		int CID)
+{
+	FWaitConnectDone = true;
+	FWaitConnectMsg = L"登入失敗";
 }

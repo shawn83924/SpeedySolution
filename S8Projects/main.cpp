@@ -140,10 +140,10 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	OrderStore  = new TOrderStore( this );
 	gOrderStore = OrderStore;
 	OrderStore->MarketDataStore   = CMarketDataStore;
-	OrderStore->OnConnect         = OrderStoreConnect;
+	//OrderStore->OnConnect         = OrderStoreConnect;
 	OrderStore->OnDisconnect      = OrderStoreDisconnect;
-	OrderStore->OnLogonOK         = OrderStoreLogonOK;
-	OrderStore->OnLogonFailed     = OrderStoreLogonFailed;
+	//OrderStore->OnLogonOK         = OrderStoreLogonOK;
+	//OrderStore->OnLogonFailed     = OrderStoreLogonFailed;
 	OrderStore->OnNewOrder        = OrderStoreNewOrder;
 	OrderStore->OnStopOrderChange =	StopOrderChange;
 	OrderStore->OnCancelByOrderID = OrderStoreCancelByOrderID;
@@ -834,10 +834,9 @@ void __fastcall TMainForm::CMarketDataStoreContractDownloadCompleted(int Count, 
 	FDownloadOK = true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::Connect( const String& ID, const String& Password )
+void __fastcall TMainForm::Connect()
 {
-	FID = ID;
-	FPassword = Password;
+	FLoginBroker = g_Config.BrokerConfig( 0 );
 	FDownloadOK = false;
 	FConnectFailed = false;
 	LoginForm->StatusLabel->Caption = L"連線行情伺服器...";
@@ -1098,7 +1097,6 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 	LoadProperties( );
 	EnableNuclear();
 	SettingPanel( false );
-	Login( FID, FPassword );
 	catMenuItems->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -1109,8 +1107,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		LiveUpdate();
 		if( LoginForm->ShowModal() == mrOk )
 		{
-			FID = LoginForm->IDEdit->Text;
-			FPassword = LoginForm->PasswordEdit->Text;
 			ControlPosition();
 			CMarketDataStore->OnAppDisconnected  = CMarketDataStoreAppDisconnected;
 			ChartsStore->OnAppDisconnected  = ChartsStoreXAppDisconnected;
@@ -1649,7 +1645,7 @@ void __fastcall TMainForm::Login(const String& ID, const String& Password)
 	s888::CTaifexTaxRateQueryObject *TaxObj = new s888::CTaifexTaxRateQueryObject(L"TaifexTax.xml");
 	delete FeeObj;
 	delete TaxObj;
-	OrderStore->Connect();
+	//OrderStore->Connect();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::actLogoutExecute(TObject *Sender)
@@ -3110,21 +3106,6 @@ void __fastcall TMainForm::GetPositionSymbol( int index , String& Ex,String& Sym
 //---------------------------------------------------------------------------
 bool __fastcall TMainForm::HasPosition( const String& Ex, const String& Sym )
 {
-	TListItem *Item;
-	s888::CPositionStatisticRecord *curPosStatisticRecPtr;
-
-	if( gOrderStore->IsLogon() == true && FLoadPositionOK == true )
-	{
-		for( register int i = 0; i <= HoldOpenInterestForm->FPList->Items->Count -1; i ++ )
-		{
-			if( (Item = HoldOpenInterestForm->FPList->Items->Item[ i ]) != NULL &&
-				(curPosStatisticRecPtr = static_cast<s888::CPositionStatisticRecord*>(Item->Data)) != NULL )
-			{
-				if( Ex  == curPosStatisticRecPtr->GetExchangeCode(s888::rwNotLock) && Sym == curPosStatisticRecPtr->GetSymbol(s888::rwNotLock) )
-					return true;
-			}
-		}
-	}
 	return false;
 }
 //---------------------------------------------------------------------------

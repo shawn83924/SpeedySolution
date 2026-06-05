@@ -383,8 +383,6 @@ private:
 	String                   FLoginUserStr;
 	TBrokerConfig*           FLoginBroker;
 	TSpeedyConfig*  		 FSpeedyCfg;
-	AnsiString               FID;
-	AnsiString               FPassword;
 	bool FDownloadOK;
     bool FForceClose;
 	bool FProxyLogon;
@@ -445,7 +443,7 @@ public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 	__fastcall ~TMainForm( void );
 	bool __fastcall SettingPanel( bool Open );
-	void __fastcall Connect( const String& ID, const String& Password );
+	void __fastcall Connect( void );
 	bool __fastcall Ready( void );
 	bool __fastcall ConnectionFailed( void ) { return FConnectFailed; }
 	void __fastcall LoadMainFormPosition( void );
@@ -461,8 +459,6 @@ public:		// User declarations
 	bool __fastcall UserRightsInfo( void );
 	void __fastcall LoadUserInfo( TJSONObject *lpRoot );
 	void __fastcall UpdateAccount( bool IsFut );
-	__property AnsiString LoginID = { read = FID };
-	__property AnsiString LoginPassword = { read = FPassword };
 private:
     bool FLoadPositionOK;
 	UFC::PCriticalSection FFillSubLock;

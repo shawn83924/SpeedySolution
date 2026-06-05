@@ -184,18 +184,33 @@ public:
 class TLiteService : public TBrokerService
 {
 private:
-	String FBrokerID;
+	String FFutBrokerID;
+	String FStockBrokerID;
 	String FFutAccount;
 	String FStockAccount;
 	String FIP;
-    String FPort;
-	String FBaseURL;
+	int FPort;
+	String FClearMemberID;
 	String FID;
-	String FAccount;
 	String FPassword;
+	bool FTryVersion;
+    bool FProxyLogon;
 	TBrokerUser FAccounts;
+
+	bool FWaitConnectDone;
+	bool FWaitConnectOK;
+    String FWaitConnectMsg;
 private:
 	void LoadConfigSetting(const char* FileName);
+	void __fastcall OrderStoreConnect(TObject *Sender);
+	void __fastcall OrderStoreLogonFailed(
+		TObject *Sender,
+		const UnicodeString &ReplyMessage,
+		int CID);
+	void __fastcall OrderStoreLogonOK(
+		TObject *Sender,
+		const UnicodeString &ReplyMessage,
+		int CID);
 public:
 	TLiteService( void );
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
