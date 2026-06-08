@@ -67,10 +67,8 @@ __fastcall TExecutionForm::TExecutionForm(TComponent* Owner )
 	FFilters[3] = ftFill;
 	FBtns[4] = StopPxButton;
 	FFilters[4] = ftStopOrder;
-	FBtns[5] = BalanceButton;
+	FBtns[5] = FutBalanceButton;
 	FFilters[5] = ftActive;
-	FBtns[6] = FutBalanceButton;
-	FFilters[6] = ftActive;
 	DefaultMonitor = dmMainForm;
 }
 //---------------------------------------------------------------------------
@@ -94,7 +92,7 @@ OrderFilterEnum __fastcall TExecutionForm::SelectBtn(TObject *Sender)
 	{
 		if( FBtns[i] == Sender )
 		{
-			if( i == 5 || i == 6 ) ///< Web page
+			if( i == 5 ) ///< Web page
 			{
 				PageControl->ActivePageIndex = 1;
 				ShowBalanceWeb( i );
@@ -591,15 +589,8 @@ void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 	{
 		String URL;
 
-		if( i == 5 )
-		{
-			if( gUser.AccountType == hatTAIFEX )
-				TAIFEXBalanceURL( URL );
-			else
-				TWSEBalanceURL( URL );
-		}
-		else ///< Fut Balance
-			TAIFEXBalanceURL( URL );
+		 ///< Fut Balance
+		TAIFEXBalanceURL( URL );
 		WebBrowser->Navigate( URL.c_str() );
 	}
 	else
@@ -619,7 +610,7 @@ void __fastcall TExecutionForm::UploadButtonClick(TObject *Sender)
 	int     FilledCount = OrderListView->GetJSON( JSON );
 	g_Config.UploadFilled( JSON ,FilledCount );
 	UploadButton->Enabled = true;
-	FilterButtonClick( BalanceButton );
+	//FilterButtonClick( BalanceButton );
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::SetVisible( bool IsVisible )
