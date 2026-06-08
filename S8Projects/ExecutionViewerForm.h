@@ -24,7 +24,7 @@
 #include <System.ImageList.hpp>
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
-const int TABS = 7;
+const int TABS = 6;
 
 //---------------------------------------------------------------------------
 class TExecutionForm : public TForm, public TClientForm
@@ -64,7 +64,6 @@ __published:	// IDE-managed Components
 	TTabSheet *ExecTabSheet;
 	TTabSheet *BalanceTabSheet;
 	TWebBrowser *WebBrowser;
-	TGraphButton *BalanceButton;
 	TImageList *TabImageList;
 	TGraphButton *UploadButton;
 	TGraphButton *FutBalanceButton;
