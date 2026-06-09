@@ -521,6 +521,7 @@ public: ///< Order placement
 							 const String& Symbol,
 							 nsOrderMessageDefine::SideEnum Side,
 							 double Px );
+	UFC::AnsiString GetBalance( void );
 	/// < New Stop Order
 private:
 	void NewStopOrder( TExecution* NewStopOrderPtr, bool UpQtyOnly = true);
