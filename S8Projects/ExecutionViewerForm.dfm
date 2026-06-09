@@ -4733,8 +4733,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 696
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #25490#34892#27036
       TabOrder = 3
       Visible = False
@@ -6283,8 +6283,8 @@ object ExecutionForm: TExecutionForm
     object LargeButton: TGraphButton
       Left = 636
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       TabOrder = 5
       ShowHint = True
@@ -6338,8 +6338,8 @@ object ExecutionForm: TExecutionForm
     object SmallButton: TGraphButton
       Left = 666
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       TabOrder = 7
       ShowHint = True
@@ -7888,8 +7888,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 606
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #33258#21205#27396#20301#23532#24230
       TabOrder = 9
       ShowHint = True
@@ -7912,8 +7912,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 729
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #19978#20659#20132#26131#32000#37636
       TabOrder = 10
       Visible = False
@@ -9465,7 +9465,7 @@ object ExecutionForm: TExecutionForm
     Top = 83
     Width = 1477
     Height = 645
-    ActivePage = ExecTabSheet
+    ActivePage = BalanceTabSheet
     Align = alClient
     TabOrder = 2
     object ExecTabSheet: TTabSheet
@@ -9729,14 +9729,28 @@ object ExecutionForm: TExecutionForm
         Height = 635
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1175
-        ExplicitHeight = 508
+        ExplicitLeft = 5
         ControlData = {
           4C000000D3970000A14100000100000001020000000000000000000000000000
           000000004C000000000000000000000001000000E0D057007335CF11AE690800
           2B2E126208000000000000004C0000000114020000000000C000000000000046
           8000000000000000000000000000000000000000000000000000000000000000
           00000000000000000100000000000000000000000000000000000000}
+      end
+      object BalancePanel: TPanel
+        Left = 1232
+        Top = 45
+        Width = 185
+        Height = 41
+        Ctl3D = True
+        ParentCtl3D = False
+        TabOrder = 1
+        object BalanceLabel: TLabel
+          Left = 8
+          Top = 10
+          Width = 5
+          Height = 21
+        end
       end
     end
   end
@@ -9790,7 +9804,7 @@ object ExecutionForm: TExecutionForm
     Left = 744
     Top = 337
     Bitmap = {
-      494C01010100DC0074015000960005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100DC0084015000960005162D002110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000004001000096000000010020000000000000EE
       02000000000000000000000000000000000064381B0064381B0064381B006438
       1B0064381B0064381B0064381B0064381B0064381B0064381B0064381B006438

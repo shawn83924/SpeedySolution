@@ -22,10 +22,11 @@
 #include <SHDocVw.hpp>
 #include <Vcl.OleCtrls.hpp>
 #include <System.ImageList.hpp>
+#include <System.Threading.hpp>
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
 const int TABS = 6;
-
+class TGetBalanceThread;
 //---------------------------------------------------------------------------
 class TExecutionForm : public TForm, public TClientForm
 {
@@ -67,6 +68,8 @@ __published:	// IDE-managed Components
 	TImageList *TabImageList;
 	TGraphButton *UploadButton;
 	TGraphButton *FutBalanceButton;
+	TPanel *BalancePanel;
+	TLabel *BalanceLabel;
 	void __fastcall FilterButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall OrderListViewProgress(TObject *Sender, int CurrentItemNo, int TotalItemCount);
@@ -114,10 +117,12 @@ private:	// User declarations
 	int                               FSelectedQty;
 	bool                              FPartialFill;
 	String                            FProfile;
+	TGetBalanceThread* 				  FBalanceThread;
 	void __fastcall  WndProc( TMessage &Msg );
 	void __fastcall  ShowBalanceWeb( int i );
 	void __fastcall  TAIFEXBalanceURL( String& URL );
 	void __fastcall  TWSEBalanceURL( String& URL );
+	void __fastcall OnBalanceThreadFinish(TObject *Sender, const String &Balance);
 public:		// User declarations
 	__fastcall TExecutionForm(TComponent* Owner );
 	OrderFilterEnum	__fastcall GetFilterType( void );
@@ -135,6 +140,26 @@ public:
 	virtual int         __fastcall GetGroup( void )        { return this->Tag; }
 	virtual void        __fastcall Release( void );
 	virtual void        __fastcall SetVisible( bool IsVisible );
+};
+//---------------------------------------------------------------------------
+typedef void __fastcall (__closure *TGetBalanceFinishEvent)(
+	TObject *Sender,
+	const String &Balance
+);
+class TGetBalanceThread : public TThread
+{
+private:
+	String FBalance;
+	TGetBalanceFinishEvent FOnFinish;
+
+    void __fastcall DoFinish(void);
+
+protected:
+	virtual void __fastcall Execute(void);
+
+public:
+	__fastcall TGetBalanceThread(void);
+    __property TGetBalanceFinishEvent OnFinish = { read=FOnFinish, write=FOnFinish };
 };
 //---------------------------------------------------------------------------
 #endif
