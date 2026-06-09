@@ -207,6 +207,9 @@ public:
 							 const String& Symbol,
 							 nsOrderMessageDefine::SideEnum Side,
 							 double Px );
+	void MarginPositionRequest( const UFC::AnsiString& BrokerID,
+								const UFC::AnsiString& Account,
+								UFC::AnsiString& Result );
 public: /// for Name/Value Order string.
 	UFCType::Int64 NewOrder( nsOrderMessageDefine::MarketEnum Market,
 							 UFCType::Int64 NewNID,

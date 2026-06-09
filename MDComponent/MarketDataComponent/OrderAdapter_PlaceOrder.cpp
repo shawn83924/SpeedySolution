@@ -193,6 +193,14 @@ UFCType::Int64 TOrderAdapter::SendNewOrderToSpeedy( TNewOrderMessage& NewMsg )
 	return NewMsg.GetNID();
 }
 //---------------------------------------------------------------------------
+void TOrderAdapter::MarginPositionRequest(
+								const UFC::AnsiString& BrokerID,
+								const UFC::AnsiString& Account,
+								UFC::AnsiString& Result )
+{
+	FConnection->MarginPositionRequest(BrokerID, Account, Result);
+}
+//---------------------------------------------------------------------------
 UFCType::Int64 TOrderAdapter::UniqueNewNID( void )
 {
 	UFCType::Int64   NewNID;

@@ -11,6 +11,7 @@
 #include "OrderStore.h"
 #include "TradingObjects.h"
 #include "TradingObjectPool.h"
+#include <System.JSON.hpp>
 #include <WideStrUtils.hpp>
 #pragma package(smart_init)
 //------------------------------------------------------------------------------
@@ -1433,7 +1434,36 @@ void TOrderStore::RequestOrderStatus(int OrderNID,
 		 throw OSRequestOrderStatusException();
 	}  //try
 }  //TOrderStore::RequestOrderStatus()
+//---------------------------------------------------------------------------
+UFC::AnsiString TOrderStore::GetBalance( void )
+{
+	UFC::AnsiString result;
+	//FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FAccount.c_str(), result);
+	FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FTWSEAccount.c_str(), result);
 
+	TJSONValue* jsonValue = TJSONObject::ParseJSONValue(String(result.c_str()));
+	if (jsonValue == NULL)
+		return result;
+
+	try
+	{
+		TJSONObject* jsonObject = dynamic_cast<TJSONObject*>(jsonValue);
+		if (jsonObject == NULL)
+			return result;
+
+		TJSONValue* marginValue = jsonObject->GetValue(L"Margin");
+		if (marginValue == NULL)
+			return result;
+
+		return UFC::AnsiString(AnsiString(marginValue->Value()).c_str());
+	}
+	__finally
+	{
+		delete jsonValue;
+	}
+
+	return result;
+}
 //---------------------------------------------------------------------------
 double TOrderStore::GetNewestPrice( const String& ExchangeCode, const String& Symbol )
 {

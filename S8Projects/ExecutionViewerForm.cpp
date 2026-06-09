@@ -55,6 +55,7 @@ __fastcall TExecutionForm::TExecutionForm(TComponent* Owner )
 ,FFontSize( EXEC_FONT_SIZE_DEF )
 ,FFilter( ftActive )
 ,FProfile( L"")
+,FBalanceThread(NULL)
 {
 	InitTimer->Tag = 0; ///< Not init
 	FBtns[0] = ActiveButton;
@@ -592,6 +593,13 @@ void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 		 ///< Fut Balance
 		TAIFEXBalanceURL( URL );
 		WebBrowser->Navigate( URL.c_str() );
+		BalanceLabel->Caption="本日餘額: 讀取中...";
+
+		if( FBalanceThread == NULL || FBalanceThread->Finished )
+        {
+			FBalanceThread = new TGetBalanceThread();
+			FBalanceThread->OnFinish = OnBalanceThreadFinish;
+		}
 	}
 	else
 	{
@@ -639,4 +647,35 @@ void __fastcall TExecutionForm::RoundFormExLockIconClick(TObject *Sender)
 		FilterButtonClick( ActiveButton );
 }
 //---------------------------------------------------------------------------
+void __fastcall TExecutionForm::OnBalanceThreadFinish(TObject *Sender, const String &Balance)
+{
+	BalanceLabel->Caption = L"本日餘額: " + Balance;
+	FBalanceThread = NULL;
+}
+//---------------------------------------------------------------------------
+__fastcall TGetBalanceThread::TGetBalanceThread(void)
+:TThread(false)
+,FBalance(L"")
+{
+	FreeOnTerminate = true;
+}
+//---------------------------------------------------------------------------
+void __fastcall TGetBalanceThread::DoFinish(void)
+{
+	if (FOnFinish != NULL)
+		FOnFinish(this, FBalance);
+}
+//---------------------------------------------------------------------------
+void __fastcall TGetBalanceThread::Execute(void)
+{
+	try
+	{
+		FBalance = String(gOrderStore->GetBalance().c_str());
+	}
+	catch(...)
+	{
+		FBalance = L"讀取失敗";
+	}
 
+	Synchronize(&DoFinish);
+}
