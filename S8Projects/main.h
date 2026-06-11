@@ -308,8 +308,6 @@ __published:	// IDE-managed Components
           int &MaxWidth, int &MaxHeight);
 	void __fastcall actInfoExecute(TObject *Sender);
 	void __fastcall InfoOKButtonClick(TObject *Sender);
-	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
-          int X, int Y);
 	void __fastcall StopOrderChange( TObject* Sender, const String& Exchange, const String& StopSymbol, double StopPrice,
 									const String& Symbol, double Price, int Qty,
 									nsOrderMessageDefine::TimeInForceEnum TimeInForce,
