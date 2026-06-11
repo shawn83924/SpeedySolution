@@ -64,7 +64,6 @@ __published:	// IDE-managed Components
 	TActionList *MainActionList;
 	TAction *actProducts;
 	TAction *actDepth;
-	TAction *actTBar;
 	TSplitView *SV;
 	TCategoryButtons *catMenuItems;
 	TAction *actSetting;
@@ -238,7 +237,6 @@ __published:	// IDE-managed Components
 	void __fastcall actSettingHotkeyExecute(TObject *Sender);
 	void __fastcall actDepthExecute(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
-	void __fastcall actTBarExecute(TObject *Sender);
 	void __fastcall actListExecute(TObject *Sender);
 	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
 	void __fastcall CMarketDataStoreAppDisconnected(TObject *Sender);

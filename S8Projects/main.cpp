@@ -1109,12 +1109,6 @@ void __fastcall TMainForm::DefaultSymbol( String& Ex, String& Sym )
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::actTBarExecute(TObject *Sender)
-{
-	if( SettingPanel( false ) == false )
-		Tab1ButtonClick( Tab2Button );
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::actDepthExecute(TObject *Sender)
 {
 	String Ex,Sym;
