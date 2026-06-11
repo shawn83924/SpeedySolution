@@ -1065,6 +1065,7 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 	EnableNuclear();
 	SettingPanel( false );
 	catMenuItems->Enabled = true;
+	UpdateAccount( false );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::FormShow(TObject *Sender)
