@@ -16,7 +16,6 @@ object MainForm: TMainForm
   OnClose = FormClose
   OnConstrainedResize = FormConstrainedResize
   OnCreate = FormCreate
-  OnMouseDown = FormMouseDown
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (

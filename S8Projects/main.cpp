@@ -2531,63 +2531,22 @@ void __fastcall TMainForm::UpdateAccount( bool IsFut )
 {
 	if( OrderStore->IsLogon() == true )
 	{
-		if( GSimMatch == false )
+		if( IsFut == true )
 		{
-			TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
-			if( IsFut == true )
-				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
-			else
-				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount,User->GetName() );
+			if(OrderStore->Account != "")
+				FLoginUserStr.printf( L"期貨帳號:%s", OrderStore->Account );
 		}
 		else
-			FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account, gUser.Nickname );
+		{
+			if(OrderStore->TWSEAccount != NULL)
+				FLoginUserStr.printf( L"證券帳號:%s", OrderStore->TWSEAccount );
+		}
 	}
 	else
 		FLoginUserStr = L"交易帳號:尚未登入";
 	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
 	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
 	PaintStatusBar( );
-}
-//---------------------------------------------------------------------------
-
-void __fastcall TMainForm::FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
-		  int X, int Y)
-{
-	int TextW = FStatusBuffer->Canvas->TextWidth(  L"行情品質" )  + RTT_WIDTH + 7;
-
-	if( Y >= CAButton->Top && X <= CAButton->Left && X >= TextW )
-	{
-		if( gOrderStore->IsLogon() == true )
-		{
-			if( GSimMatch == false )
-			{
-				TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
-				DefAccForm = new TDefAccForm( this );
-				for( int i = 0; i < User->FuturesAccountCount(); i++ )// -1; i >=0; i -- )
-				{
-					TAccountInfo* FutAcc = User->FuturesAccount( i );
-					DefAccForm->FUTComboBox->Items->Add( FutAcc->Account );
-				}
-				for( int i = 0; i < User->StockAccountCount(); i++ )// -1; i >=0; i -- )
-				{
-					TAccountInfo* StocAcc = User->StockAccount( i );
-					DefAccForm->TSEComboBox->Items->Add( StocAcc->Account );
-				}
-				DefAccForm->FUTComboBox->ItemIndex = 0;
-				DefAccForm->TSEComboBox->ItemIndex = 0;
-				if( DefAccForm->ShowModal() == mrOk )
-				{
-					FFutAccIndex = DefAccForm->FUTComboBox->ItemIndex;
-					FTseAccIndex = DefAccForm->TSEComboBox->ItemIndex;
-					g_Config.SetDesktopInteger( L"SpeedyUnify\\ExAccount", "TAIFEX", FFutAccIndex );
-					g_Config.SetDesktopInteger( L"SpeedyUnify\\ExAccount", "TWSE", FTseAccIndex );
-				}
-				delete DefAccForm;
-			}
-		}
-		else
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未登入交易服務器" );
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::UpdateAutoCancel( void )
