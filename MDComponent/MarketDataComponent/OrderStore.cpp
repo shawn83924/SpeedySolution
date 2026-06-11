@@ -1438,8 +1438,8 @@ void TOrderStore::RequestOrderStatus(int OrderNID,
 UFC::AnsiString TOrderStore::GetBalance( void )
 {
 	UFC::AnsiString result;
-	//FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FAccount.c_str(), result);
-	FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FTWSEAccount.c_str(), result);
+	FAdapter->MarginPositionRequest( FBrokerID.c_str(), FAccount.c_str(), result);
+	//FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FTWSEAccount.c_str(), result);
 
 	TJSONValue* jsonValue = TJSONObject::ParseJSONValue(String(result.c_str()));
 	if (jsonValue == NULL)
