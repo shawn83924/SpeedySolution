@@ -9,7 +9,6 @@
 #include "OrderStore.h"
 #include "UnifyDlg.h"
 #include "SearchUnit.h"
-#include "Roomi.h"
 #include "UnifyUtility.h"
 #include "OrderConfirm.h"
 #include "StopSetting.h"
@@ -1416,23 +1415,6 @@ void __fastcall TLineChartForm::DeviationTrackBarChange(TObject *Sender)
 	txt.printf( L"Âà§é±Ó·P«× %0.1f", dev );
 	PivotDevLabel->Caption = txt;
 	CandleStickChart->PivotDeviation = dev /100.0;
-}
-//---------------------------------------------------------------------------
-void __fastcall TLineChartForm::SentRoomiButtonClick(TObject *Sender)
-{
-	if( RoomiForm == NULL )
-	{
-		MainForm->IMButtonClick( NULL );
-		if( RoomiForm != NULL )
-			WinSleep( 150 );
-	}
-	CandleStickChart->SaveToClipboard();
-	if( RoomiForm != NULL )
-	{
-		if( RoomiForm->Visible == false )
-			RoomiForm->Show();
-		RoomiForm->LoadFromClipboard();
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::TimeGridComboBoxChange(TObject *Sender)

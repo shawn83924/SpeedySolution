@@ -17,7 +17,7 @@ object LineChartForm: TLineChartForm
   Scaled = False
   Touch.InteractiveGestures = [igPressAndTap]
   OnClose = FormClose
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 24
   object SettingPanel: TGraphPanel
     Left = 0
@@ -53,8 +53,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 440
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #33258#21205#32302#25918
       Margins.Left = 4
       Margins.Top = 4
@@ -81,8 +81,8 @@ object LineChartForm: TLineChartForm
       Tag = 10
       Left = 240
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #39023#31034'/'#24433#34255#32218#22294#32302#22294
       Margins.Left = 4
       Margins.Top = 4
@@ -109,8 +109,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 40
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #19968#20998#37912
       Margins.Left = 4
       Margins.Top = 4
@@ -139,8 +139,8 @@ object LineChartForm: TLineChartForm
       Tag = 5
       Left = 100
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #20116#20998#37912
       Margins.Left = 4
       Margins.Top = 4
@@ -169,8 +169,8 @@ object LineChartForm: TLineChartForm
       Tag = 10
       Left = 130
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #21313#20998#37912
       Margins.Left = 4
       Margins.Top = 4
@@ -199,8 +199,8 @@ object LineChartForm: TLineChartForm
       Tag = 3
       Left = 70
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #19977#20998#37912
       Margins.Left = 4
       Margins.Top = 4
@@ -229,8 +229,8 @@ object LineChartForm: TLineChartForm
       Tag = 20
       Left = 160
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #20108#21313#20998#37912
       Margins.Left = 4
       Margins.Top = 4
@@ -259,8 +259,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 300
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #22343#32218'1'
       Margins.Left = 4
       Margins.Top = 4
@@ -287,8 +287,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 330
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #22343#32218'2'
       Margins.Left = 4
       Margins.Top = 4
@@ -315,8 +315,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 360
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #22343#32218'3'
       Margins.Left = 4
       Margins.Top = 4
@@ -343,8 +343,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 470
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #27700#24179#32302#25918
       Margins.Left = 4
       Margins.Top = 4
@@ -371,8 +371,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 530
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #32302#25918
       Margins.Left = 4
       Margins.Top = 4
@@ -399,8 +399,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 500
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #22402#30452#32302#25918
       Margins.Left = 4
       Margins.Top = 4
@@ -426,8 +426,8 @@ object LineChartForm: TLineChartForm
     object SettingButton: TGraphButton
       Left = 3
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35774#23450
       Margins.Left = 4
       Margins.Top = 4
@@ -454,8 +454,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 270
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #39023#31034#36914#20986#22580#40670
       Margins.Left = 4
       Margins.Top = 4
@@ -482,8 +482,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 410
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #21462#20729#27169#24335
       Margins.Left = 4
       Margins.Top = 4
@@ -511,8 +511,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 590
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #27700#24179#32218
       Margins.Left = 4
       Margins.Top = 4
@@ -539,8 +539,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 620
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #22402#30452#32218
       Margins.Left = 4
       Margins.Top = 4
@@ -567,8 +567,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 650
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #32218#27573
       Margins.Left = 4
       Margins.Top = 4
@@ -595,8 +595,8 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 710
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #21034#38500
       Margins.Left = 4
       Margins.Top = 4
@@ -649,46 +649,18 @@ object LineChartForm: TLineChartForm
       StyleElements = []
       OnChange = LineColorBoxChange
     end
-    object SentRoomiButton: TGraphButton
-      Tag = 10
-      Left = 210
-      Top = 5
-      Width = 0
-      Height = 0
-      Hint = #20659#36865'K'#32218#22294#21040'RooMi'
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      TabOrder = 21
-      ShowHint = True
-      OnClick = SentRoomiButtonClick
-      Transparent = True
-      GraphCount = 5
-      FontAttrib.FontColor = clWhite
-      FontAttrib.HighlightFontColor = clWhite
-      FontAttrib.HighlightShadowColor = clSilver
-      FontAttrib.CaptionFont.Charset = ANSI_CHARSET
-      FontAttrib.CaptionFont.Color = clWhite
-      FontAttrib.CaptionFont.Height = -19
-      FontAttrib.CaptionFont.Name = 'Arial'
-      FontAttrib.CaptionFont.Style = [fsBold, fsItalic]
-      SizeFitBmp = True
-      ImageList = MainForm.ToolImageList
-      ImageIndex = 25
-    end
     object CopyDepthButton: TGraphButton
       Tag = 10
       Left = 805
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #38283#21855#38275#38651
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      TabOrder = 22
+      TabOrder = 21
       ShowHint = True
       OnClick = CopyDepthButtonClick
       Transparent = True
@@ -723,7 +695,7 @@ object LineChartForm: TLineChartForm
       ParentCtl3D = False
       ParentFont = False
       State = cbChecked
-      TabOrder = 23
+      TabOrder = 22
       StyleElements = []
       OnClick = OrdConfirmCheckBoxClick
     end
@@ -731,14 +703,14 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 680
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #25991#23383
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      TabOrder = 24
+      TabOrder = 23
       ShowHint = True
       OnClick = EditButtonClick
       Transparent = True
@@ -759,14 +731,14 @@ object LineChartForm: TLineChartForm
       Tag = 1
       Left = 560
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #36984#21462
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
-      TabOrder = 25
+      TabOrder = 24
       ShowHint = True
       OnClick = EditButtonClick
       Transparent = True
@@ -934,10 +906,6 @@ object LineChartForm: TLineChartForm
       TabOrder = 1
       object SettingTabSheet: TTabSheet
         Caption = #35373#23450
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object DefColorButton: TSpeedButton
           Left = 156
           Top = 440
@@ -1146,7 +1114,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 440
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1161,7 +1129,7 @@ object LineChartForm: TLineChartForm
           Left = 155
           Top = 384
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1176,7 +1144,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 384
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1191,7 +1159,7 @@ object LineChartForm: TLineChartForm
           Left = 156
           Top = 328
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1206,7 +1174,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 328
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1221,7 +1189,7 @@ object LineChartForm: TLineChartForm
           Left = 156
           Top = 271
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1236,7 +1204,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 271
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1251,7 +1219,7 @@ object LineChartForm: TLineChartForm
           Left = 155
           Top = 215
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1266,7 +1234,7 @@ object LineChartForm: TLineChartForm
           Left = 10
           Top = 215
           Width = 133
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -1573,10 +1541,6 @@ object LineChartForm: TLineChartForm
       object AOETabSheet: TTabSheet
         Caption = #36914#38542
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object BOXLabel: TLabel
           Left = 10
           Top = 547
@@ -1983,7 +1947,7 @@ object LineChartForm: TLineChartForm
           Left = 148
           Top = 225
           Width = 132
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -2132,7 +2096,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 208
     Bitmap = {
-      494C010104000800340220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010104000800380220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3202,7 +3166,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 280
     Bitmap = {
-      494C010103004C01500219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010103004C01540219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000640000001900000001002000000000001027
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

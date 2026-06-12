@@ -136,7 +136,6 @@ __published:	// IDE-managed Components
 	TComboBox *K1ComboBox;
 	TLabel *Label6;
 	TImageList *LightImageList;
-	TGraphButton *SentRoomiButton;
 	TComboBox *TimeGridComboBox;
 	TRadioGroup *RadioGroup1;
 	TGraphButton *CopyDepthButton;
@@ -206,7 +205,6 @@ __published:	// IDE-managed Components
 	void __fastcall SkyLandToggleSwitchClick(TObject *Sender);
 	void __fastcall PivotSwitchClick(TObject *Sender);
 	void __fastcall DeviationTrackBarChange(TObject *Sender);
-	void __fastcall SentRoomiButtonClick(TObject *Sender);
 	void __fastcall TimeGridComboBoxChange(TObject *Sender);
 	void __fastcall CopyDepthButtonClick(TObject *Sender);
 	void __fastcall AvgPxSwitchClick(TObject *Sender);

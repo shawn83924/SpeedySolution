@@ -205,7 +205,6 @@ __published:	// IDE-managed Components
 	TBevel *Bevel23;
 	TLabel *GWIPLabel;
 	TLabel *ChartServerLabel;
-	TGraphButton *IMButton;
 	TLabel *Label8;
 	TComboBox *StopSoundComboBox;
 	TGraphButton *StopSoundButton;
@@ -311,7 +310,6 @@ __published:	// IDE-managed Components
           int &MaxWidth, int &MaxHeight);
 	void __fastcall actInfoExecute(TObject *Sender);
 	void __fastcall InfoOKButtonClick(TObject *Sender);
-	void __fastcall IMButtonClick(TObject *Sender);
 	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
 	void __fastcall StopOrderChange( TObject* Sender, const String& Exchange, const String& StopSymbol, double StopPrice,

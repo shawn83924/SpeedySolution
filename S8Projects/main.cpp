@@ -33,7 +33,6 @@
 #include <System.IOUtils.hpp>
 #include "LeaderBoard.h"
 #include "WebBrowserForm.h"
-#include "Roomi.h"
 #include "SelAccount.h"
 #include "AskRoomi.h"
 #include "AskCloseAll.h"
@@ -728,7 +727,6 @@ HRGN __fastcall TMainForm::CreateCaptionDrawRgn( void )
 	}
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchEditBox->BoundsRect ); ///< Exclude SearchEditBox
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchButton->BoundsRect ); ///< Exclude SearchButton
-	CaptionRgn = ExcludeRect( CaptionRgn, IMButton->BoundsRect );
 	CaptionRgn = ExcludeRect( CaptionRgn, MinButton->BoundsRect ); ///< Exclude MinButton
 	CaptionRgn = ExcludeRect( CaptionRgn, MaxButton->BoundsRect ); ///< Exclude MaxButton
 	CaptionRgn = ExcludeRect( CaptionRgn, CloseButton->BoundsRect ); ///< Exclude CloseButton
@@ -1042,11 +1040,8 @@ void __fastcall TMainForm::ControlPosition( void )
 	MinButton->Top = 10;
 	MinButton->Left = MaxButton->Left - MinButton->Width;
 
-	IMButton->Top = 10;
-	IMButton->Left = MinButton->Left - IMButton->Width;
-
 	SearchButton->Top = 10;
-	SearchButton->Left = IMButton->Left - 32;
+	SearchButton->Left = MinButton->Left - 32;
 
 	SearchEditBox->Height = 25;
 	SearchEditBox->Top = (CAPTION_H - SearchEditBox->Height )/2;
@@ -1198,8 +1193,6 @@ void __fastcall TMainForm::CloseAll( void )
 	PreventIdleTimer->Enabled = false;
 	ContractViewerForm->CloseAllForm();
 	ContractViewerForm->ClearSymbols();
-	if( RoomiForm != NULL )
-		RoomiForm->Hide();
 	CMarketDataStore->OnAppDisconnected  = NULL;
 	ChartsStore->OnAppDisconnected  = NULL;
 	OrderStore->Logoff( true );
@@ -1627,8 +1620,6 @@ void __fastcall TMainForm::SaveProperties( void )
 	   g_Config.SetDesktopInteger( "SpeedyUnify.Main", "ActivePage", PageControl->ActivePageIndex );
 	   g_Config.SetDesktopBool( "SpeedyUnify.Main", "Menu",  SV->Opened );
 	   ContractViewerForm->SaveProperties( );
-	   if( RoomiForm != NULL )
-		   RoomiForm->SaveProperties();
 	   if( OrderStore->IsLogon() == true )
 	   {
 		   if( HoldOpenInterestForm != NULL )
@@ -2540,25 +2531,6 @@ void __fastcall TMainForm::SystemInfo( void )
 		Msg.printf( L"網路延遲: %d ms 最大: %d ms [%s]", Avg, Max, Note );
 	}
 	NetworkLabel->Caption = Msg;
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::IMButtonClick(TObject *Sender)
-{
-	if( RoomiForm == NULL )
-	{
-		AskRoomiForm = new TAskRoomiForm( this );
-		if( AskRoomiForm->ShowModal() == mrOk )
-		{
-			Screen->Cursor = crHourGlass;
-			RoomiForm = new TRoomiForm( this );
-			RoomiForm->LoadProperties();
-			RoomiForm->Show();
-			Screen->Cursor = crDefault;
-		}
-		delete AskRoomiForm;
-	}
-	else
-		RoomiForm->Show();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::UpdateAccount( bool IsFut )
