@@ -24,7 +24,7 @@
 #include <System.ImageList.hpp>
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
-const int TABS = 7;
+const int TABS = 5;
 
 //---------------------------------------------------------------------------
 class TExecutionForm : public TForm, public TClientForm
@@ -53,7 +53,6 @@ __published:	// IDE-managed Components
 	TLabel *SymbolLabel;
 	TLabel *PxLabel;
 	TButton *ClearButton;
-	TGraphButton *LeaderBoardButton;
 	TSaveDialog *SaveCSVDialog;
 	TGraphButton *LargeButton;
 	TGraphButton *SmallButton;
@@ -64,10 +63,7 @@ __published:	// IDE-managed Components
 	TTabSheet *ExecTabSheet;
 	TTabSheet *BalanceTabSheet;
 	TWebBrowser *WebBrowser;
-	TGraphButton *BalanceButton;
 	TImageList *TabImageList;
-	TGraphButton *UploadButton;
-	TGraphButton *FutBalanceButton;
 	void __fastcall FilterButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall OrderListViewProgress(TObject *Sender, int CurrentItemNo, int TotalItemCount);
@@ -94,8 +90,6 @@ __published:	// IDE-managed Components
 	void __fastcall FormHide(TObject *Sender);
 	void __fastcall LargeButtonClick(TObject *Sender);
 	void __fastcall SmallButtonClick(TObject *Sender);
-	void __fastcall UploadButtonClick(TObject *Sender);
-	void __fastcall LeaderBoardButtonClick(TObject *Sender);
 	void __fastcall RoundFormExLockIconClick(TObject *Sender);
 
 private:	// User declarations
