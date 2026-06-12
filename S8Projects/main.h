@@ -76,8 +76,6 @@ __published:	// IDE-managed Components
 	TTabSheet *TabSheet3;
 	TAction *actKBar;
 	TImageList *ToolImageList;
-	TGraphButton *SubscribeButton;
-	TGraphButton *EditButton;
 	TPanel *BackgroundPanel;
 	TSplitView *SettingSV;
 	TPageControl *SettingPageControl;
@@ -106,19 +104,10 @@ __published:	// IDE-managed Components
 	TLabel *HotkeySettingLabel;
 	TComboBox *KeyCodeComboBox;
 	TRoundFormExRes *RoundFormExRes;
-	TAction *actLogout;
 	TAction *actExec;
 	TAction *actReport;
-	TAction *actLogin;
 	TImageList *TabImageList;
-	TTabSheet *BrokerTabSheet;
-	TLabel *IDLabel;
-	TEdit *IDEdit;
-	TLabel *PasswordLabel;
-	TEdit *PasswordEdit;
 	TImageList *BrokerImageList;
-	TComboBoxEx *BrokerComboBoxEx;
-	TLabel *StatusLabel;
 	TPanel *TabsPanel;
 	TTabSheet *ProdTabSheet;
 	TApplicationEvents *ApplicationEvents;
@@ -134,7 +123,6 @@ __published:	// IDE-managed Components
 	TGraphButton *MinButton;
 	TGraphButton *ExButton;
 	TImageList *LogoImageList;
-	TImageList *UserImageList;
 	TEdit *SearchEditBox;
 	TGraphButton *SearchButton;
 	TPopupMenu *TabPopupMenu;
@@ -175,13 +163,6 @@ __published:	// IDE-managed Components
 	TGraphButton *RejectSoundSwitch;
 	TGraphButton *FillSoundSwitch;
 	TGraphButton *CAButton;
-	TGraphButton *LoginButton;
-	TGraphButton *CancelButton;
-	TLabel *LoginLabel;
-	TPanel *LoginPanel;
-	TBevel *Bevel15;
-	TBevel *Bevel16;
-	TComboBoxEx *LinkComboBoxEx;
 	TImageList *HKBtnImageList;
 	TGraphButton *BuyText;
 	TGraphButton *BuyMarketText;
@@ -197,7 +178,6 @@ __published:	// IDE-managed Components
 	TPopupMenu *TrayPopupMenu;
 	TMenuItem *RestoreItem;
 	TMenuItem *CloseItem;
-	TGraphButton *BuyHistroyButton;
 	TTimer *PurchaseTimer;
 	TLabel *NuclearBuyLabel;
 	TGraphButton *NuclearBuyText;
@@ -252,12 +232,7 @@ __published:	// IDE-managed Components
 	void __fastcall CMarketDataStoreAppConnected(TObject *Sender);
 	void __fastcall CMarketDataStoreContractDownloadCompleted(int Count, int UseMS);
 	void __fastcall ChartsStoreXAppConnected(TObject *Sender);
-	void __fastcall OrderStoreConnect(TObject *Sender);
 	void __fastcall OrderStoreDisconnect(TObject *Sender);
-	void __fastcall OrderStoreLogonFailed(TObject *Sender, const UnicodeString &ReplyMessage,
-          int CID);
-	void __fastcall OrderStoreLogonOK(TObject *Sender, const UnicodeString &ReplyMessage,
-          int CID);
 	void __fastcall imgMenuClick(TObject *Sender);
 	void __fastcall actProductsExecute(TObject *Sender);
 	void __fastcall actSettingExecute(TObject *Sender);
@@ -279,7 +254,6 @@ __published:	// IDE-managed Components
 	void __fastcall ChartsStoreXAppDisconnected(TObject *Sender);
 	void __fastcall ExitButtonClick(TObject *Sender);
 	void __fastcall OnNCHitTest( TMessage &Message );
-	void __fastcall actLoginExecute(TObject *Sender);
 	void __fastcall actExecExecute(TObject *Sender);
 	void __fastcall CancelButtonClick(TObject *Sender);
 	void __fastcall Tab1ButtonClick(TObject *Sender);
@@ -291,8 +265,6 @@ __published:	// IDE-managed Components
 	void __fastcall ApplicationEventsDeactivate(TObject *Sender);
 	void __fastcall BuyTextMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-	void __fastcall actLogoutExecute(TObject *Sender);
-	void __fastcall BrokerComboBoxExChange(TObject *Sender);
 	void __fastcall NewOrdSoundButtonClick(TObject *Sender);
 	void __fastcall RejectSoundButtonClick(TObject *Sender);
 	void __fastcall FillSoundButtonClick(TObject *Sender);
@@ -325,13 +297,7 @@ __published:	// IDE-managed Components
 	void __fastcall CMarketDataStoreMarketDataServerAck(int RTT);
 	void __fastcall RTTTimerTimer(TObject *Sender);
 	void __fastcall RenameItemClick(TObject *Sender);
-	void __fastcall EditButtonClick(TObject *Sender);
-	void __fastcall SubscribeButtonClick(TObject *Sender);
 	void __fastcall PreventIdleTimerTimer(TObject *Sender);
-	void __fastcall WebBrowserBeforeNavigate2(TObject *ASender, IDispatch * const pDisp,
-          const OleVariant &URL, const OleVariant &Flags, const OleVariant &TargetFrameName,
-          const OleVariant &PostData, const OleVariant &Headers,
-          WordBool &Cancel);
 	void __fastcall QuiteButtonClick(TObject *Sender);
 	void __fastcall NewConfirmSwitchClick(TObject *Sender);
 	void __fastcall LightRadioButtonClick(TObject *Sender);
@@ -340,8 +306,6 @@ __published:	// IDE-managed Components
 	void __fastcall CloseItemClick(TObject *Sender);
 	void __fastcall WebBrowserNavigateComplete2(TObject *ASender, IDispatch * const pDisp,
           const OleVariant &URL);
-	void __fastcall BuyHistroyButtonClick(TObject *Sender);
-	void __fastcall PurchaseTimerTimer(TObject *Sender);
 	void __fastcall CMarketDataStoreLeaderBoard(TStringList *Board);
 	void __fastcall FormConstrainedResize(TObject *Sender, int &MinWidth, int &MinHeight,
           int &MaxWidth, int &MaxHeight);
@@ -431,10 +395,8 @@ private:	// User declarations
 public:
 	UFC::PHashMap<String,UnifyProductInfo*>  FPurchaseList;
 	UFC::PHashMap<String,UnifyProductInfo*>  FProductList;
-	void __fastcall UnifyLicense( void );
 	void __fastcall ClearProductInfo( void );
 	void __fastcall UseLastLicense( UFC::PHashMap<String,UnifyProductInfo*>& InfoList, const String& ID, const String& ExpDate );
-    void __fastcall Login(const String& ID, const String& Password);
 private:
 	void __fastcall SelectSymbol( TObject* Sender, TSelectActionType Type, const String& Ex, const String& Sym );
 	void __fastcall SystemInfo( void );
@@ -455,8 +417,6 @@ public:		// User declarations
 	void __fastcall SetPage( int Page );
 	int __fastcall  CloseBetterTick( void );
 	void __fastcall InitOrderStore( void );
-	void __fastcall LoadImage( const String& ImgFile );
-	bool __fastcall UserRightsInfo( void );
 	void __fastcall LoadUserInfo( TJSONObject *lpRoot );
 	void __fastcall UpdateAccount( bool IsFut );
 private:

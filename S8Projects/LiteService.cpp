@@ -178,5 +178,5 @@ void __fastcall TLiteService::OrderStoreLogonFailed(
 		int CID)
 {
 	FWaitConnectDone = true;
-	FWaitConnectMsg = L"登入失敗";
+	FWaitConnectMsg = L"登入失敗! 失敗原因:"+ ReplyMessage;
 }

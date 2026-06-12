@@ -66,7 +66,6 @@ const int CAPTION_H = 50;
 const int BOTTOM_H  = 32;
 //---------------------------------------------------------------------------
 bool               gCheckCA   = true;  ///< Needs CA
-bool   			   gIsExpired = true;  ///< SpeedyUnify License Expired
 bool               gNuclear   = true;  ///< AOE Nuclear class
 bool               gTFT       = false; ///< Enable TFT functions. ( Turn on 創富 tab )
 //---------------------------------------------------------------------------
@@ -140,10 +139,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	OrderStore  = new TOrderStore( this );
 	gOrderStore = OrderStore;
 	OrderStore->MarketDataStore   = CMarketDataStore;
-	//OrderStore->OnConnect         = OrderStoreConnect;
 	OrderStore->OnDisconnect      = OrderStoreDisconnect;
-	//OrderStore->OnLogonOK         = OrderStoreLogonOK;
-	//OrderStore->OnLogonFailed     = OrderStoreLogonFailed;
 	OrderStore->OnNewOrder        = OrderStoreNewOrder;
 	OrderStore->OnStopOrderChange =	StopOrderChange;
 	OrderStore->OnCancelByOrderID = OrderStoreCancelByOrderID;
@@ -723,8 +719,6 @@ HRGN __fastcall TMainForm::CreateCaptionDrawRgn( void )
 	HRGN  CaptionRgn  = CreateRectRgnIndirect( &CaptionRect );
 	int   TabCount = FTabs.ItemCount();
 
-	if( gIsExpired == true )
-		TabCount = 2;
 	CaptionRgn = ExcludeRect( CaptionRgn, ExButton->BoundsRect ); ///< Exclude ExButton
 
 	for( register int i = 0; i < TabCount; i++ ) ///< hotkey dup
@@ -734,9 +728,7 @@ HRGN __fastcall TMainForm::CreateCaptionDrawRgn( void )
 	}
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchEditBox->BoundsRect ); ///< Exclude SearchEditBox
 	CaptionRgn = ExcludeRect( CaptionRgn, SearchButton->BoundsRect ); ///< Exclude SearchButton
-	CaptionRgn = ExcludeRect( CaptionRgn, EditButton->BoundsRect ); ///< Exclude EditButton
 	CaptionRgn = ExcludeRect( CaptionRgn, IMButton->BoundsRect );
-	CaptionRgn = ExcludeRect( CaptionRgn, SubscribeButton->BoundsRect ); ///< Exclude MailButton
 	CaptionRgn = ExcludeRect( CaptionRgn, MinButton->BoundsRect ); ///< Exclude MinButton
 	CaptionRgn = ExcludeRect( CaptionRgn, MaxButton->BoundsRect ); ///< Exclude MaxButton
 	CaptionRgn = ExcludeRect( CaptionRgn, CloseButton->BoundsRect ); ///< Exclude CloseButton
@@ -752,7 +744,7 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	int BottomTextY = (BOTTOM_H - TextH )/2;
 	int SearchBoxR = SearchButton->Left + SearchButton->Width;
 	TRect CaptionRect = TRect(0,0,ClientWidth, CAPTION_H );
-	TRect IDRect = TRect( SubscribeButton->Left + 72, BorderH, SubscribeButton->Left + 186, CAPTION_H-BorderH );
+	//TRect IDRect = TRect( SubscribeButton->Left + 72, BorderH, SubscribeButton->Left + 186, CAPTION_H-BorderH );
 	TRect SearchRect = TRect( SearchEditBox->Left, 10, SearchBoxR, CAPTION_H - 10 );
 	HRGN  CaptionRgn = CreateCaptionDrawRgn();
 	TTextFormat Formats,CRFormats;
@@ -767,9 +759,6 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	FBKBuffer->Canvas->Pen->Color = TColor( 0x002d1605 );
 	FBKBuffer->Canvas->Brush->Color = TColor( 0x002d1605 );
 	FBKBuffer->Canvas->FillRect( CaptionRect );
-	///< Draw login ID
-	FBKBuffer->Canvas->Font->Color = clWhite;
-	FBKBuffer->Canvas->TextRect( IDRect, gUser.Nickname, Formats );
 	///< Draw Search box
 	FBKBuffer->Canvas->Pen->Color = TColor( 0x00402B1C );
 	FBKBuffer->Canvas->Brush->Color = TColor( 0x00402B1C );
@@ -778,12 +767,7 @@ void __fastcall TMainForm::PaintBk( TMessage &Msg )
 	FBKBuffer->Canvas->Ellipse( SearchBoxR -15, 10, SearchBoxR + 15 ,CAPTION_H - 10 );
 	///< Draw Speedy logo
 	LogoImageList->Draw( FBKBuffer->Canvas, 40, 12, 0 );
-	///< Draw User image
-	TRect DR( SubscribeButton->Left + SubscribeButton->Width + 5, 9, SubscribeButton->Left + SubscribeButton->Width + 37, 41 );
-	if( FUserImg->Graphic != NULL &&  FUserImg->Graphic->Empty == false)
-		FBKBuffer->Canvas->StretchDraw( DR, FUserImg->Graphic );
-	else
-		UserImageList->Draw( FBKBuffer->Canvas, SubscribeButton->Left + 36, 10, 0 );
+
 	SelectClipRgn( Canvas->Handle, CaptionRgn );
 	Canvas->Draw( 0,0, FBKBuffer );
 	SelectClipRgn( Canvas->Handle, NULL );
@@ -806,10 +790,7 @@ void __fastcall TMainForm::PaintStatusBar( void )
 	FStatusBuffer->Canvas->Pen->Color = TColor( 0x00a0a0a0 );
 	FStatusBuffer->Canvas->Brush->Color = TColor( 0x00a0a0a0 );
 	FStatusBuffer->Canvas->FillRect( BottomRect );
-	if( gIsExpired == true )
-		FStatusBuffer->Canvas->Font->Color = clRed;
-	else
-		FStatusBuffer->Canvas->Font->Color = clWhite;
+	FStatusBuffer->Canvas->Font->Color = clWhite;
 	FStatusBuffer->Canvas->TextOutW( ClientWidth - FStatusBuffer->Canvas->TextWidth( FCopyRights ), BottomTextY, FCopyRights ); ///< Draw copyright string
 	FStatusBuffer->Canvas->Font->Color = clWhite;
 	FStatusBuffer->Canvas->TextOutW( 2,   BottomTextY, MDRTTStr ); ///< Draw MDRTT label
@@ -941,8 +922,6 @@ void __fastcall TMainForm::ShowTabs( bool Show )
 {
 	int   TabCount = FTabs.ItemCount();
 
-	if( gIsExpired == true )
-		TabCount = 2;
 	for( register int i = 0; i < TabCount; i++ )
 	{
 		FTabs[i]->Visible = Show;
@@ -1063,15 +1042,8 @@ void __fastcall TMainForm::ControlPosition( void )
 	MinButton->Top = 10;
 	MinButton->Left = MaxButton->Left - MinButton->Width;
 
-	SubscribeButton->Top = 10;
-	SubscribeButton->Left = MinButton->Left - 200;
-	BuyHistroyButton->Top = 10;
-	BuyHistroyButton->Left = SubscribeButton->Left - BuyHistroyButton->Width;
-	EditButton->Top = 10;
-	EditButton->Left = BuyHistroyButton->Left - EditButton->Width;
-
 	IMButton->Top = 10;
-	IMButton->Left = EditButton->Left - IMButton->Width;
+	IMButton->Left = MinButton->Left - IMButton->Width;
 
 	SearchButton->Top = 10;
 	SearchButton->Left = IMButton->Left - 32;
@@ -1391,44 +1363,12 @@ void __fastcall TMainForm::ExitButtonClick(TObject *Sender)
 	Close();
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::actLoginExecute(TObject *Sender)
-{
-	if( OrderStore->IsLogon() == false )
-	{
-		if( GSimMatch == false )
-		{
-			BrokerComboBoxEx->ItemIndex = 0;
-			SettingPageControl->ActivePage = BrokerTabSheet;
-			SettingPanel( true );
-		}
-		else
-		{
-			FLoginBroker = NULL;
-			FSpeedyCfg = NULL;
-			LoginSimBroker();
-		}
-	}
-	else
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您已經登入交易服務器" );
-
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::OrderStoreConnect(TObject *Sender)
-{
-	StatusLabel->Caption = L"連線成功,登入交易主機中...";
-	if( FProxyLogon == true )
-		OrderStore->LogonProxy();
-	else
-		OrderStore->LogonPropTrade();
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::OrderStoreDisconnect(TObject *Sender)
 {
 	OrderStore->CancelAllStopOrder();
 
 	CAButton->Visible = false;
 	CxlWorkingButton->Visible = false;
-	StatusLabel->Caption = L"交易主機斷線.";
 	FLoginUserStr = L"交易帳號:尚未登入";
 	ContractViewerForm->UnregisterOrderStore();
 	ContractViewerForm->CloseExecutionForm();
@@ -1441,60 +1381,7 @@ void __fastcall TMainForm::OrderStoreDisconnect(TObject *Sender)
 	LeaderBoardForm->Close();
 	PaintStatusBar( );
 	FForceClose = true;
-    Close();
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::OrderStoreLogonFailed(TObject *Sender, const UnicodeString &ReplyMessage,
-		  int CID)
-{
-	StatusLabel->Caption = L"登入失敗! 失敗原因:"+ ReplyMessage;
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::OrderStoreLogonOK(TObject *Sender, const UnicodeString &ReplyMessage,
-		  int CID)
-{
-	String Reason;
-	int throughput;
-	AnsiString  PhoneNo( gUser.UserID.c_str() );
-
-	StatusLabel->Caption = L"登入成功!";
-	WinSleep( 500 );
-	ContractViewerForm->OpenExecutionForm();
-
-	if( HoldOpenInterestForm == NULL )
-		HoldOpenInterestForm = new THoldOpenInterestForm( this );
-	HoldOpenInterestForm->LoadProperties( );
-	if( GSimMatch == true )
-		LeaderBoardForm->LoadProperties();
-
-	SettingPanel( false );
-	FRecovering = true;
-
-	CAButton->Visible = true;
-	CxlWorkingButton->Visible = true;
-	FCAChecker->ID = gUser.LoginUserID;
-	FCAChecker->URL = g_Config.GetMegaCAURL();
-	FCAChecker->PFXFileName = g_Config.GetStringProperty( gUser.LoginUserID, "CAFile", L"" );
-	FCAChecker->PFXPassword = g_Config.GetStringProperty( gUser.LoginUserID, "CAPassword", L"888888" );
-	OrderStore->SetCAListener( FCAChecker );
-	throughput = g_Config.GetThroughput( PhoneNo.c_str());
-	if( throughput != 0 )
-		OrderStore->SetThroughput( throughput );
-	ContractViewerForm->RegisterOrderStore();
-	if( FCAChecker->InitialCheckerAndTest( Reason  ) == false )
-	{
-		CAButton->Selected = false;
-		CAButton->ButtonText = L"憑證讀取錯誤";
-		TUnifyDlgs::MessageDialog( L"憑證錯誤", Reason );
-		CAButtonClick( this );
-	}
-	else
-	{
-		CAButton->Selected = true;
-		CAButton->ButtonText = L"憑證讀取成功";
-		CheckAgreement();
-	}
-
+	Close();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CheckAgreement( void )
@@ -1541,7 +1428,8 @@ void __fastcall TMainForm::LoginSimBroker( void )
 	OrderStore->IB            = L"000";
 	OrderStore->Password      = "888888";
 	OrderStore->Version       = LoginForm->Version;
-	OrderStore->TryVersion    = gIsExpired;
+	//OrderStore->TryVersion    = gIsExpired;
+	OrderStore->TryVersion    = false;
 	OrderStore->MaxLots 	  =	g_Config.GetMaxLots();
 	if( OrderStore->RecoverFileExist() == true )
 	{
@@ -1559,108 +1447,6 @@ void __fastcall TMainForm::LoginSimBroker( void )
 	OrderStore->Connect();
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::Login(const String& ID, const String& Password)
-{
-	FSpeedyCfg = g_Config.SpeedyConfig( 0, 0 );
-	FLoginBroker = g_Config.BrokerConfig( 0 );
-
-	if( FLoginBroker == NULL || FSpeedyCfg == NULL )
-	{
-		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, L"錯誤的連線設定");
-		return;
-	}
-
-	String errMsg;
-	if (FLoginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
-	{
-		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
-		return;
-	}
-	gUser.LoginUserID = ID;
-
-	String LogFilePrefix;
-	LogFilePrefix.printf(L"SU_%s", ID);
-	FLoginBroker->GetService()->ClearPosition(ID);
-	OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
-#ifdef __TO_TEST
-	OrderStore->IP = "192.168.0.22";
-	OrderStore->Port = 45678;
-	OrderStore->BrokerID = "F001000";
-	OrderStore->TWSEBrokerID = "7000";
-	OrderStore->ClearMemberID = "F001";
-#else
-	if (GVIPServer == true)
-	{
-		OrderStore->IP = FSpeedyCfg->GetVIPIP();
-		OrderStore->Port = FSpeedyCfg->VIPPort;
-	} else
-	{
-		OrderStore->IP = FSpeedyCfg->GetIP();
-		OrderStore->Port = FSpeedyCfg->Port;
-	}
-	OrderStore->ClearMemberID = FSpeedyCfg->CMID;
-#endif
-	TBrokerUser *User = FLoginBroker->GetService()->GetAccount();
-	String NameTag;
-
-	FFutAccIndex = g_Config.GetDesktopInteger(L"SpeedyUnify\\ExAccount", "TAIFEX", 0);
-	FTseAccIndex = g_Config.GetDesktopInteger(L"SpeedyUnify\\ExAccount", "TWSE", 0);
-
-	if (User->FuturesAccountCount() > 0)
-	{
-		if (User->FuturesAccountCount() <= FFutAccIndex)
-			FFutAccIndex = 0;
-		TAccountInfo *FutAcc = User->FuturesAccount(FFutAccIndex);
-		OrderStore->Account = FutAcc->Account;
-		OrderStore->BrokerID = FutAcc->BrokerID;
-		FLoginUserStr.printf(L"期貨帳號:%s %s", OrderStore->Account, User->GetName());
-		gUser.AccountType = hatTAIFEX;
-	}
-	if (User->StockAccountCount() > 0)
-	{
-		if (User->StockAccountCount() <= FTseAccIndex)
-			FTseAccIndex = 0;
-		TAccountInfo *StocAcc = User->StockAccount(FTseAccIndex);
-		OrderStore->TWSEAccount = StocAcc->Account;
-		OrderStore->TWSEBrokerID = StocAcc->BrokerID;
-		FLoginUserStr.printf(L"證券帳號:%s %s", OrderStore->TWSEAccount, User->GetName());
-		gUser.AccountType = hatTWSE;
-	}
-	if (User->FuturesAccountCount() > 0 && User->StockAccountCount() > 0)
-		gUser.AccountType = hatBoth;
-	if (FSpeedyCfg->IsProxy == false) ///< Logon Speedy
-		FProxyLogon = false;
-	else
-		FProxyLogon = true;
-	OrderStore->ID = ID; //OrderStore->Account; //
-	OrderStore->Password = Password;
-	OrderStore->TryVersion = gIsExpired;
-	OrderStore->Version = LoginForm->Version;
-	StatusLabel->Caption = L"連線" + BrokerComboBoxEx->Text + L"...";
-	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth(FLoginUserStr);
-	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
-	PaintStatusBar();
-	s888::CTaifexFeeQueryObject *FeeObj = new s888::CTaifexFeeQueryObject(L"TaifexFee.xml", gUser.LoginUserID);
-	//OrderStore->Account  );
-	s888::CTaifexTaxRateQueryObject *TaxObj = new s888::CTaifexTaxRateQueryObject(L"TaifexTax.xml");
-	delete FeeObj;
-	delete TaxObj;
-	//OrderStore->Connect();
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::actLogoutExecute(TObject *Sender)
-{
-	if( OrderStore->IsLogon() == true )
-	{
-		Close();
-	}
-	else
-	{
-		Speak( L"您尚未登入" );
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"您尚未登入交易服務器" );
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::CancelButtonClick(TObject *Sender)
 {
 	SettingPanel( false );
@@ -1670,36 +1456,30 @@ void __fastcall TMainForm::Tab1ButtonClick(TObject *Sender)
 {
 	TGraphButton* Btn = dynamic_cast<TGraphButton*>(Sender);
 
-	if( Btn != NULL)
-	{
-		if( Btn->Tag == 1 && ContractInfoForm->SupportOptions() == false )
-		{
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"沒有選擇權商品");
-			return;
-		}
-		int   TabCount = FTabs.ItemCount();
+	if( Btn == NULL)
+		return;
 
-		if( gIsExpired == true )
-			TabCount = 2;
-		for( register int j = 0; j < TabCount; j++ ) ///< hotkey dup
-		{
-			if( FTabs[j] != Btn )
-				FTabs[j]->Selected = false;
-		}
-		Btn->Selected = true;
-		PageControl->ActivePageIndex = Btn->Tag;
-		ContractViewerForm->ShowPage( PageControl->ActivePageIndex );
-		if(	Btn->Tag == 1 ) ///< Options page
-			ContractViewerForm->OpenTBarForm();
+	if( Btn->Tag == 1 && ContractInfoForm->SupportOptions() == false )
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"沒有選擇權商品");
+		return;
 	}
+	int TabCount = FTabs.ItemCount();
+
+	for( register int j = 0; j < TabCount; j++ ) ///< hotkey dup
+	{
+		if( FTabs[j] != Btn )
+			FTabs[j]->Selected = false;
+	}
+	Btn->Selected = true;
+	PageControl->ActivePageIndex = Btn->Tag;
+	ContractViewerForm->ShowPage( PageControl->ActivePageIndex );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SetPage( int Page )
 {
 	int   TabCount = FTabs.ItemCount();
 
-	if( gIsExpired == true )
-		TabCount = 2;
 	if( Page < 0 || Page >= TabCount )
 		Page = 0;
 	for( register int i = 0; i < TabCount; i++ ) ///< hotkey dup
@@ -1711,8 +1491,6 @@ void __fastcall TMainForm::SetPage( int Page )
 	}
 	PageControl->ActivePageIndex = Page;
 	ContractViewerForm->ShowPage( Page );
-	if(	Page == 1 ) ///< Options page
-		ContractViewerForm->OpenTBarForm();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::actReportExecute(TObject *Sender)
@@ -1731,7 +1509,6 @@ void __fastcall TMainForm::actReportExecute(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
 void __fastcall TMainForm::SearchBoxMouseDown(TObject *Sender, TMouseButton Button,
 		  TShiftState Shift, int X, int Y)
 {
@@ -1782,10 +1559,10 @@ void __fastcall TMainForm::ApplicationEventsDeactivate(TObject *Sender)
 void __fastcall TMainForm::LoadTabName( void )
 {
    FTabs[ 0 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab1", "期貨" );
-   FTabs[ 1 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab2", "選擇權" );
-   FTabs[ 2 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab3", "自訂桌面1" );
-   FTabs[ 3 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab4", "自訂桌面2" );
-   FTabs[ 4 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab5", "自訂桌面3" );
+   FTabs[ 1 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab2", "自訂桌面1" );
+   FTabs[ 2 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab3", "自訂桌面2" );
+   FTabs[ 3 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab4", "自訂桌面3" );
+   FTabs[ 4 ]->ButtonText = g_Config.GetDesktopString("Desktop", "Tab5", "自訂桌面4" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SaveTabName( void )
@@ -1909,20 +1686,6 @@ void __fastcall TMainForm::SaveHotkey( void )
    	g_Config.SetIntegerProperty("Setting","HKNuclearSell", KeyStringToIndex(NuclearSellText->ButtonText) );
 	g_Config.SetIntegerProperty("Setting","HKCloseStep", CloseAllStepComboBox->ItemIndex );
 
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BrokerComboBoxExChange(TObject *Sender)
-{
-	int SelBroker = BrokerComboBoxEx->ItemIndex;
-	TBrokerConfig*  Config = g_Config.BrokerConfig( SelBroker );
-
-	LinkComboBoxEx->Items->Clear();
-	for( int i = 0; i <Config->Count(); i++ )
-	{
-		TSpeedyConfig* ConnCfg = Config->GetConfig( i );
-		LinkComboBoxEx->Items->Add( ConnCfg->Name );
-	}
-	LinkComboBoxEx->ItemIndex = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::NewOrdSoundButtonClick(TObject *Sender)
@@ -2211,11 +1974,6 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 			BrowserForm->Height = 595;
 			SetWindowPos( BrowserForm->Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE + SWP_NOMOVE + SWP_NOSIZE);
 			BrowserForm->WaitLoading( );
-			if( BrowserForm->ShowModal() == mrOk )
-			{
-				IDEdit->Text = BrowserForm->LoginID;
-				PasswordEdit->Text = L"";
-			}
 			delete BrowserForm;
 		}
 		LogonReadyTimer->Enabled = true;
@@ -2389,64 +2147,6 @@ void __fastcall TMainForm::RenameItemClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TMainForm::EditButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 17;
-	WebBrowser->Navigate( g_Config.GetEditURL( gUser.UserID, gUser.Token ).c_str() );
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::SubscribeButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 9;
-	WebBrowser->Navigate( g_Config.GetXFlashURL( gUser.UserID, gUser.Token ).c_str() );
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::BuyHistroyButtonClick(TObject *Sender)
-{
-	FRequestWeb = true;
-	FWebFunc = 19;
-	WebBrowser->Navigate( g_Config.GePurchaseListURL( gUser.UserID, gUser.Token ).c_str());
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::LoadImage( const String& ImgFile )
-{
-	try
-	{
-		TRect Drect( 0,0, UserImageList->Width, UserImageList->Height );
-
-		if( FUserImg != NULL)
-			delete FUserImg;
-		FUserImg = new Graphics::TPicture();
-		FUserImg->LoadFromFile( ImgFile );
-	}
-	catch(...)
-	{
-		FUserImg->LoadFromFile( L"DefImage.png" );
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::WebBrowserBeforeNavigate2(TObject *ASender, IDispatch * const pDisp,
-		  const OleVariant &URL, const OleVariant &Flags, const OleVariant &TargetFrameName,
-		  const OleVariant &PostData, const OleVariant &Headers,
-		  WordBool &Cancel)
-{
-	AnsiString NavURL = URL;
-
-	if( NavURL.Pos( L"successAP.do" ) != 0 )
-	{
-		if( NavURL.Pos( L"action=1" ) != 0 )
-		{
-			if( FWebFunc == 17 ) ///< edit user profile
-				g_Config.ReloadUserInfo();
-			else if( FWebFunc == 9 ) ///< Purchase OK.
-				g_Config.UserRightsInfo( );
-		}
-		ShowTabs( true );
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall TMainForm::WebBrowserNavigateComplete2(TObject *ASender, IDispatch * const pDisp,
 		  const OleVariant &URL)
 {
@@ -2496,91 +2196,10 @@ void __fastcall TMainForm::ClearProductInfo( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::EnableUnifyLicense( bool Enable )
 {
-	if( GCheckLicense  == true )
-	{
-		if( Enable == true ) ///< Valid License
-		{
-			gIsExpired = false;
-			Tab3Button->Visible = true;
-			Tab4Button->Visible = true;
-			Tab5Button->Visible = true;
-			PurchaseTimer->Enabled = false;
-		}
-		else
-		{
-			gIsExpired = true;
-			Tab3Button->Visible = false;
-			Tab4Button->Visible = false;
-			Tab5Button->Visible = false;
-			PurchaseTimer->Enabled = true;
-		}
-	}
-	else
-	{
-		gIsExpired = false;
-		Tab3Button->Visible = true;
-		Tab4Button->Visible = true;
-		Tab5Button->Visible = true;
-		PurchaseTimer->Enabled = false;
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::UnifyLicense( void )
-{
-	int YYYYMMDD;
-	UFC::AnsiString Today;
-
-	UFC::GetYYYYMMDD( Today );
-	gIsExpired = true;
-
-	if( GVIPServer == true  )
-	{
-		EnableUnifyLicense( true );
-		if( gTFT == true  )
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [創富專屬服務器]").c_str() );
-		else
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [專屬服務器]    ").c_str() );
-	}
-	else if( gTFT == true  )
-	{
-		EnableUnifyLicense( true );
-		if( GVIPServer == true  )
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [創富專屬服務器]").c_str() );
-		else
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [創富投資]    ").c_str() );
-	}
-	else if( g_Config.IPLicense( gUser.ClientIP ) == true )
-	{
-		EnableUnifyLicense( true );
-		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [學員在啟蒙基地]    ").c_str() );
-		else
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© [在啟蒙基地]    ").c_str() );
-		gUser.IsAOEMember = true;
-	}
-	else if( Support( UnifyKey, YYYYMMDD ) == true || Support( ProdUnifyKey, YYYYMMDD ) )
-	{
-		int TodayInt = Today.ToInt();
-
-		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName+L"© 啟蒙學員[%04d-%02d-%02d]    ").c_str(), YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
-		else
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© 授權至[%04d-%02d-%02d]    ").c_str(), YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
-		if( YYYYMMDD >= TodayInt )
-			EnableUnifyLicense( true );
-		else
-			EnableUnifyLicense( false );
-	}
-	else
-	{
-		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [啟蒙學員試用版]    ").c_str() );
-		else
-			FCopyRights.printf( (Mdcomponentstrings_MD_SpeedyUnify_AppName + L"© [試用版]    ").c_str() );
-		EnableUnifyLicense( false );
-	}
-	if( Support( Nuclear1Key, YYYYMMDD ) == true || Support( Nuclear2Key, YYYYMMDD ) || Support( Nuclear2Key, YYYYMMDD ) )
-		gNuclear = true;
+	Tab3Button->Visible = true;
+	Tab4Button->Visible = true;
+	Tab5Button->Visible = true;
+	PurchaseTimer->Enabled = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::UseLastLicense( UFC::PHashMap<String,UnifyProductInfo*>& InfoMap, const String& ID, const String& ExpDate )
@@ -2693,17 +2312,6 @@ void __fastcall TMainForm::RestoreItemClick(TObject *Sender)
 void __fastcall TMainForm::CloseItemClick(TObject *Sender)
 {
 	Close();
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::PurchaseTimerTimer(TObject *Sender)
-{
-	PurchaseTimer->Enabled = false;
-	if( GSimMatch == false ) ///< Only hint in production.
-	{
-		TTrainingDlgForm::MessageDlg( L"感謝您的試用!想使用全功能的版本", L"請訂閱正式版." );
-		SubscribeButtonClick( NULL );
-		PurchaseTimer->Enabled = true;
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CMarketDataStoreLeaderBoard(TStringList *Board)
@@ -2936,11 +2544,6 @@ void __fastcall TMainForm::SystemInfo( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::IMButtonClick(TObject *Sender)
 {
-	if( gIsExpired == true )
-	{
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Mdcomponentstrings_MD_SpeedyUnify_AppName + L" 付費會員,才能進入討論區." );
-        return;
-    }
 	if( RoomiForm == NULL )
 	{
 		AskRoomiForm = new TAskRoomiForm( this );

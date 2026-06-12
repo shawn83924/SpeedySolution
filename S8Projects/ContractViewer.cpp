@@ -25,7 +25,6 @@
 //---------------------------------------------------------------------------
 TContractViewerForm *ContractViewerForm;
 extern TCMarketDataStore* gMarketDataStore;
-extern bool   			  gIsExpired;
 //---------------------------------------------------------------------------
 UFC::Int32 BaseYear;
 UFC::Int32 Remainder;
@@ -1264,8 +1263,6 @@ TDepthForm* __fastcall TContractViewerForm::OpenOrderBookForm( String Exchange, 
 	TWinControl* ActivePage;
 	int          MaxCount = 20;
 
-	if( gIsExpired == true )
-		MaxCount = 2;
 	if( FDepthForms.ItemCount() < MaxCount )
 	{
 		if( (gMarketDataStore->GetBasicInformation( exchange.c_str(), symbol.c_str(), false ))!= NULL )
@@ -1311,13 +1308,7 @@ TDepthForm* __fastcall TContractViewerForm::OpenOrderBookForm( String Exchange, 
 	}
 	else
 	{
-		if( gIsExpired == true )
-		{
-			TTrainingDlgForm::MessageDlg( L"謝謝您的試用!想開更多的閃電下單", L"請訂閱正式版." );
-			MainForm->SubscribeButtonClick( NULL );
-		}
-		else
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開20個閃電下單" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開20個閃電下單" );
 	}
 	return NULL;
 }
@@ -1326,8 +1317,6 @@ TContractListForm*  __fastcall TContractViewerForm::OpenMarketDataListForm( int 
 {
 	int MaxCount = 3;
 
-	if( gIsExpired == true )
-		MaxCount = 1;
 	if( ClientCount( mdfList ) < MaxCount )
 	{
 		TContractListForm *ListForm;
@@ -1364,13 +1353,7 @@ TContractListForm*  __fastcall TContractViewerForm::OpenMarketDataListForm( int 
 	}
 	else
 	{
-		if( gIsExpired == true )
-		{
-			TTrainingDlgForm::MessageDlg( L"謝謝您的試用!想開更多的行情表", L"請訂閱正式版." );
-			MainForm->SubscribeButtonClick( NULL );
-		}
-		else
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開三個行情表" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開三個行情表" );
 		return NULL;
 	}
 }
@@ -1379,8 +1362,6 @@ TLineChartForm*  __fastcall TContractViewerForm::OpenKBarForm( const String& Ex,
 {
 	int MaxCount = 5;
 
-	if( gIsExpired == true )
-		MaxCount = 1;
 	if( ClientCount( mdfKBar ) < MaxCount )
 	{
 		TLineChartForm* LineChartForm;
@@ -1408,13 +1389,7 @@ TLineChartForm*  __fastcall TContractViewerForm::OpenKBarForm( const String& Ex,
 	}
 	else
 	{
-		if( gIsExpired == true )
-		{
-			TTrainingDlgForm::MessageDlg( L"謝謝您的試用!想開更多個K線圖", L"請訂閱正式版." );
-			MainForm->SubscribeButtonClick( NULL );
-		}
-		else
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開五個K線圖" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"基於效能考量,最多只能開五個K線圖" );
 		return NULL;
 	}
 }
