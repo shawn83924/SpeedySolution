@@ -67,10 +67,6 @@ __fastcall TExecutionForm::TExecutionForm(TComponent* Owner )
 	FFilters[3] = ftFill;
 	FBtns[4] = StopPxButton;
 	FFilters[4] = ftStopOrder;
-	FBtns[5] = BalanceButton;
-	FFilters[5] = ftActive;
-	FBtns[6] = FutBalanceButton;
-	FFilters[6] = ftActive;
 	DefaultMonitor = dmMainForm;
 }
 //---------------------------------------------------------------------------
@@ -94,18 +90,9 @@ OrderFilterEnum __fastcall TExecutionForm::SelectBtn(TObject *Sender)
 	{
 		if( FBtns[i] == Sender )
 		{
-			if( i == 5 || i == 6 ) ///< Web page
-			{
-				PageControl->ActivePageIndex = 1;
-				ShowBalanceWeb( i );
-				SelFilter = ftNone;
-			}
-			else
-			{
-				WebBrowser->Visible = false;
-				PageControl->ActivePageIndex = 0;
-				SelFilter = FFilters[i];
-			}
+			WebBrowser->Visible = false;
+			PageControl->ActivePageIndex = 0;
+			SelFilter = FFilters[i];
 			FBtns[i]->Selected  = true;
 		}
 		else
@@ -118,15 +105,11 @@ void __fastcall TExecutionForm::FilterButtonClick(TObject *Sender)
 {
 	FFilter = SelectBtn( Sender );
 	Application->ProcessMessages();
-	if( FFilter != ftNone )
-	{
-		OrderListView->OrderStore = gOrderStore;
-		OrderListView->Filter = FFilter;
-    }
-	if( GSimMatch == true && Sender == FillButton )
-		UploadButton->Visible = true;
-	else
-		UploadButton->Visible = false;
+	if( FFilter == ftNone )
+		return;
+
+	OrderListView->OrderStore = gOrderStore;
+	OrderListView->Filter = FFilter;
 }
 //---------------------------------------------------------------------------
 OrderFilterEnum	__fastcall TExecutionForm::GetFilterType( void )
@@ -157,30 +140,12 @@ void __fastcall TExecutionForm::SetFilterType( OrderFilterEnum Filter )
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::FormShow(TObject *Sender)
 {
-	if( InitTimer->Tag == 0 ) ///< Not init or change parent.
-	{
-		InitTimer->Tag = 1;
-		///< Set LeaderBoard  FutBalanceButton
-		if( GSimMatch == true  )
-		{
-			LeaderBoardButton->Visible = true;
-			FutBalanceButton->Visible = false;
-		}
-		else
-		{
+	if( InitTimer->Tag != 0 ) ///< Not init or change parent.
+		return;
 
-			if( GVIPServer == true )
-				LeaderBoardButton->Visible = true;
-			else
-				LeaderBoardButton->Visible = false;
-			if( gUser.AccountType == hatBoth )
-				FutBalanceButton->Visible = true;
-			else
-				FutBalanceButton->Visible = false;
-		}
-		OrderListView->SetColumns( FColumns );
-		InitTimer->Enabled = true;
-	}
+	InitTimer->Tag = 1;
+	OrderListView->SetColumns( FColumns );
+	InitTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::FormHide(TObject *Sender)
@@ -586,54 +551,11 @@ void __fastcall TExecutionForm::TWSEBalanceURL( String& URL )
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 {
-	WebBrowser->Visible = true;
-	if( GSimMatch == false )
-	{
-		String URL;
-
-		if( i == 5 )
-		{
-			if( gUser.AccountType == hatTAIFEX )
-				TAIFEXBalanceURL( URL );
-			else
-				TWSEBalanceURL( URL );
-		}
-		else ///< Fut Balance
-			TAIFEXBalanceURL( URL );
-		WebBrowser->Navigate( URL.c_str() );
-	}
-	else
-	{
-		String URL;
-
-		URL.printf( L"%s?mobile=%s&login_token=%s", g_Config.GetReportURL(), gUser.UserID, gUser.Token );
-		WebBrowser->Navigate( URL.c_str() );
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TExecutionForm::UploadButtonClick(TObject *Sender)
-{
-	String  JSON;
-
-	UploadButton->Enabled = false;
-	int     FilledCount = OrderListView->GetJSON( JSON );
-	g_Config.UploadFilled( JSON ,FilledCount );
-	UploadButton->Enabled = true;
-	FilterButtonClick( BalanceButton );
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::SetVisible( bool IsVisible )
 {
 	this->Visible = IsVisible;
-}
-//---------------------------------------------------------------------------
-void __fastcall TExecutionForm::LeaderBoardButtonClick(TObject *Sender)
-{
-	if( LeaderBoardForm->Visible == false )
-	{
-		LeaderBoardForm->LoadProperties();
-		LeaderBoardForm->Show();
-	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::RoundFormExLockIconClick(TObject *Sender)
