@@ -1020,23 +1020,6 @@ void __fastcall THoldOpenInterestForm::SaveToClipboard( void )
 	delete ScreenBmpPtr;
 }
 //---------------------------------------------------------------------------
-void __fastcall THoldOpenInterestForm::IMButtonClick(TObject *Sender)
-{
-	if( RoomiForm == NULL )
-	{
-		MainForm->IMButtonClick( NULL );
-		if( RoomiForm != NULL )
-			WinSleep( 150 );
-	}
-	SaveToClipboard();
-	if( RoomiForm != NULL )
-	{
-		if( RoomiForm->Visible == false )
-			RoomiForm->Show();
-		RoomiForm->LoadFromClipboard();
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall THoldOpenInterestForm::HoldPosition( void )
 {
 	OIList->Items->Clear();
