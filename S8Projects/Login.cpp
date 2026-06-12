@@ -233,7 +233,9 @@ bool __fastcall TLoginForm::Logon( void )
 		return false;
 	}
 
-	gUser.UserID   = IDEdit->Text;
+	gUser.UserID		= IDEdit->Text;
+	gUser.LoginUserID 	= IDEdit->Text;
+	gUser.AccountType   = hatTWSE;
 	StatusLabel->Caption = L"µn¤J¦¨¥\!";
 	return true;
 }
