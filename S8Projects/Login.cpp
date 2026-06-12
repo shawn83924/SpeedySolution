@@ -23,7 +23,6 @@ TLoginForm *LoginForm;
 extern TUnifyUser gUser;
 extern bool       GIsTestingMode;
 extern bool       GSimMatch;
-extern bool       gIsExpired;
 extern bool       GVIPServer;
 //---------------------------------------------------------------------------
 const int FREE_DAYS = 3;
@@ -87,79 +86,6 @@ void __fastcall TLoginForm::OnNCHitTest( TMessage &Message )
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::CheckFreeTry( void )
 {
-	if( gIsExpired == true ) ///< Needs check N Days free use.
-	{
-		UFC::AnsiString Today;
-		UFC::GetYYYYMMDD( Today );
-		String LastDate( Today.c_str() );
-		String DayCount( L"1");
-		String Msg, Val;
-
-		///< Value not exists, means it's first time use. logon oK!
-		if( g_Config.GetServerValue( "LastDate", LastDate, Today.c_str()) == false ||
-			g_Config.GetServerValue( "DayCount", DayCount, "1" ) == false )
-		{
-			g_Config.SetServerValue( "LastDate", Today.c_str() );
-			g_Config.SetServerValue( "DayCount", "1" );
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, "謝謝您的試用!每個月您可以使用三天練功房." );
-		}
-		else
-		{
-			int DC = DayCount.ToInt();
-			int DT = LastDate.ToInt();
-			int DTN = Today.ToInt();
-			int LeavesDay;
-
-			if( DT == DTN )///< Same day, pass!
-			{
-				if( DC > FREE_DAYS )
-				{
-					StatusLabel->Caption = L"這個月的三天免費試用已用完!想無限制使用盤模擬功能,請訂閱正式版.";
-					return false;
-				}
-				else
-				{
-					LeavesDay = FREE_DAYS - DC;
-					if( LeavesDay > 0 )
-						Msg.printf( L"謝謝您的試用!除了今天之外,這個月您還可以試用%d天.", LeavesDay ); ///< Pass!
-					else
-						Msg.printf( L"謝謝您的試用!今天是你這個月的最後一天試用,下個月您又可以試用三天.");
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
-				}
-			}
-			else
-			{
-			   if( DTN/100 - DT/100 >= 1 ) ///< Next month, new N free days.
-			   {
-				  g_Config.SetServerValue( "LastDate", Today.c_str() );
-				  g_Config.SetServerValue( "DayCount", "1" );
-				  TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, "謝謝您的試用!每個月您可以使用三天練功房." );
-			   }
-			   else
-			   {
-				  if( DC < FREE_DAYS )
-				  {
-					  DC++;
-					  Val.printf( L"%d", DC );
-					  g_Config.SetServerValue( "LastDate", Today.c_str() );
-					  g_Config.SetServerValue( "DayCount", Val);
-					  LeavesDay = FREE_DAYS - DC;
-					  if( LeavesDay > 0 )
-						  Msg.printf( L"謝謝您的試用!除了今天之外,這個月您還可以試用%d天.", LeavesDay ); ///< Pass!
-					  else
-						  Msg.printf( L"謝謝您的試用!今天是你這個月的最後一天試用,下個月您又可以試用三天.");
-					  TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
-				  }
-				  else
-				  {
-					  StatusLabel->Caption = L"這個月的三天免費試用已用完!想無限制使用盤模擬功能,請訂閱正式版.";
-					  return false;
-				  }
-
-			   }
-			}
-		}
-	}
 	return true;
 }
 //---------------------------------------------------------------------------
@@ -210,12 +136,6 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 			LoginButton->Enabled = true;
 			return;
 		}
-	}
-	if (gIsExpired == true && NeedLicense == true) ///< Traning room production. but no license
-	{
-		LoginButton->Enabled = true;
-		StatusLabel->Caption = L"謝謝您的試用!想開啟實盤模擬功能,請訂閱正式版.";
-		return;
 	}
 	ActivityIndicator->Visible = true;
 	ActivityIndicator->Animate = true;

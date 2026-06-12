@@ -565,9 +565,6 @@ public:
 	bool SetServerValue( const String& Name, const String& Value );
 	bool TokenExpired( void );
 	bool UploadFilled( const String& Items, int FC );
-	bool ReloadUserInfo( void );
-	void LoadUserInfo( TJSONObject *lpRoot );
-	bool UserRightsInfo( void );
 	void GetSignal( int h, int m, UFC::AnsiString& Signal );
 	int  GetThroughput( const UFC::AnsiString& Account );
 
