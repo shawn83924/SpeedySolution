@@ -152,11 +152,22 @@ void __fastcall TContractViewerForm::AddCatalog( void )
 void __fastcall TContractViewerForm::AddSymbols(  TLabel* StatusLabel  )
 {
 	CMarketDataStore = gMarketDataStore;
-	for( int i = 0; i < CMarketDataStore->ExchangeCount(); i++ )
+	if( CMarketDataStore == NULL )
+	{
+		UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols aborted: gMarketDataStore is NULL" );
+		return;
+	}
+
+	int ExchangeCount = CMarketDataStore->ExchangeCount();
+	UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols begin, ExchangeCount=%d", ExchangeCount );
+	for( int i = 0; i < ExchangeCount; i++ )
 	{
 		String Exchange( CMarketDataStore->GetExchange(i).c_str() );
+		AnsiString AnsiEx( Exchange );
 
-		if( g_Config.SupportExchange( Exchange ) == true )
+		bool IsSupported = g_Config.SupportExchange( Exchange );
+		UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols exchange[%d/%d]=%s, supported=%d", i + 1, ExchangeCount, AnsiEx.c_str(), IsSupported ? 1 : 0 );
+		if( IsSupported == true )
 		{
 			if( StatusLabel != NULL )
 			{
@@ -166,11 +177,20 @@ void __fastcall TContractViewerForm::AddSymbols(  TLabel* StatusLabel  )
 				Application->ProcessMessages();
 			}
 			if( Exchange == L"TAIFEX" || Exchange == "TFX" )
+			{
+				UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols -> AddTAIFEX(%s)", AnsiEx.c_str() );
 				AddTAIFEX( Exchange );
+				UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols <- AddTAIFEX(%s)", AnsiEx.c_str() );
+			}
 			else if(  Exchange == "TWSE" || Exchange == "OTC"  )
+			{
+				UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols -> AddStock(%s)", AnsiEx.c_str() );
 				AddStock( Exchange );
+				UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols <- AddStock(%s)", AnsiEx.c_str() );
+			}
 		}
 	}
+	UFC::BufferedLog::Printf( "[ContractViewer] AddSymbols end" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractViewerForm::ClearList( TStringList* ClearKeys )
@@ -195,6 +215,7 @@ void __fastcall TContractViewerForm::AddTAIFEX( String Exchange )
 {
 	UFC::PHashedList<UFC::AnsiString, BasicInformation*>* ExchangeSymbols;
 	AnsiString AnsiExchange( Exchange );
+	UFC::BufferedLog::Printf( "[ContractViewer] AddTAIFEX begin, Exchange=%s", AnsiExchange.c_str() );
 
 	if((ExchangeSymbols = CMarketDataStore->GetSymbolsByExchange( AnsiExchange.c_str() )) != NULL )
 	{
@@ -243,16 +264,22 @@ void __fastcall TContractViewerForm::AddTAIFEX( String Exchange )
 			}
 			Info = ExchangeSymbols->Next();
 			CCount++;
+			if( CCount % 1000 == 0 )
+				UFC::BufferedLog::Printf( "[ContractViewer] AddTAIFEX progress, Exchange=%s, Count=%d", AnsiExchange.c_str(), CCount );
 			if( CCount%MSG_PUMP_TIMES == 0 )
 				Application->ProcessMessages();
 		}
+		UFC::BufferedLog::Printf( "[ContractViewer] AddTAIFEX end, Exchange=%s, Total=%d", AnsiExchange.c_str(), CCount - 1 );
 	}
+	else
+		UFC::BufferedLog::Printf( "[ContractViewer] AddTAIFEX no symbols, Exchange=%s", AnsiExchange.c_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractViewerForm::AddStock( String Exchange )
 {
 	UFC::PHashedList<UFC::AnsiString, BasicInformation*>* ExchangeSymbols;
 	AnsiString AnsiExchange( Exchange );
+	UFC::BufferedLog::Printf( "[ContractViewer] AddStock begin, Exchange=%s", AnsiExchange.c_str() );
 
 	if((ExchangeSymbols = CMarketDataStore->GetSymbolsByExchange( AnsiExchange.c_str() )) != NULL )
 	{
@@ -287,10 +314,15 @@ void __fastcall TContractViewerForm::AddStock( String Exchange )
 			}
 			Info = ExchangeSymbols->Next();
 			CCount++;
+			if( CCount % 1000 == 0 )
+				UFC::BufferedLog::Printf( "[ContractViewer] AddStock progress, Exchange=%s, Count=%d", AnsiExchange.c_str(), CCount );
 			if( CCount%MSG_PUMP_TIMES == 0 )
 				Application->ProcessMessages();
 		}
+		UFC::BufferedLog::Printf( "[ContractViewer] AddStock end, Exchange=%s, Total=%d", AnsiExchange.c_str(), CCount - 1 );
 	}
+	else
+		UFC::BufferedLog::Printf( "[ContractViewer] AddStock no symbols, Exchange=%s", AnsiExchange.c_str() );
 }
 //---------------------------------------------------------------------------
 int __fastcall TContractViewerForm::OpenTBarOrderBookForm( String Exchange, String Symbol, int Index )
@@ -1703,4 +1735,3 @@ void __fastcall TContractViewerForm::FormShow(TObject *Sender)
 	ResultListBox->SetFocus();
 }
 //---------------------------------------------------------------------------
-
