@@ -317,3 +317,16 @@ void __fastcall TLoginForm::CalendarButtonClick(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TLoginForm::LoginSettingButtonClick(TObject *Sender)
+{
+	ShellExecute(
+		Handle,
+		L"open",
+		L"LiteService.ini",
+		NULL,
+		NULL,
+		SW_SHOWNORMAL
+	);
+}
+//---------------------------------------------------------------------------
+

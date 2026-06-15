@@ -27,6 +27,7 @@
 #include "GraphButton.h"
 #include <Vcl.Buttons.hpp>
 #include "AlignEdit.h"
+#include <ShellAPI.hpp>
 //---------------------------------------------------------------------------
 class TLoginForm : public TForm
 {
@@ -49,6 +50,7 @@ __published:	// IDE-managed Components
 	TAlignEdit *IDEdit;
 	TAlignEdit *AccountEdit;
 	TAlignEdit *PasswordEdit;
+	TButton *LoginSettingButton;
 	void __fastcall LoginButtonClick(TObject *Sender);
 	void __fastcall WaitTimerTimer(TObject *Sender);
 	void __fastcall ExitButtonClick(TObject *Sender);
@@ -58,6 +60,7 @@ __published:	// IDE-managed Components
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall CalendarButtonClick(TObject *Sender);
 	void __fastcall AtAOELabelClick(TObject *Sender);
+	void __fastcall LoginSettingButtonClick(TObject *Sender);
 private:	// User declarations
 	int FWaitCount;
 	String FVersion;

@@ -8503,6 +8503,15 @@ object LoginForm: TLoginForm
     TabOrder = 8
     TabStop = True
   end
+  object LoginSettingButton: TButton
+    Left = 496
+    Top = 424
+    Width = 225
+    Height = 25
+    Caption = #30331#20837#35373#23450
+    TabOrder = 9
+    OnClick = LoginSettingButtonClick
+  end
   object WaitTimer: TTimer
     Enabled = False
     Interval = 100
