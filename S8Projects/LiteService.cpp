@@ -25,7 +25,6 @@ void TBrokerUser::ClearAccounts( void )
 //--------------------------------------------------------------------------
 TLiteService::TLiteService()
 {
-	LoadConfigSetting("LiteService.ini");
 }
 //---------------------------------------------------------------------------
 bool TLiteService::LoginBroker( const String& ID, const String& Password, String& Msg )
@@ -39,6 +38,7 @@ bool TLiteService::LoginBroker(
 	const String& Password,
 	String& Msg )
 {
+	LoadConfigSetting("LiteService.ini");
 	gOrderStore->OnConnect = OrderStoreConnect;
 	gOrderStore->OnLogonOK = OrderStoreLogonOK;
 	gOrderStore->OnLogonFailed = OrderStoreLogonFailed;
