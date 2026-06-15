@@ -168,20 +168,25 @@ void __fastcall TCMarketDataStore::Disconnect( void )
 //---------------------------------------------------------------------------
 void __fastcall TCMarketDataStore::DownloadContract( void )
 {
-	if( FConnection != NULL && FConnection->IsConnected() )
+	if( FConnection == NULL || !FConnection->IsConnected() )
 	{
-		UFC::AnsiString Exchange;
-		UFC::PHashedList<UFC::AnsiString, ExchangeInfo*>* ExInfos;
-
-		LoadExchangeTable(); ///< Build Exchange,Product table from Exchange.ini
-		FConnection->ClearSupportExchange();
-		for( int i = 0; i < FExchangeTable.ItemCount(); i++ )
-		{
-			if( FExchangeTable.GetItem( i, Exchange, ExInfos ) == true )
-				FConnection->AddSupportExchange( Exchange );
-		}
-		FConnection->DownloadContract();
+		UFC::BufferedLog::Printf("DataConnection is NULL or disconnect, download contract fail...");
+		return;
 	}
+
+	UFC::AnsiString Exchange;
+	UFC::PHashedList<UFC::AnsiString, ExchangeInfo*>* ExInfos;
+
+	LoadExchangeTable(); ///< Build Exchange,Product table from Exchange.ini
+	FConnection->ClearSupportExchange();
+	for( int i = 0; i < FExchangeTable.ItemCount(); i++ )
+	{
+		if( FExchangeTable.GetItem( i, Exchange, ExInfos ) == true )
+			FConnection->AddSupportExchange( Exchange );
+	}
+	UFC::BufferedLog::Printf("Start Download Contract...");
+	FConnection->DownloadContract();
+	UFC::BufferedLog::Printf("Download Contract Finished...");
 }
 //---------------------------------------------------------------------------
 void TCMarketDataStore::SetLanguage( Language lang )
