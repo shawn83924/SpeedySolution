@@ -47,16 +47,17 @@ bool TLiteService::LoginBroker(
 	FStockAccount = Account;
 	FPassword = Password;
 
-	gOrderStore->ID = FID;
-	gOrderStore->TWSEAccount = FStockAccount;
-	gOrderStore->Password = FPassword;
-	gOrderStore->IP = FIP;
-	gOrderStore->Port = FPort;
-	gOrderStore->TWSEBrokerID = FStockBrokerID;
-	gOrderStore->BrokerID = FFutBrokerID;
-	gOrderStore->ClearMemberID = FClearMemberID;
-	gOrderStore->Version       = LoginForm->Version;
-	gOrderStore->TryVersion    = FTryVersion;
+	gOrderStore->ID 			= FID;
+	gOrderStore->TWSEAccount 	= FStockAccount;
+	gOrderStore->Password 		= FPassword;
+	gOrderStore->Account 		= FFutAccount;
+	gOrderStore->IP 			= FIP;
+	gOrderStore->Port 			= FPort;
+	gOrderStore->TWSEBrokerID 	= FStockBrokerID;
+	gOrderStore->BrokerID 		= FFutBrokerID;
+	gOrderStore->ClearMemberID 	= FClearMemberID;
+	gOrderStore->Version       	= LoginForm->Version;
+	gOrderStore->TryVersion    	= FTryVersion;
     String LogFilePrefix;
 	LogFilePrefix.printf(L"SU_%s", FID);
 	gOrderStore->OrderLogFileNamePrefix = LogFilePrefix;
@@ -122,6 +123,11 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 		FFutBrokerID = value.c_str();
 	else
 		UFC::BufferedLog::Printf( " 找不到 FutBrokerID" );
+
+	if(config.GetValue( "Setting","FutAccount", value))
+		FFutAccount = value.c_str();
+	else
+		UFC::BufferedLog::Printf( " 找不到 FutAccount" );
 
 	if(config.GetValue( "Setting","StockBrokerID", value))
 		FStockBrokerID = value.c_str();
