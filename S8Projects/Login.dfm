@@ -8195,7 +8195,7 @@ object LoginForm: TLoginForm
     Top = 195
     Width = 240
     Height = 30
-    TextHint = 'Account'
+    TextHint = 'StockAccount'
     EditorHeight = 23
     ImagePicture.Data = {
       0954506E67496D61676589504E470D0A1A0A0000000D49484452000000800000
