@@ -788,6 +788,7 @@ STDMETHODIMP TOrderConnectionImpl::Recover3(BSTR Date, BSTR BeginTime, RecoverTy
 
 		FConnection->Recover( AnsiBeginTime.c_str(), (RecoverDataType) Type, (RecoverMarket) Market, (RecoverSession)Session, AnsiDate.c_str() );
 	}
+    return S_OK;
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::set_SendFillZeroQty(VARIANT_BOOL Param1)
