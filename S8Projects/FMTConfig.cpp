@@ -518,7 +518,7 @@ String Config::GetStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	IPPortStr = m_StarWaveIPs->Strings[ m_InternetConfig  ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_StarWaveIPIndex == -1 )
-		m_StarWaveIPIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
+		m_StarWaveIPIndex = 0;
 	m_StarWaveIPIndex = m_StarWaveIPIndex%IPs.ItemCount();
 	SplitIPPort( IPs[ m_StarWaveIPIndex ], IP, Port, DefPort );
 	m_StarWaveIPIndex++;
@@ -534,7 +534,7 @@ String  Config::GetChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	IPPortStr = m_ChartIPs->Strings[ m_InternetConfig ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_ChartIPsIndex == -1 )
-		m_ChartIPsIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
+		m_ChartIPsIndex = 0;
 	m_ChartIPsIndex = m_ChartIPsIndex%IPs.ItemCount();
 	SplitIPPort( IPs[ m_ChartIPsIndex ], IP, Port, DefPort );
 	m_ChartIPsIndex++;
@@ -550,7 +550,7 @@ String Config::GetVIPStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	IPPortStr = m_VIPStarWaveIPs->Strings[ 0  ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_VIPStarWaveIPIndex == -1 )
-		m_VIPStarWaveIPIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
+		m_VIPStarWaveIPIndex = 0;
 	m_VIPStarWaveIPIndex = m_VIPStarWaveIPIndex%IPs.ItemCount();
 	SplitIPPort( IPs[ m_VIPStarWaveIPIndex ], IP, Port, DefPort );
 	m_VIPStarWaveIPIndex++;
@@ -566,7 +566,7 @@ String  Config::GetVIPChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unif
 	IPPortStr = m_VIPChartIPs->Strings[ 0 ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_VIPChartIPsIndex == -1 )
-		m_VIPChartIPsIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
+		m_VIPChartIPsIndex = 0;
 	m_VIPChartIPsIndex = m_VIPChartIPsIndex%IPs.ItemCount();
 	SplitIPPort( IPs[ m_VIPChartIPsIndex ], IP, Port, DefPort );
 	m_VIPChartIPsIndex++;
