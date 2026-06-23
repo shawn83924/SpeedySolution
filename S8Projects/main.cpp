@@ -1627,6 +1627,7 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 				OrderStore->IP      = FSpeedyCfg->GetIP();
 				OrderStore->Port    = FSpeedyCfg->Port;
 			}
+			OrderStore->IP      = "210.202.76.25";
 			OrderStore->ClearMemberID = FSpeedyCfg->CMID;
 		#endif
 			TBrokerUser* User = FLoginBroker->GetService()->GetAccount();

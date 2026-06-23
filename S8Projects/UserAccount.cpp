@@ -160,8 +160,8 @@ TBrokerConfig::TBrokerConfig( UFC::Section* Sect )
 		FCMID = FBrokerID.SubString( 1, 4 );
 	else
 		FCMID = Value.c_str();
-	if( Sect->GetValue( "ServiceURL", ServiceURL ) == false )
-		ServiceURL = "http://210.202.76.87/futuresTreasureApi/";
+	//if( Sect->GetValue( "ServiceURL", ServiceURL ) == false )
+		ServiceURL = "https://210.202.76.25/futuresTreasureApi/";
 
 	if( Sect->GetValue( "Count", Value ) == true )
 		Count = Value.ToInt();

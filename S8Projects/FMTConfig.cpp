@@ -370,19 +370,26 @@ void Config::LoadStarWaveSetting( const char* FileName ) ///< Speedy Unify
 	else
 		Session = "SimHost"; ///< Simulator
 	///< Load StraWave Server connection information
-	LoadCHSetting( SettingsFile, Session, "MD", "60.250.82.135", m_StarWaveIPs );
+	//LoadCHSetting( SettingsFile, Session, "MD", "60.250.82.135", m_StarWaveIPs );
+	m_StarWaveIPs->Add("210.202.76.25");
 	///< Load Chart Server connection information
-	LoadCHSetting( SettingsFile, Session, "Chart", "60.250.82.135", m_ChartIPs );
+	//LoadCHSetting( SettingsFile, Session, "Chart", "60.250.82.135", m_ChartIPs );
+	m_ChartIPs->Add("210.202.76.25");
 	///< Load VIP StraWave Server connection information
-	LoadCHSetting( SettingsFile, "VIPServer", "MD", "60.250.82.135", m_VIPStarWaveIPs );
+	//LoadCHSetting( SettingsFile, "VIPServer", "MD", "60.250.82.135", m_VIPStarWaveIPs );
+	m_VIPStarWaveIPs->Add("210.202.76.25");
 	///< Load VIP　Chart Server connection information
-	LoadCHSetting( SettingsFile, "VIPServer", "Chart", "60.250.82.135", m_VIPChartIPs );
+	//LoadCHSetting( SettingsFile, "VIPServer", "Chart", "60.250.82.135", m_VIPChartIPs );
+	m_VIPChartIPs->Add("210.202.76.25");
 	///< Load Simulator Order Server connection information
-	LoadCHSetting( SettingsFile, Session, "Order", "60.250.82.135", m_SimOrderIPs );
+	//LoadCHSetting( SettingsFile, Session, "Order", "60.250.82.135", m_SimOrderIPs );
+	m_SimOrderIPs->Add("210.202.76.25");
 	///< Load MD/Chart Server connection name.
 	LoadCHSetting( SettingsFile, Session, "Name", "正式環境", m_ChNames );
+
 	///< Load Max Lots setting
 	LoadCHSetting( SettingsFile, Session, "MaxLots", "10", m_ChMaxLots );
+
 	///<  Load URLs for Speedy Unify web services.
 	if( GIsTestingMode == true )
 		Sect = "Test";
