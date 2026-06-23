@@ -70,6 +70,8 @@ __published:	// IDE-managed Components
 	TGraphButton *FutBalanceButton;
 	TPanel *BalancePanel;
 	TLabel *BalanceLabel;
+	TLabel *DisclaimerLabel;
+	TScrollBox *DisclaimerScrollBox;
 	void __fastcall FilterButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall OrderListViewProgress(TObject *Sender, int CurrentItemNo, int TotalItemCount);
@@ -123,6 +125,8 @@ private:	// User declarations
 	void __fastcall  TAIFEXBalanceURL( String& URL );
 	void __fastcall  TWSEBalanceURL( String& URL );
 	void __fastcall OnBalanceThreadFinish(TObject *Sender, const String &Balance);
+    String __fastcall GetDisclaimer(const char* FileName);
+    int  __fastcall CountNewLines(const String &s);
 public:		// User declarations
 	__fastcall TExecutionForm(TComponent* Owner );
 	OrderFilterEnum	__fastcall GetFilterType( void );

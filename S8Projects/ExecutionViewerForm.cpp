@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+Ôªø//---------------------------------------------------------------------------
 #include <vcl.h>
 #include "main.h"
 #pragma hdrstop
@@ -334,8 +334,8 @@ void __fastcall TExecutionForm::DeleteMenuItemClick(TObject *Sender)
 	catch( UFC::Exception& execp )
 	{
 		String Msg;
-		Msg.printf( L"ßR≥Ê•¢±—[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< ßR≥Ê•¢±—"
+		Msg.printf( L"Âà™ÂñÆÂ§±Êïó[%s]", execp.what() );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< Âà™ÂñÆÂ§±Êïó"
 	}
 }
 //---------------------------------------------------------------------------
@@ -348,8 +348,8 @@ void __fastcall TExecutionForm::QueryMenuItemClick(TObject *Sender)
 	catch( UFC::Exception& execp )
 	{
 		String Msg;
-		Msg.printf( L"¨d∏ﬂ•¢±—[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< ¨d∏ﬂ•¢±—"
+		Msg.printf( L"Êü•Ë©¢Â§±Êïó[%s]", execp.what() );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );///< Êü•Ë©¢Â§±Êïó"
 	}
 }
 //---------------------------------------------------------------------------
@@ -456,7 +456,7 @@ void __fastcall TExecutionForm::QueryButtonClick(TObject *Sender)
 		catch( ... )
 		{
 			edtPrice->Text = L"";
-			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"¶^≥¯¨d∏ﬂø˘ª~[§£•øΩT™∫ª˘ÆÊ]" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"ÂõûÂ†±Êü•Ë©¢ÈåØË™§[‰∏çÊ≠£Á¢∫ÁöÑÂÉπÊ†º]" );
 			return;
 		}
 	}
@@ -586,28 +586,62 @@ void __fastcall TExecutionForm::TWSEBalanceURL( String& URL )
 void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 {
 	WebBrowser->Visible = true;
-	if( GSimMatch == false )
-	{
-		String URL;
-
-		 ///< Fut Balance
-		TAIFEXBalanceURL( URL );
-		WebBrowser->Navigate( URL.c_str() );
-		BalanceLabel->Caption="•ª§Èæl√B: ≈™®˙§§...";
-
-		if( FBalanceThread == NULL || FBalanceThread->Finished )
-        {
-			FBalanceThread = new TGetBalanceThread();
-			FBalanceThread->OnFinish = OnBalanceThreadFinish;
-		}
-	}
-	else
+	if( GSimMatch != false )
 	{
 		String URL;
 
 		URL.printf( L"%s?mobile=%s&login_token=%s", g_Config.GetReportURL(), gUser.UserID, gUser.Token );
 		WebBrowser->Navigate( URL.c_str() );
+		return;
 	}
+
+	String URL;
+
+	///< Fut Balance
+	TAIFEXBalanceURL( URL );
+	WebBrowser->Navigate( URL.c_str() );
+	BalanceLabel->Caption="Êú¨Êó•È§òÈ°ç: ËÆÄÂèñ‰∏≠...";
+
+	String disclaimerStr = GetDisclaimer("FMTMD.ini");
+	DisclaimerLabel->Caption = disclaimerStr;
+	int lineCount = CountNewLines(disclaimerStr) + 1;
+	int lineHeight = DisclaimerLabel->Canvas->TextHeight("A");
+	DisclaimerLabel->Height = lineHeight * lineCount;
+
+	if( FBalanceThread == NULL || FBalanceThread->Finished )
+	{
+		FBalanceThread = new TGetBalanceThread();
+		FBalanceThread->OnFinish = OnBalanceThreadFinish;
+	}
+}
+//---------------------------------------------------------------------------
+String __fastcall TExecutionForm::GetDisclaimer(const char* FileName)
+{
+	UFC::UiniFile   MDSettingsFile( FileName, true );
+	UFC::AnsiString Value;
+	if(MDSettingsFile.GetValue( "Disclaimer", "ExecutionForm", Value ) == FALSE)
+	{
+		UFC::BufferedLog::Printf("ExecutionForm can't get disclaimer");
+		return "";
+	}
+
+	return StringReplace(Value.c_str(), "\\r\\n", "\r\n", TReplaceFlags() << rfReplaceAll);
+}
+//---------------------------------------------------------------------------
+int __fastcall TExecutionForm::CountNewLines(const String &s)
+{
+    int count = 0;
+    int pos = 1;
+
+    int found;
+
+	while ((found = Pos("\r\n", s, pos)) > 0)
+    {
+        count++;
+        pos = found + 2; // Ë∑≥ÈÅé \r\n
+    }
+
+	return count;
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::UploadButtonClick(TObject *Sender)
@@ -649,7 +683,7 @@ void __fastcall TExecutionForm::RoundFormExLockIconClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::OnBalanceThreadFinish(TObject *Sender, const String &Balance)
 {
-	BalanceLabel->Caption = L"•ª§Èæl√B: " + Balance;
+	BalanceLabel->Caption = L"Êú¨Êó•È§òÈ°ç: " + Balance;
 	FBalanceThread = NULL;
 }
 //---------------------------------------------------------------------------
@@ -674,7 +708,7 @@ void __fastcall TGetBalanceThread::Execute(void)
 	}
 	catch(...)
 	{
-		FBalance = L"≈™®˙•¢±—";
+		FBalance = L"ËÆÄÂèñÂ§±Êïó";
 	}
 
 	Synchronize(&DoFinish);
