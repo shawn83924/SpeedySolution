@@ -2699,7 +2699,7 @@ void __fastcall TMainForm::CAButtonClick(TObject *Sender)
 			CASettingForm->CAPasswordEdit->Text = FCAChecker->FPFXFilePassword;
 		else
 			CASettingForm->CAPasswordEdit->Text = L"";
-		SetWindowPos( CASettingForm->Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE);
+
 		if( CASettingForm->ShowModal() == mrOk )
 		{
 			String Reason;

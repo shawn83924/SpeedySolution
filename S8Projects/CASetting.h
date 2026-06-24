@@ -40,6 +40,7 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TButton *OKButton;
 	TButton *CancelButton;
+	TButton *ApplyCAButton;
 	void __fastcall BrowseButtonClick(TObject *Sender);
 	void __fastcall CheckCAButtonClick(TObject *Sender);
 	void __fastcall QuiteButtonClick(TObject *Sender);
@@ -47,8 +48,11 @@ __published:	// IDE-managed Components
 	void __fastcall OKButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
+	void __fastcall ApplyCAButtonClick(TObject *Sender);
 private:	// User declarations
 	bool FCloseMainForm;
+private:
+    AnsiString __fastcall GetApplyCAUrl(const char* FileName);
 public:		// User declarations
 	__fastcall TCASettingForm(TComponent* Owner);
 	__property bool CloseMainForm = { read = FCloseMainForm };

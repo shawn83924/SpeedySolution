@@ -96,4 +96,21 @@ void __fastcall TCASettingForm::FormCloseQuery(TObject *Sender, bool &CanClose)
     FCloseMainForm = true;
 }
 //---------------------------------------------------------------------------
+void __fastcall TCASettingForm::ApplyCAButtonClick(TObject *Sender)
+{
+	String url = GetApplyCAUrl("FMTMD.ini");
+	ShellExecute(0, L"open", url.c_str(), NULL, NULL, SW_SHOWNORMAL);
+}
+//---------------------------------------------------------------------------
+AnsiString __fastcall TCASettingForm::GetApplyCAUrl(const char* FileName)
+{
+	UFC::UiniFile   MDSettingsFile( FileName, true );
+	UFC::AnsiString Value;
+	if(MDSettingsFile.GetValue( "CA", "ApplyUrl", Value ) == FALSE)
+	{
+		UFC::BufferedLog::Printf("CASettingForm can't get apply Url");
+		return "";
+	}
 
+	return Value.c_str();
+}
