@@ -115,6 +115,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 ,FSpeedyCfg( NULL )
 ,FUILoaded( false )
 ,FForceClose( false )
+,FCloseDirectly( false )
 ,FRequestWeb( false )
 ,FNetBalance( 0 )
 ,FLoginUserStr( L"交易帳號:尚未登入" )
@@ -1209,6 +1210,11 @@ void __fastcall TMainForm::FormClose(TObject *Sender, TCloseAction &Action)
 		{
 			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"交易主機斷線,請重新啟動程式" );
 			SaveProperties( );
+			CloseAll();
+		}
+		if( FCloseDirectly == true )
+		{
+            SaveProperties( );
 			CloseAll();
 		}
 		else if( TUnifyDlgs::AskYesNoDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"確定要登出並離開程式?") == true )
@@ -2673,6 +2679,12 @@ void __fastcall TMainForm::SetChartBKColor(bool checkLightButton)
 	ContractViewerForm->LoadChartColor( NULL );
 }
 //---------------------------------------------------------------------------
+void __fastcall TMainForm::CloseDirectly( void )
+{
+	FCloseDirectly = true;
+    Close();
+}
+//---------------------------------------------------------------------------
 void __fastcall TMainForm::CAButtonClick(TObject *Sender)
 {
 	if( GSimMatch == false ) ///< Production
@@ -2709,6 +2721,11 @@ void __fastcall TMainForm::CAButtonClick(TObject *Sender)
 				CAButton->ButtonText = L"憑證讀取成功";
 				g_Config.Save();
 				CheckAgreement();
+			}
+
+			if(CASettingForm->CloseMainForm)
+			{
+				CloseDirectly();
 			}
 		}
 		delete CASettingForm;

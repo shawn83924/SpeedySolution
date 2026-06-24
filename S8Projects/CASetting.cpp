@@ -15,6 +15,7 @@ TCASettingForm *CASettingForm;
 //---------------------------------------------------------------------------
 __fastcall TCASettingForm::TCASettingForm(TComponent* Owner)
 	: TForm(Owner)
+	,FCloseMainForm(false)
 {
 	RoundFormEx->Lockbox = false;
 }
@@ -75,6 +76,24 @@ void __fastcall TCASettingForm::OKButtonClick(TObject *Sender)
 void __fastcall TCASettingForm::FormShow(TObject *Sender)
 {
 	PageControl->ActivePage = CATabSheet;
+}
+//---------------------------------------------------------------------------
+void __fastcall TCASettingForm::FormCloseQuery(TObject *Sender, bool &CanClose)
+{
+	if(MainForm->FCAChecker->CheckResult == true)
+	{
+		CanClose = true;
+		return;
+	}
+
+	if( TUnifyDlgs::AskYesNoDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"確定要登出並離開程式?") == false)
+	{
+		CanClose = false;
+        return;
+	}
+
+	CanClose = true;
+    FCloseMainForm = true;
 }
 //---------------------------------------------------------------------------
 

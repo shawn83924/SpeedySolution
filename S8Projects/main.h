@@ -381,7 +381,8 @@ private:
 	AnsiString               FID;
 	AnsiString               FPassword;
 	bool FDownloadOK;
-    bool FForceClose;
+	bool FForceClose;
+    bool FCloseDirectly;
 	bool FProxyLogon;
 	bool FRecovering;
 	bool FUILoaded;
@@ -471,6 +472,7 @@ private:
 	UFC::PHashMap<String,UFC::List<IOrderFilled*>*>  FFulledMap;
 	void __fastcall  TriggerFill( const String &Exchange, const String &Symbol, const String &OrderID, SideEnum Side, double Px,int Qty, OrderStatusEnum OrderStatus);
 	void __fastcall SetChartBKColor(bool checkLightButton);
+	void __fastcall CloseDirectly( void );
 public:
 	void __fastcall SubscribeFilled( const String &Exchange,const String &Symbol, IOrderFilled* Listener );
 	bool __fastcall UnsubscribeFilled( const String &Exchange,const String &Symbol, IOrderFilled* Listener );
