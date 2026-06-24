@@ -1,7 +1,7 @@
 object CASettingForm: TCASettingForm
   Left = 0
   Top = 0
-  BorderIcons = [biSystemMenu]
+  BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'CASettingForm'
   ClientHeight = 265
@@ -15,8 +15,9 @@ object CASettingForm: TCASettingForm
   OldCreateOrder = False
   Position = poScreenCenter
   Scaled = False
+  OnCloseQuery = FormCloseQuery
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 19
   object SNLabel: TLabel
     Left = 101

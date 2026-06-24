@@ -14,6 +14,7 @@
 #include <Vcl.ExtCtrls.hpp>
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.FileCtrl.hpp>
+#include "UnifyDlg.h"
 //---------------------------------------------------------------------------
 class TCASettingForm : public TForm
 {
@@ -45,9 +46,12 @@ __published:	// IDE-managed Components
 	void __fastcall CancelButtonClick(TObject *Sender);
 	void __fastcall OKButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
+	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 private:	// User declarations
+	bool FCloseMainForm;
 public:		// User declarations
 	__fastcall TCASettingForm(TComponent* Owner);
+	__property bool CloseMainForm = { read = FCloseMainForm };
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TCASettingForm *CASettingForm;
