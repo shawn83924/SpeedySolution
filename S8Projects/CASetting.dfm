@@ -38,6 +38,10 @@ object CASettingForm: TCASettingForm
     object CATabSheet: TTabSheet
       Caption = 'CATabSheet'
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       DesignSize = (
         461
         255)
@@ -1231,6 +1235,15 @@ object CASettingForm: TCASettingForm
         State = cbChecked
         TabOrder = 4
         StyleElements = []
+      end
+      object ApplyCAButton: TButton
+        Left = 8
+        Top = 165
+        Width = 78
+        Height = 28
+        Caption = #30003#35531#24977#35657
+        TabOrder = 5
+        OnClick = ApplyCAButtonClick
       end
     end
     object FileTabSheet: TTabSheet

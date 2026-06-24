@@ -9773,7 +9773,6 @@ object ExecutionForm: TExecutionForm
           Height = 130
           Align = alTop
           AutoSize = False
-          Caption = '123'
           Color = clRed
           Font.Charset = ANSI_CHARSET
           Font.Color = clRed
