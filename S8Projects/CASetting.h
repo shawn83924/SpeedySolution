@@ -15,6 +15,8 @@
 #include <Vcl.ComCtrls.hpp>
 #include <Vcl.FileCtrl.hpp>
 #include "UnifyDlg.h"
+#include "GraphButtonV2.h"
+#include <Vcl.Imaging.pngimage.hpp>
 //---------------------------------------------------------------------------
 class TCASettingForm : public TForm
 {
@@ -40,7 +42,7 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TButton *OKButton;
 	TButton *CancelButton;
-	TButton *ApplyCAButton;
+	TGraphButtonV2 *ApplyCAButton;
 	void __fastcall BrowseButtonClick(TObject *Sender);
 	void __fastcall CheckCAButtonClick(TObject *Sender);
 	void __fastcall QuiteButtonClick(TObject *Sender);

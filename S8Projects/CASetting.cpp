@@ -10,6 +10,7 @@
 #pragma package(smart_init)
 #pragma link "RoundFormEx"
 #pragma link "GraphButton"
+#pragma link "GraphButtonV2"
 #pragma resource "*.dfm"
 TCASettingForm *CASettingForm;
 //---------------------------------------------------------------------------
@@ -86,7 +87,7 @@ void __fastcall TCASettingForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 		return;
 	}
 
-	if( TUnifyDlgs::AskYesNoDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"確定要登出並離開程式?") == false)
+	if( TUnifyDlgs::AskYesNoDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"確定要關閉程式?") == false)
 	{
 		CanClose = false;
         return;
