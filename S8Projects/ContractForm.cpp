@@ -509,7 +509,7 @@ void __fastcall TContractInfoForm::AddStockNode( String Exchange )
 					SymbolInfo = AddContractNode( ProdNode, Info );
 					FSearchKeys->AddObject( SymbolInfo->DispName, SymbolInfo );
 				}
-				FSupportStock = true;
+				//FSupportStock = true;
 			}
 			Info = ExchangeSymbols->Next();
 			CCount++;
