@@ -502,7 +502,7 @@ void TMegaService::ProcessHoldPositionData( s888::CTradingAccount* AccountPtr )
 //---------------------------------------------------------------------------
 bool TMegaService::SignAgreememt( const String& Account, TCAChecker* CAChecker, String& Msg )
 {
-	bool Signed = true;
+	bool Signed = g_Config.GetIntegerProperty( Account, "Agreement", 0 );
 	bool Rtn = false;
 
 	if( Signed == false )
