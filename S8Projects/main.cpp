@@ -67,7 +67,7 @@ extern HINSTANCE   GHinstance;
 const int CAPTION_H = 50;
 const int BOTTOM_H  = 32;
 //---------------------------------------------------------------------------
-bool               gCheckCA   = false;  ///< Needs CA
+bool               gCheckCA   = true;  ///< Needs CA
 bool   			   gIsExpired = false;  ///< SpeedyUnify License Expired
 bool               gNuclear   = true;  ///< AOE Nuclear class
 bool               gTFT       = false; ///< Enable TFT functions. ( Turn on 創富 tab )
