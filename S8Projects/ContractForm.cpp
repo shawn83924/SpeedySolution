@@ -1311,14 +1311,17 @@ void __fastcall TContractInfoForm::AddToMDListMenuItemClick(TObject *Sender)
 void __fastcall TContractInfoForm::FutDrawGridMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-	int             Col,Row,Key;
+	if (!Shift.Contains( ssLeft ) && !Shift.Contains( ssRight ))
+		return;
+
+	int             Col, Row, Key;
 	TPoint          CurPos = Mouse->CursorPos;
+	CurPos = FutDrawGrid->ScreenToClient( CurPos );
+	FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	Key = Col*1000 + Row;
 
 	if( Shift.Contains( ssLeft ) )
     {
-	    CurPos = FutDrawGrid->ScreenToClient( CurPos );
- 		FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-	    Key = Col*1000 + Row;
        	if( !FFutSelectSet.Exists( Key ) )
         	FFutSelectSet.Add( Key );
    	    else
@@ -1331,7 +1334,9 @@ void __fastcall TContractInfoForm::FutDrawGridMouseDown(TObject *Sender, TMouseB
    	    FutDrawGrid->Invalidate();
 	}
 	else if( Shift.Contains( ssRight ) )
-		PopupMenu->Tag = 0;
+	{
+		FutDrawGridRightMouseDown(Col, Row, Key);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::OptDrawGridMouseDown(TObject *Sender, TMouseButton Button,
@@ -1458,20 +1463,20 @@ void __fastcall TContractInfoForm::LoadProperties( const String& Profile )
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::FutDrawGridClick(TObject *Sender)
 {
-	if( FPicker == true )
-	{
-		int             Col,Row;
-		TPoint          CurPos = Mouse->CursorPos;
-		UFC::AnsiString FutExchange,FutSymbol;
+	if( FPicker != true )
+		return;
 
-		CurPos = FutDrawGrid->ScreenToClient( CurPos );
-		FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-		ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
-		FPickSymbol = FutSymbol.c_str();
-		FPickExchange = FutExchange.c_str();
-		if( FPickSymbol.Length( ) > 0 && FPickExchange.Length( ) > 0 )
-			ModalResult = mrOk;
-	}
+	int             Col,Row;
+	TPoint          CurPos = Mouse->CursorPos;
+	UFC::AnsiString FutExchange, FutSymbol;
+
+	CurPos = FutDrawGrid->ScreenToClient( CurPos );
+	FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
+	FPickSymbol = FutSymbol.c_str();
+	FPickExchange = FutExchange.c_str();
+	if( FPickSymbol.Length( ) > 0 && FPickExchange.Length( ) > 0 )
+		ModalResult = mrOk;
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::OptDrawGridClick(TObject *Sender)
@@ -1761,6 +1766,29 @@ void __fastcall TContractInfoForm::SelectrFutSerials( int Page, int Index )
 	FutDrawGrid->TopRow = Index;
 }
 //---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::FutDrawGridRightMouseDown( int Col, int Row,	int Key )
+{
+	bool LeftinRange  = Col >= FutDrawGrid->Selection.Left;
+	bool RightinRange = Col <= FutDrawGrid->Selection.Right;
+	bool TopinRange	  = Row >= FutDrawGrid->Selection.Top;
+	bool DowninRange  = Row <= FutDrawGrid->Selection.Bottom;
+	bool inRange	  = LeftinRange && RightinRange && TopinRange && DowninRange;
+
+	if( !FFutSelectSet.Exists( Key )  && !inRange )
+	{
+		FFutSelectSet.Clear();
+		FFutSelectSet.Add( Key );
+
+		TGridRect SelRect;
+		SelRect.Left = SelRect.Right  = Col;
+		SelRect.Top  = SelRect.Bottom = Row;
+		FutDrawGrid->Selection = SelRect;
+
+	}
+	FutDrawGrid->Invalidate();
+	PopupMenu->Tag = 0;
+}
+//---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::SearchFutButtonClick(TObject *Sender)
 {
 	String SearchStr = FutSerachEdit->Text;
@@ -1821,12 +1849,55 @@ void __fastcall TContractInfoForm::SearchFutButtonClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
 void __fastcall TContractInfoForm::FutSerachEditKeyDown(TObject *Sender, WORD &Key,
 		  TShiftState Shift)
 {
 	if( Key == VK_RETURN )
 		SearchFutButtonClick( this );
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::FutDrawGridContextPopup(TObject *Sender, TPoint &MousePos,
+          bool &Handled)
+{
+	// 例:點到表頭、空白格、或某條件不符 → 不顯示選單
+	int Col, Row;
+	FutDrawGrid->MouseToCell( MousePos.x, MousePos.y, Col, Row );
+
+	// 點到表頭
+	if( Col <= 0 || Row <= 0 )
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 空白格
+	UFC::AnsiString FutSymbol, FutExchange;
+	ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
+	if(FutSymbol.Length() == 0)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 沒選到商品
+	TGridRect rect = FutDrawGrid->Selection;
+	if( FFutSelectSet.ItemCount() == 0 &&
+		rect.Left == rect.Right &&
+		rect.Top  == rect.Bottom)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+    // 放開右鍵時滑鼠位置不在選擇的商品上
+	if(	rect.Left > Col || rect.Right < Col ||
+		rect.Top  > Row || rect.Bottom< Row)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	Handled = false;        // 允許彈出
 }
 //---------------------------------------------------------------------------
 
