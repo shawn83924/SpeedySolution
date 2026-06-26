@@ -106,11 +106,7 @@ __published:	// IDE-managed Components
 	void __fastcall FutSerachEditKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
 	void __fastcall FutSerachEditMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
           int X, int Y);
-
-
-
-
-
+	void __fastcall FutDrawGridContextPopup(TObject *Sender, TPoint &MousePos, bool &Handled);
 
 private:
 	String STR_FUTURES;
@@ -211,6 +207,7 @@ private:
 	inline TTreeNode* __fastcall AddNode( TTreeNode* ParentNode, const String& Name, int ImgIndex );
 	TTreeNode* __fastcall GetProdNode( UFC::PHashedList<UFC::AnsiString, TTreeNode*>& TickerSymbolTable, TTreeNode *StockNode, BasicInformation* Info );
 	void __fastcall SelectrFutSerials( int Page, int Index );
+    void __fastcall FutDrawGridRightMouseDown(int Col, int Row, int Key );
 public:		// User declarations
 	__fastcall TContractInfoForm( TComponent* Owner );
 	__fastcall TContractInfoForm( TComponent* Owner, bool ForSelect );
