@@ -667,6 +667,7 @@ object ContractInfoForm: TContractInfoForm
         PopupMenu = PopupMenu
         TabOrder = 0
         OnClick = OptDrawGridClick
+        OnContextPopup = OptDrawGridContextPopup
         OnDblClick = OptDrawGridDblClick
         OnDrawCell = OptDrawGridDrawCell
         OnMouseDown = OptDrawGridMouseDown

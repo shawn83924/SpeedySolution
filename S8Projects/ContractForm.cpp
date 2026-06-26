@@ -1342,14 +1342,17 @@ void __fastcall TContractInfoForm::FutDrawGridMouseDown(TObject *Sender, TMouseB
 void __fastcall TContractInfoForm::OptDrawGridMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
+	if (!Shift.Contains( ssLeft ) && !Shift.Contains( ssRight ))
+		return;
+
 	int             Col,Row,Key;
 	TPoint          CurPos = Mouse->CursorPos;
+	CurPos = OptDrawGrid->ScreenToClient( CurPos );
+	OptDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	Key = Col*1000 + Row;
 
 	if( Shift.Contains( ssLeft ) )
 	{
-		CurPos = OptDrawGrid->ScreenToClient( CurPos );
-		OptDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-		Key = Col*1000 + Row;
 		if( !FOptSelectSet.Exists( Key ) )
 			FOptSelectSet.Add( Key );
 		else
@@ -1362,7 +1365,9 @@ void __fastcall TContractInfoForm::OptDrawGridMouseDown(TObject *Sender, TMouseB
 		OptDrawGrid->Invalidate();
 	}
 	else if( Shift.Contains( ssRight ) )
-		PopupMenu->Tag = 0;
+	{
+		OptDrawGridRightMouseDown(Col, Row, Key);
+	}
 }
 //---------------------------------------------------------------------------
 bool __fastcall TContractInfoForm::SelectSymbol( String& Exchange, String& Symbol, int Page )
@@ -1789,6 +1794,27 @@ void __fastcall TContractInfoForm::FutDrawGridRightMouseDown( int Col, int Row,	
 	PopupMenu->Tag = 0;
 }
 //---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::OptDrawGridRightMouseDown( int Col, int Row,	int Key )
+{
+	bool LeftinRange  = Col >= OptDrawGrid->Selection.Left;
+	bool RightinRange = Col <= OptDrawGrid->Selection.Right;
+	bool TopinRange	  = Row >= OptDrawGrid->Selection.Top;
+	bool DowninRange  = Row <= OptDrawGrid->Selection.Bottom;
+	bool inRange	  = LeftinRange && RightinRange && TopinRange && DowninRange;
+	if( !FOptSelectSet.Exists( Key )  && !inRange )
+	{
+		FOptSelectSet.Clear();
+		FOptSelectSet.Add( Key );
+
+		TGridRect SelRect;
+		SelRect.Left = SelRect.Right  = Col;
+		SelRect.Top  = SelRect.Bottom = Row;
+		OptDrawGrid->Selection = SelRect;
+	}
+	OptDrawGrid->Invalidate();
+	PopupMenu->Tag = 0;
+}
+//---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::SearchFutButtonClick(TObject *Sender)
 {
 	String SearchStr = FutSerachEdit->Text;
@@ -1889,7 +1915,50 @@ void __fastcall TContractInfoForm::FutDrawGridContextPopup(TObject *Sender, TPoi
 		return;
 	}
 
-    // 放開右鍵時滑鼠位置不在選擇的商品上
+	// 放開右鍵時滑鼠位置不在選擇的商品上
+	if(	rect.Left > Col || rect.Right < Col ||
+		rect.Top  > Row || rect.Bottom< Row)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	Handled = false;        // 允許彈出
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::OptDrawGridContextPopup(TObject *Sender, TPoint &MousePos,
+          bool &Handled)
+{
+	// 例:點到表頭、空白格、或某條件不符 → 不顯示選單
+	int Col, Row;
+	OptDrawGrid->MouseToCell( MousePos.x, MousePos.y, Col, Row );
+
+	// 點到表頭
+	if( Col <= 0 || Row <= 0 )
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 空白格
+	UFC::AnsiString OptSymbol, OptExchange;
+	ToOptionsSymbol( Col, Row, OptExchange, OptSymbol );
+	if(OptSymbol.Length() == 0)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	TGridRect rect = OptDrawGrid->Selection;
+	if( FOptSelectSet.ItemCount() == 0 &&
+		rect.Left == rect.Right &&
+		rect.Top  == rect.Bottom)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 放開右鍵時滑鼠位置不在選擇的商品上
 	if(	rect.Left > Col || rect.Right < Col ||
 		rect.Top  > Row || rect.Bottom< Row)
 	{
