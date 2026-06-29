@@ -3,7 +3,7 @@ object AggrementForm: TAggrementForm
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
-  Caption = #20778#36074#23458#25142#19979#21934#31995#32113' - '#39080#38570#38928#21578#26280#20351#29992#32882#26126#26360
+  Caption = #20806#26399'Pro - '#39080#38570#38928#21578#26280#20351#29992#32882#26126#26360
   ClientHeight = 781
   ClientWidth = 667
   Color = clBtnFace
