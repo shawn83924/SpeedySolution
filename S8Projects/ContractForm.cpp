@@ -679,6 +679,7 @@ void __fastcall TContractInfoForm::AdjuestOptSize( int  MaturityCount )
 	}
 	if( FOptPageWidth < 220 )
 		FOptPageWidth = 220;
+	SerialComboBox->Width = FOptPageWidth - SerialComboBox->Left * 2;
 	if( FPicker == true )
 	{
 		ClientHeight = FOptPageHeight;
