@@ -16,7 +16,7 @@ object OptionsTBarForm: TOptionsTBarForm
   OnClose = FormClose
   OnCreate = FormCreate
   OnShow = FormShow
-  PixelsPerInch = 120
+  PixelsPerInch = 96
   TextHeight = 19
   object GraphPanel: TGraphPanel
     Left = 0
@@ -29,7 +29,6 @@ object OptionsTBarForm: TOptionsTBarForm
     UseDockManager = True
     TabOrder = 0
     StretchGlyph = True
-    ExplicitWidth = 1332
     object BKLabel: TLabel
       Left = 507
       Top = 4
@@ -123,8 +122,8 @@ object OptionsTBarForm: TOptionsTBarForm
     object LargeButton: TGraphButton
       Left = 430
       Top = 0
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       TabOrder = 3
       ShowHint = True
@@ -146,8 +145,8 @@ object OptionsTBarForm: TOptionsTBarForm
     object SmallButton: TGraphButton
       Left = 460
       Top = 0
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       TabOrder = 4
       ShowHint = True
@@ -190,8 +189,8 @@ object OptionsTBarForm: TOptionsTBarForm
     object SettingButton: TGraphButton
       Left = 2
       Top = 0
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35774#23450
       TabOrder = 6
       ShowHint = True
@@ -250,7 +249,6 @@ object OptionsTBarForm: TOptionsTBarForm
     StkPxBKColor = 7748106
     OnTBarFieldsChanged = OptionsStrikePriceViewTBarFieldsChanged
     OnTBarStrikePxMouseClick = OptionsStrikePriceViewTBarStrikePxMouseClick
-    ExplicitWidth = 1072
     ColWidths = (
       70
       70
@@ -289,7 +287,6 @@ object OptionsTBarForm: TOptionsTBarForm
     TabIndex = 0
     TabPosition = tpTop
     OnChange = OptMarketTabSetChange
-    ExplicitWidth = 1332
   end
   object ToolSV: TSplitView
     Left = 0
@@ -306,7 +303,7 @@ object OptionsTBarForm: TOptionsTBarForm
       Top = 0
       Width = 260
       Height = 806
-      ActivePage = ColorTabSheet
+      ActivePage = PinsTabSheet
       Align = alClient
       TabOrder = 0
       object PinsTabSheet: TTabSheet
@@ -389,10 +386,10 @@ object OptionsTBarForm: TOptionsTBarForm
             Font.Height = -13
             Font.Name = #24494#36575#27491#40657#39636
             Font.Style = []
-            ItemIndex = 5
+            ItemIndex = 2
             ParentFont = False
             TabOrder = 0
-            Text = '15'
+            Text = '5'
             StyleElements = []
             Items.Strings = (
               '1'
@@ -435,6 +432,10 @@ object OptionsTBarForm: TOptionsTBarForm
       object ColorTabSheet: TTabSheet
         Caption = #38991#33394
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object DefColorButton: TSpeedButton
           Left = 60
           Top = 490
@@ -588,7 +589,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 72
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -599,7 +600,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 106
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -610,7 +611,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 277
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -621,7 +622,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 242
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -632,7 +633,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 208
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -643,7 +644,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 174
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -654,7 +655,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 140
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -665,7 +666,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 447
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -676,7 +677,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 413
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -687,7 +688,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 379
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -698,7 +699,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 345
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -709,7 +710,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 311
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -720,7 +721,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 5
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -731,7 +732,7 @@ object OptionsTBarForm: TOptionsTBarForm
           Left = 98
           Top = 39
           Width = 136
-          Height = 28
+          Height = 22
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbCustomColor, cbPrettyNames, cbCustomColors]
           DropDownCount = 12
           ItemHeight = 22
@@ -768,7 +769,7 @@ object OptionsTBarForm: TOptionsTBarForm
     Left = 352
     Top = 464
     Bitmap = {
-      494C010102000800540018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800800018001800FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000001800000001002000000000000024
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -17,6 +17,7 @@
 #pragma link "OptionsStrikePriceView"
 #pragma link "RoundFormEx"
 #pragma link "GraphButton"
+#pragma link "cgauges"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 extern TCMarketDataStore   *gMarketDataStore;
@@ -181,8 +182,9 @@ void __fastcall TOptionsTBarForm::InitTBar( void )
 		InitExchange( 0 ); ///< First exchange.
 		InitSerial( 0, 0 );///< First exchange and first serial.
 		OptionsSerialComboBoxChange( this );
+		SelectPinsButtonClick(NULL);
 		FIsInit = true;
-    }
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::SetTBarFormID( int ID )
@@ -207,7 +209,7 @@ void __fastcall TOptionsTBarForm::SetMaturityComboBox( const String& Exchange, c
 	MaturityComboBox->Items->AddStrings( MYlist );
 	if( MaturityComboBox->Items->Strings[0] == L"(null)" )
         MaturityComboBox->Items->Delete( 0 );
-	MaturityComboBox->Items->Add( STR_TBAR_ALL_MONTH );
+	//MaturityComboBox->Items->Add( STR_TBAR_ALL_MONTH );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::OptionsSerialComboBoxChange(TObject *Sender)
@@ -226,24 +228,12 @@ void __fastcall TOptionsTBarForm::OptionsSerialComboBoxChange(TObject *Sender)
 //---------------------------------------------------------------------------
 String __fastcall TOptionsTBarForm::GetMaturityString( void )
 {
-	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 )
-	{
-		TStringList* MYlist = new TStringList();
-		String Rtn;
-
-		MYlist->Delimiter = '^';
-		for( int i = 0; i < MaturityComboBox->ItemIndex; i++ )
-			MYlist->Add( MaturityComboBox->Items->Strings[i] );
-		Rtn = MYlist->DelimitedText;
-		delete MYlist;
-		return Rtn;
-	}
-	else
-		return MaturityComboBox->Items->Strings[ MaturityComboBox->ItemIndex ];
+	return MaturityComboBox->Items->Strings[ MaturityComboBox->ItemIndex ];
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::MaturityComboBoxChange(TObject *Sender)
 {
+	SavePinsSetting( );
 	///< setup TBar control.
 	OptionsStrikePriceView->Exchange  = FOptExchanges->Strings[ OptMarketTabSet->TabIndex ];;
 	OptionsStrikePriceView->Symbol    = FOptSerial->Strings[ OptionsSerialComboBox->ItemIndex ];
@@ -526,6 +516,7 @@ void __fastcall TOptionsTBarForm::LoadPinsSetting( void )
 		Init( true, StrikePxDigit, YMs,  StrikePxs, SpotPxs, ExcludeStkPxSet );
 	else
 		Init( false, StrikePxDigit, YMs,  StrikePxs, SpotPxs, ExcludeStkPxSet );
+	SelectPinsButtonClick(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::Init( bool IsAll, int Digi, UFC::PStringList& YMs, UFC::PDoubleList& StrikePxs, UFC::PDoubleList& SpotPxs,UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& Exclude )
@@ -609,34 +600,14 @@ void __fastcall TOptionsTBarForm::GenExcludeSet( UFC::PHashMap<UFC::AnsiString, 
 	AnsiString AnsiYearMonth;
 	String RegKey,Fields;
 
-	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 ) ///< All Maturity month
-	{
-		TStringList* MYlist = new TStringList();
+	UFC::PHashedSet<double>* StrikePxSet  = new UFC::PHashedSet<double>();
 
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
-		MYlist->Delimiter = '^';
-		MYlist->DelimitedText = OptionsStrikePriceView->YearMonth;
-		for( int i = 0; i < MYlist->Count; i ++ )
-		{
-			UFC::PHashedSet<double>* StrikePxSet = new UFC::PHashedSet<double>();
+	RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+	AnsiYearMonth = OptionsStrikePriceView->YearMonth;
+	Fields = g_Config.GetDesktopString( RegKey, OptionsStrikePriceView->YearMonth, L"" );
+	GenStrikePxSet( StrikePxSet, Fields );
 
-			AnsiYearMonth = MYlist->Strings[i];
-			Fields = g_Config.GetDesktopString( RegKey, AnsiYearMonth, "" );
-			GenStrikePxSet( StrikePxSet, Fields );
-			ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
-		}
-		delete MYlist;
-	}
-	else
-	{
-		UFC::PHashedSet<double>* StrikePxSet  = new UFC::PHashedSet<double>();
-
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
-		AnsiYearMonth = OptionsStrikePriceView->YearMonth;
-		Fields = g_Config.GetDesktopString( RegKey, OptionsStrikePriceView->YearMonth, L"" );
-		GenStrikePxSet( StrikePxSet, Fields );
-		ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
-	}
+	ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::ClearExcludeSet( UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& ExcludeStkPxList )
@@ -658,7 +629,15 @@ void __fastcall TOptionsTBarForm::UpdateOptionsStrikePriceViewPins( void )
 	UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*> ExcludeStkPxSet;
 
 	GenExcludeSet( ExcludeStkPxSet );
-	OptionsStrikePriceView->UpdateTable( ExcludeStkPxSet );
+	OptionsStrikePriceView->Locked = true;
+	try
+	{
+		OptionsStrikePriceView->UpdateTable( ExcludeStkPxSet );
+	}
+	__finally
+	{
+		OptionsStrikePriceView->Locked = false;
+	}
 	ClearExcludeSet( ExcludeStkPxSet );
 
 	TBarWidth = OptionsStrikePriceView->BestFitWidth + RoundFormEx->LeftGraph->Width/2 +  RoundFormEx->RightGraph->Width/2 + 18;
@@ -686,7 +665,6 @@ void __fastcall TOptionsTBarForm::SelectPinsButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::ApplyButtonClick(TObject *Sender)
 {
-	SavePinsSetting( );
 	MaturityComboBoxChange( NULL );
 }
 //---------------------------------------------------------------------------

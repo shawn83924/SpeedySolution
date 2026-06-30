@@ -23,6 +23,7 @@
 #include <Vcl.ComCtrls.hpp>
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
+#include "cgauges.h"
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
 //---------------------------------------------------------------------------
