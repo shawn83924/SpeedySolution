@@ -174,6 +174,7 @@ private:
 	bool   FIsLoaded;
 	bool   FIsReverse;
 	bool   FShowBKBar;
+	bool   FLocked;        ///< true 時忽略使用者輸入(滑鼠/鍵盤)，但不變灰、不重繪
 	TColor FHeaderCallColor;
 	TColor FHeaderCallBKColor;
 	TColor FHeaderPutColor;
@@ -354,6 +355,7 @@ __published:
 	__property TCMarketDataStore* Store         = { read = FStore, write = SetMarketDataStore };
 	__property TOptBKColName      BackgroundCol = { read = FBKCol, write = SetBKcol };
 	__property bool               IsReverse     = { read = FIsReverse, write = SetReverse };
+	__property bool               Locked        = { read = FLocked, write = FLocked };
 	__property int                BestFitWidth  = { read = FBestFitWidth };
 	/// All Colors
 	///< Color for commodity grid cell.

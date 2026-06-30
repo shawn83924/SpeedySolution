@@ -359,6 +359,7 @@ __fastcall TOptionsStrikePriceView::TOptionsStrikePriceView(TComponent* Owner)
 ,FYearMonth( L"200910" )
 ,FDisplayName( L"台指期 TXO" )
 ,FIsLoaded( false )
+,FLocked( false )
 ,FHeaderCallColor( clBlack )
 ,FHeaderCallBKColor( clSkyBlue )
 ,FHeaderPutColor( clBlack )
@@ -2152,19 +2153,31 @@ void __fastcall TOptionsStrikePriceView::BuidPinList( TList* CallPins,
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateTable( UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& ExcludeStkPxSet )
 {
-	Clear( );
+	bool LockRedraw = HandleAllocated(); ///< 視窗已建立才需要鎖重繪
 
-	if( !ComponentState.Contains( csDesigning ) && FIsLoaded && FStore != NULL  )
+	if( LockRedraw )
+		SendMessage( Handle, WM_SETREDRAW, (WPARAM)FALSE, 0 ); ///< 重建期間鎖住重繪，避免中途反覆重畫
+	try
 	{
-		BuidPinList( FCallList, FPutList, FTable, ExcludeStkPxSet );
-		BuildStrikePriceList();
-		TradetimeTimer( this );
-		FTimer->Enabled = true;
+		Clear( );
+
+		if( !ComponentState.Contains( csDesigning ) && FIsLoaded && FStore != NULL  )
+		{
+			BuidPinList( FCallList, FPutList, FTable, ExcludeStkPxSet );
+			BuildStrikePriceList();
+			TradetimeTimer( this );
+			FTimer->Enabled = true;
+		}
+		CalSize();
+		Subscribe();
+		FixedRows = 2;
 	}
-	CalSize();
-	Invalidate();
-	Subscribe();
-	FixedRows = 2;
+	__finally
+	{
+		if( LockRedraw )
+			SendMessage( Handle, WM_SETREDRAW, (WPARAM)TRUE, 0 ); ///< 解除重繪鎖
+		Invalidate(); ///< 結束後統一重畫一次
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateTable( void )
@@ -2205,10 +2218,11 @@ void __fastcall TOptionsStrikePriceView::Subscribe( void )
 	{
 		UFC::AnsiString Sym = FSubsceibeSymbolList[ i ];
 
-		FStore->Subscribe( FSubsceibeExchange, Sym, this );
-		UFC::SleepMS( 2 );
-		if( i % 10 == 0 )
-			Application->ProcessMessages();
+		//FStore->Subscribe( FSubsceibeExchange, Sym, this );
+		//UFC::SleepMS( 2 );
+		//if( i % 10 == 0 )
+		//	Application->ProcessMessages();
+		FStore->Subscribe( FSubsceibeExchange, Sym, this ); ///< 批次訂閱：移除逐檔 SleepMS(2) 與 ProcessMessages，整批一次送出
 	}
 }
 //---------------------------------------------------------------------------
@@ -2274,8 +2288,9 @@ void __fastcall TOptionsStrikePriceView::Clear( void )
 
 	for( int i = 0; i < FSubsceibeSymbolList.ItemCount(); i++ )
 	{
-		FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this );
-		UFC::SleepMS( 2 );
+		//FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this );
+		//UFC::SleepMS( 2 );
+		FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this ); ///< 批次退訂：移除逐檔 SleepMS(2)，整批一次退訂
 	}
 	ClearList( FCallList, FPutList );
 }
@@ -2460,6 +2475,18 @@ void __fastcall TOptionsStrikePriceView::WndProc( TMessage &Msg )
 {
 	NMHDR* pnmh;
 	POINT Point;
+
+	///< 鎖定狀態下，攔截並丟棄所有滑鼠/鍵盤輸入，禁止使用者互動
+	if( FLocked )
+	{
+		if( ( Msg.Msg >= WM_MOUSEFIRST && Msg.Msg <= WM_MOUSELAST ) ||
+			( Msg.Msg >= WM_KEYFIRST   && Msg.Msg <= WM_KEYLAST ) )
+		{
+			Msg.Result = 0;
+			return;
+		}
+	}
+
 	switch( Msg.Msg )
 	{
 		case WM_NOTIFY:
