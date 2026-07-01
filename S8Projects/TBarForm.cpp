@@ -58,6 +58,7 @@ __fastcall TOptionsTBarForm::TOptionsTBarForm(TComponent* Owner, int ID )
 ,FFontSize( FONT_SIZE_DEF )
 ,FDepthFormIndex( -1 )///< -1 means open new.
 ,FIsInit( false )
+,FOpeningTBarOrderBook( false )
 {
 	FOptExchanges = new	TStringList();
 	FOptSerial    = new TStringList();
@@ -429,10 +430,15 @@ void __fastcall TOptionsTBarForm::SaveProperties( const String& Profile )
 void __fastcall TOptionsTBarForm::OptionsStrikePriceViewTBarStrikePxMouseClick(TObject *Sender,
 		  UnicodeString Symbol, CallPutCode CallPut)
 {
+	if(FOpeningTBarOrderBook == true)
+		return;
+
+	FOpeningTBarOrderBook = true;
 	String Exchange = FOptExchanges->Strings[ OptMarketTabSet->TabIndex ];
 
 	FDepthFormIndex = ContractViewerForm->OpenTBarOrderBookForm( Exchange, Symbol, FDepthFormIndex );
 	SendToBack();
+	FOpeningTBarOrderBook = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::Release( void )

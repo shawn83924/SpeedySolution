@@ -154,6 +154,7 @@ private:	// User declarations
 	UFC::PStringList FYearMonth;
 	UFC::PDoubleList FStrikePx;
 	UFC::PDoubleList FSpotPx;
+    bool FOpeningTBarOrderBook;
 public:
 	void __fastcall Init( bool IsAll, int Digi, UFC::PStringList& YM, UFC::PDoubleList& StrikePx, UFC::PDoubleList& SpotPx,	UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& Exclude  );
 	void __fastcall SavePinsSetting( void );
