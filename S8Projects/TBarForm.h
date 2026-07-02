@@ -125,6 +125,7 @@ __published:	// IDE-managed Components
 	void __fastcall HeaderBKColorBoxChange(TObject *Sender);
 	void __fastcall OptionsStrikePriceViewTBarFieldsChanged(TObject *Sender);
 	void __fastcall InvertLabelClick(TObject *Sender);
+	void __fastcall ReloadPinsTimerTimer(TObject *Sender);
 
 private:	// User declarations
 	int  FID;
