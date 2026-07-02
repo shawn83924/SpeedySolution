@@ -527,6 +527,7 @@ private:
 	void NewStopOrder( TExecution* NewStopOrderPtr, bool UpQtyOnly = true);
 	int  ToNewHHMM( int oldHHMM, const String& OrigTime );
 	bool AddStopOrder( TExecution* NewStopOrderPtr );
+	String NormalizeBalanceJSON( const String& raw );
 public:
 	void NewStopOrderRequest( const String& StopExchangeCode, const String& StopSymbol,
 							  double StopPrice,
