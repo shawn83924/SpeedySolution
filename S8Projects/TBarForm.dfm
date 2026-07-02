@@ -756,7 +756,8 @@ object OptionsTBarForm: TOptionsTBarForm
   end
   object ReloadPinsTimer: TTimer
     Enabled = False
-    Interval = 500
+    Interval = 150
+    OnTimer = ReloadPinsTimerTimer
     Left = 320
     Top = 304
   end
