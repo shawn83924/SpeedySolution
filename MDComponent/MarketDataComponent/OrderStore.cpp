@@ -1435,13 +1435,93 @@ void TOrderStore::RequestOrderStatus(int OrderNID,
 	}  //try
 }  //TOrderStore::RequestOrderStatus()
 //---------------------------------------------------------------------------
+//
+// The margin/position response may arrive malformed for JSON parsing:
+//   1. The whole payload is wrapped in an extra pair of double quotes.
+//   2. Object members are separated by newlines instead of commas.
+// Normalize it so TJSONObject::ParseJSONValue can succeed.
+// e.g.  "{\n "Margin":"48806906.0000"\n "Position":\n [\n ]\n}"\n
+//
+String TOrderStore::NormalizeBalanceJSON( const String& raw )
+{
+	String s = raw.Trim();
+
+	// Strip one surrounding layer of double quotes, if present.
+	if( s.Length() >= 2 && s[1] == L'"' && s[s.Length()] == L'"' )
+		s = s.SubString( 2, s.Length() - 2 ).Trim();
+
+	// Rebuild, dropping newlines and inserting commas where members were
+	// only separated by a line break (bracket-depth aware, string aware).
+	String out;
+	int  depth    = 0;
+	bool inString = false;
+
+	for( int i = 1; i <= s.Length(); ++i )
+	{
+		wchar_t c = s[i];
+
+		if( inString )
+		{
+			out += c;
+			if( c == L'"' && s[i - 1] != L'\\' )
+				inString = false;
+			continue;
+		}
+
+		switch( c )
+		{
+			case L'"':
+				inString = true;
+				out += c;
+				break;
+			case L'{':
+			case L'[':
+				++depth;
+				out += c;
+				break;
+			case L'}':
+			case L']':
+				--depth;
+				out += c;
+				break;
+			case L'\n':
+			case L'\r':
+			{
+				// A line break inside an object may be a member separator.
+				int j = i + 1;
+				while( j <= s.Length() &&
+					   ( s[j] == L' ' || s[j] == L'\t' || s[j] == L'\n' || s[j] == L'\r' ) )
+					++j;
+
+				wchar_t prev = out.IsEmpty() ? 0 : out[out.Length()];
+				wchar_t next = ( j <= s.Length() ) ? s[j] : 0;
+
+				bool prevEndsToken = ( prev == L'"' || prev == L'}' || prev == L']' ||
+									   ( prev >= L'0' && prev <= L'9' ) ||
+									   prev == L'e' || prev == L'l' );          // number / true|false / null
+				bool nextStartsToken = ( next == L'"' || next == L'{' || next == L'[' ||
+										 next == L'-' || ( next >= L'0' && next <= L'9' ) ||
+										 next == L't' || next == L'f' || next == L'n' );
+
+				if( depth > 0 && prevEndsToken && nextStartsToken )
+					out += L',';
+				// otherwise: treat the line break as whitespace and drop it
+				break;
+			}
+			default:
+				out += c;
+		}
+	}
+
+	return out;
+}
+//---------------------------------------------------------------------------
 UFC::AnsiString TOrderStore::GetBalance( void )
 {
 	UFC::AnsiString result;
 	FAdapter->MarginPositionRequest( FBrokerID.c_str(), FAccount.c_str(), result);
-	//FAdapter->MarginPositionRequest( FTWSEBrokerID.c_str(), FTWSEAccount.c_str(), result);
-
-	TJSONValue* jsonValue = TJSONObject::ParseJSONValue(String(result.c_str()));
+	
+	TJSONValue* jsonValue = TJSONObject::ParseJSONValue(NormalizeBalanceJSON(String(result.c_str())));
 	if (jsonValue == NULL)
 		return result;
 
@@ -1455,7 +1535,10 @@ UFC::AnsiString TOrderStore::GetBalance( void )
 		if (marginValue == NULL)
 			return result;
 
-		return UFC::AnsiString(AnsiString(marginValue->Value()).c_str());
+		// Margin 原始值可能帶多位小數 (e.g. "48806906.0000")，以金額呈現：
+		// 每 3 位數加千分位逗號，最多顯示小數點後 2 位
+		double margin = StrToFloatDef( marginValue->Value(), 0.0 );
+		return UFC::AnsiString(AnsiString(FormatFloat("#,##0.00", margin)).c_str());
 	}
 	__finally
 	{

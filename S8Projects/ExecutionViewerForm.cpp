@@ -683,7 +683,7 @@ void __fastcall TExecutionForm::RoundFormExLockIconClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::OnBalanceThreadFinish(TObject *Sender, const String &Balance)
 {
-	BalanceLabel->Caption = L"本日餘額: " + Balance;
+	BalanceLabel->Caption = L"預估可動用保證金: " + Balance;
 	FBalanceThread = NULL;
 }
 //---------------------------------------------------------------------------
