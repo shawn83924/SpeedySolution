@@ -587,6 +587,7 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 	FMarkPxIndex = -1;
 	FMarkPx2Index = -1;
 	Subscribe( FStore );
+	SubscribeOCOStore();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBullPrice( double Price )
@@ -3473,8 +3474,6 @@ void __fastcall TOrderBookList::Subscribe( TCMarketDataStore* Store )
 		FSubscribeExchange = FExchange;
 		FSubscribeSymbol   = FSymbol;
 	}
-
-	SubscribeOCOStore();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SubscribeOCOStore(void)
@@ -3884,7 +3883,8 @@ bool __fastcall TOrderBookList::SetSymbol( const String& Ex, const String& Sym )
 			///< Init the depth grid and subscribe market data.
 			InitialGrid( SymInfo->GetBullPrice(), SymInfo->GetBearPrice(), SymInfo->GetRefPrice(), SymInfo->GetDigit() );
 			CenterFillPx();
-			Subscribe(  );
+			Subscribe();
+			SubscribeOCOStore();
 			return true;
 		}
 	}
