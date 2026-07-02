@@ -74,6 +74,8 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
 			if( lpRoot != NULL )
 			{
+				UFC::BufferedLog::Printf("-------------Logon Success-----------------");
+				UFC::BufferedLog::Printf("Response: %s", ResponseJSON.c_str());
 				String ResultStr  = lpRoot->Values[L"result"]->Value();
 				String MessageStr = lpRoot->Values[L"message"]->Value();
 				if( ResultStr == L"0" )
