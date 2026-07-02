@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------
+﻿//---------------------------------------------------------------------------
 #ifndef OptionsStrikePriceViewH
 #define OptionsStrikePriceViewH
 //---------------------------------------------------------------------------
@@ -76,6 +76,7 @@ private:
 	int         FOpenInterestDiff;
 	bool        FIsUnderlying;
 	int  		FValueWidth;
+	bool        FNeedGreeks;   ///< 批次處理旗標: 此筆行情變動後需在 timer 重算希臘值
 private:
 	String      FProdID;
 	int         FMaxHDays;
@@ -103,6 +104,8 @@ public:
 	void AddStrikePx( double Spx ) { FStrikePrices.Add( Spx ); }
 	void SetRowIndex( int Index  ) { FRowIndex = Index; }
 	int  GetRowIndex( void  )      { return FRowIndex; }
+	void SetNeedGreeks( bool b )   { FNeedGreeks = b; }
+	bool NeedGreeks( void  )       { return FNeedGreeks; }
 public:
 	TOptRecord( BasicInformation* Info, bool Underlying = false );
 	~TOptRecord( void );
@@ -227,6 +230,8 @@ private:
 	UFC::AnsiString  FFieldsString;
 	double           FTimeToClose;
 	TTimer*          FTimer;
+	bool             FBatchDirty;   ///< 需在批次呼叫時重算希臘值 / BK Bar
+	bool             FPaintDirty;   ///< 需在批次呼叫時重繪
 private:
 	int     FTotalWidth;
 	int     FStrikePxWidth;
@@ -263,6 +268,7 @@ private:
 	void __fastcall DrawGrid( TOptRecord* Record );
 	void __fastcall DrawBackground( const Types::TRect &ARect, Types::TRect& PaintRect, TOptRecord* Record, bool IsMouseOver );
 	void __fastcall UpdateBKBar( bool FindMax );
+	void __fastcall RecalcDirtyGreeks( void );
 	void __fastcall UpdateCell( int ColIndex, int RowIndex );
 	void __fastcall UpdateRow( int RowIndex );
 	void __fastcall UpdateCallRow( int RowIndex );
@@ -336,6 +342,7 @@ public:
 	__fastcall ~TOptionsStrikePriceView();
 	void __fastcall UpdateTable( void ); ///< Update all Symbols in TBar
 	void __fastcall UpdateTable( UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& ExcludeStkPxSet );
+	void __fastcall BatchTimer( System::TObject* Sender ); ///< 由外部(TBarForm)的 TTimer 週期呼叫, 批次重算希臘值並重繪
 	void __fastcall Clear( void );
 	void __fastcall CalSize( void );
 	void __fastcall SetFieldsString( const String& Fields );

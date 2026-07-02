@@ -261,6 +261,7 @@ void __fastcall TOptionsTBarForm::FormShow(TObject *Sender)
 {
 	InitTBar();
 	AdjuestFont();
+	ReloadPinsTimer->Enabled = true; ///< 啟動批次重算/重繪(dfm 預設 Enabled=False)
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::LargeButtonClick(TObject *Sender)
@@ -478,6 +479,7 @@ void __fastcall TOptionsTBarForm::OptMarketTabSetChange(TObject *Sender, int New
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	ReloadPinsTimer->Enabled = false;
 	OptionsStrikePriceView->Clear( );
 }
 //---------------------------------------------------------------------------
@@ -917,7 +919,9 @@ void __fastcall TOptionsTBarForm::SetVisible( bool IsVisible )
 {
 	this->Visible = IsVisible;
 }
-
+void __fastcall TOptionsTBarForm::ReloadPinsTimerTimer(TObject *Sender)
+{
+	OptionsStrikePriceView->BatchTimer( Sender );
+}
 //---------------------------------------------------------------------------
-
 
