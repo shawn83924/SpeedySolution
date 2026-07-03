@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
-  <Transactions>
-    <Transaction>2026/06/23 17:29:15.406,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\兆期ProPCH1.h=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\SpeedyUnifyPCH1.h</Transaction>
-    <Transaction>2026/06/23 17:29:15.435,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\兆期Pro.cbproj=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\SpeedyUnify.cbproj</Transaction>
+	<Transactions>
+    <Transaction>2026/06/29 15:46:15.000.152,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\兆期Pro.cbproj=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\SpeedyUnify.cbproj</Transaction>
   </Transactions>
 </BorlandProject>
