@@ -378,7 +378,9 @@ private:
 	UFC::PCriticalSection           FExecCS;
 	FuturesSymbolUtility            FFutSymbol;
 	UFC::Int32                      FLastReqUID;
+	UFC::Int32                      FResponseUID;
 	UFC::PEvent*                    FRequestEvent;
+	UFC::PCriticalSection           FNewsRequestCS;
 	UFC::AnsiString                 FResponseData;
 private: ///< Callback functions and container
 	EventFunc                       FOnAdminMsg;

@@ -70,6 +70,8 @@ const UFC::AnsiString SUBJECT_FILE_DOWNLOAD     = "FILE.DOWNLOAD";
 const UFC::AnsiString SUBJECT_NEWS_REQUEST      = "NEWS.REQUEST";
 const UFC::AnsiString SUBJECT_NEWS_RESPONSE     = "NEWS.RESPONSE";
 //------------------------------------------------------------------------------
+bool  IsUseByProxy                              = false; //Chelsea 20260702
+//------------------------------------------------------------------------------
 void TTaifexConnection::InitGlobal()
 {
     if( GStdout == NULL )        
@@ -171,6 +173,8 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
         Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
     FLogonEvent   = new UFC::PEvent();
     FRequestEvent = new UFC::PEvent();
+    FLastReqUID   = 0;
+    FResponseUID  = -1;
     if( FUseAPI == atSpeedy )
     {
         FTransport = TTransport::CreateTransport( FInstance, this, FAppName,  IsWin32GUIApp );
@@ -261,7 +265,9 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
     if( UFC::BufferedLogData::FLogObject != NULL && Glog == GStdout )
         Glog = (UFC::BufferedLog*) UFC::BufferedLogData::FLogObject ;
     FLogonEvent   = new UFC::PEvent();
-    FRequestEvent = new UFC::PEvent();        
+    FRequestEvent = new UFC::PEvent();
+    FLastReqUID   = 0;
+    FResponseUID  = -1;
     if( FUseAPI == atSpeedy )
     {
         FTransport = TTransport::CreateTransport( FInstance, this, FAppName,  IsWin32GUIApp  );
@@ -748,6 +754,7 @@ void TTaifexConnection::ReceiveNews( MTree* pTree )
             if( FLastReqUID == NewsID )
             {
                 FResponseData = NewsData;
+                FResponseUID  = NewsID; ///< Must be written before SetEvent so the waiter can verify it.
                 FRequestEvent->SetEvent();
             }
             return;
