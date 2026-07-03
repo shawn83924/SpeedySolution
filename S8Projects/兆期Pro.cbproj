@@ -115,12 +115,12 @@
         <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
         <BCC_StackFrames>false</BCC_StackFrames>
         <Debugger_DebugSourcePath>C:\src\UFC\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <Icon_MainIcon>SpeedyUnify_Icon3.ico</Icon_MainIcon>
+        <Icon_MainIcon>兆期Pro_Icon.ico</Icon_MainIcon>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
         <VerInfo_Keys>CompanyName=MDBS development inc.,;FileDescription=$(MSBuildProjectName);FileVersion=3.3.16.0;InternalName=SpeedyUnify;LegalCopyright=MDBS development inc.,;LegalTrademarks=Speedy Unify;OriginalFilename=SpeedyUnify.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=3.3.16.0;Comments=Speedy Unify trading client</VerInfo_Keys>
-        <UWP_CppLogo44>C:\Users\yuan\Desktop\Speedy Unify\SpeedyUnify\ico\logo.png</UWP_CppLogo44>
-        <UWP_CppLogo150>C:\Users\yuan\Desktop\Speedy Unify\SpeedyUnify\ico\logo.png</UWP_CppLogo150>
+        <UWP_CppLogo44>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo44>
+        <UWP_CppLogo150>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppExecutionLevel>highestAvailable</AppExecutionLevel>
         <AppEnableHighDPI>true</AppEnableHighDPI>
@@ -352,6 +352,10 @@
             <DependentOn>SettingOCODlg.h</DependentOn>
             <BuildOrder>45</BuildOrder>
         </CppCompile>
+        <PCHCompile Include="SpeedyUnifyPCH1.h">
+            <BuildOrder>1</BuildOrder>
+            <PCH>true</PCH>
+        </PCHCompile>
         <CppCompile Include="StopSetting.cpp">
             <VirtualFolder>{D22897D1-F124-4399-AD80-66C41CD5C820}</VirtualFolder>
             <Form>StopSettingForm</Form>
@@ -403,10 +407,6 @@
         <CppCompile Include="兆期Pro.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
-        <PCHCompile Include="兆期ProPCH1.h">
-            <BuildOrder>1</BuildOrder>
-            <PCH>true</PCH>
-        </PCHCompile>
         <FormResources Include="OCODetail.dfm"/>
         <FormResources Include="OrderConfirm.dfm"/>
         <FormResources Include="Roomi.dfm"/>
@@ -415,12 +415,12 @@
         <FormResources Include="Login.dfm"/>
         <FormResources Include="main.dfm"/>
         <FormResources Include="SetFontForm.dfm"/>
-        <FormResources Include="TrainingDlg.dfm"/>
         <FormResources Include="UnifyDlg.dfm"/>
         <FormResources Include="WebBrowserForm.dfm"/>
-        <FormResources Include="TBarForm.dfm"/>
+        <FormResources Include="TrainingDlg.dfm"/>
         <FormResources Include="SettingOCODlg.dfm"/>
         <FormResources Include="StopSetting.dfm"/>
+        <FormResources Include="TBarForm.dfm"/>
         <FormResources Include="CASetting.dfm"/>
         <FormResources Include="ChartForm.dfm"/>
         <FormResources Include="ContractForm.dfm"/>
@@ -462,10 +462,7 @@
                 <Source>
                     <Source Name="MainSource">兆期Pro.cpp</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
                 <VFOLDERS>
                     <VFOLDER ID="{27F2331C-FF02-4AEC-ACDD-68136D4B53C5}" name="CA"/>
                     <VFOLDER ID="{B3BF3D52-1440-4783-9C55-D785A516CBAF}" name="Config"/>
@@ -501,7 +498,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\yuan\Desktop\Speedy Unify\SpeedyUnify\ico\logo.png" Configuration="Debug" Class="UWP_CppLogo44">
+                <DeployFile LocalName="C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png" Configuration="Debug" Class="UWP_CppLogo44">
                     <Platform Name="Win32">
                         <RemoteDir>Assets\</RemoteDir>
                         <RemoteName>Logo44x44.png</RemoteName>
@@ -523,6 +520,11 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
+                    <Platform Name="Win32">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\兆期Pro.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>兆期Pro.tds</RemoteName>
@@ -532,11 +534,6 @@
                 <DeployFile LocalName=".\Win32\Debug\兆期Pro.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>兆期Pro.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
-                    <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
