@@ -15,7 +15,7 @@ object OCODetailForm: TOCODetailForm
   GlassFrame.Enabled = True
   GlassFrame.SheetOfGlass = True
   OldCreateOrder = False
-  OnCreate = FormCreate
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 23

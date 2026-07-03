@@ -17,9 +17,9 @@ class TOCODetailForm : public TForm , public TClientForm
 __published:	// IDE-managed Components
 	TOCODataList *OCODataList;
 	TRoundFormEx *RoundFormEx;
-	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
+	bool FInitialized;
 	void __fastcall WndProc( TMessage &Msg );
 public:		// User declarations
 	__fastcall TOCODetailForm(TComponent* Owner);
