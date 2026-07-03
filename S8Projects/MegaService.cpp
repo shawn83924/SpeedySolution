@@ -70,12 +70,14 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 	{
 		if( GetResponseJSON( ResultStream, ResponseJSON ) == true )
 		{
+			UFC::BufferedLog::Printf("-------------Logon Success-----------------");
+			UFC::BufferedLog::Printf("Response:");
+			AnsiString str = ResponseJSON;
+			UFC::BufferedLog::Printf( "%s", str.c_str() );
 			TJSONValue *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
 			TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
 			if( lpRoot != NULL )
 			{
-				UFC::BufferedLog::Printf("-------------Logon Success-----------------");
-				UFC::BufferedLog::Printf("Response: %s", ResponseJSON.c_str());
 				String ResultStr  = lpRoot->Values[L"result"]->Value();
 				String MessageStr = lpRoot->Values[L"message"]->Value();
 				if( ResultStr == L"0" )
