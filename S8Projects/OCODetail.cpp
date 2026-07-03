@@ -16,6 +16,7 @@ extern TOrderStore_OCO*   gOrderStore_OCO;
 //---------------------------------------------------------------------------
 __fastcall TOCODetailForm::TOCODetailForm(TComponent* Owner)
 	: TForm(Owner)
+	,FInitialized(false)
 {
 	this->DefaultMonitor = dmDesktop;
 	RoundFormEx->Lockbox = false;
@@ -34,15 +35,13 @@ void __fastcall TOCODetailForm::SetVisible( bool IsVisible)
 		Visible = true;
 }
 //---------------------------------------------------------------------------
-void __fastcall TOCODetailForm::FormCreate(TObject *Sender)
-{
-    Position = poMainFormCenter;
-}
-//---------------------------------------------------------------------------
-
 void __fastcall TOCODetailForm::FormShow(TObject *Sender)
 {
+	if(FInitialized == true)
+		return;
+
 	OCODataList->SubscribeStore(gOrderStore_OCO);
+    FInitialized = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOCODetailForm::WndProc( TMessage &Msg )

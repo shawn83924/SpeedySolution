@@ -587,7 +587,6 @@ void __fastcall TOrderBookList::InitialGrid( double BullPrice, double BearPrice,
 	FMarkPxIndex = -1;
 	FMarkPx2Index = -1;
 	Subscribe( FStore );
-	SubscribeOCOStore();
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBullPrice( double Price )
