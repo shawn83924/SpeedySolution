@@ -155,7 +155,7 @@ private:	// User declarations
 	TContractListForm*  __fastcall FirstContractListForm( int Group );
 	TExecutionForm*  __fastcall FirstExecutionForm( int Group );
 	TExecutionForm*  __fastcall FirstExecutionForm( void );
-    TOCODetailForm* __fastcall FirstOCODetailForm( void );
+    TOCODetailForm* __fastcall FirstOCODetailForm( int Group );
 	void __fastcall AddCatalog( void );
 	void __fastcall ClearList( TStringList* ClearKeys );
 public:		// User declarations
