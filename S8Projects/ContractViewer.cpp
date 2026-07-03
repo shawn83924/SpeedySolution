@@ -816,10 +816,10 @@ void __fastcall TContractViewerForm::SearchGlyphButtonClick(TObject *Sender)
 	if( SearchStr.Length( ) > 0 )
 	{
 		Screen->Cursor = crHourGlass;
-		Search( SearchStr, FTWSESearchKeys );
-		Search( SearchStr, FOTCSearchKeys );
-		Search( SearchStr, FTWSEWarrantSearchKeys );
-		Search( SearchStr, FOTCWarrantSearchKeys );
+		//Search( SearchStr, FTWSESearchKeys );
+		//Search( SearchStr, FOTCSearchKeys );
+		//Search( SearchStr, FTWSEWarrantSearchKeys );
+		//Search( SearchStr, FOTCWarrantSearchKeys );
 		Search( SearchStr, FTAIFEXFuturesSearchKeys );
 		Search( SearchStr, FTAIFEXOptionsSearchKeys );
 		Screen->Cursor = crDefault;
