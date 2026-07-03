@@ -1175,12 +1175,12 @@ TExecutionForm*  __fastcall TContractViewerForm::FirstExecutionForm( int Group )
 	return NULL;
 }
 //---------------------------------------------------------------------------
-TOCODetailForm* __fastcall TContractViewerForm::FirstOCODetailForm( void )
+TOCODetailForm* __fastcall TContractViewerForm::FirstOCODetailForm( int Group )
 {
 	TOCODetailForm* detailForm;
 	for( register int i = 0; i < FFormList.ItemCount(); i++ )
 	{
-		if(FFormList[i]->Type() == mdfOCO)
+		if( FFormList[i]->GetGroup() == Group && FFormList[i]->Type() == mdfOCO)
 		{
 			detailForm = dynamic_cast<TOCODetailForm*>( FFormList[i]->GetTForm() );
 			return detailForm;
@@ -1254,18 +1254,19 @@ void  __fastcall TContractViewerForm::OpenExecutionForm( void )
 //---------------------------------------------------------------------------
 void __fastcall TContractViewerForm::OpenOCODetailForm( void )
 {
+	int Page = MainForm->PageControl->ActivePageIndex;
 	TOCODetailForm* detailForm;
-	if( ClientCount( mdfOCO ) == 0 )
+	if( ClientCount( mdfOCO, Page ) == 0 )
 	{
 		detailForm = new TOCODetailForm( this );
-		detailForm->Tag = MainForm->PageControl->ActivePageIndex;
+		detailForm->Tag = Page;
 		detailForm->Parent = MainForm->PageControl->ActivePage;
 		detailForm->OnClose = OnClientClose;
 		FFormList.Add( detailForm );
 	}
 	else
 	{
-		detailForm = FirstOCODetailForm();
+		detailForm = FirstOCODetailForm( Page );
 		detailForm->SetFocus();
 		detailForm->BringToFront();
 	}
