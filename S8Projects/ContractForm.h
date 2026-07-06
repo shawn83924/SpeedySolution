@@ -201,6 +201,7 @@ private:
 	void __fastcall AddOptionsSymbol( int Index, BasicInformation* Info, const UFC::AnsiString& Symbol );
 	void __fastcall AddFuturesSymbol( int Index, BasicInformation* Info );
 	void __fastcall AddExchangeSymbols( const UFC::AnsiString& Exchange );
+    bool __fastcall IsTWStockOption( BasicInformation* Info );
 	void __fastcall AddStockNode( String Exchange );
 	void __fastcall SortTAIFEXFutSerials( int Index );
 	void __fastcall SortTAIFEXOptSerials( int Index );
