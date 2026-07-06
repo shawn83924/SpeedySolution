@@ -9,38 +9,26 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     Glog->fprintf("----- TouchOrder Control ------------");
     Glog->fprintf("  [CmdType]:%d", cmd);
 
-    std::string cmd_node;
-    std::string action;
-    std::string scene;
-    std::string expression;
+    std::string cmd_node;    
 
-    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
-    {
-        cmd_node = "act=N";
-        action = toc->GetTriggeredAction();
-        scene = toc->GetTriggeringCondition();
-        expression = toc->GetTriggerExpression();
-
-        if (action.empty() || scene.empty())
-            return FALSE;        
-    }
-    else
+    if (TTouchOrderCommand::tocNew != cmd)
     {
         switch (cmd)
         {
-        case TTouchOrderCommand::TouchedOrderCommandEnum::tocPause:
+        case TTouchOrderCommand::tocPause:
             cmd_node = "act=P";
             break;
-        case TTouchOrderCommand::TouchedOrderCommandEnum::tocActive:
+        case TTouchOrderCommand::tocActive:
             cmd_node = "act=A";
             break;
-        case TTouchOrderCommand::TouchedOrderCommandEnum::tocKill:
+        case TTouchOrderCommand::tocKill:
             cmd_node = "act=K";
             break;
-        case TTouchOrderCommand::TouchedOrderCommandEnum::tocQuery:
+        case TTouchOrderCommand::tocQuery:
             cmd_node = "act=Q";
             break;
         default:
+            toc->SetLastErrorMsg("Unknown or unsupported command type!");
             return FALSE;
         }
 
@@ -50,26 +38,98 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
             cmd_node += "^toid=";
             cmd_node += toid;
         }
+
+        MTHandle        MHandle;
+        MApp* MBusClient = FTransport->GetMApp();
+        MBusClient->BeginSend(MHandle, SUBJECT_TOUCH_REQUEST, FID);
+        MBusClient->WriteString(MHandle, "ID", FID);
+        Glog->fprintf("  [ID]:%s", FID.c_str());
+        
+        MBusClient->WriteInt32(MHandle, "CID", FCurrentConnectionID);
+        MBusClient->WriteString(MHandle, "COMMAND", cmd_node.c_str());
+        Glog->fprintf("  [COMMAND]:%s", cmd_node.c_str());
+
+        return MBusClient->EndSend(MHandle);
+    }
+
+    cmd_node = "act=N";
+    std::string action = toc->GetTriggeredAction();
+    std::string scene = toc->GetTriggeringCondition();
+    std::string expression = toc->GetTriggerExpression();
+
+    if (action.empty() || scene.empty())
+    {
+        toc->SetLastErrorMsg("TriggeredAction or TriggeringCondition not provided!");
+        return FALSE;
     }
 
     nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
-    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd && 
-        nsOrderMessageDefine::mTSE != market && 
-        nsOrderMessageDefine::mOTC != market)
+    if (nsOrderMessageDefine::mTSE != market && 
+        nsOrderMessageDefine::mOTC != market && 
+        nsOrderMessageDefine::mTWFutures != market && 
+        nsOrderMessageDefine::mTWOptions != market)
     {
+        toc->SetLastErrorMsg("unsupported market quotes!");
         return FALSE;
     }
 
+    int decimal_locator = 4;
     std::string symbol = toc->GetSymbol();
-    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd && symbol.empty())
-        return FALSE;
-
-    long long NID = 0;
-    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
+    if (symbol.empty())
     {
-        NID = GenerateNID(nsOrderMessageDefine::MessageTypeEnum::mtNew);
+        toc->SetLastErrorMsg("The stock Code or product-id of market information not provided!");
+        return FALSE;
+    }
+
+    if (nsOrderMessageDefine::mTWFutures == market || 
+        nsOrderMessageDefine::mTWOptions == market)
+    {        
+        decimal_locator = GetTAIFEXPricePrecision(market, symbol.c_str());
+        if (decimal_locator < 0)
+        {
+            toc->SetLastErrorMsg("The product-id of futures/options market information not available!");
+            return FALSE;
+        }
+    }
+
+    TTouchOrderCommand::TouchedActionEnum act_type = toc->GetTouchedActionType();
+    if (TTouchOrderCommand::taNewOrder == act_type ||
+        TTouchOrderCommand::taCxlOrder == act_type ||
+        TTouchOrderCommand::taRpxOrder == act_type)
+    {
+        nsOrderMessageDefine::MarketEnum act_market = toc->GetTouchedActionMarket();
+        if (nsOrderMessageDefine::mTWFutures == act_market ||
+            nsOrderMessageDefine::mTWOptions == act_market)
+        {
+            std::string action_symbol = toc->GetTouchedActionSymbol();
+            if (action_symbol.empty())
+            {
+                toc->SetLastErrorMsg("The product-id of futures/options order is required!");
+                return FALSE;
+            }
+
+            int price_precision = GetTAIFEXPricePrecision(act_market, action_symbol.c_str());
+            if (price_precision < 0)
+            {
+                std::string err_msg = std::string("Product[") + action_symbol + "] not found!";
+                toc->SetLastErrorMsg(err_msg.c_str());
+                return FALSE;
+            }
+
+            //toc->SetOrderMessagePricePrecision(price_precision);
+        }
+    }
+
+    long long NID = GenerateNID(nsOrderMessageDefine::mtNew);
+    toc->SetNID(NID);
+    
+    /*
+    if (TTouchOrderCommand::tocNew == cmd)
+    {
+        NID = GenerateNID(nsOrderMessageDefine::mtNew);
         toc->SetNID(NID);
     }
+    */
 
     MTHandle        MHandle;
     MApp* MBusClient = FTransport->GetMApp();
@@ -79,47 +139,52 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
         MBusClient->WriteString(MHandle, "MARKET", "TSE");
         Glog->fprintf("  [MARKET]:TSE");
     }
-    else
+    else if (nsOrderMessageDefine::mOTC == market)
     {
         MBusClient->WriteString(MHandle, "MARKET", "OTC");
         Glog->fprintf("  [MARKET]:OTC");
+    }
+    else if (nsOrderMessageDefine::mTWFutures == market)
+    {
+        MBusClient->WriteString(MHandle, "MARKET", "FUTURES");
+        Glog->fprintf("  [MARKET]:FUTURES");
+    }
+    else if (nsOrderMessageDefine::mTWOptions == market)
+    {
+        MBusClient->WriteString(MHandle, "MARKET", "OPTIONS");
+        Glog->fprintf("  [MARKET]:OPTIONS");
     }
 
     MBusClient->WriteString(MHandle, "ID", FID);
     Glog->fprintf("  [ID]:%s", FID.c_str());
     
-    if (NID)
-    {
-        MBusClient->WriteInt64(MHandle, "NID", NID);
-        Glog->fprintf("  [NID]:%lld", NID);
-    }
-    
+    MBusClient->WriteInt64(MHandle, "NID", NID);
+    Glog->fprintf("  [NID]:%lld", NID);
+        
     MBusClient->WriteInt32(MHandle, "CID", FCurrentConnectionID);
     MBusClient->WriteString(MHandle, "COMMAND", cmd_node.c_str());
-    Glog->fprintf("  [COMMAND]:%s", cmd_node.c_str());
+    Glog->fprintf("  [COMMAND]:%s", cmd_node.c_str());    
     
-    if (TTouchOrderCommand::TouchedOrderCommandEnum::tocNew == cmd)
+    MBusClient->WriteString(MHandle, "SYMBOL", symbol.c_str());
+    Glog->fprintf("  [SYMBOL]:%s", symbol.c_str());
+
+    //MBusClient->WriteInt32(MHandle, "DECIMAL_LOCATOR", decimal_locator);
+    //Glog->fprintf("  [DECIMAL_LOCATOR]:%d", decimal_locator);
+
+    std::string user_data = toc->GetUserData();
+    if (!user_data.empty())
     {
-        MBusClient->WriteString(MHandle, "SYMBOL", symbol.c_str());
-        Glog->fprintf("  [SYMBOL]:%s", symbol.c_str());
+        MBusClient->WriteString(MHandle, "USER_DATA", user_data.c_str());
+        Glog->fprintf("  [USER_DATA]:%s", user_data.c_str());
+    }    
+    
+    MBusClient->WriteString(MHandle, "ACTION", action.c_str());
+    MBusClient->WriteString(MHandle, "SCENE", scene.c_str());
+    MBusClient->WriteString(MHandle, "EXPRESSION", expression.c_str());
 
-        std::string user_data = toc->GetUserData();
-        if (!user_data.empty())
-        {
-            MBusClient->WriteString(MHandle, "USER_DATA", user_data.c_str());
-            Glog->fprintf("  [USER_DATA]:%s", user_data.c_str());
-        }
-    }
-
-    if (!action.empty() && !scene.empty())
-    {
-        MBusClient->WriteString(MHandle, "ACTION", action.c_str());
-        MBusClient->WriteString(MHandle, "SCENE", scene.c_str());
-        MBusClient->WriteString(MHandle, "EXPRESSION", expression.c_str());
-        Glog->fprintf("  [ACTION]:%s", action.c_str());
-        Glog->fprintf("  [SCENE]:%s", scene.c_str());
-        Glog->fprintf("  [EXPRESSION]:%s", expression.c_str());
-    }
-
+    Glog->fprintf("  [ACTION]:%s", action.c_str());
+    Glog->fprintf("  [SCENE]:%s", scene.c_str());
+    Glog->fprintf("  [EXPRESSION]:%s", expression.c_str());
+    
     return MBusClient->EndSend(MHandle);
 }

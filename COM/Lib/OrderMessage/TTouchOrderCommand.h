@@ -1,6 +1,6 @@
-#pragma once
-#ifndef TTOUCHORDERCOMMAND_H
-#define TTOUCHORDERCOMMAND_H
+//#pragma once
+#ifndef _TTOUCHORDERCOMMAND_H_
+#define _TTOUCHORDERCOMMAND_H_
 
 #include "TNewOrderMessage.h"
 #include "TCancelOrderMessage.h"
@@ -29,6 +29,17 @@ public:
         pdoMatch     // 觸價時以成交價+/-檔位(Ticks)為下單時的委託價
     };
 
+    enum TouchedActionEnum
+    {
+        taUnknown = 0,     // 未知的觸價行為
+        taNewOrder,        // 觸價下新單
+        taCxlOrder,        // 觸價下刪單
+        taRpxOrder,        // 觸價下改單
+        taCxlTouchedOrder, // 觸價刪觸價單(觸價買或觸價賣)
+        taWarning,         // 觸價送訊息
+       
+    };
+
 private:
     
     long long                        FNID;
@@ -37,6 +48,7 @@ private:
     nsOrderMessageDefine::SideEnum   FSide;
     PriceDependOnEnum                FPriceDependOn;
     int                              FTicks;
+    TouchedActionEnum                FTouchedActionType;
 
     std::string FSymbol;
     std::string FPrice;
@@ -45,6 +57,10 @@ private:
     std::map<std::string, std::string> FTriggeredAction;
     std::string FTriggeringCondition;
     std::string FTriggerExpression;
+    
+    std::string FLastErrMsg;
+    std::string FTouchedActionSymbol; // 記錄觸價下單時的商品代碼，用來檢查商品對應的小數位數在不在，只有期貨跟選擇權才需要
+    nsOrderMessageDefine::MarketEnum FTouchedActionMarket; // 記錄觸價下單時的市場別，方便判斷要下單的商品是期貨或選擇權
 
 private:
     BOOL ToTriggeredAction(TNewOrderMessage* order);      
@@ -56,23 +72,27 @@ private:
 public:
 
     TTouchOrderCommand() : FNID(0),
-        FCmdType(TouchedOrderCommandEnum::tocNew),
-        FMarket(nsOrderMessageDefine::MarketEnum::mTSE),
-        FSide(nsOrderMessageDefine::SideEnum::sNone),
-        FPriceDependOn(PriceDependOnEnum::pdoNone),
-        FTicks(0)
+        FCmdType(/*TouchedOrderCommandEnum::*/tocNew),
+        FMarket(nsOrderMessageDefine::/*MarketEnum::*/mTSE),
+        FSide(nsOrderMessageDefine::/*SideEnum::*/sNone),
+        FPriceDependOn(/*PriceDependOnEnum::*/pdoNone),
+        FTicks(0),
+        FTouchedActionType(taUnknown),
+        FTouchedActionMarket(nsOrderMessageDefine::mUnknown)
     {
 
     }
 
     TTouchOrderCommand(TouchedOrderCommandEnum toc_type,
                        const char* touchorder_id,
-                       nsOrderMessageDefine::SideEnum side = nsOrderMessageDefine::SideEnum::sNone) : FNID(0),
+                       nsOrderMessageDefine::SideEnum side = nsOrderMessageDefine/*::SideEnum*/::sNone) : FNID(0),
         FCmdType(toc_type),
-        FMarket(nsOrderMessageDefine::MarketEnum::mTSE),
+        FMarket(nsOrderMessageDefine::/*MarketEnum::*/mTSE),
         FSide(side),
-        FPriceDependOn(PriceDependOnEnum::pdoNone),
-        FTicks(0)
+        FPriceDependOn(/*PriceDependOnEnum::*/pdoNone),
+        FTicks(0),
+        FTouchedActionType(taUnknown),
+        FTouchedActionMarket(nsOrderMessageDefine::mUnknown)
     {
 
     }
@@ -126,9 +146,12 @@ public:
     // 設定觸價後發警示用
     BOOL SetTriggeredAction(const char* msg)             { return ToTriggeredAction(msg); }     
     // 設定設定觸價條件
-    void SetTriggeringCondition(TTriggeringCondition* ttc);                              
-
+    void SetTriggeringCondition(TTriggeringCondition* ttc);
+    
     long long GetNID() { return FNID; }
+
+    
+    const char* GetLastErrorMsg() { return FLastErrMsg.c_str(); }
 
     // ---- 以下功能僅 Speedy API 內部使用，不需要對外開放 ------------
     void SetNID(long long nid)                  { FNID = nid; }
@@ -140,6 +163,10 @@ public:
     std::string GetTriggeringCondition()        { return FTriggeringCondition; }
     std::string GetTriggerExpression()          { return FTriggerExpression; }
     std::string GetTriggeredAction();
+    TouchedActionEnum GetTouchedActionType()    { return FTouchedActionType; }
+    std::string GetTouchedActionSymbol()        { return FTouchedActionSymbol; } 
+    nsOrderMessageDefine::MarketEnum GetTouchedActionMarket() { return FTouchedActionMarket; }
+    void SetLastErrorMsg(const char* msg)       { FLastErrMsg = msg; }
 };
 
 #endif
