@@ -49,14 +49,13 @@ Int32 TFieldSchema::GetFieldIndex(const AnsiString& FieldName)
 	return -1;
 }
 //---------------------------------------------------------------------------
-AnsiString TFieldSchema::GetFieldName(Int32 FieldIndex)
+const AnsiString& TFieldSchema::GetFieldName(Int32 FieldIndex)
 {
+	static const AnsiString EmptyString;
 	TFieldSetting* pField = GetFieldSetting( FieldIndex );
-	
-	if( pField != NULL  )
+	if( pField != NULL )
 		return pField->FName;
-	
-	return "";
+	return EmptyString;
 }
 //---------------------------------------------------------------------------
 TFieldDataType TFieldSchema::GetDataType(Int32 FieldIndex)
@@ -79,24 +78,22 @@ TFieldDataType TFieldSchema::GetDataType(const AnsiString& FieldName)
 	return FDT_STRING;
 }
 //---------------------------------------------------------------------------
-AnsiString TFieldSchema::GetDefaultValue(Int32 FieldIndex)
+const AnsiString& TFieldSchema::GetDefaultValue(Int32 FieldIndex)
 {
+	static const AnsiString EmptyString;
 	TFieldSetting* pField = GetFieldSetting( FieldIndex );
-	
-	if( pField != NULL  )
+	if( pField != NULL )
 		return pField->FDefaultValue;
-	
-	return "";
+	return EmptyString;
 }
 //---------------------------------------------------------------------------
-AnsiString TFieldSchema::GetDefaultValue(const AnsiString& FieldName)
+const AnsiString& TFieldSchema::GetDefaultValue(const AnsiString& FieldName)
 {
+	static const AnsiString EmptyString;
 	TFieldSetting* pField = GetFieldSetting( FieldName );
-	
-	if( pField != NULL  )
+	if( pField != NULL )
 		return pField->FDefaultValue;
-	
-	return "";
+	return EmptyString;
 }
 //---------------------------------------------------------------------------
 }

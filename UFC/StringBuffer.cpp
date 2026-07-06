@@ -137,18 +137,16 @@ PStringBuffer& PStringBuffer::Delete(UInt16 index, UInt16 count)
 {
 	if (index < FLength)
 	{
-        char* offset = StrBuffer + index;
-            
         if((index + count) < FLength)
         {
-			char* Swap = new char[FLength];                
-                
-            strcpy( Swap, offset + count);                
-            strcpy( offset, Swap );
-			delete [] Swap;
+            memmove( StrBuffer + index, StrBuffer + index + count, FLength - (index + count) + 1 );
+            FLength -= count;
         }
         else
+        {
             StrBuffer[index] = '\0';
+            FLength = index;
+        }
 	}
 	return *this;
 }
@@ -177,29 +175,17 @@ void PStringBuffer::EnsureCapacity(UInt16 minimumCapacity)
 {
     if (minimumCapacity > FCapacity)
     {
-        do
+        while( FCapacity < minimumCapacity )
         {
-            FCapacity += INIT_BUFFER_SIZE;
-        } while (minimumCapacity > FCapacity);
-
-        //Begin ===Add By Zhen Fan, 2009/08/25 12:00
+            if( FCapacity >= 32768 ) { FCapacity = 65535; break; }
+            FCapacity *= 2;
+        }
         char* tempBuffer = new char[FCapacity];
         memcpy(tempBuffer, StrBuffer, (size_t)FLength + 1);
         delete []StrBuffer;
         StrBuffer = tempBuffer;
-        //End
-
-/*  Mark By Zhen Fan, 2009/08/25 12:00
-        if (realloc(StrBuffer, FCapacity))
-        {
-            char* tempBuffer = new char[FCapacity];
-            memcpy(tempBuffer, StrBuffer, FLength + 1);
-            delete []StrBuffer;
-            StrBuffer = tempBuffer;
-        }
-*/
-    }  //if (minimumCapacity > FCapacity)
-}  //PStringBuffer::EnsureCapacity()
+    }
+}
 
 //---------------------------------------------------------------------------
 void PStringBuffer::SInsert(UInt16 offset, const char *Str, UInt16 length)
@@ -316,7 +302,7 @@ UInt16 PStringBuffer::AppendPrintf( const char* FormatStr, ... )
     if( Count > 0 )
     {
     	EnsureCapacity( FLength + Count + 1 );
-    	strcpy( StrBuffer + FLength, Buffer );
+    	memcpy( StrBuffer + FLength, Buffer, Count + 1 );
         FLength += Count;
     }
 	return Count;
@@ -336,7 +322,7 @@ UInt16 PStringBuffer::Printf( const char* FormatStr, ... )
     if( Count > 0 )
     {
         EnsureCapacity( Count + 1);
-        strcpy( StrBuffer, Buffer );
+        memcpy( StrBuffer, Buffer, Count + 1 );
         FLength = Count;
     }
     return Count;
@@ -348,7 +334,7 @@ PStringBuffer&  PStringBuffer::operator = (const char* rhs)
 	{
 		UInt16 strLen = (UFCType::UInt16)strlen(rhs);
 		EnsureCapacity(strLen + 1);
-		strcpy(StrBuffer, rhs);
+		memcpy(StrBuffer, rhs, strLen + 1);
 		FLength = strLen;
 	}
 	return *this;
@@ -359,7 +345,7 @@ PStringBuffer&  PStringBuffer::operator = (const AnsiString& rhs)
 	if (rhs.Length())
 	{
 		EnsureCapacity(rhs.FLength + 1);
-		strcpy(StrBuffer, rhs.c_str());
+		memcpy(StrBuffer, rhs.c_str(), rhs.Length() + 1);
 		FLength = rhs.Length();
 	}
 	return *this;
@@ -370,7 +356,7 @@ PStringBuffer&  PStringBuffer::operator = (const PStringBuffer& rhs)
 	if (rhs.FLength)
 	{
 		EnsureCapacity(rhs.FLength + 1);
-		strcpy(StrBuffer, rhs.StrBuffer);
+		memcpy(StrBuffer, rhs.StrBuffer, rhs.FLength + 1);
 		FLength = rhs.FLength;
 	}
 	return *this;

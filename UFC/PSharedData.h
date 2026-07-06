@@ -8,6 +8,9 @@
 #ifndef PSHAREDDATA_H
 #define PSHAREDDATA_H
 
+#include <cctype>
+#include <cstring>
+
 #if (defined(__LINUX) || defined(__AIX))
 #include <sys/ipc.h>
 #include <sys/types.h>
@@ -20,9 +23,11 @@
 #include "BufferedLog.h"
 #include "PInt32.h"
 #include "PThread.h"
+#endif /* if (defined(__LINUX) || defined(__AIX)) */
 
 namespace UFC
 {
+#if (defined(__LINUX) || defined(__AIX))
 //------------------------------------------------------------------------------
 template<typename DigitalType>
 class PSharedDigital
@@ -198,7 +203,7 @@ void PSharedDigital<DigitalType>::Detach()
 template <typename DigitalType>
 void PSharedDigital<DigitalType>::Remove()
 {
-    if (FDataPtr >= 0)
+    if (FDataPtr != 0)
     {
         Detach();
         shmid_ds ds;
@@ -527,7 +532,7 @@ void PSharedSequanceNo<SequanceNoType>::Detach()
 template <typename SequanceNoType>
 void PSharedSequanceNo<SequanceNoType>::Remove()
 {
-    if (FCurrentValuePtr >= 0)
+    if (FCurrentValuePtr != 0)
     {
         Detach();
         shmid_ds ds;
@@ -707,6 +712,19 @@ int TryAndLockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& L
 int UnlockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, Int32 DetailDebugLevel, BufferedLog* LogPtr);
 int TryAndLockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool WarningDebugLevel, bool DetailDebugLevel, BufferedLog* LogPtr);
 int UnlockObject(UFC::PConditionMutex* ConditionLockPtr, const AnsiString& LogPrefix, const AnsiString& ObjectName, bool DetailDebugLevel, BufferedLog* LogPtr);
-}  //namespace UFC
+
+//------------------------------------------------------------------------------
+static const std::string Base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+//------------------------------------------------------------------------------
+static inline bool IsBase64Char( unsigned char c )
+{
+    return ( std::isalnum(c) || ( c == '+' ) || ( c == '/' ) );
+};  //IsBase64Char()
+
+//------------------------------------------------------------------------------
+std::string Base64Encode( unsigned char const* buf, unsigned int bufLen );
+std::string Base64Decode( const std::string& EncodedString );
 #endif /* if (defined(__LINUX) || defined(__AIX)) */
+}  //namespace UFC
 #endif /* PSHAREDDATA_H */

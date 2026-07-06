@@ -73,12 +73,7 @@ public:
 template <class K,class T>
 BOOL PHashedList<K,T>::Add( const K& Key, T Object )
 {
-    if( FHashTable.count( Key ) == 0 ) ///< Key not exists
-    {
-	FHashTable[ Key ] = (LPVOID)Object;
-	return TRUE;
-    }
-    return FALSE;
+    return FHashTable.insert( std::make_pair(Key, (LPVOID)Object) ).second ? TRUE : FALSE;
 }
 //------------------------------------------------------------------------------
 template <class K,class T>
@@ -237,12 +232,7 @@ public:
 template <class K,class T>
 BOOL PHashMap<K,T>::Add( const K& Key, T Object )
 {
-    if( FHashTable.count( Key ) == 0 ) ///< Key not exists
-    {
-		FHashTable[ Key ] = (T)Object;
-		return TRUE;
-    }
-    return FALSE;
+    return FHashTable.insert( std::make_pair(Key, (T)Object) ).second ? TRUE : FALSE;
 }
 //------------------------------------------------------------------------------
 template <class K,class T>

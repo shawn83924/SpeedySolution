@@ -5,6 +5,10 @@
 #include "PSocket.h"
 #include <limits.h>
 #include <math.h>
+#ifndef _WIN32
+#include <unistd.h>
+#include <sys/wait.h>
+#endif
 #if defined(_AIX)
     #define SIGUNUSED SIGMAX              ///< SIGUNUSED not define in AIX    
 	typedef void (*__sighandler_t)(int);  ///< __sighandler_t not define in AIX
@@ -50,35 +54,80 @@ int          GYear;
 int          GMonth;
 int          GDay;
 //------------------------------------------------------------------------------
+#ifndef _WIN32
+static void RunShellScript( const char* const argv[] )
+{
+    pid_t pid = fork();
+    if( pid < 0 )
+        return;
+    if( pid == 0 )
+    {
+        execvp( argv[0], (char* const*)argv );
+        _exit( 127 );
+    }
+    waitpid( pid, NULL, 0 );
+}
+#endif
+//------------------------------------------------------------------------------
 void SendLineMessage( LineMsgTypeEnum Type, const UFC::AnsiString& Message )
 {
-    UFC::AnsiString CMD;
+    UFC::AnsiString MsgArg;
+    UFC::AnsiString GroupStr;
+    UFC::AnsiString TypeStr;
+    UFC::AnsiString IPStr = PSocket::GetLocalIP();
 
-    ///< LineMessageShell Group Hostname_Message Level IP 
-    CMD.Printf( "%s %d '%s_%s' %d %s", GLineShell.c_str(), GLineGroup, UFC::Hostname,  Message.c_str(), Type, PSocket::GetLocalIP().c_str() );
-    UFC::BufferedLog::Printf(" Command[%s]", CMD.c_str() );
-    system( CMD.c_str() );
-}   
+    MsgArg.Printf(  "%s_%s",  UFC::Hostname, Message.c_str() );
+    GroupStr.Printf( "%d", GLineGroup );
+    TypeStr.Printf(  "%d", (int)Type );
+
+    UFC::BufferedLog::Printf(" Command[%s %s %s %s %s]",
+        GLineShell.c_str(), GroupStr.c_str(), MsgArg.c_str(), TypeStr.c_str(), IPStr.c_str() );
+#ifndef _WIN32
+    const char* args[] = {
+        GLineShell.c_str(), GroupStr.c_str(), MsgArg.c_str(),
+        TypeStr.c_str(), IPStr.c_str(), NULL
+    };
+    RunShellScript( args );
+#endif
+}
 //------------------------------------------------------------------------------
 void SendLineNotifyMessage( LineMsgTypeEnum Type, const UFC::AnsiString& Message )
 {
-    UFC::AnsiString CMD;
+    UFC::AnsiString TypeStr;
+    UFC::AnsiString MsgArg;
 
-    ///< LineMessageShell Group Hostname_Message Level IP 
-    CMD.Printf( "%s %d \" \nIP: %s \nHostname: %s \nMessage: %s \" ", GLineNotifyShell.c_str(), Type, PSocket::GetLocalIP().c_str(), UFC::Hostname, Message.c_str() );
-    UFC::BufferedLog::Printf(" Command[ %s ]", CMD.c_str() );
-    system( CMD.c_str() );
-}  
+    TypeStr.Printf( "%d", (int)Type );
+    MsgArg.Printf( "\nIP: %s \nHostname: %s \nMessage: %s",
+        PSocket::GetLocalIP().c_str(), UFC::Hostname, Message.c_str() );
+
+    UFC::BufferedLog::Printf(" Command[sh %s %s ...]",
+        GLineNotifyShell.c_str(), TypeStr.c_str() );
+#ifndef _WIN32
+    const char* args[] = {
+        "sh", GLineNotifyShell.c_str(), TypeStr.c_str(), MsgArg.c_str(), NULL
+    };
+    RunShellScript( args );
+#endif
+}
 //------------------------------------------------------------------------------
 void SendLineNotifyMessage( LineMsgTypeEnum Type, const UFC::AnsiString& Message, const UFC::AnsiString& NotifyShellName )
 {
-    UFC::AnsiString CMD;
+    UFC::AnsiString TypeStr;
+    UFC::AnsiString MsgArg;
 
-    ///< LineMessageShell Group Hostname_Message Level IP 
-    CMD.Printf( "sh %s %d \" \nIP: %s \nHostname: %s \nMessage: %s \" ", NotifyShellName.c_str(), Type, PSocket::GetLocalIP().c_str(), UFC::Hostname, Message.c_str() );
-    UFC::BufferedLog::Printf(" Command[ %s ]", CMD.c_str() );
-    system( CMD.c_str() );
-}  
+    TypeStr.Printf( "%d", (int)Type );
+    MsgArg.Printf( "\nIP: %s \nHostname: %s \nMessage: %s",
+        PSocket::GetLocalIP().c_str(), UFC::Hostname, Message.c_str() );
+
+    UFC::BufferedLog::Printf(" Command[sh %s %s ...]",
+        NotifyShellName.c_str(), TypeStr.c_str() );
+#ifndef _WIN32
+    const char* args[] = {
+        "sh", NotifyShellName.c_str(), TypeStr.c_str(), MsgArg.c_str(), NULL
+    };
+    RunShellScript( args );
+#endif
+}
 //------------------------------------------------------------------------------------------------------------------------
 void BeginTickus( void )
 {
@@ -94,7 +143,7 @@ inline void LocalTime_hms( time_t tv_sec, struct tm *pttm )
 {
     int Today_sec = tv_sec % 86400;
     
-    pttm->tm_hour =  ((Today_sec / 3600 ) + GTimeZone ) % 24;
+    pttm->tm_hour =  (((Today_sec / 3600 ) + GTimeZone ) % 24 + 24) % 24;
     pttm->tm_min  =  ( Today_sec % 3600 ) / 60;
     pttm->tm_sec  =  Today_sec % 60;    
 }
@@ -214,6 +263,7 @@ PEndian::PEndian()
                if( FThreadStackSize == 0 )
                        FThreadStackSize = 1024*1024;///< Default 1Mb
             #endif
+        pthread_attr_destroy(&attr);
     #endif
 }
 //-------------------------------------------------------------------------------------------------------------------
@@ -239,11 +289,8 @@ void PInitNetLib::Now( )
 				   FTime.tm_hour, FTime.tm_min, FTime.tm_sec );        
     GYear  = FTime.tm_year+1900;
     GMonth = FTime.tm_mon+1;
-    GDay   = FTime.tm_mday;    
-    FTime.tm_hour = 23; 
-    FTime.tm_min = 59;
-    FTime.tm_sec = 59;
-    FLastSec = mktime( &FTime );
+    GDay   = FTime.tm_mday;
+    FLastSec = (now.tv_sec / 86400 + 1) * 86400 - 1;
     printf( "[UFCLib] Today last sec:%ld\n", (long)FLastSec );
 #endif
 }
@@ -255,10 +302,11 @@ void PInitNetLib::CheckNextDay( time_t& Time )
     {
         struct tm    FTime;
 
-        gmtime_r( &Time, &FTime );    
+        gmtime_r( &Time, &FTime );
         GYear  = FTime.tm_year+1900;
         GMonth = FTime.tm_mon+1;
-        GDay   = FTime.tm_mday;            
+        GDay   = FTime.tm_mday;
+        FLastSec = (Time / 86400 + 1) * 86400 - 1;
     }
 #endif
 }
@@ -334,25 +382,26 @@ PInitNetLib::PInitNetLib()
     for( int j = 0; j < 1000; j++ ) ///< 1000us = 1ms
          UFC::SleepUS( 1 );
 
-    int Diff = UFC::GetTickCountUS() - Begin;       
-    GMinSleepUS = Diff/1000;
-    
-#ifdef GCC_CPP11_SUPPORT    
-    UFC::PMPMCQueue<int>  FQueue( 10, 10  );    
-    int  loopTimes = 1000000;
-    int  useus;
-    int* Obj;    
-    
-    Begin = UFC::GetTickCountUS();                   
+    UInt64 Diff = UFC::GetTickCountUS() - Begin;
+    GMinSleepUS = (int)(Diff/1000);
+
+#ifdef GCC_CPP11_SUPPORT
+    UFC::PMPMCQueue<int>  FQueue( 10, 10  );
+    int    loopTimes = 1000000;
+    UInt64 useus;
+    int*   Obj;
+
+    Begin = UFC::GetTickCountUS();
     for( int i = 0; i < loopTimes;i++ )
          FQueue.pop( 0, &Obj );
     useus = UFC::GetTickCountUS() - Begin;
-    GDeqPerUS = loopTimes / useus;    
+    if( useus > 0 )
+        GDeqPerUS = loopTimes / (int)useus;
 #endif    
 #endif    
     
 #if defined( _WIN32 )
-	GetCurrentDirectoryA( 128, WorkingDir );
+	GetCurrentDirectoryA( PATH_MAX, WorkingDir );
 #elif defined( __LINUX )
 	if( getcwd( WorkingDir, PATH_MAX ) == NULL )
             strncpy( WorkingDir, "./", 3 );
@@ -711,7 +760,7 @@ UInt64 GetTickCountUS( void )
     if( Feq == 0 )
         QueryPerformanceFrequency( (LARGE_INTEGER*)&Feq );
     if( QueryPerformanceCounter( (LARGE_INTEGER*)&Count ) )
-        return (UInt64) ((double) Count / Feq * 1000000);   ///< return (UInt64)Count*1000000 / Feq;
+        return Count / Feq * 1000000 + (Count % Feq) * 1000000 / Feq;
     else
         return (UInt64)GetTickCount() * 1000;
 #else
@@ -719,11 +768,11 @@ UInt64 GetTickCountUS( void )
     #ifdef _USE_CLOCK_GETTIME
     struct timespec now;
     clock_gettime( CLOCK_MONOTONIC, &now ); ///< Get the current time.  CLOCK_MONOTONIC resolution is nanosecond.
-    Tick = ((UInt64)(now.tv_sec % 86400)) * 1000000 + ns2us(now.tv_nsec);
+    Tick = (UInt64)now.tv_sec * 1000000 + ns2us(now.tv_nsec);
     #else
     struct timeval now;
     gettimeofday( &now, NULL ); ///< Get the current time.
-    Tick = ((UInt64)(now.tv_sec % 86400)) * 1000000 + now.tv_usec;
+    Tick = (UInt64)now.tv_sec * 1000000 + now.tv_usec;
     #endif
     return Tick;
 #endif
@@ -903,9 +952,11 @@ inline void FIXTimeString( char* Buffer , int Y, int M, int D, int h, int m,int 
     const int DateTimeL = 18;
     const int msus = 3; ///< ms 3 digis   
     
-    h -= 8;
+    h -= GTimeZone;
     if( h < 0 )
-        h+=24;
+        h += 24;
+    else if( h >= 24 )
+        h -= 24;
 
     Ptr = Buffer + DateTimeL + msus;
     *Ptr-- = 0; //< NULL
@@ -958,29 +1009,26 @@ inline void FIXTimeString( char* Buffer , int Y, int M, int D, int h, int m,int 
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void localtime_fast_r( bool IsGMT, struct tm* FTime )
-{    
+{
 #ifndef _WIN32
     struct timespec now;
-    
-    
-    clock_gettime( CLOCK_REALTIME, &now );    
-    time_t tt = (time_t)now.tv_sec;         
-    
-    InitNetLib.CheckNextDay( tt );   
-        
-   /* int Today_sec = now.tv_sec % 86400;
-    
-    if( ISGMT == true )
+
+    clock_gettime( CLOCK_REALTIME, &now );
+    time_t tt = (time_t)now.tv_sec;
+
+    InitNetLib.CheckNextDay( tt );
+
+    int Today_sec = now.tv_sec % 86400;
+
+    if( IsGMT )
         FTime->tm_hour = Today_sec / 3600;
     else
-        FTime->tm_hour = ((Today_sec / 3600 ) + GTimeZone ) % 24;    
+        FTime->tm_hour = (((Today_sec / 3600) + GTimeZone) % 24 + 24) % 24;
     FTime->tm_min  = ( Today_sec % 3600 ) / 60;
-    FTime->tm_sec  = Today_sec % 60;      
+    FTime->tm_sec  = Today_sec % 60;
     FTime->tm_year = GYear;
     FTime->tm_mon  = GMonth;
     FTime->tm_mday = GDay;
-    return FTime;
-	* */
 #endif
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1120,7 +1168,7 @@ void GetHHMMSSmm( AnsiString& TimeNow )
     struct timeb tb;
     ftime( &tb );
     LocalTime_hms( tb.time, &FTime );
-    TimeNow.Printf( "%02d%02d%02d%02d", FTime.tm_hour, FTime.tm_min, FTime.tm_sec, ns2ms(now.tv_nsec)/10 );
+    TimeNow.Printf( "%02d%02d%02d%02d", FTime.tm_hour, FTime.tm_min, FTime.tm_sec, tb.millitm/10 );
     #endif
 #endif
 }
@@ -1130,10 +1178,10 @@ void GetHHMMSSmmm( AnsiString& TimeNow )
 #ifdef _WIN32
     SYSTEMTIME SystemTime;
     GetLocalTime( &SystemTime );
-    TimeNow.Printf( "%02d%02d%02d%02d", SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, SystemTime.wMilliseconds );
+    TimeNow.Printf( "%02d%02d%02d%03d", SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, SystemTime.wMilliseconds );
 #else
     struct tm    FTime;
-    #ifdef _USE_CLOCK_GETTIME       
+    #ifdef _USE_CLOCK_GETTIME
     struct timespec now;
     clock_gettime( CLOCK_REALTIME_COARSE, &now );
     LocalTime_hms( now.tv_sec, &FTime );
@@ -1142,7 +1190,7 @@ void GetHHMMSSmmm( AnsiString& TimeNow )
     struct timeb tb;
     ftime( &tb );
     LocalTime_hms( tb.time, &FTime );
-    TimeNow.Printf( "%02d%02d%02d%02d", FTime.tm_hour, FTime.tm_min, FTime.tm_sec, ns2ms(now.tv_nsec) );
+    TimeNow.Printf( "%02d%02d%02d%03d", FTime.tm_hour, FTime.tm_min, FTime.tm_sec, tb.millitm );
     #endif
 #endif
 }
@@ -1274,17 +1322,15 @@ void GetYYYYMMDDHHMMSSmmm( AnsiString& DTime )
 				   FTime.tm_hour, FTime.tm_min, FTime.tm_sec,
 				   ns2ms(now.tv_nsec) );
     #else
-    struct timeval now;
-	struct timeb   tb;
+    struct timeb tb;
 
-	ftime( &tb );
-    gettimeofday( &now, NULL ); ///< Get the current time.
-	localtime_r( &tb.time, &FTime );
-	DTime.Printf( "%04d%02d%02d%02d%02d%02d%03d", 
+    ftime( &tb );
+    localtime_r( &tb.time, &FTime );
+    DTime.Printf( "%04d%02d%02d%02d%02d%02d%03d",
                    FTime.tm_year+1900, FTime.tm_mon+1, FTime.tm_mday,
-                   FTime.tm_hour, FTime.tm_min, FTime.tm_sec, 
-                   (int) now.tv_usec/1000 );
-	#endif
+                   FTime.tm_hour, FTime.tm_min, FTime.tm_sec,
+                   (int)tb.millitm );
+    #endif
 #endif
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1295,15 +1341,26 @@ void GetFIXYYYYMMDDHHMMSSmmm( AnsiString& DTime )
 	GetLocalTime( &SystemTime );
 	DTime.Printf( "%04d%02d%02d-%02d:%02d:%02d.%03d", SystemTime.wYear, SystemTime.wMonth, SystemTime.wDay, SystemTime.wHour, SystemTime.wMinute, SystemTime.wSecond, SystemTime.wMilliseconds );
 #else
-	struct tm      FTime;    	
+	struct tm      FTime;
+    #ifdef _USE_CLOCK_GETTIME
         struct timespec now;
-    
-        clock_gettime( CLOCK_REALTIME ,&now ); ///< Get the current time.    
-	localtime_r( &now.tv_sec, &FTime );
-	DTime.Printf( "%04d%02d%02d-%02d:%02d:%02d.%03d",
-				   FTime.tm_year+1900, FTime.tm_mon+1, FTime.tm_mday,
-				   FTime.tm_hour, FTime.tm_min, FTime.tm_sec,
-				   ns2ms(now.tv_nsec) );    
+
+        clock_gettime( CLOCK_REALTIME ,&now ); ///< Get the current time.
+        localtime_r( &now.tv_sec, &FTime );
+        DTime.Printf( "%04d%02d%02d-%02d:%02d:%02d.%03d",
+                       FTime.tm_year+1900, FTime.tm_mon+1, FTime.tm_mday,
+                       FTime.tm_hour, FTime.tm_min, FTime.tm_sec,
+                       ns2ms(now.tv_nsec) );
+    #else
+    struct timeb tb;
+
+    ftime( &tb );
+    localtime_r( &tb.time, &FTime );
+    DTime.Printf( "%04d%02d%02d-%02d:%02d:%02d.%03d",
+                   FTime.tm_year+1900, FTime.tm_mon+1, FTime.tm_mday,
+                   FTime.tm_hour, FTime.tm_min, FTime.tm_sec,
+                   (int)tb.millitm );
+    #endif
 #endif
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1494,14 +1551,14 @@ void GetYYMMDD( AnsiString& Today )
     SYSTEMTIME SystemTime;
 
     GetLocalTime( &SystemTime );
-	Today.Printf( "%02d%02d%02d", SystemTime.wYear - 1911 , SystemTime.wMonth, SystemTime.wDay );
+	Today.Printf( "%03d%02d%02d", SystemTime.wYear - 1911 , SystemTime.wMonth, SystemTime.wDay );
 #else
     struct tm    FTime;
     struct timespec now;
-    
-    clock_gettime( CLOCK_REALTIME ,&now ); ///< Get the current time.    
-    localtime_r( &now.tv_sec, &FTime );            
-    Today.Printf( "%02d%02d%02d", FTime.tm_year+1900 - 1911, FTime.tm_mon+1, FTime.tm_mday );
+
+    clock_gettime( CLOCK_REALTIME ,&now ); ///< Get the current time.
+    localtime_r( &now.tv_sec, &FTime );
+    Today.Printf( "%03d%02d%02d", FTime.tm_year+1900 - 1911, FTime.tm_mon+1, FTime.tm_mday );
 #endif
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1652,8 +1709,6 @@ UFC::AnsiString ConvertMMMYYToYYYYMM( const AnsiString& MMMYYStr )
     int yyYear = yyYearStr.ToInt();
     UFC::UDateTime now;
     int ccCentury = now.getYear() / 100;
-    int nowYYYear = now.getYear() % 100;
-    if( yyYear < nowYYYear ) ccCentury += 1;
     yyyyMMStr.Printf( "%02d%02d%s", ccCentury, yyYear, mmMonthStr.c_str());
     return yyyyMMStr;
 }
@@ -1718,11 +1773,15 @@ Int32 FileList( const AnsiString& Path, const AnsiString& Ext, UFC::PStringList&
                 UFC::AnsiString FullPath;
 
                 FullPath.Printf("%s%s", DirPath.c_str(), Item->d_name);
-                stat(FullPath.c_str(), &FileStat);
+                if( stat(FullPath.c_str(), &FileStat) != 0 )
+                    continue;
                 if ((FileStat.st_mode & S_IFDIR) == FALSE)
                 {
                     AnsiString FileName(Item->d_name);
-                    if (FileName.AnsiPos(Ext) != -1)
+                    int extLen  = Ext.Length();
+                    int fileLen = FileName.Length();
+                    if (extLen > 0 && fileLen >= extLen &&
+                        FileName.SubString(fileLen - extLen, extLen) == Ext)
                     {
                         Files.Add(FileName);
                         Count++;
@@ -1821,10 +1880,11 @@ Int64 DoubleToInt64( double DoubleVal, int Digi)
 //------------------------------------------------------------------------------
 bool IsDigitalStr( const AnsiString& IntegerStr )
 {
+    if( IntegerStr.Length() == 0 ) return false;
     for( int i = 0; i < IntegerStr.Length(); i++ )
     {
         char curChar = IntegerStr[i];
-        if( ( curChar < '0' ) || ( curChar > '9' ) ) return false; 
+        if( ( curChar < '0' ) || ( curChar > '9' ) ) return false;
     }
     return true;
 }
@@ -1835,7 +1895,7 @@ bool IsIntegerStr( const AnsiString& IntegerStr )
     for( int i = 0; i < IntegerStr.Length(); i++ )
     {
         char curChar = IntegerStr[i];
-        if( ( curChar >= '0' ) && ( curChar <= '9' ) ) 
+        if( ( curChar >= '0' ) && ( curChar <= '9' ) )
             isDigitalCharAppear = true;
         else if( ( curChar == '+' ) || ( curChar == '-' ) )
         {
@@ -1844,7 +1904,7 @@ bool IsIntegerStr( const AnsiString& IntegerStr )
         else
             return false;
     }
-    return true;
+    return isDigitalCharAppear;
 }
 //------------------------------------------------------------------------------
 bool IsFloatingStr( const AnsiString& FloatingStr )
@@ -1854,15 +1914,13 @@ bool IsFloatingStr( const AnsiString& FloatingStr )
     for( int i = 0; i < FloatingStr.Length(); i++ )
     {
         char curChar = FloatingStr[i];
-        if( ( curChar >= '0' ) && ( curChar <= '9' ) )  
+        if( ( curChar >= '0' ) && ( curChar <= '9' ) )
             isDigitalCharAppear = true;
         else if( curChar == '.' )
-        {    
+        {
             pointCount++;
-            if( pointCount > 1 ) 
+            if( pointCount > 1 )
                 return false;
-            else
-                isDigitalCharAppear = true;
         }
         else if( ( curChar == '+' ) || ( curChar == '-' ) )
         {
@@ -1871,13 +1929,13 @@ bool IsFloatingStr( const AnsiString& FloatingStr )
         else
             return false;
     }
-    return true;
+    return isDigitalCharAppear;
 }
 //------------------------------------------------------------------------------
 UInt32 IPToInt( const UFC::AnsiString& IP )
 {
 	UFC::PStringList IPNodes;
-	IPNodes.SetStrings( IP, ".\n" );
+	IPNodes.SetStrings( IP, "." );
 	if( IPNodes.ItemCount( ) == 4 )
 	{
 		UInt32 Seg1 = IPNodes[0].ToInt();
@@ -1901,7 +1959,7 @@ AnsiString  IntToIP( UInt32 IPInt )
 //------------------------------------------------------------------------------
 const char  LUT16[] = { "0123456789ABCDEF" }; ///< 0~15
 const UInt8 ASCII16[] = { 0,1,2,3,4,5,6,7,8,9,0,0,0,0,0,0,0,10,11,12,13,14,15 }; ///< 0~15
-UInt8 LowMask = 0x0F;
+const UInt8 LowMask = 0x0F;
 //----------------------------------------------------------------------------------------------------------
 void BinaryToHexString( const UInt8*     Binary,   ///[in]
                         const Int32      Length, ///[in]
@@ -1924,28 +1982,33 @@ void BinaryToHexString( const UInt8*     Binary,   ///[in]
     *(HexStr+j) = 0; ///< Null term.
 }
 //----------------------------------------------------------------------------------------------------------
+static int HexCharToNibble( char c )
+{
+    if( c >= '0' && c <= '9' ) return c - '0';
+    if( c >= 'A' && c <= 'F' ) return c - 'A' + 10;
+    if( c >= 'a' && c <= 'f' ) return c - 'a' + 10;
+    return -1;
+}
+
 BOOL HexStringToBinary( const UFC::AnsiString& Str, ///[In]
                         UInt8*                 Binary, ///[Out]
                         const Int32            Length ) ///[in]
 
 {
-    Int32 BinLen = Str.Length() /2;
+    Int32 BinLen = Str.Length() / 2;
 
     if( BinLen <= Length )
     {
         const char* HexStr = (char*)Str.c_str();
-        UInt8 Hi,Lo;
-        register int i,j = 0;
+        register int i, j = 0;
 
         for( i = 0; i < BinLen; i++ )
         {
-            Hi = ASCII16[ (*(HexStr+j) - '0') ];
-            j++;
-            Lo = ASCII16[ (*(HexStr+j) - '0') ];
-            j++;
-            if( Hi > 15 || Lo > 15  )
+            int Hi = HexCharToNibble( *(HexStr+j) ); j++;
+            int Lo = HexCharToNibble( *(HexStr+j) ); j++;
+            if( Hi < 0 || Lo < 0 )
                 return FALSE;
-            *(Binary+i) = ((Hi<<4)|Lo);
+            *(Binary+i) = (UInt8)((Hi<<4)|Lo);
         }
         return TRUE;
     }
@@ -1967,10 +2030,18 @@ BOOL GetMacAddress( const AnsiString& Interface, AnsiString& Address )
 	struct ifreq buffer;
 
 	s = socket(PF_INET, SOCK_DGRAM, 0);
+	if( s < 0 )
+		return FALSE;
 
 	memset(&buffer, 0x00, sizeof(buffer));
-	strcpy(buffer.ifr_name, "eth0");
-	ioctl(s, SIOCGIFHWADDR, &buffer);
+	strncpy(buffer.ifr_name, Interface.c_str(), IFNAMSIZ - 1);
+	buffer.ifr_name[IFNAMSIZ - 1] = '\0';
+
+	if( ioctl(s, SIOCGIFHWADDR, &buffer) < 0 )
+	{
+		close(s);
+		return FALSE;
+	}
 	close(s);
 
 	Address.Printf("%.2X:%.2X:%.2X:%.2X:%.2X:%.2X",
@@ -1980,7 +2051,7 @@ BOOL GetMacAddress( const AnsiString& Interface, AnsiString& Address )
 		(unsigned char)buffer.ifr_hwaddr.sa_data[3],
 		(unsigned char)buffer.ifr_hwaddr.sa_data[4],
 		(unsigned char)buffer.ifr_hwaddr.sa_data[5]);
-        return TRUE;
+	return TRUE;
 }
 #endif
 //------------------------------------------------------------------------------
@@ -2123,16 +2194,16 @@ int UIntToStr::Length( void )
 DoubleToStr::DoubleToStr( double Num )
 {
     Int64 IntValue   = (Int64)Num;
-    Int64 IntDecimal = (Int64)((Num- (double)IntValue)*1000000.0); ///< default 6  
+    Int64 IntDecimal = (Int64)(fabs(Num - (double)IntValue)*1000000.0); ///< default 6
     bool  IsNegative = (Num < 0.0 )? true: false;
-    register char* ptr = FBuffer + 30;    
+    register char* ptr = FBuffer + 30;
     register Int64 tmp_value;
-    
-    if( IntValue > 1000000000000000LL )
+
+    if( IntValue > 1000000000000000LL || IntValue < -1000000000000000LL )
     {
         strcpy(FBuffer, "Value too large." );
-        FResult = FBuffer; 
-        return;    
+        FResult = FBuffer;
+        return;
     }
     ///< Decimal parts to string
     for( int i=0; i< 6; i++ )
@@ -2160,17 +2231,20 @@ DoubleToStr::DoubleToStr( double Num )
 DoubleToStr::DoubleToStr( double Num, int Width, int Precision,  bool PadZero )
 {
     Int64 IntValue   = (Int64)Num;
-    Int64 IntDecimal = (Int64)((Num - static_cast<double>(IntValue)) * pow(static_cast<double>(10), Precision)); ///< default 6  
+    static const double kPow10[] = { 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
+    if( Precision < 0 ) Precision = 0;
+    if( Precision > 9 ) Precision = 9;
+    Int64 IntDecimal = (Int64)(fabs(Num - static_cast<double>(IntValue)) * kPow10[Precision]);
     bool  IsNegative = (Num < 0.0 )? true: false;
-    register char* ptr = FBuffer + 30;    
+    register char* ptr = FBuffer + 30;
     register Int64 tmp_value;
     char FillChar;
-    
-    if( IntValue > 1000000000000000LL )
+
+    if( IntValue > 1000000000000000LL || IntValue < -1000000000000000LL )
     {
         strcpy(FBuffer, "Value too large." );
-        FResult = FBuffer; 
-        return;    
+        FResult = FBuffer;
+        return;
     }
     if( Width > 30 )
         Width = 30;    
@@ -2226,7 +2300,7 @@ BOOL IsValidIP( const UFC::AnsiString& IP )
 		return false;
 	UFC::PStringList Strs;
 
-	Strs.SetStrings( IP, ".\n" );
+	Strs.SetStrings( IP, "." );
 	if( Strs.ItemCount() == 4 )
 	{
 		for( int i = 0; i < 4; i++ ) ///< Check each number.

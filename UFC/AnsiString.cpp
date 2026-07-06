@@ -30,9 +30,9 @@ PInitAnsiString::PInitAnsiString()
 //------------------------------------------------------------------------------
 PInitAnsiString::~PInitAnsiString()
 {
-    if( AnsiString::DelimiterLUT == NULL )
+    if( AnsiString::DelimiterLUT != NULL )
         delete [] AnsiString::DelimiterLUT;
-    if( AnsiString::WCToMBBuffer == NULL )
+    if( AnsiString::WCToMBBuffer != NULL )
         delete [] AnsiString::WCToMBBuffer;
 }
 //------------------------------------------------------------------------------
@@ -65,6 +65,7 @@ int AnsiString::LengthToMBStr( const wchar_t* src )
 AnsiString::AnsiString( const wchar_t* src)
 :StrBuffer( NULL )
 ,FLength( 0 )
+,FCapacity( 0 )
 {
     if( src != NULL )
     {
@@ -72,23 +73,39 @@ AnsiString::AnsiString( const wchar_t* src)
 
         if( NeedSize > 0 )
         {
-            try
+            if( NeedSize < SSO_SIZE )
             {
-                size_t StrSize;
-
-                StrBuffer = new char[ NeedSize + 1 ];
-                StrSize   = wcstombs( StrBuffer, src, NeedSize );
-                if( StrSize == (size_t)-1 )
-                    throw exception();
-                FLength = (UFCType::UInt16)StrSize;
-                StrBuffer[ FLength ] = 0;
+                size_t StrSize = wcstombs( InlineBuffer, src, NeedSize );
+                if( StrSize != (size_t)-1 )
+                {
+                    FLength   = (UFCType::UInt16)StrSize;
+                    InlineBuffer[ FLength ] = 0;
+                    StrBuffer = InlineBuffer;
+                    FCapacity = SSO_SIZE - 1;
+                }
             }
-            catch( ... ) ///< Alloc memory failed.
+            else
             {
-                if( StrBuffer != NULL )
-                    delete [] StrBuffer;
-                StrBuffer = NULL;
-                FLength = 0;
+                try
+                {
+                    size_t StrSize;
+
+                    StrBuffer = new char[ NeedSize + 1 ];
+                    FCapacity = (UInt16)NeedSize;
+                    StrSize   = wcstombs( StrBuffer, src, NeedSize );
+                    if( StrSize == (size_t)-1 )
+                        throw exception();
+                    FLength = (UFCType::UInt16)StrSize;
+                    StrBuffer[ FLength ] = 0;
+                }
+                catch( ... ) ///< Alloc memory failed.
+                {
+                    if( StrBuffer != NULL )
+                        delete [] StrBuffer;
+                    StrBuffer = NULL;
+                    FLength   = 0;
+                    FCapacity = 0;
+                }
             }
         }
     }
@@ -96,64 +113,94 @@ AnsiString::AnsiString( const wchar_t* src)
 //---------------------------------------------------------------------------
 AnsiString::AnsiString(const char* src)
 :StrBuffer( NULL )
+,FLength( 0 )
+,FCapacity( 0 )
 {
     if( src != NULL )
     {
         FLength = (UFCType::UInt16)strlen( src );
         if( FLength )
         {
-            try
+            if( FLength < SSO_SIZE )
             {
-                StrBuffer = new char[ FLength + 1 ];
-                memcpy(StrBuffer, src, FLength + 1);
+                StrBuffer = InlineBuffer;
+                FCapacity = SSO_SIZE - 1;
+                memcpy( InlineBuffer, src, FLength + 1 );
             }
-            catch( ... )
+            else
             {
-                StrBuffer = NULL;
-                FLength = 0;
+                try
+                {
+                    StrBuffer = new char[ FLength + 1 ];
+                    FCapacity = FLength;
+                    memcpy( StrBuffer, src, FLength + 1 );
+                }
+                catch( ... )
+                {
+                    StrBuffer = NULL;
+                    FLength   = 0;
+                    FCapacity = 0;
+                }
             }
         }
-    }
-    else
-    {
-        FLength = 0;
     }
 }
 //---------------------------------------------------------------------------
 AnsiString::AnsiString( const AnsiString& src)
 :StrBuffer( NULL )
+,FLength( 0 )
+,FCapacity( 0 )
 {
     FLength = src.FLength;
     if( FLength )
     {
-        try
+        if( FLength < SSO_SIZE )
         {
-            StrBuffer = new char [FLength + 1];
-            memcpy( StrBuffer, src.StrBuffer, FLength + 1);
+            StrBuffer = InlineBuffer;
+            FCapacity = SSO_SIZE - 1;
+            memcpy( InlineBuffer, src.StrBuffer, FLength + 1 );
         }
-        catch( ... )
+        else
         {
-            StrBuffer = NULL;
-            FLength = 0;
+            try
+            {
+                StrBuffer = new char [FLength + 1];
+                FCapacity = FLength;
+                memcpy( StrBuffer, src.StrBuffer, FLength + 1);
+            }
+            catch( ... )
+            {
+                StrBuffer = NULL;
+                FLength   = 0;
+                FCapacity = 0;
+            }
         }
     }
 }
 //---------------------------------------------------------------------------
 AnsiString::AnsiString( const char* src, Int32 len )
-:StrBuffer( NULL ),FLength(0)
+:StrBuffer( NULL ),FLength(0),FCapacity(0)
 {
     if( src != NULL )
     {
-        UInt16 length = StrNLen( src, len  );
-        
+        UInt16 length = StrNLen( src, len );
         if( length < len )
             len = length;
         FLength = len;
         if( FLength )
         {
+            if( FLength < SSO_SIZE )
+            {
+                StrBuffer = InlineBuffer;
+                FCapacity = SSO_SIZE - 1;
+                memcpy( InlineBuffer, src, FLength );
+                InlineBuffer[ FLength ] = '\0';
+                return;
+            }
             try
             {
                 StrBuffer = new char [FLength + 1];
+                FCapacity = FLength;
                 memcpy( StrBuffer, src, FLength );
                 StrBuffer[FLength] = '\0';
                 return;
@@ -166,114 +213,117 @@ AnsiString::AnsiString( const char* src, Int32 len )
     }
     StrBuffer = NULL;
     FLength = 0;
+    FCapacity = 0;
 }
 //---------------------------------------------------------------------------
 AnsiString::AnsiString( char src )
 {
     if (src == '\0')
     {
-        FLength = 0;
+        FLength   = 0;
+        FCapacity = 0;
         StrBuffer = NULL;
     }
     else
     {
-        FLength = 1;
-        try
-        {
-            StrBuffer = new char [2];
-            *( StrBuffer )     = src;
-            *( StrBuffer + 1 ) = '\0';
-        }
-        catch( ... )
-        {
-            FLength = 0;
-            StrBuffer = NULL;
-        }
+        FLength        = 1;
+        FCapacity      = SSO_SIZE - 1;
+        StrBuffer      = InlineBuffer;
+        InlineBuffer[0] = src;
+        InlineBuffer[1] = '\0';
     }
 }
 //---------------------------------------------------------------------------
 AnsiString::AnsiString( Int32 num )
 {
-    try
-    {
-        StrBuffer = new char [ 11 ];
-        sprintf(StrBuffer,"%d",num);
-        FLength = (UFCType::UInt16)strlen(StrBuffer);
-    }
-    catch( ... )
-    {
-        FLength = 0;
-        StrBuffer = NULL;
-    }
+    StrBuffer = InlineBuffer;
+    FCapacity = SSO_SIZE - 1;
+    FLength   = (UFCType::UInt16)sprintf( InlineBuffer, "%d", num );
 }
 //---------------------------------------------------------------------------
 AnsiString::AnsiString( Int64 num )
 {
-    try
+    StrBuffer = InlineBuffer;
+    FCapacity = SSO_SIZE - 1;
+    FLength   = (UFCType::UInt16)sprintf( InlineBuffer, "%lld", num );
+    if( FLength == 0 )  // fallback: sprintf failed
     {
-        StrBuffer = new char [ 21 ];
-        sprintf(StrBuffer,"%lld", num);
-        FLength = (UFCType::UInt16)strlen(StrBuffer);
-    }
-    catch( ... )
-    {
-        FLength = 0;
+        FLength   = 0;
+        FCapacity = 0;
         StrBuffer = NULL;
     }
 }
 //---------------------------------------------------------------------------
 AnsiString::~AnsiString()
 {
-    if( StrBuffer != NULL )
-        delete []StrBuffer;
+    if( StrBuffer != InlineBuffer )
+        delete [] StrBuffer;
 }
 //---------------------------------------------------------------------------
 void AnsiString::Append( const char *Str, const UInt16 StrLen )
 {
-	if (!FLength)
+	if( StrLen == 0 )
+		return;
+	if( FCapacity < FLength )
+		FCapacity = FLength;
+	UInt16 newLen = FLength + StrLen;
+	if( newLen > FCapacity )
 	{
-		if( StrLen )
+		if( newLen < SSO_SIZE )
 		{
-			StrBuffer = new char [ StrLen + 1 ];
-			memcpy( StrBuffer, Str, StrLen );
-			StrBuffer[ StrLen ] = '\0';
-			FLength = StrLen;
+			// First append to empty string, fits in InlineBuffer
+			StrBuffer = InlineBuffer;
+			FCapacity = SSO_SIZE - 1;
+		}
+		else
+		{
+			UInt16 newCap = (FCapacity < (UInt16)SSO_SIZE) ? (UInt16)SSO_SIZE : FCapacity;
+			while( newCap < newLen )
+			{
+				if( newCap >= 32768 ) { newCap = 65535; break; }
+				newCap *= 2;
+			}
+			char* newBuf = new char[ newCap + 1 ];
+			if( FLength )
+				memcpy( newBuf, StrBuffer, FLength );
+			if( StrBuffer != InlineBuffer )
+				delete [] StrBuffer;
+			StrBuffer = newBuf;
+			FCapacity = newCap;
 		}
 	}
-	else
-	{
-		SetSize( FLength + StrLen );
-		memcpy( StrBuffer + FLength, Str, StrLen);
-		FLength += StrLen;
-		StrBuffer[ FLength ] = '\0';
-	}
+	memcpy( StrBuffer + FLength, Str, StrLen );
+	FLength = newLen;
+	StrBuffer[ FLength ] = '\0';
 }
 //---------------------------------------------------------------------------
 void AnsiString::SetSize(UInt16 Size, bool KeepData)
 {
-	if (FLength)
+	if( Size < SSO_SIZE )
 	{
-		char *temp = new char [Size + 1];
-
-		if ( KeepData )
-		{
-			if( FLength <= Size ) //grow
-			{
-				strcpy( temp, StrBuffer );
-			}
-			else //shrink
-			{
-				memcpy( temp, StrBuffer, Size );
-			}
-		}
-		delete[]StrBuffer;
-		StrBuffer = temp;
+		if( KeepData && FLength > 0 && StrBuffer != InlineBuffer )
+			memcpy( InlineBuffer, StrBuffer, FLength <= Size ? FLength : Size );
+		if( StrBuffer != InlineBuffer )
+			delete [] StrBuffer;
+		StrBuffer = InlineBuffer;
 		StrBuffer[ Size ] = '\0';
+		FCapacity = SSO_SIZE - 1;
 	}
 	else
 	{
-		StrBuffer = new char [Size + 1];
-		StrBuffer[0] = '\0';
+		char *temp = new char[ Size + 1 ];
+		if( KeepData && FLength > 0 )
+		{
+			if( FLength <= Size )
+				memcpy( temp, StrBuffer, FLength + 1 );
+			else
+				memcpy( temp, StrBuffer, Size );
+		}
+		if( StrBuffer != InlineBuffer )
+			delete [] StrBuffer;
+		StrBuffer = temp;
+		StrBuffer[ Size ] = '\0';
+		FCapacity = Size;
 	}
 }
 //---------------------------------------------------------------------------
@@ -289,19 +339,9 @@ UInt16 AnsiString::StrNLen( const char *Str, const UInt16 MaxLength )
 //---------------------------------------------------------------------------
 int AnsiString::AnsiCompare( const char* rhs ) const throw()
 {
-	if (rhs && FLength)
-	{
-		return strcmp(StrBuffer, rhs);
-	}
-	else
-	{
-		if (!rhs && !FLength )
-			return 0;
-		else if (FLength)
-			return 1;
-		else
-			return -1;
-	}
+    const char* lhs = StrBuffer ? StrBuffer : "";
+    if( rhs == NULL ) rhs = "";
+    return strcmp( lhs, rhs );
 }
 //---------------------------------------------------------------------------
 int AnsiString::AnsiCompare( const AnsiString& rhs) const throw()
@@ -399,20 +439,13 @@ AnsiString&  AnsiString::Delete(UInt16 index, UInt16 count)
 		else
 			start[0] = '\0';
 
-		FLength = (UFCType::UInt16)strlen(StrBuffer);
-		if ( FLength )
+		FLength = ( index + count < FLength ) ? FLength - count : (UInt16)index;
+		if ( FLength == 0 )
 		{
-			char *temp = new char [FLength + 1];
-
-			memcpy(temp, StrBuffer, FLength);
-			temp[FLength] = '\0';
-			delete [] StrBuffer;
-			StrBuffer = temp;
-		}
-		else
-		{
-			delete [] StrBuffer;
+			if( StrBuffer != InlineBuffer )
+				delete [] StrBuffer;
 			StrBuffer = NULL;
+			FCapacity = 0;
 		}
 	}
 	return *this;
@@ -422,11 +455,8 @@ bool AnsiString::IsDelimiter( const AnsiString& delimiters, UInt16 index) const 
 {
 	if( index < FLength )
 	{
-		for( register int i = 0; i < delimiters.FLength; i++ )
-		{
-			if( *(StrBuffer + index ) ==  *( delimiters.StrBuffer + i ) )
-				return true;
-		}
+		SetDelimiter( delimiters );
+		return DelimiterLUT[ (UInt8)StrBuffer[index] ] != 0;
 	}
 	return false;
 }
@@ -501,16 +531,30 @@ Int32 AnsiString::LastDelimiter( const AnsiString& delimiters ) const throw()
 //------------------------------------------------------------------------------------------
 AnsiString AnsiString::UpperCase() const
 {
-	UInt8          *temp   = new UInt8[ FLength + 1];
-	register UInt8 *Ptr    = temp;
-	register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
-
-	for( register Int16 i = 0; i < FLength; i++ )
-		*( Ptr++ ) = toupper( *( StrPtr++ ) );
-	*Ptr = 0;
 	AnsiString ret;
-	ret.StrBuffer = ( char* ) temp;
+	if( FLength == 0 ) return ret;
 	ret.FLength = FLength;
+	if( FLength < SSO_SIZE )
+	{
+		ret.StrBuffer = ret.InlineBuffer;
+		ret.FCapacity = SSO_SIZE - 1;
+		register UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
+		register UInt8 *StrPtr = (UInt8*)StrBuffer;
+		for( register Int16 i = 0; i < FLength; i++ )
+			*( Ptr++ ) = toupper( *( StrPtr++ ) );
+		*Ptr = 0;
+	}
+	else
+	{
+		UInt8* temp = new UInt8[ FLength + 1 ];
+		register UInt8 *Ptr    = temp;
+		register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
+		for( register Int16 i = 0; i < FLength; i++ )
+			*( Ptr++ ) = toupper( *( StrPtr++ ) );
+		*Ptr = 0;
+		ret.StrBuffer = ( char* ) temp;
+		ret.FCapacity = FLength;
+	}
 	return ret;
 }
 //---------------------------------------------------------------------------
@@ -522,10 +566,11 @@ AnsiString& AnsiString::PadThis( Int32 PadLength, char PadChar, bool PadRight )
 	}
 	else if( PadLength == 0 ) ///< Set to Empty string.
 	{
-		if( StrBuffer != NULL )
+		if( StrBuffer != InlineBuffer )
 			delete []StrBuffer;
 		StrBuffer = NULL;
 		FLength = 0;
+		FCapacity = 0;
 		return *this;
 	}
 	else
@@ -536,36 +581,74 @@ AnsiString& AnsiString::PadThis( Int32 PadLength, char PadChar, bool PadRight )
 				SetLength( PadLength );
 			else if( PadLength > FLength )
 			{
-				char *Temp = new char [ PadLength + 1 ];
-
-				memset( Temp, PadChar, PadLength );
-				Temp[ PadLength ] = '\0';
-				if( StrBuffer != NULL )
+				if( (UInt16)PadLength < SSO_SIZE )
 				{
-					memcpy( Temp, StrBuffer, FLength );
-					delete []StrBuffer;
+					if( StrBuffer != InlineBuffer )
+					{
+						if( FLength > 0 ) memcpy( InlineBuffer, StrBuffer, FLength );
+						delete [] StrBuffer;
+						StrBuffer = InlineBuffer;
+						FCapacity = SSO_SIZE - 1;
+					}
+					memset( InlineBuffer + FLength, PadChar, PadLength - FLength );
+					InlineBuffer[ PadLength ] = '\0';
+					FLength = (UInt16)PadLength;
 				}
-				StrBuffer = Temp;
-				FLength = PadLength;
+				else
+				{
+					char *Temp = new char [ PadLength + 1 ];
+					memset( Temp, PadChar, PadLength );
+					Temp[ PadLength ] = '\0';
+					if( StrBuffer != NULL )
+						memcpy( Temp, StrBuffer, FLength );
+					if( StrBuffer != InlineBuffer )
+						delete []StrBuffer;
+					StrBuffer = Temp;
+					FLength = PadLength;
+					FCapacity = PadLength;
+				}
 			}
 		}
 		else ///< Pad left
 		{
-			char *Temp = new char [ PadLength + 1 ];
-			int   Offset = PadLength - FLength;
-
-			memset( Temp, PadChar, PadLength );
-			Temp[ PadLength ] = '\0';
-			if( StrBuffer != NULL )
+			int Offset = PadLength - FLength;
+			if( (UInt16)PadLength < SSO_SIZE )
 			{
-				if( Offset < 0 )
-					memcpy( Temp, StrBuffer - Offset, PadLength  );
-				else
-					memcpy( Temp + Offset, StrBuffer, PadLength - Offset );
-				delete []StrBuffer;
+				char Tmp[ SSO_SIZE ];
+				memset( Tmp, PadChar, PadLength );
+				if( StrBuffer != NULL )
+				{
+					if( Offset < 0 )
+						memcpy( Tmp, StrBuffer - Offset, PadLength );
+					else
+						memcpy( Tmp + Offset, StrBuffer, FLength );
+				}
+				Tmp[ PadLength ] = '\0';
+				if( StrBuffer != InlineBuffer )
+					delete [] StrBuffer;
+				memcpy( InlineBuffer, Tmp, PadLength + 1 );
+				StrBuffer = InlineBuffer;
+				FCapacity = SSO_SIZE - 1;
+				FLength   = (UInt16)PadLength;
 			}
-			StrBuffer = Temp;
-			FLength = PadLength;
+			else
+			{
+				char *Temp = new char [ PadLength + 1 ];
+				memset( Temp, PadChar, PadLength );
+				Temp[ PadLength ] = '\0';
+				if( StrBuffer != NULL )
+				{
+					if( Offset < 0 )
+						memcpy( Temp, StrBuffer - Offset, PadLength  );
+					else
+						memcpy( Temp + Offset, StrBuffer, PadLength - Offset );
+				}
+				if( StrBuffer != InlineBuffer )
+					delete []StrBuffer;
+				StrBuffer = Temp;
+				FLength = PadLength;
+				FCapacity = PadLength;
+			}
 		}
 		return *this;
 	}
@@ -577,8 +660,7 @@ AnsiString& AnsiString::UpperThis( void ) throw()
 
 	for( register Int16 i = 0; i < FLength; i++ )
 	{
-		if( islower( *( Ptr ) ))
-			*( Ptr ) = toupper(*( Ptr ));
+		*Ptr = toupper( *Ptr );
 		Ptr++;
 	}
 	return *this;
@@ -590,8 +672,7 @@ AnsiString& AnsiString::LowerThis( void ) throw()
 
 	for( register Int16 i = 0; i < FLength; i++ )
 	{
-		if( isupper( *( Ptr ) ))
-			*( Ptr ) = tolower(*( Ptr ));
+		*Ptr = tolower( *Ptr );
 		Ptr++;
 	}
 	return *this;
@@ -604,16 +685,12 @@ void AnsiString::AnsiStrToLower( char* str ) throw()
 //---------------------------------------------------------------------------
 void AnsiString::AnsiStrToLower( char* dst, const char* src ) throw()
 {
-	UInt16 Length = (UFCType::UInt16)strlen( src );
-	UInt8* SrcPtr = (UInt8* )src;
-	UInt8* DstPtr = (UInt8* )dst;
+	UInt8* SrcPtr = (UInt8*)src;
+	UInt8* DstPtr = (UInt8*)dst;
 
-	for( register UInt16 i = 0; i < Length; i++ )
-	{
-		*( DstPtr ) = tolower( *( SrcPtr ) );
-		SrcPtr++;
-		DstPtr++;
-	}
+	while( *SrcPtr )
+		*DstPtr++ = tolower( *SrcPtr++ );
+	*DstPtr = '\0';
 }
 //---------------------------------------------------------------------------
 /*void AnsiString::MoveString(AnsiString& Dst, AnsiString& Src) throw()
@@ -628,16 +705,30 @@ void AnsiString::AnsiStrToLower( char* dst, const char* src ) throw()
 //---------------------------------------------------------------------------
 AnsiString AnsiString::LowerCase() const
 {
-	UInt8          *temp   = new UInt8[ FLength + 1];
-	register UInt8 *Ptr    = temp;
-	register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
-
-	for( register Int16 i = 0; i < FLength; i++ )
-		*( Ptr++ ) = tolower( *( StrPtr++ ) );
-	*Ptr = 0;
 	AnsiString ret;
-	ret.StrBuffer = ( char* ) temp;
+	if( FLength == 0 ) return ret;
 	ret.FLength = FLength;
+	if( FLength < SSO_SIZE )
+	{
+		ret.StrBuffer = ret.InlineBuffer;
+		ret.FCapacity = SSO_SIZE - 1;
+		register UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
+		register UInt8 *StrPtr = (UInt8*)StrBuffer;
+		for( register Int16 i = 0; i < FLength; i++ )
+			*( Ptr++ ) = tolower( *( StrPtr++ ) );
+		*Ptr = 0;
+	}
+	else
+	{
+		UInt8* temp = new UInt8[ FLength + 1 ];
+		register UInt8 *Ptr    = temp;
+		register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
+		for( register Int16 i = 0; i < FLength; i++ )
+			*( Ptr++ ) = tolower( *( StrPtr++ ) );
+		*Ptr = 0;
+		ret.StrBuffer = ( char* ) temp;
+		ret.FCapacity = FLength;
+	}
 	return ret;
 }
 //---------------------------------------------------------------------------
@@ -649,15 +740,13 @@ AnsiString& AnsiString::SetLength(UInt16 length )
 		{
 			if (length == 0)
 			{
-				delete []StrBuffer;
+				if( StrBuffer != InlineBuffer )
+					delete []StrBuffer;
 				StrBuffer = NULL;
+				FCapacity = 0;
 			}
 			else
 			{
-				char *Temp = new char [length + 1];
-				memcpy(Temp, StrBuffer, length);
-				delete []StrBuffer;
-				StrBuffer = Temp;
 				StrBuffer[length] = '\0';
 			}
 			FLength = length;
@@ -675,21 +764,30 @@ void AnsiString::Copy( const char* src, int len )
 {
     if( len <= 0 )
     {
-        if( StrBuffer != NULL ) //if ( FLength > 0 )
+        if( StrBuffer != InlineBuffer )
            delete []StrBuffer;
         StrBuffer = NULL;
         FLength = 0;
+        FCapacity = 0;
         return;
     }
-    else
+    if( (UInt16)len < SSO_SIZE )
     {
-        if( StrBuffer != NULL ) //if( FLength > 0 && StrBuffer != NULL )
+        if( StrBuffer != InlineBuffer && StrBuffer != NULL )
             delete [] StrBuffer;
-        StrBuffer = new char [ len + 1];
+        StrBuffer = InlineBuffer;
+        FCapacity = SSO_SIZE - 1;
     }
-    memcpy( StrBuffer, src, len );				
+    else if( StrBuffer == NULL || FCapacity < (UInt16)len )
+    {
+        if( StrBuffer != InlineBuffer )
+            delete [] StrBuffer;
+        StrBuffer = new char[ len + 1 ];
+        FCapacity = (UInt16)len;
+    }
+    memcpy( StrBuffer, src, len );
     StrBuffer[ len ] = '\0';
-    FLength = len;        
+    FLength = (UInt16)len;
 }
 //---------------------------------------------------------------------------
 AnsiString  AnsiString::SubString(UInt16 index, UInt16 count) const
@@ -750,18 +848,17 @@ AnsiString::operator size_t() const
 //---------------------------------------------------------------------------
 char& AnsiString::operator [](const int idx)  throw()
 {
-	if (idx < FLength && idx >= 0)
+	static char dummy = '\0';
+	if( StrBuffer != NULL && idx >= 0 && idx < FLength )
 		return StrBuffer[idx];
-	else
-		return StrBuffer[FLength];
+	return dummy;
 }
 //---------------------------------------------------------------------------
 const char AnsiString::operator [] (const int idx) const  throw()
 {
-	if (idx < FLength && idx >= 0)
+	if( StrBuffer != NULL && idx >= 0 && idx < FLength )
 		return StrBuffer[idx];
-	else
-		return StrBuffer[FLength];
+	return '\0';
 }
 //---------------------------------------------------------------------------
 AnsiString& AnsiString::operator =( const wchar_t* rhs )
@@ -772,7 +869,7 @@ AnsiString& AnsiString::operator =( const wchar_t* rhs )
 	{
 		try
 		{
-			if( FLength < (UFCType::UInt16)NeedSize )
+			if( FCapacity < (UFCType::UInt16)NeedSize )
 				SetSize( (UFCType::UInt16)NeedSize, false ); ///< Resize string buffer
 			if( wcstombs( StrBuffer, rhs, NeedSize ) == (size_t)-1 )
 				throw exception();
@@ -781,20 +878,24 @@ AnsiString& AnsiString::operator =( const wchar_t* rhs )
 		}
 		catch( ... ) ///< Alloc memory failed.
 		{
-			if( StrBuffer != NULL )
+			if( StrBuffer != InlineBuffer )
 				delete[] StrBuffer;
 			StrBuffer = NULL;
 			FLength = 0;
+			FCapacity = 0;
 		}
 	}
 	else
     {
-		if( StrBuffer != NULL )
+		if( StrBuffer != InlineBuffer )
 		{
 			delete[] StrBuffer;
 			StrBuffer = NULL;
 		}
+		else
+			StrBuffer = NULL;
 		FLength = 0;
+		FCapacity = 0;
     }
     return *this;
 }
@@ -808,16 +909,15 @@ AnsiString& AnsiString::operator =( const char* rhs )
         UInt16 len = (UFCType::UInt16)strlen( rhs );
         if( len == 0 ) ///< the given string length = 0
         {
-			if( StrBuffer != NULL )
-			{
+			if( StrBuffer != InlineBuffer )
 				delete[] StrBuffer;
-				StrBuffer = NULL;
-            }
+			StrBuffer = NULL;
             FLength = 0;
+            FCapacity = 0;
         }
         else
         {
-			if( FLength >= len )
+			if( FCapacity >= len )
 			{
                 memcpy( StrBuffer, rhs, len + 1);
                 FLength = len;
@@ -832,12 +932,11 @@ AnsiString& AnsiString::operator =( const char* rhs )
     }
     else
     {
-        if( StrBuffer != NULL )
-        {
-    	    delete[] StrBuffer;
-		    StrBuffer = NULL;
-        }
+		if( StrBuffer != InlineBuffer )
+			delete[] StrBuffer;
+		StrBuffer = NULL;
 		FLength = 0;
+		FCapacity = 0;
     }
     return *this;
 }
@@ -846,24 +945,30 @@ AnsiString& AnsiString::operator =( const AnsiString& rhs ) throw()
 {
     if( this != &rhs )
     {
-        if( FLength > 0 && StrBuffer != NULL )
+        if( rhs.FLength == 0 )
         {
-            delete [] StrBuffer;
+            if( StrBuffer != InlineBuffer )
+                delete [] StrBuffer;
             StrBuffer = NULL;
+            FLength = 0;
+            FCapacity = 0;
         }
-        FLength = rhs.FLength;
-        if( FLength )
+        else if( FCapacity >= rhs.FLength )
         {
-            try
-            {
-                StrBuffer = new char [FLength + 1];
-                memcpy( StrBuffer, rhs.StrBuffer, FLength + 1);
-            }
-            catch( ... )
-            {
-                StrBuffer = NULL;
-                FLength = 0;
-            }
+            memcpy( StrBuffer, rhs.StrBuffer, rhs.FLength + 1 );
+            FLength = rhs.FLength;
+        }
+        else
+        {
+            if( StrBuffer != InlineBuffer )
+                delete [] StrBuffer;
+            StrBuffer = NULL;
+            FLength = 0;
+            FCapacity = 0;
+            SetSize( rhs.FLength, false );
+            FLength = rhs.FLength;
+            if( StrBuffer != NULL )
+                memcpy( StrBuffer, rhs.StrBuffer, FLength + 1 );
         }
     }
     return *this;
@@ -885,12 +990,7 @@ AnsiString& AnsiString::operator += ( const char* rhs )
 AnsiString& AnsiString::operator +=( const char rhs )
 {
 	if (rhs != 0)
-	{
-		char str[2];
-		str[1] = 0;
-		str[0] = rhs;
-		Append(str, 1);
-	}
+		Append( &rhs, 1 );
 	return *this;
 }
 //---------------------------------------------------------------------------
@@ -931,15 +1031,28 @@ AnsiString AnsiString::operator +( const AnsiString& StrB) const
 //---------------------------------------------------------------------------
 UInt16 AnsiString::AppendPrintf( const char* FormatStr, ... )
 {
-	UInt16   Count;
-	char     Buffer[MAX_STR_BUFFER];
-    va_list  va;
-
-    va_start( va , FormatStr );
-    Count = vsnprintf( Buffer, MAX_STR_BUFFER, FormatStr,va);
+    char    StackBuf[256];
+    va_list va;
+    va_start( va, FormatStr );
+    int Count = vsnprintf( StackBuf, sizeof(StackBuf), FormatStr, va );
     va_end( va );
-    Append( Buffer, (UFCType::UInt16)strlen( Buffer ) );
-	return Count;
+    if( Count <= 0 )
+        return 0;
+    if( Count < (int)sizeof(StackBuf) )
+    {
+        Append( StackBuf, (UInt16)Count );
+    }
+    else if( Count < MAX_STR_BUFFER )
+    {
+        char*   HeapBuf = new char[ Count + 1 ];
+        va_list va2;
+        va_start( va2, FormatStr );
+        vsnprintf( HeapBuf, Count + 1, FormatStr, va2 );
+        va_end( va2 );
+        Append( HeapBuf, (UInt16)Count );
+        delete [] HeapBuf;
+    }
+    return (UInt16)Count;
 }
 //---------------------------------------------------------------------------
 UInt16 AnsiString::Printf( const char* FormatStr, ... )
@@ -958,19 +1071,29 @@ UInt16 AnsiString::Printf( const char* FormatStr, ... )
 #endif
 	if( CharCount <= 0 )
 	{
-		if( StrBuffer != NULL && FLength != 0 )
+		if( StrBuffer != InlineBuffer )
 			delete [] StrBuffer;
 		StrBuffer = NULL;
 		FLength = 0;
+		FCapacity = 0;
 		va_end( va );
 		return 0;
 	}
-	if( CharCount > FLength )
+	if( CharCount > (Int32)FCapacity )
 	{
-		if( StrBuffer != NULL && FLength != 0 )
+		if( StrBuffer != InlineBuffer )
 			delete [] StrBuffer;
 		FLength = CharCount;
-		StrBuffer = new char[ FLength + 1 ];
+		if( FLength < SSO_SIZE )
+		{
+			StrBuffer = InlineBuffer;
+			FCapacity = SSO_SIZE - 1;
+		}
+		else
+		{
+			StrBuffer = new char[ FLength + 1 ];
+			FCapacity = FLength;
+		}
 	}
 	else
 		FLength = CharCount;
@@ -1036,19 +1159,29 @@ void AnsiString::LoadFromStream( PStream* Stream )
     NInt32  StringLength;
 
     StringLength.LoadFromStream( Stream ); ///< Read String length from Stream
-    if( FLength > 0 && StrBuffer != NULL ) ///< Release old string buffer
+    if( StrBuffer != InlineBuffer )
         delete [] StrBuffer;
+    StrBuffer = NULL;
     FLength = (UInt16)StringLength.ToInt32();
     if( FLength > 0  ) ///< Not empty string
     {
-	StrBuffer = new char[ FLength ];
+        if( FLength < (UInt16)(SSO_SIZE + 1) )
+        {
+            StrBuffer = InlineBuffer;
+            FCapacity = SSO_SIZE - 1;
+        }
+        else
+        {
+            StrBuffer = new char[ FLength ];
+            FCapacity = FLength - 1;
+        }
         Stream->Read( StrBuffer, FLength );
         FLength -= 1;
     }
     else ///< Empty String
     {
-        FLength = 0;
-        StrBuffer = NULL;
+        FLength   = 0;
+        FCapacity = 0;
     }
 }
 //---------------------------------------------------------------------------
@@ -1159,9 +1292,9 @@ size_t StrLCpy( char *dst, const char *src, size_t siz )
 }
 //---------------------------------------------------------------------------
 #if (defined(__LINUX) || (defined(__AIX) && defined(__ICONV)))
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       size_t MaxTargetDataSizeInByte, char *TargetDataBuffer, AnsiString& TranscodeMsg)
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        size_t MaxTargetDataSizeInByte, char *TargetDataBuffer, AnsiString& TranscodeMsg )
 {
     int convertCount = 0;
     if (OriginalDataSizeInByte <= 0) return convertCount;
@@ -1205,9 +1338,9 @@ int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
     return convertCount;
 }  //TranscodeCharacter()
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       AnsiString& TargetStr, AnsiString& TranscodeMsg)
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        AnsiString& TargetStr, AnsiString& TranscodeMsg )
 {
     int convertCount = 0;
     if (OriginalDataSizeInByte <= 0) return convertCount;
@@ -1257,9 +1390,9 @@ int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
     return convertCount;
 }  //TranscodeCharacter()
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       const char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       AnsiString& TargetStr, AnsiString& TranscodeMsg)
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        const char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        AnsiString& TargetStr, AnsiString& TranscodeMsg )
 {
     int convertCount = 0;
     if (OriginalDataSizeInByte <= 0) return convertCount;
@@ -1313,8 +1446,8 @@ int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
     return convertCount;
 }  //TranscodeCharacter()
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const AnsiString& OriginalCodeName, const AnsiString& TargetCodeName,
-                       const AnsiString& OriginalStr, AnsiString& TargetStr, AnsiString& TranscodeMsg)
+int TranscodeCharacter( const AnsiString& OriginalCodeName, const AnsiString& TargetCodeName,
+                        const AnsiString& OriginalStr, AnsiString& TargetStr, AnsiString& TranscodeMsg )
 {
     int convertCount = 0;
     size_t originalBufferSize = OriginalStr.Length();
@@ -1369,6 +1502,136 @@ int TranscodeCharacter(const AnsiString& OriginalCodeName, const AnsiString& Tar
     return convertCount;
 }  //TranscodeCharacter()
 #endif
+//------------------------------------------------------------------------------
+UFC::AnsiString Base64EncodeBuf( const char* PlainTextBuf, int BufLen )
+{
+    static const char B64Chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    AnsiString ret;
+    if( BufLen <= 0 )
+        return ret;
+
+    int savedLen = BufLen;
+    int outLen = ((savedLen + 2) / 3) * 4;
+    ret.SetLength( (UInt16)outLen );
+    char* out = ret.Rowdata();
+
+    int i = 0;
+    int j = 0;
+    unsigned char charArray3[3];
+    unsigned char charArray4[4];
+
+    while( BufLen-- )
+    {
+        charArray3[i++] = (unsigned char)*( PlainTextBuf++ );
+        if( i == 3 )
+        {
+            charArray4[0] = ( charArray3[0] & 0xfc ) >> 2;
+            charArray4[1] = ( ( charArray3[0] & 0x03 ) << 4 ) + ( ( charArray3[1] & 0xf0 ) >> 4 );
+            charArray4[2] = ( ( charArray3[1] & 0x0f ) << 2 ) + ( ( charArray3[2] & 0xc0 ) >> 6 );
+            charArray4[3] = charArray3[2] & 0x3f;
+
+            for( i = 0; i < 4; i++ )
+                *out++ = B64Chars[ charArray4[i] ];
+            i = 0;
+        }  //if( i == 3 )
+    }  //while( BufLen-- )
+
+    if( i )
+    {
+        for( j = i; j < 3; j++ )
+            charArray3[j] = '\0';
+
+        charArray4[0] = ( charArray3[0] & 0xfc ) >> 2;
+        charArray4[1] = ( ( charArray3[0] & 0x03 ) << 4 ) + ( ( charArray3[1] & 0xf0 ) >> 4 );
+        charArray4[2] = ( ( charArray3[1] & 0x0f ) << 2 ) + ( ( charArray3[2] & 0xc0 ) >> 6 );
+        charArray4[3] = charArray3[2] & 0x3f;
+
+        for( j = 0; j < i + 1; j++ )
+            *out++ = B64Chars[ charArray4[j] ];
+
+        while( i++ < 3 )
+            *out++ = '=';
+    }
+
+    *out = '\0';
+    return ret;
+}  //Base64EncodeBuf()
+//------------------------------------------------------------------------------
+UFC::AnsiString Base64EncodeStr( const AnsiString& PlainTextStr )
+{
+    return Base64EncodeBuf( PlainTextStr.c_str(), PlainTextStr.Length() );
+}  //Base64EncodeStr()
+//------------------------------------------------------------------------------
+AnsiString Base64DecodeStr( const AnsiString& Base64Str )
+{
+    static const signed char DecodeTable[256] = {
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,62,-1,-1,-1,63,
+        52,53,54,55,56,57,58,59,60,61,-1,-1,-1,-1,-1,-1,
+        -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,
+        15,16,17,18,19,20,21,22,23,24,25,-1,-1,-1,-1,-1,
+        -1,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,
+        41,42,43,44,45,46,47,48,49,50,51,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
+        -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1
+    };
+    int in_len = (int)Base64Str.Length();
+    AnsiString ret;
+    if( in_len == 0 )
+        return ret;
+
+    const char* src = Base64Str.c_str();
+    int maxOutLen = (in_len / 4 + 1) * 3;
+    ret.SetLength( (UInt16)maxOutLen );
+    char* out = ret.Rowdata();
+    int outPos = 0;
+
+    int i = 0;
+    int j = 0;
+    int in_ = 0;
+    unsigned char charArray4[4], charArray3[3];
+
+    while( in_len-- && ( src[in_] != '=' ) && IsBase64CharA( src[in_] ) )
+    {
+        charArray4[i++] = src[in_]; in_++;
+        if ( i == 4 )
+        {
+            for( i = 0; i < 4; i++ )
+                charArray4[i] = DecodeTable[ charArray4[i] ] & 0xff;
+
+            charArray3[0] = ( charArray4[0] << 2 ) + ( ( charArray4[1] & 0x30 ) >> 4 );
+            charArray3[1] = ( ( charArray4[1] & 0xf ) << 4) + ( ( charArray4[2] & 0x3c ) >> 2 );
+            charArray3[2] = ( ( charArray4[2] & 0x3 ) << 6) + charArray4[3];
+
+            for( i = 0; i < 3; i++ )
+                out[outPos++] = charArray3[i];
+            i = 0;
+        }
+    }
+
+    if (i)
+    {
+        for( j = 0; j < i; j++ )
+            charArray4[j] = DecodeTable[ charArray4[j] ] & 0xff;
+
+        charArray3[0] = ( charArray4[0] << 2 ) + ( ( charArray4[1] & 0x30 ) >> 4 );
+        charArray3[1] = ( ( charArray4[1] & 0xf ) << 4 ) + ( ( charArray4[2] & 0x3c ) >> 2 );
+
+        for( j = 0; j < i - 1; j++ )
+            out[outPos++] = charArray3[j];
+    }
+
+    ret.SetLength( (UInt16)outPos );
+    return ret;
+}  //Base64DecodeStr()
+
 }
 //---------------------------------------------------------------------------
 

@@ -4,7 +4,7 @@
 namespace UFC
 {
 //--------------------------------------------------------------------------------------------
-Section::Section( const UFC::AnsiString SectionName )
+Section::Section( const UFC::AnsiString& SectionName )
 :FName( SectionName )
 {
 }
@@ -21,12 +21,12 @@ Section::~Section( )
     FNames.Clear();
 }
 //--------------------------------------------------------------------------------------------
-BOOL Section::ValueExists( const UFC::AnsiString Name )
+BOOL Section::ValueExists( const UFC::AnsiString& Name )
 {
     return FNameValues.IsExists( Name );
 }
 //--------------------------------------------------------------------------------------------
-void Section::DeleteValue( const UFC::AnsiString Name )
+void Section::DeleteValue( const UFC::AnsiString& Name )
 {
     FNameValues.DeleteByKey( Name );
     for( register Int32 i = 0; i < FNames.ItemCount();i++ )
@@ -39,7 +39,7 @@ void Section::DeleteValue( const UFC::AnsiString Name )
     }
 }
 //--------------------------------------------------------------------------------------------
-BOOL Section::GetValue( const UFC::AnsiString Name, UFC::AnsiString& Value )
+BOOL Section::GetValue( const UFC::AnsiString& Name, UFC::AnsiString& Value )
 {
     UFC::AnsiString* ValuePtr;
 
@@ -51,7 +51,7 @@ BOOL Section::GetValue( const UFC::AnsiString Name, UFC::AnsiString& Value )
     return FALSE;
 }
 //--------------------------------------------------------------------------------------------
-void Section::SetValue( const UFC::AnsiString Name,  const UFC::AnsiString Value )
+void Section::SetValue( const UFC::AnsiString& Name, const UFC::AnsiString& Value )
 {
     UFC::AnsiString* NewValue = new UFC::AnsiString( Value );
     UFC::AnsiString* OldValue =	FNameValues.SetObjectByKey( Name, NewValue );
@@ -68,7 +68,8 @@ BOOL Section::GetNameValue( int Index, UFC::AnsiString& Name, UFC::AnsiString& V
         return FALSE;
     UFC::AnsiString* pValue = NULL;
     Name  = FNames[ Index ];
-    FNameValues.GetObjectByKey( Name, pValue );
+    if( FNameValues.GetObjectByKey( Name, pValue ) == FALSE || pValue == NULL )
+        return FALSE;
     Value = *pValue;
     return TRUE;
 }
@@ -91,12 +92,12 @@ void Section::SaveToStream( PStream* Stream )
         FNameValues.GetObjectByKey( Name, Value );
         if (Name.AnsiPos('=') >= 0)
         {
-            sprintf( buffer, "\"%s\"=%s\n", Name.c_str(), Value->c_str());
+            snprintf( buffer, sizeof(buffer), "\"%s\"=%s\n", Name.c_str(), Value->c_str());
         }
         else
         {
-            sprintf( buffer, "%s=%s\n", Name.c_str(), Value->c_str());
-        }        		
+            snprintf( buffer, sizeof(buffer), "%s=%s\n", Name.c_str(), Value->c_str());
+        }
         Stream->Write(buffer,(int)strlen(buffer));
     }
     strcpy( buffer, "\n" );
@@ -112,7 +113,7 @@ int  Section::ItemCount( void )
 //
 //
 //--------------------------------------------------------------------------------------------
-UiniFile::UiniFile( const UFC::AnsiString iniFileName, BOOL CreateFile )
+UiniFile::UiniFile( const UFC::AnsiString& iniFileName, BOOL CreateFile )
 :FFileName( iniFileName )
 {
 	ParseIniFile( FFileName, CreateFile );
@@ -128,7 +129,7 @@ UiniFile::~UiniFile( )
 	 Clear();
 }
 //--------------------------------------------------------------------------------------------
-void UiniFile::Load(  const UFC::AnsiString iniFileName, BOOL CreateFile )
+void UiniFile::Load( const UFC::AnsiString& iniFileName, BOOL CreateFile )
 {
 	Clear();
 	FFileName = iniFileName;
@@ -140,6 +141,7 @@ void UiniFile::Clear( void )
      for( int i = 0; i < FSections.ItemCount(); i++ )
           delete FSections.GetItem( i );
      FSections.Clear();
+     FSectionMap.Clear();
 }
 //--------------------------------------------------------------------------------------------
 BOOL UiniFile::IsRemark( UFC::AnsiString& Line )
@@ -177,6 +179,7 @@ Section* UiniFile::AddSection( UFC::AnsiString& Line )
     {
         Section* NameValue = new Section( SectionName );
         FSections.Add( NameValue );
+        FSectionMap.Add( SectionName, NameValue );
         //UFC::BufferedLog::Printf(" *Add Section[%s].", SectionName.c_str() );
         return NameValue;
     }
@@ -190,17 +193,12 @@ void UiniFile::AddNameValue( Section* NameValue, UFC::AnsiString& Line )
      AnsiString  Name, Value;
      
      if( QMPos == 0 ) // handle equal sign in name
-     {         
-         char* buf = (char*)malloc( Line.Length() + 1 );
-         
-         memset( buf, 0x0, Line.Length() + 1 );
+     {
+         char buf[ 8192 ];
          memcpy( buf, Line.c_str(), Line.Length() + 1 );
          Name = strtok( buf, "\"" );
-         
          if( Name.Length() > 0 )
-             Value = strtok( NULL, "\"=" ); // find second quotation mark
-         
-         free( buf );
+             Value = strtok( NULL, "\"=" );
      }
      else
      {
@@ -222,7 +220,7 @@ void UiniFile::AddNameValue( Section* NameValue, UFC::AnsiString& Line )
      }
 }
 //--------------------------------------------------------------------------------------------
-void UiniFile::ParseIniFile(  const UFC::AnsiString iniFileName, BOOL CreateFile )
+void UiniFile::ParseIniFile( const UFC::AnsiString& iniFileName, BOOL CreateFile )
 {
     char          Buffer[ 8192 ] = "";
     FILE*         FileHandle;
@@ -260,13 +258,7 @@ void UiniFile::ParseIniFile(  const UFC::AnsiString iniFileName, BOOL CreateFile
 //--------------------------------------------------------------------------------------------
 Section* UiniFile::FindSection( const UFC::AnsiString& SectionName )
 {
-    for( register int i = 0; i < FSections.ItemCount(); i++ )
-    {
-        Section* SearchSection = FSections.GetItem( i );
-        if( SearchSection->GetSectionName() == SectionName )
-            return SearchSection;
-    }
-    return NULL;
+    return FSectionMap.GetObjectByKey( SectionName );
 }
 //--------------------------------------------------------------------------------------------
 Int32 UiniFile::FindIndex( const UFC::AnsiString& SectionName )
@@ -285,6 +277,7 @@ void UiniFile::DeleteSection( int Index )
     Section* DelSection = FSections.GetItem( Index );
     if( DelSection != NULL )
     {
+        FSectionMap.DeleteByKey( DelSection->GetSectionName() );
         FSections.Delete( Index );
         delete DelSection;
     }
@@ -292,29 +285,30 @@ void UiniFile::DeleteSection( int Index )
 //--------------------------------------------------------------------------------------------
 BOOL UiniFile::DeleteSection( const UFC::AnsiString& SectionName )
 {
-    Section* SearchSection;
-
+    Section* SearchSection = FSectionMap.GetObjectByKey( SectionName );
+    if( SearchSection == NULL )
+        return FALSE;
+    FSectionMap.DeleteByKey( SectionName );
     for( register int i = 0; i < FSections.ItemCount(); i++ )
     {
-        SearchSection = FSections.GetItem( i );
-        if( SearchSection->GetSectionName() == SectionName )
+        if( FSections.GetItem( i ) == SearchSection )
         {
             FSections.Delete( i );
-            delete SearchSection;
-            return TRUE;
+            break;
         }
     }
-    return FALSE;
+    delete SearchSection;
+    return TRUE;
 }
 //--------------------------------------------------------------------------------------------
-BOOL UiniFile::SectionExists( const UFC::AnsiString Section )
+BOOL UiniFile::SectionExists( const UFC::AnsiString& Section )
 {
     if( Section.Length() > 0 && FindSection( Section ) != NULL )
         return TRUE;
     return FALSE;
 }
 //--------------------------------------------------------------------------------------------
-BOOL UiniFile::ValueExists( const UFC::AnsiString SectionName, const UFC::AnsiString Ident )
+BOOL UiniFile::ValueExists( const UFC::AnsiString& SectionName, const UFC::AnsiString& Ident )
 {
     if( SectionName.Length() > 0 )
     {        
@@ -325,7 +319,7 @@ BOOL UiniFile::ValueExists( const UFC::AnsiString SectionName, const UFC::AnsiSt
     return FALSE;
 }
 //--------------------------------------------------------------------------------------------
-BOOL UiniFile::GetValue( const UFC::AnsiString SectionName, const UFC::AnsiString Name, UFC::AnsiString& Value )
+BOOL UiniFile::GetValue( const UFC::AnsiString& SectionName, const UFC::AnsiString& Name, UFC::AnsiString& Value )
 {
     if( SectionName.Length() > 0 )
     {        
@@ -340,13 +334,14 @@ BOOL UiniFile::GetValue( const UFC::AnsiString SectionName, const UFC::AnsiStrin
     return FALSE;
 }
 //--------------------------------------------------------------------------------------------
-void UiniFile::SetValue( const UFC::AnsiString SectionName, const UFC::AnsiString Name, const UFC::AnsiString Value )
+void UiniFile::SetValue( const UFC::AnsiString& SectionName, const UFC::AnsiString& Name, const UFC::AnsiString& Value )
 {
     Section*  SessionSet = FindSection( SectionName );
     if( SessionSet == NULL )
     {
         SessionSet = new Section( SectionName );
         FSections.Add( SessionSet );
+        FSectionMap.Add( SectionName, SessionSet );
     }
     SessionSet->SetValue( Name, Value );
 }

@@ -18,13 +18,13 @@ private:
     NameValues FNameValues;
     UFC::PStringList FNames;
 public:
-    Section( const UFC::AnsiString SectionName );
+    Section( const UFC::AnsiString& SectionName );
     ~Section( );
     const UFC::AnsiString& GetSectionName( void ) { return FName; }
-    BOOL ValueExists( const UFC::AnsiString Name );
-    void DeleteValue(  const UFC::AnsiString Name );
-    BOOL GetValue( const UFC::AnsiString Name, UFC::AnsiString& Value );
-    void SetValue( const UFC::AnsiString Name,  const UFC::AnsiString Value );
+    BOOL ValueExists( const UFC::AnsiString& Name );
+    void DeleteValue( const UFC::AnsiString& Name );
+    BOOL GetValue( const UFC::AnsiString& Name, UFC::AnsiString& Value );
+    void SetValue( const UFC::AnsiString& Name, const UFC::AnsiString& Value );
     void SaveToStream( PStream* Stream );
     int  ItemCount( void );
     BOOL GetNameValue( int Index, UFC::AnsiString& Name, UFC::AnsiString& Value );
@@ -33,8 +33,9 @@ public:
 class UiniFile
 {
 private:
-    UFC::PtrList<Section> FSections;
-    UFC::AnsiString       FFileName;
+    UFC::PtrList<Section>                        FSections;
+    PHashedList<UFC::AnsiString, Section*>       FSectionMap;
+    UFC::AnsiString                              FFileName;
 private:
     BOOL IsRemark( UFC::AnsiString& Line );
     BOOL IsSection( UFC::AnsiString& Line );
@@ -42,20 +43,20 @@ private:
     Section* AddSection( UFC::AnsiString& Line );
     Section* FindSection( const UFC::AnsiString& SectionName );
     Int32    FindIndex( const UFC::AnsiString& SectionName );
-    void ParseIniFile(  const UFC::AnsiString iniFileName, BOOL CreateFile );
+    void ParseIniFile( const UFC::AnsiString& iniFileName, BOOL CreateFile );
     void AddNameValue( Section* NameValue, UFC::AnsiString& Line );
 public:
-    UiniFile( const UFC::AnsiString iniFileName, BOOL CreateFile = FALSE );
+    UiniFile( const UFC::AnsiString& iniFileName, BOOL CreateFile = FALSE );
     UiniFile( void );
     ~UiniFile( );
-    BOOL       ValueExists( const UFC::AnsiString Section, const UFC::AnsiString Ident );
-    BOOL       GetValue( const UFC::AnsiString Section, const UFC::AnsiString Name, UFC::AnsiString& Value );
-    void       SetValue( const UFC::AnsiString Section, const UFC::AnsiString Name, const UFC::AnsiString Value );
+    BOOL       ValueExists( const UFC::AnsiString& Section, const UFC::AnsiString& Ident );
+    BOOL       GetValue( const UFC::AnsiString& Section, const UFC::AnsiString& Name, UFC::AnsiString& Value );
+    void       SetValue( const UFC::AnsiString& Section, const UFC::AnsiString& Name, const UFC::AnsiString& Value );
     void       SaveToStream( PStream* Stream );
     void       Clear( void );
     bool       Save( void );
-    void       Load(  const UFC::AnsiString iniFileName, BOOL CreateFile = FALSE  );
-    BOOL       SectionExists( const UFC::AnsiString Section );
+    void       Load( const UFC::AnsiString& iniFileName, BOOL CreateFile = FALSE );
+    BOOL       SectionExists( const UFC::AnsiString& Section );
     void       AddSection( Section* NewSection ) { FSections.Add( NewSection ); }
     BOOL       DeleteSection( const UFC::AnsiString& SectionName );
     void       DeleteSection( int Index );

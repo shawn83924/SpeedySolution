@@ -53,9 +53,12 @@ class AnsiString
 private:
     static UInt8*  DelimiterLUT;
     static char*   WCToMBBuffer;    
-private:
+    static const UInt16 SSO_SIZE = 52;///< 52 struct size = 64, 20 struct size = 32
+private:                              ///< SSO(Small String Optimization)
     char   *StrBuffer;
     UInt16 FLength;
+    UInt16 FCapacity;
+    char   InlineBuffer[SSO_SIZE];
 private:
     void   SetSize(UInt16 Size, bool KeepData = true);
     void   Append( const char *Str, const UInt16 Length);
@@ -65,7 +68,7 @@ public:
     /**
      * Default Constructor with empty characters
      */
-    AnsiString():StrBuffer( NULL ),FLength(0) {}
+    AnsiString():StrBuffer( NULL ),FLength(0),FCapacity(0) {}
     /**
      * Copy array of characters
      * Copy number of characters from array of characters
@@ -117,7 +120,7 @@ public:
      */
     int          AnsiCompareIC( const AnsiString& src) const throw();
     int          AnsiCompareIC( const char* src) const throw();
-    int   	     AnsiNCompare( const char* src, Int16 Count ) const throw();
+    int          AnsiNCompare( const char* src, Int16 Count ) const throw();
     int	         AnsiNCompareIC( const char* src, Int16 Count ) const throw();
     /**
      * @return the address of last character, NULL if empty
@@ -128,8 +131,8 @@ public:
      * @return the index position of matching SubString, (-1) if no matching found
      */
     Int32        AnsiPos( const AnsiString& subStr) const throw();
-    Int32 		 AnsiPos( const char *subStr) const throw();
-    Int32		 AnsiPos( const char subChar) const throw();
+    Int32        AnsiPos( const char *subStr) const throw();
+    Int32        AnsiPos( const char subChar) const throw();
 
     /**
      * Delete the count of characters from index position
@@ -207,7 +210,7 @@ public:
     UInt32       ToUInt() const { return strtoul(StrBuffer, (char **)NULL, 10); }
     double       ToDouble() const;
     Int64        ToInt64() const;
-	UInt64       ToUInt64() const;
+    UInt64       ToUInt64() const;
     /**
      * Manipulate printf function in C Language
      */
@@ -237,8 +240,8 @@ public:
      * @return a copy of the string in uppercase
      */
     AnsiString   UpperCase( void ) const;
-    void 		 TrimLeft( char TrinCh = 10 );
-    void 		 TrimRight( char TrinCh = 10 );
+    void         TrimLeft( char TrinCh = 10 );
+    void         TrimRight( char TrinCh = 10 );
 
     bool EndWith(const char* EndingStr) const throw();
     bool EndWithIC(const char* EndingStr) const throw();
@@ -308,23 +311,35 @@ extern size_t StrLCpy(char *dst, const char *src, size_t siz);
 //-----------------------------------------------------------------------------------------
 #if (defined(__LINUX) || (defined(__AIX) && defined(__ICONV)))
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       size_t MaxTargetDataSizeInByte, char *TargetDataBuffer, AnsiString& TranscodeMsg);
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        size_t MaxTargetDataSizeInByte, char *TargetDataBuffer, AnsiString& TranscodeMsg );
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       AnsiString& TargetStr, AnsiString& TranscodeMsg);
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        AnsiString& TargetStr, AnsiString& TranscodeMsg );
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const char *OriginalCodeName, const char *TargetCodeName,
-                       const char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
-                       AnsiString& TargetStr, AnsiString& TranscodeMsg);
+int TranscodeCharacter( const char *OriginalCodeName, const char *TargetCodeName,
+                        const char *OriginalDataBuffer, size_t OriginalDataSizeInByte,
+                        AnsiString& TargetStr, AnsiString& TranscodeMsg );
 //------------------------------------------------------------------------------
-int TranscodeCharacter(const AnsiString& OriginalCodeName, const AnsiString& TargetCodeName,
-                       const AnsiString& OriginalStr, AnsiString& TargetStr, AnsiString& TranscodeMsg);
+int TranscodeCharacter( const AnsiString& OriginalCodeName, const AnsiString& TargetCodeName,
+                        const AnsiString& OriginalStr, AnsiString& TargetStr, AnsiString& TranscodeMsg );
 #endif
 //-----------------------------------------------------------------------------------------
-}	/* namespace UFC */
+static const UFC::AnsiString Base64CharsA = AnsiString( "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/" );
+//------------------------------------------------------------------------------
+static inline bool IsBase64CharA( unsigned char c )
+{
+    return ( isalnum(c) || ( c == '+' ) || ( c == '/' ) );
+};  //IsBase64CharA()
+//------------------------------------------------------------------------------
+AnsiString Base64EncodeBuf( const char* PlainTextBuf, int BufLen );
+//------------------------------------------------------------------------------
+AnsiString Base64EncodeStr( const AnsiString& PlainTextStr );
+//------------------------------------------------------------------------------
+AnsiString Base64DecodeStr( const AnsiString& Base64Str );
+}  /* namespace UFC */
 //-----------------------------------------------------------------------------------------
 #endif
 

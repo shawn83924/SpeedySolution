@@ -245,6 +245,11 @@ void Profiler::SetPerformanceFlag( long Group, Int8 FlagID, const AnsiString& Ke
         }
     }
 }
+//------------------------------------------------------------------------------
+BOOL Profiler::Enabled( void )
+{
+    return ( StaticProfiler != NULL && StaticProfiler->IsEnable == TRUE );
+}
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 void Profiler::EnableProfiler( BOOL Enabled )
 {

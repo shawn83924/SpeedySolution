@@ -51,6 +51,7 @@ PClientSocket::PClientSocket( Int32 FD )
 ,FIPAddress( "" )
 ,FPort( 0 )
 ,FIsConnected( TRUE )
+,FBusyCheck( FALSE )
 ,FListener( NULL )
 ,FData( 0 )
 {
@@ -62,13 +63,12 @@ void PClientSocket::UpdateLocalIPAddress()
 {
     struct sockaddr_in sin;
     socklen_t len = sizeof(sin);
-    char* ipaddress;
+    char ipaddress[INET_ADDRSTRLEN];
 
     memset( &sin, 0, sizeof( sin ) );
     if( getsockname( FFD, (struct sockaddr*)&sin, &len) != -1 )
     {
-        ipaddress = inet_ntoa( sin.sin_addr );
-        if( ipaddress != NULL && strlen(ipaddress) <= 15 ) ///< xxx.xxx.xxx.xxx length =15
+        if( inet_ntop( AF_INET, &sin.sin_addr, ipaddress, sizeof(ipaddress) ) != NULL )
             FSocketIPAddress = ipaddress;
         else
             throw( SocketException( "error ip address string " ) );
@@ -81,15 +81,14 @@ void PClientSocket::UpdatePeerIPAddress()
 {
     struct sockaddr_in sin;
     socklen_t len = sizeof(sin);
-    char*     ipaddress;
+    char      ipaddress[INET_ADDRSTRLEN];
 
     memset( &sin, 0, sizeof( sin ) );
     if( getpeername( FFD, (struct sockaddr*)&sin, &len) != -1 )
     {
         FPort = ntohs( sin.sin_port );
-        ipaddress = inet_ntoa( sin.sin_addr );
-        if( ipaddress != NULL && strlen(ipaddress) <= 15 ) ///< xxx.xxx.xxx.xxx length =15
-            FIPAddress  =  ipaddress;
+        if( inet_ntop( AF_INET, &sin.sin_addr, ipaddress, sizeof(ipaddress) ) != NULL )
+            FIPAddress = ipaddress;
         else
             throw( SocketException( "error ip address string " ) );
     }
@@ -103,7 +102,7 @@ PClientSocket::~PClientSocket( void )
     {
         Disconnect();    ///< Disconnect the socket connection.
     }
-    catch( SocketException & )
+    catch( ... )
     {
     }
     if( IsTerminated() == FALSE ) ///< If it's a Non-blocking socket.
@@ -134,8 +133,8 @@ void PClientSocket::Connect( const AnsiString& BindAddress, Int32 BindPort, cons
 				UpdateLocalIPAddress();
                 UpdatePeerIPAddress();
 				FIsConnected = TRUE;
-                SetBufferSize( SO_RCVBUF, 8192 );
-				SetBufferSize( SO_SNDBUF, 8192 );
+                SetBufferSize( SO_RCVBUF, 65536 );
+				SetBufferSize( SO_SNDBUF, 65536 );
 				if( FListener != NULL )
 					FListener->OnConnect( this );
 			}
@@ -143,7 +142,7 @@ void PClientSocket::Connect( const AnsiString& BindAddress, Int32 BindPort, cons
             {
                 FIsConnected = FALSE;
                 CloseSocket();
-                throw e;
+                throw;
             }
         }
     }
@@ -166,13 +165,15 @@ void PClientSocket::Connect( const Int32 TimoOutSec )
         {
             try
             {
+                PSocket::SetReuse( TRUE );
+                PSocket::SetLinger( TRUE, 0 );
                 UFC::BufferedLog::DebugPrintf( " Connect to[%s:%d] timeout[%d]",FIPAddress.c_str(), FPort, TimoOutSec   );
 				PSocket::Connect( FIPAddress, FPort, TimoOutSec );
 				UpdateLocalIPAddress();
 				UpdatePeerIPAddress( );
 				FIsConnected = TRUE;
-				SetBufferSize( SO_RCVBUF, 8192 );
-				SetBufferSize( SO_SNDBUF, 8192 );
+				SetBufferSize( SO_RCVBUF, 65536 );
+				SetBufferSize( SO_SNDBUF, 65536 );
                 if( FListener != NULL )
 					FListener->OnConnect( this );
             }
@@ -180,14 +181,13 @@ void PClientSocket::Connect( const Int32 TimoOutSec )
             {
                 FIsConnected = FALSE;
                 CloseSocket();
-                throw e;
+                throw;
             }
         }
     }
 }
 //---------------------------------------------------------------------------
-//void PClientSocket::Disconnect( BOOL TriggerEvent )
-void PClientSocket::Disconnect( BOOL TriggerEvent, BOOL MeedReconnect ) // modify by joe
+void PClientSocket::Disconnect( BOOL TriggerEvent, BOOL NeedReconnect )
 {
     try
     {
@@ -195,15 +195,14 @@ void PClientSocket::Disconnect( BOOL TriggerEvent, BOOL MeedReconnect ) // modif
 		{
 			FIsConnected = FALSE;
 			if( TriggerEvent == TRUE && FListener != NULL )
-				//FListener->OnDisconnect( this );
-                FListener->OnDisconnect( this, MeedReconnect );
+                FListener->OnDisconnect( this, NeedReconnect );
 			CloseSocket();
         }
     }
 	catch( SocketException &e )
     {
         BufferedLog::Printf(" Disconnect failed:%s\n",e.what());
-        throw( e );
+        throw;
     }
 }
 //---------------------------------------------------------------------------
@@ -247,9 +246,10 @@ BOOL PClientSocket::CheckDataArrived( struct timeval& SelectTime )
     #else
         Int32  Count;
 
-        FD_ZERO( &FReadSet );       ///< Empty the Read set.
-        FD_SET( (u_int)FFD, &FReadSet );
-        if( (Count = select( FFD + 1, &FReadSet, NULL, NULL, &SelectTime)) < 0 )
+        fd_set ReadSet;
+        FD_ZERO( &ReadSet );
+        FD_SET( (u_int)FFD, &ReadSet );
+        if( (Count = select( FFD + 1, &ReadSet, NULL, NULL, &SelectTime)) < 0 )
         {
             if( FIsConnected == FALSE )
                 return FALSE;
@@ -324,24 +324,17 @@ BOOL PClientSocket::CheckDataArrivedBusy( void )
             return FALSE;
         }
         else if( errno == EPIPE )
-        {
-            BufferedLog::Printf( " [BusyCheckData] RecvBuffer from a broken Pipe." );
-            return FALSE;
-        }
+            throw( SocketException( "RecvBuffer from a broken Pipe." ) );
         else
-        {
-            BufferedLog::Printf( " [BusyCheckData] Recv error code[%d].", errno );
-            return FALSE;
-        }
+            throw( SocketException( errno ) );
     }
     else if( RecvSize == 0 )
     {
-        BufferedLog::Printf(" [BusyCheckData] The connection has been gracefully closed.");
-        return FALSE;
+        BufferedLog::DebugPrintf(" [BusyCheckData] The connection has been gracefully closed.");
+        return TRUE;
     }
-    // Data arrived in blocking mode.
     return TRUE;
-#else    
+#else
     struct timeval SelectTimeout = {1,0};///< Select timeout 1 sec
 
     return CheckDataArrived( SelectTimeout );
@@ -377,8 +370,8 @@ void PClientSocket::Process( int& Count )
     catch( SocketException & e )
     {
         BufferedLog::Printf(" Socket exception in Excute function. what(): [%s]", e.what() );
-        Disconnect( TRUE, TRUE ); // modify by joe
-    }    
+        Disconnect( TRUE, TRUE );
+    }
 }
 //---------------------------------------------------------------------------
 void PClientSocket::ProcessBusy( int& Count )
@@ -395,13 +388,17 @@ void PClientSocket::ProcessBusy( int& Count )
             }
             else
                 this->Purge();
-        }        
+        }
+        else
+        {
+            Count = 0;
+        }
     }
     catch( SocketException & e )
     {
         BufferedLog::Printf(" Socket exception in Excute function. what(): [%s]", e.what() );
-        Disconnect( TRUE, TRUE ); // modify by joe
-    }    
+        Disconnect( TRUE, TRUE );
+    }
 }
 //---------------------------------------------------------------------------
 void PClientSocket::Execute( void )
@@ -419,7 +416,7 @@ void PClientSocket::Execute( void )
         }
         else
             UFC::SleepMS( 100 );
-    };
+    }
 }
 //---------------------------------------------------------------------------
 const Int32 PClientSocket::GetPeerID( void )
@@ -446,61 +443,45 @@ void PClientSocket::SendQueue( const std::string& SendData )
     FWriteQueue.push_back( SendData );        ///< Add a MigoHeader object to queue.
 }
 //---------------------------------------------------------------------------
-inline void PClientSocket::PickFront( std::string& Data )
+bool PClientSocket::TryPopFront( std::string& Data )
 {
-    UFC::PLockObject    LockObj( IOLock );
+    UFC::PLockObject LockObj( IOLock );
 
-    if( FWriteQueue.empty() == FALSE )
-    {
-        Data = FWriteQueue.front();
-    }
-    else
-    {
-        Data = "" ;
-    }
-    return ;
+    if( FWriteQueue.empty() )
+        return false;
+    Data = FWriteQueue.front();
+    FWriteQueue.pop_front();
+    return true;
 }
-//---------------------------------------------------------------------------
-inline void PClientSocket::PopFront( void )
-{
-    UFC::PLockObject    LockObj( IOLock );
-
-    if( FWriteQueue.empty() == FALSE )
-        FWriteQueue.pop_front();
-}    
 //---------------------------------------------------------------------------
 BOOL  PClientSocket::IsQueueEmpty( void )
 {
+    UFC::PLockObject LockObj( IOLock );
     return FWriteQueue.empty();
 }
 //---------------------------------------------------------------------------
 Int32 PClientSocket::ProcessQueue( void)
-{    
+{
     Int32 TotalSize = 0;
-    Int32 WriteSize = 0;
     std::string WriteData;
 
-    while( FWriteQueue.empty() == FALSE ) ///< Queue is empty, all data sent out! 
+    while( TryPopFront( WriteData ) )
     {
-        PickFront( WriteData );  ///< Get a message from write queue
-        WriteSize = (UFCType::Int32)WriteData.size();
-
+        Int32 WriteSize = (UFCType::Int32)WriteData.size();
         if( WriteSize > 0 )
         {
             BlockSend( (char*)WriteData.c_str(), WriteSize );
-            PopFront(); ///< pop it from queue
             TotalSize += WriteSize;
         }
-        //PThread_Yield();
     }
-    return TotalSize;            
+    return TotalSize;
 }
 //---------------------------------------------------------------------------
 void PClientSocket::ClearQueue( void )
 {
     UFC::PLockObject Lock( IOLock );
 
-    UFC::BufferedLog::Printf( " Empty send queue size:%d FD:%d", FWriteQueue.size(), GetHandle() );
+    UFC::BufferedLog::Printf( " Empty send queue size:%d FD:%d", (int)FWriteQueue.size(), GetHandle() );
     FWriteQueue.clear();
 }
 //---------------------------------------------------------------------------
@@ -531,8 +512,8 @@ const BOOL  PClientSocket::IsConnect( void )
 //---------------------------------------------------------------------------
 void PClientSocket::UpdateIPAddress( const UFC::AnsiString& LocalIP,const UFC::AnsiString& PeerIP )
 {
-    FIPAddress = LocalIP;
-    FSocketIPAddress = PeerIP;
+    FSocketIPAddress = LocalIP;
+    FIPAddress = PeerIP;
 }
 //---------------------------------------------------------------------------
 void  PClientSocket::SetThreadAffinity( int CPUID )

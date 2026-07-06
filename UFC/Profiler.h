@@ -106,9 +106,14 @@ public:
 public: ///< Functions for SpeedyProfile only.
     static BOOL GetPerformanceFlag( long& Group, TimeVal& Time,Int8& FlagID, AnsiString& Key1, AnsiString& Key2 );
     static void UpdateTimer( void );
-public:    
+public:
     static void SetPerformanceFlag( long Group, Int8 FlagID, const AnsiString& Key1, const AnsiString& Key2 );
     static void EnableProfiler( BOOL Enabled );
+    ///< Cheap guard for hot-path callers: SetPerformanceFlag's AnsiString parameters are
+    ///< constructed BEFORE its internal enable check, so callers on a latency-critical path
+    ///< should skip the call entirely when profiling is off:
+    ///<     if( UFC::Profiler::Enabled() ) SetPerformanceFlag( ... );
+    static BOOL Enabled( void );
 };
 //---------------------------------------------------------------------------
 }

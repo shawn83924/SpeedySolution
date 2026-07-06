@@ -49,8 +49,8 @@ void PEvent::SetEvent( void )
 //-------------------------------------------------------------------------------------------------------------------
 void PEvent::ResetEvent( void )
 {
-     ///< This is a auto reset event.
     FTriggered = FALSE;
+    ::ResetEvent( FEvent ); ///< Also clear the kernel event, or a stale signal survives into the next WaitFor.
 }
 //-------------------------------------------------------------------------------------------------------------------
 BOOL PEvent::WaitFor( int Timeout,int ms )
@@ -513,7 +513,10 @@ void PEvent::SetEvent( void )
 //-------------------------------------------------------------------------------------------------------------------
 void PEvent::ResetEvent( void )
 {
-    ///< It's auto reset event.
+    pthread_mutex_lock( m_mutexRef );
+    while( FEventInfo->DecreaseTrigger() == TRUE )
+        ;   ///< Clear all pending triggers, or a stale signal survives into the next WaitFor.
+    pthread_mutex_unlock( m_mutexRef );
 }
 //-------------------------------------------------------------------------------------------------------------------
 BOOL PEvent::WaitFor( int Timeout, int ms )
@@ -566,12 +569,14 @@ BOOL PEvent::WaitForUS( int us )
         }
     }
     WaitUS = now.tv_usec + us;
-    if( WaitUS > 1000000 ) ///< more then 1 sec    
-    {    
+    if( WaitUS > 1000000 ) ///< more then 1 sec
+    {
         int WaitSec = WaitUS/1000000;
         WaitUS %= 1000000;
-        ts.tv_sec  = now.tv_sec + WaitSec;    
-    }    
+        ts.tv_sec  = now.tv_sec + WaitSec;
+    }
+    else
+        ts.tv_sec = now.tv_sec;
     ts.tv_nsec = WaitUS * 1000;    
     if( pthread_cond_timedwait( m_eventRef, m_mutexRef, &ts ) == 0 )
     {

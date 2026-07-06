@@ -163,7 +163,8 @@ void MDSBinaryObj::AppendDouble( double Value )
 }
 //------------------------------------------------------------------------------------------------------------------------
 void MDSBinaryObj::Printf( const char* FormatStr, ... )
-{	
+{
+	UInt16   Count;
 	char     Buffer[ MAX_STR_BUFFER ];
 	va_list  va;	
 
@@ -175,16 +176,16 @@ void MDSBinaryObj::Printf( const char* FormatStr, ... )
 	Buffer[0] = '\0';
 
 	va_start( va , FormatStr );
-	vsnprintf( Buffer, MAX_STR_BUFFER, FormatStr, va );
+	Count = vsnprintf( Buffer, MAX_STR_BUFFER, FormatStr, va );
 	va_end( va );
 
 	FPos = 0; ///< Reset FPos to start of Buffer
 	FSize = strlen( Buffer );
 	if( FSize )
 	{
-            FBuffer = new char[ FSize ];
-            memcpy( FBuffer, Buffer, FSize );
-            FPos += FSize;
+		FBuffer = new char[ FSize ];
+		memcpy( FBuffer, Buffer, FSize );
+		FPos += FSize;
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------

@@ -321,8 +321,8 @@ UInt16 BufferedLog::fprint( const char* str )
         char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        CharCount = TextBuf - Buffer - 1;
+        TextBuf = stpcpy(TextBuf, str);
+        CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
             puts( Buffer );
@@ -342,10 +342,9 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1 )
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        CharCount = TextBuf - Buffer - 1;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
             puts( Buffer );
@@ -365,12 +364,10 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2 
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        CharCount = TextBuf - Buffer - 1;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
             puts( Buffer );
@@ -390,12 +387,9 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
         while ((*TextBuf++ = *str3++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -417,14 +411,10 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
         while ((*TextBuf++ = *str4++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -446,16 +436,11 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
         while ((*TextBuf++ = *str5++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -477,18 +462,12 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);                                
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
         while ((*TextBuf++ = *str6++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -510,20 +489,13 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);                                
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
         while ((*TextBuf++ = *str7++) != 0);                                        
         CharCount = TextBuf - Buffer -1 ;
         WriteString( (const char*)Buffer, CharCount );
@@ -545,22 +517,14 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);                                        
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
         while ((*TextBuf++ = *str8++) != 0);                                        
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -582,24 +546,15 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);                                        
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);                                        
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
         while ((*TextBuf++ = *str9++) != 0);                                        
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -621,26 +576,16 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);                        
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);                                
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);                                        
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);                                        
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);                                        
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
         while ((*TextBuf++ = *str10++) != 0);                                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -662,28 +607,17 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
         while ((*TextBuf++ = *str11++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -705,30 +639,18 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
         while ((*TextBuf++ = *str12++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -750,32 +672,19 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
         while ((*TextBuf++ = *str13++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -797,34 +706,20 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
         while ((*TextBuf++ = *str14++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -846,36 +741,21 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str14++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = stpcpy(TextBuf, str14);
         while ((*TextBuf++ = *str15++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -897,38 +777,22 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str14++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str15++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = stpcpy(TextBuf, str14);
+        TextBuf = stpcpy(TextBuf, str15);
         while ((*TextBuf++ = *str16++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -950,40 +814,23 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str14++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str15++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str16++) != 0); 
-        TextBuf--;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = stpcpy(TextBuf, str14);
+        TextBuf = stpcpy(TextBuf, str15);
+        TextBuf = stpcpy(TextBuf, str16);
         while ((*TextBuf++ = *str17++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -1005,44 +852,26 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str14++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str15++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str16++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str17++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str18++) != 0); 
-        CharCount = TextBuf - Buffer - 1;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = stpcpy(TextBuf, str14);
+        TextBuf = stpcpy(TextBuf, str15);
+        TextBuf = stpcpy(TextBuf, str16);
+        TextBuf = stpcpy(TextBuf, str17);
+        TextBuf = stpcpy(TextBuf, str18);
+        CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
             puts( Buffer );
@@ -1062,46 +891,27 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        while ((*TextBuf++ = *str++ ) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str1++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str2++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str3++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str4++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str5++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str6++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str7++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str8++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str9++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str10++) != 0);
-        TextBuf--;
-        while ((*TextBuf++ = *str11++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str12++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str13++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str14++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str15++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str16++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str17++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str18++) != 0); 
-        TextBuf--;
-        while ((*TextBuf++ = *str19++) != 0); 
-        CharCount = TextBuf - Buffer - 1;
+        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = stpcpy(TextBuf, str14);
+        TextBuf = stpcpy(TextBuf, str15);
+        TextBuf = stpcpy(TextBuf, str16);
+        TextBuf = stpcpy(TextBuf, str17);
+        TextBuf = stpcpy(TextBuf, str18);
+        TextBuf = stpcpy(TextBuf, str19);
+        CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
             puts( Buffer );
@@ -1133,12 +943,31 @@ UInt16 BufferedLog::Printf( const char* FormatStr, ... )
 {
     if( BufferedLogData::FIsCreated == TRUE )
     {
-        PLockObject Lock( BufferedLogData::FBufferCS );
-        Int32       CharCount,Offset;
+        char        StackBuf[ 512 ];
+        Int32       CharCount;
+        Int32       TimeLen = BufferedLogData::FTimeStrLen;
         va_list     va;
 
+        GetTimestamp( StackBuf );
         va_start( va , FormatStr );
-    #ifndef _WIN32 ///< For Linux,UNIX.
+        CharCount = vsnprintf( StackBuf + TimeLen, (int)sizeof(StackBuf) - TimeLen, FormatStr, va );
+        va_end( va );
+
+        if( CharCount >= 0 && CharCount < (int)sizeof(StackBuf) - TimeLen )
+        {
+            if( BufferedLogData::FLogObject != NULL )
+                BufferedLogData::FLogObject->WriteString( StackBuf, TimeLen + CharCount );
+        #ifndef _WIN32
+            if( BufferedLogData::FToStdout == TRUE )
+                printf( "%s\n", StackBuf );
+        #endif
+            return CharCount;
+        }
+
+        PLockObject Lock( BufferedLogData::FBufferCS );
+        Int32       Offset;
+        va_start( va , FormatStr );
+    #ifndef _WIN32
         va_list     vacpy;
         va_copy( vacpy, va );
         CharCount = vsnprintf( NULL, 0, FormatStr, vacpy );
@@ -1152,8 +981,8 @@ UInt16 BufferedLog::Printf( const char* FormatStr, ... )
 
         if( CharCount <= 0 )
             throw( UFC::Exception( " vsnprintf failed" ));
-        if( BufferedLogData::FLogObject != NULL ) ///< Log object exists.
-            BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer,(UFCType::Int32)strlen( BufferedLogData::FSTRBuffer ) );
+        if( BufferedLogData::FLogObject != NULL )
+            BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
     #ifndef _WIN32
         if( BufferedLogData::FToStdout == TRUE )
             printf( "%s\n", BufferedLogData::FSTRBuffer );
@@ -1179,12 +1008,31 @@ UInt16 BufferedLog::DebugPrintf( const char* FormatStr, ... )
 		return 0;
 	if( BufferedLogData::FIsCreated == TRUE )
 	{
-		PLockObject Lock( BufferedLogData::FBufferCS );
-		Int32       CharCount,Offset;
+		char        StackBuf[ 512 ];
+		Int32       CharCount;
+		Int32       TimeLen = BufferedLogData::FTimeStrLen;
 		va_list     va;
 
+		GetTimestamp( StackBuf );
 		va_start( va , FormatStr );
-	#ifndef _WIN32 ///< For Linux,UNIX.
+		CharCount = vsnprintf( StackBuf + TimeLen, (int)sizeof(StackBuf) - TimeLen, FormatStr, va );
+		va_end( va );
+
+		if( CharCount >= 0 && CharCount < (int)sizeof(StackBuf) - TimeLen )
+		{
+			if( BufferedLogData::FLogObject != NULL )
+				BufferedLogData::FLogObject->WriteString( StackBuf, TimeLen + CharCount );
+	#ifndef _WIN32
+			if( BufferedLogData::FToStdout == TRUE )
+				printf( "%s\n", StackBuf );
+	#endif
+			return CharCount;
+		}
+
+		PLockObject Lock( BufferedLogData::FBufferCS );
+		Int32       Offset;
+		va_start( va , FormatStr );
+	#ifndef _WIN32
 		va_list     vacpy;
 		va_copy( vacpy, va );
 		CharCount = vsnprintf( NULL, 0, FormatStr, vacpy );
@@ -1193,12 +1041,12 @@ UInt16 BufferedLog::DebugPrintf( const char* FormatStr, ... )
 		CharCount = vsnprintf( NULL, 0, FormatStr, va );
 	#endif
 		Offset = PrepareBuffer( CharCount );
-		CharCount = vsnprintf( BufferedLogData::FSTRBuffer + Offset, BufferedLogData::FBufferSize - Offset , FormatStr, va );
+		CharCount = vsnprintf( BufferedLogData::FSTRBuffer + Offset, BufferedLogData::FBufferSize - Offset, FormatStr, va );
 		va_end( va );
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
-		if( BufferedLogData::FLogObject != NULL ) ///< Log object exists.
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, (UFCType::Int32)strlen( BufferedLogData::FSTRBuffer ) );
+		if( BufferedLogData::FLogObject != NULL )
+			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
 	#ifndef _WIN32
 		if( BufferedLogData::FToStdout == TRUE )
 			printf( "%s\n", BufferedLogData::FSTRBuffer );
@@ -1224,12 +1072,29 @@ UInt16 BufferedLog::DebugPrintf( Int32 Level, const char* FormatStr, ... )
 		return 0;
 	if( BufferedLogData::FIsCreated == TRUE )
 	{
-		PLockObject Lock( BufferedLogData::FBufferCS );
-		Int32       CharCount,Offset;
+		char        StackBuf[ 512 ];
+		Int32       CharCount;
+		Int32       TimeLen = BufferedLogData::FTimeStrLen;
 		va_list     va;
 
+		GetTimestamp( StackBuf );
 		va_start( va , FormatStr );
-	#ifndef _WIN32 ///< For Linux,UNIX.
+		CharCount = vsnprintf( StackBuf + TimeLen, (int)sizeof(StackBuf) - TimeLen, FormatStr, va );
+		va_end( va );
+
+		if( CharCount >= 0 && CharCount < (int)sizeof(StackBuf) - TimeLen )
+		{
+			if( BufferedLogData::FLogObject != NULL )
+				BufferedLogData::FLogObject->WriteString( StackBuf, TimeLen + CharCount );
+			if( BufferedLogData::FToStdout == TRUE )
+				printf( "%s\n", StackBuf );
+			return CharCount;
+		}
+
+		PLockObject Lock( BufferedLogData::FBufferCS );
+		Int32       Offset;
+		va_start( va , FormatStr );
+	#ifndef _WIN32
 		va_list vacpy;
 		va_copy( vacpy, va );
 		CharCount = vsnprintf( NULL, 0, FormatStr, vacpy );
@@ -1242,8 +1107,8 @@ UInt16 BufferedLog::DebugPrintf( Int32 Level, const char* FormatStr, ... )
 		va_end( va );
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
-		if( BufferedLogData::FLogObject != NULL ) ///< Log object exists.
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, (UFCType::Int32)strlen( BufferedLogData::FSTRBuffer ) );
+		if( BufferedLogData::FLogObject != NULL )
+			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
 		if( BufferedLogData::FToStdout == TRUE )
 			printf( "%s\n", BufferedLogData::FSTRBuffer );
 		return CharCount;
@@ -1286,7 +1151,7 @@ UInt16 BufferedLog::DebugPrintf( Int32 Level, Int32 PrefixIndex, const char* For
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
 		if( BufferedLogData::FLogObject != NULL ) ///< Log object exists.
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, (UFCType::Int32)strlen( BufferedLogData::FSTRBuffer ) );
+			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
 		if( BufferedLogData::FToStdout == TRUE )
 			printf( "%s\n", BufferedLogData::FSTRBuffer );
 		return CharCount;
@@ -2133,7 +1998,7 @@ Buffer::Buffer(Int32 PSize)
 //---------------------------------------------------------------------------
 Buffer::~Buffer()
 {
-    if (FPtr) delete FPtr;
+    if (FPtr) delete[] FPtr;
 }
 //---------------------------------------------------------------------------
 BOOL Buffer::IsOverflow( Int32 Len )
@@ -2277,7 +2142,7 @@ void CachedBuffer::Write( const char* Data, Int32 Len, BOOL AppendLinefeed, BOOL
     {
         if (FBuffer->IsOverflow( NeedLen ))       ///< Buffer is not enough
         {
-            FlushToCache();
+            FlushToCacheUnlocked();
             if (FBuffer->IsOverflow( NeedLen ))   ///< Buffer size < Len
             {
                 Buffer* LastOne = FBuffer ;
@@ -2285,24 +2150,23 @@ void CachedBuffer::Write( const char* Data, Int32 Len, BOOL AppendLinefeed, BOOL
                 delete LastOne;
             }
         }
-        FBuffer->Write(Data , Len, AppendLinefeed);    
+        FBuffer->Write(Data , Len, AppendLinefeed);
         if (FBuffer->IsOverflow(1))  ///< Full ?
         {
-            FlushToCache();
-        }        
+            FlushToCacheUnlocked();
+        }
         if (FlushAfterWrite)
-            Flush( );            
+            Flush( );
     }
 }
 //---------------------------------------------------------------------------
-void CachedBuffer::WriteToFile( const char* Data, Int32 Len, BOOL AppendLinefeed, BOOL FlushAfterWrite )
+void CachedBuffer::WriteToFileUnlocked( const char* Data, Int32 Len, BOOL AppendLinefeed, BOOL FlushAfterWrite )
 {
-    PLockObject Lock( FIOCS );
     if ( Data==NULL || Len <= 0 ) return ;
     FFileStream->Write( Data, Len );
     if (AppendLinefeed)
     {
-        FFileStream->Write( "\n", 1 ); 
+        FFileStream->Write( "\n", 1 );
     }
     if (FlushAfterWrite)
     {
@@ -2310,14 +2174,24 @@ void CachedBuffer::WriteToFile( const char* Data, Int32 Len, BOOL AppendLinefeed
     }
 }
 //---------------------------------------------------------------------------
+void CachedBuffer::WriteToFile( const char* Data, Int32 Len, BOOL AppendLinefeed, BOOL FlushAfterWrite )
+{
+    PLockObject Lock( FIOCS );
+    WriteToFileUnlocked( Data, Len, AppendLinefeed, FlushAfterWrite );
+}
+//---------------------------------------------------------------------------
+void CachedBuffer::FlushToCacheUnlocked()
+{
+    if (FBuffer==NULL || FBuffer->GetPos() <= 0) return;
+    MoveToDirtyCache(FBuffer);
+    FBuffer = NULL;
+    GetCleanCache(FBuffer);
+}
+//---------------------------------------------------------------------------
 void CachedBuffer::FlushToCache()
 {
     PLockObject Lock( FCS );
-    if (FBuffer==NULL || FBuffer->GetPos() <= 0) return;   
-    MoveToDirtyCache(FBuffer);
-    FBuffer = NULL; 
-    GetCleanCache(FBuffer);
-    return ;
+    FlushToCacheUnlocked();
 }
 //---------------------------------------------------------------------------
 // return TRUE : means writing to disk
@@ -2343,7 +2217,7 @@ BOOL CachedBuffer::CacheToFile( BOOL IsBLock )
     {
         try
         {
-            WriteToFile( Dirty->GetBuffer(), Dirty->GetPos(), FALSE, IsBLock ) ;
+            WriteToFileUnlocked( Dirty->GetBuffer(), Dirty->GetPos(), FALSE, IsBLock ) ;
             MoveToCleanCache( Dirty ) ;
             WriteQueueCount++;
         }
@@ -2358,8 +2232,8 @@ BOOL CachedBuffer::CacheToFile( BOOL IsBLock )
     } //end while      
     FFileStream->Flush();
     FSlowdown  = TRUE;
-    IsFlushing = FALSE;    
-    return IsFlushing;
+    IsFlushing = FALSE;
+    return TRUE;
 }
 //---------------------------------------------------------------------------
 void CachedBuffer::Flush( BOOL IsBlock )

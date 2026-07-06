@@ -505,8 +505,9 @@ void MultiplexingServer::CheckHeartbeat( void )
     ///< Modify by Simon 2010/1/8
     ///< Check connections in FAllClients original check FIdleList
     register PClientSocket* clientSocket;
-    Int32                   Count = FAllClients.ItemCount() - 1;     
-
+    Int32        Count = FAllClients.ItemCount() - 1;     
+    PLockObject  Lock( FClientListCS );
+    
     for( register Int32 i = Count; i >= 0; i-- )
     {
         if( ( clientSocket = (PClientSocket*)FAllClients.GetItem( i ) ) != NULL )
@@ -521,8 +522,10 @@ int MultiplexingServer::ForceSendHeartbeat( void )
 {   ///< Add by Zhen 2024/04/17
     ///< Force connections Send Heart in FAllClients original check FIdleList
     register PClientSocket* curClientSocketPtr = 0;
-    Int32                   socketCount = FAllClients.ItemCount() - 1;     
-    int sentCount = 0;
+    Int32        socketCount = FAllClients.ItemCount() - 1;     
+    int          sentCount = 0;
+    PLockObject  Lock( FClientListCS );
+    
     for( register Int32 i = socketCount; i >= 0; i-- )
     {
         if( ( curClientSocketPtr = (PClientSocket*)FAllClients.GetItem( i ) ) != NULL )
@@ -556,7 +559,7 @@ void MultiplexingServer::PerformEpoll( void )
     struct epoll_event events[ MAXEVENTS ];
 
     SelectCount = epoll_wait ( FEPollFD, events, MAXEVENTS, 1 );
-    if( FSelectCount < 0 )       ///< Call system call "select" failed.
+    if( SelectCount < 0 )       ///< Call system call "select" failed.
     {
         Int32 ErrNO = errno;
         if( ErrNO == EBADF ) ///< One or more of the socket descriptor sets specified a
@@ -591,7 +594,8 @@ void MultiplexingServer::PerformEpoll( void )
                 RemoveFromIdleList( ClientSocket );
                 // Thread pool will let a thread to perform the task.
                 // Return false means that no more thread available. add it to job queue to wait.
-                FThreadPool->ExecuteTask( this, ClientSocket );                
+                if( FThreadPool != NULL ) 
+                    FThreadPool->ExecuteTask( this, ClientSocket );                
               }
         }
     }    

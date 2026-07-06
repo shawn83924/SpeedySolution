@@ -43,11 +43,11 @@ public:
 	TFieldSetting*      GetFieldSetting(Int32 FieldIndex);
 	TFieldSetting*      GetFieldSetting(const AnsiString& FieldName, bool CreateNewIfNotFound = false);
 	Int32			    GetFieldIndex(const AnsiString& FieldName);
-	AnsiString		GetFieldName(Int32 FieldIndex);
+	const AnsiString&	GetFieldName(Int32 FieldIndex);
 	TFieldDataType	    GetDataType(Int32 FieldIndex);
 	TFieldDataType	    GetDataType(const AnsiString& FieldName);
-	AnsiString		GetDefaultValue(Int32 FieldIndex);
-	AnsiString		GetDefaultValue(const AnsiString& FieldName);
+	const AnsiString&	GetDefaultValue(Int32 FieldIndex);
+	const AnsiString&	GetDefaultValue(const AnsiString& FieldName);
 	Int32			    GetFieldCount() { return FFieldList.ItemCount(); }
 };
 //---------------------------------------------------------------------------

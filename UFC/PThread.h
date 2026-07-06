@@ -18,6 +18,9 @@
 #include "Exception.h"
 #include "AnsiString.h"
 #include "PHashedList.h"
+#if __cplusplus >= 201103L
+#include <atomic>
+#endif
 
 //---------------------------------------------------------------------------
 #ifndef _WIN32
@@ -271,46 +274,45 @@ public:
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class SInt
 {
+#if __cplusplus >= 201103L
 private:
-	PCriticalSection FCountCS;
-	int FInt;
-	void ChangeValue( int val )
-	{
-		FCountCS.Enter();
-		FInt += val;
-		FCountCS.Leave();
-	}
+    std::atomic<int> FInt;
 public:
-	SInt( int InitVal = 0 ):FInt( InitVal ){}
-	SInt&  operator =( const int Value )
-	{
-		FCountCS.Enter();
-		FInt = Value;
-		FCountCS.Leave();
-		return *this;
-	}
-	SInt& operator ++( const int )
-	{
-		ChangeValue( 1 );
-		return *this;
-	}
-	SInt& operator --( const int )
-	{
-		ChangeValue( -1 );
-		return *this;
-	}
-	SInt&  operator +=( const int Value )
-	{
-		ChangeValue( Value );
-		return *this;
-	}
-	SInt&  operator -=( const int Value )
-	{
-		ChangeValue( -Value );
-		return *this;
-	}
-	operator int() const { return FInt; }
-	int GetValue( void ) {return FInt; }
+    SInt( int InitVal = 0 ) : FInt( InitVal ) {}
+    SInt( const SInt& rhs ) : FInt( rhs.FInt.load() ) {}
+    SInt& operator =( const int Value ) { FInt.store( Value );          return *this; }
+    SInt  operator ++( int )            { SInt old(*this); FInt.fetch_add( 1 ); return old; }
+    SInt  operator --( int )            { SInt old(*this); FInt.fetch_sub( 1 ); return old; }
+    SInt& operator +=( const int Value ){ FInt.fetch_add( Value );      return *this; }
+    SInt& operator -=( const int Value ){ FInt.fetch_sub( Value );      return *this; }
+    operator int() const { return FInt.load(); }
+    int GetValue( void ) const { return FInt.load(); }
+#else
+private:
+    PCriticalSection FCountCS;
+    int FInt;
+    void ChangeValue( int val )
+    {
+        FCountCS.Enter();
+        FInt += val;
+        FCountCS.Leave();
+    }
+public:
+    SInt( int InitVal = 0 ) : FInt( InitVal ) {}
+    SInt& operator =( const int Value )
+    {
+        FCountCS.Enter();
+        FInt = Value;
+        FCountCS.Leave();
+        return *this;
+    }
+    SInt  operator ++( int ) { SInt old(*this); ChangeValue(  1 ); return old; }
+    SInt  operator --( int ) { SInt old(*this); ChangeValue( -1 ); return old; }
+    SInt& operator +=( const int Value ) { ChangeValue(  Value ); return *this; }
+    SInt& operator -=( const int Value ) { ChangeValue( -Value ); return *this; }
+    operator int() const { return FInt; }
+    int GetValue( void ) { return FInt; }
+#endif
 };
 //----------------------------------------------------------------------------------------------------------------------
 #ifndef _WIN32

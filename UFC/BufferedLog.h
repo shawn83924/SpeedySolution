@@ -90,12 +90,14 @@ private:
 public:    
     CachedBuffer(FileStream64* FileStream, Int32 BufferSize, BOOL Cache);
     ~CachedBuffer() ;
-private:    
-    void        Initial();    
+private:
+    void        Initial();
     void        FlushToCache( );
-    BOOL        CacheToFile( BOOL IsBLock );            
+    void        FlushToCacheUnlocked( );
+    BOOL        CacheToFile( BOOL IsBLock );
     void        WriteToFile( const char* Data, Int32 Size, BOOL AppendLinefeed , BOOL FlushAfterWrite );
-    
+    void        WriteToFileUnlocked( const char* Data, Int32 Size, BOOL AppendLinefeed , BOOL FlushAfterWrite );
+
     void        GetCleanCache(     Buffer*& Clean  );
     void        MoveToCleanCache(  Buffer*  Clean  );
     void        MoveToDirtyCache(  Buffer*  Dirty  );
