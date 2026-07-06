@@ -379,7 +379,8 @@ void __fastcall TContractInfoForm::AddExchangeSymbols( const UFC::AnsiString& Ex
 			if( Info->GetBearPrice( ) != 0.0 && ///< Bear price exists.
 				Info->GetBullPrice( ) != 0.0 && ///< Bull price exists.
 				Info->GetTradeFlag() == true && ///< Tradable
-				Info->IsMultileg() == false )   ///< Not Multi-leg contract
+				Info->IsMultileg() 	== false && ///< Not Multi-leg contract
+				IsTWStockOption(Info)== false)
 			{
 				if( Info->GetMarket() == nsOrderMessageDefine::mTWOptions ||///< XXF10000MY, TAIFEX Options symbol
 					Info->GetMarket() == nsOrderMessageDefine::mForeignFutures ||
@@ -419,6 +420,22 @@ void __fastcall TContractInfoForm::AddExchangeSymbols( const UFC::AnsiString& Ex
 				FMaturityDate[ FutExIndex ][ i ]->Sort();
 		}
 	}
+}
+//---------------------------------------------------------------------------
+bool __fastcall TContractInfoForm::IsTWStockOption( BasicInformation* Info )
+{
+	if( Info->GetMarket() != nsOrderMessageDefine::mTWOptions )
+		return false;
+
+	UFC::AnsiString ProductID( Info->GetProductID() );
+	if( ProductID.AnsiPos( "TX" ) == 0 ||  ///< 台指選擇權(TXO)
+		ProductID.AnsiPos( "TEO" ) == 0 || ///< 電子選擇權
+		ProductID.AnsiPos( "TFO" ) == 0 || ///< 金融選擇權
+		ProductID.AnsiPos( "XIO" ) == 0 || ///< 非金電選擇權
+		ProductID.AnsiPos( "TGO" ) == 0 || ///< 黃金選擇權
+		ProductID.AnsiPos( "GTO" ) == 0 )  ///< 櫃買選擇權
+		return false; ///< 指數/商品類選擇權,不算個股選擇權
+	return true;
 }
 //---------------------------------------------------------------------------
 //
