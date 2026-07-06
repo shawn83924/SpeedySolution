@@ -590,13 +590,14 @@ void __fastcall TOrderStore_OCO::SetPairState(TOCOPair* pair, OrderStatusEnum or
 void TOrderStore_OCO::OnMarketDataUpdate( MarketDataMessage* Msg )
 {
 	double fillPrice = Msg->GetTradePrice();
-	double bullPrice = Msg->GetBullPx();
-	double bearPrice = Msg->GetBearPx();
+	AnsiString Ex( Msg->GetExchange().c_str());
+	AnsiString Sym( Msg->GetSymbol().c_str());
+	BasicInformation* info = FMarketDataStore->GetBasicInformation(Ex, Sym);
+	double bullPrice = info->GetBullPrice();
+	double bearPrice = info->GetBearPrice();
 	if( fillPrice > bullPrice || fillPrice < bearPrice )
 		return;
 
-	AnsiString Ex( Msg->GetExchange().c_str());
-	AnsiString Sym( Msg->GetSymbol().c_str());
 	bool isPriceUpdate = UpdateLastPrice(Ex, Sym, fillPrice);
 	if( !isPriceUpdate )
 		return;
