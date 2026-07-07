@@ -229,13 +229,16 @@ void __fastcall TContractViewerForm::AddTAIFEX( String Exchange )
 				{
 					if( Type == fptStock )
 					{
-						CMarketDataStore->TAIFEXStockProduct( Info->GetProductID(), StockID );
-						Stock = StockID.c_str();
-						DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()) ,Info->GetDisplayName(), Stock );
+						//CMarketDataStore->TAIFEXStockProduct( Info->GetProductID(), StockID );
+						//Stock = StockID.c_str();
+						//DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()) ,Info->GetDisplayName(), Stock );
+						//FTAIFEXOptionsSearchKeys->AddObject( DispName, new TSymbolItem( Info ) );
 					}
 					else
+					{
 						DispName.printf( L"[%s] %s", String(Info->GetSymbol().c_str()) ,Info->GetDisplayName() );
-					FTAIFEXOptionsSearchKeys->AddObject( DispName, new TSymbolItem( Info ) );
+						FTAIFEXOptionsSearchKeys->AddObject( DispName, new TSymbolItem( Info ) );
+					}
 				}
 			}
 			Info = ExchangeSymbols->Next();
