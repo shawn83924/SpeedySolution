@@ -96,7 +96,14 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 							 String  branch_id     = AccItem->Values[L"branch_id"]->Value();
 							 String  account_type  = AccItem->Values[L"account_type"]->Value();
 							 String  dayTrade      = AccItem->Values[L"day_trade"]->Value();
-							 String  BrokerID      = BrenchToBrokrtID( branch_id.ToInt());
+							 int id;
+							 String  BrokerID;
+							 if (TryStrToInt(branch_id, id))
+							 {
+								BrokerID = BrenchToBrokrtID( id );
+							 }
+							 else
+								BrokerID = branch_id;
 
 							 if( account_type == L"1" ) ///< Stock Account
 								 FAccounts.FStockAccounts.Add( new TAccountInfo(account,BrokerID,dayTrade ) );
