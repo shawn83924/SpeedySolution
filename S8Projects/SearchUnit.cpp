@@ -61,13 +61,13 @@ void __fastcall TSearchSymbolForm::SearchEditBoxMouseDown(TObject *Sender, TMous
 //---------------------------------------------------------------------------
 void __fastcall TSearchSymbolForm::SearchButtonClick(TObject *Sender)
 {
-	ContractViewerForm->Left = Left;
-	ContractViewerForm->Top  = Top + SearchEditBox->Top + SearchEditBox->Height;
 	ContractViewerForm->SearchEdit->Text = SearchEditBox->Text;
 	ContractViewerForm->SearchGlyphButtonClick( NULL );
 	Application->NormalizeTopMosts();
 	SetWindowPos( ContractViewerForm->Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE + SWP_NOMOVE + SWP_NOSIZE);
 	ContractViewerForm->Show();
+	ContractViewerForm->Left = Left;
+	ContractViewerForm->Top  = Top + SearchEditBox->Top + SearchEditBox->Height;
 	SearchEditBox->Text = L"·j´M°Ó«~";
 }
 //---------------------------------------------------------------------------

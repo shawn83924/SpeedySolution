@@ -1795,12 +1795,12 @@ void __fastcall TMainForm::SearchEditBoxKeyDown(TObject *Sender, WORD &Key, TShi
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SearchBoxInvokeSearch(TObject *Sender)
 {
-	ContractViewerForm->Left = Left+ SearchEditBox->Left;
-	ContractViewerForm->Top  = Top + SearchEditBox->Top + SearchEditBox->Height + 10;
 	ContractViewerForm->SearchEdit->Text = SearchEditBox->Text;
 	ContractViewerForm->SearchGlyphButtonClick( NULL );
 	ContractViewerForm->OnSelectSymbol = SelectSymbol;
 	ContractViewerForm->Show();
+	ContractViewerForm->Left = Left+ SearchEditBox->Left;
+	ContractViewerForm->Top  = Top + SearchEditBox->Top + SearchEditBox->Height + 10;
 	SearchEditBox->Text = L"搜尋商品";
 }
 //---------------------------------------------------------------------------
