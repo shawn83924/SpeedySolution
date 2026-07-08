@@ -46,7 +46,7 @@ bool TMegaService::ToErrorMessage( const String& Code, String& Msg )
 		case 902:	Msg = L"參數解析錯誤(checksum)";break;
 		case 911:	Msg = L"目前系統異常、請稍後再試";break;
 		case 998:	Msg = L"查無資料";break;
-		case 999:	Msg = L"APGW錯誤訊息";break;
+		case 999:	Msg = L"帳密錯誤";break;
 		default:    return false;
 	}
 	return true;
