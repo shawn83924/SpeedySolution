@@ -2202,7 +2202,7 @@ object DepthForm: TDepthForm
       FontAttrib.CaptionFont.Height = -13
       FontAttrib.CaptionFont.Name = 'Tahoma'
       FontAttrib.CaptionFont.Style = []
-      ButtonText = #36867#21629
+      ButtonText = #20840#24179
     end
   end
   object ToolSV: TSplitView
