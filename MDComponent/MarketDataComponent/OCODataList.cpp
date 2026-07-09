@@ -333,7 +333,8 @@ void __fastcall TOCODataList::DeleteData(TOCOPair* pair)
 {
 	// If this pair's state is OCOState:None, remove it
 	AnsiString key = pair->Symbol + "_" + pair->Ex;
-	if(FPairingOCO.find(key) != FPairingOCO.end())
+	if(	pair->State == OCOState::ocoNone &&
+		FPairingOCO.find(key) != FPairingOCO.end() )
 	{
 		FPairingOCO.erase(key);
         return;
