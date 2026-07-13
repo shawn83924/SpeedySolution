@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/5/15 ¤W¤È 11:23:47 from Type Library described below.
+// File generated on 2026/7/13 ¤W¤È 11:26:18 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3603,6 +3603,7 @@ public:
                                                           VARIANT_BOOL* value/*[out,retval]*/) = 0; // [214]
   virtual HRESULT STDMETHODCALLTYPE SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/) = 0; // [215]
   virtual HRESULT STDMETHODCALLTYPE GetNID(__int64* NID/*[out,retval]*/) = 0; // [216]
+  virtual HRESULT STDMETHODCALLTYPE GetLastErrorMsg(BSTR* Value/*[out,retval]*/) = 0; // [217]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3653,6 +3654,13 @@ public:
     __int64 NID;
     OLECHECK(this->GetNID((__int64*)&NID));
     return NID;
+  }
+
+  BSTR __fastcall GetLastErrorMsg(void)
+  {
+    BSTR Value = 0;
+    OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
+    return Value;
   }
 
 
@@ -6895,6 +6903,8 @@ public:
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
+  HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrorMsg(void);
 
 };
 typedef TCOMITouchOrderCommandT<ITouchOrderCommand> TCOMITouchOrderCommand;
@@ -6971,6 +6981,8 @@ public:
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
+  HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrorMsg(void);
 
 };
 typedef ITouchOrderCommandDispT<ITouchOrderCommand> ITouchOrderCommandDisp;
@@ -20717,6 +20729,20 @@ TCOMITouchOrderCommandT<T>::GetNID(void)
   return NID;
 }
 
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::GetLastErrorMsg(BSTR* Value/*[out,retval]*/)
+{
+  return (*this)->GetLastErrorMsg(Value);
+}
+
+template <class T> BSTR __fastcall
+TCOMITouchOrderCommandT<T>::GetLastErrorMsg(void)
+{
+  BSTR Value = 0;
+  OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
+  return Value;
+}
+
 // *********************************************************************//
 // DispIntf:  ITouchOrderCommand
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -20925,6 +20951,22 @@ ITouchOrderCommandDispT<T>::GetNID(void)
   __int64 NID;
   this->GetNID((__int64*)&NID);
   return NID;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::GetLastErrorMsg(BSTR* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetLastErrorMsg"), DISPID(217));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+ITouchOrderCommandDispT<T>::GetLastErrorMsg(void)
+{
+  BSTR Value;
+  this->GetLastErrorMsg((BSTR*)&Value);
+  return Value;
 }
 
 // *********************************************************************//
