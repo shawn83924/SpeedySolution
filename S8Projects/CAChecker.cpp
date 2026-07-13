@@ -144,10 +144,17 @@ void TCAChecker::EscapeDataString( UTF8String& EscStr )
 //---------------------------------------------------------------------------
 int TCAChecker::Sign( const String& Content, String& Sign )
 {
+	AnsiString AnsiContent( Content );
+
 	if( FCAObject != NULL )
 	{
 		AnsiString AnsiData( Content );
 		UFC::PLockObject Lock( FSignCS );
+
+		AnsiString AnsiPFXFile( FPFXFile );
+		AnsiString AnsiSubject( FSignSubject );
+		UFC::BufferedLog::Printf( " [CA][Sign] Enter. Content[%s] PFXFile[%s] SubjectLen[%d]",
+								   AnsiContent.c_str(), AnsiPFXFile.c_str(), FSignSubject.Length() );
 
 		UTF8String Signed = FCAObject->CGCAPIStockPFXPureSign(FPFXFile.c_str(),
 															 FPFXFilePassword.c_str(),
@@ -157,12 +164,19 @@ int TCAChecker::Sign( const String& Content, String& Sign )
 															 0x10004, ///< USE CG_ALGOR_SHA256
 															 0x80);
 
+		int ErrCode = FCAObject->GetErrorCode();
 
 		EscapeDataString( Signed );
 		//UFC::BufferedLog::Printf( " CA data[%s] Sign[%s]", AnsiData.c_str(),  Signed.c_str( ));
 		Sign = Signed;
-		return FCAObject->GetErrorCode();
+		UFC::BufferedLog::Printf( " [CA][Sign] Done. ErrCode[%d] SignedLen[%d] Signed[%s]",
+								   ErrCode, Signed.Length(), Signed.c_str() );
+		UFC::BufferedLog::FlushToFile();
+		return ErrCode;
 	}
+	UFC::BufferedLog::Printf( " [CA][Sign] FCAObject is NULL, return 0 without signing. Content[%s]",
+							   AnsiContent.c_str() );
+	UFC::BufferedLog::FlushToFile();
 	return 0;
 }
 //---------------------------------------------------------------------------
@@ -197,6 +211,12 @@ void TCAChecker::EmptyQueueAndTriggerError( String& ErrReason )
 //---------------------------------------------------------------------------
 bool TCAChecker::Post( const String& Content, const String& sign, const String& BizCode, String& Reason, bool IsTest )
 {
+	AnsiString AnsiContent( Content );
+	AnsiString AnsiBizCode( BizCode );
+
+	UFC::BufferedLog::Printf( " [CA][Post] Enter. Content[%s] BizCode[%s] IsTest[%d] CASerial[%s] LocalIP[%s] FID[%s]",
+							   AnsiContent.c_str(), AnsiBizCode.c_str(), IsTest,
+							   AnsiString(FCASerial).c_str(), AnsiString(FLocalIP).c_str(), AnsiString(FID).c_str() );
 	try
 	{
 		TMemoryStream*  Source = new TMemoryStream();
@@ -214,7 +234,11 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 		UFC::BufferedLog::Printf( " CA Request[%s]", AnsiURL.c_str( ));
 
 		FHTTP->Post( URL, Source, Result );
+		UFC::BufferedLog::Printf( " [CA][Post] HTTP ResponseCode[%d] ResultSize[%d]",
+								   FHTTP->ResponseCode, Result->Size );
 		Rtn = HandleResultDoc( Result, IsTest, Reason );
+		AnsiString AnsiReason( Reason );
+		UFC::BufferedLog::Printf( " [CA][Post] Done. Rtn[%d] Reason[%s]", Rtn, AnsiReason.c_str() );
 		UFC::BufferedLog::FlushToFile();
 		FLastError = Reason;
 		delete Result;
@@ -223,6 +247,8 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 	}
 	catch( Exception& ex )
 	{
+		AnsiString AnsiExMsg( ex.Message );
+		UFC::BufferedLog::Printf( " [CA][Post] Exception[%s]", AnsiExMsg.c_str() );
 		Reason  = ex.Message;
 		FLastError  = Reason;
 		EmptyQueueAndTriggerError( Reason );
