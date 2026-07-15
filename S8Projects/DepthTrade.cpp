@@ -18,6 +18,7 @@
 #pragma link "MarketDataStore"
 #pragma link "RoundFormEx"
 #pragma link "GraphButton"
+#pragma link "GraphButtonV2"
 #pragma resource "*.dfm"
 TDepthForm *DepthForm;
 //---------------------------------------------------------------------------
@@ -2908,6 +2909,8 @@ void __fastcall TDepthForm::EnableQuickMode( void )
 		SetWidth( ToolSV->OpenedWidth );
 	else
 		SetWidth( 0 );
+
+	AlignLabels();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::EnableOCOMode( void )
@@ -2927,6 +2930,8 @@ void __fastcall TDepthForm::EnableOCOMode( void )
 		SetWidth( ToolSV->OpenedWidth );
 	else
 		SetWidth( 0 );
+
+	AlignLabels();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadCustomList(void)
