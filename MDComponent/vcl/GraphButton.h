@@ -41,6 +41,7 @@ class PACKAGE TFontAttrib : public TPersistent
         TColor NSColor;
 		TColor NColor;
 		TColor SColor;
+		TColor DColor;
         TFont *FCaptionFont;
         TNotifyEvent FOnChange;
         TShadowOffset FOffset;
@@ -51,6 +52,7 @@ class PACKAGE TFontAttrib : public TPersistent
 		void __fastcall SetFontShadowColor( TColor Value );
 		void __fastcall SetFontHighlightColor( TColor Value );
         void __fastcall SetFontHighlightShadowColor( TColor Value );
+		void __fastcall SetDisabledFontColor( TColor Value );
         void __fastcall SetShadowOffset( TShadowOffset Value );
  public:
         __fastcall TFontAttrib( void );
@@ -62,6 +64,7 @@ class PACKAGE TFontAttrib : public TPersistent
         __property TColor        HighlightFontColor   = {read = HColor, write = SetFontHighlightColor};
 		__property TColor        HighlightShadowColor = {read = HSColor, write = SetFontHighlightShadowColor};
 		__property TColor        SelectedFontColor    = {read = SColor, write = SetSelectedFontColor};
+		__property TColor        DisabledFontColor    = {read = DColor, write = SetDisabledFontColor};
         __property TFont*        CaptionFont          = {read = FCaptionFont, write = SetFont};
         __property TShadowOffset ShadowOffsetPixels   = {read = FOffset, write = SetShadowOffset};
 };

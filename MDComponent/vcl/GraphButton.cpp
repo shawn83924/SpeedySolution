@@ -49,6 +49,7 @@ __fastcall TFontAttrib::TFontAttrib( void )
     FCaptionFont = new TFont();
     FCaptionFont->OnChange = FontChanged;
     FOnChange = NULL;
+    DColor = clGrayText;
 }
 //---------------------------------------------------------------------------
 __fastcall TFontAttrib::~TFontAttrib( void )
@@ -101,6 +102,12 @@ void __fastcall TFontAttrib::SetFontHighlightShadowColor( TColor Value )
 {
     HSColor = Value;
     if( FOnChange != NULL ) FOnChange(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TFontAttrib::SetDisabledFontColor( TColor Value )
+{
+	DColor = Value;
+	if( FOnChange != NULL ) FOnChange(this);
 }
 
 //---------------------------------------------------------------------------

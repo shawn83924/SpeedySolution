@@ -15,6 +15,7 @@
 #pragma link "OrderListView"
 #pragma link "RoundFormEx"
 #pragma link "cgauges"
+#pragma link "GraphButtonV2"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 extern TCMarketDataStore* gMarketDataStore;
@@ -56,6 +57,8 @@ __fastcall TExecutionForm::TExecutionForm(TComponent* Owner )
 ,FFilter( ftActive )
 ,FProfile( L"")
 ,FBalanceThread(NULL)
+,FBalanceInterval(5)
+,FFirstRequestBalance(true)
 {
 	InitTimer->Tag = 0; ///< Not init
 	FBtns[0] = ActiveButton;
@@ -102,6 +105,8 @@ OrderFilterEnum __fastcall TExecutionForm::SelectBtn(TObject *Sender)
 			else
 			{
 				WebBrowser->Visible = false;
+				BalancePanel->Visible = false;
+				RefreshBalanceBtn->Visible = false;
 				PageControl->ActivePageIndex = 0;
 				SelFilter = FFilters[i];
 			}
@@ -586,21 +591,14 @@ void __fastcall TExecutionForm::TWSEBalanceURL( String& URL )
 void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 {
 	WebBrowser->Visible = true;
-	if( GSimMatch != false )
+	BalancePanel->Visible = true;
+    RefreshBalanceBtn->Visible = true;
+
+	if(FFirstRequestBalance == true)
 	{
-		String URL;
-
-		URL.printf( L"%s?mobile=%s&login_token=%s", g_Config.GetReportURL(), gUser.UserID, gUser.Token );
-		WebBrowser->Navigate( URL.c_str() );
-		return;
+		BalanceLabel->Caption="本日餘額: 讀取中...";
+        FFirstRequestBalance = false;
 	}
-
-	String URL;
-
-	///< Fut Balance
-	TAIFEXBalanceURL( URL );
-	WebBrowser->Navigate( URL.c_str() );
-	BalanceLabel->Caption="本日餘額: 讀取中...";
 
 	String disclaimerStr = GetDisclaimer("FMTMD.ini");
 	DisclaimerLabel->Caption = disclaimerStr;
@@ -608,10 +606,9 @@ void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 	int lineHeight = DisclaimerLabel->Canvas->TextHeight("A");
 	DisclaimerLabel->Height = lineHeight * lineCount;
 
-	if( FBalanceThread == NULL || FBalanceThread->Finished )
+	if(RefreshBalanceBtn->Enabled == true)
 	{
-		FBalanceThread = new TGetBalanceThread();
-		FBalanceThread->OnFinish = OnBalanceThreadFinish;
+		RefreshBalanceBtnClick(NULL);
 	}
 }
 //---------------------------------------------------------------------------
@@ -713,3 +710,37 @@ void __fastcall TGetBalanceThread::Execute(void)
 
 	Synchronize(&DoFinish);
 }
+//---------------------------------------------------------------------------
+void __fastcall TExecutionForm::BalanceTimerTimer(TObject *Sender)
+{
+	FBalanceRemainTime--;
+	RefreshBalanceBtn->ButtonText = IntToStr(FBalanceRemainTime);
+	if( FBalanceRemainTime > 0 )
+	{
+		return;
+	}
+
+	BalanceTimer->Enabled = false;
+	RefreshBalanceBtn->Enabled = true;
+	RefreshBalanceBtn->ButtonText = "更新頁面";
+}
+//---------------------------------------------------------------------------
+void __fastcall TExecutionForm::RefreshBalanceBtnClick(TObject *Sender)
+{
+	String URL;
+	///< Fut Balance
+	TAIFEXBalanceURL( URL );
+	WebBrowser->Navigate( URL.c_str() );
+
+	if( FBalanceThread == NULL || FBalanceThread->Finished )
+	{
+		FBalanceThread = new TGetBalanceThread();
+		FBalanceThread->OnFinish = OnBalanceThreadFinish;
+	}
+
+	RefreshBalanceBtn->Enabled = false;
+	BalanceTimer->Enabled = true;
+	FBalanceRemainTime = FBalanceInterval;
+	RefreshBalanceBtn->ButtonText = IntToStr(FBalanceRemainTime);
+}
+//---------------------------------------------------------------------------
