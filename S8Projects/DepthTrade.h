@@ -24,6 +24,7 @@
 #include <Vcl.ImgList.hpp>
 #include "SettingOCODlg.h"
 #include "OCODetail.h"
+#include "GraphButtonV2.h"
 //---------------------------------------------------------------------------
 class TDepthForm : public TForm, public TClientForm, public TOrderQtyListener, public IOrderFilled
 {
@@ -196,19 +197,19 @@ __published:	// IDE-managed Components
 	TTimer *StopLossTimer;
 	TTimer *TakeProfitTimer;
 	TComboBox *ExchangeComboBox;
-	TGraphButton *EscapeButton;
 	TScrollBox *SettingScrollBox;
 	TScrollBox *StopSettingScrollBox;
 	TScrollBox *ColorScrollBox;
 	TTabControl *SmartOrderTabs;
 	TPanel *SmartOrderTab;
 	TPanel *ExtraPanel;
-	TGraphButton *SettingOCOBtn;
-	TGraphButton *OCODetailBtn;
 	TLabel *OrderByOneClickLabel;
 	TToggleSwitch *OrderByOneClickSwitch;
 	TLabel *CancelByRightClickLabel;
 	TToggleSwitch *CancelByRightClickSwitch;
+	TGraphButtonV2 *EscapeButton;
+	TGraphButtonV2 *OCODetailBtn;
+	TGraphButtonV2 *SettingOCOBtn;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -315,9 +316,6 @@ __published:	// IDE-managed Components
 	void __fastcall OrderByOneClickSwitchClick(TObject *Sender);
 	void __fastcall CancelByRightClickSwitchClick(TObject *Sender);
 	void __fastcall OCODetailBtnClick(TObject *Sender);
-
-
-
 
 private:	// Interface TOrderQtyListener
 	virtual void OrderQtyChanged( MarketEnum Market, const String& Symbol, SideEnum Side, double Px, int Qty);
