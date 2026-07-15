@@ -23,6 +23,8 @@
 #include <Vcl.OleCtrls.hpp>
 #include <System.ImageList.hpp>
 #include <System.Threading.hpp>
+#include "GraphButtonV2.h"
+#include <Vcl.Imaging.pngimage.hpp>
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
 const int TABS = 6;
@@ -72,6 +74,8 @@ __published:	// IDE-managed Components
 	TLabel *BalanceLabel;
 	TLabel *DisclaimerLabel;
 	TScrollBox *DisclaimerScrollBox;
+	TGraphButtonV2 *RefreshBalanceBtn;
+	TTimer *BalanceTimer;
 	void __fastcall FilterButtonClick(TObject *Sender);
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall OrderListViewProgress(TObject *Sender, int CurrentItemNo, int TotalItemCount);
@@ -101,6 +105,8 @@ __published:	// IDE-managed Components
 	void __fastcall UploadButtonClick(TObject *Sender);
 	void __fastcall LeaderBoardButtonClick(TObject *Sender);
 	void __fastcall RoundFormExLockIconClick(TObject *Sender);
+	void __fastcall BalanceTimerTimer(TObject *Sender);
+	void __fastcall RefreshBalanceBtnClick(TObject *Sender);
 
 private:	// User declarations
 	TGraphButton*     				  FBtns[TABS];
@@ -126,7 +132,10 @@ private:	// User declarations
 	void __fastcall  TWSEBalanceURL( String& URL );
 	void __fastcall OnBalanceThreadFinish(TObject *Sender, const String &Balance);
     String __fastcall GetDisclaimer(const char* FileName);
-    int  __fastcall CountNewLines(const String &s);
+	int  __fastcall CountNewLines(const String &s);
+    bool FFirstRequestBalance;
+	int FBalanceInterval;
+    int FBalanceRemainTime;
 public:		// User declarations
 	__fastcall TExecutionForm(TComponent* Owner );
 	OrderFilterEnum	__fastcall GetFilterType( void );

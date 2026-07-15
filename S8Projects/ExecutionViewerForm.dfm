@@ -1666,6 +1666,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -3193,6 +3194,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -4719,6 +4721,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -4733,8 +4736,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 696
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #25490#34892#27036
       TabOrder = 3
       Visible = False
@@ -4745,6 +4748,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -6270,6 +6274,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -6283,8 +6288,8 @@ object ExecutionForm: TExecutionForm
     object LargeButton: TGraphButton
       Left = 636
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       TabOrder = 5
       ShowHint = True
@@ -6294,6 +6299,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.FontColor = 14515260
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = 14515260
       FontAttrib.CaptionFont.Height = -19
@@ -6338,8 +6344,8 @@ object ExecutionForm: TExecutionForm
     object SmallButton: TGraphButton
       Left = 666
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       TabOrder = 7
       ShowHint = True
@@ -6349,6 +6355,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.FontColor = 14515260
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = 14515260
       FontAttrib.CaptionFont.Height = -19
@@ -7874,6 +7881,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -7888,8 +7896,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 606
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #33258#21205#27396#20301#23532#24230
       TabOrder = 9
       ShowHint = True
@@ -7899,6 +7907,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.FontColor = 14515260
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = 14515260
       FontAttrib.CaptionFont.Height = -15
@@ -7912,8 +7921,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 729
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #19978#20659#20132#26131#32000#37636
       TabOrder = 10
       Visible = False
@@ -7924,6 +7933,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -9449,6 +9459,7 @@ object ExecutionForm: TExecutionForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clGray
       FontAttrib.SelectedFontColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -15
@@ -9477,10 +9488,6 @@ object ExecutionForm: TExecutionForm
       Font.Style = []
       ParentFont = False
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object OrderListView: TOrderListView
         Left = 0
         Top = 0
@@ -9750,6 +9757,7 @@ object ExecutionForm: TExecutionForm
         Ctl3D = True
         ParentCtl3D = False
         TabOrder = 1
+        Visible = False
         object BalanceLabel: TLabel
           Left = 8
           Top = 10
@@ -9785,6 +9793,78 @@ object ExecutionForm: TExecutionForm
           WordWrap = True
           StyleElements = []
         end
+      end
+      object RefreshBalanceBtn: TGraphButtonV2
+        Left = 1060
+        Top = 50
+        Width = 85
+        Height = 30
+        TabOrder = 3
+        Visible = False
+        OnClick = RefreshBalanceBtnClick
+        NormalGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000550000
+          001E08060000005D6A52F5000000B34944415478DAEDDAB10902411040D119C5
+          1214C32BC022B41313EB10AB3038033BD1220E0CBDDC1244D7AD41EE7370FC17
+          0C1B0E9F0D27D7E747F35D7C8E51621FFA5F465FE77DF69E9F72D976B78CD88E
+          BDD354941A365797EE595FCDD8CB4C46FDB1B96ABB32F61E5363548051014605
+          1815605480510146051815605480510146051815605480510146051815605480
+          510146051815605480510146051815E0D9CFD032AEE981DA4032FA52A27F1D36
+          BB1F01765E76948BCE380000000049454E44AE426082}
+        HoverGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000550000
+          001E08060000005D6A52F5000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          B14944415478DAEDDAB10DC2400C4051BB81158828C828B005259B203689A8C2
+          14B0092988C40AD01C3703CA57A4E8BFC2BAD2FABAD2B9BBBEDAEF3ACF51E214
+          FA5FC650E763F52997DCF4E33D23F673EFB414A586CDE6363EEBAB9D7B99C5A8
+          3F369B7E2C73EFB1344605181560548051014605181560548051014605181560
+          548051014605181560548051014605181560548051014605181560548051019E
+          FD4C2DA34B0FD42692319412C3FBB83DFC00ECEA6131689924C3000000004945
+          4E44AE426082}
+        DownGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000550000
+          001E08060000005D6A52F5000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          AF4944415478DAEDDAC10902410C40D144EDC3C1BB3D68278285886D082B76A2
+          3D2C7875ED431DA706F1B3B0FC7708730C9F392657A77BF92CDE87A8B10BFD2E
+          6368F3367BCD8FB9ECFA6B466CC6DE692A6A0B9BE5DC3FDAAB8CBDCC64B41F9B
+          A5EBEBD87B4C8D51014605181560548051014605181560548051014605181560
+          5480510146051815605480510146051815605480510146051815605480673FFF
+          9671490FD4FE2463A83586E77EBDFD02C5895FB69AF017C90000000049454E44
+          AE426082}
+        DisableGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000550000
+          001E08060000005D6A52F5000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          A64944415478DAEDDAC109C2401406E1B7A691A0D88736E1D94E965889E78035
+          984A741B896BACC10C81653E58D8E3CF9C5F3AE647FFE9E61C11D7D03FCAF2A6
+          DDDC0D693F8CCF94E2B4F5A256D41A533ADCC6F7F2EFB71ED390F28B5AB75ED1
+          1AA3028C0A302AC0A800A3028C0A302AC0A800A3028C0A302AC0A800A3028C0A
+          302AC0A800A3028C0A302AC0A800A3028C0A302AC0A800CF7ED6774F1EA8ADA6
+          D41AE5952FE72F118056563ABC2DA30000000049454E44AE426082}
+        SelectedGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000550000
+          001E08060000005D6A52F5000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          A24944415478DAEDDAC109C330100551AD2BF1D165249DA493904ED2495C868C
+          0F5625DE3835C48341CC03818E9F396FACEB3AEEFBFE2CA53C8AFED18E370FC3
+          F08A5AEB27226E572FEA4566CEB12CCB76FCC7ABC774A4FDA2E6D52B7A635480
+          5101460518156054805101460518156054805101460518156054805101460518
+          15605480510146051815605480510146051815E0D9CFF9DEE181DA695A66B669
+          9AEE5FF7267D25863D30540000000049454E44AE426082}
+        FontAttrib.FontColor = clWhite
+        FontAttrib.FontShadowColor = clWhite
+        FontAttrib.HighlightFontColor = clWhite
+        FontAttrib.HighlightShadowColor = clWhite
+        FontAttrib.SelectedFontColor = clWhite
+        FontAttrib.DisabledFontColor = clWhite
+        FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
+        FontAttrib.CaptionFont.Color = clWhite
+        FontAttrib.CaptionFont.Height = -13
+        FontAttrib.CaptionFont.Name = 'Tahoma'
+        FontAttrib.CaptionFont.Style = []
+        ButtonText = #26356#26032#38913#38754
       end
     end
   end
@@ -9838,7 +9918,7 @@ object ExecutionForm: TExecutionForm
     Left = 744
     Top = 337
     Bitmap = {
-      494C01010100DC00B0015000960005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100DC00BC015000960005162D002110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000004001000096000000010020000000000000EE
       02000000000000000000000000000000000064381B0064381B0064381B006438
       1B0064381B0064381B0064381B0064381B0064381B0064381B0064381B006438
@@ -16031,5 +16111,10 @@ object ExecutionForm: TExecutionForm
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       00000000000000000000000000000000000000000000}
+  end
+  object BalanceTimer: TTimer
+    OnTimer = BalanceTimerTimer
+    Left = 1112
+    Top = 344
   end
 end
