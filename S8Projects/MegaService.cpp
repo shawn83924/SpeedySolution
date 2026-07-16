@@ -130,14 +130,6 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 	return Result;
 }
 //---------------------------------------------------------------------------
-bool TMegaService::LoginBroker(	const String& ID,
-								const String& Account,
-								const String& Password,
-								String& Msg )
-{
-    return true;
-}
-//---------------------------------------------------------------------------
 bool TMegaService::GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON )
 {
 	String  JsonTxt( (char*)Stream->Memory, Stream->Size );

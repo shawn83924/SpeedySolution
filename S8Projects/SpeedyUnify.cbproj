@@ -287,6 +287,12 @@
             <DependentOn>Login.h</DependentOn>
             <BuildOrder>5</BuildOrder>
         </CppCompile>
+        <CppCompile Include="LoginSetting.cpp">
+            <Form>LoginSettingForm</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>LoginSetting.h</DependentOn>
+            <BuildOrder>46</BuildOrder>
+        </CppCompile>
         <CppCompile Include="main.cpp">
             <Form>MainForm</Form>
             <FormType>dfm</FormType>
@@ -401,9 +407,9 @@
         <FormResources Include="OrderConfirm.dfm"/>
         <FormResources Include="Roomi.dfm"/>
         <FormResources Include="SearchUnit.dfm"/>
-        <FormResources Include="SelAccount.dfm"/>
         <FormResources Include="Login.dfm"/>
         <FormResources Include="main.dfm"/>
+        <FormResources Include="SelAccount.dfm"/>
         <FormResources Include="TrainingDlg.dfm"/>
         <FormResources Include="UnifyDlg.dfm"/>
         <FormResources Include="WebBrowserForm.dfm"/>
@@ -420,11 +426,12 @@
         <FormResources Include="AskCloseAll.dfm"/>
         <FormResources Include="AskForUpdateForm.dfm"/>
         <FormResources Include="AskRoomi.dfm"/>
+        <FormResources Include="DepthTrade.dfm"/>
         <FormResources Include="HoldOpenInterest.dfm"/>
         <FormResources Include="LeaderBoard.dfm"/>
         <FormResources Include="LifeUpdateForm.dfm"/>
         <FormResources Include="ExecutionViewerForm.dfm"/>
-        <FormResources Include="DepthTrade.dfm"/>
+        <FormResources Include="LoginSetting.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -13,6 +13,8 @@
 #include <windowsx.h>
 #include <System.JSON.hpp>
 #include <System.IOUtils.hpp>
+
+#include "LoginSetting.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma link "GraphButton"
@@ -140,7 +142,6 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	ActivityIndicator->Visible = true;
 	ActivityIndicator->Animate = true;
 	IDEdit->Enabled = false;
-	AccountEdit->Enabled = false;
 	PasswordEdit->Enabled = false;
 	FWaitCount = 0;
 	MainForm->Connect();
@@ -158,7 +159,6 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 		WaitTimer->Enabled = false;
 		LoginButton->Enabled = true;
 		IDEdit->Enabled = true;
-		AccountEdit->Enabled = true;
 		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
@@ -170,7 +170,6 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 		WaitTimer->Enabled = false;
 		this->ModalResult = mrNone;//Cancel;
 		IDEdit->Enabled = true;
-		AccountEdit->Enabled = true;
 		PasswordEdit->Enabled = true;
 		ActivityIndicator->Visible = false;
 		ActivityIndicator->Animate = false;
@@ -227,7 +226,7 @@ bool __fastcall TLoginForm::GetResponseJSON( TMemoryStream* Stream, String& Resp
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::Logon( void )
 {
-	if( !RequestLogon(IDEdit->Text, AccountEdit->Text, PasswordEdit->Text) )
+	if( !RequestLogon(IDEdit->Text, PasswordEdit->Text) )
 	{
 		StatusLabel->Caption = L"µn¤J¥¢±Ñ:";
 		return false;
@@ -250,12 +249,11 @@ void __fastcall TLoginForm::GenData( const String& ID, const String& Password, S
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::RequestLogon(
 	const String& ID,
-	const String& Account,
 	const String& Password)
 {
 	TBrokerConfig* loginBroker = g_Config.BrokerConfig( 0 );
 	String errMsg;
-	if (loginBroker->GetService()->LoginBroker(ID, Account, Password, errMsg) != true)
+	if (loginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
 	{
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
 		return false;
@@ -279,13 +277,11 @@ void __fastcall TLoginForm::LoadIDPassword( void )
    if( AccountCheckBox->Checked == true )
    {
 	   IDEdit->Text	= g_Config.GetBase64StringProperty("Setting", "ID", "" );
-	   AccountEdit->Text = g_Config.GetBase64StringProperty("Setting", "Account", "" );
 	   PasswordEdit->Text = g_Config.GetBase64StringProperty("Setting", "Password", "" );
    }
    else
    {
 	   IDEdit->Text	= L"";
-	   AccountEdit->Text = "";
 	   PasswordEdit->Text = "";
    }
 }
@@ -297,7 +293,6 @@ void __fastcall TLoginForm::SaveIDPassword( void )
 		return;
 
 	g_Config.SetBase64StringProperty("Setting","ID",IDEdit->Text );
-	g_Config.SetBase64StringProperty("Setting","Account",AccountEdit->Text );
 	g_Config.SetBase64StringProperty("Setting","Password", PasswordEdit->Text );
 
 }
@@ -316,17 +311,10 @@ void __fastcall TLoginForm::CalendarButtonClick(TObject *Sender)
 	delete BrowserForm;
 }
 //---------------------------------------------------------------------------
-
 void __fastcall TLoginForm::LoginSettingButtonClick(TObject *Sender)
 {
-	ShellExecute(
-		Handle,
-		L"open",
-		L"LiteService.ini",
-		NULL,
-		NULL,
-		SW_SHOWNORMAL
-	);
+	LoginSettingForm = new TLoginSettingForm( this );
+	LoginSettingForm->ShowModal();
 }
 //---------------------------------------------------------------------------
 

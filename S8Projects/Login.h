@@ -48,7 +48,6 @@ __published:	// IDE-managed Components
 	TLabel *AtAOELabel;
 	TLabel *ExLabel;
 	TAlignEdit *IDEdit;
-	TAlignEdit *AccountEdit;
 	TAlignEdit *PasswordEdit;
 	TButton *LoginSettingButton;
 	void __fastcall LoginButtonClick(TObject *Sender);
@@ -67,10 +66,7 @@ private:	// User declarations
 	bool __fastcall CheckFreeTry( void );
 	void __fastcall OnNCHitTest( TMessage &Message );
 	void __fastcall WndProc( TMessage &Msg );
-	bool __fastcall RequestLogon(
-		const String& ID,
-        const String& Account,
-		const String& Password);
+	bool __fastcall RequestLogon(const String& ID, const String& Password);
 	void __fastcall GenData( const String& ID, const String& Password, String& Out );
 	bool __fastcall GetResponseJSON( TMemoryStream* Stream, String& ResponseJSON );
 	void __fastcall LoadIDPassword( void );

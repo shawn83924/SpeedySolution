@@ -29,22 +29,12 @@ TLiteService::TLiteService()
 //---------------------------------------------------------------------------
 bool TLiteService::LoginBroker( const String& ID, const String& Password, String& Msg )
 {
-	return false;
-}
-//---------------------------------------------------------------------------
-bool TLiteService::LoginBroker(
-	const String& ID,
-	const String& Account,
-	const String& Password,
-	String& Msg )
-{
 	LoadConfigSetting("LiteService.ini");
 	gOrderStore->OnConnect = OrderStoreConnect;
 	gOrderStore->OnLogonOK = OrderStoreLogonOK;
 	gOrderStore->OnLogonFailed = OrderStoreLogonFailed;
 
 	FID = ID;
-	FStockAccount = Account;
 	FPassword = Password;
 
 	gOrderStore->ID 			= FID;
@@ -58,13 +48,13 @@ bool TLiteService::LoginBroker(
 	gOrderStore->ClearMemberID 	= FClearMemberID;
 	gOrderStore->Version       	= LoginForm->Version;
 	gOrderStore->TryVersion    	= FTryVersion;
-    String LogFilePrefix;
+	String LogFilePrefix;
 	LogFilePrefix.printf(L"SU_%s", FID);
 	gOrderStore->OrderLogFileNamePrefix = LogFilePrefix;
 
 	gOrderStore->Connect();
 	const DWORD startTick = GetTickCount();
-    const DWORD timeoutMs = 5000;
+	const DWORD timeoutMs = 5000;
 
 	while (!FWaitConnectDone)
 	{
@@ -82,7 +72,7 @@ bool TLiteService::LoginBroker(
 		return false;
 	}
 
-    Msg = FWaitConnectMsg;
+	Msg = FWaitConnectMsg;
 	return FWaitConnectOK;
 }
 //---------------------------------------------------------------------------
@@ -129,6 +119,11 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 	else
 		UFC::BufferedLog::Printf( " 找不到 FutAccount" );
 
+    if(config.GetValue( "Setting","StockAccount", value))
+		FStockAccount = value.c_str();
+	else
+		UFC::BufferedLog::Printf( " 找不到 FutAccount" );
+
 	if(config.GetValue( "Setting","StockBrokerID", value))
 		FStockBrokerID = value.c_str();
 	else
@@ -150,12 +145,12 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 		UFC::BufferedLog::Printf( " 找不到 ClearMemberID" );
 
 	if(config.GetValue( "Setting","TryVersion", value))
-		FTryVersion = (value.c_str() == "0")? false : true;
+		FTryVersion = (value == "0")? false : true;
 	else
 		UFC::BufferedLog::Printf( " 找不到 TryVersion" );
 
 	if(config.GetValue( "Setting","ProxyLogon", value))
-		FProxyLogon = (value.c_str() == "0")? false : true;
+		FProxyLogon = (value == "0")? false : true;
 	else
 		UFC::BufferedLog::Printf( " 找不到 ProxyLogon" );
 }

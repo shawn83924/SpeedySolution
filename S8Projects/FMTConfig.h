@@ -135,10 +135,6 @@ class TBrokerService
 {
 public:
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg ) = 0;
-	virtual bool LoginBroker(	const String& ID,
-								const String& Account,
-								const String& Password,
-								String& Msg ) = 0;
 	virtual bool ChangePassword( const String& NewPassword, String& Msg ) = 0;
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg ) = 0;
 	virtual void ClearPosition( const String& ID ) = 0;
@@ -173,7 +169,6 @@ private:
 public:
 	TMegaService( const String& BaseURL );
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
-	virtual bool LoginBroker( const String& ID, const String& Account, const String& Password, String& Msg );
 	virtual bool ChangePassword( const String& NewPassword, String& Msg ){return false;}
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
 	virtual void ClearPosition( const String& ID );
@@ -214,7 +209,6 @@ private:
 public:
 	TLiteService( void );
 	virtual bool LoginBroker( const String& ID, const String& Password, String& Msg );
-	virtual bool LoginBroker( const String& ID, const String& Account, const String& Password, String& Msg );
 	virtual bool ChangePassword( const String& NewPassword, String& Msg ){return false;}
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
 	virtual void ClearPosition( const String& ID );

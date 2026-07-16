@@ -17,9 +17,9 @@
 USEFORM("OrderConfirm.cpp", OrdConfirmForm);
 USEFORM("Roomi.cpp", RoomiForm);
 USEFORM("SearchUnit.cpp", SearchSymbolForm);
-USEFORM("SelAccount.cpp", DefAccForm);
 USEFORM("Login.cpp", LoginForm);
 USEFORM("main.cpp", MainForm);
+USEFORM("SelAccount.cpp", DefAccForm);
 USEFORM("TrainingDlg.cpp", TrainingDlgForm);
 USEFORM("UnifyDlg.cpp", UnifyDlgs);
 USEFORM("WebBrowserForm.cpp", BrowserForm);
@@ -36,11 +36,12 @@ USEFORM("AggrementUnit.cpp", AggrementForm);
 USEFORM("AskCloseAll.cpp", AskCloseAllForm);
 USEFORM("AskForUpdateForm.cpp", AskUpdateForm);
 USEFORM("AskRoomi.cpp", AskRoomiForm);
+USEFORM("DepthTrade.cpp", DepthForm);
 USEFORM("HoldOpenInterest.cpp", HoldOpenInterestForm);
 USEFORM("LeaderBoard.cpp", LeaderBoardForm);
 USEFORM("LifeUpdateForm.cpp", UpdateForm);
 USEFORM("ExecutionViewerForm.cpp", ExecutionForm);
-USEFORM("DepthTrade.cpp", DepthForm);
+USEFORM("LoginSetting.cpp", LoginSettingForm);
 //---------------------------------------------------------------------------
 String GCommand;
 bool   GGDIPlus       = false;
@@ -143,6 +144,7 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR CMD, int)
 		Application->CreateForm(__classid(TCancelWorkingForm), &CancelWorkingForm);
 		Application->CreateForm(__classid(TOrdConfirmForm), &OrdConfirmForm);
 		Application->CreateForm(__classid(TFontForm), &FontForm);
+		Application->CreateForm(__classid(TLoginSettingForm), &LoginSettingForm);
 		Application->Run();
 		if( GGDIPlus == true )
 			Gdiplus::GdiplusShutdown(gdiplusToken);
