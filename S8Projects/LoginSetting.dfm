@@ -21,7 +21,7 @@ object LoginSettingForm: TLoginSettingForm
     255)
   PixelsPerInch = 96
   TextHeight = 13
-  object ValueListEditor: TValueListEditor
+  object SettingListEditor: TValueListEditor
     Left = 0
     Top = 0
     Width = 397
@@ -35,22 +35,15 @@ object LoginSettingForm: TLoginSettingForm
     Font.Style = [fsBold]
     ParentFont = False
     Strings.Strings = (
-      'IP='
-      'Port='
-      'FutBrokerID='
-      'StockBrokerID='
-      'ClearMemberID='
-      'StockAccount='
-      'FutAccount='
-      'TryVersion='
-      'ProxyLogon=')
+      '')
     TabOrder = 0
     TitleCaptions.Strings = (
       #21517#31281
       #20540)
+    OnKeyPress = SettingListEditorKeyPress
     ColWidths = (
       123
-      251)
+      268)
   end
   object OKButton: TButton
     Left = 82

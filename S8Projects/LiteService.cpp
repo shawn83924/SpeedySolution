@@ -145,12 +145,12 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 		UFC::BufferedLog::Printf( " 找不到 ClearMemberID" );
 
 	if(config.GetValue( "Setting","TryVersion", value))
-		FTryVersion = (value == "0")? false : true;
+		FTryVersion = (value == "False")? false : true;
 	else
 		UFC::BufferedLog::Printf( " 找不到 TryVersion" );
 
 	if(config.GetValue( "Setting","ProxyLogon", value))
-		FProxyLogon = (value == "0")? false : true;
+		FProxyLogon = (value == "False")? false : true;
 	else
 		UFC::BufferedLog::Printf( " 找不到 ProxyLogon" );
 }
