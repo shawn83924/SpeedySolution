@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2026/07/16 12:26:46.000.258,=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.cpp</Transaction>
+    <Transaction>2026/07/16 12:27:16.000.229,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.dfm=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.dfm</Transaction>
+    <Transaction>2026/07/16 12:27:16.000.229,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.h=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.h</Transaction>
+    <Transaction>2026/07/16 12:27:16.000.229,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.cpp=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.cpp</Transaction>
+    <Transaction>2026/07/16 15:30:15.289,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.cpp=</Transaction>
+    <Transaction>2026/07/16 15:30:33.862,=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.cpp</Transaction>
+    <Transaction>2026/07/16 15:32:17.194,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.h=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.h</Transaction>
+    <Transaction>2026/07/16 15:32:17.194,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.dfm=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.dfm</Transaction>
+    <Transaction>2026/07/16 15:32:17.194,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LoginSetting.cpp=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.cpp</Transaction>
+    <Transaction>2026/07/16 15:37:32.388,=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\Unit1.cpp</Transaction>
+    <Transaction>2026/07/17 12:25:24.795,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LiteUnifyPCH1.h=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\SpeedyUnifyPCH1.h</Transaction>
+    <Transaction>2026/07/17 12:25:24.811,C:\src\Speedy\SpeedySolution\Simulator\S8Projects\LiteUnify.cbproj=C:\src\Speedy\SpeedySolution\Simulator\S8Projects\SpeedyUnify.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
