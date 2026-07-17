@@ -9,6 +9,31 @@
 #pragma link "RoundFormEx"
 #pragma resource "*.dfm"
 TLoginSettingForm *LoginSettingForm;
+const int SettingListCount = 9;
+String TitleListStr[SettingListCount] =
+{
+	"IP",
+	"Port",
+	"FutBrokerID",
+	"StockBrokerID",
+	"ClearMemberID",
+	"StockAccount",
+	"FutAccount",
+	"TryVersion",
+	"ProxyLogon"
+};
+bool TitleIsPickList[SettingListCount] =
+{
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	false,
+	true,
+	true
+};
 //---------------------------------------------------------------------------
 __fastcall TLoginSettingForm::TLoginSettingForm(TComponent* Owner)
 	: TForm(Owner)
@@ -18,7 +43,17 @@ __fastcall TLoginSettingForm::TLoginSettingForm(TComponent* Owner)
 //---------------------------------------------------------------------------
 void __fastcall TLoginSettingForm::FormShow(TObject *Sender)
 {
+	InitSettingListEditor();
 	LoadConfigSetting("LiteService.ini");
+}
+//---------------------------------------------------------------------------
+void __fastcall TLoginSettingForm::InitSettingListEditor( void )
+{
+	for(int i=0; i < SettingListCount; i++)
+	{
+		String title = TitleListStr[i];
+        SettingListEditor->InsertRow(title, "", true);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginSettingForm::LoadConfigSetting(const char* FileName)
@@ -31,16 +66,25 @@ void __fastcall TLoginSettingForm::LoadConfigSetting(const char* FileName)
 
 	UFC::UiniFile   config( FileName, true );
 	UFC::AnsiString value;
-
-	for (int i = 1; i < ValueListEditor->RowCount; i++)
+	for(int i=0; i < SettingListCount; i++)
 	{
-		String key = ValueListEditor->Keys[i];
+		String key = TitleListStr[i];
 		if(!config.GetValue( "Setting", key.c_str(), value))
 			continue;
 
-		ValueListEditor->Values[key] = value.c_str();
+		if(TitleIsPickList[i] == true)
+		{
+			Vcl::Valedit::TItemProp *prop = SettingListEditor->ItemProps[key];
+			prop->EditStyle = esPickList;
+			prop->PickList->Add("True");
+			prop->PickList->Add("False");
+            SettingListEditor->Values[key] = (value == "True")? "True":"False";
+		}
+		else
+		{
+			SettingListEditor->Values[key] = value.c_str();
+		}
 	}
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginSettingForm::OKButtonClick(TObject *Sender)
@@ -57,10 +101,10 @@ void __fastcall TLoginSettingForm::SaveConfigSetting(const char* FileName)
 	}
 
 	UFC::UiniFile   config( FileName, true );
-	for (int i = 1; i < ValueListEditor->RowCount; i++)
+	for (int i = 1; i < SettingListEditor->RowCount; i++)
 	{
-		String key = ValueListEditor->Keys[i];
-		String value = ValueListEditor->Values[key];
+		String key = SettingListEditor->Keys[i];
+		String value = SettingListEditor->Values[key];
 		if (value.IsEmpty() || value == "(null)")
 			config.SetValue( "Setting", key.c_str(), " " );
 		else
@@ -68,3 +112,18 @@ void __fastcall TLoginSettingForm::SaveConfigSetting(const char* FileName)
 	}
 	config.Save();
 }
+//---------------------------------------------------------------------------
+void __fastcall TLoginSettingForm::SettingListEditorKeyPress(TObject *Sender, System::WideChar &Key)
+{
+	int row = SettingListEditor->Row;
+
+	if (TitleIsPickList[row - 1] != true)
+		return;
+
+	// 允許控制鍵
+	if (Key != VK_BACK)
+	{
+		Key = 0;
+	}
+}
+//---------------------------------------------------------------------------

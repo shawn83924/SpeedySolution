@@ -15,13 +15,16 @@
 class TLoginSettingForm : public TForm
 {
 __published:	// IDE-managed Components
-	TValueListEditor *ValueListEditor;
+	TValueListEditor *SettingListEditor;
 	TRoundFormEx *RoundFormEx;
 	TButton *OKButton;
 	TButton *CancelButton;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall OKButtonClick(TObject *Sender);
+	void __fastcall SettingListEditorKeyPress(TObject *Sender, System::WideChar &Key);
+
 private:	// User declarations
+	void __fastcall InitSettingListEditor( void );
 	void __fastcall LoadConfigSetting(const char* FileName);
 	void __fastcall SaveConfigSetting(const char* FileName);
 public:		// User declarations
