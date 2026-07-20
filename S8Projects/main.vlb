@@ -188,7 +188,7 @@ Coordinates=10,348,81,36
 Coordinates=857,280,81,36
 
 []
-Coordinates=1418,790,91,36
+Coordinates=1033,399,65,36
 Visible=True
 
 [NormalSettingLabel]
@@ -407,9 +407,6 @@ Coordinates=674,357,105,58
 
 [CancelAllStopText]
 Coordinates=1517,56,121,36
-
-[TrayIcon]
-Coordinates=1033,399,65,36
 
 [CancelAllText]
 Coordinates=1517,111,94,36

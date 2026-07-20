@@ -192,7 +192,6 @@ __published:	// IDE-managed Components
 	TGraphButton *CancelAllStopText;
 	TGraphButton *CancelAllandCloseText;
 	TGraphButton *CenterPxStaticText;
-	TTrayIcon *TrayIcon;
 	TPopupMenu *TrayPopupMenu;
 	TMenuItem *RestoreItem;
 	TMenuItem *CloseItem;

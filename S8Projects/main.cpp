@@ -213,7 +213,6 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	UFC::BufferedLog::SetLogObject( new UFC::BufferedLog( FileName, 10240, true, true ) );
 	//PrintLogHeader( );
 
-   	TrayIcon->Visible = false;
 	if( GSimMatch == true )
 	{
 		TOrderStore::SetTestMode( true );
@@ -1115,32 +1114,27 @@ void __fastcall TMainForm::FormShowTimerTimer(TObject *Sender)
 void __fastcall TMainForm::FormShow(TObject *Sender)
 {
 	PrintLogHeader( );
-	if( TrayIcon->Visible == false )
+
+	LiveUpdate();
+	if (LoginForm->ShowModal() == mrOk)
 	{
-		LiveUpdate();
-		if( LoginForm->ShowModal() == mrOk )
-		{
-			FID = LoginForm->IDEdit->Text;
-			FPassword = LoginForm->PasswordEdit->Text;
-			ControlPosition();
-			CMarketDataStore->OnAppDisconnected  = CMarketDataStoreAppDisconnected;
-			ChartsStore->OnAppDisconnected  = ChartsStoreXAppDisconnected;
-			SettingSV->Opened = false;
-			LoadMainFormPosition();
-			SettingPageControl->ActivePage = TabSheetLoading;
-			SettingPanel( true );
-			FormShowTimer->Enabled = true;
-			RTTTimer->Enabled = true;
-			PreventIdleTimer->Enabled = true;
-		}
-		else
-		{
-			Close();
-			Application->Terminate();
-		}
+		FID = LoginForm->IDEdit->Text;
+		FPassword = LoginForm->PasswordEdit->Text;
+		ControlPosition();
+		CMarketDataStore->OnAppDisconnected = CMarketDataStoreAppDisconnected;
+		ChartsStore->OnAppDisconnected = ChartsStoreXAppDisconnected;
+		SettingSV->Opened = false;
+		LoadMainFormPosition();
+		SettingPageControl->ActivePage = TabSheetLoading;
+		SettingPanel(true);
+		FormShowTimer->Enabled = true;
+		RTTTimer->Enabled = true;
+		PreventIdleTimer->Enabled = true;
+	} else
+	{
+		Close();
+		Application->Terminate();
 	}
-	else
-		TrayIcon->Visible = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DefaultSymbol( String& Ex, String& Sym )
@@ -2324,9 +2318,7 @@ void __fastcall TMainForm::MaxButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::MinButtonClick(TObject *Sender)
 {
-	TrayIcon->Visible = true;
-	TrayIcon->ShowBalloonHint();
-	Hide();
+    Application->Minimize();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::Tab2ButtonMouseDown(TObject *Sender, TMouseButton Button,
