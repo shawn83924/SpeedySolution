@@ -15,15 +15,16 @@ object DepthForm: TDepthForm
   GlassFrame.Enabled = True
   GlassFrame.SheetOfGlass = True
   OldCreateOrder = False
+  Position = poDesigned
   Scaled = False
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 23
   object OrderBookList: TOrderBookList
     Left = 210
-    Top = 173
+    Top = 176
     Width = 181
-    Height = 657
+    Height = 654
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -171,6 +172,8 @@ object DepthForm: TDepthForm
     OnAutoStopLoss = OrderBookListAutoStopLoss
     OnAutoTakeProfit = OrderBookListAutoTakeProfit
     OnTick = OrderBookListTick
+    ExplicitTop = 173
+    ExplicitHeight = 657
     ColWidths = (
       71
       67
@@ -210,18 +213,15 @@ object DepthForm: TDepthForm
     DesignSize = (
       391
       81)
-    object Bevel4: TBevel
-      Left = 0
-      Top = 36
-      Width = 391
-      Height = 45
-      Margins.Left = 5
-      Margins.Top = 5
-      Margins.Right = 5
-      Margins.Bottom = 5
-      Align = alBottom
-      Shape = bsTopLine
-      ExplicitWidth = 906
+    object PnlOutlineShape: TShape
+      Left = -5
+      Top = 39
+      Width = 1000
+      Height = 42
+      Align = alCustom
+      Brush.Color = 10380715
+      Pen.Color = 12091841
+      Pen.Width = 3
     end
     object LotsUpDown: TUpDown
       Left = 54
@@ -282,6 +282,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = 14515260
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = 14515260
       FontAttrib.CaptionFont.Height = -19
@@ -308,6 +309,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = 14515260
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = 14515260
       FontAttrib.CaptionFont.Height = -19
@@ -335,6 +337,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -417,6 +420,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -19
@@ -446,6 +450,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -19
@@ -1015,6 +1020,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.SelectedFontColor = clNavy
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -1584,6 +1590,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.SelectedFontColor = clNavy
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -2152,6 +2159,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.SelectedFontColor = clNavy
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -2178,6 +2186,7 @@ object DepthForm: TDepthForm
       GraphCount = 5
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clBlack
       FontAttrib.CaptionFont.Height = -17
@@ -2199,61 +2208,58 @@ object DepthForm: TDepthForm
       Anchors = [akTop, akRight]
       NormalGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-        001808060000008C716FFD000000017352474200AECE1CE90000000467414D41
-        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-        554944415478DAEDD7B109C020180561FF35E376B18C42461144C836510B53A5
-        155F7137C1D79EBD3D275EF2C1993A7420471FF4B9CB6ED36FF5CA40810205AA
-        1850A040810205AA15D0A5D03950CA593C4EE90B9D358F15C0C1299626200000
-        000049454E44AE426082}
+        001808060000008C716FFD0000000467414D410000B18F0BFC61050000000970
+        48597300000EC200000EC20115284A80000000514944415478DAEDD7B10DC020
+        10C5506EB9B04B1014ECCA3A40284E34B411BFB02778AD6D7C05F14A4CC1D4A1
+        0BB9DAD0D66F9BCED09A8102050A5431A0408102050A542BA0BF427DA094B3FC
+        BCD217EA4DC7649FB9FB4C38CA0000000049454E44AE426082}
       HoverGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-        001808060000008C716FFD000000017352474200AECE1CE90000000467414D41
-        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-        554944415478DAEDD7A1198020180661FE6D6534B14177060A85E02A02019395
-        872FDC4DF0D6B3B7E7C44B3E3853870EE4E8833E77DD6DFAAD5C192850A04015
-        030A142850A040B502BA143A074A398BC7297DA1B3063AF4C349F5C73E350000
-        000049454E44AE426082}
+        001808060000008C716FFD0000000467414D410000B18F0BFC61050000000970
+        48597300000EC200000EC20115284A80000000514944415478DAEDD7B10DC020
+        10C5506EB9B04B1014ECCA3A40284E34B411BFB02778AD6D7C05F14A4CC1D4A1
+        0BB9DAD0D66F9BCED09A8102050A5431A0408102050A542BA0BF427DA094B3FC
+        BCD217EA4DC7649FB9FB4C38CA0000000049454E44AE426082}
       DownGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-        001808060000008C716FFD000000017352474200AECE1CE90000000467414D41
-        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-        554944415478DAEDD7A111C0201404517EAFA1B120033E55601844AA0920888A
-        6538B15BC1B36B6FCF89177D70A60E1DC8D1077DEEBADBF45B49192850A04015
-        030A142850A040B502BA143A074A39BB8E53FA42670D8ABAC199732092AD0000
-        000049454E44AE426082}
+        001808060000008C716FFD0000000467414D410000B18F0BFC61050000000970
+        48597300000EC200000EC20115284A80000000514944415478DAEDD7B10DC020
+        10C5506EB9B04B1014ECCA3A40284E34B411BFB02778AD6D7C05F14A4CC1D4A1
+        0BB9DAD0D66F9BCED09A8102050A5431A0408102050A542BA0BF427DA094B3FC
+        BCD217EA4DC7649FB9FB4C38CA0000000049454E44AE426082}
       DisableGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-        001808060000008C716FFD000000017352474200AECE1CE90000000467414D41
-        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-        5A4944415478DA63FCF0E1C37F86410E96A4CE61601CEC0E05391204E00EBDB9
-        E1CA40BB092B38BDF5C4A843471D3AEAD051870E4630EAD051878E3A74D4A1A3
-        0E1D75E8E002A30EA5A943611DA8C10C18A784F60CEA5E280C00008C38BBF9F1
-        FF69E90000000049454E44AE426082}
+        001808060000008C716FFD0000000467414D410000B18F0BFC61050000000970
+        48597300000EC200000EC20115284A80000000514944415478DAEDD7B10DC020
+        10C5506EB9B04B1014ECCA3A40284E34B411BFB02778AD6D7C05F14A4CC1D4A1
+        0BB9DAD0D66F9BCED09A8102050A5431A0408102050A542BA0BF427DA094B3FC
+        BCD217EA4DC7649FB9FB4C38CA0000000049454E44AE426082}
       SelectedGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D494844520000002A0000
-        001808060000008C716FFD000000017352474200AECE1CE90000000467414D41
-        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-        424944415478DAEDD0B10D003008C440D87F50D82209052344726177DF9D3ECF
-        2BE07577241D3AC849A8506A42850A150A4DA850A142A109FD0ADD412EAB0AFD
-        E87601CB6D9DF9F7B070850000000049454E44AE426082}
-      FontAttrib.FontColor = clWhite
-      FontAttrib.FontShadowColor = clWhite
-      FontAttrib.HighlightFontColor = clWhite
-      FontAttrib.HighlightShadowColor = clWhite
-      FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
-      FontAttrib.CaptionFont.Color = clWhite
-      FontAttrib.CaptionFont.Height = -13
-      FontAttrib.CaptionFont.Name = 'Tahoma'
+        001808060000008C716FFD0000000467414D410000B18F0BFC61050000000970
+        48597300000EC200000EC20115284A80000000514944415478DAEDD7B10DC020
+        10C5506EB9B04B1014ECCA3A40284E34B411BFB02778AD6D7C05F14A4CC1D4A1
+        0BB9DAD0D66F9BCED09A8102050A5431A0408102050A542BA0BF427DA094B3FC
+        BCD217EA4DC7649FB9FB4C38CA0000000049454E44AE426082}
+      FontAttrib.FontColor = 2631720
+      FontAttrib.FontShadowColor = 2631720
+      FontAttrib.HighlightFontColor = 2631720
+      FontAttrib.HighlightShadowColor = 2631720
+      FontAttrib.SelectedFontColor = 2631720
+      FontAttrib.DisabledFontColor = 2631720
+      FontAttrib.CaptionFont.Charset = ANSI_CHARSET
+      FontAttrib.CaptionFont.Color = 2631720
+      FontAttrib.CaptionFont.Height = -14
+      FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
       FontAttrib.CaptionFont.Style = []
       ButtonText = #20840#24179
-      ExplicitLeft = 340
     end
   end
   object ToolSV: TSplitView
     Left = 0
-    Top = 173
+    Top = 176
     Width = 210
-    Height = 657
+    Height = 654
     Margins.Left = 5
     Margins.Top = 5
     Margins.Right = 5
@@ -2273,11 +2279,13 @@ object DepthForm: TDepthForm
     TabOrder = 2
     OnClosed = ToolSVClosed
     OnOpened = ToolSVOpened
+    ExplicitTop = 173
+    ExplicitHeight = 657
     object PageControl: TPageControl
       Left = 0
       Top = 0
       Width = 210
-      Height = 657
+      Height = 654
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -2294,6 +2302,7 @@ object DepthForm: TDepthForm
       ParentFont = False
       TabOrder = 0
       OnChanging = PageControlChanging
+      ExplicitHeight = 657
       object SettingTabSheet: TTabSheet
         Margins.Left = 5
         Margins.Top = 5
@@ -2308,11 +2317,12 @@ object DepthForm: TDepthForm
         Font.Style = []
         ParentDoubleBuffered = False
         ParentFont = False
+        ExplicitHeight = 620
         object SettingScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 620
+          Height = 617
           HorzScrollBar.Range = 170
           VertScrollBar.Range = 950
           VertScrollBar.Smooth = True
@@ -2321,6 +2331,7 @@ object DepthForm: TDepthForm
           AutoScroll = False
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 620
           object CountLabel: TLabel
             Left = 8
             Top = 557
@@ -2900,16 +2911,18 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 2
         ParentDoubleBuffered = False
+        ExplicitHeight = 620
         object StopSettingScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 620
+          Height = 617
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alClient
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 620
           object Label5: TLabel
             Left = 8
             Top = 63
@@ -3823,6 +3836,7 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 3
         ParentDoubleBuffered = False
+        ExplicitHeight = 620
         object SplitPanel: TPanel
           Left = 0
           Top = 0
@@ -4566,19 +4580,21 @@ object DepthForm: TDepthForm
         DoubleBuffered = True
         ImageIndex = 1
         ParentDoubleBuffered = False
+        ExplicitHeight = 620
         object ColorScrollBox: TScrollBox
           Left = 0
           Top = 0
           Width = 202
-          Height = 620
+          Height = 617
           VertScrollBar.Smooth = True
           VertScrollBar.Tracking = True
           Align = alClient
           TabOrder = 0
           OnMouseWheel = ScrollBoxMouseWheel
+          ExplicitHeight = 620
           object Bevel1: TBevel
             Left = 0
-            Top = 87
+            Top = 96
             Width = 198
             Height = 16
             Margins.Left = 5
@@ -4592,7 +4608,7 @@ object DepthForm: TDepthForm
           end
           object Bevel2: TBevel
             Left = 0
-            Top = 190
+            Top = 208
             Width = 198
             Height = 15
             Margins.Left = 5
@@ -4606,7 +4622,7 @@ object DepthForm: TDepthForm
           end
           object Bevel3: TBevel
             Left = 0
-            Top = 291
+            Top = 318
             Width = 198
             Height = 16
             Margins.Left = 5
@@ -4754,7 +4770,7 @@ object DepthForm: TDepthForm
           object StaticText4: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 108
+            Top = 117
             Width = 188
             Height = 25
             Margins.Left = 5
@@ -4771,10 +4787,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 3
+            ExplicitTop = 108
           end
           object TickComboBox: TComboBox
             Left = 0
-            Top = 138
+            Top = 147
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4805,10 +4822,11 @@ object DepthForm: TDepthForm
               #26085#20302#20729#32218#26694#33394#11
               ''
               #25104#20132#22343#20729#32218)
+            ExplicitTop = 138
           end
           object TickColorBox: TColorBox
             Left = 0
-            Top = 168
+            Top = 177
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4826,11 +4844,12 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 5
             OnChange = TickColorBoxChange
+            ExplicitTop = 168
           end
           object StaticText2: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 210
+            Top = 228
             Width = 188
             Height = 24
             Margins.Left = 5
@@ -4847,10 +4866,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 6
+            ExplicitTop = 210
           end
           object BuyComboBox: TComboBox
             Left = 0
-            Top = 239
+            Top = 257
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4878,10 +4898,11 @@ object DepthForm: TDepthForm
               'OCO'#32972#26223#38991#33394
               'OCO'#25991#23383#38991#33394
               #21034'OCO'#32972#26223#38991#33394)
+            ExplicitTop = 239
           end
           object BuyTextColorBox: TColorBox
             Left = 0
-            Top = 269
+            Top = 287
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4899,11 +4920,12 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 8
             OnChange = BuyTextColorBoxChange
+            ExplicitTop = 269
           end
           object StaticText3: TStaticText
             AlignWithMargins = True
             Left = 5
-            Top = 312
+            Top = 339
             Width = 188
             Height = 24
             Margins.Left = 5
@@ -4920,10 +4942,11 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 9
+            ExplicitTop = 312
           end
           object SellComboBox: TComboBox
             Left = 0
-            Top = 341
+            Top = 368
             Width = 198
             Height = 30
             Margins.Left = 5
@@ -4951,10 +4974,11 @@ object DepthForm: TDepthForm
               'OCO'#32972#26223#38991#33394
               'OCO'#25991#23383#38991#33394
               'OCO'#21034#32972#26223#38991#33394)
+            ExplicitTop = 341
           end
           object SellTextColorBox: TColorBox
             Left = 0
-            Top = 371
+            Top = 398
             Width = 198
             Height = 31
             Margins.Left = 5
@@ -4972,6 +4996,7 @@ object DepthForm: TDepthForm
             ParentFont = False
             TabOrder = 11
             OnChange = SellTextColorBoxChange
+            ExplicitTop = 371
           end
         end
       end
@@ -4988,7 +5013,6 @@ object DepthForm: TDepthForm
     Margins.Bottom = 5
     Align = alTop
     BevelEdges = [beTop]
-    BevelKind = bkSoft
     BevelOuter = bvNone
     Color = 10380714
     DoubleBuffered = True
@@ -5000,7 +5024,7 @@ object DepthForm: TDepthForm
       Left = 0
       Top = 0
       Width = 42
-      Height = 30
+      Height = 32
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -5021,7 +5045,7 @@ object DepthForm: TDepthForm
       Left = 42
       Top = 0
       Width = 99
-      Height = 30
+      Height = 32
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -5038,12 +5062,13 @@ object DepthForm: TDepthForm
       Layout = tlCenter
       StyleElements = []
       ExplicitLeft = 43
+      ExplicitHeight = 30
     end
     object ProfitTextLabel: TLabel
       Left = 141
       Top = 0
       Width = 42
-      Height = 30
+      Height = 32
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -5064,7 +5089,7 @@ object DepthForm: TDepthForm
       Left = 183
       Top = 0
       Width = 99
-      Height = 30
+      Height = 32
       Margins.Left = 5
       Margins.Top = 5
       Margins.Right = 5
@@ -5081,6 +5106,7 @@ object DepthForm: TDepthForm
       Layout = tlCenter
       StyleElements = []
       ExplicitLeft = 185
+      ExplicitHeight = 30
     end
     object TIFComboBox: TComboBox
       Left = 324
@@ -5215,43 +5241,177 @@ object DepthForm: TDepthForm
     ParentBackground = False
     TabOrder = 5
     StyleElements = []
-    object SmartOrderTabs: TTabControl
-      Left = 1
-      Top = 1
-      Width = 389
-      Height = 40
-      Align = alTop
-      OwnerDraw = True
+    object SmartOutlineShape: TShape
+      Left = -10
+      Top = 0
+      Width = 1000
+      Height = 65
+      Align = alCustom
+      Brush.Color = 10380715
+      Pen.Color = 12091841
+      Pen.Width = 3
+    end
+    object OCOTabBtn: TGraphButtonV2
+      Tag = 1
+      AlignWithMargins = True
+      Left = 77
+      Top = 6
+      Width = 45
+      Height = 24
       TabOrder = 0
-      Tabs.Strings = (
-        #38275#38651#19979#21934
-        'OCO')
-      TabIndex = 0
-      OnChange = SmartOrderTabsChange
+      OnClick = TabBtnClick
+      NormalGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        001808060000006EAD7484000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        4E4944415478DAEDD7BB110010100051D71C45E8803995ABC12F120A39B35BC1
+        4B57FACC19AA84ECC41A7AB5D1B5DDB61C2B514183067D3BD0A0413F1068D0A0
+        1F0834E8AFD1EB702D25EA93B91B1F4CC39E9998141C2F0000000049454E44AE
+        426082}
+      HoverGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        001808060000006EAD7484000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        4E4944415478DAEDD7BB110010100051D71C45E8803995ABC12F120A39B35BC1
+        4B57FACC19AA84ECC41A7AB5D1B5DDB61C2B514183067D3BD0A0413F1068D0A0
+        1F0834E8AFD1EB702D25EA93B91B1F4CC39E9998141C2F0000000049454E44AE
+        426082}
+      DownGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        001808060000006EAD7484000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        4E4944415478DAEDD7BB110010100051D71C45E8803995ABC12F120A39B35BC1
+        4B57FACC19AA84ECC41A7AB5D1B5DDB61C2B514183067D3BD0A0413F1068D0A0
+        1F0834E8AFD1EB702D25EA93B91B1F4CC39E9998141C2F0000000049454E44AE
+        426082}
+      DisableGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        001808060000006EAD7484000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        4E4944415478DAEDD7BB110010100051D71CBD302ED0AB76FC22A19033BB15BC
+        74A5CF9CA1342427D6D0AB8DAEEDB6E598960C1A34E8DB81060DFA81408306FD
+        40A0417F8D5E876B29C93E9ABBF10126049E99CE9149E00000000049454E44AE
+        426082}
+      SelectedGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000002D0000
+        001808060000006EAD7484000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        4E4944415478DAEDD7BB110010100051D71C45E8803995ABC12F120A39B35BC1
+        4B57FACC19AA84ECC41A7AB5D1B5DDB61C2B514183067D3BD0A0413F1068D0A0
+        1F0834E8AFD1EB702D25EA93B91B1F4CC39E9998141C2F0000000049454E44AE
+        426082}
+      FontAttrib.FontColor = 2631720
+      FontAttrib.FontShadowColor = 2631720
+      FontAttrib.HighlightFontColor = 2631720
+      FontAttrib.HighlightShadowColor = 2631720
+      FontAttrib.SelectedFontColor = 2631720
+      FontAttrib.DisabledFontColor = 2631720
+      FontAttrib.CaptionFont.Charset = ANSI_CHARSET
+      FontAttrib.CaptionFont.Color = 2631720
+      FontAttrib.CaptionFont.Height = -13
+      FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
+      FontAttrib.CaptionFont.Style = []
+      ButtonText = 'OCO'
+    end
+    object QuickTabBtn: TGraphButtonV2
+      Left = 1
+      Top = 6
+      Width = 75
+      Height = 24
+      TabOrder = 1
+      OnClick = TabBtnClick
+      NormalGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000004B0000
+        00180806000000B25400B3000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        6F4944415478DAEDD9B91180300C0551AB3928820E60ECCAA981336188AC8D20
+        D89728D56CFA633F1575B5712961ACBC27D6BA7DFDCB6FB5A9DED75809C6028C
+        05180B3016602CC05880B1006301C6028C05180B3016602CC05880B1006301C6
+        028C05BC625DCB85FAA20EB3EB4ED20192439E993BEDEBCE0000000049454E44
+        AE426082}
+      HoverGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000004B0000
+        00180806000000B25400B3000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        6F4944415478DAEDD9B91180300C0551AB3928820E60ECCAA981336188AC8D20
+        D89728D56CFA633F1575B5712961ACBC27D6BA7DFDCB6FB5A9DED75809C6028C
+        05180B3016602CC05880B1006301C6028C05180B3016602CC05880B1006301C6
+        028C05BC625DCB85FAA20EB3EB4ED20192439E993BEDEBCE0000000049454E44
+        AE426082}
+      DownGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000004B0000
+        00180806000000B25400B3000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        6F4944415478DAEDD9B91180300C0551AB3928820E60ECCAA981336188AC8D20
+        D89728D56CFA633F1575B5712961ACBC27D6BA7DFDCB6FB5A9DED75809C6028C
+        05180B3016602CC05880B1006301C6028C05180B3016602CC05880B1006301C6
+        028C05BC625DCB85FAA20EB3EB4ED20192439E993BEDEBCE0000000049454E44
+        AE426082}
+      DisableGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000004B0000
+        00180806000000B25400B3000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        6E4944415478DAEDD9AB1180400C06E14B73D00BCC9DA057DAE16918D4651588
+        FD4C6C66ED1FFBA9A8AB8D730963E53DB1D6EDEB5F7EAB2DF5BEC64A3016602C
+        C05880B1006301C6028C05180B3016602CC05880B1006301C6028C05180B3016
+        602CE015EB5A2ED41775985C77920E93D59E99B7CEF5ED0000000049454E44AE
+        426082}
+      SelectedGraph.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D494844520000004B0000
+        00180806000000B25400B3000000017352474200AECE1CE90000000467414D41
+        0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+        6F4944415478DAEDD9B91180300C0551AB3928820E60ECCAA981336188AC8D20
+        D89728D56CFA633F1575B5712961ACBC27D6BA7DFDCB6FB5A9DED75809C6028C
+        05180B3016602CC05880B1006301C6028C05180B3016602CC05880B1006301C6
+        028C05BC625DCB85FAA20EB3EB4ED20192439E993BEDEBCE0000000049454E44
+        AE426082}
+      FontAttrib.FontColor = 2631720
+      FontAttrib.FontShadowColor = 2631720
+      FontAttrib.HighlightFontColor = 2631720
+      FontAttrib.HighlightShadowColor = 2631720
+      FontAttrib.SelectedFontColor = 2631720
+      FontAttrib.DisabledFontColor = 2631720
+      FontAttrib.CaptionFont.Charset = ANSI_CHARSET
+      FontAttrib.CaptionFont.Color = 2631720
+      FontAttrib.CaptionFont.Height = -14
+      FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
+      FontAttrib.CaptionFont.Style = []
+      ButtonText = #38275#38651#19979#21934
     end
   end
   object ExtraPanel: TPanel
     Left = 0
     Top = 143
     Width = 391
-    Height = 30
+    Height = 33
     Align = alTop
+    BevelOuter = bvNone
     Color = 10380714
     ParentBackground = False
     TabOrder = 6
     StyleElements = []
     DesignSize = (
       391
-      30)
+      33)
+    object ExtraShape: TShape
+      Left = -10
+      Top = 0
+      Width = 1000
+      Height = 65
+      Align = alCustom
+      Brush.Color = 10380715
+      Pen.Color = 12091841
+      Pen.Width = 3
+    end
     object OCODetailBtn: TGraphButtonV2
       AlignWithMargins = True
-      Left = 232
-      Top = 3
+      Left = 235
+      Top = 5
       Width = 66
       Height = 26
       TabOrder = 0
       OnClick = OCODetailBtnClick
-      Anchors = [akTop, akRight, akBottom]
+      Anchors = [akRight, akBottom]
       NormalGraph.Data = {
         0954506E67496D61676589504E470D0A1A0A0000000D49484452000000420000
         001A080600000003898A72000000017352474200AECE1CE90000000467414D41
@@ -5296,6 +5456,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontShadowColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -11
@@ -5306,7 +5467,7 @@ object DepthForm: TDepthForm
     object SettingOCOBtn: TGraphButtonV2
       AlignWithMargins = True
       Left = 304
-      Top = 3
+      Top = 5
       Width = 81
       Height = 26
       TabOrder = 1
@@ -5361,6 +5522,7 @@ object DepthForm: TDepthForm
       FontAttrib.FontShadowColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clWhite
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -11
@@ -5389,7 +5551,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800A8010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800B4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C
