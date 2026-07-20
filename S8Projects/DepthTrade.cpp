@@ -46,11 +46,11 @@ TColor TickBKColor[2]       = {RGB(249,249,249),RGB(8,16,27)};
 TColor TickUpperColor[2]    = {RGB(230,0,0),RGB(230,0,0)};
 TColor TickLowerColor[2]    = {RGB(33,140,4),RGB(33,140,4)};
 TColor FillColor[2]         = {clWhite,clWhite};
-TColor FillBKColor[2]       = {RGB(50,195,190),RGB(9,60,62)};
+TColor FillBKColor[2]       = {RGB(71,160,94),RGB(71,160,94)};
 TColor BetterBuyColor[2]    = {clWhite,clWhite};
-TColor BetterBuyBKColor[2]  = {RGB(255,109,135),RGB(74,19,25)};
+TColor BetterBuyBKColor[2]  = {RGB(191,65,95),RGB(191,65,95)};
 TColor BetterSellColor[2]   = {clWhite,clWhite};
-TColor BetterSellBKColor[2] = {RGB(72,137,193),RGB(10,32,73)};
+TColor BetterSellBKColor[2] = {RGB(171,101,158),RGB(171,101,158)};
 TColor DayHiColor[2]        = {clRed,clRed};
 TColor DayLoColor[2]        = {clGreen,clGreen};
 TColor AvgPriceColor[2]     = {clWhite,clWhite};
@@ -2387,7 +2387,7 @@ void __fastcall TDepthForm::CenterLabelMouseLeave(TObject *Sender)
 {
 	TLabel* Label = dynamic_cast< TLabel* >( Sender);
 	if( Label != NULL)
-		Label->Font->Color = clSilver;
+		Label->Font->Color = clWhite;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::CenterLabelClick(TObject *Sender)
