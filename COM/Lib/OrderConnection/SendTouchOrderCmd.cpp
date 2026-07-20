@@ -4,13 +4,19 @@ const UFC::AnsiString SUBJECT_TOUCH_REQUEST = "TOUCH.REQUEST";// added bu Kenny 
 
 BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
 {
-    TTouchOrderCommand::TouchedOrderCommandEnum cmd = toc->GetCmdType();
-    
+    TTouchOrderCommand::TouchedOrderCommandEnum cmd = toc->GetCmdType();    
+
     Glog->fprintf("----- TouchOrder Control ------------");
     Glog->fprintf("  [CmdType]:%d", cmd);
+    
+    if (!toc->Verify())
+    {
+        Glog->fprintf("  [EORROR]:%s", toc->GetLastErrorMsg());
+        return FALSE;
+    }
 
     std::string cmd_node;    
-
+    
     if (TTouchOrderCommand::tocNew != cmd)
     {
         switch (cmd)
@@ -52,85 +58,48 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
         return MBusClient->EndSend(MHandle);
     }
 
-    cmd_node = "act=N";
-    std::string action = toc->GetTriggeredAction();
-    std::string scene = toc->GetTriggeringCondition();
-    std::string expression = toc->GetTriggerExpression();
-
-    if (action.empty() || scene.empty())
-    {
-        toc->SetLastErrorMsg("TriggeredAction or TriggeringCondition not provided!");
-        return FALSE;
-    }
-
+    // verify the symbol of touch order
     nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
-    if (nsOrderMessageDefine::mTSE != market && 
-        nsOrderMessageDefine::mOTC != market && 
-        nsOrderMessageDefine::mTWFutures != market && 
-        nsOrderMessageDefine::mTWOptions != market)
-    {
-        toc->SetLastErrorMsg("unsupported market quotes!");
-        return FALSE;
-    }
-
-    int decimal_locator = 4;
     std::string symbol = toc->GetSymbol();
-    if (symbol.empty())
-    {
-        toc->SetLastErrorMsg("The stock Code or product-id of market information not provided!");
-        return FALSE;
-    }
-
-    if (nsOrderMessageDefine::mTWFutures == market || 
+    if (nsOrderMessageDefine::mTWFutures == market ||
         nsOrderMessageDefine::mTWOptions == market)
-    {        
-        decimal_locator = GetTAIFEXPricePrecision(market, symbol.c_str());
+    {
+        int decimal_locator = GetTAIFEXPricePrecision(market, symbol.c_str());
         if (decimal_locator < 0)
         {
-            toc->SetLastErrorMsg("The product-id of futures/options market information not available!");
+            toc->SetLastErrorMsg("The product-id of futures/options touch order is not exist!");
+            Glog->fprintf("  [EORROR]:%s", toc->GetLastErrorMsg());
             return FALSE;
         }
     }
 
-    TTouchOrderCommand::TouchedActionEnum act_type = toc->GetTouchedActionType();
-    if (TTouchOrderCommand::taNewOrder == act_type ||
-        TTouchOrderCommand::taCxlOrder == act_type ||
-        TTouchOrderCommand::taRpxOrder == act_type)
+    // verify the symbol of order to execute if touched
+    TTouchOrderCommand::TouchedActionEnum tact_type = toc->GetTouchedActionType();
+    if (TTouchOrderCommand::taWarning != tact_type)
     {
         nsOrderMessageDefine::MarketEnum act_market = toc->GetTouchedActionMarket();
+        std::string act_symbol = toc->GetTouchedActionSymbol();        
         if (nsOrderMessageDefine::mTWFutures == act_market ||
             nsOrderMessageDefine::mTWOptions == act_market)
         {
-            std::string action_symbol = toc->GetTouchedActionSymbol();
-            if (action_symbol.empty())
+            int decimal_locator = GetTAIFEXPricePrecision(act_market, act_symbol.c_str());
+            if (decimal_locator < 0)
             {
-                toc->SetLastErrorMsg("The product-id of futures/options order is required!");
+                toc->SetLastErrorMsg("The product-id of futures/options touched-to-execute order is not exist!");
+                Glog->fprintf("  [EORROR]:%s", toc->GetLastErrorMsg());
                 return FALSE;
             }
-
-            int price_precision = GetTAIFEXPricePrecision(act_market, action_symbol.c_str());
-            if (price_precision < 0)
-            {
-                std::string err_msg = std::string("Product[") + action_symbol + "] not found!";
-                toc->SetLastErrorMsg(err_msg.c_str());
-                return FALSE;
-            }
-
-            //toc->SetOrderMessagePricePrecision(price_precision);
         }
-    }
+    }    
 
+    cmd_node = "act=N";
+    std::string action = toc->GetTriggeredAction();
+    std::string scene = toc->GetTriggeringCondition();
+    std::string expression = toc->GetTriggerExpression();
+    
     long long NID = GenerateNID(nsOrderMessageDefine::mtNew);
     toc->SetNID(NID);
     
-    /*
-    if (TTouchOrderCommand::tocNew == cmd)
-    {
-        NID = GenerateNID(nsOrderMessageDefine::mtNew);
-        toc->SetNID(NID);
-    }
-    */
-
     MTHandle        MHandle;
     MApp* MBusClient = FTransport->GetMApp();
     MBusClient->BeginSend(MHandle, SUBJECT_TOUCH_REQUEST, FID);

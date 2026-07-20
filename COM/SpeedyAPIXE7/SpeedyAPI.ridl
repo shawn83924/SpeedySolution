@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/7/13 ¤W¤È 11:40:46 (- $Rev: 12980 $, 594881328).
+// File generated on 2026/7/20 ¤U¤È 01:21:40 (- $Rev: 12980 $, 409235796).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1596,6 +1596,8 @@ library SpeedyAPI
     HRESULT _stdcall ToExpression([out, retval] BSTR* triggeringCondition);
     [propget, id(0x000000DB)]
     HRESULT _stdcall Instance([out, retval] VARIANT* Value);
+    [id(0x000000DC)]
+    HRESULT _stdcall SetExecutionTime([in] unsigned int hour, [in] unsigned int minute, [out, retval] VARIANT_BOOL* Value);
   };
 
   [

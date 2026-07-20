@@ -53,5 +53,14 @@ protected:
   STDMETHOD(GetLastErrMsg(BSTR* lastErrMsg));
   STDMETHOD(ToExpression(BSTR* triggeringCondition));
   STDMETHOD(get_Instance(VARIANT* Value));
+  STDMETHOD(SetExecutionTime(unsigned hour, unsigned minute, VARIANT_BOOL* Value));
+
+
+
+
+
+
+
+
 };
 #endif //TriggeringConditionImplH

@@ -36,8 +36,7 @@ public:
         taCxlOrder,        // 觸價下刪單
         taRpxOrder,        // 觸價下改單
         taCxlTouchedOrder, // 觸價刪觸價單(觸價買或觸價賣)
-        taWarning,         // 觸價送訊息
-       
+        taWarning          // 觸價送訊息       
     };
 
 private:
@@ -59,80 +58,73 @@ private:
     std::string FTriggerExpression;
     
     std::string FLastErrMsg;
-    std::string FTouchedActionSymbol; // 記錄觸價下單時的商品代碼，用來檢查商品對應的小數位數在不在，只有期貨跟選擇權才需要
-    nsOrderMessageDefine::MarketEnum FTouchedActionMarket; // 記錄觸價下單時的市場別，方便判斷要下單的商品是期貨或選擇權
+
+    double      FTouchedActionPrice;                             // 記錄觸價下單時的委託價
+    std::string FTouchedActionSymbol;                            // 記錄觸價下單時的商品代碼
+    nsOrderMessageDefine::MarketEnum FTouchedActionMarket;       // 記錄觸價下單時的市場別，方便判斷要下單的商品是期貨或選擇權
+    nsOrderMessageDefine::OrderTypeEnum FTouchedActionOrderType; // 記錄觸價下新單時用的是市價還是限價(只對觸價下新單有意義)
 
 private:
+    void ClearTriggeredAction();
     BOOL ToTriggeredAction(TNewOrderMessage* order);      
     BOOL ToTriggeredAction(TCancelOrderMessage* order);   
     BOOL ToTriggeredAction(TReplaceOrderMessage* order);  
     BOOL ToTriggeredAction(TTouchOrderCommand* toc);      
-    BOOL ToTriggeredAction(const char* warning);
+    BOOL ToTriggeredAction(const char* warning);    
 
 public:
 
     TTouchOrderCommand() : FNID(0),
-        FCmdType(/*TouchedOrderCommandEnum::*/tocNew),
-        FMarket(nsOrderMessageDefine::/*MarketEnum::*/mTSE),
-        FSide(nsOrderMessageDefine::/*SideEnum::*/sNone),
-        FPriceDependOn(/*PriceDependOnEnum::*/pdoNone),
+        FCmdType(tocNew),
+        FMarket(nsOrderMessageDefine::mUnknown),
+        FSide(nsOrderMessageDefine::sNone),
+        FPriceDependOn(pdoNone),
         FTicks(0),
         FTouchedActionType(taUnknown),
-        FTouchedActionMarket(nsOrderMessageDefine::mUnknown)
+        FTouchedActionMarket(nsOrderMessageDefine::mUnknown),
+        FTouchedActionOrderType(nsOrderMessageDefine::otNone)
     {
 
     }
 
     TTouchOrderCommand(TouchedOrderCommandEnum toc_type,
                        const char* touchorder_id,
-                       nsOrderMessageDefine::SideEnum side = nsOrderMessageDefine/*::SideEnum*/::sNone) : FNID(0),
+                       nsOrderMessageDefine::SideEnum side = nsOrderMessageDefine::sNone) : FNID(0),
         FCmdType(toc_type),
-        FMarket(nsOrderMessageDefine::/*MarketEnum::*/mTSE),
+        FMarket(nsOrderMessageDefine::mUnknown),
         FSide(side),
-        FPriceDependOn(/*PriceDependOnEnum::*/pdoNone),
+        FPriceDependOn(pdoNone),
         FTicks(0),
         FTouchedActionType(taUnknown),
-        FTouchedActionMarket(nsOrderMessageDefine::mUnknown)
+        FTouchedActionMarket(nsOrderMessageDefine::mUnknown),
+        FTouchedActionOrderType(nsOrderMessageDefine::otNone)
     {
 
     }
     // 設定觸價命令類別
     void SetCmdType(TouchedOrderCommandEnum toc_type) { FCmdType = toc_type; }           
+    
     // 設定觸價條件跟隨的市場行情 
     void SetMarket(nsOrderMessageDefine::MarketEnum market) { FMarket = market; }        
+    
     // 設定觸價條件跟隨的行情標的
     void SetSymbol(const char* symbol) { FSymbol = symbol; }
-    // 原意為設定觸價後刪委託單/改價/刪觸價單時所針對的委託/觸價單買賣別，現在保留介面供其他用途，請透過下列方式指定買賣別
-    //   .觸價後刪委託單請透過 TCancelOrderMessage 物件的 SetSide() 來指定
-    //   .觸價後改價請透過 TReplaceOrderMessage 物件的 SetSide() 來指定
-    //   .觸價後刪觸價單請透過 TTouchOrderCommand 物件的 SetSide() 來指定
-    void SetSide(nsOrderMessageDefine::SideEnum side);
+    
+    // 只有在設定觸價刪觸價單時作為 setTiggeredAction(TTouchOrderCommand*) 時輸入的物件有用
+    void SetSide(nsOrderMessageDefine::SideEnum side)
+    {
+        FSide = side;
+    }
+
     // 設定暫停、啟動、移除跟查詢時指定的觸價單單號
-    // 若是用在觸價後刪觸價單則是用來設定要刪除的觸價單的單號，在這種情況下
-    //   SetTouchOrderID 所設定的單號會優先於 SetTriggeredAction 裡 TTouchOrderCommand 物件所設定的單號 
     void SetTouchOrderID(const char* id);
-    // 若是觸價後刪單，委託單的委託價的價格等於 SetPrice() 的指定價格才會被刪除
-    // 若是觸價後改單，改價委託的委託價會是 SetPrice() 指定的價格
-    // 若是觸價後下新單，新單委託的委託價會是 SetPrice() 指定的價格
-    // 使用下列方法設定指定價格也可以，但浮點數轉字串時可能出現精確度的問題導致價格與預期的不同
-    //   TCancelOrderMessage::SetPrice()
-    //   TReplaceOrderMessage::SetPrice()
-    //   TNewOrderMessage::SetPrice()
-    // 若是觸價後下新單跟觸價後下改單的設定價格方式有3種，優先順序為
-    //   1. 透過 SetFloatingOrderPrice() 設定委託價是成交價的加減檔位數
-    //      設定 PriceDependOnEnum::pdoNone 表示決定優先順序時跳過 1.這一項 (預設值)
-    //   2. 透過 SetPrice() 設定,且用字串指定的數值是正常的數值格式 NNNNN.NNNN or NNNNN N 為 0~9 的數值
-    //      。整數大於5位時左方數字會被切除，小數部位大於4位時右方數字會被切除。
-    //      輸入空字串 ""、"0" 或錯誤格式的數值表示決定優先順序時跳過 2.這一項。(預設值)
-    //   3. 透過 TReplaceOrderMessage::SetPrice() 或 TNewOrderMessage::SetPrice() 設定的數值
-    void SetPrice(const char* price);                                                    
+    
+    // ---- deprecated. "不要用" ---------  
+    void SetPrice(const char* price) {}
+    
     // 設定觸價下新單或觸價下改單時是以觸價時的成交價加減檔位為委託價                                                                         
-    // 設定價格方式有3種，優先順序為
-    //   1. 透過 SetFloatingOrderPrice() 設定委託價是成交價的加減檔位數
-    //   2. 透過 SetPrice() 設定,且用字串指定的數值是正常的數值格式 NNNNN.NNNN or NNNNN N 為 0~9 的數值
-    //      。整數大於5位時左方數字會被切除，小數部位大於4位時右方數字會被切除。
-    //   3. 透過 TReplaceOrderMessage::SetPrice() 或 TNewOrderMessage::SetPrice() 設定的數值
     void SetFloatingOrderPrice(PriceDependOnEnum depend_on, int ticks);
+    
     // 設定觸價單的自訂定義資料，查詢或觸價回報時會回傳
     void SetUserData(const char* data)                   { FUserData = data; }
     // 設定觸價後下新單
@@ -149,24 +141,26 @@ public:
     void SetTriggeringCondition(TTriggeringCondition* ttc);
     
     long long GetNID() { return FNID; }
-
     
     const char* GetLastErrorMsg() { return FLastErrMsg.c_str(); }
 
     // ---- 以下功能僅 Speedy API 內部使用，不需要對外開放 ------------
-    void SetNID(long long nid)                  { FNID = nid; }
-    TouchedOrderCommandEnum GetCmdType()        { return FCmdType; }
-    nsOrderMessageDefine::MarketEnum GetMarket(){ return FMarket; }
-    std::string GetSymbol()                     { return FSymbol;  }
-    std::string GetUserData()                   { return FUserData; }
-    std::string GetTouchOrderID()               { return FTouchOrderID; }
-    std::string GetTriggeringCondition()        { return FTriggeringCondition; }
-    std::string GetTriggerExpression()          { return FTriggerExpression; }
-    std::string GetTriggeredAction();
-    TouchedActionEnum GetTouchedActionType()    { return FTouchedActionType; }
-    std::string GetTouchedActionSymbol()        { return FTouchedActionSymbol; } 
-    nsOrderMessageDefine::MarketEnum GetTouchedActionMarket() { return FTouchedActionMarket; }
-    void SetLastErrorMsg(const char* msg)       { FLastErrMsg = msg; }
+    void SetNID(long long nid)                                      { FNID = nid; }
+    TouchedOrderCommandEnum GetCmdType()                            { return FCmdType; }
+    nsOrderMessageDefine::MarketEnum GetMarket()                    { return FMarket; }
+    std::string GetSymbol()                                         { return FSymbol;  }
+    std::string GetUserData()                                       { return FUserData; }
+    std::string GetTouchOrderID()                                   { return FTouchOrderID; }
+    std::string GetTriggeringCondition()                            { return FTriggeringCondition; }
+    std::string GetTriggerExpression()                              { return FTriggerExpression; }
+    std::string GetTriggeredAction();                               
+    std::string GetTouchedActionSymbol()                            { return FTouchedActionSymbol; }               
+    nsOrderMessageDefine::MarketEnum GetTouchedActionMarket()       { return FTouchedActionMarket; }
+    TouchedActionEnum                GetTouchedActionType()         { return FTouchedActionType; }
+    // 給 TTaifexConnection 在 TouchOrderControl() 時設定錯誤訊息
+    void SetLastErrorMsg(const char* msg)                           { FLastErrMsg = msg; }
+    // 檢查設定是否正確 
+    BOOL Verify();
 };
 
 #endif

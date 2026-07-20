@@ -1,4 +1,4 @@
-#include "TTouchOrderCommand.h"
+﻿#include "TTouchOrderCommand.h"
 #include <sstream>
 
 // 將價格轉成小數位數最多4位的字串
@@ -17,15 +17,6 @@ static std::string priceNomalize(double price)
     std::string::size_type pos = s_price.find('.');
     s_price = s_price.substr(0, pos) + "." + s_price.substr(pos + 1, 4);
     return s_price;
-}
-
-// 原意為設定觸價後刪委託單/改價/刪觸價單時所針對的委託/觸價單買賣別，現在保留介面供其他用途，請透過下列方式指定買賣別
-//   .觸價後刪委託單請透過 TCancelOrderMessage 物件的 SetSide() 來指定
-//   .觸價後改價請透過 TReplaceOrderMessage 物件的 SetSide() 來指定
-//   .觸價後刪觸價單請透過 TTouchOrderCommand 物件的 SetSide() 來指定
-void TTouchOrderCommand::SetSide(nsOrderMessageDefine::SideEnum side)
-{
-    FSide = side;
 }
 
 // 設定暫停、啟動、移除跟查詢時指定的觸價單單號
@@ -47,20 +38,7 @@ void TTouchOrderCommand::SetTouchOrderID(const char* id)
     FTriggeredAction["order_no"] = id;
 }
 
-// 若是觸價後刪單，委託單的委託價的價格等於 SetPrice() 的指定價格才會被刪除
-// 若是觸價後改單，改價委託的委託價會是 SetPrice() 指定的價格
-// 若是觸價後下新單，新單委託的委託價會是 SetPrice() 指定的價格
-// 使用下列方法設定指定價格也可以，但浮點數轉字串時可能出現精確度的問題導致價格與預期的不同
-//   TCancelOrderMessage::SetPrice()
-//   TReplaceOrderMessage::SetPrice()
-//   TNewOrderMessage::SetPrice()
-// 若是觸價後下新單跟觸價後下改單的設定價格方式有3種，優先順序為
-//   1. 透過 SetFloatingOrderPrice() 設定委託價是成交價的加減檔位數
-//      設定 PriceDependOnEnum::pdoNone 表示決定優先順序時跳過 1.這一項 (預設值)
-//   2. 透過 SetPrice() 設定,且用字串指定的數值是正常的數值格式 NNNNN.NNNN or NNNNN N 為 0~9 的數值
-//      。整數大於5位時左方數字會被切除，小數部位大於4位時右方數字會被切除。
-//      輸入空字串 ""、"0" 或錯誤格式的數值表示決定優先順序時跳過 2.這一項。(預設值)
-//   3. 透過 TReplaceOrderMessage::SetPrice() 或 TNewOrderMessage::SetPrice() 設定的數值
+/*
 void TTouchOrderCommand::SetPrice(const char* price)
 {
     if (!price || !price[0])
@@ -109,28 +87,11 @@ void TTouchOrderCommand::SetPrice(const char* price)
             FPrice.clear();
             return;
         }
-    }
-
-    /*
-    try
-    {
-        double dbl_price = std::stod(price);
-        if (dbl_price == 0.0)
-        {
-            FPrice.clear();
-            return;
-        }
-    }
-    catch (...)
-    {
-        FPrice.clear();
-        return;
-    }
-    */
+    }   
 
     FPrice = price;
 
-    if (/*PriceDependOnEnum::*/pdoMatch == FPriceDependOn)
+    if (pdoMatch == FPriceDependOn)
         return;
 
     std::map<std::string, std::string>::iterator iter = FTriggeredAction.find("action");
@@ -151,24 +112,20 @@ void TTouchOrderCommand::SetPrice(const char* price)
     }
     else
         return;
-
     
 }
+*/
+
 
 // 設定觸價下新單或觸價下改單時是以觸價時的成交價加減檔位為委託價                                                                         
-// 設定價格方式有3種，優先順序為
-//   1. 透過 SetFloatingOrderPrice() 設定委託價是成交價的加減檔位數
-//      設定 PriceDependOnEnum::pdoNone 表示決定優先順序時跳過 1.這一項 (預設值)
-//   2. 透過 SetPrice() 設定,且用字串指定的數值是正常的數值格式 NNNNN.NNNN or NNNNN N 為 0~9 的數值
-//      。整數大於5位時左方數字會被切除，小數部位大於4位時右方數字會被切除。
-//      輸入空字串 ""、"0" 或錯誤格式的數值表示決定優先順序時跳過 2.這一項。(預設值)
-//   3. 透過 TReplaceOrderMessage::SetPrice() 或 TNewOrderMessage::SetPrice() 設定的數值
 void TTouchOrderCommand::SetFloatingOrderPrice(PriceDependOnEnum depend_on, int ticks)             
 {
     FPriceDependOn = depend_on;
     FTicks = ticks;
 
-    if (/*PriceDependOnEnum::*/pdoMatch != FPriceDependOn)
+    // 以下程序留到 TTaifexConnection::TouchOrderControl() 時再執行
+    /*
+    if (pdoMatch != FPriceDependOn)
         return;
 
     std::map<std::string, std::string>::iterator iter = FTriggeredAction.find("action");
@@ -198,14 +155,22 @@ void TTouchOrderCommand::SetFloatingOrderPrice(PriceDependOnEnum depend_on, int 
 
         FTriggeredAction[price_field] = ss.str();        
     }
+    */
 }
 
-BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
+void TTouchOrderCommand::ClearTriggeredAction()
 {
     FTriggeredAction.clear();
     FTouchedActionType = taUnknown;
     FTouchedActionMarket = nsOrderMessageDefine::mUnknown;
+    FTouchedActionPrice = 0;
+    FTouchedActionOrderType = nsOrderMessageDefine::otNone;
     FTouchedActionSymbol.clear();
+}
+
+BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
+{
+    ClearTriggeredAction();
 
     // 目前僅支援國內證劵跟國內期貨下單
     nsOrderMessageDefine::MarketEnum market = order->GetMarket();
@@ -401,7 +366,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
         else
         {
             FTriggeredAction.insert(std::make_pair("prod_id", symbol));
-        }
+        }        
     }
     else
     {
@@ -412,43 +377,45 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
 
     // PRICE
     std::string price_field = "order_price";
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         price_field = "price";
     }
-    if (/*PriceDependOnEnum::*/pdoMatch == FPriceDependOn)
-    {
-        if (!FTicks)
-            FTriggeredAction[price_field] = "${match_price}";
-        else
-        {
-            std::stringstream ss;
-            if (FTicks < 0)
-                ss << "${match_price}" << FTicks;
-            else
-                ss << "${match_price}+" << FTicks;
-
-            FTriggeredAction[price_field] = ss.str();            
-        }
-    }
-    else if (!FPrice.empty())
-    {
-        FTriggeredAction.insert(std::make_pair(price_field, FPrice));
-    }
-    else
-    {
-        //std::stringstream ss;
-        //ss << order->GetPrice();
-        //std::string s_price = ss.str();                
-        std::string s_price = priceNomalize(order->GetPrice());
-        FTriggeredAction.insert(std::make_pair(price_field, s_price));
-    }
+   
+    //if (pdoMatch == FPriceDependOn)
+    //{
+    //    if (!FTicks)
+    //        FTriggeredAction[price_field] = "${match_price}";
+    //    else
+    //    {
+    //        std::stringstream ss;
+    //        if (FTicks < 0)
+    //            ss << "${match_price}" << FTicks;
+    //        else
+    //            ss << "${match_price}+" << FTicks;
+    //
+    //        FTriggeredAction[price_field] = ss.str();            
+    //    }
+    //}
+    //else if (!FPrice.empty())
+    //{
+    //    FTriggeredAction.insert(std::make_pair(price_field, FPrice));
+    //}
+    //else
+    //{
+        
+    double price = order->GetPrice();
+    std::string s_price = priceNomalize(price);
+    FTriggeredAction.insert(std::make_pair(price_field, s_price));
+    FTouchedActionPrice = price;
+    
+    //}
 
     // QUANTITY
     std::string quantity_field = "order_quantity";
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         quantity_field = "quantity";
     }
@@ -457,7 +424,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
     {
         std::stringstream ss;
         ss << order_qty;
-        //std::string s_qty = std::to_string(order_qty);
+        
         FTriggeredAction.insert(std::make_pair(quantity_field, ss.str()));
     }
     else
@@ -467,8 +434,8 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
         return FALSE;
     }
     
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         // EXCHANGE-CODE
         const char* twse_exchange_code = order->GetTSEExchangeCode();
@@ -482,10 +449,16 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
 
         // PRICE-TYPE
         nsOrderMessageDefine::OrderTypeEnum price_type = order->GetOrderType();
-        if (nsOrderMessageDefine::/*OrderTypeEnum::*/otLimit == price_type)
+        if (nsOrderMessageDefine::otLimit == price_type)
+        {
             FTriggeredAction.insert(std::make_pair("price_type", "2")); // 限價
+            FTouchedActionOrderType = nsOrderMessageDefine::otLimit;
+        }
         else
+        {
             FTriggeredAction.insert(std::make_pair("price_type", "1")); // 市價
+            FTouchedActionOrderType = nsOrderMessageDefine::otMarket;
+        }
 
         // TIME-IN-FORCE
         nsOrderMessageDefine::TimeInForceEnum tif = order->GetTimeInForce();
@@ -501,9 +474,15 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
         // ORDER_TYPE
         nsOrderMessageDefine::OrderTypeEnum price_type = order->GetOrderType();
         if (nsOrderMessageDefine::/*OrderTypeEnum::*/otLimit == price_type)
-            FTriggeredAction.insert(std::make_pair("order_type", "L")); // 限價
+        {
+            FTriggeredAction.insert(std::make_pair("taifex_order_type", "L")); // 限價
+            FTouchedActionOrderType = nsOrderMessageDefine::otLimit;
+        }
         else
-            FTriggeredAction.insert(std::make_pair("order_type", "M")); // 市價
+        {
+            FTriggeredAction.insert(std::make_pair("taifex_order_type", "M")); // 市價
+            FTouchedActionOrderType = nsOrderMessageDefine::otMarket;
+        }
 
         // ORDER-CONDITION
         nsOrderMessageDefine::TimeInForceEnum tif = order->GetTimeInForce();
@@ -548,7 +527,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
         }
 
         FTriggeredAction.insert(std::make_pair("user_data", encoded_userdata));
-    }
+    }      
 
     FTouchedActionType = taNewOrder;
     FTouchedActionMarket = market;
@@ -559,15 +538,48 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
 
 BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
 {
-    FTriggeredAction.clear();
-    FTouchedActionType = taUnknown;
-    FTouchedActionSymbol.clear();
+    ClearTriggeredAction();
 
     nsOrderMessageDefine::MarketEnum market = order->GetMarket();
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         FTriggeredAction.insert(std::make_pair("action", "twse_cancel"));
+        nsOrderMessageDefine::TradingSessionIDEnum trading_session = order->GetTradingSessionID();
+        if (nsOrderMessageDefine::tsNormal == trading_session) //一般
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "30"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "93"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsIntradayOdd == trading_session) //盤中零股
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "33"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "83"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsOffHour == trading_session) //盤後定價
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "32"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "98"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsOddLot == trading_session) //盤後零股
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "40"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "94"));
+        }
+        else
+        {
+            FLastErrMsg = "Unknow/Unsupported Trading Session in Stock order!";
+            FTriggeredAction.clear();
+            return FALSE;
+        }
         FTriggeredAction.insert(std::make_pair("function_code", "04"));
     }
     else if (nsOrderMessageDefine::/*MarketEnum::*/mTWFutures == market || 
@@ -598,29 +610,18 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
         FTriggeredAction.insert(std::make_pair("buy_sell_code", "A"));
     
     std::string price_field = "order_price";
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         price_field = "price";
     }
     // 刪指定價位
-    if (!FPrice.empty())
-    {
-        FTriggeredAction[price_field] = FPrice;
+    double price = order->GetPrice();
+    if (price != 0.0)
+    {        
+        std::string s_price = priceNomalize(price);
+        FTriggeredAction.insert(std::make_pair(price_field, s_price));
     }
-    else
-    {
-        double price = order->GetPrice();
-        if (price != 0.0)
-        {
-            //std::stringstream ss;
-            //ss << price;
-            //std::string s_price = std::to_string(price);
-            std::string s_price = priceNomalize(price);
-            FTriggeredAction.insert(std::make_pair(price_field, s_price));
-        }
-    }
-
 
     const char* symbol = order->GetSymbol();                                
     if (symbol)
@@ -658,10 +659,9 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
 
         FTriggeredAction.insert(std::make_pair("user_data", encoded_userdata));
     }
-
-    // TODO ...其他欄位目前不需要，未來擴增可用
+        
     FTouchedActionType = taCxlOrder;
-    FTouchedActionMarket = market;
+    FTouchedActionMarket = market; 
     FTouchedActionSymbol = symbol;
 
     return TRUE;
@@ -669,9 +669,7 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
 
 BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
 {
-    FTriggeredAction.clear();
-    FTouchedActionType = taUnknown;
-    FTouchedActionSymbol.clear();
+    ClearTriggeredAction();
 
     nsOrderMessageDefine::MarketEnum market = order->GetMarket();
     if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
@@ -679,6 +677,41 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
     {
         FTriggeredAction.insert(std::make_pair("action", "twse_replace"));
         // 目前僅支援觸價單改價
+        nsOrderMessageDefine::TradingSessionIDEnum trading_session = order->GetTradingSessionID();
+        if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsNormal == trading_session) //一般
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "30"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "93"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsIntradayOdd == trading_session) //盤中零股
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "33"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "83"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsOffHour == trading_session) //盤後定價
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "32"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "98"));
+        }
+        else if (nsOrderMessageDefine::/*TradingSessionIDEnum::*/tsOddLot == trading_session) //盤後零股
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market)
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "40"));
+            else
+                FTriggeredAction.insert(std::make_pair("subsystem_name", "94"));
+        }
+        else
+        {
+            FLastErrMsg = "Unknow/Unsupported Trading Session in Stock order!";
+            FTriggeredAction.clear();
+            return FALSE;
+        }
         FTriggeredAction.insert(std::make_pair("function-code", "06"));
     }
     else if (nsOrderMessageDefine::/*MarketEnum::*/mTWFutures == market ||
@@ -701,67 +734,29 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
     
     // 改買單或改賣單
     nsOrderMessageDefine::SideEnum side = order->GetSide();
-    if (nsOrderMessageDefine::/*SideEnum::*/sBuy == side)
+    if (nsOrderMessageDefine::sBuy == side)
         FTriggeredAction.insert(std::make_pair("buy_sell_code", "B"));
-    else if (nsOrderMessageDefine::/*SideEnum::*/sSell == side)
+    else if (nsOrderMessageDefine::sSell == side)
         FTriggeredAction.insert(std::make_pair("buy_sell_code", "S"));
 
     // PRICE
     std::string price_field = "order_price";
-    if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-        nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+    if (nsOrderMessageDefine::mTSE == market ||
+        nsOrderMessageDefine::mOTC == market)
     {
         price_field = "price";
-    }
-
-    if (/*PriceDependOnEnum::*/pdoMatch == FPriceDependOn)
-    {
-        if (!FTicks)
-            FTriggeredAction[price_field] = "${match_price}";
-        else
-        {
-            std::stringstream ss;
-            if (FTicks < 0)
-                ss << "${match_price}" << FTicks;
-            else
-                ss << "${match_price}+" << FTicks;
-            
-            FTriggeredAction[price_field] = ss.str();
-
-            /*
-            if (FTicks < 0)
-                FTriggeredAction["price"] = std::string{ "${match_price}" } + std::to_string(FTicks);
-            else
-                FTriggeredAction["price"] = std::string{ "${match_price}+" } + std::to_string(FTicks);
-            */
-        }
-    }
-    else if (!FPrice.empty())
-    {
-        FTriggeredAction.insert(std::make_pair(price_field, FPrice));
-    }
-    else
-    {
-        double price = order->GetPrice();
-        if (price == 0.0)
-        {
-            FLastErrMsg = "Price not provided in Stock/Futures/Options order!";
-            FTriggeredAction.clear();
-            return FALSE;
-        }
-
-        //std::stringstream ss;
-        //ss << price;
-        //std::string s_price = std::to_string(price);
-        std::string s_price = priceNomalize(price);
-        FTriggeredAction.insert(std::make_pair(price_field, s_price));
     }    
 
+    double price = order->GetPrice();
+    std::string s_price = priceNomalize(price);
+    FTriggeredAction.insert(std::make_pair(price_field, s_price));
+    FTouchedActionPrice = price;
+    
     const char* symbol = order->GetSymbol();
     if (symbol)
     {
-        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        if (nsOrderMessageDefine::mTSE == market ||
+            nsOrderMessageDefine::mOTC == market)
         {
             FTriggeredAction.insert(std::make_pair("stock_no", symbol));
         }
@@ -792,9 +787,8 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
         }
 
         FTriggeredAction.insert(std::make_pair("user_data", encoded_userdata));
-    }
+    }    
 
-    // TODO ...其他欄位目前不需要，未來擴增可用
     FTouchedActionType = taRpxOrder;
     FTouchedActionMarket = market;
     FTouchedActionSymbol = symbol;
@@ -804,38 +798,60 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
 
 BOOL TTouchOrderCommand::ToTriggeredAction(TTouchOrderCommand* toc)
 {
-    FTriggeredAction.clear();
-    FTouchedActionType = taUnknown;
-    FTouchedActionMarket = nsOrderMessageDefine::mUnknown;
+    ClearTriggeredAction();
 
-    // 目前只支援刪觸價單
+	// 目前只支援刪觸價單
     if (toc && 
-        TTouchOrderCommand::/*TouchedOrderCommandEnum::*/tocKill == toc->FCmdType)
-    {
-        FTriggeredAction.insert(std::make_pair("action", "touchorder_cancel"));
+        TTouchOrderCommand::tocKill == toc->FCmdType)
+	{
+		nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
+		std::string symbol = toc->GetSymbol();
 
-        if (nsOrderMessageDefine::/*SideEnum::*/sBuy == toc->FSide)
-            FTriggeredAction.insert(std::make_pair("buy_sell_code", "B"));
-        else if(nsOrderMessageDefine::/*SideEnum::*/sSell == toc->FSide)
-            FTriggeredAction.insert(std::make_pair("buy_sell_code", "S"));
-        else
-            FTriggeredAction.insert(std::make_pair("buy_sell_code", "A"));
-
-        // 觸價刪觸價單不需要指定觸價單單號. removed on 2026/04/07
-        /*
-        std::string toid = GetTouchOrderID();
-        if (toid.empty())
-            toid = toc->GetTouchOrderID();
-
-        if (toid.empty())
+        if (symbol.empty())
         {
-            FTriggeredAction.clear();
+            FLastErrMsg = "Symbol not specified in touch order command!";
             return FALSE;
         }
 
-        FTriggeredAction["order_no"] = toid;
-        */
+        if (nsOrderMessageDefine::mTSE == market)
+        {
+            FTriggeredAction.insert(std::make_pair("market", "tse"));
+            FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+        }
+        else if (nsOrderMessageDefine::mOTC == market)
+        {
+            FTriggeredAction.insert(std::make_pair("market", "otc"));
+            FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+        }
+        else if (nsOrderMessageDefine::mTWFutures == market)
+        {
+            FTriggeredAction.insert(std::make_pair("market", "fut"));
+            FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+        }
+        else if (nsOrderMessageDefine::mTWOptions == market)
+        {
+            FTriggeredAction.insert(std::make_pair("market", "opt"));
+            FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+        }
+        else
+        {
+            FLastErrMsg = "Unknown/Unsupported market!";
+            return FALSE;
+        }        
+
+        FTriggeredAction.insert(std::make_pair("action", "touchorder_cancel"));
+
+        if (nsOrderMessageDefine::sBuy == toc->FSide)
+            FTriggeredAction.insert(std::make_pair("buy_sell_code", "B"));
+        else if(nsOrderMessageDefine::sSell == toc->FSide)
+            FTriggeredAction.insert(std::make_pair("buy_sell_code", "S"));
+        else
+            FTriggeredAction.insert(std::make_pair("buy_sell_code", "A"));        
+            
+
         FTouchedActionType = taCxlTouchedOrder;
+        FTouchedActionMarket = market;
+        FTouchedActionSymbol = symbol;        
 
         return TRUE;
     }
@@ -847,12 +863,13 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TTouchOrderCommand* toc)
 
 BOOL TTouchOrderCommand::ToTriggeredAction(const char* warning)
 {
-    FTriggeredAction.clear();
-    FTouchedActionType = taUnknown;
-    FTouchedActionMarket = nsOrderMessageDefine::mUnknown;
+    ClearTriggeredAction();
 
     if (!warning || !warning[0])
+    {
+        FLastErrMsg = "Warning message not specified!";
         return FALSE;
+    }   
 
     std::string encoded_warning;
     size_t length = strlen(warning);
@@ -869,7 +886,8 @@ BOOL TTouchOrderCommand::ToTriggeredAction(const char* warning)
     
     FTriggeredAction.insert(std::make_pair("action", "warning"));
     FTriggeredAction.insert(std::make_pair("message", warning));    
-    FTouchedActionType = taWarning;
+    
+    FTouchedActionType = taWarning;    
 
     return TRUE;
 }
@@ -885,64 +903,166 @@ std::string TTouchOrderCommand::GetTriggeredAction()
     if (FCmdType != TouchedOrderCommandEnum::tocNew)
         return "";
 
+    bool is_price_blank = true;
     std::stringstream ss;
     std::map<std::string, std::string>::iterator iter = FTriggeredAction.begin();
     for (; iter != FTriggeredAction.end(); ++iter)
     {
         if (iter != FTriggeredAction.begin())
             ss << "^";
-        ss << iter->first << "=" << iter->second;
-    }
 
-    return ss.str();
-
-    /*
-    std::map<std::string, std::string>::iterator iter = FTriggeredAction.find("fn");
-    if ( iter == FTriggeredAction.end())
-        return "";
-    std::string fn = iter->second;
-
-    std::stringstream ss;
-    iter = FTriggeredAction.begin();
-    bool first = true;
-    for (; iter != FTriggeredAction.end(); ++iter)
-    {
-        if (first)
-            first = false;
+        if (taNewOrder != FTouchedActionType &&
+            taRpxOrder != FTouchedActionType)
+        {
+            ss << iter->first << "=" << iter->second;
+        }
         else
-            ss << "^";
+        {
+            if (iter->first == "order_price" || iter->first == "price")
+            {
+                if (FPriceDependOn == pdoMatch)
+                {
+                    if (!FTicks)
+                    {
+                        ss << iter->first << "=${match_price}";
+                    }
+                    else
+                    {
+                        if (FTicks > 0)
+                            ss << iter->first << "=${match_price}+" << FTicks;
+                        else
+                            ss << iter->first << "=${match_price}" << FTicks;
+                    }
+                }
+                else
+                {
+                    ss << iter->first << "=" << iter->second;
+                }
+            }
+            else
+                ss << iter->first << "=" << iter->second;
+        }
+    }   
 
-        ss << iter->first << "=" << iter->second;
-    }
-    if (fn == "C")
-    {
-        if (nsOrderMessageDefine::SideEnum::sSell == FSide)
-            ss << "^bs=S";
-        else if (nsOrderMessageDefine::SideEnum::sBuy == FSide)
-            ss << "^bs=B";
-        else
-            ss << "^bs=A";
-        
-        if (!FPrice.empty())
-            ss << "^px=" << FPrice;
-    }
-    else if (fn == "R")
-    {
-        if (nsOrderMessageDefine::SideEnum::sSell == FSide)
-            ss << "^bs=S";
-        else
-            ss << "^bs=B";
-    }
-
-    return ss.str();
-    */
+    return ss.str();   
 }
 
-/*
-void TTouchOrderCommand::SetOrderMessagePricePrecision(int price_precision)
+BOOL TTouchOrderCommand::Verify()
 {
-    std::stringstream ss;
-    ss << price_precision;
-    FTriggeredAction.insert(std::make_pair("price_precision", ss.str()));
+    FLastErrMsg.clear();
+
+    if (tocQuery == FCmdType)
+        return TRUE;
+
+    if (tocPause == FCmdType || tocActive == FCmdType || tocKill == FCmdType)
+    {
+        if (FTouchOrderID.empty())
+        {
+            FLastErrMsg = "Miss touch order id for Pause/Active/Remove to control touch order!";
+            return FALSE;
+        }
+
+        return TRUE;
+    }
+
+    if (FTriggeringCondition.empty())
+    {
+        FLastErrMsg = "Triggering condition is incorrect!";
+        return FALSE;
+    }
+    
+    if (FTriggeredAction.empty())
+    {
+        FLastErrMsg = "Triggered action is not specified!";
+        return FALSE;
+    }
+
+    if (FSymbol.empty())
+    {
+        FLastErrMsg = "The symbol of touch order is missing!";
+        return FALSE;
+    }
+
+    if (FMarket != nsOrderMessageDefine::mTSE &&
+        FMarket != nsOrderMessageDefine::mOTC &&
+        FMarket != nsOrderMessageDefine::mTWFutures &&
+        FMarket != nsOrderMessageDefine::mTWOptions)
+    {
+        FLastErrMsg = "The market of touch order is unsupported!";
+        return FALSE;
+    }
+
+    if (taWarning == FTouchedActionType)
+        return TRUE;
+
+    if (FTouchedActionMarket != nsOrderMessageDefine::mTSE &&
+        FTouchedActionMarket != nsOrderMessageDefine::mOTC &&
+        FTouchedActionMarket != nsOrderMessageDefine::mTWFutures &&
+        FTouchedActionMarket != nsOrderMessageDefine::mTWOptions)
+    {
+        FLastErrMsg = "The market of order to execute is unsupported!";
+        return FALSE;
+    }
+
+    if (FTouchedActionSymbol.empty())
+    {
+        FLastErrMsg = "The stock_no/prod_id of order to execute is missing!";
+        return FALSE;
+    }
+
+    if (taNewOrder == FTouchedActionType)
+    {
+        if (FMarket != FTouchedActionMarket || FSymbol != FTouchedActionSymbol) // 跨市場/商品觸價單
+        {
+            if (FTouchedActionOrderType != nsOrderMessageDefine::otMarket)
+            {
+                if (pdoMatch == FPriceDependOn) // 跨市場/商品觸價單的新單委託委託價不能用觸價時的成交價
+                {
+                    FLastErrMsg = "Floating order price is forbidden for cross market touched-new order!";
+                    return FALSE;
+                }
+                else if (0.0 == FTouchedActionPrice) // 跨市場/商品觸價單的新單委託必須指定委託價
+                {
+                    FLastErrMsg = "the order price of cross market touched-new order is missing!";
+                    return FALSE;
+                }
+            }
+        }
+        else
+        {
+            if (FTouchedActionOrderType != nsOrderMessageDefine::otMarket &&
+                pdoMatch != FPriceDependOn &&
+                0.0 == FTouchedActionPrice)
+            {
+                FLastErrMsg = "the order price of touched-new order is missing!";
+                return FALSE;
+            }
+        }        
+    }
+    else if (taRpxOrder == FTouchedActionType)
+    {
+        if (FMarket != FTouchedActionMarket || FSymbol != FTouchedActionSymbol)
+        {
+            if (pdoMatch == FPriceDependOn) // 跨市場/商品觸價單的新單委託委託價不能用觸價時的成交價
+            {
+                FLastErrMsg = "Floating order price is forbidden for cross market touched-replace order!";
+                return FALSE;
+            }
+            else if (0.0 == FTouchedActionPrice) // 跨市場/商品觸價單的新單委託必須指定委託價
+            {
+                FLastErrMsg = "the order price of cross market touched-replace order is missing!";
+                return FALSE;
+            }
+        }
+        else
+        {
+            if (pdoMatch != FPriceDependOn && 0.0 == FTouchedActionPrice)
+            {
+                FLastErrMsg = "the order price of touched-replace order is missing!";
+                return FALSE;
+            }
+        }        
+    }    
+
+    return TRUE;
 }
-*/

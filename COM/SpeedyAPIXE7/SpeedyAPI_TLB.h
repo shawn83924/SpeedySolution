@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/7/13 ¤W¤È 11:26:18 from Type Library described below.
+// File generated on 2026/7/20 ¤U¤È 01:21:38 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -3423,6 +3423,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/) = 0; // [217]
   virtual HRESULT STDMETHODCALLTYPE ToExpression(BSTR* triggeringCondition/*[out,retval]*/) = 0; // [218]
   virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [219]
+  virtual HRESULT STDMETHODCALLTYPE SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                                     VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [220]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3564,6 +3566,13 @@ public:
   {
     VARIANT Value;
     OLECHECK(this->get_Instance((VARIANT*)&Value));
+    return Value;
+  }
+
+  VARIANT_BOOL __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+  {
+    VARIANT_BOOL Value;
+    OLECHECK(this->SetExecutionTime(hour, minute, (VARIANT_BOOL*)&Value));
     return Value;
   }
 
@@ -6737,6 +6746,9 @@ public:
   BSTR            __fastcall ToExpression(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                              VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
 
 };
 typedef TCOMITriggeringConditionT<ITriggeringCondition> TCOMITriggeringCondition;
@@ -6857,6 +6869,9 @@ public:
   BSTR            __fastcall ToExpression(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                              VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
 
 };
 typedef ITriggeringConditionDispT<ITriggeringCondition> ITriggeringConditionDisp;
@@ -20200,6 +20215,21 @@ TCOMITriggeringConditionT<T>::get_Instance(void)
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                               VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  return (*this)->SetExecutionTime(hour, minute, Value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITriggeringConditionT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+{
+  VARIANT_BOOL Value;
+  OLECHECK(this->SetExecutionTime(hour/*[in]*/, minute/*[in]*/, (VARIANT_BOOL*)&Value));
+  return Value;
+}
+
 // *********************************************************************//
 // DispIntf:  ITriggeringCondition
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -20564,6 +20594,25 @@ ITriggeringConditionDispT<T>::get_Instance(void)
 {
   VARIANT Value;
   this->get_Instance((VARIANT*)&Value);
+  return Value;
+}
+
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                               VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetExecutionTime"), DISPID(220));
+  TAutoArgs<2> _args;
+  _args[1] = hour /*[VT_UINT:0]*/;
+  _args[2] = minute /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(Value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITriggeringConditionDispT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+{
+  VARIANT_BOOL Value;
+  this->SetExecutionTime(hour, minute, (VARIANT_BOOL*)&Value);
   return Value;
 }
 
