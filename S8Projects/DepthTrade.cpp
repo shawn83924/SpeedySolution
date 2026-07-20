@@ -1174,7 +1174,7 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	LoadCustomList();
     int ExchangeComboBoxIdx = g_Config.GetIntegerProperty( Profile ,"ExchangeComboBox", 0 );
 	InitExchangeComboBox(ExchangeComboBoxIdx);
-	InitSmartOrderTabs(0);
+	InitSmartOrderTabs(QuickTabBtn);
 	ApplyStopTick( StopTickUpDown->Position, StopProfitTickUpDown->Position );
 	RatioComboBoxChange( NULL );
 	FilledStopToggleSwitchClick( NULL );
@@ -1315,7 +1315,7 @@ void __fastcall TDepthForm::AdjuestFont( void )
 	NetPosText->Width  = Canvas->TextWidth( L"淨部位   ");
 	NetPosText->Height = Canvas->TextHeight( L"淨部位   ");
 	Canvas->Font->Size = FFontSize;
-	NetPosText->Top = ((pnlToolbar->Height - Bevel4->Height) - NetPosText->Height )/2;
+	NetPosText->Top = ((pnlToolbar->Height - PnlOutlineShape->Height) - NetPosText->Height )/2;
 	PosLabel->Font->Size  = FFontSize;
 	PosLabel->SetBounds( NetPosText->Left + NetPosText->Width,
 						 NetPosText->Top,
@@ -2882,10 +2882,22 @@ void __fastcall TDepthForm::InitExchangeComboBox(int Idx)
 	ExchangeComboBox->ItemIndex = Idx;
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::InitSmartOrderTabs( int Idx )
+void __fastcall TDepthForm::InitSmartOrderTabs( TObject *Sender )
 {
-	SmartOrderTabs->TabIndex = Idx;
-	SmartOrderTabsChange(NULL);
+	TabBtnClick(Sender);
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::EnableAllTabBtns( void )
+{
+	for (int i = 0; i < SmartOrderTab->ControlCount; i++)
+	{
+		TControl *ctrl = SmartOrderTab->Controls[i];
+		if (dynamic_cast<TGraphButtonV2 *>(ctrl) == NULL)
+			continue;
+		TGraphButtonV2 *btn = dynamic_cast<TGraphButtonV2*>(ctrl);
+		btn->Enabled = true;
+	}
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::DisableExtraPanelControls( void )
@@ -2893,12 +2905,15 @@ void __fastcall TDepthForm::DisableExtraPanelControls( void )
 	for (int i = 0; i < ExtraPanel->ControlCount; i++)
 	{
 		TControl *ctrl = ExtraPanel->Controls[i];
-        ctrl->Visible = false;
+		if (dynamic_cast<TGraphButtonV2 *>(ctrl) == NULL)
+			continue;
+		ctrl->Visible = false;
 	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::EnableQuickMode( void )
 {
+	QuickTabBtn->Enabled = false;
 	ExtraPanel->Visible = false;
 	OrderBookList->ShowOCO = false;
 	StopLabel->Enabled = true;
@@ -2915,6 +2930,7 @@ void __fastcall TDepthForm::EnableQuickMode( void )
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::EnableOCOMode( void )
 {
+	OCOTabBtn->Enabled = false;
 	ExtraPanel->Visible = true;
 	DisableExtraPanelControls();
 	SettingOCOBtn->Visible = true;
@@ -3041,19 +3057,6 @@ void __fastcall TDepthForm::ScrollBoxMouseWheel(TObject *Sender, TShiftState Shi
 	}
 }
 //---------------------------------------------------------------------------
-void __fastcall TDepthForm::SmartOrderTabsChange(TObject *Sender)
-{
-	switch(SmartOrderTabs->TabIndex)
-	{
-		case 0:
-			EnableQuickMode();
-			break;
-		case 1:
-			EnableOCOMode();
-			break;
-	}
-}
-//---------------------------------------------------------------------------
 void __fastcall TDepthForm::SettingOCOBtnClick(TObject *Sender)
 {
 	TSettingOCODlgForm *dlg = new TSettingOCODlgForm(
@@ -3118,3 +3121,19 @@ void __fastcall TDepthForm::OCODetailBtnClick(TObject *Sender)
 {
 	ContractViewerForm->OpenOCODetailForm();
 }
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::TabBtnClick(TObject *Sender)
+{
+	EnableAllTabBtns();
+	TGraphButtonV2* btn = dynamic_cast<TGraphButtonV2*>(Sender);
+	switch(btn->Tag)
+	{
+		case 0:
+			EnableQuickMode();
+			break;
+		case 1:
+			EnableOCOMode();
+			break;
+	}
+}
+//---------------------------------------------------------------------------
