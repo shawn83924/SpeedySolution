@@ -139,16 +139,9 @@ void Config::ReleaseResource( void )
 //------------------------------------------------------------------------------
 void Config::GetProcessDir( void )
 {
-	HANDLE processHandle;
 	TCHAR filename[MAX_PATH];
-
-	processHandle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId() );
-	if( processHandle != NULL)
-	{
-		if( GetModuleFileNameEx(processHandle, NULL, filename, MAX_PATH) != 0)
-			m_CurrentDir = ExtractFileDir( filename ) + L"\\";
-		CloseHandle(processHandle);
-	}
+	if( GetModuleFileName( NULL, filename, MAX_PATH ) != 0 )
+		m_CurrentDir = ExtractFileDir( filename ) + L"\\";
 }
 //------------------------------------------------------------------------------
 // Load settings
@@ -175,10 +168,10 @@ void Config::LoadBasicSetting( const char* FileName )  ///< Speedy Unify
 		UFC::UiniFile   Cfg( FileName, true );
 		UFC::AnsiString Value;
 
-		if( Cfg.GetValue( "Setting","InstallPath", Value ) ) ///< get the install path.
+		if( Cfg.GetValue( "Setting","InstallPath", Value ) && DirectoryExists( Value.c_str() ) ) ///< get the install path.
 			m_CurrentDir = Value.c_str();
 		else
-			m_CurrentDir = ::GetCurrentDir() + "\\";
+			GetProcessDir();
 		SetCurrentDir( m_CurrentDir );
 		if( Cfg.GetValue( "Setting","IsBackup", Value) ) ///< Connect to backup servers?
 			m_UseBackup = Value.ToInt();
