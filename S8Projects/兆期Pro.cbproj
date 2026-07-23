@@ -122,7 +122,6 @@
         <UWP_CppLogo44>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo44>
         <UWP_CppLogo150>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
-        <AppExecutionLevel>highestAvailable</AppExecutionLevel>
         <AppEnableHighDPI>true</AppEnableHighDPI>
         <VerInfo_Release>16</VerInfo_Release>
         <Debugger_HostApplication>C:\src\COM\CSharpTest\SpeedyOrderClient3\Debug\SpeedyOrderClient3.exe</Debugger_HostApplication>
