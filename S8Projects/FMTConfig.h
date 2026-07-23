@@ -371,6 +371,7 @@ private:
 	void 			 LoadSignal( UFC::UiniFile& SettingsFile );
 	void             LoadThroughput( UFC::UiniFile& SettingsFile );
 	void 			 LoadCHSetting( UFC::UiniFile& SettingsFile, const UFC::AnsiString& Session, const UFC::AnsiString& ValName, const UFC::AnsiString& DefVal, TStringList* mList );
+	void             LoadBlackList( UFC::UiniFile& SettingsFile );
 public:
 	Config();
 	~Config();
