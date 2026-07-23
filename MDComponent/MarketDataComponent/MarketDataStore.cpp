@@ -1648,6 +1648,14 @@ void __fastcall TCMarketDataStore::SetDisplayName( void )
 			{
 				while( Info != NULL )
 				{
+					TStringList* symbolList = FBlackList.GetObjectByKey(Exchange);
+					// check product is blacklist or not
+					if( symbolList != NULL && symbolList->IndexOf( Info->GetProductID().c_str() ) != -1 )
+					{
+						Info = ExSymbols->Next();
+						continue;
+					}
+
 					if( Info->GetSymbol().Length() >= 5 && IsVisible( Exchange,  Info->GetProductID() ) )  ///< Skip Index
 					{
 						GetChinesePrefix( Exchange, Info->GetProductID(), Chinese );
@@ -2275,6 +2283,18 @@ bool __fastcall TCMarketDataStore::ExchangeSupportOptions( const UFC::AnsiString
 	if( Exchange == "TFX" ) return false;
 
 	return FOptionsExSet.Exists( Exchange );
+}
+//---------------------------------------------------------------------------
+void __fastcall TCMarketDataStore::SetBlackList( const UFC::AnsiString& Exchange, const String& Symbol )
+{
+	TStringList* BlackListList;
+	BlackListList = FBlackList.GetObjectByKey( Exchange );
+	if( BlackListList == NULL )
+	{
+		BlackListList = new TStringList();
+		FBlackList.Add( Exchange, BlackListList );
+	}
+	BlackListList->Add( Symbol );
 }
 //---------------------------------------------------------------------------
 UFC::PHashedList<UFC::AnsiString, BasicInformation*>* TCMarketDataStore::GetSymbolsByExchange( const UFC::AnsiString& Exchange )

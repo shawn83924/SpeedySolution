@@ -316,6 +316,33 @@ void Config::LoadThroughput( UFC::UiniFile& SettingsFile )
 	}
 }
 //------------------------------------------------------------------------------
+void Config::LoadBlackList( UFC::UiniFile& SettingsFile )
+{
+	if( gMarketDataStore == NULL )
+		return;
+	UFC::Section* BlackList = SettingsFile.GetSection( "BlackList" );
+	if(BlackList == NULL)
+	{
+    	return;
+	}
+	for ( int i = 0; i < BlackList->ItemCount(); i++ )
+	{
+		UFC::AnsiString Name, Value;
+		BlackList->GetNameValue( i , Name, Value );
+		if( Name.Length() <= 0 || Value.Length() <= 0 )
+			continue;
+		// spit Value by ","
+		UFC::PStringList* List = new UFC::PStringList();
+		List->SetStrings( Value, "," );
+		for ( int j = 0; j < List->ItemCount(); j++ )
+		{
+			UFC::AnsiString Symbol = List->GetItem(j);
+			gMarketDataStore->SetBlackList( Name, Symbol.c_str() );
+		}
+		delete List;
+	}
+}
+//------------------------------------------------------------------------------
 int Config::GetThroughput( const UFC::AnsiString& Account )
 {
 	int index = m_ThroughputAccount.IndexOf( Account );
@@ -454,6 +481,7 @@ void Config::LoadStarWaveSetting( const char* FileName ) ///< Speedy Unify
 	LoadParameter( SettingsFile );
 	LoadSignal( SettingsFile );
 	LoadThroughput( SettingsFile );
+	LoadBlackList( SettingsFile );
 }
 //------------------------------------------------------------------------------
 bool Config::IamVIP( const String& ID )
