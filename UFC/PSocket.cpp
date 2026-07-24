@@ -22,6 +22,10 @@ PSocket::PSocket( void )
 , FTimerCountWrite( GHeartBeatTime - 1 )
 , FDeleteCounter( GRecycleTime )
 , FCheckHeartbeat( htCheckBoth )
+, FRxBuffer( NULL )
+, FRxCapacity( 0 )
+, FRxHead( 0 )
+, FRxTail( 0 )
 {
 }
 //---------------------------------------------------------------------------
@@ -37,6 +41,10 @@ PSocket::PSocket( PSocket* Socket )
 , FTimerCountWrite( GHeartBeatTime - 1 )
 , FDeleteCounter( GRecycleTime )
 , FCheckHeartbeat( htCheckBoth )
+, FRxBuffer( NULL )
+, FRxCapacity( 0 )
+, FRxHead( 0 )
+, FRxTail( 0 )
 {
 }
 //---------------------------------------------------------------------------
@@ -52,6 +60,10 @@ PSocket::PSocket( Int32 SocketType, BOOL BlockMode )
 , FTimerCountWrite( GHeartBeatTime - 1 )
 , FDeleteCounter( GRecycleTime )
 , FCheckHeartbeat( htCheckBoth )
+, FRxBuffer( NULL )
+, FRxCapacity( 0 )
+, FRxHead( 0 )
+, FRxTail( 0 )
 {
 }
 //---------------------------------------------------------------------------
@@ -67,12 +79,18 @@ PSocket::PSocket( Int32 FD, Int32 SocketType, Int32 BlockMode )
 , FTimerCountWrite( GHeartBeatTime - 1 )
 , FDeleteCounter( GRecycleTime )
 , FCheckHeartbeat( htCheckBoth )
+, FRxBuffer( NULL )
+, FRxCapacity( 0 )
+, FRxHead( 0 )
+, FRxTail( 0 )
 {
 }
 //---------------------------------------------------------------------------
 PSocket::~PSocket( void )
 {
 	CloseSocket();
+    if( FRxBuffer != NULL )
+        delete [] FRxBuffer;
 }
 //---------------------------------------------------------------------------
 // Set the heartbeat type
@@ -723,11 +741,45 @@ void PSocket::BlockRecv( UInt8* RecvData, Int32 Size )
     Int32 RecvedSize = Size;
     Int32 ReadSize;
 
+    if( FRxBuffer != NULL ) ///< Buffered mode: refill with one large recv, then serve requests by memcpy.
+    {
+        while( RecvedSize > 0 )
+        {
+            if( FRxHead == FRxTail ) ///< Buffer empty, refill it. Receive blocks until >= 1 byte arrived.
+            {
+                FRxHead = 0;
+                FRxTail = RecvBuffer( FRxBuffer, FRxCapacity );
+            }
+            ReadSize = FRxTail - FRxHead;
+            if( ReadSize > RecvedSize )
+                ReadSize = RecvedSize;
+            memcpy( DataBuffer, FRxBuffer + FRxHead, ReadSize );
+            FRxHead    += ReadSize;
+            DataBuffer += ReadSize;
+            RecvedSize -= ReadSize;
+        }
+        return;
+    }
     while( RecvedSize > 0 )
     {
         ReadSize = RecvBuffer( (UInt8*)DataBuffer, RecvedSize );
         DataBuffer += ReadSize;
         RecvedSize -= ReadSize;
+    }
+}
+//---------------------------------------------------------------------------
+// Enable the user-space receive buffer.
+// Only for connections whose reads all go through BlockRecv; do not mix with
+// direct Receive/RecvBuffer/ReceiveWithTimeout calls or data will be reordered.
+//---------------------------------------------------------------------------
+void PSocket::EnableRecvBuffer( Int32 Size )
+{
+    if( FRxBuffer == NULL && Size > 0 )
+    {
+        FRxBuffer   = new UInt8[ Size ];
+        FRxCapacity = Size;
+        FRxHead     = 0;
+        FRxTail     = 0;
     }
 }
 //---------------------------------------------------------------------------

@@ -75,6 +75,11 @@ private:
         Int16         FDeleteCounter;
         HeartbeatType FCheckHeartbeat;
         void          ReadyToWrite( void );
+private: ///< Opt-in user-space receive buffer. One large recv serves many BlockRecv calls.
+        UInt8*        FRxBuffer;
+        Int32         FRxCapacity;
+        Int32         FRxHead;
+        Int32         FRxTail;
 public: /// Constructors & destructor
         PSocket( void );
         PSocket( PSocket* Socket );
@@ -115,6 +120,8 @@ public:
         void        BlockSend( UFCType::Int8* SendData, UFCType::Int32 Size );
         Int32       RecvBuffer( UFCType::UInt8* RecvData, UFCType::Int32 Size );
         void        BlockRecv( UFCType::UInt8* RecvData, UFCType::Int32 Size );
+        void        EnableRecvBuffer( UFCType::Int32 Size );
+        BOOL        HasBufferedRx( void ) { return ( FRxBuffer != NULL && FRxHead < FRxTail ) ? TRUE : FALSE; }
         Int32       ReceiveWithTimeout( UFCType::UInt8* RecvData, UFCType::Int32 Size, UFCType::Int16 TimeOut );
         Int32       RecvBufferWithTimeout( UFCType::UInt8* RecvData, UFCType::Int32 Size, UFCType::Int16 TimeOut );
         void        Purge( void );

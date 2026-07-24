@@ -45,7 +45,7 @@ BOOL         GLog_us       = FALSE;
 BOOL         GLogThread    = FALSE;
 Int64        Tickus;
 UFC::AnsiString GLineShell = "./cloud_monitor.sh";
-UFC::AnsiString GLineNotifyShell = "sh line_notify_monitor.sh";
+UFC::AnsiString GLineNotifyShell = "line_notify_monitor.sh";
 int          GLineGroup  = 1;       
 int          GMinSleepUS = 10;
 int          GDeqPerUS   = 500;

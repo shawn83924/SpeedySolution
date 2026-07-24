@@ -206,8 +206,8 @@ public:
      * ToInt converts the given string to an integer value and returns the integer.
      * If the string doesn't contain a valid value, an PConvertError exception is thrown.
      */
-    Int32        ToInt() const  { return atoi( StrBuffer ); }
-    UInt32       ToUInt() const { return strtoul(StrBuffer, (char **)NULL, 10); }
+    Int32        ToInt() const  { return StrBuffer ? atoi( StrBuffer ) : 0; }
+    UInt32       ToUInt() const { return StrBuffer ? strtoul(StrBuffer, (char **)NULL, 10) : 0; }
     double       ToDouble() const;
     Int64        ToInt64() const;
     UInt64       ToUInt64() const;

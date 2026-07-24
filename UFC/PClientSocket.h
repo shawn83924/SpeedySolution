@@ -74,6 +74,7 @@ public:
     void    SendQueue( const UFCType::Int8* SendData, UFCType::Int32 Size );
     void    SendQueue( const std::string& SendData );
     Int32   ProcessQueue( void );
+    Int32   ProcessQueueBatch( void );
     void    ClearQueue( void );
     BOOL    IsQueueEmpty( void );
 public:
