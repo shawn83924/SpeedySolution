@@ -1,4 +1,4 @@
-﻿#include "TTouchOrderCommand.h"
+#include "TTouchOrderCommand.h"
 #include <sstream>
 
 // 將價格轉成小數位數最多4位的字串
@@ -800,12 +800,12 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TTouchOrderCommand* toc)
 {
     ClearTriggeredAction();
 
-	// 目前只支援刪觸價單
+    // 目前只支援刪觸價單
     if (toc && 
         TTouchOrderCommand::tocKill == toc->FCmdType)
-	{
-		nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
-		std::string symbol = toc->GetSymbol();
+    {
+        nsOrderMessageDefine::MarketEnum market = toc->GetMarket();
+        std::string                      symbol = toc->GetSymbol();
 
         if (symbol.empty())
         {

@@ -29,12 +29,12 @@
 //------------------------------------------------------------------------------
 //#ifdef __UNICA_WIN
 #ifdef WIN32
-    #include "../CA/ApiCADllObject.h"
-    #include "../CA/CABasicObjects.h"
-    /// Allen Modify at 20190615
-    #ifndef _MSC_VER
-	#include "../CA/CACGCObject.h"
-    #endif
+	#include "../CA/ApiCADllObject.h"
+	#include "../CA/CABasicObjects.h"
+/// Allen Modify at 20190615
+///#ifndef _MSC_VER
+///	#include "../CA/CACGCObject.h"
+///#endif
 #else
     #include "../CA/ApiCADllObject.h"
     #include "../CA/CABasicObjects.h"
@@ -674,6 +674,7 @@ private: ///< Handle Executions
 	void                        	ReceiveForeignExecuteMessage( MTree* pTree );
 	///<
 	void                            ReceiveTouchOrderResponse(MTree* pTree); // added by Kenny to support Touch Order. 2026/03/16
+	void                            TouchOrderUserLogon(); // added by Kenny to support user online notification. 2026/07/24
 	void                            UpdateTMPFields( UFC::AnsiString& TMPExtStr, TExecutionReportMessage& ExecutionReport, int Precision );
 	void                            ReceiveNews( MTree* pTree );
 	void                            RemoveListener( TMdListener*& Listener );
@@ -967,6 +968,7 @@ public: ///< CA Functions
 	void DeleteCAObject();
 	bool CreateUniFSCAObject();
 	bool CreateMLTWCAObject();
+	bool CreateTSCGCCAObject();
 	bool CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult );
 };
 //------------------------------------------------------------------------------

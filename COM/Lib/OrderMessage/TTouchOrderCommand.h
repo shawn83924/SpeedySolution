@@ -20,7 +20,10 @@ public:
         tocPause,   // 暫停觸價單 code:'P'
         tocActive,  // 啟動觸價單 code:'A'
         tocKill,    // 移除觸價單 code:'K'
-        tocQuery    // 查詢觸價單 code:'Q'
+        tocQuery,   // 查詢觸價單 code:'Q'
+        // 以下行為非由使用者控制，僅作為記錄說明
+        tocLogon,   // 登入通知   code:'I' 由 API 自動傳送
+        tocLogout   // 登出通知   code:'O' 由 server 觸發，只有 server 端觸價模組會收到 
     };
 
     enum PriceDependOnEnum

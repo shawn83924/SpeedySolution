@@ -5,6 +5,7 @@
 #ifdef WIN32
 #include "../CA/UniFSCCAObject.h"
 #include "../CA/MLTWCAObject.h"
+#include "../CA/CACGCTSObject.h"
 #endif
 //------------------------------------------------------------------------------
 BOOL              UseRes;
@@ -1352,6 +1353,8 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
             ///< Init seq share memory.
             Result = CreateShareMemory( pTree, CIDBits, ReplyString );
             UFC::BufferedLog::Printf( " NID use [%d]bits rule", CIDBits );
+            
+            TouchOrderUserLogon(); // added by Kenny. 2026/07/24
         }
         else ///< Logon failed.
         {
@@ -2095,6 +2098,22 @@ bool TTaifexConnection::CreateMLTWCAObject()
 #endif
 	return isSuccess;
 }  //TTaifexConnection::CreateMLTWCAObject()
+//---------------------------------------------------------------------------
+bool TTaifexConnection::CreateTSCGCCAObject()
+{
+	bool isSuccess = false;
+#ifdef WIN32
+	FApiCAObjPtr = new CTSCGCCAObject(FCACommonName, FCADLLFileName, Glog);
+	if (FApiCAObjPtr->IsWorking())
+	{
+		isSuccess = true;
+		Glog->fprintf( " Create TS CGC Object success." );
+	}
+	else
+		Glog->fprintf( " Create TS CGC Object failed." );
+#endif
+	return isSuccess;
+}  //TTaifexConnection::CreateTSCGCCAObject()
 //---------------------------------------------------------------------------
 bool TTaifexConnection::CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult )
 {

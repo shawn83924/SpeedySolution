@@ -157,3 +157,15 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     
     return MBusClient->EndSend(MHandle);
 }
+
+void  TTaifexConnection::TouchOrderUserLogon()
+{
+    std::string cmd_node = "act=I"; // I:in
+
+    MTHandle        MHandle;
+    MApp* MBusClient = FTransport->GetMApp();
+    MBusClient->BeginSend(MHandle, SUBJECT_TOUCH_REQUEST, FID);
+    MBusClient->WriteString(MHandle, "COMMAND", cmd_node.c_str());
+    MBusClient->WriteString(MHandle, "ID", FID);
+    MBusClient->EndSend(MHandle);
+}
