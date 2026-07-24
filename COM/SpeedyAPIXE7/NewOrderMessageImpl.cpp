@@ -359,12 +359,14 @@ STDMETHODIMP TNewOrderMessageImpl::get_TradingSessionID(TradingSessionIDEnum* Va
 
 
 
+
 {
 	*Value = (TradingSessionIDEnum)( FMessage.GetTradingSessionID() );
 	return S_OK;
 };
 //------------------------------------------------------------------------------
 STDMETHODIMP TNewOrderMessageImpl::set_TradingSessionID(TradingSessionIDEnum Value)
+
 
 
 
@@ -734,7 +736,7 @@ STDMETHODIMP TNewOrderMessageImpl::get_StopOrderError(BSTR* Value)
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TNewOrderMessageImpl::SetStopLoss(VARIANT_BOOL IsTrailingStop, long Ticks,
-		  BSTR StopPrice, BSTR OrderPrice, VARIANT_BOOL* Succeed)
+          BSTR StopPrice, BSTR OrderPrice, VARIANT_BOOL* Succeed)
 {
     AnsiString stopPrice( StopPrice );
 	AnsiString orderPrice( OrderPrice );
@@ -754,5 +756,11 @@ STDMETHODIMP TNewOrderMessageImpl::SetTakeProfit(VARIANT_BOOL IsTrailingStop, lo
 										Ticks,
 										stopPrice.c_str(),
 										orderPrice.c_str());
+	return S_OK;
+}
+//------------------------------------------------------------------------------
+STDMETHODIMP TNewOrderMessageImpl::ToMarketOrderIfOpen(VARIANT_BOOL yes_no)
+{
+	FMessage.ToMarketOrderIfOpen(yes_no);
 	return S_OK;
 }

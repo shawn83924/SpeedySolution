@@ -261,11 +261,10 @@
             <DependentOn>..\Lib\CA\CABasicObjects.h</DependentOn>
             <BuildOrder>70</BuildOrder>
         </CppCompile>
-        <None Include="..\Lib\CA\CACGCObject.cpp">
-            <Exclude>True</Exclude>
-            <VirtualFolder>{6B673F95-65F8-4EFA-99CB-A85D05345E62}</VirtualFolder>
-            <BuildOrder>71</BuildOrder>
-        </None>
+        <CppCompile Include="..\Lib\CA\CACGCTSObject.cpp">
+            <DependentOn>..\Lib\CA\CACGCTSObject.h</DependentOn>
+            <BuildOrder>81</BuildOrder>
+        </CppCompile>
         <CppCompile Include="..\Lib\CA\IFSCATLAPIImpl.cpp">
             <VirtualFolder>{6B673F95-65F8-4EFA-99CB-A85D05345E62}</VirtualFolder>
             <BuildOrder>72</BuildOrder>
@@ -521,6 +520,10 @@
             <CoClasses>BaseMessage</CoClasses>
             <DependentOn>BaseMessageImpl.h</DependentOn>
             <BuildOrder>4</BuildOrder>
+        </CppCompile>
+        <CppCompile Include="CACGCObject.cpp">
+            <DependentOn>CACGCObject.h</DependentOn>
+            <BuildOrder>80</BuildOrder>
         </CppCompile>
         <CppCompile Include="CancelOrderMessageImpl.cpp">
             <VirtualFolder>{F190E7A7-3CA6-4DB6-8FFC-D19529C37669}</VirtualFolder>

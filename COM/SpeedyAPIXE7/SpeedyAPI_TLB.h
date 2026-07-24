@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/7/20 ¤U¤È 01:21:38 from Type Library described below.
+// File generated on 2026/7/24 ¤U¤È 04:08:00 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -868,6 +868,7 @@ public:
                                                   long Ticks/*[in]*/, BSTR StopPrice/*[in]*/,
                                                   BSTR OrderPrice/*[in]*/,
                                                   VARIANT_BOOL* Succeed/*[out,retval]*/) = 0; // [324]
+  virtual HRESULT STDMETHODCALLTYPE ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/) = 0; // [325]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3959,6 +3960,7 @@ public:
                                            VARIANT_BOOL* Succeed/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
                                            BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/);
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   Speedyapi_tlb::OrderTypeEnum OrderType = {read = get_OrderType, write = set_OrderType};
@@ -4153,6 +4155,7 @@ public:
                                            VARIANT_BOOL* Succeed/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
                                            BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
   HRESULT         __fastcall get_Account(BSTR* Value/*[out,retval]*/);
@@ -8264,6 +8267,12 @@ TCOMINewOrderMessageT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, lon
   return Succeed;
 }
 
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/)
+{
+  return (*this)->ToMarketOrderIfOpen(yes_no);
+}
+
 // *********************************************************************//
 // DispIntf:  INewOrderMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -9168,6 +9177,15 @@ INewOrderMessageDispT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, lon
   VARIANT_BOOL Succeed;
   this->SetTakeProfit(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed);
   return Succeed;
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("ToMarketOrderIfOpen"), DISPID(325));
+  TAutoArgs<1> _args;
+  _args[1] = yes_no /*[VT_BOOL:0]*/;
+  return OleFunction(_dispid, _args);
 }
 
 template <class T> HRESULT __fastcall
