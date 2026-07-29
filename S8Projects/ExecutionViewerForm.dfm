@@ -4736,8 +4736,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 696
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #25490#34892#27036
       TabOrder = 3
       Visible = False
@@ -6288,8 +6288,8 @@ object ExecutionForm: TExecutionForm
     object LargeButton: TGraphButton
       Left = 636
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#21152#22823
       TabOrder = 5
       ShowHint = True
@@ -6344,8 +6344,8 @@ object ExecutionForm: TExecutionForm
     object SmallButton: TGraphButton
       Left = 666
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#32302#23567
       TabOrder = 7
       ShowHint = True
@@ -7896,8 +7896,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 606
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #33258#21205#27396#20301#23532#24230
       TabOrder = 9
       ShowHint = True
@@ -7921,8 +7921,8 @@ object ExecutionForm: TExecutionForm
       Tag = 10
       Left = 729
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #19978#20659#20132#26131#32000#37636
       TabOrder = 10
       Visible = False
@@ -9488,6 +9488,10 @@ object ExecutionForm: TExecutionForm
       Font.Style = []
       ParentFont = False
       TabVisible = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object OrderListView: TOrderListView
         Left = 0
         Top = 0
@@ -9918,7 +9922,7 @@ object ExecutionForm: TExecutionForm
     Left = 744
     Top = 337
     Bitmap = {
-      494C01010100DC00BC015000960005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100DC00C4015000960005162D002110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000004001000096000000010020000000000000EE
       02000000000000000000000000000000000064381B0064381B0064381B006438
       1B0064381B0064381B0064381B0064381B0064381B0064381B0064381B006438

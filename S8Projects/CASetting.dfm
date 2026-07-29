@@ -38,8 +38,6 @@ object CASettingForm: TCASettingForm
     object CATabSheet: TTabSheet
       Caption = 'CATabSheet'
       TabVisible = False
-      ExplicitLeft = 0
-      ExplicitTop = 0
       DesignSize = (
         461
         255)
@@ -125,7 +123,6 @@ object CASettingForm: TCASettingForm
         Height = 27
         PasswordChar = '*'
         TabOrder = 1
-        Text = 'ment5868'
       end
       object CheckCAButton: TButton
         Left = 8
@@ -1211,6 +1208,7 @@ object CASettingForm: TCASettingForm
           1E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8C
           F21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF21E8CF22991F357A9F5BC
           DDFBFFFFFFFFFFFF0100}
+        FontAttrib.DisabledFontColor = clGrayText
         FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
         FontAttrib.CaptionFont.Color = clWindowText
         FontAttrib.CaptionFont.Height = -11
@@ -1357,6 +1355,7 @@ object CASettingForm: TCASettingForm
         FontAttrib.HighlightFontColor = clWhite
         FontAttrib.HighlightShadowColor = clWhite
         FontAttrib.SelectedFontColor = clWhite
+        FontAttrib.DisabledFontColor = clGrayText
         FontAttrib.CaptionFont.Charset = ANSI_CHARSET
         FontAttrib.CaptionFont.Color = clWhite
         FontAttrib.CaptionFont.Height = -14
