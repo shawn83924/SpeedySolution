@@ -29,6 +29,7 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FImagePosY = 0;
 	FEditorClientColor = clWindow;
 	FOnChange = NULL;
+	FInputFilter = TInputFilterFlags() << iffLetters << iffDigits << iffSpace << iffChinese << iffSpecial;
 
 	StyleElements = TStyleElements();
 	ParentColor = false;
@@ -48,6 +49,7 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FEditor->Color = FEditorClientColor;
 	FEditor->OnClick = EditorClick;
 	FEditor->OnChange = EditorChange;
+	FEditor->OnKeyPress = EditorKeyPress;
 
 	FImagePicture = new TPicture();
 	FImagePicture->OnChange = ImageChanged;
@@ -388,6 +390,33 @@ void __fastcall TAlignEdit::EditorChange(TObject *)
 
 	if (FOnChange != NULL)
 		FOnChange(this);
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::EditorKeyPress(TObject *, System::WideChar &Key)
+{
+	if (Key == VK_BACK)
+		return;
+
+	bool isLetter  = (Key >= L'A' && Key <= L'Z') || (Key >= L'a' && Key <= L'z');
+	bool isDigit   = (Key >= L'0' && Key <= L'9');
+	bool isSpace   = (Key == L' ');
+	bool isChinese = (Key > 0x7F);
+	bool isSpecial = (Key >= 0x21 && Key <= 0x7E) && !isLetter && !isDigit;
+
+	bool allowed =
+		(FInputFilter.Contains(iffLetters) && isLetter)  ||
+		(FInputFilter.Contains(iffDigits)  && isDigit)   ||
+		(FInputFilter.Contains(iffSpace)   && isSpace)   ||
+		(FInputFilter.Contains(iffChinese) && isChinese) ||
+		(FInputFilter.Contains(iffSpecial) && isSpecial);
+
+	if (!allowed)
+		Key = 0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::SetInputFilter(TInputFilterFlags Value)
+{
+	FInputFilter = Value;
 }
 //---------------------------------------------------------------------------
 void __fastcall TAlignEdit::WndProc(TMessage &Msg)

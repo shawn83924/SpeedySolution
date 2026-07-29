@@ -6055,6 +6055,7 @@ object LoginForm: TLoginForm
       554F8904B3E7204CC0E9D01B8420DCB97DDCF01C7583617AFEE383ABC416B416
       0A5180D9853610F3A2EAF3BDFD814EA2298834531069A620D24C41A4998248B3
       AE01F906CAEB0242133D34020000000049454E44AE426082}
+    FontAttrib.DisabledFontColor = clGrayText
     FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
     FontAttrib.CaptionFont.Color = clWindowText
     FontAttrib.CaptionFont.Height = -11
@@ -6219,6 +6220,7 @@ object LoginForm: TLoginForm
     ImagePosX = 15
     ImagePosY = 9
     VertAlign = vaCenter
+    InputFilter = [iffLetters, iffDigits, iffChinese]
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -17
@@ -6258,6 +6260,7 @@ object LoginForm: TLoginForm
     ImagePosX = 15
     ImagePosY = 9
     VertAlign = vaCenter
+    InputFilter = [iffLetters, iffDigits, iffChinese]
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -17
@@ -6520,6 +6523,7 @@ object LoginForm: TLoginForm
     FontAttrib.HighlightFontColor = clWhite
     FontAttrib.HighlightShadowColor = clWhite
     FontAttrib.SelectedFontColor = clWhite
+    FontAttrib.DisabledFontColor = clGrayText
     FontAttrib.CaptionFont.Charset = ANSI_CHARSET
     FontAttrib.CaptionFont.Color = clWhite
     FontAttrib.CaptionFont.Height = -20
