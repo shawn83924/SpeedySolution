@@ -322,14 +322,34 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
             return FALSE;
         }
 
-        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        // TBaseMeesgae 預設 Account 為 7 個空白字元，檢查一下是否是全空白
+        bool all_blank = true;
+        for (int i = 0; i < 7; ++i)
         {
-            FTriggeredAction.insert(std::make_pair("ivacno", account));
+            if (' ' != account[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+                nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("ivacno", account));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("investor_acno", account));
+            }
         }
         else
         {
-            FTriggeredAction.insert(std::make_pair("investor_acno", account));
+            FLastErrMsg = "Account not provided in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
         }
     }
     else
@@ -358,15 +378,36 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
     const char* symbol = order->GetSymbol();                                
     if (symbol)
     {
-        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        // TBaseMeesgae 預設值會填 5 個空白字元，檢查是否如此
+        bool all_blank = true;
+        int len = strlen(symbol);
+        for (int i = 0; i < len; ++i)
         {
-            FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            if (' ' != symbol[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+                nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+            }
         }
         else
         {
-            FTriggeredAction.insert(std::make_pair("prod_id", symbol));
-        }        
+            FLastErrMsg = "Symbol not provided in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
+        }
     }
     else
     {
@@ -626,14 +667,35 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
     const char* symbol = order->GetSymbol();                                
     if (symbol)
     {
-        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
-            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        // TBaseMeesgae 預設值會填 5 個空白字元，檢查是否如此
+        bool all_blank = true;
+        int len = strlen(symbol);
+        for (int i = 0; i < len; ++i)
         {
-            FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            if (' ' != symbol[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+                nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+            }
         }
         else
         {
-            FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+            FLastErrMsg = "Symbol not provided in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
         }
     }
     else
@@ -643,6 +705,72 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
         return FALSE;
     }
 
+    // BORKER-ID
+    const char* broker_id = order->GetBrokerID();
+    if (broker_id)
+    {
+        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        {
+            if (strlen(broker_id) != 4)
+            {
+                FLastErrMsg = "Invalid BrokerID format in Stock order!";
+                FTriggeredAction.clear();
+                return FALSE;
+            }
+            else
+                FTriggeredAction.insert(std::make_pair("broker_id", broker_id));
+        }
+        else
+        {
+            std::string fcm_no = broker_id;
+            if (fcm_no.size() != 7)
+            {
+                FLastErrMsg = "Invalid BrokerID format in Futures/Options order!";
+                FTriggeredAction.clear();
+                return FALSE;
+            }
+
+            FTriggeredAction.insert(std::make_pair("fcm_no", fcm_no));            
+        }
+    }    
+
+    // IVACNO
+    const char* account = order->GetAccount();
+    if (account)
+    {
+        if (strlen(account) != 7)
+        {
+            FLastErrMsg = "Invalid Account format in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
+        }
+
+        // TBaseMeesgae 預設 Account 為 7 個空白字元，檢查一下是否是全空白
+        bool all_blank = true;
+        for (int i = 0; i < 7; ++i)
+        {
+            if (' ' != account[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+                nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("ivacno", account));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("investor_acno", account));
+            }
+        }
+    }
+   
     if (order->GetAllUserData())
     {
         std::string user_data = order->GetAllUserData();
@@ -755,14 +883,35 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
     const char* symbol = order->GetSymbol();
     if (symbol)
     {
-        if (nsOrderMessageDefine::mTSE == market ||
-            nsOrderMessageDefine::mOTC == market)
+        // TBaseMeesgae 預設值會填 5 個空白字元，檢查是否如此
+        bool all_blank = true;
+        int len = strlen(symbol);
+        for (int i = 0; i < len; ++i)
         {
-            FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            if (' ' != symbol[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::mTSE == market ||
+                nsOrderMessageDefine::mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("stock_no", symbol));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+            }
         }
         else
         {
-            FTriggeredAction.insert(std::make_pair("prod_id", symbol));
+            FLastErrMsg = "Symbol not provided in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
         }
     }
     else
@@ -770,6 +919,72 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
         FLastErrMsg = "Symbol not provided in Stock/Futures/Options order!";
         FTriggeredAction.clear();
         return FALSE;
+    }
+
+    // BORKER-ID
+    const char* broker_id = order->GetBrokerID();
+    if (broker_id)
+    {
+        if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+            nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+        {
+            if (strlen(broker_id) != 4)
+            {
+                FLastErrMsg = "Invalid BrokerID format in Stock order!";
+                FTriggeredAction.clear();
+                return FALSE;
+            }
+            else
+                FTriggeredAction.insert(std::make_pair("broker_id", broker_id));
+        }
+        else
+        {
+            std::string fcm_no = broker_id;
+            if (fcm_no.size() != 7)
+            {
+                FLastErrMsg = "Invalid BrokerID format in Futures/Options order!";
+                FTriggeredAction.clear();
+                return FALSE;
+            }
+
+            FTriggeredAction.insert(std::make_pair("fcm_no", fcm_no));
+        }
+    }
+
+    // IVACNO
+    const char* account = order->GetAccount();
+    if (account)
+    {
+        if (strlen(account) != 7)
+        {
+            FLastErrMsg = "Invalid Account format in Stock/Futures/Options order!";
+            FTriggeredAction.clear();
+            return FALSE;
+        }
+
+        // TBaseMeesgae 預設 Account 為 7 個空白字元，檢查一下是否是全空白
+        bool all_blank = true;
+        for (int i = 0; i < 7; ++i)
+        {
+            if (' ' != account[i])
+            {
+                all_blank = false;
+                break;
+            }
+        }
+
+        if (!all_blank)
+        {
+            if (nsOrderMessageDefine::/*MarketEnum::*/mTSE == market ||
+                nsOrderMessageDefine::/*MarketEnum::*/mOTC == market)
+            {
+                FTriggeredAction.insert(std::make_pair("ivacno", account));
+            }
+            else
+            {
+                FTriggeredAction.insert(std::make_pair("investor_acno", account));
+            }
+        }
     }
 
     if (order->GetAllUserData())
