@@ -27,7 +27,7 @@ TCAChecker::TCAChecker( TComponent* Owner )
 ,FCheckResult(false)
 ,FCAObject( NULL )
 ,FPFXFile( L"C:\\src\\S8Projects\\Win32\\Debug\\52883910.pfx" )
-,FPFXFilePassword( L"52883910" )
+,FPFXFilePassword( "" )
 ,FLocalIP( L"127.0.0.1" )
 ,FURL( "http://ekeytest.emega.com.tw:8080/VA/StockP1VerifySign.jsp" )
 {

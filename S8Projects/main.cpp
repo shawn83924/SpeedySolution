@@ -1490,7 +1490,7 @@ void __fastcall TMainForm::OrderStoreLogonOK(TObject *Sender, const UnicodeStrin
 	FCAChecker->ID = gUser.LoginUserID;
 	FCAChecker->URL = g_Config.GetMegaCAURL();
 	FCAChecker->PFXFileName = g_Config.GetStringProperty( gUser.LoginUserID, "CAFile", L"" );
-	FCAChecker->PFXPassword = g_Config.GetStringProperty( gUser.LoginUserID, "CAPassword", L"888888" );
+	FCAChecker->PFXPassword = g_Config.GetStringProperty( gUser.LoginUserID, "CAPassword", L"" );
 	OrderStore->SetCAListener( FCAChecker );
 	throughput = g_Config.GetThroughput( PhoneNo.c_str());
 	if( throughput != 0 )
