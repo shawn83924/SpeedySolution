@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
+#include <algorithm>
 
 #include "AlignEdit.h"
 #pragma package(smart_init)
@@ -30,6 +31,7 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FEditorClientColor = clWindow;
 	FOnChange = NULL;
 	FInputFilter = TInputFilterFlags() << iffLetters << iffDigits << iffSpace << iffChinese << iffSpecial;
+	FFilteringText = false;
 
 	StyleElements = TStyleElements();
 	ParentColor = false;
@@ -372,6 +374,27 @@ void __fastcall TAlignEdit::EditorClick(TObject *)
 //---------------------------------------------------------------------------
 void __fastcall TAlignEdit::EditorChange(TObject *)
 {
+	if (!FFilteringText && FEditor != NULL)
+	{
+		UnicodeString src = FEditor->Text;
+		UnicodeString cleaned;
+		for (int i = 1; i <= src.Length(); i++)
+		{
+			if (IsCharAllowed(src[i]))
+				cleaned += src[i];
+		}
+
+		if (cleaned != src)
+		{
+			FFilteringText = true;
+			int caretPos = FEditor->SelStart;
+			FEditor->Text = cleaned;
+			int removedCount = src.Length() - cleaned.Length();
+			FEditor->SelStart = std::max(0, caretPos - removedCount);
+			FFilteringText = false;
+		}
+	}
+
 	if (FEditor != NULL && FEditor->HandleAllocated())
 	{
 		HDC dc = GetDC(FEditor->Handle);
@@ -392,25 +415,28 @@ void __fastcall TAlignEdit::EditorChange(TObject *)
 		FOnChange(this);
 }
 //---------------------------------------------------------------------------
-void __fastcall TAlignEdit::EditorKeyPress(TObject *, System::WideChar &Key)
+bool __fastcall TAlignEdit::IsCharAllowed(WideChar Ch)
 {
-	if (Key == VK_BACK)
-		return;
+	bool isLetter  = (Ch >= L'A' && Ch <= L'Z') || (Ch >= L'a' && Ch <= L'z');
+	bool isDigit   = (Ch >= L'0' && Ch <= L'9');
+	bool isSpace   = (Ch == L' ');
+	bool isChinese = (Ch > 0x7F);
+	bool isSpecial = (Ch >= 0x21 && Ch <= 0x7E) && !isLetter && !isDigit;
 
-	bool isLetter  = (Key >= L'A' && Key <= L'Z') || (Key >= L'a' && Key <= L'z');
-	bool isDigit   = (Key >= L'0' && Key <= L'9');
-	bool isSpace   = (Key == L' ');
-	bool isChinese = (Key > 0x7F);
-	bool isSpecial = (Key >= 0x21 && Key <= 0x7E) && !isLetter && !isDigit;
-
-	bool allowed =
+	return
 		(FInputFilter.Contains(iffLetters) && isLetter)  ||
 		(FInputFilter.Contains(iffDigits)  && isDigit)   ||
 		(FInputFilter.Contains(iffSpace)   && isSpace)   ||
 		(FInputFilter.Contains(iffChinese) && isChinese) ||
 		(FInputFilter.Contains(iffSpecial) && isSpecial);
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::EditorKeyPress(TObject *, System::WideChar &Key)
+{
+	if (Key < 0x20) // 放行所有控制字元（退格、Ctrl+C/V/X/A 等）
+		return;
 
-	if (!allowed)
+	if (!IsCharAllowed(Key))
 		Key = 0;
 }
 //---------------------------------------------------------------------------

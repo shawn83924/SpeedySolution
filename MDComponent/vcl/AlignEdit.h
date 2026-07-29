@@ -32,6 +32,7 @@ private:
 	int FImagePosY;
 	TNotifyEvent FOnChange;
 	TInputFilterFlags FInputFilter;
+	bool FFilteringText;
 
 	UnicodeString __fastcall GetText(void);
 	void __fastcall SetText(const UnicodeString Value);
@@ -62,6 +63,7 @@ private:
 	void __fastcall EditorChange(TObject *Sender);
 	void __fastcall EditorKeyPress(TObject *Sender, System::WideChar &Key);
 	void __fastcall SetInputFilter(TInputFilterFlags Value);
+	bool __fastcall IsCharAllowed(WideChar Ch);
 protected:
 	virtual void __fastcall CreateWnd(void);
 	DYNAMIC void __fastcall Resize(void);
