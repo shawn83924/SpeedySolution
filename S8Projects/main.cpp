@@ -52,6 +52,7 @@
 #pragma link "GraphPanel"
 #pragma link "SHDocVw_OCX"
 #pragma link "OrderStore_OCO"
+#pragma link "GraphButtonV2"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 TMainForm *MainForm;
