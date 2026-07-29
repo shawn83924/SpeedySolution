@@ -44,6 +44,7 @@
 #include <System.JSON.hpp>
 #include "CAChecker.h"
 #include "OrderStore_OCO.h"
+#include "GraphButtonV2.h"
 //#include "ContractViewer.h"
 //---------------------------------------------------------------------------
 class	TBrokerConfig;
@@ -245,6 +246,7 @@ __published:	// IDE-managed Components
 	TGraphButton *LowPxAlarmSoundButton;
 	TComboBox *LowPxAlarmSoundComboBox;
 	TGraphButton *LowPxAlarmSoundSwitch;
+	TGraphButtonV2 *LogoutBtn;
 	void __fastcall CMarketDataStoreAppConnected(TObject *Sender);
 	void __fastcall CMarketDataStoreContractDownloadCompleted(int Count, int UseMS);
 	void __fastcall ChartsStoreXAppConnected(TObject *Sender);
