@@ -417,14 +417,14 @@ void __fastcall TOrderListView::InitialColumn( void )
 		{
 			NewColumn->Width    = 55;
 			NewColumn->MinWidth = 55;
-			NewColumn->MaxWidth = 55;
+			//NewColumn->MaxWidth = 55;
 		}
 		else
 		{
 			CaptionWidth = FTextSizeBMP->Canvas->TextWidth(CaptionText) + 20;
 			NewColumn->Width    = CaptionWidth;
 			NewColumn->MinWidth = CaptionWidth;
-			NewColumn->MaxWidth = CaptionWidth * 2;
+			//NewColumn->MaxWidth = CaptionWidth * 2;
 		}
 	}
 	Columns->EndUpdate();
@@ -972,17 +972,17 @@ void __fastcall TOrderListView::MDBSAdvancedCustomDraw(TCustomListView *Sender,
 			{   //將兩行交換
 				String curCaption = curColumn->Caption;
 				int curColumnMinWidth = curColumn->MinWidth;
-				int curColumnMaxWidth = curColumn->MaxWidth;
+				//int curColumnMaxWidth = curColumn->MaxWidth;
 				int curColumnWidth = curColumn->Width;
 				curColumn->Caption = firstColumn->Caption;
 				curColumn->Tag = firstColumnTag;
 				curColumn->MinWidth = firstColumn->MinWidth;
-				curColumn->MaxWidth = firstColumn->MaxWidth;
+				//curColumn->MaxWidth = firstColumn->MaxWidth;
 				curColumn->Width = firstColumn->Width;
 				firstColumn->Caption = curCaption;
 				firstColumn->Tag = curColumnTag;
 				firstColumn->MinWidth = curColumnMinWidth;
-				firstColumn->MaxWidth = curColumnMaxWidth;
+				//firstColumn->MaxWidth = curColumnMaxWidth;
 				firstColumn->Width = curColumnWidth;
 				break;
 			}  //if (curColumnTag == 0)
@@ -1291,7 +1291,7 @@ void __fastcall TOrderListView::FitColumnWidth(int ColumnIndex)
 		MaxTextWidth = CaptionWidth;
 	MaxTextWidth += 20;
 	CurColumn->MinWidth = CaptionWidth + 20;
-	CurColumn->MaxWidth = MaxTextWidth * 1.5;
+	//CurColumn->MaxWidth = MaxTextWidth * 1.5;
 	CurColumn->Width    = MaxTextWidth;
 }
 //---------------------------------------------------------------------------
@@ -1316,7 +1316,7 @@ void __fastcall TOrderListView::FitAllColumnWidth()
 		CurColumn = Columns->Items[ ColumnIndex ];
 		CurColumn->MinWidth = CaptionWidth + 20;
 		MaxWidth += 20;
-		CurColumn->MaxWidth = MaxWidth * 1.5;
+		//CurColumn->MaxWidth = MaxWidth * 1.5;
 		CurColumn->Width = MaxWidth;
 	}  //for (int ColumnIndex = 1; ColumnIndex < Columns->Count; ColumnIndex++)
 	Items->EndUpdate();
@@ -1740,7 +1740,7 @@ void __fastcall TOrderListView::SetColumns( const String& ColStr)
 	NewCol->Tag = 0;
 	NewCol->Width    = 55;
 	NewCol->MinWidth = 55;
-	NewCol->MaxWidth = 55;
+	//NewCol->MaxWidth = 55;
 	for (register int i = 0; i < PopupMenu->Items->Count; i++)
 		PopupMenu->Items->operator [](i)->Checked = false;
 	for(int i = 0; i < Msg.ItemCount(); i++)
