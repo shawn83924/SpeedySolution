@@ -25,6 +25,12 @@ public:		// User declarations
 	static bool __fastcall AskStringDialog( const String& caption, String& Name );
 	static void __fastcall MessageDialog( const String& caption, const String& text );
 	static bool __fastcall AskYesNoDialog( const String& caption, const String& text );
+	static bool __fastcall AskYesNoDialog(
+		const String& caption,
+		const String& text,
+		const String& YesStr,
+		const String& CancelStr
+		);
 	static void __fastcall OpenBrowser( const String& URL );
 };
 //---------------------------------------------------------------------------

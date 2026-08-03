@@ -80,6 +80,36 @@ bool __fastcall TUnifyDlgs::AskYesNoDialog( const String& caption, const String&
 	return false;
 }
 //---------------------------------------------------------------------------
+bool __fastcall TUnifyDlgs::AskYesNoDialog(
+		const String& caption,
+		const String& text,
+		const String& YesStr,
+		const String& CancelStr)
+{
+	TUnifyDlgs* MsgDlg = new TUnifyDlgs( NULL );
+	int MinW = MsgDlg->Canvas->TextWidth( text ) + 30;
+
+	if( MsgDlg->Width < MinW )
+		MsgDlg->Width = MinW;
+	MsgDlg->Caption = caption;
+	MsgDlg->MsgLabel->Caption = text;
+	MsgDlg->MsgLabel->Visible = true;
+	MsgDlg->NameEdit->Visible = false;
+	MsgDlg->OKButton->Visible = true;
+	MsgDlg->OKButton->Left = (MsgDlg->ClientWidth - MsgDlg->OKButton->Width - MsgDlg->OKButton->Width - 15 )/2;
+	MsgDlg->OKButton->Caption = YesStr;
+	MsgDlg->CancelButton->Visible = true;
+	MsgDlg->CancelButton->Left = MsgDlg->OKButton->Left + MsgDlg->OKButton->Width + 15;
+	MsgDlg->CancelButton->Caption = CancelStr;
+	if( MsgDlg->ShowModal() == mrOk )
+	{
+		delete MsgDlg;
+		return true;
+	}
+	delete MsgDlg;
+	return false;
+}
+//---------------------------------------------------------------------------
 void __fastcall TUnifyDlgs::NameEditKeyPress(TObject *Sender, System::WideChar &Key)
 {
 	if( Key == VK_RETURN )

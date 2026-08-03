@@ -105,11 +105,13 @@ class TAccountInfo
 public:
 	String Account;
 	String BrokerID;
+	String BranchID;
 	String DayTrade;
 public:
-	TAccountInfo( const String& account, const String& broker, const String& type )
+	TAccountInfo( const String& account, const String& broker,const String& branch, const String& type )
 	:Account( account ),
 	 BrokerID( broker ),
+	 BranchID( branch ),
 	 DayTrade( type)
 	 {}
 };
@@ -139,6 +141,7 @@ public:
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg ) = 0;
 	virtual void ClearPosition( const String& ID ) = 0;
 	virtual bool SignAgreememt( const String& ID, TCAChecker* CAChecker, String& Msg ) = 0;
+	virtual bool SignRiskDisclosureStatement(String& Msg) = 0;
 	virtual TBrokerUser* GetAccount( void ) = 0;
 };
 //---------------------------------------------------------------------------
@@ -162,6 +165,7 @@ private:
 	void GenData2( const String& ID, const String& Password, const String& IB, String& Out );
 	bool RequestLogon( TMemoryStream* OutStream, String& Msg );
 	bool RequestPosition(  bool IsTAIFEX, const String& Account, TMemoryStream* OutStream, String& Msg );
+	bool RequestRiskDisclosureStatement( const String& Branch_ID, const String& cust_id, TMemoryStream* OutStream, String& Msg );
 	void AddPosition( const String& Account, TJSONArray *PosArray );
 	void AddStockPosition( const String& Account, TJSONArray *PosArray );
 	void AddTestPosition( bool IsTAIFEX );
@@ -173,6 +177,7 @@ public:
 	virtual bool GetPosition( bool IsTAIFEX, const String& Account, String& Msg );
 	virtual void ClearPosition( const String& ID );
 	virtual bool SignAgreememt( const String& Account, TCAChecker* CAChecker, String& Msg );
+	virtual bool SignRiskDisclosureStatement(String& Msg);
 	virtual TBrokerUser* GetAccount( void );
 };
 //---------------------------------------------------------------------------
@@ -347,6 +352,8 @@ private:
 	UFC::List<TUserAccount*>        m_Users;
 	UFC::List<TBrokerConfig*>       m_Brokers;
 	UFC::UiniFile* m_ini;
+	UFC::AnsiString m_RiskDisclosureContent;
+	UFC::AnsiString m_RiskDisclosureUrl;
 private:
 	void 			GetProcessDir( void );
 	DWORD           FileVersion( const char* FileName, const char* FileName2 = "" );
@@ -412,6 +419,8 @@ public:
 	const bool		 GetChannel()     const { return m_Channel; }
 	const bool       IsBackup()       const { return m_UseBackup; }
 	const bool       AutoUpdate()     const { return m_AutoUpdate; }
+	String           RiskDisclosureContent(){ return m_RiskDisclosureContent.c_str(); }
+	String           RiskDisclosureUrl()    { return m_RiskDisclosureUrl.c_str(); }
 
 	int GetParamInt( const UFC::AnsiString& Name );
 	double GetParamDouble( const UFC::AnsiString& Name );

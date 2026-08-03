@@ -55,6 +55,9 @@ void Config::LoadUpdateSetting( const char* FileName )
 		m_BaseURLs.Add( "https://mdbs-sharespace.mdevelop.com/SpeedyRelease/emegafuture-pro/" );
 		m_BaseURLs.Add( "https://unify-files.mpublic.net/");
 	}
+
+	MDSettingsFile.GetValue("RiskDisclosure", "Content", m_RiskDisclosureContent);
+    MDSettingsFile.GetValue("RiskDisclosure", "Url", m_RiskDisclosureUrl);
 }
 //------------------------------------------------------------------------------
 String Config::GetUpdateBaseURL( void )
