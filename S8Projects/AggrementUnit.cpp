@@ -21,9 +21,6 @@ __fastcall TAggrementForm::TAggrementForm(TComponent* Owner)
 	FCheckBoxs.Add(CheckBox5);
 	FCheckBoxs.Add(CheckBox6);
 	FCheckBoxs.Add(CheckBox7);
-	FCheckBoxs.Add(CheckBox8);
-	FCheckBoxs.Add(CheckBox9);
-	FCheckBoxs.Add(CheckBox10);
 }
 //---------------------------------------------------------------------------
 bool __fastcall TAggrementForm::AllCjecked( void )

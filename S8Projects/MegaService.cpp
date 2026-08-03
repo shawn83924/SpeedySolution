@@ -99,16 +99,12 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 							 int id;
 							 String  BrokerID;
 							 if (TryStrToInt(branch_id, id))
-							 {
-								BrokerID = BrenchToBrokrtID( id );
-							 }
-							 else
-								BrokerID = branch_id;
+							 	BrokerID = BrenchToBrokrtID( id );
 
 							 if( account_type == L"1" ) ///< Stock Account
-								 FAccounts.FStockAccounts.Add( new TAccountInfo(account,BrokerID,dayTrade ) );
+								 FAccounts.FStockAccounts.Add( new TAccountInfo(account, BrokerID, branch_id, dayTrade ) );
 							 else if( account_type == L"2" ) ///< Futures Account
-								 FAccounts.FFutAccounts.Add( new TAccountInfo( account, "F030000", dayTrade ) );
+								 FAccounts.FFutAccounts.Add( new TAccountInfo( account, BrokerID, branch_id, dayTrade ) );
 						}
 						FAccounts.FName  = lpRoot->Values[L"name"]->Value();
 						FAccounts.FIDNO  = lpRoot->Values[L"idno"]->Value();
@@ -596,6 +592,122 @@ void TMegaService::AddTestPosition( bool IsTAIFEX )
 			ProcessHoldPositionData( AccountPtr );
 		}
 	}
+}
+//---------------------------------------------------------------------------
+bool TMegaService::RequestRiskDisclosureStatement( const String& Branch_ID, const String& cust_id, TMemoryStream* OutStream, String& Msg )
+{
+	TIdSSLIOHandlerSocketOpenSSL* SSLIOHandler = new TIdSSLIOHandlerSocketOpenSSL( NULL );
+	TIdHTTP*                      pHTTP        = new TIdHTTP( NULL );
+	TMemoryStream*                SourceStream = new TMemoryStream();
+	String                        URL,Data;
+	bool                          Result = true;
+
+	try
+	{
+		AnsiString ChkSumStr = CheckSumKey + Branch_ID + cust_id;
+		UFC::MD5   ChkSum( (const UFC::UInt8*)ChkSumStr.c_str(), ChkSumStr.Length() );
+		String     CheckSum( ChkSum.ToString().c_str() );
+		String     Param;
+
+		Param.printf( L"{\"checksum\":\"%s\",\"branch_id\":\"%s\",\"cust_id\":\"%s\"}", CheckSum, Branch_ID, cust_id );
+		Data = Base64Encode( Param );
+		URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_07", FBaseURL, Data );
+		if( URL.Pos( L"https" ) != 0 )
+		{
+			SSLIOHandler->SSLOptions->Method = sslvSSLv23;
+			pHTTP->IOHandler = SSLIOHandler;
+		}
+		pHTTP->ConnectTimeout = 90000;
+		pHTTP->Post( pHTTP->URL->URLEncode( URL ), SourceStream, OutStream );
+	}
+	catch( Exception& ex )
+	{
+		Result = false;
+		Msg = ex.ToString();
+	}
+	delete SSLIOHandler;
+	delete pHTTP;
+	delete SourceStream;
+	return Result;
+}
+//---------------------------------------------------------------------------
+bool TMegaService::SignRiskDisclosureStatement(String& Msg)
+{
+	TMemoryStream* ResultStream = new TMemoryStream();
+	String ResponseJSON;
+	bool   Result = false;
+	if(FAccounts.FFutAccounts.ItemCount()<=0)
+	{
+        delete ResultStream;
+		return Result;
+	}
+	TAccountInfo* accountInfo = FAccounts.FFutAccounts.GetItem(0);
+	if( RequestRiskDisclosureStatement(accountInfo->BranchID, accountInfo->Account, ResultStream, Msg) != true )
+	{
+		delete ResultStream;
+		return Result;
+	}
+
+	if( GetResponseJSON(ResultStream, ResponseJSON) != true )
+	{
+		delete ResultStream;
+		return Result;
+	}
+
+	TJSONValue  *lpJson = TJSONObject::ParseJSONValue( ResponseJSON );
+	TJSONObject *lpRoot = dynamic_cast<TJSONObject *>(lpJson);
+	if( lpRoot == NULL )
+	{
+		delete ResultStream;
+		return Result;
+	}
+
+	String ResultStr  = lpRoot->Values[L"result"]->Value();
+	String MessageStr = lpRoot->Values[L"message"]->Value();
+	if( ResultStr != L"0" )
+	{
+		if( ToErrorMessage( ResultStr, Msg ) == false )
+			Msg = MessageStr;
+		delete lpJson;
+		delete ResultStream;
+		return Result;
+	}
+
+	TJSONValue *lpDataList = lpRoot->GetValue( L"qrydataList" );
+	TJSONArray *DataArray  = dynamic_cast<TJSONArray*>(lpDataList);
+	if( DataArray == NULL || DataArray->Count <= 0 )
+	{
+		Msg = L"查無風險預告書資料";
+		delete lpJson;
+		delete ResultStream;
+		return Result;
+	}
+
+	TJSONObject *Item = dynamic_cast<TJSONObject *>(DataArray->Items[0]);
+	String Status = Item->Values[L"status"]->Value();
+	if (Status != L"S")
+	{
+		String status_result;
+		if     ( Status == L"N" ) status_result = L"未上傳";
+		else if( Status == L"Y" ) status_result = L"已上傳";
+		else if( Status == L"E" ) status_result = L"上傳失敗";
+		else if( Status == L"C" ) status_result = L"解約";
+		else if( Status == L"D" ) status_result = L"不可簽署";
+		else                      status_result = Status;
+
+		Msg.printf( L"風險預告書未完成簽署(%s)", status_result );
+
+		delete lpJson;
+		delete ResultStream;
+		return Result;
+	}
+
+	Msg = MessageStr;
+	Result = true;
+
+	delete lpJson;
+	delete ResultStream;
+	return Result;
 }
 //---------------------------------------------------------------------------
 const String& TMegaService::BrenchToBrokrtID( int MegaBrenchID )

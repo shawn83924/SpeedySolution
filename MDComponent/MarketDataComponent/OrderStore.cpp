@@ -1519,7 +1519,7 @@ String TOrderStore::NormalizeBalanceJSON( const String& raw )
 UFC::AnsiString TOrderStore::GetBalance( void )
 {
 	UFC::AnsiString result;
-	FAdapter->MarginPositionRequest( FBrokerID.c_str(), FAccount.c_str(), result);
+	FAdapter->MarginPositionRequest( "F030000", FAccount.c_str(), result);
 	
 	TJSONValue* jsonValue = TJSONObject::ParseJSONValue(NormalizeBalanceJSON(String(result.c_str())));
 	if (jsonValue == NULL)

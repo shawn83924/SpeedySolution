@@ -1517,12 +1517,39 @@ void __fastcall TMainForm::CheckAgreement( void )
 {
 	String Reason;
 
-	if( FLoginBroker != NULL &&
-		FLoginBroker->GetService()->SignAgreememt( gUser.LoginUserID,FCAChecker, Reason ) == false )
+	if (FLoginBroker == NULL)
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, "Login broker fail." );
+		OrderStore->Disconnect( true );
+		return;
+	}
+
+	TBrokerService* service = FLoginBroker->GetService();
+	if( service->SignAgreememt( gUser.LoginUserID, FCAChecker, Reason ) == false )
 	{
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
 		OrderStore->Disconnect( true );
+		return;
 	}
+
+	if( service->SignRiskDisclosureStatement( Reason ) == false )
+	{
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
+		int resultYes = TUnifyDlgs::AskYesNoDialog
+		(
+			Mdcomponentstrings_MD_SpeedyUnify_AppName,
+			g_Config.RiskDisclosureContent(),
+			"前往",
+			"取消"
+		);
+		if(resultYes)
+		{
+			TUnifyDlgs::OpenBrowser(g_Config.RiskDisclosureUrl());
+		}
+		CloseAll();
+		return;
+	}
+
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoadIDPassword( int BrokerN )

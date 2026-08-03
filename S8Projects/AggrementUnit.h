@@ -21,19 +21,13 @@ __published:	// IDE-managed Components
 	TButton *CancelButton;
 	TScrollBox *ScrollBox1;
 	TCheckBox *CheckBox1;
+	TCheckBox *CheckBox2;
 	TCheckBox *CheckBox3;
 	TCheckBox *CheckBox4;
 	TCheckBox *CheckBox5;
 	TCheckBox *CheckBox6;
 	TCheckBox *CheckBox7;
-	TCheckBox *CheckBox8;
-	TCheckBox *CheckBox9;
-	TCheckBox *CheckBox10;
-	TCheckBox *CheckBox2;
 	TRoundFormEx *RoundFormEx;
-	TLabel *Label4;
-	TPanel *Panel1;
-	TLabel *Label5;
 	void __fastcall CheckBox1Click(TObject *Sender);
 	void __fastcall FormCreate(TObject *Sender);
 private:	// User declarations
