@@ -104,7 +104,7 @@ bool TMegaService::LoginBroker( const String& ID, const String& Password, String
 							 if( account_type == L"1" ) ///< Stock Account
 								 FAccounts.FStockAccounts.Add( new TAccountInfo(account, BrokerID, branch_id, dayTrade ) );
 							 else if( account_type == L"2" ) ///< Futures Account
-								 FAccounts.FFutAccounts.Add( new TAccountInfo( account, BrokerID, branch_id, dayTrade ) );
+								 FAccounts.FFutAccounts.Add( new TAccountInfo( account, "F030000", branch_id, dayTrade ) );
 						}
 						FAccounts.FName  = lpRoot->Values[L"name"]->Value();
 						FAccounts.FIDNO  = lpRoot->Values[L"idno"]->Value();
