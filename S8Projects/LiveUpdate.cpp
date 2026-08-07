@@ -154,26 +154,41 @@ int Config::RetriveUpdateList()
 		{
 			AnsiString BaseURL   = GetUpdateBaseURL();
 			String ConfigFileURL = BaseURL + m_ConfigFile.c_str(); ///< File URL
-			TFileStream* SaveFile;
+			TFileStream* SaveFile = NULL;
 			try
 			{
 				UFC::AnsiString ConfigFileOld = m_ConfigFile + ".old";
 				UFC::AnsiString ConfigFileDownload = m_ConfigFile + ".download";
 
+				UFC::BufferedLog::Printf( " [Config::RetriveUpdateList] Try BaseURL[%s], ConfigFileURL[%s].",
+					BaseURL.c_str(), AnsiString( ConfigFileURL ).c_str() );
+
 				SaveFile = new TFileStream( ConfigFileDownload.c_str(), fmCreate );
 				m_pHTTP->Get( ConfigFileURL, SaveFile );
 				delete SaveFile;
+				SaveFile = NULL;
 				MoveFileExA( m_ConfigFile.c_str(), ConfigFileOld.c_str(), MOVEFILE_REPLACE_EXISTING );
 				MoveFileExA( ConfigFileDownload.c_str(), m_ConfigFile.c_str(), MOVEFILE_REPLACE_EXISTING );
 				LoadFromInIFile( );
 				return GetUpdateList( BaseURL.c_str() );
 			}
+			catch( Exception& e )
+			{
+				UFC::BufferedLog::Printf( " [Config::RetriveUpdateList] Failed with BaseURL[%s]. Error: %s",
+					BaseURL.c_str(), AnsiString( e.Message ).c_str() );
+				if( SaveFile != NULL )
+					delete SaveFile;
+			}
 			catch(...)
 			{
+				UFC::BufferedLog::Printf( " [Config::RetriveUpdateList] Failed with BaseURL[%s]. Unknown error.",
+					BaseURL.c_str() );
 				if( SaveFile != NULL )
 					delete SaveFile;
 			}
 		}
+		UFC::BufferedLog::Printf( " [Config::RetriveUpdateList] All update servers failed. Total BaseURL count[%d].",
+			m_BaseURLs.ItemCount() );
 	}
 	else
 		return 0;
