@@ -9,7 +9,6 @@
 #include "OrderStore.h"
 #include "UnifyDlg.h"
 #include "SearchUnit.h"
-#include "Roomi.h"
 #include "UnifyUtility.h"
 #include "OrderConfirm.h"
 #include "StopSetting.h"

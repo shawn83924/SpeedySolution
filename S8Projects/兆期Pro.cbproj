@@ -319,12 +319,6 @@
             <DependentOn>OrderConfirm.h</DependentOn>
             <BuildOrder>43</BuildOrder>
         </CppCompile>
-        <CppCompile Include="Roomi.cpp">
-            <Form>RoomiForm</Form>
-            <FormType>dfm</FormType>
-            <DependentOn>Roomi.h</DependentOn>
-            <BuildOrder>38</BuildOrder>
-        </CppCompile>
         <CppCompile Include="SearchUnit.cpp">
             <Form>SearchSymbolForm</Form>
             <FormType>dfm</FormType>
@@ -408,7 +402,6 @@
         </CppCompile>
         <FormResources Include="OCODetail.dfm"/>
         <FormResources Include="OrderConfirm.dfm"/>
-        <FormResources Include="Roomi.dfm"/>
         <FormResources Include="SearchUnit.dfm"/>
         <FormResources Include="SelAccount.dfm"/>
         <FormResources Include="Login.dfm"/>

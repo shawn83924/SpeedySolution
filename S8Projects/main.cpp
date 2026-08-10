@@ -33,7 +33,6 @@
 #include <System.IOUtils.hpp>
 #include "LeaderBoard.h"
 #include "WebBrowserForm.h"
-#include "Roomi.h"
 #include "SelAccount.h"
 #include "AskRoomi.h"
 #include "AskCloseAll.h"
@@ -1241,8 +1240,6 @@ void __fastcall TMainForm::CloseAll( void )
 	PreventIdleTimer->Enabled = false;
 	ContractViewerForm->CloseAllForm();
 	ContractViewerForm->ClearSymbols();
-	if( RoomiForm != NULL )
-		RoomiForm->Hide();
 	CMarketDataStore->OnAppDisconnected  = NULL;
 	ChartsStore->OnAppDisconnected  = NULL;
 	OrderStore->Logoff( true );
@@ -1916,8 +1913,6 @@ void __fastcall TMainForm::SaveProperties( void )
 	   g_Config.SetDesktopInteger( "SpeedyUnify.Main", "ActivePage", PageControl->ActivePageIndex );
 	   g_Config.SetDesktopBool( "SpeedyUnify.Main", "Menu",  SV->Opened );
 	   ContractViewerForm->SaveProperties( );
-	   if( RoomiForm != NULL )
-		   RoomiForm->SaveProperties();
 	   if( OrderStore->IsLogon() == true )
 	   {
 		   if( HoldOpenInterestForm != NULL )
