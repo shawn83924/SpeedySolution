@@ -1536,7 +1536,7 @@ void __fastcall TMainForm::CheckAgreement( void )
 		OrderStore->Disconnect( true );
 		return;
 	}
-	/*
+
 	if( service->SignRiskDisclosureStatement( Reason ) == false )
 	{
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
@@ -1554,7 +1554,6 @@ void __fastcall TMainForm::CheckAgreement( void )
 		CloseAll();
 		return;
 	}
-    */
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::LoadIDPassword( int BrokerN )
