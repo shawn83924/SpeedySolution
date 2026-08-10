@@ -13,22 +13,20 @@
 #pragma link "Gdiplus.lib"
 #pragma link "sapi.lib"
 #pragma link "dsound.lib"
-#pragma link "roome_client_bcb.lib"
 //---------------------------------------------------------------------------
 USEFORM("OCODetail.cpp", OCODetailForm);
 USEFORM("OrderConfirm.cpp", OrdConfirmForm);
-USEFORM("Roomi.cpp", RoomiForm);
 USEFORM("SearchUnit.cpp", SearchSymbolForm);
 USEFORM("SelAccount.cpp", DefAccForm);
 USEFORM("Login.cpp", LoginForm);
 USEFORM("main.cpp", MainForm);
 USEFORM("SetFontForm.cpp", FontForm);
-USEFORM("TrainingDlg.cpp", TrainingDlgForm);
 USEFORM("UnifyDlg.cpp", UnifyDlgs);
 USEFORM("WebBrowserForm.cpp", BrowserForm);
-USEFORM("TBarForm.cpp", OptionsTBarForm);
+USEFORM("TrainingDlg.cpp", TrainingDlgForm);
 USEFORM("SettingOCODlg.cpp", SettingOCODlgForm);
 USEFORM("StopSetting.cpp", StopSettingForm);
+USEFORM("TBarForm.cpp", OptionsTBarForm);
 USEFORM("CASetting.cpp", CASettingForm);
 USEFORM("ChartForm.cpp", LineChartForm);
 USEFORM("ContractForm.cpp", ContractInfoForm);
