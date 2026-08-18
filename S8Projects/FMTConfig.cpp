@@ -542,8 +542,10 @@ String Config::GetStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	AnsiString       IPPortStr;
 	UFC::AnsiString  IP;
 	UFC::PStringList IPs;
+	int              Index;
 
-	IPPortStr = m_StarWaveIPs->Strings[ m_InternetConfig  ];
+	Index = ( m_StarWaveIPs->Count > m_InternetConfig ) ? m_InternetConfig : 0;
+	IPPortStr = m_StarWaveIPs->Strings[ Index ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_StarWaveIPIndex == -1 )
 		m_StarWaveIPIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
@@ -558,8 +560,10 @@ String  Config::GetChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	AnsiString      IPPortStr;
 	UFC::AnsiString IP;
 	UFC::PStringList IPs;
+	int             Index;
 
-	IPPortStr = m_ChartIPs->Strings[ m_InternetConfig ];
+	Index = ( m_ChartIPs->Count > m_InternetConfig ) ? m_InternetConfig : 0;
+	IPPortStr = m_ChartIPs->Strings[ Index ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_ChartIPsIndex == -1 )
 		m_ChartIPsIndex = gUser.UserID.SubString(gUser.UserID.Length()-3,3).ToInt() % IPs.ItemCount();
