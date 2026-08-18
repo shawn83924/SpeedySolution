@@ -269,21 +269,21 @@ void __fastcall TContractInfoForm::SortTAIFEXOptSerials( int Index )
 	{
 		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TXO" ))!= -1 )
 			FOptChineseSerials[Index]->Move( SIndex, 0 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX1" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX1" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX2" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX2" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX3" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX3" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX4" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX4" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX5" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX5" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TEO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TEO" ))!= -1 && 3 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,3);
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TFO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TFO" ))!= -1 && 4 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,4);
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"XIO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"XIO" ))!= -1 && 5 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,5);
 	}
 }
