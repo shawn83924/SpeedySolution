@@ -192,11 +192,16 @@ private:
     bool FProxyLogon;
 	TBrokerUser FAccounts;
 
+    bool FStopLogon;
 	bool FWaitConnectDone;
-	bool FWaitConnectOK;
+    bool FWaitLogonDone;
+	bool FLoginOK;
     String FWaitConnectMsg;
 private:
 	void LoadConfigSetting(const char* FileName);
+	void RegisterOrderStore(void);
+	void LogLoginParameters(void);
+	void WaitingForResponse(bool& flag, DWORD& startTick, const DWORD& timeoutMs);
 	void __fastcall OrderStoreConnect(TObject *Sender);
 	void __fastcall OrderStoreLogonFailed(
 		TObject *Sender,
