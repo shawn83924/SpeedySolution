@@ -109,24 +109,13 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	Application->ProcessMessages();
 
 	GVIPServer = g_Config.IamVIP( IDEdit->Text );
-	if( GSimMatch == true )
-	{
-		if( NetworkComboBox->ItemIndex == 2 ) ///< Production Market Data
-			NeedLicense = true;
-		else
-			GVIPServer = false;
-		if( NetworkComboBox->ItemIndex > 2 )
-			Tranning = true;
-		g_Config.SetInternetConfig( NetworkComboBox->ItemIndex );
-		g_Config.SetIntegerProperty("Setting","InternetConfig",  NetworkComboBox->ItemIndex );
-	}
-	else
-		g_Config.SetInternetConfig( 0 );
-
+	g_Config.SetInternetConfig( 0 );
 
 	g_Config.LoadStarWaveSettingIni();
+	UFC::BufferedLog::Printf( " TLoginForm::LoginButtonClick 開始登入. ID=[%s] GSimMatch=[%d] NetworkIndex=[%d]", AnsiString(IDEdit->Text).c_str(), (int)GSimMatch, NetworkComboBox->ItemIndex );
 	if( !Logon() )
 	{
+		UFC::BufferedLog::Printf( " TLoginForm::LoginButtonClick Logon() 失敗. ID=[%s]", AnsiString(IDEdit->Text).c_str() );
 		LoginButton->Enabled = true;
 		g_Config.SetBoolProperty("Setting","SaveLoginInfo",AccountCheckBox->Checked);
 		return;
@@ -156,6 +145,7 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 	FWaitCount++;
 	if( MainForm->Ready() == true )
 	{
+		UFC::BufferedLog::Printf( " TLoginForm::WaitTimerTimer MainForm Ready. WaitCount=[%d]", FWaitCount );
 		WaitTimer->Enabled = false;
 		LoginButton->Enabled = true;
 		IDEdit->Enabled = true;
@@ -166,6 +156,7 @@ void __fastcall TLoginForm::WaitTimerTimer(TObject *Sender)
 	}
 	else if( FWaitCount > 100 || MainForm->ConnectionFailed() )
 	{
+		UFC::BufferedLog::Printf( " TLoginForm::WaitTimerTimer 登入失敗. WaitCount=[%d] ConnectionFailed=[%d]", FWaitCount, (int)MainForm->ConnectionFailed() );
 		LoginButton->Enabled = true;
 		WaitTimer->Enabled = false;
 		this->ModalResult = mrNone;//Cancel;
@@ -228,7 +219,7 @@ bool __fastcall TLoginForm::Logon( void )
 {
 	if( !RequestLogon(IDEdit->Text, PasswordEdit->Text) )
 	{
-		StatusLabel->Caption = L"登入失敗:";
+		StatusLabel->Caption = L"登入失敗";
 		return false;
 	}
 
@@ -255,10 +246,12 @@ bool __fastcall TLoginForm::RequestLogon(
 	String errMsg;
 	if (loginBroker->GetService()->LoginBroker(ID, Password, errMsg) != true)
 	{
+		UFC::BufferedLog::Printf( " TLoginForm::RequestLogon LoginBroker 失敗. ID=[%s] ErrMsg=[%s]", AnsiString(ID).c_str(), AnsiString(errMsg).c_str() );
 		TUnifyDlgs::MessageDialog(Mdcomponentstrings_MD_SpeedyUnify_AppName, errMsg);
 		return false;
 	}
 
+	UFC::BufferedLog::Printf( " TLoginForm::RequestLogon LoginBroker 成功. ID=[%s]", AnsiString(ID).c_str() );
 	return true;
 }
 //---------------------------------------------------------------------------

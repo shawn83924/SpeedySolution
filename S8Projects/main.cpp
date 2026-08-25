@@ -1073,7 +1073,8 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 	if( TrayIcon->Visible == false )
 	{
 		LiveUpdate();
-		if( LoginForm->ShowModal() == mrOk )
+		System::Int8 LoginResult = LoginForm->ShowModal();
+		if( LoginResult == mrOk )
 		{
 			ControlPosition();
 			CMarketDataStore->OnAppDisconnected  = CMarketDataStoreAppDisconnected;
@@ -1088,7 +1089,6 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 		}
 		else
 		{
-			Close();
 			Application->Terminate();
 		}
 	}
