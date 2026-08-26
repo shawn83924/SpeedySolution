@@ -131,6 +131,9 @@ __published:	// IDE-managed Components
 	TCSpinEdit *ThroughputSpinEdit;
 	TLabel *Label26;
 	TCheckBox *ModifyPasswordCheckBox;
+	TEdit *UsersEdit;
+	TBitBtn *BitBtn2;
+	TLabel *UserLabel;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall IPCheckBoxClick(TObject *Sender);
     void __fastcall OKBtnClick(TObject *Sender);
