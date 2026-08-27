@@ -1121,6 +1121,13 @@
             <DependentOn>ThroughputLimit.h</DependentOn>
             <BuildOrder>39</BuildOrder>
         </CppCompile>
+        <CppCompile Include="UsersForm.cpp">
+            <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
+            <Form>UsersList</Form>
+            <FormType>dfm</FormType>
+            <DependentOn>UsersForm.h</DependentOn>
+            <BuildOrder>41</BuildOrder>
+        </CppCompile>
         <CppCompile Include="VersionUnit.cpp">
             <VirtualFolder>{384E6038-E387-420E-9A78-C6289B472497}</VirtualFolder>
             <Form>VersionForm</Form>
@@ -1174,6 +1181,7 @@
         <FormResources Include="LineEditForm.dfm"/>
         <FormResources Include="Login.dfm"/>
         <FormResources Include="MDIMain.dfm"/>
+        <FormResources Include="UsersForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

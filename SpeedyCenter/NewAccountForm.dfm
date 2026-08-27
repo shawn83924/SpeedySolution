@@ -1211,7 +1211,7 @@ object AccountForm: TAccountForm
       TabOrder = 5
       Text = '123456'
     end
-    object BitBtn2: TBitBtn
+    object UsersBitBtn: TBitBtn
       Left = 280
       Top = 63
       Width = 27
@@ -1289,7 +1289,7 @@ object AccountForm: TAccountForm
         0000000000000000000000000000000000000000000000000000}
       NumGlyphs = 2
       TabOrder = 6
-      OnClick = BitBtn3Click
+      OnClick = UsersBitBtnClick
     end
   end
   object AccountPanel: TPanel

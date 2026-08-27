@@ -174,7 +174,7 @@ __fastcall TAccountForm::TAccountForm( TComponent* Owner, UFC::Section* iniSecti
 {
 	if( ModifyAttr )///< Modify existing ActiveExecutive
 	{
-		UFC::AnsiString Type,Group = "0",Source = "0";
+		UFC::AnsiString Type,Group = "0",Source = "0", Users;
 
 		Caption = Scstrings_MAIN_AE_MODIFY_AE;///"修改營業員資料";
 		SourceComboBox->Items->Assign( Sources );
@@ -189,10 +189,12 @@ __fastcall TAccountForm::TAccountForm( TComponent* Owner, UFC::Section* iniSecti
 		iniSection->GetValue( "Type",Type );
 		iniSection->GetValue( "Source",Source );
 		iniSection->GetValue( "Group",Group );
+		iniSection->GetValue( "Users",Users );
 		GroupComboBox->ItemIndex = TypeToIndex( Type );
 		SourceComboBox->ItemIndex = Source.ToInt();
 		ComboBoxGroup->ItemIndex = Group.ToInt();
 		GroupComboBoxChange( NULL );
+		UsersEdit->Text = Users.c_str() != NULL ? Users.c_str() : "";
 		InitOrderIDProperties( iniSection );
 		InitBrokerIDProperties( iniSection );
 		InitCheckerProperties( iniSection );
@@ -228,7 +230,7 @@ __fastcall TAccountForm::TAccountForm( TComponent* Owner, UFC::Section* iniSecti
 ,FParentForm( dynamic_cast< TSimTFXForm*> (Owner) )
 ,FUse62CarrySeq( false )
 {
-	UFC::AnsiString Type,Group = "0",Source = "0";
+	UFC::AnsiString Type,Group = "0",Source = "0",Users;
 
 	Caption = Scstrings_MAIN_AE_TERM_POOL_API_VER_SETTING;///"共用櫃號及API版本設定";
 	SourceComboBox->Items->Assign( Sources );
@@ -244,9 +246,11 @@ __fastcall TAccountForm::TAccountForm( TComponent* Owner, UFC::Section* iniSecti
 	iniSection->GetValue( "Type",Type );
 	iniSection->GetValue( "Source",Source );
 	iniSection->GetValue( "Group",Group );
+	iniSection->GetValue( "Users",Users);
 	GroupComboBox->ItemIndex = TypeToIndex( Type );
 	SourceComboBox->ItemIndex = Source.ToInt();
 	ComboBoxGroup->ItemIndex = Group.ToInt();
+	UsersEdit->Text = Users.c_str() != NULL ? Users.c_str() : "";
 	GroupComboBoxChange( NULL );
 	InitOrderIDProperties( iniSection );
 	InitOHOrderIDProperties( OHiniSection );
@@ -1064,6 +1068,15 @@ void __fastcall TAccountForm::UpdateModifyAccount( UFC::UiniFile* ini )
 		else
 			iniSection->SetValue( "OffHourOtherRule", "0" );
 	}
+
+	if(UsersEdit->Text == "")
+	{
+		iniSection->DeleteValue("Users");
+	}
+	else
+	{
+		iniSection->SetValue( "Users", UsersEdit->Text.c_str() );
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TAccountForm::AddAccButtonClick(TObject *Sender)
@@ -1122,17 +1135,20 @@ void __fastcall TAccountForm::GroupComboBoxChange(TObject *Sender)
 	{
 		SourceComboBox->Enabled = true;
 		AccountPanel->Visible   = true;
+		UsersBitBtn->Enabled    = false;
 	}
 	else if( GroupComboBox->ItemIndex == 1 ) ///< For AE
 	{
 		SourceComboBox->Enabled = true;
 		AccountPanel->Visible   = true;
+		UsersBitBtn->Enabled    = true;
 	}
 	else ///For Channel
 	{
 		SourceComboBox->ItemIndex = 0; ///< Channel must use Speedy-API
 		SourceComboBox->Enabled   = false;
 		AccountPanel->Visible     = false;
+		UsersBitBtn->Enabled      = true;
 	}
 	ClientHeight = BtnPanel->Top + BtnPanel->Height;
 }
@@ -1728,5 +1744,13 @@ void __fastcall TAccountForm::TSETermsComboBoxChange(TObject *Sender)
 		TSEOIDGenGroup->Buttons[2]->Enabled = true;
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TAccountForm::UsersBitBtnClick(TObject *Sender)
+{
+	UsersList = new TUsersList(this, FParentForm, UsersEdit->Text);
+	if( UsersList->ShowModal() == mrOk )
+		UsersEdit->Text = UsersList->GetUsers().c_str();
+	delete UsersList;
+	UsersList = NULL;
+}
+//---------------------------------------------------------------------------
 

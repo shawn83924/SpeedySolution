@@ -43,6 +43,7 @@ USEFORM("Login.cpp", LoginForm);
 USEFORM("MDIMain.cpp", MDIForm);
 USEFORM("MessageDialog.cpp", MessageForm);
 USEFORM("APIForm.cpp", APISettingForm);
+USEFORM("UsersForm.cpp", UsersList);
 //---------------------------------------------------------------------------
 LCID FCurrentLCID;
 //---------------------------------------------------------------------------
@@ -72,6 +73,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->CreateForm(__classid(TExceptionProdForm), &ExceptionProdForm);
 		Application->CreateForm(__classid(TMessageForm), &MessageForm);
 		Application->CreateForm(__classid(TThroughputForm), &ThroughputForm);
+		Application->CreateForm(__classid(TUsersList), &UsersList);
 		Application->Run();
 	}
 	catch( Exception &exception )
