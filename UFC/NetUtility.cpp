@@ -54,6 +54,8 @@ int          GYear;
 int          GMonth;
 int          GDay;
 //------------------------------------------------------------------------------
+static const char kBase62Chars[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+//------------------------------------------------------------------------------
 #ifndef _WIN32
 static void RunShellScript( const char* const argv[] )
 {
@@ -1730,6 +1732,31 @@ UFC::AnsiString GetCurrentDir( void )
 }
 
 //---------------------------------------------------------------------------
+/**
+ * Match a file name against the FileList() filter.
+ * The filter is used in two different ways by the callers:
+ *   - as a real extension, e.g. ".xml", ".ini"        -> match the tail
+ *   - as a TAIFEX file code, e.g. "C01", "P19"        -> match the head
+ *     (C01.20.YYYYMMDDHHMMSSmmm, P19.20.YYYYMMDDHHMMSSmmm)
+ * so a name is accepted when it either starts with or ends with the filter.
+ * An empty filter matches every file.
+ */
+static bool MatchFileFilter( const char* FileName, const AnsiString& Filter )
+{
+    int FilterLen = Filter.Length();
+
+    if( FilterLen <= 0 )
+        return true;                                     ///< No filter, take them all.
+
+    int NameLen = ( FileName != NULL )? (int)strlen( FileName ) : 0;
+
+    if( NameLen < FilterLen )
+        return false;
+    if( strncmp( FileName, Filter.c_str(), FilterLen ) == 0 )
+        return true;                                     ///< Head matched, e.g. "C01".
+    return strcmp( FileName + NameLen - FilterLen, Filter.c_str() ) == 0;///< Tail matched, e.g. ".xml".
+}
+//---------------------------------------------------------------------------
 Int32 FileList( const AnsiString& Path, const AnsiString& Ext, UFC::PStringList& Files )
 {
     AnsiString DirPath(Path.c_str());
@@ -1738,8 +1765,7 @@ Int32 FileList( const AnsiString& Path, const AnsiString& Ext, UFC::PStringList&
         if (DirPath.LastChar() != '\\')
             DirPath += "\\";
 
-        DirPath += "*";
-        DirPath += Ext;
+        DirPath += "*";                                  ///< Enumerate all, filter with MatchFileFilter().
 
 		WIN32_FIND_DATAA FindFileData;
         HANDLE hFind; // INVALID_HANDLE_VALUE;
@@ -1749,6 +1775,11 @@ Int32 FileList( const AnsiString& Path, const AnsiString& Ext, UFC::PStringList&
         {
             do
             {
+                if ((FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) != 0)
+                    continue;
+                if (MatchFileFilter(FindFileData.cFileName, Ext) == false)
+                    continue;
+
                 AnsiString FileName(FindFileData.cFileName);
                 Files.Add(FileName);
                 Count++;
@@ -1777,12 +1808,9 @@ Int32 FileList( const AnsiString& Path, const AnsiString& Ext, UFC::PStringList&
                     continue;
                 if ((FileStat.st_mode & S_IFDIR) == FALSE)
                 {
-                    AnsiString FileName(Item->d_name);
-                    int extLen  = Ext.Length();
-                    int fileLen = FileName.Length();
-                    if (extLen > 0 && fileLen >= extLen &&
-                        FileName.SubString(fileLen - extLen, extLen) == Ext)
+                    if (MatchFileFilter(Item->d_name, Ext) == true)
                     {
+                        AnsiString FileName(Item->d_name);
                         Files.Add(FileName);
                         Count++;
                     }
@@ -1876,6 +1904,64 @@ Int64 DoubleToInt64( double DoubleVal, int Digi)
         return (Int64) ((DoubleVal + precision) * multiple);
     else
         return (Int64) ((DoubleVal - precision) * multiple);
+}
+//------------------------------------------------------------------------------
+const char* Int64ToBase62( UInt64 Value, UFC::AnsiString& OutBuf, BOOL PadToFull, char PadChar )
+{
+    OutBuf.SetLength( 11 );
+    char* buf = OutBuf.Rowdata();
+    memset( buf, PadChar, 11 );
+
+    if( Value == 0 )
+    {
+        if( PadToFull == TRUE )
+            return OutBuf.c_str();
+        OutBuf.SetLength( 1 );
+        OutBuf.Rowdata()[0] = '0';
+        return OutBuf.c_str();
+    }
+
+    int pos = 10;
+    while( Value > 0 )
+    {
+        buf[pos--] = kBase62Chars[Value % 62];
+        Value /= 62;
+    }
+
+    if( PadToFull == TRUE )
+        return OutBuf.c_str();
+
+    // Start at offset
+    int len = 10 - pos;
+    memmove( buf, buf + pos + 1, len );
+    OutBuf.SetLength( len );
+    return OutBuf.c_str();
+}
+//------------------------------------------------------------------------------
+UInt64 Base62ToInt64( const UFC::AnsiString& Base62 )
+{
+    if( Base62.IsEmpty() ) return 0;
+
+    const char* ptr = Base62;
+    UInt64 result = 0;
+    while( *ptr != '\0' )
+    {
+        char c = *ptr;
+        UInt64 digit;
+
+        if( c >= '0' && c <= '9' )
+            digit = c - '0';
+        else if( c >= 'A' && c <= 'Z' )
+            digit = c - 'A' + 10;
+        else if( c >= 'a' && c <= 'z' )
+            digit = c - 'a' + 36;
+        else // error return 0
+            return 0;
+
+        result = result * 62 + digit;
+        ptr++;
+    }
+    return result;
 }
 //------------------------------------------------------------------------------
 bool IsDigitalStr( const AnsiString& IntegerStr )
@@ -2292,6 +2378,74 @@ DoubleToStr::DoubleToStr( double Num, int Width, int Precision,  bool PadZero )
 int DoubleToStr::Length( void )
 {
     return 31 - ( FResult -FBuffer );
+}
+//---------------------------------------------------------------------------
+//
+//   class Int64ToStr
+//
+//---------------------------------------------------------------------------
+Int64ToStr::Int64ToStr( Int64 value )
+{    
+    bool IsNegative = (value < 0)? true: false;
+    register char* ptr = FBuffer + 21;    
+    register long long tmp_value;
+        
+    do 
+    {
+        tmp_value = value;
+        value /= 10;
+        *ptr-- = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * 10)];
+            
+    } while( value );
+    // Apply negative sign
+    if( IsNegative == true ) 
+        *ptr-- = '-'; 
+    FBuffer[ 22 ] = 0;
+    FResult = ptr + 1;
+}
+//---------------------------------------------------------------------------
+Int64ToStr::Int64ToStr( Int64 value, int digi, bool PadZero )
+{
+    bool IsNegative = (value < 0)? true: false;
+    register char* ptr = FBuffer + 21;    
+    register long long tmp_value;
+    char FillChar;
+    
+    if( digi > 19 )
+        digi = 19;
+    if( PadZero == false )
+        FillChar = ' ';
+    else
+        FillChar = '0';        
+    if( IsNegative == true ) 
+        digi--;     
+    do 
+    {
+        tmp_value = value;
+        value /= 10;
+        *ptr-- = "zyxwvutsrqponmlkjihgfedcba9876543210123456789abcdefghijklmnopqrstuvwxyz" [35 + (tmp_value - value * 10)];
+        digi--;
+            
+    } while( value );    
+    // Apply negative sign. ("   -321")
+    if( PadZero == false && IsNegative == true )
+        *ptr-- = '-';    
+    // pad with zero or space.
+    while( digi > 0 )
+    {
+        *ptr-- = FillChar;
+        digi--;
+    };    
+    // Apply negative sign.( "-000321" )
+    if( PadZero == true && IsNegative == true )        
+        *ptr-- = '-';     
+    FBuffer[ 22 ] = 0;
+    FResult = ptr + 1;    
+}
+//---------------------------------------------------------------------------
+int Int64ToStr::Length( void )
+{
+    return 22 - ( FResult -FBuffer );
 }
 //---------------------------------------------------------------------------
 BOOL IsValidIP( const UFC::AnsiString& IP )

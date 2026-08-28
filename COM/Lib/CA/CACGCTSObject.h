@@ -7,7 +7,6 @@
 #include "CGCAPIDll.h"
 #include "ApiCADllObject.h"
 //#include "CABasicObjects.h"
-
 /*
 __declspec(dllimport) int CGCAPI_CertEncrypt(const char* strCert, const void* pbData, unsigned long lData, int iFlags, char** pstrCipher);
 __declspec(dllimport) int CGCAPI_Sign(const void* pbData, unsigned long lData, const char* strSubject, int iFlags, int iKeyUsage, char** pstrSignature);
@@ -92,7 +91,6 @@ __declspec(dllimport) int CGCAPI_GetUserCertificate(const char* strProvider, con
 __declspec(dllimport) int CGCAPI_GetUserCertificates(const char* strProvider, const char* strSubject, int iFlags, int iKeyUsage, int iDisableATSpec, char*** pCerts, int* piCerts);
 __declspec(dllimport) int GetDLLVersion(long iFlags, char** ver);
 */
-
 typedef int (*CGCAPI_CertEncryptPtr) (const char*, const void*, unsigned long, int, char**);
 typedef int (*CGCAPI_SignPtr) (const void*, unsigned long, const char*, int, int, char**);
 typedef int (*CGCAPI_SignExPtr) (const void*, unsigned long, const char*, const char*, const char*, const char*, int, int, int, char**);
@@ -180,112 +178,112 @@ typedef int (*GetDLLVersionPtr) (long, char**);
 class CTSCGCCAObject : public CApiCADllObject
 {
 public:
-	static UFC::AnsiString GetErrorMsgA(int ErrorID);
+    static UFC::AnsiString GetErrorMsgA(int ErrorID);
 protected:
-	HINSTANCE FDllInstance;
+    HINSTANCE FDllInstance;
 
-	CGCAPI_CertEncryptPtr                FfnCGCAPI_CertEncrypt;
-	CGCAPI_SignPtr                       FfnCGCAPI_Sign;  //
-	CGCAPI_SignExPtr                     FfnCGCAPI_SignEx;  //
-	CGCAPI_SignAndEncryptPtr             FfnCGCAPI_SignAndEncrypt;
-	CGCAPI_VerifyPtr                     FfnCGCAPI_Verify;
-	CGCAPI_ComposeSignaturePtr           FfnCGCAPI_ComposeSignature;
-	CGCAPI_VerifyDigestPtr               FfnCGCAPI_VerifyDigest;
-	CGCAPI_EncryptPtr                    FfnCGCAPI_Encrypt;
-	CGCAPI_DecryptPtr                    FfnCGCAPI_Decrypt;
-	CGCAPI_DecryptAndVerifyPtr           FfnCGCAPI_DecryptAndVerify;
-	CGCAPI_HashPtr                       FfnCGCAPI_Hash;
-	CGCAPI_ExportPKCS12Ptr               FfnCGCAPI_ExportPKCS12;
-	CGCAPI_CertGetDigestPtr              FfnCGCAPI_CertGetDigest;
-	CGCAPI_CertGetIssuerPtr              FfnCGCAPI_CertGetIssuer;
-	CGCAPI_CertGetNotAfterPtr            FfnCGCAPI_CertGetNotAfter;
-	CGCAPI_CertGetNotBeforePtr           FfnCGCAPI_CertGetNotBefore;
-	CGCAPI_CertGetFXMLExtensionPtr       FfnCGCAPI_CertGetFXMLExtension;
-	CGCAPI_CertGetSubjectPtr             FfnCGCAPI_CertGetSubject;
-	CGCAPI_RegisterCertificatePtr        FfnCGCAPI_RegisterCertificate;
-	CGCAPI_ComposePKCS7Ptr               FfnCGCAPI_ComposePKCS7;
-	CGCAPI_PKCS7GetUserCertificatePtr    FfnCGCAPI_PKCS7GetUserCertificate;
-	CGCAPI_ShowCertificatePtr            FfnCGCAPI_ShowCertificate;
-	CGCAPI_PureSignPtr                   FfnCGCAPI_PureSign;
-	CGCAPI_PFXGetCertCountPtr            FfnCGCAPI_PFXGetCertCount;
-	CGCAPIMemAllocPtr                    FfnCGCAPIMemAlloc;
-	CGCAPIMemReallocPtr                  FfnCGCAPIMemRealloc;
-	CGCAPIMemFreePtr                     FfnCGCAPIMemFree;
-	CGXCAPI_SignAndEncryptPtr            FfnCGXCAPI_SignAndEncrypt;
-	CGXCAPI_ComposeSignaturePtr          FfnCGXCAPI_ComposeSignature;
-	CGXCAPI_DecryptAndVerifyPtr          FfnCGXCAPI_DecryptAndVerify;
-	CGXCAPI_GetUserCertificatePtr        FfnCGXCAPI_GetUserCertificate;
-	CGXCAPI_GetCertificatePtr            FfnCGXCAPI_GetCertificate;
-	CGXCAPI_GenerateKeyPtr               FfnCGXCAPI_GenerateKey;
-	CGXCAPI_GetPrivateKeyPtr             FfnCGXCAPI_GetPrivateKey;
-	CGXCAPI_CertGetPublicKeyPtr          FfnCGXCAPI_CertGetPublicKey;
-	CGXCAPI_EncryptPtr                   FfnCGXCAPI_Encrypt;
-	CGXCAPI_EncryptInitPtr               FfnCGXCAPI_EncryptInit;
-	CGXCAPI_EncryptUpdatePtr             FfnCGXCAPI_EncryptUpdate;
-	CGXCAPI_EncryptFinalPtr              FfnCGXCAPI_EncryptFinal;
-	CGXCAPI_DecryptPtr                   FfnCGXCAPI_Decrypt;
-	CGXCAPI_DecryptInitPtr               FfnCGXCAPI_DecryptInit;
-	CGXCAPI_DecryptUpdatePtr             FfnCGXCAPI_DecryptUpdate;
-	CGXCAPI_DecryptFinalPtr              FfnCGXCAPI_DecryptFinal;
-	CGXCAPI_HashInitPtr                  FfnCGXCAPI_HashInit;
-	CGXCAPI_HashUpdatePtr                FfnCGXCAPI_HashUpdate;
-	CGXCAPI_HashFinalPtr                 FfnCGXCAPI_HashFinal;
-	CGXCAPI_CertGetSerialNumberPtr       FfnCGXCAPI_CertGetSerialNumber;
-	CGXCAPI_CertGetSubjectPtr            FfnCGXCAPI_CertGetSubject;
-	CGXCAPI_CertGetIssuerPtr             FfnCGXCAPI_CertGetIssuer;
-	CGXCAPI_CertGetNotBeforePtr          FfnCGXCAPI_CertGetNotBefore;
-	CGXCAPI_CertGetNotAfterPtr           FfnCGXCAPI_CertGetNotAfter;
-	CGXCAPI_CertGetDigestPtr             FfnCGXCAPI_CertGetDigest;
-	CGXCAPI_ExportPKCS12Ptr              FfnCGXCAPI_ExportPKCS12;
-	CGXCAPI_SignPtr                      FfnCGXCAPI_Sign;
-	CGXCAPI_VerifyPtr                    FfnCGXCAPI_Verify;
-	CGXCAPI_PKCS7GetSignerInfoCountPtr   FfnCGXCAPI_PKCS7GetSignerInfoCount;
-	CGXCAPI_PKCS7GetSignerInfoPtr        FfnCGXCAPI_PKCS7GetSignerInfo;
-	CGXCAPI_PKCS7GetSignerCertificatePtr FfnCGXCAPI_PKCS7GetSignerCertificate;
-	CGXCAPI_PKCS7GetContentPtr           FfnCGXCAPI_PKCS7GetContent;
-	CGXCAPI_PKCS7GetUserCertificatePtr   FfnCGXCAPI_PKCS7GetUserCertificate;
-	CGXCAPI_PKCS7AddSignerCertificatePtr FfnCGXCAPI_PKCS7AddSignerCertificate;
-	CGXCAPI_PureSignPtr                  FfnCGXCAPI_PureSign;
-	CGXCAPI_PureVerifyPtr                FfnCGXCAPI_PureVerify;
-	CGXCAPI_EncodePtr                    FfnCGXCAPI_Encode;
-	CGXCAPI_EncodeObjectPtr              FfnCGXCAPI_EncodeObject;
-	CGXCAPI_DecodePtr                    FfnCGXCAPI_Decode;
-	CGXCAPI_DecodeObjectPtr              FfnCGXCAPI_DecodeObject;
-	CGXCAPI_LoadStorePtr                 FfnCGXCAPI_LoadStore;
-	CGXCAPI_LoadStoreByNamePtr           FfnCGXCAPI_LoadStoreByName;
-	CGXCAPI_VerifyCertChainPtr           FfnCGXCAPI_VerifyCertChain;
-	CGXCAPI_AcceptPKCS7Ptr               FfnCGXCAPI_AcceptPKCS7;
-	CGXCAPI_DeleteUsrCertPtr             FfnCGXCAPI_DeleteUsrCert;
-	CGXCAPI_ChangeP12PwdPtr              FfnCGXCAPI_ChangeP12Pwd;
-	CGXCAPIFreeHandlePtr                 FfnCGXCAPIFreeHandle;
-	CGXCAPIFreeBlobPtr                   FfnCGXCAPIFreeBlob;
-	CGCAPI_PFXP7SignPtr                  FfnCGCAPI_PFXP7Sign;
-	CGCAPI_CertGetSerialNumberPtr        FfnCGCAPI_CertGetSerialNumber;
-	CGCAPI_CertGetSubjectWPtr            FfnCGCAPI_CertGetSubjectW;
-	CGXCAPI_GetCertificatesPtr           FfnCGXCAPI_GetCertificates;
-	CGCAPI_GetUserCertificatePtr         FfnCGCAPI_GetUserCertificate;
-	CGCAPI_GetUserCertificatesPtr        FfnCGCAPI_GetUserCertificates;
-	GetDLLVersionPtr                     FfnGetDLLVersion;
+    CGCAPI_CertEncryptPtr                FfnCGCAPI_CertEncrypt;
+    CGCAPI_SignPtr                       FfnCGCAPI_Sign;  //
+    CGCAPI_SignExPtr                     FfnCGCAPI_SignEx;  //
+    CGCAPI_SignAndEncryptPtr             FfnCGCAPI_SignAndEncrypt;
+    CGCAPI_VerifyPtr                     FfnCGCAPI_Verify;
+    CGCAPI_ComposeSignaturePtr           FfnCGCAPI_ComposeSignature;
+    CGCAPI_VerifyDigestPtr               FfnCGCAPI_VerifyDigest;
+    CGCAPI_EncryptPtr                    FfnCGCAPI_Encrypt;
+    CGCAPI_DecryptPtr                    FfnCGCAPI_Decrypt;
+    CGCAPI_DecryptAndVerifyPtr           FfnCGCAPI_DecryptAndVerify;
+    CGCAPI_HashPtr                       FfnCGCAPI_Hash;
+    CGCAPI_ExportPKCS12Ptr               FfnCGCAPI_ExportPKCS12;
+    CGCAPI_CertGetDigestPtr              FfnCGCAPI_CertGetDigest;
+    CGCAPI_CertGetIssuerPtr              FfnCGCAPI_CertGetIssuer;
+    CGCAPI_CertGetNotAfterPtr            FfnCGCAPI_CertGetNotAfter;
+    CGCAPI_CertGetNotBeforePtr           FfnCGCAPI_CertGetNotBefore;
+    CGCAPI_CertGetFXMLExtensionPtr       FfnCGCAPI_CertGetFXMLExtension;
+    CGCAPI_CertGetSubjectPtr             FfnCGCAPI_CertGetSubject;
+    CGCAPI_RegisterCertificatePtr        FfnCGCAPI_RegisterCertificate;
+    CGCAPI_ComposePKCS7Ptr               FfnCGCAPI_ComposePKCS7;
+    CGCAPI_PKCS7GetUserCertificatePtr    FfnCGCAPI_PKCS7GetUserCertificate;
+    CGCAPI_ShowCertificatePtr            FfnCGCAPI_ShowCertificate;
+    CGCAPI_PureSignPtr                   FfnCGCAPI_PureSign;
+    CGCAPI_PFXGetCertCountPtr            FfnCGCAPI_PFXGetCertCount;
+    CGCAPIMemAllocPtr                    FfnCGCAPIMemAlloc;
+    CGCAPIMemReallocPtr                  FfnCGCAPIMemRealloc;
+    CGCAPIMemFreePtr                     FfnCGCAPIMemFree;
+    CGXCAPI_SignAndEncryptPtr            FfnCGXCAPI_SignAndEncrypt;
+    CGXCAPI_ComposeSignaturePtr          FfnCGXCAPI_ComposeSignature;
+    CGXCAPI_DecryptAndVerifyPtr          FfnCGXCAPI_DecryptAndVerify;
+    CGXCAPI_GetUserCertificatePtr        FfnCGXCAPI_GetUserCertificate;
+    CGXCAPI_GetCertificatePtr            FfnCGXCAPI_GetCertificate;
+    CGXCAPI_GenerateKeyPtr               FfnCGXCAPI_GenerateKey;
+    CGXCAPI_GetPrivateKeyPtr             FfnCGXCAPI_GetPrivateKey;
+    CGXCAPI_CertGetPublicKeyPtr          FfnCGXCAPI_CertGetPublicKey;
+    CGXCAPI_EncryptPtr                   FfnCGXCAPI_Encrypt;
+    CGXCAPI_EncryptInitPtr               FfnCGXCAPI_EncryptInit;
+    CGXCAPI_EncryptUpdatePtr             FfnCGXCAPI_EncryptUpdate;
+    CGXCAPI_EncryptFinalPtr              FfnCGXCAPI_EncryptFinal;
+    CGXCAPI_DecryptPtr                   FfnCGXCAPI_Decrypt;
+    CGXCAPI_DecryptInitPtr               FfnCGXCAPI_DecryptInit;
+    CGXCAPI_DecryptUpdatePtr             FfnCGXCAPI_DecryptUpdate;
+    CGXCAPI_DecryptFinalPtr              FfnCGXCAPI_DecryptFinal;
+    CGXCAPI_HashInitPtr                  FfnCGXCAPI_HashInit;
+    CGXCAPI_HashUpdatePtr                FfnCGXCAPI_HashUpdate;
+    CGXCAPI_HashFinalPtr                 FfnCGXCAPI_HashFinal;
+    CGXCAPI_CertGetSerialNumberPtr       FfnCGXCAPI_CertGetSerialNumber;
+    CGXCAPI_CertGetSubjectPtr            FfnCGXCAPI_CertGetSubject;
+    CGXCAPI_CertGetIssuerPtr             FfnCGXCAPI_CertGetIssuer;
+    CGXCAPI_CertGetNotBeforePtr          FfnCGXCAPI_CertGetNotBefore;
+    CGXCAPI_CertGetNotAfterPtr           FfnCGXCAPI_CertGetNotAfter;
+    CGXCAPI_CertGetDigestPtr             FfnCGXCAPI_CertGetDigest;
+    CGXCAPI_ExportPKCS12Ptr              FfnCGXCAPI_ExportPKCS12;
+    CGXCAPI_SignPtr                      FfnCGXCAPI_Sign;
+    CGXCAPI_VerifyPtr                    FfnCGXCAPI_Verify;
+    CGXCAPI_PKCS7GetSignerInfoCountPtr   FfnCGXCAPI_PKCS7GetSignerInfoCount;
+    CGXCAPI_PKCS7GetSignerInfoPtr        FfnCGXCAPI_PKCS7GetSignerInfo;
+    CGXCAPI_PKCS7GetSignerCertificatePtr FfnCGXCAPI_PKCS7GetSignerCertificate;
+    CGXCAPI_PKCS7GetContentPtr           FfnCGXCAPI_PKCS7GetContent;
+    CGXCAPI_PKCS7GetUserCertificatePtr   FfnCGXCAPI_PKCS7GetUserCertificate;
+    CGXCAPI_PKCS7AddSignerCertificatePtr FfnCGXCAPI_PKCS7AddSignerCertificate;
+    CGXCAPI_PureSignPtr                  FfnCGXCAPI_PureSign;
+    CGXCAPI_PureVerifyPtr                FfnCGXCAPI_PureVerify;
+    CGXCAPI_EncodePtr                    FfnCGXCAPI_Encode;
+    CGXCAPI_EncodeObjectPtr              FfnCGXCAPI_EncodeObject;
+    CGXCAPI_DecodePtr                    FfnCGXCAPI_Decode;
+    CGXCAPI_DecodeObjectPtr              FfnCGXCAPI_DecodeObject;
+    CGXCAPI_LoadStorePtr                 FfnCGXCAPI_LoadStore;
+    CGXCAPI_LoadStoreByNamePtr           FfnCGXCAPI_LoadStoreByName;
+    CGXCAPI_VerifyCertChainPtr           FfnCGXCAPI_VerifyCertChain;
+    CGXCAPI_AcceptPKCS7Ptr               FfnCGXCAPI_AcceptPKCS7;
+    CGXCAPI_DeleteUsrCertPtr             FfnCGXCAPI_DeleteUsrCert;
+    CGXCAPI_ChangeP12PwdPtr              FfnCGXCAPI_ChangeP12Pwd;
+    CGXCAPIFreeHandlePtr                 FfnCGXCAPIFreeHandle;
+    CGXCAPIFreeBlobPtr                   FfnCGXCAPIFreeBlob;
+    CGCAPI_PFXP7SignPtr                  FfnCGCAPI_PFXP7Sign;
+    CGCAPI_CertGetSerialNumberPtr        FfnCGCAPI_CertGetSerialNumber;
+    CGCAPI_CertGetSubjectWPtr            FfnCGCAPI_CertGetSubjectW;
+    CGXCAPI_GetCertificatesPtr           FfnCGXCAPI_GetCertificates;
+    CGCAPI_GetUserCertificatePtr         FfnCGCAPI_GetUserCertificate;
+    CGCAPI_GetUserCertificatesPtr        FfnCGCAPI_GetUserCertificates;
+    GetDLLVersionPtr                     FfnGetDLLVersion;
 /*
-	CGCAPI_PFXP7SignPtr               FfnCGCAPI_PFXP7Sign;
-	CGCAPI_PKCS7GetUserCertificatePtr FfnCGCAPI_PKCS7GetUserCertificate;
-	CGCAPI_CertGetSubjectPtr          FfnCGCAPI_CertGetSubject;
-	CGCAPI_CertGetNotBeforePtr        FfnCGCAPI_CertGetNotBefore;
-	CGCAPI_CertGetNotAfterPtr         FfnCGCAPI_CertGetNotAfter;
-	CGCAPI_CertGetSerialNumberPtr     FfnCGCAPI_CertGetSerialNumber;
-	CGXCAPI_LoadStorePtr              FfnCGXCAPI_LoadStore;
-	CGXCAPI_GetCertificatesPtr        FfnCGXCAPI_GetCertificates;
-	CGCAPI_SignExPtr                  FfnCGCAPI_SignEx;
-	CGCAPIMemFreePtr                  FfnCGCAPIMemFree;
-	CGXCAPIFreeHandlePtr              FfnCGXCAPIFreeHandle;
+    CGCAPI_PFXP7SignPtr               FfnCGCAPI_PFXP7Sign;
+    CGCAPI_PKCS7GetUserCertificatePtr FfnCGCAPI_PKCS7GetUserCertificate;
+    CGCAPI_CertGetSubjectPtr          FfnCGCAPI_CertGetSubject;
+    CGCAPI_CertGetNotBeforePtr        FfnCGCAPI_CertGetNotBefore;
+    CGCAPI_CertGetNotAfterPtr         FfnCGCAPI_CertGetNotAfter;
+    CGCAPI_CertGetSerialNumberPtr     FfnCGCAPI_CertGetSerialNumber;
+    CGXCAPI_LoadStorePtr              FfnCGXCAPI_LoadStore;
+    CGXCAPI_GetCertificatesPtr        FfnCGXCAPI_GetCertificates;
+    CGCAPI_SignExPtr                  FfnCGCAPI_SignEx;
+    CGCAPIMemFreePtr                  FfnCGCAPIMemFree;
+    CGXCAPIFreeHandlePtr              FfnCGXCAPIFreeHandle;
 */
-	UFC::AnsiString FOrganizationalUnit;
-	UFC::AnsiString FCommonName;
+    UFC::AnsiString FOrganizationalUnit;
+    UFC::AnsiString FCommonName;
 
 public:
-	CTSCGCCAObject(const UFC::AnsiString& CommonName, const UFC::AnsiString& DllFileName, UFC::BufferedLog* LogPtr);
+    CTSCGCCAObject(const UFC::AnsiString& CommonName, const UFC::AnsiString& DllFileName, UFC::BufferedLog* LogPtr);
 
-	virtual bool LoadCADynamicLibrary();
+    virtual bool LoadCADynamicLibrary();
 
 };
 #endif

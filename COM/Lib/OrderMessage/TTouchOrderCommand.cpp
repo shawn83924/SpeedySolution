@@ -19,6 +19,31 @@ static std::string priceNomalize(double price)
     return s_price;
 }
 
+// OrderSourceEnum -> 委託類別註記(char)
+// copy from TTaifexconnection::OrderSourceCode()
+// added on 2026/08/07
+static char OrderSourceCode(nsOrderMessageDefine::OrderSourceEnum OrdSrc)
+{
+    switch (OrdSrc)
+    {
+    case nsOrderMessageDefine::osDedicatedLine:
+        return 'D';
+    case nsOrderMessageDefine::osAPI:
+        return 'A';
+    case nsOrderMessageDefine::osMobile:
+        return 'M';
+    case nsOrderMessageDefine::osWeb:
+        return 'W';
+    case nsOrderMessageDefine::osPCApplication:
+        return 'P';
+    case nsOrderMessageDefine::osVoice:
+        return 'V';
+    case nsOrderMessageDefine::osGeneral:
+    default:
+        return 'G';
+    }
+}
+
 // 設定暫停、啟動、移除跟查詢時指定的觸價單單號
 // 若是用在觸價後刪觸價單則是用來設定要刪除的觸價單的單號，在這種情況下
 //   SetTouchOrderID 所設定的單號會優先於 SetTriggeredAction 裡 TTouchOrderCommand 物件所設定的單號 
@@ -187,6 +212,14 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TNewOrderMessage* order)
             FTriggeredAction.insert(std::make_pair("market", "fut"));
         else
             FTriggeredAction.insert(std::make_pair("market", "opt"));
+
+        // added on 2026/08/07 
+        // 期貨下單需要 order_source(char[1]) & info_source(char[3]) 兩個欄位
+        // 下單時要合併一起放進 MTree[SOURCE] 裡
+        std::ostringstream os;
+        os << OrderSourceCode(order->GetOrderSource()) << order->GetMarketDataSource();
+        std::string source = os.str();
+        FTriggeredAction.insert(std::make_pair("source", source));
     }
     else
     {
@@ -632,6 +665,14 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TCancelOrderMessage* order)
             FTriggeredAction.insert(std::make_pair("market", "fut"));
         else
             FTriggeredAction.insert(std::make_pair("market", "opt"));
+
+        // added on 2026/08/07 
+        // 期貨下單需要 order_source(char[1]) & info_source(char[3]) 兩個欄位
+        // 下單時要合併一起放進 MTree[SOURCE] 裡
+        std::ostringstream os;
+        os << OrderSourceCode(order->GetOrderSource()) << order->GetMarketDataSource();
+        std::string source = os.str();
+        FTriggeredAction.insert(std::make_pair("source", source));
     }
     else
     {
@@ -852,6 +893,14 @@ BOOL TTouchOrderCommand::ToTriggeredAction(TReplaceOrderMessage* order)
             FTriggeredAction.insert(std::make_pair("market", "fut"));
         else
             FTriggeredAction.insert(std::make_pair("market", "opt"));
+
+        // added on 2026/08/07 
+        // 期貨下單需要 order_source(char[1]) & info_source(char[3]) 兩個欄位
+        // 下單時要合併一起放進 MTree[SOURCE] 裡
+        std::ostringstream os;
+        os << OrderSourceCode(order->GetOrderSource()) << order->GetMarketDataSource();
+        std::string source = os.str();
+        FTriggeredAction.insert(std::make_pair("source", source));
     }
     else
     {

@@ -331,6 +331,18 @@ public:
     int Length( void );
 };
 //------------------------------------------------------------------------------
+class Int64ToStr
+{
+private:
+    char FBuffer[ 24 ];
+    char* FResult;
+public:
+    Int64ToStr( Int64 Num );
+    Int64ToStr( Int64 Num, int IntWidth, bool PadZero = false );
+    operator const char*() const {  return FResult;  }
+    int Length( void );
+};
+//------------------------------------------------------------------------------
 extern PEndian         Endian;
 extern char            Hostname[];
 extern char            WorkingDir[];
@@ -397,6 +409,8 @@ extern double          IntToDouble( int IntVal, int Digi );
 extern double          Int64ToDouble( Int64 IntVal, int Digi );
 extern int 	       DoubleToInt( double DoubleVal, int Digi );
 extern Int64           DoubleToInt64( double DoubleVal, int Digi );
+extern const char*     Int64ToBase62( UInt64 Value, UFC::AnsiString& OutBuf, BOOL PadToFull = FALSE, char PadChar = '0' );
+extern UInt64          Base62ToInt64( const UFC::AnsiString& Base62 );
 extern bool            IsDigitalStr( const AnsiString& IntegerStr );
 extern bool            IsIntegerStr( const AnsiString& IntegerStr );
 extern bool            IsFloatingStr( const AnsiString& FloatingStr );

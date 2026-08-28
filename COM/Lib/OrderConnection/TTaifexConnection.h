@@ -420,6 +420,7 @@ private:
 	UFC::List<TMdListener*>         FRecoverListeners;///< Listener for Recover executions.
 	UFC::PStringList                FAccounts;       ///< Other Accounts need to recv executions.
 	UFC::PStringList                FIDs;
+	UFC::PStringList                FRelatedUsers;   ///< Related users from logon reply, need to recv executions.
 private:
 	///<
 	///< TAIFEX Render/Parser/Format
@@ -608,6 +609,7 @@ private:
 	bool                            CheckOrderID( nsOrderMessageDefine::MarketEnum OrderMarket, const char*OrderID );
 	void                            AddExecListener( const UFC::AnsiString& Subject, const UFC::AnsiString& Key, EventFunc* CBFunc );
 	void                            AddRecoverListener( void );
+	void                            AddRelatedUsers( const UFC::AnsiString& Users, int UserCount );
 	void                            CreateReportListener( void );
 	void                            AddTAIFEXReportListener( const UFC::AnsiString& ListenKey );
 	void                            AddTWSEReportListener( const UFC::AnsiString& ListenKey );

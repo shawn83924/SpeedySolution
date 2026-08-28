@@ -118,10 +118,6 @@ STDMETHODIMP TTriggeringConditionImpl::VolumeComp(LogicalComparisonOperatorEnum 
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTriggeringConditionImpl::PeriodAccumVolumeComp(LogicalComparisonOperatorEnum op,
           unsigned period_in_tenth_sec, unsigned volume, unsigned* id)
-
-
-
-
 {
 	LogicalComparisonOperator Operator = static_cast<LogicalComparisonOperator>(static_cast<int>(op));
 	*id = FCondition.PeriodAccumVolumeComp(Operator, period_in_tenth_sec, volume);
@@ -207,12 +203,5 @@ STDMETHODIMP TTriggeringConditionImpl::get_Instance(VARIANT* Value)
 	ConditionInstance.byref = &FCondition;
 	*Value = ConditionInstance;
 
-	return S_OK;
-}
-// ---------------------------------------------------------------------------
-STDMETHODIMP TTriggeringConditionImpl::SetExecutionTime(unsigned hour, unsigned minute,
-          VARIANT_BOOL* Value)
-{
-	*Value = FCondition.SetExecutionTime(hour, minute);
 	return S_OK;
 }

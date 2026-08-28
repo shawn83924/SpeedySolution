@@ -1246,6 +1246,38 @@ void TTaifexConnection::ChangePassword( const UFC::AnsiString& Password, const U
 	FTransport->Send( SUBJECT_ADMIN, FUniquekey, &PwdMsg );
 }
 //---------------------------------------------------------------------------
+///< Related users came from the logon reply.( USERCOUNT/USERS attributes )
+///< Append them to FIDs, CreateReportListener() subscribes the execution
+///< reports of every ID in FIDs.
+//---------------------------------------------------------------------------
+void TTaifexConnection::AddRelatedUsers( const UFC::AnsiString& Users, int UserCount )
+{
+    UFC::PStringList ReplyUsers;
+
+    FRelatedUsers.Clear();
+    if( FAdmin == 1 ) ///< Admin receives all execution reports already.
+        return;
+    if( UserCount <= 0 || Users.Length() == 0 )
+        return;
+    ReplyUsers.SetStrings( Users, ", ;|\t\r\n" );
+    for( int i = 0; i < ReplyUsers.ItemCount(); i++ )
+    {
+        UFC::AnsiString RelatedUser( ReplyUsers[ i ] );
+
+        if( RelatedUser.Length() == 0 )
+            continue;
+        if( FIDs.IndexOf( RelatedUser ) >= 0 ) ///< Skip the ID already subscribed.
+        {
+            Glog->fprintf( " %s() Skip duplicate related user[%s].", __func__, RelatedUser.c_str() );
+            continue;
+        }
+        FIDs.Add( RelatedUser );
+        FRelatedUsers.Add( RelatedUser );
+    }
+    Glog->fprintf( " %s() %s has %d related user(s)[%s], subscribe %d of them.",
+                   __func__, FID.c_str(), UserCount, Users.c_str(), FRelatedUsers.ItemCount() );
+}
+//---------------------------------------------------------------------------
 void TTaifexConnection::AddRecoverListener( void )
 {
     UFC::AnsiString curRecoverKey = "", idRecoverKey = "";
@@ -1346,6 +1378,8 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
             if( FAdmin == 1 )    ///< In Logon func: FID = FUserName = Logon ID.
                 FID = FUserName; ///< In LogonProxy func: FID = Account, FUserName = Logon ID.
             FUserName = Msg.GetStringValue( "NAME", FUserName.c_str() );
+            ///< Related users, need to receive their execution reports too.
+            AddRelatedUsers( Msg.GetStringValue( "USERS", "" ), Msg.GetIntegerValue( "USERCOUNT", 0 ) );
             ///< Add Recover listeners.
             AddRecoverListener();
             ///< Add Execution reports listener.

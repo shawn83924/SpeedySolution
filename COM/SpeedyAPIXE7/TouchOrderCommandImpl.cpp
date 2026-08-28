@@ -188,10 +188,3 @@ STDMETHODIMP TTouchOrderCommandImpl::GetNID(__int64* NID)
 	*NID = FCommand->GetNID();
 	return S_OK;
 }
-// ---------------------------------------------------------------------------
-STDMETHODIMP TTouchOrderCommandImpl::GetLastErrorMsg(BSTR* Value)
-{
-	WideString msg(FCommand->GetLastErrorMsg());
-	*Value = msg.Copy();
-	return S_OK;
-}
