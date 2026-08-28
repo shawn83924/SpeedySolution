@@ -22,6 +22,7 @@ TNewOrderMessage::TNewOrderMessage( void )
 ,FOrderSource( nsOrderMessageDefine::osDedicatedLine )
 ,FTradingSessionID( nsOrderMessageDefine::tsAuto )
 ,FExpireDate( "" )
+,FToMarketOrderIfOpen( FALSE )
 {
     SetMessageType( nsOrderMessageDefine::mtNew );
 }
@@ -231,6 +232,12 @@ const char* TNewOrderMessage::GetStopOrderSetting()
         FStopOrderSetting += FNewOrderIfMatchSetting;
     FStopOrderSetting += ";";
     
+    // limit order -> market order if market open
+    if (FToMarketOrderIfOpen)
+        FStopOrderSetting += "mio=1;";
+    else
+        FStopOrderSetting += "mio=0;";
+
     return FStopOrderSetting.c_str();
 }
 //---------------------------------------------------------------------------

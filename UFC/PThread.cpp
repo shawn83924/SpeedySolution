@@ -238,8 +238,17 @@ void SleepNS( UInt32 ns )
 #endif
 }
 //----------------------------------------------------------------------------------------------------------------------
-UFC::PHashedList<UFC::AnsiString, EventInfo*>  PEvent::EventsTable;
-UFC::PCriticalSection                          PEvent::EventsTableCS;
+UFC::PHashedList<UFC::AnsiString, EventInfo*>& PEvent::EventsTable( void )
+{
+    static UFC::PHashedList<UFC::AnsiString, EventInfo*> Table; ///< Constructed on first use.
+    return Table;
+}
+//----------------------------------------------------------------------------------------------------------------------
+UFC::PCriticalSection& PEvent::EventsTableCS( void )
+{
+    static UFC::PCriticalSection CS; ///< Constructed on first use.
+    return CS;
+}
 //----------------------------------------------------------------------------------------------------------------------
 PrviateEventInfo::PrviateEventInfo( const AnsiString& Name )
 :EventInfo( Name )  ///< Name of this event object
@@ -260,7 +269,7 @@ PrviateEventInfo::~PrviateEventInfo( void )
 //-------------------------------------------------------------------------------------------------------------------     
 void PrviateEventInfo::RefEvent( pthread_cond_t*& Event, pthread_mutex_t*& Mutex )
 {
-   UFC::PLockObject Lock( PEvent::EventsTableCS );
+   UFC::PLockObject Lock( PEvent::EventsTableCS() );
 
    Event = &FEvent;
    Mutex = &FMutex;
@@ -269,7 +278,7 @@ void PrviateEventInfo::RefEvent( pthread_cond_t*& Event, pthread_mutex_t*& Mutex
 //-------------------------------------------------------------------------------------------------------------------        
 Int32 PrviateEventInfo::DeRef( void )
 {
-   UFC::PLockObject Lock( PEvent::EventsTableCS );
+   UFC::PLockObject Lock( PEvent::EventsTableCS() );
 
    FCount--;
    return FCount;
@@ -277,14 +286,14 @@ Int32 PrviateEventInfo::DeRef( void )
 //---------------------------------------------------------------------------
 void PrviateEventInfo::IncreaseTrigger( void )
 {
-   UFC::PLockObject Lock( PEvent::EventsTableCS );
+   UFC::PLockObject Lock( PEvent::EventsTableCS() );
   
    FTriggerCount ++; 
 }    
 //---------------------------------------------------------------------------
 BOOL PrviateEventInfo::DecreaseTrigger( void )
 {
-   UFC::PLockObject Lock( PEvent::EventsTableCS );    
+   UFC::PLockObject Lock( PEvent::EventsTableCS() );    
    
    if( FTriggerCount >= 1 )
    {
@@ -453,17 +462,17 @@ Int32 SharedEventInfo::TriggerCount( void )
 //-------------------------------------------------------------------------------------------------------------------
 PEvent::PEvent( const UFC::AnsiString& EventName, BOOL Shared )
 {    
-    UFC::PLockObject Lock( EventsTableCS );
+    UFC::PLockObject Lock( EventsTableCS() );
     try
     {
         ///< EventName object exists?
-        if( (FEventInfo = EventsTable.GetObjectByKey( EventName )) == NULL )
+        if( (FEventInfo = EventsTable().GetObjectByKey( EventName )) == NULL )
         {   ///< No, create a new one, and add to event hash table.
             if( Shared == FALSE )
                 FEventInfo = new PrviateEventInfo( EventName  );
             else
                 FEventInfo = new SharedEventInfo( EventName  );
-            EventsTable.Add( EventName, FEventInfo );
+            EventsTable().Add( EventName, FEventInfo );
         }
         ///< Reference the existing event object.
         FEventInfo->RefEvent( m_eventRef, m_mutexRef );
@@ -494,9 +503,9 @@ PEvent::~PEvent()
         {
             if( FEventInfo->GetName( ).Length() > 0 ) ///< Named event.
             {
-                UFC::PLockObject Lock( EventsTableCS );
+                UFC::PLockObject Lock( EventsTableCS() );
                 ///< Remove Event info object.
-                EventsTable.DeleteByKey( FEventInfo->GetName( ));
+                EventsTable().DeleteByKey( FEventInfo->GetName( ));
             }
             delete FEventInfo;
         }        

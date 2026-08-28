@@ -37,7 +37,8 @@ private:
     UFC::AnsiString FTakeProfitSetting;      // added by Kenny to support Strategy. 2026/01/02
     UFC::AnsiString FNewOrderIfMatchSetting; // added by Kenny to support Strategy. 2026/01/02
     UFC::AnsiString FStopOrderSetting;      // added by Kenny to support Strategy. 2026/01/02
-    UFC::AnsiString FStopOrderError;      // added by Kenny to support Strategy. 2026/01/05 
+    UFC::AnsiString FStopOrderError;      // added by Kenny to support Strategy. 2026/01/05
+    BOOL            FToMarketOrderIfOpen; // added by Kenny to support Strategy. 2026/07/24
 public:
     TNewOrderMessage( void );
     ~TNewOrderMessage(void);
@@ -101,7 +102,8 @@ public:
     void                                       ClearTakeProfit()        { FTakeProfitSetting.SetLength(0); } // added by Kenny to support Strategy. 2026/01/02
     //void                                       ClearNewOrderIfMatch()   { FDirectOrderStrategy.SetLength(0); }// added by Kenny to support Strategy. 2026/01/02
     const char*                                GetStopOrderSetting(); // added by Kenny to support Strategy. 2026/01/02
-    const char*                                GetStopOrderError();   // added by Kenny to support Strategy. 2026/01/05    
+    const char*                                GetStopOrderError();   // added by Kenny to support Strategy. 2026/01/05
+    void                                       ToMarketOrderIfOpen(BOOL yes_no) { FToMarketOrderIfOpen = yes_no; } // added by Kenny to support Strateg. 2026/07/24
 };
 //--------------------------------------------------------------------------
 #endif

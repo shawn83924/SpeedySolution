@@ -477,6 +477,44 @@ Int32 PClientSocket::ProcessQueue( void)
     return TotalSize;
 }
 //---------------------------------------------------------------------------
+// Batch version of ProcessQueue: take the whole queue in one lock, then
+// coalesce messages up to BATCH_SEND_LIMIT bytes per BlockSend call.
+// Byte order on the wire is identical to ProcessQueue; only the number of
+// lock acquisitions and send syscalls differs. Messages enqueued while
+// sending are picked up by the caller's next round (same contract).
+//---------------------------------------------------------------------------
+static const size_t BATCH_SEND_LIMIT = 65536; ///< 64KB per BlockSend
+//---------------------------------------------------------------------------
+Int32 PClientSocket::ProcessQueueBatch( void )
+{
+    QUEUE       WorkQueue;
+    std::string Buffer;
+    Int32       TotalSize = 0;
+
+    {
+        UFC::PLockObject Lock( IOLock );
+        WorkQueue.swap( FWriteQueue );
+    }
+    for( QUEUE::iterator It = WorkQueue.begin(); It != WorkQueue.end(); ++It )
+    {
+        if( It->empty() )
+            continue;
+        Buffer.append( *It );
+        if( Buffer.size() >= BATCH_SEND_LIMIT )
+        {
+            BlockSend( (char*)Buffer.c_str(), (Int32)Buffer.size() );
+            TotalSize += (Int32)Buffer.size();
+            Buffer.clear();
+        }
+    }
+    if( !Buffer.empty() )
+    {
+        BlockSend( (char*)Buffer.c_str(), (Int32)Buffer.size() );
+        TotalSize += (Int32)Buffer.size();
+    }
+    return TotalSize;
+}
+//---------------------------------------------------------------------------
 void PClientSocket::ClearQueue( void )
 {
     UFC::PLockObject Lock( IOLock );

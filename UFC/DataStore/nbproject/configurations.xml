@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>Exception.h</itemPath>
+      <itemPath>Field.h</itemPath>
+      <itemPath>Record.h</itemPath>
+      <itemPath>Schema.h</itemPath>
+      <itemPath>Table.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>Exception.cpp</itemPath>
+      <itemPath>Field.cpp</itemPath>
+      <itemPath>Record.cpp</itemPath>
+      <itemPath>Schema.cpp</itemPath>
+      <itemPath>Table.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>DataStore-Makefile.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>DataStore-Makefile.mk</projectmakefile>
+  <confs>
+    <conf name="Linux_Release_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/DataStore_64.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Debug_64" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>2</architecture>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/DataStore_64D.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Release_Dynamic_64" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <architecture>2</architecture>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/lib/libDataStore_64.${CND_DLIB_EXT}</output>
+        </linkerTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Debug_Dynamic_64" type="2">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>2</architecture>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <linkerTool>
+          <output>/Speedy/lib/libDataStore_64D.${CND_DLIB_EXT}</output>
+        </linkerTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="9">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Linux_Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>1</architecture>
+          <commandLine>-std=c++11 -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__LINUX</Elem>
+          </preprocessorList>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/DataStore.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>1</architecture>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/DataStore.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>/MBus/lib/DataStore.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="Exception.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Exception.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Field.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Field.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Record.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Record.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Schema.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Schema.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Table.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Table.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

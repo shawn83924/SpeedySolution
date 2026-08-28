@@ -29,12 +29,12 @@
 //------------------------------------------------------------------------------
 //#ifdef __UNICA_WIN
 #ifdef WIN32
-    #include "../CA/ApiCADllObject.h"
-    #include "../CA/CABasicObjects.h"
-    /// Allen Modify at 20190615
-    #ifndef _MSC_VER
-	#include "../CA/CACGCObject.h"
-    #endif
+	#include "../CA/ApiCADllObject.h"
+	#include "../CA/CABasicObjects.h"
+/// Allen Modify at 20190615
+///#ifndef _MSC_VER
+///	#include "../CA/CACGCObject.h"
+///#endif
 #else
     #include "../CA/ApiCADllObject.h"
     #include "../CA/CABasicObjects.h"
@@ -420,6 +420,7 @@ private:
 	UFC::List<TMdListener*>         FRecoverListeners;///< Listener for Recover executions.
 	UFC::PStringList                FAccounts;       ///< Other Accounts need to recv executions.
 	UFC::PStringList                FIDs;
+	UFC::PStringList                FRelatedUsers;   ///< Related users from logon reply, need to recv executions.
 private:
 	///<
 	///< TAIFEX Render/Parser/Format
@@ -608,6 +609,7 @@ private:
 	bool                            CheckOrderID( nsOrderMessageDefine::MarketEnum OrderMarket, const char*OrderID );
 	void                            AddExecListener( const UFC::AnsiString& Subject, const UFC::AnsiString& Key, EventFunc* CBFunc );
 	void                            AddRecoverListener( void );
+	void                            AddRelatedUsers( const UFC::AnsiString& Users, int UserCount );
 	void                            CreateReportListener( void );
 	void                            AddTAIFEXReportListener( const UFC::AnsiString& ListenKey );
 	void                            AddTWSEReportListener( const UFC::AnsiString& ListenKey );
@@ -674,6 +676,7 @@ private: ///< Handle Executions
 	void                        	ReceiveForeignExecuteMessage( MTree* pTree );
 	///<
 	void                            ReceiveTouchOrderResponse(MTree* pTree); // added by Kenny to support Touch Order. 2026/03/16
+	void                            TouchOrderUserLogon(); // added by Kenny to support user online notification. 2026/07/24
 	void                            UpdateTMPFields( UFC::AnsiString& TMPExtStr, TExecutionReportMessage& ExecutionReport, int Precision );
 	void                            ReceiveNews( MTree* pTree );
 	void                            RemoveListener( TMdListener*& Listener );
@@ -967,6 +970,7 @@ public: ///< CA Functions
 	void DeleteCAObject();
 	bool CreateUniFSCAObject();
 	bool CreateMLTWCAObject();
+	bool CreateTSCGCCAObject();
 	bool CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult );
 };
 //------------------------------------------------------------------------------

@@ -180,7 +180,10 @@ T  PHashedList<K,T>::Next( void )
 template <class K,class T>
 K PHashedList<K,T>::CurrentKey( void )
 {
-	return (T)FIter->first;
+	///< 原本是 return (T)FIter->first; 把 key 轉成 value 的型別，
+	///< 只要被實例化就編不過，所以不可能有現存呼叫者。修正後可搭配
+	///< First()/Next() 做 O(n) 的鍵值迭代，取代 O(n) 的 GetItem( Index )。
+	return FIter->first;
 }
 //------------------------------------------------------------------------------
 //

@@ -263,12 +263,17 @@ BOOL MultiplexingServer::DataArrived( PClientSocket* ClientSocket )
      {
         if( FServerListener != NULL )
         {
-            if( FServerListener->OnClientWrite( this, ClientSocket ) != TRUE )
+            ///< Drain the socket user-space receive buffer before returning:
+            ///< bytes already moved out of the kernel will never trigger poll/epoll again.
+            do
             {
-                BufferedLog::DebugPrintf(" ### OnClientWrite return false ### - RemoveConnection");
-                RemoveConnection( ClientSocket ); ///< Client request dissconnect
-                return FALSE;                     ///< remove this connection.
-            }
+                if( FServerListener->OnClientWrite( this, ClientSocket ) != TRUE )
+                {
+                    BufferedLog::DebugPrintf(" ### OnClientWrite return false ### - RemoveConnection");
+                    RemoveConnection( ClientSocket ); ///< Client request dissconnect
+                    return FALSE;                     ///< remove this connection.
+                }
+            } while( ClientSocket->HasBufferedRx() == TRUE );
             return TRUE;
         }
         ClientSocket->Purge();

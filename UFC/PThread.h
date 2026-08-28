@@ -218,8 +218,11 @@ private:
     pthread_mutex_t* m_mutexRef;
     EventInfo*       FEventInfo;
 public:
-    static UFC::PHashedList<UFC::AnsiString, EventInfo*>  EventsTable;    
-    static UFC::PCriticalSection                          EventsTableCS; 
+    ///< Construct-on-first-use accessors: a global PEvent's constructor may run before this
+    ///< translation unit's static objects when UFC is statically linked, so plain static
+    ///< members would be used before their constructors run and crash at startup.
+    static UFC::PHashedList<UFC::AnsiString, EventInfo*>& EventsTable( void );
+    static UFC::PCriticalSection&                         EventsTableCS( void );
 #endif
 public:
     /**

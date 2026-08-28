@@ -1234,20 +1234,22 @@ double AnsiString::ToDouble() const
 //---------------------------------------------------------------------------
 Int64 AnsiString::ToInt64() const
 {
+    if( StrBuffer == NULL ) return 0;
 #ifdef _WIN32
     return ( Int64 )_atoi64( StrBuffer );
 #else
     return ( Int64 )strtoll( StrBuffer, (char **)NULL, 10 );
-#endif	
+#endif
 }
 //---------------------------------------------------------------------------
 UInt64 AnsiString::ToUInt64() const
 {
+    if( StrBuffer == NULL ) return 0;
 //#ifdef _WIN32
 //    return ( UInt64 )_strtoui64( StrBuffer , (char **)NULL, 10 );
 //#else
     return ( UInt64 )strtoull( StrBuffer , (char **)NULL, 10 );
-//#endif	
+//#endif
 }
 //---------------------------------------------------------------------------
 Int32 AnsiString::StrToInt32( const char* str, int len )
