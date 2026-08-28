@@ -1144,7 +1144,7 @@ object AccountForm: TAccountForm
       Height = 18
       Alignment = taRightJustify
       AutoSize = False
-      Caption = #20351#29992#32773
+      Caption = #38989#22806#22238#22577
     end
     object IPEdit: TEdit
       Left = 112
