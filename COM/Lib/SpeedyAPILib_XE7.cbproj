@@ -1104,6 +1104,9 @@
         <CppCompile Include="OrderConnection\SendMessageToExchange.cpp">
             <BuildOrder>17</BuildOrder>
         </CppCompile>
+        <CppCompile Include="OrderConnection\SendTouchOrderCmd.cpp">
+            <BuildOrder>53</BuildOrder>
+        </CppCompile>
         <CppCompile Include="OrderConnection\TTaifexConnection.cpp">
             <BuildOrder>14</BuildOrder>
         </CppCompile>
