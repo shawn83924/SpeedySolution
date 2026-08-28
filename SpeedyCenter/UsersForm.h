@@ -10,6 +10,7 @@
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ExtCtrls.hpp>
 #include "SimTFXMain.h"
+#include "NewAccountForm.h"
 //---------------------------------------------------------------------------
 class TUsersList : public TForm
 {
@@ -19,7 +20,7 @@ __published:	// IDE-managed Components
 	TBitBtn *OKBtn;
 	TBitBtn *CancelBtn;
 private:	// User declarations
-	void __fastcall ReadUsers(TSimTFXForm* SimTFXForm);
+	void __fastcall ReadUsers(TSimTFXForm* SimTFXForm, TComponent* Owner );
 	void __fastcall SetUsersList( const AnsiString& users );
 public:		// User declarations
 	__fastcall TUsersList(TComponent* Owner, TSimTFXForm* SimTFXForm, const AnsiString& users);
