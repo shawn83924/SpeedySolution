@@ -10,10 +10,10 @@
 #pragma resource "*.dfm"
 TUsersList *UsersList;
 //---------------------------------------------------------------------------
-__fastcall TUsersList::TUsersList(TComponent* Owner,TSimTFXForm* SimTFXForm, const AnsiString& users)
+__fastcall TUsersList::TUsersList(TComponent* Owner, TSimTFXForm* SimTFXForm, const AnsiString& users)
 	: TForm(Owner)
 {
-	ReadUsers(SimTFXForm);
+	ReadUsers(SimTFXForm, Owner);
 	SetUsersList(users);
 }
 //---------------------------------------------------------------------------
@@ -21,7 +21,7 @@ __fastcall TUsersList::~TUsersList()
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TUsersList::ReadUsers(TSimTFXForm* SimTFXForm )
+void __fastcall TUsersList::ReadUsers(TSimTFXForm* SimTFXForm, TComponent* Owner )
 {
 	UsersListView->Items->Clear();
 	UsersListView->Items->BeginUpdate();
@@ -30,13 +30,24 @@ void __fastcall TUsersList::ReadUsers(TSimTFXForm* SimTFXForm )
 	UFC::UiniFile    ini( ConfigFileName.c_str() );
 	UFC::Section*    iniSection;
 
+	UFC::AnsiString Type;
+	TAccountForm* AccountForm = dynamic_cast< TAccountForm*> (Owner);
 	int count = ini.SectionCount();
 	for( int i = 0; i < count; i++ )
 	{
 		iniSection = ini.GetSection( i );
 		if( iniSection->GetSectionName() == "Speedy" || iniSection->GetSectionName() == "SpeedyOffHour" )
 			continue;
-		UsersListView->Items->Add()->Caption = iniSection->GetSectionName().c_str();
+
+		iniSection->GetValue("Type", Type);
+		if( Type == "Admin")
+			continue;
+
+		AnsiString caption = iniSection->GetSectionName().c_str();
+		if(AccountForm->IDEdit->Text == caption)
+			continue;
+
+		UsersListView->Items->Add()->Caption = caption;
 	}
 	UsersListView->Items->EndUpdate();
 }

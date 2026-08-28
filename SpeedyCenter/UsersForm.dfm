@@ -2,7 +2,7 @@ object UsersList: TUsersList
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'UsersForm'
+  Caption = #38989#22806#22238#22577#20358#28304
   ClientHeight = 247
   ClientWidth = 294
   Color = clBtnFace
@@ -38,7 +38,6 @@ object UsersList: TUsersList
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 360
     object OKBtn: TBitBtn
       Left = 30
       Top = 10
