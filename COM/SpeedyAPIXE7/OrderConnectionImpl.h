@@ -150,6 +150,10 @@ protected:// IOrderConnection
 
   STDMETHOD(TouchOrderControl(ITouchOrderCommand* TouchOrderCmd, VARIANT_BOOL* Result));
 
+  STDMETHOD(CreateTWCAObject());
+  STDMETHOD(CreateMLTWCAObject());
+  STDMETHOD(CreateTSCGCCAObject());
+  STDMETHOD(CreateUniFSCAObject());
 };
 // ---------------------------------------------------------------------------
 class EventHandler :public  IOrderConnectionEventListener

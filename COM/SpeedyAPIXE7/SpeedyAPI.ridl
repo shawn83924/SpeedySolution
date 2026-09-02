@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/5/15 ¤W¤È 11:27:19 (- $Rev: 12980 $, 141156968).
+// File generated on 2026/06/23 14:27:16 (- $Rev: 12980 $, 23441953).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1548,6 +1548,14 @@ library SpeedyAPI
     HRESULT _stdcall GetMarginPosition([in] BSTR BrokerID, [in] BSTR Account, [in, out] BSTR* Value, [out, retval] VARIANT_BOOL* SUCCEED);
     [id(0x000000F5)]
     HRESULT _stdcall TouchOrderControl([in] ITouchOrderCommand* TouchOrderCmd, [out, retval] VARIANT_BOOL* Result);
+    [id(0x000000F6)]
+    HRESULT _stdcall CreateTWCAObject(void);
+    [id(0x000000F7)]
+    HRESULT _stdcall CreateUniFSCAObject(void);
+    [id(0x000000F8)]
+    HRESULT _stdcall CreateMLTWCAObject(void);
+    [id(0x000000F9)]
+    HRESULT _stdcall CreateTSCGCCAObject(void);
   };
 
   [

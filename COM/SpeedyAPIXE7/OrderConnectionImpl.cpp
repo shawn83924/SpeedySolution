@@ -1286,3 +1286,58 @@ STDMETHODIMP TOrderConnectionImpl::TouchOrderControl(ITouchOrderCommand* TouchOr
 
 	return S_OK;
 }
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::CreateTWCAObject()
+{
+	UFC::BufferedLog::Printf( " *** Call[%s] *** ", __FUNCTION__ );
+	if( FConnection != NULL )
+	{
+		FConnection->CreateMLTWCAObject();
+	}
+/*
+	if( FConnection != NULL )
+	{
+		FConnection->CreateTWCAObject();
+	}
+*/
+	return S_OK;
+}
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::CreateMLTWCAObject()
+{
+	UFC::BufferedLog::Printf( " *** Call[%s] *** ", __FUNCTION__ );
+	if( FConnection != NULL )
+	{
+		FConnection->CreateMLTWCAObject();
+	}
+	return S_OK;
+}
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::CreateTSCGCCAObject()
+{
+	try
+	{
+		UFC::BufferedLog::Printf( " *** Call[%s] *** ", __FUNCTION__ );
+		if( FConnection != NULL )
+		{
+			FConnection->CreateTSCGCCAObject();
+		}
+	}
+	catch(Exception &e)
+	{
+		return Error(e.Message.c_str(), IID_IOrderConnection);
+	}
+    return S_OK;
+}
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::CreateUniFSCAObject()
+{
+	UFC::BufferedLog::Printf( " *** Call[%s] *** ", __FUNCTION__ );
+	if( FConnection != NULL )
+	{
+		FConnection->CreateUniFSCAObject();
+	}
+	return S_OK;
+}
+
+
