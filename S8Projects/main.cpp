@@ -811,12 +811,15 @@ void __fastcall TMainForm::CMarketDataStoreContractDownloadCompleted(int Count, 
 	SelectContractForm->AddSymbol( NULL );
 	SelectContractForm->LoadCustomNames();
 	FDownloadOK = true;
+	TryLoadHoldPosition();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::Connect()
 {
 	FLoginBroker = g_Config.BrokerConfig( 0 );
 	FDownloadOK = false;
+	FOrderRecoverFinished = false;
+	FHoldPositionLoaded = false;
 	FConnectFailed = false;
 	LoginForm->StatusLabel->Caption = L"連線行情伺服器...";
 	Application->ProcessMessages();
@@ -1927,29 +1930,14 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 	{
 		FRecovering = false;
 		OrderStore->SubscribeAllPosStatisticRecSymbol( false, true );
-		///< Load hold position
-		TBrokerConfig*  BrokerCfg = g_Config.BrokerConfig( 0 );
-		String          Msg;
 
 		if( GSimMatch == false )
 		{
-			if( gUser.AccountType == hatBoth )
-			{
-				if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
-				if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
-			}
-			else if( gUser.AccountType == hatTAIFEX )
-			{
-				if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
-			}
-			else if( gUser.AccountType == hatTWSE )
-			{
-				if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
-			}
+			///< 部位查詢需要用到 gMarketDataStore 的合約資料(FUTInfo/OPTInfo)，
+			///< 必須等 CMarketDataStoreContractDownloadCompleted 也完成才查得到，
+			///< 這裡只記下「委託回補已完成」，實際查詢交給 TryLoadHoldPosition 判斷時機。
+			FOrderRecoverFinished = true;
+			TryLoadHoldPosition();
 		}
 		else
 		{
@@ -1963,6 +1951,37 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 			delete BrowserForm;
 		}
 		LogonReadyTimer->Enabled = true;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::TryLoadHoldPosition( void )
+{
+	///< 兩邊(委託回補、行情合約下載)都完成才查詢部位，任何一邊先完成都只是先記旗標、等另一邊呼叫時再真的查詢。
+	if( (FOrderRecoverFinished == false) || (FDownloadOK == false) )
+		return;
+	if( FHoldPositionLoaded == true )	///< 只查一次
+		return;
+	FHoldPositionLoaded = true;
+
+	TBrokerConfig*  BrokerCfg = g_Config.BrokerConfig( 0 );
+	String          Msg;
+
+	if( gUser.AccountType == hatBoth )
+	{
+		if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
+		if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
+	}
+	else if( gUser.AccountType == hatTAIFEX )
+	{
+		if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
+	}
+	else if( gUser.AccountType == hatTWSE )
+	{
+		if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
 	}
 }
 //---------------------------------------------------------------------------

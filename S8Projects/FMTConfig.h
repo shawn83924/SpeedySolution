@@ -27,6 +27,8 @@ const UFC::AnsiString FUNC_ENABLE_S8_API( L"1003" );
 const UFC::AnsiString FUNC_OVER_SEA_FUT( L"1004" );
 class TOrderStore;
 class TCAChecker;
+namespace s888 { class CTradingAccount; }
+namespace UFC  { class PClientSocket; }
 //---------------------------------------------------------------------------
 const int HOT_KEY_COUNT = 56;
 class TCAChecker;
@@ -202,6 +204,12 @@ private:
 	void RegisterOrderStore(void);
 	void LogLoginParameters(void);
 	void WaitingForResponse(bool& flag, DWORD& startTick, const DWORD& timeoutMs);
+	bool ReceiveSocketReply( UFC::PClientSocket& Socket, UFC::AnsiString& Reply );
+	void ProcessPositionReply( bool IsTAIFEX, const String& Account, const UFC::AnsiString& ReplyContent );
+	void AddPosition( const String& Account, TJSONArray *PosArray );
+	void AddStockPosition( const String& Account, TJSONArray *PosArray );
+	void ProcessHoldPositionData( s888::CTradingAccount* AccountPtr );
+	void ProcessStockHoldPositionData( s888::CTradingAccount* AccountPtr );
 	void __fastcall OrderStoreConnect(TObject *Sender);
 	void __fastcall OrderStoreLogonFailed(
 		TObject *Sender,

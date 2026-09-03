@@ -345,6 +345,8 @@ private:
     bool FForceClose;
 	bool FProxyLogon;
 	bool FRecovering;
+	bool FOrderRecoverFinished;
+	bool FHoldPositionLoaded;
 	bool FUILoaded;
 	bool FConnectFailed;
 	bool FRequestWeb;
@@ -352,6 +354,7 @@ private:
 	int  FFutAccIndex;
 	int  FTseAccIndex;
     double FNetBalance;
+	void __fastcall TryLoadHoldPosition( void );
 	void __fastcall PaintStatusBar( void );
 	void __fastcall PaintMDRTT( TCanvas* canvas, TRect& RTTGraph );
 	HRGN __fastcall ExcludeRect( HRGN CaptionRgn, TRect EraseRect );
