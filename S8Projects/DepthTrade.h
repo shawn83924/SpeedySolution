@@ -213,6 +213,8 @@ __published:	// IDE-managed Components
 	TGraphButtonV2 *OCOTabBtn;
 	TGraphButtonV2 *QuickTabBtn;
 	TShape *ExtraShape;
+	TLabel *CancelAllBuy;
+	TLabel *CancelAllSell;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -319,6 +321,8 @@ __published:	// IDE-managed Components
 	void __fastcall CancelByRightClickSwitchClick(TObject *Sender);
 	void __fastcall OCODetailBtnClick(TObject *Sender);
 	void __fastcall TabBtnClick(TObject *Sender);
+	void __fastcall CancelAllBuyClick(TObject *Sender);
+	void __fastcall CancelAllSellClick(TObject *Sender);
 
 private:	// Interface TOrderQtyListener
 	virtual void OrderQtyChanged( MarketEnum Market, const String& Symbol, SideEnum Side, double Px, int Qty);

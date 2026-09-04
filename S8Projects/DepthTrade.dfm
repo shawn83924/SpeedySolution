@@ -172,6 +172,7 @@ object DepthForm: TDepthForm
     OnAutoStopLoss = OrderBookListAutoStopLoss
     OnAutoTakeProfit = OrderBookListAutoTakeProfit
     OnTick = OrderBookListTick
+    ExplicitWidth = 574
     ColWidths = (
       71
       67
@@ -208,6 +209,7 @@ object DepthForm: TDepthForm
     ParentDoubleBuffered = False
     TabOrder = 1
     StyleElements = []
+    ExplicitWidth = 784
     DesignSize = (
       391
       81)
@@ -427,6 +429,7 @@ object DepthForm: TDepthForm
       SizeFitBmp = True
       ImageList = MainForm.ToolImageList
       ImageIndex = 1
+      ExplicitLeft = 723
     end
     object CopyDepthButton: TGraphButton
       Tag = 10
@@ -457,6 +460,7 @@ object DepthForm: TDepthForm
       SizeFitBmp = True
       ImageList = MainForm.ToolImageList
       ImageIndex = 14
+      ExplicitLeft = 752
     end
     object NormalButton: TGraphButton
       Left = 113
@@ -2251,6 +2255,7 @@ object DepthForm: TDepthForm
       FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
       FontAttrib.CaptionFont.Style = []
       ButtonText = #20840#24179
+      ExplicitLeft = 736
     end
   end
   object ToolSV: TSplitView
@@ -4997,6 +5002,7 @@ object DepthForm: TDepthForm
     ParentDoubleBuffered = False
     TabOrder = 3
     StyleElements = []
+    ExplicitWidth = 784
     object AvgPxTextLabel: TLabel
       Left = 0
       Top = 0
@@ -5115,6 +5121,7 @@ object DepthForm: TDepthForm
         'ROD'
         'FOK'
         'IOC')
+      ExplicitLeft = 717
     end
   end
   object ButtonPanel: TPanel
@@ -5135,6 +5142,7 @@ object DepthForm: TDepthForm
     ParentDoubleBuffered = False
     TabOrder = 4
     StyleElements = []
+    ExplicitWidth = 784
     object CenterLabel: TLabel
       Left = 531
       Top = 1
@@ -5207,6 +5215,54 @@ object DepthForm: TDepthForm
       OnMouseEnter = CenterLabelMouseEnter
       OnMouseLeave = CenterLabelMouseLeave
     end
+    object CancelAllBuy: TLabel
+      Left = 330
+      Top = 1
+      Width = 75
+      Height = 28
+      Cursor = crHandPoint
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #36023#20840#21034
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      StyleElements = []
+      OnClick = CancelAllBuyClick
+      OnMouseEnter = CenterLabelMouseEnter
+      OnMouseLeave = CenterLabelMouseLeave
+    end
+    object CancelAllSell: TLabel
+      Left = 700
+      Top = 1
+      Width = 75
+      Height = 28
+      Cursor = crHandPoint
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Alignment = taCenter
+      AutoSize = False
+      Caption = #36067#20840#21034
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      StyleElements = []
+      OnClick = CancelAllSellClick
+      OnMouseEnter = CenterLabelMouseEnter
+      OnMouseLeave = CenterLabelMouseLeave
+    end
   end
   object SmartOrderTab: TPanel
     Left = 0
@@ -5218,6 +5274,7 @@ object DepthForm: TDepthForm
     ParentBackground = False
     TabOrder = 5
     StyleElements = []
+    ExplicitWidth = 784
     object SmartOutlineShape: TShape
       Left = -10
       Top = 0
@@ -5367,6 +5424,7 @@ object DepthForm: TDepthForm
     ParentBackground = False
     TabOrder = 6
     StyleElements = []
+    ExplicitWidth = 784
     DesignSize = (
       391
       33)
@@ -5436,6 +5494,7 @@ object DepthForm: TDepthForm
       FontAttrib.CaptionFont.Name = 'Tahoma'
       FontAttrib.CaptionFont.Style = []
       ButtonText = 'OCO'#26126#32048
+      ExplicitLeft = 628
     end
     object SettingOCOBtn: TGraphButtonV2
       AlignWithMargins = True
@@ -5498,6 +5557,7 @@ object DepthForm: TDepthForm
       FontAttrib.CaptionFont.Name = 'Tahoma'
       FontAttrib.CaptionFont.Style = []
       ButtonText = 'OCO'#19979#21934#35373#23450
+      ExplicitLeft = 697
     end
   end
   object RoundFormEx: TRoundFormEx
@@ -5520,7 +5580,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800B8010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800C8010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

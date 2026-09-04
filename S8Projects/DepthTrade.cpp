@@ -1336,6 +1336,8 @@ void __fastcall TDepthForm::AdjuestFont( void )
 	MarketBuyLabel->Font->Size  = FFontSize;
 	CenterLabel->Font->Size  = FFontSize;
 	MarketSellLabel->Font->Size  = FFontSize;
+	CancelAllBuy->Font->Size  = FFontSize;
+	CancelAllSell->Font->Size  = FFontSize;
 	delete Font;
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
@@ -2415,6 +2417,8 @@ void __fastcall TDepthForm::AlignLabels( void )
    CenterLabel->Left = OrderBookList->Left + (OrderBookList->Width - CenterLabel->Width )/2;
    MarketBuyLabel->Left = CenterLabel->Left - 20 - MarketBuyLabel->Width;
    MarketSellLabel->Left = CenterLabel->Left + 20 + CenterLabel->Width;
+   CancelAllBuy->Left = MarketBuyLabel->Left - 20 - CancelAllBuy->Width;
+   CancelAllSell->Left = MarketSellLabel->Left + 20 + MarketSellLabel->Width;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
@@ -3137,3 +3141,15 @@ void __fastcall TDepthForm::TabBtnClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
+void __fastcall TDepthForm::CancelAllBuyClick(TObject *Sender)
+{
+	OrderBookList->TriggerCancelAllBuyOrders();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TDepthForm::CancelAllSellClick(TObject *Sender)
+{
+	OrderBookList->TriggerCancelAllSellOrders();
+}
+//---------------------------------------------------------------------------
+

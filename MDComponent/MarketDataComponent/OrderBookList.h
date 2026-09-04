@@ -403,8 +403,6 @@ private:
 	void __fastcall SetFixedRowBidEndColor( TColor Color );
 	void __fastcall SetFixedRowAskColor( TColor Color );
 	void __fastcall SetFixedRowAskEndColor( TColor Color );
-	int __fastcall TriggerCancelAllBuyOrders( void );
-	int __fastcall TriggerCancelAllSellOrders( void );
 	void __fastcall TriggerNewOrder( void );
 	void __fastcall OnKeyBuyDown( void );
 	void __fastcall OnKeySellDown( void );
@@ -497,6 +495,8 @@ public:
 	void __fastcall DeleteAllOrders( bool Sync );
 	void __fastcall DeleteBuyOrders( bool Sync );
 	void __fastcall DeleteSellOrders( bool Sync );
+	int __fastcall TriggerCancelAllBuyOrders( void );
+	int __fastcall TriggerCancelAllSellOrders( void );
 	void __fastcall Clear( bool IncludeDepth = true );
 	double __fastcall GetTickPrice( int Step );
 	bool __fastcall UpdateFill( void );
