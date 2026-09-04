@@ -2420,7 +2420,7 @@ void __fastcall TDepthForm::AlignLabels( void )
 void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
 {
 	if( gOrderStore->IsReady() == true )
-		PlaceMarketOrder( sBuy, LotsUpDown->Position, GetTimeInForce( false ) );
+		PlaceMarketOrder( sBuy, LotsUpDown->Position, tifIOC );
 	else
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
@@ -2428,7 +2428,7 @@ void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
 void __fastcall TDepthForm::MarketSellLabelClick(TObject *Sender)
 {
 	if( gOrderStore->IsReady() == true )
-		PlaceMarketOrder( sSell, LotsUpDown->Position, GetTimeInForce( false ) );
+		PlaceMarketOrder( sSell, LotsUpDown->Position, tifIOC );
 	else
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
