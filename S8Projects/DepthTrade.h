@@ -323,6 +323,7 @@ __published:	// IDE-managed Components
 	void __fastcall TabBtnClick(TObject *Sender);
 	void __fastcall CancelAllBuyClick(TObject *Sender);
 	void __fastcall CancelAllSellClick(TObject *Sender);
+	void __fastcall MarketToggleSwitchClick(TObject *Sender);
 
 private:	// Interface TOrderQtyListener
 	virtual void OrderQtyChanged( MarketEnum Market, const String& Symbol, SideEnum Side, double Px, int Qty);

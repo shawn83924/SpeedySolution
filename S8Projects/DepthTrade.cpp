@@ -1132,6 +1132,7 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	OrderBookList->CancelBeforeNew = g_Config.GetBoolProperty( Profile,"CxBeforeNew", false );
 	OrderBookList->SetEnable       = g_Config.GetBoolProperty( Profile,"EnableSlice", false );
 	MarketToggleSwitch->State      = (g_Config.GetBoolProperty( Profile,"MKTIOC", true ) == true)? tssOn:tssOff;
+	MarketToggleSwitchClick( NULL ); ///< UI 開啟時，先把開啟/關閉IOC的顯示文字設定好
 	FilledStopToggleSwitch->State  = tssOff;
 	FilledStopProfitToggleSwitch->State  = tssOff;
 	DelOnCloseToggleSwitch->State  = (g_Config.GetBoolProperty( Profile,"DelOnClosed", false ) == true)? tssOn:tssOff;
@@ -3150,6 +3151,12 @@ void __fastcall TDepthForm::CancelAllBuyClick(TObject *Sender)
 void __fastcall TDepthForm::CancelAllSellClick(TObject *Sender)
 {
 	OrderBookList->TriggerCancelAllSellOrders();
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::MarketToggleSwitchClick(TObject *Sender)
+{
+	MarketToggleSwitch->StateCaptions->CaptionOn  = L"開啟IOC";
+	MarketToggleSwitch->StateCaptions->CaptionOff = L"關閉IOC";
 }
 //---------------------------------------------------------------------------
 
