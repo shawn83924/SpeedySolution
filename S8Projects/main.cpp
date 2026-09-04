@@ -2250,8 +2250,8 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 			{
 				if( BrokerCfg->GetService()->GetPosition( true , OrderStore->Account, Msg ) == false )
 					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台期貨部位查詢失敗:" + Msg );
-				if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
-					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
+				//if( BrokerCfg->GetService()->GetPosition( false , OrderStore->TWSEAccount, Msg ) == false )
+				//	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"中台證券部位查詢失敗:" + Msg );
 			}
 			else if( gUser.AccountType == hatTAIFEX )
 			{
