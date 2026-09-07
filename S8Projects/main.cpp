@@ -107,6 +107,9 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 ,FSelectedFuncText( NULL )
 ,FVoice( NULL)
 ,FRecovering( false )
+,FOrderRecoverFinished( false )
+,FDownloadOK( false )
+,FHoldPositionLoaded( false )
 ,FLoginBroker( NULL )
 ,FSpeedyCfg( NULL )
 ,FUILoaded( false )
@@ -799,6 +802,7 @@ void __fastcall TMainForm::PaintStatusBar( void )
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CMarketDataStoreContractDownloadCompleted(int Count, int UseMS)
 {
+	UFC::BufferedLog::Printf( " TMainForm::CMarketDataStoreContractDownloadCompleted 觸發，Count[%d] UseMS[%d]", Count, UseMS );
 	// select contract popup menu.
 	ContractViewerForm->AddSymbols( LoginForm->StatusLabel );
 	// Select contract form in main form
@@ -818,7 +822,6 @@ void __fastcall TMainForm::Connect()
 {
 	FLoginBroker = g_Config.BrokerConfig( 0 );
 	FDownloadOK = false;
-	FOrderRecoverFinished = false;
 	FHoldPositionLoaded = false;
 	FConnectFailed = false;
 	LoginForm->StatusLabel->Caption = L"連線行情伺服器...";
@@ -1921,11 +1924,20 @@ void __fastcall TMainForm::OrderStoreFilledReply(TObject *Sender,
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OrderStoreBeginRecover(TObject *Sender)
 {
+	UFC::BufferedLog::Printf( " TMainForm::OrderStoreBeginRecover 觸發，FRecovering 設為 true" );
 	FRecovering = true;
+	///< 委託回補在這裡重新開始，於此重置 FOrderRecoverFinished，
+	///< 不要放在 TMainForm::Connect() 裡——因為 gOrderStore 的整個
+	///< 連線/登入/委託回補流程可能在 LiteService::LoginBroker() 還沒
+	///< return、TMainForm::Connect() 都還沒被呼叫之前就已經跑完，
+	///< 若 Connect() 才重置，會把這裡已經設好的 true 蓋掉，導致
+	///< TryLoadHoldPosition 永遠卡在這個旗標上。
+	FOrderRecoverFinished = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 {
+	UFC::BufferedLog::Printf( " TMainForm::OrderStoreRecoverFinished 觸發，進入時 FRecovering[%d]", (int)FRecovering );
 	if( FRecovering == true )  ///< Make sure recover once.
 	{
 		FRecovering = false;
@@ -1956,6 +1968,8 @@ void __fastcall TMainForm::OrderStoreRecoverFinished(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::TryLoadHoldPosition( void )
 {
+	UFC::BufferedLog::Printf( " TMainForm::TryLoadHoldPosition 被呼叫，FOrderRecoverFinished[%d] FDownloadOK[%d] FHoldPositionLoaded[%d]",
+		(int)FOrderRecoverFinished, (int)FDownloadOK, (int)FHoldPositionLoaded );
 	///< 兩邊(委託回補、行情合約下載)都完成才查詢部位，任何一邊先完成都只是先記旗標、等另一邊呼叫時再真的查詢。
 	if( (FOrderRecoverFinished == false) || (FDownloadOK == false) )
 		return;
