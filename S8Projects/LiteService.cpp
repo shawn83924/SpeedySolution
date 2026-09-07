@@ -155,8 +155,8 @@ bool TLiteService::GetPosition( bool IsTAIFEX, const String& Account, String& Ms
 		UFC::AnsiString rawPassword( FPassword.c_str() );
 		UFC::MD5 passwordMD5( (const UFC::UInt8*)rawPassword.c_str(), rawPassword.Length() );
 		UFC::AnsiString ansiPassword = passwordMD5.ToString();
-		UFC::AnsiString SendContent;	///< ID、Account、Password 用逗號分隔
-		SendContent.Printf("%s,%s,%s\n", ansiID.c_str(), ansiAccount.c_str(), ansiPassword.c_str());
+		UFC::AnsiString SendContent;	///< ID、Account、Password、IsTAIFEX 用逗號分隔
+		SendContent.Printf("%s,%s,%s,%d\n", ansiID.c_str(), ansiAccount.c_str(), ansiPassword.c_str(), (int)IsTAIFEX);
 
 		TestSocket.SendQueue( std::string( SendContent.c_str(), SendContent.Length() ) );
 		TestSocket.ProcessQueue();	///< SendQueue 只是排隊，要呼叫 ProcessQueue 才會真正送出
@@ -426,7 +426,7 @@ void TLiteService::AddStockPosition( const String& Account, TJSONArray *PosArray
 
 		String OTCMarkStr = PosItem->Values[L"OTCMark"]->Value();
 		String StockNo    = PosItem->Values[L"StockNo"]->Value();
-		int    Quantity   = PosItem->Values[L"UnsoldStockNos"]->Value().ToInt() / 1000;	///< 庫存股數換算成張數(1000股=1張)，跟期貨的 DealQty 單位一致
+		int    Quantity   = PosItem->Values[L"UnsoldStockNos"]->Value().ToInt();	///< 庫存股數(股)，不能除以1000換算成張，否則零股(<1000股)會被無條件捨去成 0 而遺漏
 
 		if( Quantity <= 0 )
 		{
