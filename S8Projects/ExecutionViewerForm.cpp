@@ -273,7 +273,6 @@ void __fastcall TExecutionForm::OrderListViewOrderRightClick(TObject *Sender,
 		case nsOrderMessageDefine::osRejected:
 			QueryMenuItem->Enabled   = false;
 			DeleteMenuItem->Enabled  = false;
-			ReplaceMenuItem->Enabled = false;
 			break;
 		case nsOrderMessageDefine::osNew:
 			FPartialFill = false;
@@ -281,12 +280,10 @@ void __fastcall TExecutionForm::OrderListViewOrderRightClick(TObject *Sender,
 		case nsOrderMessageDefine::osPartiallyFilled:
 			QueryMenuItem->Enabled   = true;
 			DeleteMenuItem->Enabled  = true;
-			ReplaceMenuItem->Enabled = true;
 			break;
 		case nsOrderMessageDefine::osPendingNew:
 			QueryMenuItem->Enabled   = true;
 			DeleteMenuItem->Enabled  = false;
-			ReplaceMenuItem->Enabled = false;
 	}
 	PopupMenu->Popup( Mouse->CursorPos.x, Mouse->CursorPos.y );
 }
@@ -343,7 +340,6 @@ void __fastcall TExecutionForm::OrderListViewOrderKeyDown(TObject *Sender, WORD 
 				FPartialFill = false;
 			case nsOrderMessageDefine::osReplaced:
 			case nsOrderMessageDefine::osPartiallyFilled:
-				//ReplaceMenuItemClick( this );
 				break;
 			default : break;
 		}
