@@ -8137,7 +8137,6 @@ object ExecutionForm: TExecutionForm
         ShowHint = True
         Color = cl3DLight
         OnProgress = OrderListViewProgress
-        OnOrderRightClick = OrderListViewOrderRightClick
         OnOrderKeyDown = OrderListViewOrderKeyDown
         FilterMarket = 0
       end
@@ -8182,9 +8181,6 @@ object ExecutionForm: TExecutionForm
       Caption = #26597#35426
       OnClick = QueryMenuItemClick
     end
-    object ReplaceMenuItem: TMenuItem
-      Caption = #20462#25913
-    end
   end
   object SaveCSVDialog: TSaveDialog
     DefaultExt = '*.csv'
@@ -8214,7 +8210,7 @@ object ExecutionForm: TExecutionForm
     Left = 744
     Top = 337
     Bitmap = {
-      494C01010100DC0078015000960005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100DC007C015000960005162D002110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000004001000096000000010020000000000000EE
       02000000000000000000000000000000000064381B0064381B0064381B006438
       1B0064381B0064381B0064381B0064381B0064381B0064381B0064381B006438
