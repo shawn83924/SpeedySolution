@@ -191,7 +191,8 @@ private:
 	String FID;
 	String FPassword;
 	bool FTryVersion;
-    bool FProxyLogon;
+	bool FProxyLogon;
+    bool FPositionPort;
 	TBrokerUser FAccounts;
 
     bool FStopLogon;
