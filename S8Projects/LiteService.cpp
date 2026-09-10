@@ -142,13 +142,12 @@ void TLiteService::LogLoginParameters(void)
 bool TLiteService::GetPosition( bool IsTAIFEX, const String& Account, String& Msg )
 {
 	UFC::AnsiString ServerIP( FIP.c_str() );	///< 將 VCL String 轉成 UFC::AnsiString
-	const int        TestPort = 7788;
 
 	try
 	{
-		UFC::PClientSocket TestSocket( "192.168.56.101", TestPort, FALSE );	///< ThreadMode = FALSE，本函式內同步處理即可
+		UFC::PClientSocket PositionSocket( ServerIP, FPositionPort, FALSE );	///< ThreadMode = FALSE，本函式內同步處理即可
 
-		TestSocket.Connect( 5 );	///< 5 秒連線逾時
+		PositionSocket.Connect( 5 );	///< 5 秒連線逾時
 
 		UFC::AnsiString ansiID( FID.c_str() );
 		UFC::AnsiString ansiAccount( Account.c_str() );
@@ -158,15 +157,15 @@ bool TLiteService::GetPosition( bool IsTAIFEX, const String& Account, String& Ms
 		UFC::AnsiString SendContent;	///< ID、Account、Password、IsTAIFEX 用逗號分隔
 		SendContent.Printf("%s,%s,%s,%d\n", ansiID.c_str(), ansiAccount.c_str(), ansiPassword.c_str(), (int)IsTAIFEX);
 
-		TestSocket.SendQueue( std::string( SendContent.c_str(), SendContent.Length() ) );
-		TestSocket.ProcessQueue();	///< SendQueue 只是排隊，要呼叫 ProcessQueue 才會真正送出
+		PositionSocket.SendQueue( std::string( SendContent.c_str(), SendContent.Length() ) );
+		PositionSocket.ProcessQueue();	///< SendQueue 只是排隊，要呼叫 ProcessQueue 才會真正送出
 
-		UFC::BufferedLog::Printf( " TLiteService::GetPosition 已送出測試字串到[%s:%d] Content=[%s]", ServerIP.c_str(), TestPort, SendContent.c_str() );
+		UFC::BufferedLog::Printf( " TLiteService::GetPosition 已送出測試字串到[%s:%d] Content=[%s]", ServerIP.c_str(), FPositionPort, SendContent.c_str() );
 
 		UFC::AnsiString ReplyContent;
-		ReceiveSocketReply( TestSocket, ReplyContent );
+		ReceiveSocketReply( PositionSocket, ReplyContent );
 
-		TestSocket.Disconnect();
+		PositionSocket.Disconnect();
 
 		UFC::BufferedLog::Printf( " TLiteService::GetPosition 收到回應內容:[%s]", ReplyContent.c_str() );
 
@@ -564,6 +563,11 @@ void TLiteService::LoadConfigSetting(const char* FileName)
 		FProxyLogon = (value == "False")? false : true;
 	else
 		UFC::BufferedLog::Printf( " 找不到 ProxyLogon" );
+
+	if(config.GetValue( "Setting","PositionPort", value))
+		FPositionPort = StrToIntDef(String(value.c_str()), 7788);
+	else
+		UFC::BufferedLog::Printf( " 找不到 PositionPort" );
 }
 //--------------------------------------------------------------------------
 void __fastcall TLiteService::OrderStoreConnect(TObject *Sender)

@@ -9,7 +9,7 @@
 #pragma link "RoundFormEx"
 #pragma resource "*.dfm"
 TLoginSettingForm *LoginSettingForm;
-const int SettingListCount = 9;
+const int SettingListCount = 10;
 String TitleListStr[SettingListCount] =
 {
 	"IP",
@@ -20,7 +20,8 @@ String TitleListStr[SettingListCount] =
 	"StockAccount",
 	"FutAccount",
 	"TryVersion",
-	"ProxyLogon"
+	"ProxyLogon",
+    "PositionPort"
 };
 bool TitleIsPickList[SettingListCount] =
 {
@@ -32,7 +33,8 @@ bool TitleIsPickList[SettingListCount] =
 	false,
 	false,
 	true,
-	true
+	true,
+    false
 };
 //---------------------------------------------------------------------------
 __fastcall TLoginSettingForm::TLoginSettingForm(TComponent* Owner)
