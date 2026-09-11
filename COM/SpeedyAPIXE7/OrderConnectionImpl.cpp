@@ -303,31 +303,6 @@ STDMETHODIMP TOrderConnectionImpl::Connect(BSTR RemoteIP, long RemotePort)
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::Connect2(BSTR RemoteIP, long RemotePort, long TimeoutSec)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -374,31 +349,6 @@ STDMETHODIMP TOrderConnectionImpl::LogonProxy(BSTR ID, BSTR Password, BSTR Accou
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::Logon(BSTR ID, BSTR PASSWD, BSTR ACCOUNT, ConnectionTypeEnum Type)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -509,31 +459,6 @@ STDMETHODIMP TOrderConnectionImpl::QuoteRequest(IQuoteRequestMessage* Msg)
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::OrderStatusRequest(IOrderStatusRequestMessage* Msg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -600,19 +525,6 @@ STDMETHODIMP TOrderConnectionImpl::GenerateUniqueID(MarketEnum Market, MessageTy
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::GetBrokerID(MarketEnum Market, BSTR* BrokerID)
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -724,31 +636,6 @@ STDMETHODIMP TOrderConnectionImpl::SetDebugLogEx(BSTR FileName)
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::Recover(BSTR BeginTime, RecoverTypeEnum Type, RecoverMarketEnum Market)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -998,6 +885,7 @@ STDMETHODIMP TOrderConnectionImpl::set_DetectAPI(VARIANT_BOOL Value)
 	return S_OK;
 }
 //-----------------------------------------------------------------------------
+
 STDMETHODIMP TOrderConnectionImpl::get_AlwaysGenerateNID(VARIANT_BOOL* Value)
 {
 	if( FConnection != NULL )
@@ -1032,14 +920,6 @@ STDMETHODIMP TOrderConnectionImpl::get_BuildDate(BSTR* Value)
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::IsTAIFEXFutures(BSTR Symbol, VARIANT_BOOL* Result)
-
-
-
-
-
-
-
-
 {
 	if( FConnection != NULL )
 	{
@@ -1053,13 +933,6 @@ STDMETHODIMP TOrderConnectionImpl::IsTAIFEXFutures(BSTR Symbol, VARIANT_BOOL* Re
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::IsTAIFEXOptions(BSTR Symbol, VARIANT_BOOL* Result)
-
-
-
-
-
-
-
 {
 	if( FConnection != NULL )
 	{
@@ -1237,6 +1110,7 @@ STDMETHODIMP TOrderConnectionImpl::get_LocalIP(BSTR* Value)
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::ChangePassword(BSTR Password, BSTR NewPassword)
+
 {
 	if( FConnection != NULL )
 	{
@@ -1269,7 +1143,7 @@ STDMETHODIMP TOrderConnectionImpl::GetMarginPosition(BSTR BrokerID, BSTR Account
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::TouchOrderControl(ITouchOrderCommand* TouchOrderCmd,
-		  VARIANT_BOOL* Result)
+          VARIANT_BOOL* Result)
 {
 	if( FConnection == NULL )
 	{

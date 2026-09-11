@@ -522,6 +522,10 @@
             <DependentOn>BaseMessageImpl.h</DependentOn>
             <BuildOrder>4</BuildOrder>
         </CppCompile>
+        <CppCompile Include="CACGCObject.cpp">
+            <DependentOn>CACGCObject.h</DependentOn>
+            <BuildOrder>80</BuildOrder>
+        </CppCompile>
         <CppCompile Include="CancelOrderMessageImpl.cpp">
             <VirtualFolder>{F190E7A7-3CA6-4DB6-8FFC-D19529C37669}</VirtualFolder>
             <CoClasses>CancelOrderMessage</CoClasses>

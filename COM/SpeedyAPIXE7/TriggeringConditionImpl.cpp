@@ -205,3 +205,10 @@ STDMETHODIMP TTriggeringConditionImpl::get_Instance(VARIANT* Value)
 
 	return S_OK;
 }
+// ---------------------------------------------------------------------------
+STDMETHODIMP TTriggeringConditionImpl::SetExecutionTime(unsigned hour, unsigned minute,
+          VARIANT_BOOL* Value)
+{
+	*Value = FCondition.SetExecutionTime(hour, minute);
+	return S_OK;
+}

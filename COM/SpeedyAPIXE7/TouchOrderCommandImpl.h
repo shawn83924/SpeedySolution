@@ -38,6 +38,7 @@ public:
   STDMETHOD(SetTriggeredActionMsg(BSTR msg, VARIANT_BOOL* value));
   STDMETHOD(SetTriggeringCondition(ITriggeringCondition* ttc));
   STDMETHOD(GetNID(__int64* NID));
+  STDMETHOD(GetLastErrorMsg(BSTR* Value));
   __fastcall TTouchOrderCommandImpl();
   __fastcall TTouchOrderCommandImpl(
 	Speedyapi_tlb::TouchedOrderCommandEnum toc_type,
