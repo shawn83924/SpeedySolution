@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/9/11 下午 05:58:33 (- $Rev: 12980 $, 160001921).
+// File generated on 2026/9/11 下午 06:12:23 (- $Rev: 12980 $, 160832671).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -523,7 +523,8 @@ library SpeedyAPI
     tortOrderConfirm = 1,
     tortStatusUpdate = 2,
     tortQueryResult = 3,
-    tortOrderReject = 4
+    tortOrderReject = 4,
+    tortOrderTouched = 5
   };
 
   [

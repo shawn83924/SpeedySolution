@@ -258,6 +258,7 @@ typedef enum
    tortStatusUpdate,
    tortQueryResult,
    tortOrderReject,
+   tortOrderTouched // added on 2026/09/11
 } TouchOrderResponseTypeEnum;
 //--------------------------------------------------------------------------
 } //namespace nsOrderMessageDefine

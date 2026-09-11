@@ -1,10 +1,19 @@
-
+﻿
 #include "BufferedLog.h"
 #include "AnsiString.h"
 #include "NetUtility.h"
 #include "PInt32.h"
 #include "iniFile.h"
 #include <iostream>
+//------------------------------------------------------------------------------
+#if defined(_WIN32) && !(defined(__BORLANDC__) && defined(_WIN64))
+static char* stpcpy(char* dst, const char* src)
+{
+    while ((*dst++ = *src++) != '\0')
+        ;
+    return dst - 1;   // 指向 NUL
+}
+#endif
 //------------------------------------------------------------------------------
 namespace UFC
 {
