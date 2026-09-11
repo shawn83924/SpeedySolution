@@ -124,7 +124,8 @@ protected:
   STDMETHOD(SetStopLoss(VARIANT_BOOL IsTrailingStop, long Ticks, BSTR StopPrice, BSTR OrderPrice,
           VARIANT_BOOL* Succeed));
   STDMETHOD(SetTakeProfit(VARIANT_BOOL IsTrailingStop, long Ticks, BSTR StopPrice, BSTR OrderPrice,
-		  VARIANT_BOOL* Succeed));
+          VARIANT_BOOL* Succeed));
+  STDMETHOD(ToMarketOrderIfOpen(VARIANT_BOOL yes_no));
 };
 
 

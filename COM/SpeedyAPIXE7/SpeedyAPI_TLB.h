@@ -10,7 +10,7 @@
 // ************************************************************************ //
 
 // $Rev: 87174 $
-// File generated on 2026/5/15 ¤W¤È 11:23:47 from Type Library described below.
+// File generated on 2026/9/11 ¤U¤È 05:58:24 from Type Library described below.
 
 // ************************************************************************  //
 // Type Lib: C:\src\Speedy\SpeedySolution\Simulator\COM\SpeedyAPIXE7\SpeedyAPI (1)
@@ -868,6 +868,7 @@ public:
                                                   long Ticks/*[in]*/, BSTR StopPrice/*[in]*/,
                                                   BSTR OrderPrice/*[in]*/,
                                                   VARIANT_BOOL* Succeed/*[out,retval]*/) = 0; // [324]
+  virtual HRESULT STDMETHODCALLTYPE ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/) = 0; // [325]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3108,6 +3109,10 @@ public:
                                                       VARIANT_BOOL* SUCCEED/*[out,retval]*/) = 0; // [244]
   virtual HRESULT STDMETHODCALLTYPE TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
                                                       VARIANT_BOOL* Result/*[out,retval]*/) = 0; // [245]
+  virtual HRESULT STDMETHODCALLTYPE CreateTWCAObject(void) = 0; // [246]
+  virtual HRESULT STDMETHODCALLTYPE CreateUniFSCAObject(void) = 0; // [247]
+  virtual HRESULT STDMETHODCALLTYPE CreateMLTWCAObject(void) = 0; // [248]
+  virtual HRESULT STDMETHODCALLTYPE CreateTSCGCCAObject(void) = 0; // [249]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3423,6 +3428,8 @@ public:
   virtual HRESULT STDMETHODCALLTYPE GetLastErrMsg(BSTR* lastErrMsg/*[out,retval]*/) = 0; // [217]
   virtual HRESULT STDMETHODCALLTYPE ToExpression(BSTR* triggeringCondition/*[out,retval]*/) = 0; // [218]
   virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [219]
+  virtual HRESULT STDMETHODCALLTYPE SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                                     VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [220]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3567,6 +3574,13 @@ public:
     return Value;
   }
 
+  VARIANT_BOOL __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+  {
+    VARIANT_BOOL Value;
+    OLECHECK(this->SetExecutionTime(hour, minute, (VARIANT_BOOL*)&Value));
+    return Value;
+  }
+
 
 
 #endif //   __TLB_NO_INTERFACE_WRAPPERS
@@ -3603,6 +3617,7 @@ public:
                                                           VARIANT_BOOL* value/*[out,retval]*/) = 0; // [214]
   virtual HRESULT STDMETHODCALLTYPE SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/) = 0; // [215]
   virtual HRESULT STDMETHODCALLTYPE GetNID(__int64* NID/*[out,retval]*/) = 0; // [216]
+  virtual HRESULT STDMETHODCALLTYPE GetLastErrorMsg(BSTR* Value/*[out,retval]*/) = 0; // [217]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3653,6 +3668,13 @@ public:
     __int64 NID;
     OLECHECK(this->GetNID((__int64*)&NID));
     return NID;
+  }
+
+  BSTR __fastcall GetLastErrorMsg(void)
+  {
+    BSTR Value = 0;
+    OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
+    return Value;
   }
 
 
@@ -3942,6 +3964,7 @@ public:
                                            VARIANT_BOOL* Succeed/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
                                            BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/);
 
   __property   BSTR            MaturityMonthYear = {read = get_MaturityMonthYear, write = set_MaturityMonthYear};
   __property   Speedyapi_tlb::OrderTypeEnum OrderType = {read = get_OrderType, write = set_OrderType};
@@ -4136,6 +4159,7 @@ public:
                                            VARIANT_BOOL* Succeed/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, long Ticks/*[in]*/,
                                            BSTR StopPrice/*[in]*/, BSTR OrderPrice/*[in]*/);
+  HRESULT         __fastcall ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
   HRESULT         __fastcall get_Account(BSTR* Value/*[out,retval]*/);
@@ -6409,6 +6433,10 @@ public:
   HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/,
                                                VARIANT_BOOL* Result/*[out,retval]*/);
   VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
+  HRESULT         __fastcall CreateTWCAObject(void);
+  HRESULT         __fastcall CreateUniFSCAObject(void);
+  HRESULT         __fastcall CreateMLTWCAObject(void);
+  HRESULT         __fastcall CreateTSCGCCAObject(void);
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -6592,6 +6620,10 @@ public:
   HRESULT         __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/
                                                , VARIANT_BOOL* Result/*[out,retval]*/);
   VARIANT_BOOL    __fastcall TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* TouchOrderCmd/*[in]*/);
+  HRESULT         __fastcall CreateTWCAObject();
+  HRESULT         __fastcall CreateUniFSCAObject();
+  HRESULT         __fastcall CreateMLTWCAObject();
+  HRESULT         __fastcall CreateTSCGCCAObject();
 
   __property   BSTR            ClearMemberID = {read = get_ClearMemberID, write = set_ClearMemberID};
   __property   VARIANT_BOOL    IsAdministrator = {read = get_IsAdministrator};
@@ -6729,6 +6761,9 @@ public:
   BSTR            __fastcall ToExpression(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                              VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
 
 };
 typedef TCOMITriggeringConditionT<ITriggeringCondition> TCOMITriggeringCondition;
@@ -6849,6 +6884,9 @@ public:
   BSTR            __fastcall ToExpression(void);
   HRESULT         __fastcall get_Instance(VARIANT* Value/*[out,retval]*/);
   VARIANT         __fastcall get_Instance(void);
+  HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                              VARIANT_BOOL* Value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
 
 };
 typedef ITriggeringConditionDispT<ITriggeringCondition> ITriggeringConditionDisp;
@@ -6895,6 +6933,8 @@ public:
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
+  HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrorMsg(void);
 
 };
 typedef TCOMITouchOrderCommandT<ITouchOrderCommand> TCOMITouchOrderCommand;
@@ -6971,6 +7011,8 @@ public:
   HRESULT         __fastcall SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/);
   HRESULT         __fastcall GetNID(__int64* NID/*[out,retval]*/);
   __int64         __fastcall GetNID(void);
+  HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
+  BSTR            __fastcall GetLastErrorMsg(void);
 
 };
 typedef ITouchOrderCommandDispT<ITouchOrderCommand> ITouchOrderCommandDisp;
@@ -8237,6 +8279,12 @@ TCOMINewOrderMessageT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, lon
   return Succeed;
 }
 
+template <class T> HRESULT __fastcall
+TCOMINewOrderMessageT<T>::ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/)
+{
+  return (*this)->ToMarketOrderIfOpen(yes_no);
+}
+
 // *********************************************************************//
 // DispIntf:  INewOrderMessage
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -9141,6 +9189,15 @@ INewOrderMessageDispT<T>::SetTakeProfit(VARIANT_BOOL IsTrailingStop/*[in]*/, lon
   VARIANT_BOOL Succeed;
   this->SetTakeProfit(IsTrailingStop, Ticks, StopPrice, OrderPrice, (VARIANT_BOOL*)&Succeed);
   return Succeed;
+}
+
+template <class T> HRESULT __fastcall
+INewOrderMessageDispT<T>::ToMarketOrderIfOpen(VARIANT_BOOL yes_no/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("ToMarketOrderIfOpen"), DISPID(325));
+  TAutoArgs<1> _args;
+  _args[1] = yes_no /*[VT_BOOL:0]*/;
+  return OleFunction(_dispid, _args);
 }
 
 template <class T> HRESULT __fastcall
@@ -18962,6 +19019,30 @@ TCOMIOrderConnectionT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* T
   return Result;
 }
 
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::CreateTWCAObject(void)
+{
+  return (*this)->CreateTWCAObject();
+}
+
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::CreateUniFSCAObject(void)
+{
+  return (*this)->CreateUniFSCAObject();
+}
+
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::CreateMLTWCAObject(void)
+{
+  return (*this)->CreateMLTWCAObject();
+}
+
+template <class T> HRESULT __fastcall
+TCOMIOrderConnectionT<T>::CreateTSCGCCAObject(void)
+{
+  return (*this)->CreateTSCGCCAObject();
+}
+
 // *********************************************************************//
 // DispIntf:  IOrderConnection
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -19808,6 +19889,34 @@ IOrderConnectionDispT<T>::TouchOrderControl(Speedyapi_tlb::ITouchOrderCommand* T
   return Result;
 }
 
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::CreateTWCAObject()
+{
+  _TDispID _dispid(*this, OLETEXT("CreateTWCAObject"), DISPID(246));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::CreateUniFSCAObject()
+{
+  _TDispID _dispid(*this, OLETEXT("CreateUniFSCAObject"), DISPID(247));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::CreateMLTWCAObject()
+{
+  _TDispID _dispid(*this, OLETEXT("CreateMLTWCAObject"), DISPID(248));
+  return OleFunction(_dispid);
+}
+
+template <class T> HRESULT __fastcall
+IOrderConnectionDispT<T>::CreateTSCGCCAObject()
+{
+  _TDispID _dispid(*this, OLETEXT("CreateTSCGCCAObject"), DISPID(249));
+  return OleFunction(_dispid);
+}
+
 // *********************************************************************//
 // DispIntf:  IOrderConnectionEvents
 // Flags:     (0)
@@ -20188,6 +20297,21 @@ TCOMITriggeringConditionT<T>::get_Instance(void)
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                               VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  return (*this)->SetExecutionTime(hour, minute, Value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITriggeringConditionT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+{
+  VARIANT_BOOL Value;
+  OLECHECK(this->SetExecutionTime(hour/*[in]*/, minute/*[in]*/, (VARIANT_BOOL*)&Value));
+  return Value;
+}
+
 // *********************************************************************//
 // DispIntf:  ITriggeringCondition
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -20555,6 +20679,25 @@ ITriggeringConditionDispT<T>::get_Instance(void)
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
+                                               VARIANT_BOOL* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetExecutionTime"), DISPID(220));
+  TAutoArgs<2> _args;
+  _args[1] = hour /*[VT_UINT:0]*/;
+  _args[2] = minute /*[VT_UINT:0]*/;
+  return OutRetValSetterPtr(Value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITriggeringConditionDispT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/)
+{
+  VARIANT_BOOL Value;
+  this->SetExecutionTime(hour, minute, (VARIANT_BOOL*)&Value);
+  return Value;
+}
+
 // *********************************************************************//
 // SmartIntf: TCOMITouchOrderCommand
 // Interface: ITouchOrderCommand
@@ -20715,6 +20858,20 @@ TCOMITouchOrderCommandT<T>::GetNID(void)
   __int64 NID;
   OLECHECK(this->GetNID((__int64*)&NID));
   return NID;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::GetLastErrorMsg(BSTR* Value/*[out,retval]*/)
+{
+  return (*this)->GetLastErrorMsg(Value);
+}
+
+template <class T> BSTR __fastcall
+TCOMITouchOrderCommandT<T>::GetLastErrorMsg(void)
+{
+  BSTR Value = 0;
+  OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
+  return Value;
 }
 
 // *********************************************************************//
@@ -20925,6 +21082,22 @@ ITouchOrderCommandDispT<T>::GetNID(void)
   __int64 NID;
   this->GetNID((__int64*)&NID);
   return NID;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::GetLastErrorMsg(BSTR* Value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("GetLastErrorMsg"), DISPID(217));
+  TAutoArgs<0> _args;
+  return OutRetValSetterPtr(Value /*[VT_BSTR:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> BSTR __fastcall
+ITouchOrderCommandDispT<T>::GetLastErrorMsg(void)
+{
+  BSTR Value;
+  this->GetLastErrorMsg((BSTR*)&Value);
+  return Value;
 }
 
 // *********************************************************************//
