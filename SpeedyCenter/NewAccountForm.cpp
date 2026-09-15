@@ -1746,11 +1746,47 @@ void __fastcall TAccountForm::TSETermsComboBoxChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TAccountForm::UsersBitBtnClick(TObject *Sender)
 {
-	UsersList = new TUsersList(this, FParentForm, UsersEdit->Text);
+	///< 先組出目前已勾選的使用者集合，用逗號分隔的字串比對，跟 TUsersList 原本 SetUsersList() 的邏輯一樣
+	TStringList* SelectedUsers = new TStringList();
+	SelectedUsers->Delimiter       = ',';
+	SelectedUsers->StrictDelimiter = true;
+	SelectedUsers->DelimitedText   = UsersEdit->Text;
+
+	///< 讀設定檔、篩選出可選的使用者清單，這段邏輯原本在 TUsersList::ReadUsers() 裡
+	///< 篩掉 Speedy/SpeedyOffHour 這兩個保留區段、Type=Admin 的帳號、以及目前正在編輯的這個帳號自己
+	TStringList* Users = new TStringList();
+	AnsiString    ConfigFileName = FParentForm->GetUserConfigFileName();
+	UFC::UiniFile ini( ConfigFileName.c_str() );
+	UFC::Section* iniSection;
+	UFC::AnsiString Type;
+	int count = ini.SectionCount();
+	for( int i = 0; i < count; i++ )
+	{
+		iniSection = ini.GetSection( i );
+		if( iniSection->GetSectionName() == "Speedy" || iniSection->GetSectionName() == "SpeedyOffHour" )
+			continue;
+
+		iniSection->GetValue("Type", Type);
+		if( Type == "Admin" )
+			continue;
+
+		AnsiString caption = iniSection->GetSectionName().c_str();
+		if( IDEdit->Text == caption )
+			continue;
+
+		bool isChecked = ( SelectedUsers->IndexOf( caption ) >= 0 );
+		Users->AddObject( caption, (TObject*)(NativeInt)isChecked );
+	}
+	delete SelectedUsers;
+
+	///< TUsersList 現在只是單純的顯示元件，整理好的名單(含勾選狀態)直接傳進去顯示
+	UsersList = new TUsersList(this, Users);
+	UsersList->Caption = L"額外回報來源";
 	if( UsersList->ShowModal() == mrOk )
 		UsersEdit->Text = UsersList->GetUsers().c_str();
 	delete UsersList;
 	UsersList = NULL;
+	delete Users;
 }
 //---------------------------------------------------------------------------
 
