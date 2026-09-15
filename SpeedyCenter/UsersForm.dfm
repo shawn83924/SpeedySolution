@@ -2,7 +2,6 @@ object UsersList: TUsersList
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = #38989#22806#22238#22577#20358#28304
   ClientHeight = 247
   ClientWidth = 294
   Color = clBtnFace
