@@ -4,67 +4,33 @@
 #pragma hdrstop
 
 #include "UsersForm.h"
-#include "SimTFXMain.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
 TUsersList *UsersList;
 //---------------------------------------------------------------------------
-__fastcall TUsersList::TUsersList(TComponent* Owner, TSimTFXForm* SimTFXForm, const AnsiString& users)
+__fastcall TUsersList::TUsersList(TComponent* Owner, TStringList* Users)
 	: TForm(Owner)
 {
-	ReadUsers(SimTFXForm, Owner);
-	SetUsersList(users);
+	PopulateUsersList(Users);
 }
 //---------------------------------------------------------------------------
 __fastcall TUsersList::~TUsersList()
 {
 }
 //---------------------------------------------------------------------------
-void __fastcall TUsersList::ReadUsers(TSimTFXForm* SimTFXForm, TComponent* Owner )
+void __fastcall TUsersList::PopulateUsersList( TStringList* Users )
 {
 	UsersListView->Items->Clear();
 	UsersListView->Items->BeginUpdate();
 
-	AnsiString       ConfigFileName = SimTFXForm->GetUserConfigFileName();
-	UFC::UiniFile    ini( ConfigFileName.c_str() );
-	UFC::Section*    iniSection;
-
-	UFC::AnsiString Type;
-	TAccountForm* AccountForm = dynamic_cast< TAccountForm*> (Owner);
-	int count = ini.SectionCount();
-	for( int i = 0; i < count; i++ )
+	for( int i = 0; i < Users->Count; i++ )
 	{
-		iniSection = ini.GetSection( i );
-		if( iniSection->GetSectionName() == "Speedy" || iniSection->GetSectionName() == "SpeedyOffHour" )
-			continue;
-
-		iniSection->GetValue("Type", Type);
-		if( Type == "Admin")
-			continue;
-
-		AnsiString caption = iniSection->GetSectionName().c_str();
-		if(AccountForm->IDEdit->Text == caption)
-			continue;
-
-		UsersListView->Items->Add()->Caption = caption;
+		TListItem* Item = UsersListView->Items->Add();
+		Item->Caption = Users->Strings[i];
+		Item->Checked = ( Users->Objects[i] != NULL );
 	}
 	UsersListView->Items->EndUpdate();
-}
-//---------------------------------------------------------------------------
-void __fastcall TUsersList::SetUsersList( const AnsiString& users )
-{
-	TStringList* UserList = new TStringList();
-	UserList->Delimiter       = ',';
-	UserList->StrictDelimiter = true;
-	UserList->DelimitedText   = users;
-
-	for( int i = 0; i < UsersListView->Items->Count; i++ )
-	{
-		TListItem* Item = UsersListView->Items->Item[i];
-		Item->Checked = ( UserList->IndexOf( Item->Caption ) >= 0 );
-	}
-	delete UserList;
 }
 //---------------------------------------------------------------------------
 AnsiString __fastcall TUsersList::GetUsers(void)
