@@ -219,7 +219,7 @@ __published:	// IDE-managed Components
     TSpeedButton *ModifyAccountButton;
     TSpeedButton *DelAccountButton;
     TSpeedButton *ChangeAccountPwdButton;
-    TListView *AccountsListView;
+	TListView *AccountsListView;
 	TLabel *FIXSessionInfoLabel;
 	TMenuItem *CopySettingMenuItem;
 	TGroupBox *OTCGroupBox;
@@ -454,6 +454,8 @@ __published:	// IDE-managed Components
 	TSubscriber *APISettingSubscriber;
 	TPopupMenu *APIPopupMenu;
 	TMenuItem *MenuItem1;
+	TSpeedButton *LockAccountsButton;
+	TSpeedButton *UnlockAccountsButton;
     void __fastcall MessageObjectConnected(TObject *Sender);
     void __fastcall MessageObjectError(TObject *Sender);
     void __fastcall LogonButtonClick(TObject *Sender);
@@ -671,6 +673,8 @@ __published:	// IDE-managed Components
           MTree *Tree);
 	void __fastcall APISettingButtonClick(TObject *Sender);
 	void __fastcall MenuItem1Click(TObject *Sender);
+	void __fastcall LockAccountsButtonClick(TObject *Sender);
+	void __fastcall UnlockAccountsButtonClick(TObject *Sender);
 
 
 
@@ -807,6 +811,8 @@ private:
 	void __fastcall UpdateOTCPerformance( int OrderSec, int Total, int qcount, UFCType::UInt32 Status );
 	void __fastcall UpdatePVCIOLog( TMemoryStream* Stream );
 	void __fastcall UpdateUserConfigFile( void );
+	void __fastcall LockUsers( AnsiString& Users );
+	void __fastcall UnlockUsers( AnsiString& Users );
 	void __fastcall LoadUserLog( void );
     void __fastcall BuildUserlist( void );
 	void __fastcall FetchUserlist( MTree* Tree );

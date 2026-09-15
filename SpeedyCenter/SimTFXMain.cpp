@@ -21,6 +21,7 @@
 #include "AppInfo.h"
 #include "CMDform.h"
 #include "NewAccountForm.h"
+#include "UsersForm.h"
 #include "ProfileGraph.h"
 #include "StarWaveFrame.h"
 #include "SystemInfoForm.h"
@@ -3072,9 +3073,12 @@ void __fastcall TSimTFXForm::ReadUsers( void )
 		iniSection = ini.GetSection( i );
 		if( iniSection->GetSectionName() == "Speedy" || iniSection->GetSectionName() == "SpeedyOffHour" )
 			continue;
+		UFC::AnsiString  Lock = "0";
+
 		NewListItem = AccountsListView->Items->Add();
 		NewListItem->Caption = iniSection->GetSectionName().c_str();
-		NewListItem->Data = NULL;
+		iniSection->GetValue( "Lock", Lock );
+		NewListItem->Data = ( Lock.ToInt() != 0 ) ? (void*)1 : NULL;
 
 		iniSection->GetValue( "Type",Type );
 		iniSection->GetValue( "IP",IP );
@@ -8377,3 +8381,93 @@ void __fastcall TSimTFXForm::MenuItem1Click(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TSimTFXForm::LockAccountsButtonClick(TObject *Sender)
+{
+	///< 搜尋 AccountsListView 中所有非 Locked 的帳號，交給 TUsersList 顯示，供後續上鎖使用
+	///< Item->Data 是否為 NULL 代表 Locked 狀態，參見 TSimTFXForm::UpdateAEStatus()
+	TStringList* Users = new TStringList();
+	for( int i = 0; i < AccountsListView->Items->Count; i++ )
+	{
+		TListItem* Item = AccountsListView->Items->Item[i];
+		if( Item->Data == NULL )
+			Users->AddObject( Item->Caption, (TObject*)(NativeInt)0 );
+	}
+
+	UsersList = new TUsersList(this, Users);
+	UsersList->Caption = L"上鎖帳號";
+	if( UsersList->ShowModal() == mrOk)
+	{
+		AnsiString SelectedUsers = UsersList->GetUsers();
+		LockUsers( SelectedUsers );
+	}
+	delete UsersList;
+	UsersList = NULL;
+	delete Users;
+}
+//---------------------------------------------------------------------------
+void __fastcall TSimTFXForm::LockUsers( AnsiString& Users )
+{
+	///< 將 Users("," 分隔的帳號清單) 中每位使用者的 Lock 狀態設為 1，參考 UpdateUserConfigFile() 的存檔/通知/重讀流程
+	TStringList* UserList = new TStringList();
+	UserList->Delimiter       = ',';
+	UserList->StrictDelimiter = true;
+	UserList->DelimitedText   = Users;
+
+	AnsiString       ConfigFileName = GetUserConfigFileName();
+	UFC::UiniFile    ini( ConfigFileName.c_str() );
+
+	for( int i = 0; i < UserList->Count; i++ )
+		ini.SetValue( UFC::AnsiString( UserList->Strings[i].c_str() ), "Lock", "1" );
+
+	ini.Save();
+	SendFile( ConfigFileName, "FILE", SPEEDY_SET_CONFIG_FILE, SPEEDY_USERS_CFG );
+	ReadUsers();
+
+	delete UserList;
+}
+//---------------------------------------------------------------------------
+void __fastcall TSimTFXForm::UnlockAccountsButtonClick(TObject *Sender)
+{
+	///< 搜尋 AccountsListView 中所有已 Locked 的帳號，交給 TUsersList 顯示，供後續解鎖使用
+	///< Item->Data 是否為 NULL 代表 Locked 狀態，參見 TSimTFXForm::UpdateAEStatus()
+	TStringList* Users = new TStringList();
+	for( int i = 0; i < AccountsListView->Items->Count; i++ )
+	{
+		TListItem* Item = AccountsListView->Items->Item[i];
+		if( Item->Data != NULL )
+			Users->AddObject( Item->Caption, (TObject*)(NativeInt)0 );
+	}
+
+	UsersList = new TUsersList(this, Users);
+	UsersList->Caption = L"解鎖帳號";
+	if( UsersList->ShowModal() == mrOk)
+	{
+		AnsiString SelectedUsers = UsersList->GetUsers();
+		UnlockUsers( SelectedUsers );
+	}
+	delete UsersList;
+	UsersList = NULL;
+	delete Users;
+}
+//---------------------------------------------------------------------------
+void __fastcall TSimTFXForm::UnlockUsers( AnsiString& Users )
+{
+	///< 將 Users("," 分隔的帳號清單) 中每位使用者的 Lock 狀態設為 0，參考 LockUsers() 的存檔/通知/重讀流程
+	TStringList* UserList = new TStringList();
+	UserList->Delimiter       = ',';
+	UserList->StrictDelimiter = true;
+	UserList->DelimitedText   = Users;
+
+	AnsiString       ConfigFileName = GetUserConfigFileName();
+	UFC::UiniFile    ini( ConfigFileName.c_str() );
+
+	for( int i = 0; i < UserList->Count; i++ )
+		ini.SetValue( UFC::AnsiString( UserList->Strings[i].c_str() ), "Lock", "0" );
+
+	ini.Save();
+	SendFile( ConfigFileName, "FILE", SPEEDY_SET_CONFIG_FILE, SPEEDY_USERS_CFG );
+	ReadUsers();
+
+	delete UserList;
+}
+//---------------------------------------------------------------------------
