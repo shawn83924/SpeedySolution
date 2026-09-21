@@ -968,6 +968,8 @@ public: ///< CA Functions
 	void SetCACommonName(const UFC::AnsiString& NewValue) {FCACommonName = NewValue;};
 	void CreateCAObject();
 	void DeleteCAObject();
+	bool IsCAObjectExist();
+	bool IsCAObjectWorking();
 	bool CreateUniFSCAObject();
 	bool CreateMLTWCAObject();
 	bool CreateTSCGCCAObject();

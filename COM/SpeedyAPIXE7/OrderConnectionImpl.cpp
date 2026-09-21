@@ -220,7 +220,6 @@ HRESULT __fastcall TOrderConnectionImpl::FireOnNews(INewsMessage* News )
 		FEventList[i]->OnNews( News );
 	return S_OK;
 }
-
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::Create(BSTR AppName)
 {
@@ -302,7 +301,6 @@ STDMETHODIMP TOrderConnectionImpl::Connect(BSTR RemoteIP, long RemotePort)
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::Connect2(BSTR RemoteIP, long RemotePort, long TimeoutSec)
-
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
 	if( FConnection != NULL )
@@ -397,9 +395,6 @@ STDMETHODIMP TOrderConnectionImpl::ReplaceOrder(IReplaceOrderMessage* Msg)
 	return S_OK;
 }
 //------------------------------------------------------------------------------
-
-
-
 STDMETHODIMP TOrderConnectionImpl::CancelOrder(ICancelOrderMessage* Msg)
 {
 	UFC::BufferedLog::Printf( " *** Call[%s] *** ",__FUNCTION__ );
@@ -1110,7 +1105,6 @@ STDMETHODIMP TOrderConnectionImpl::get_LocalIP(BSTR* Value)
 }
 //-----------------------------------------------------------------------------
 STDMETHODIMP TOrderConnectionImpl::ChangePassword(BSTR Password, BSTR NewPassword)
-
 {
 	if( FConnection != NULL )
 	{
@@ -1213,5 +1207,34 @@ STDMETHODIMP TOrderConnectionImpl::CreateUniFSCAObject()
 	}
 	return S_OK;
 }
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::get_IsCAObjectExist(VARIANT_BOOL* Value)
+{
+	if( FConnection != NULL )
+	{
+		if( FConnection->IsCAObjectExist() == true )
+			*Value = VARIANT_TRUE;
+		else
+			*Value = VARIANT_FALSE;
+	}
+	else
+		*Value = VARIANT_FALSE;
+	return S_OK;
+}
+//-----------------------------------------------------------------------------
+STDMETHODIMP TOrderConnectionImpl::get_IsCAObjectWorking(VARIANT_BOOL* Value)
+{
+	if( FConnection != NULL )
+	{
+		if( FConnection->IsCAObjectWorking() == true )
+			*Value = VARIANT_TRUE;
+		else
+			*Value = VARIANT_FALSE;
+	}
+	else
+		*Value = VARIANT_FALSE;
+	return S_OK;
+}
+
 
 

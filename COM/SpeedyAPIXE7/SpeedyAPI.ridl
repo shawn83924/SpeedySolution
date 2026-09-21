@@ -6,7 +6,7 @@
 // However, when applying changes via the Editor this file will be regenerated
 // and comments or formatting changes will be lost.
 // ************************************************************************ //
-// File generated on 2026/9/11 下午 06:12:23 (- $Rev: 12980 $, 160832671).
+// File generated on 2026/09/21 11:29:03 (- $Rev: 12980 $, 13393828).
 
 [
   uuid(4C3ACC93-9EC6-44E5-BFC2-883EED3A05DA),
@@ -1559,6 +1559,10 @@ library SpeedyAPI
     HRESULT _stdcall CreateMLTWCAObject(void);
     [id(0x000000F9)]
     HRESULT _stdcall CreateTSCGCCAObject(void);
+    [propget, id(0x000000FA)]
+    HRESULT _stdcall IsCAObjectExist([out, retval] VARIANT_BOOL* Value);
+    [propget, id(0x000000FB)]
+    HRESULT _stdcall IsCAObjectWorking([out, retval] VARIANT_BOOL* Value);
   };
 
   [

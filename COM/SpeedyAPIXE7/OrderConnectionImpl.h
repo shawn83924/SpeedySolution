@@ -154,6 +154,8 @@ protected:// IOrderConnection
   STDMETHOD(CreateMLTWCAObject());
   STDMETHOD(CreateTSCGCCAObject());
   STDMETHOD(CreateUniFSCAObject());
+  STDMETHOD(get_IsCAObjectExist(VARIANT_BOOL* Value));
+  STDMETHOD(get_IsCAObjectWorking(VARIANT_BOOL* Value));
 };
 // ---------------------------------------------------------------------------
 class EventHandler :public  IOrderConnectionEventListener

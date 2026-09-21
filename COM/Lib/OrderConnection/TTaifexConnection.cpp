@@ -2101,6 +2101,24 @@ void TTaifexConnection::DeleteCAObject()
 #endif
 }
 //---------------------------------------------------------------------------
+bool TTaifexConnection::IsCAObjectExist()
+{
+    bool isObjectExist = false;
+#ifdef WIN32
+    if (FApiCAObjPtr != 0) isObjectExist = true;
+#endif
+    return isObjectExist;
+}  //TTaifexConnection::IsCAObjectExist()
+//---------------------------------------------------------------------------
+bool TTaifexConnection::IsCAObjectWorking()
+{
+    bool isObjectWorking = false;
+#ifdef WIN32
+    if ((FApiCAObjPtr != 0) && FApiCAObjPtr->IsWorking()) isObjectWorking = true;
+#endif
+    return isObjectWorking;
+}  //TTaifexConnection::IsCAObjectWorking()
+//---------------------------------------------------------------------------
 bool TTaifexConnection::CreateUniFSCAObject()
 {
 	bool isSuccess = false;
