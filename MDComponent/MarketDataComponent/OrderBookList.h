@@ -512,6 +512,8 @@ public:
 	bool __fastcall HasWorkingOrder( void );
 	double __fastcall GetBullPrice( int BetterSellTick );
 	void PriceAlarm( int MarkPxIndex, bool& MarkPxAlarm, bool MarkPxHigher, double MarkPx );
+	void __fastcall DelAllBuyOCO(void);
+	void __fastcall DelAllSellOCO(void);
 public:
 	static int    __fastcall SyncCount( void );
 	static TForm* __fastcall GetSyncForm( int i );

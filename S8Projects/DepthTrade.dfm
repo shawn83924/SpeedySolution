@@ -266,8 +266,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 196
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -293,8 +293,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 224
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -320,8 +320,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -402,8 +402,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -432,8 +432,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2170,8 +2170,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 27
-      Height = 27
+      Width = 0
+      Height = 0
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -2542,7 +2542,7 @@ object DepthForm: TDepthForm
           object MarketToggleSwitch: TToggleSwitch
             Left = 8
             Top = 419
-            Width = 78
+            Width = 108
             Height = 24
             Margins.Left = 5
             Margins.Top = 5
@@ -5139,15 +5139,14 @@ object DepthForm: TDepthForm
     object CenterLabel: TLabel
       Left = 531
       Top = 1
-      Width = 50
-      Height = 28
+      Width = 42
+      Height = 27
       Cursor = crHandPoint
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
       Alignment = taCenter
-      AutoSize = False
       Caption = #32622#20013
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -5163,15 +5162,14 @@ object DepthForm: TDepthForm
     object MarketBuyLabel: TLabel
       Left = 431
       Top = 1
-      Width = 75
-      Height = 28
+      Width = 63
+      Height = 27
       Cursor = crHandPoint
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
       Alignment = taCenter
-      AutoSize = False
       Caption = #24066#20729#36023
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -5187,7 +5185,7 @@ object DepthForm: TDepthForm
     object MarketSellLabel: TLabel
       Left = 605
       Top = 1
-      Width = 75
+      Width = 63
       Height = 27
       Cursor = crHandPoint
       Margins.Left = 4
@@ -5195,7 +5193,6 @@ object DepthForm: TDepthForm
       Margins.Right = 4
       Margins.Bottom = 4
       Alignment = taCenter
-      AutoSize = False
       Caption = #24066#20729#36067
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -5211,15 +5208,14 @@ object DepthForm: TDepthForm
     object CancelAllBuy: TLabel
       Left = 330
       Top = 1
-      Width = 75
-      Height = 28
+      Width = 63
+      Height = 27
       Cursor = crHandPoint
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
       Alignment = taCenter
-      AutoSize = False
       Caption = #36023#20840#21034
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -5235,15 +5231,14 @@ object DepthForm: TDepthForm
     object CancelAllSell: TLabel
       Left = 700
       Top = 1
-      Width = 75
-      Height = 28
+      Width = 63
+      Height = 27
       Cursor = crHandPoint
       Margins.Left = 4
       Margins.Top = 4
       Margins.Right = 4
       Margins.Bottom = 4
       Alignment = taCenter
-      AutoSize = False
       Caption = #36067#20840#21034
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
@@ -5253,6 +5248,52 @@ object DepthForm: TDepthForm
       ParentFont = False
       StyleElements = []
       OnClick = CancelAllSellClick
+      OnMouseEnter = CenterLabelMouseEnter
+      OnMouseLeave = CenterLabelMouseLeave
+    end
+    object CancelAllOCOBuy: TLabel
+      Left = 196
+      Top = 1
+      Width = 111
+      Height = 27
+      Cursor = crHandPoint
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Alignment = taCenter
+      Caption = #36023'OCO'#20840#21034
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      StyleElements = []
+      OnClick = CancelAllOCOBuyClick
+      OnMouseEnter = CenterLabelMouseEnter
+      OnMouseLeave = CenterLabelMouseLeave
+    end
+    object CancelAllOCOSell: TLabel
+      Left = 794
+      Top = 1
+      Width = 111
+      Height = 27
+      Cursor = crHandPoint
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Alignment = taCenter
+      Caption = #36067'OCO'#20840#21034
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWhite
+      Font.Height = -21
+      Font.Name = #24494#36575#27491#40657#39636
+      Font.Style = [fsUnderline]
+      ParentFont = False
+      StyleElements = []
+      OnClick = CancelAllOCOSellClick
       OnMouseEnter = CenterLabelMouseEnter
       OnMouseLeave = CenterLabelMouseLeave
     end
@@ -5569,7 +5610,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800CC010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800D0010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

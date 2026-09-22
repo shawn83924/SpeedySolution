@@ -2609,6 +2609,64 @@ void __fastcall TOrderBookList::OCOColRightMouseDown( Classes::TShiftState Shift
 		price);
 }
 //---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DelAllBuyOCO(void)
+{
+	if(FOCOStore == NULL)
+		return;
+
+	for( register int i = 0; i < FBuyOCOQty.Length; i++ )
+	{
+		if( FBuyOCOQty[i] <= 0 )
+			continue;
+
+		double price = GetPxFromIndex(i);
+		if( FIsPairingOCO && FCurrentPairOCO->OrderSide1 == nsOrderMessageDefine::sBuy && FCurrentPairOCO->ConditionPrice1 == price )
+		{
+			FOCOStore->CancelPairingOCO(
+				FExchange.c_str(),
+				FSymbol.c_str(),
+				nsOrderMessageDefine::sBuy,
+				price);
+			continue;
+		}
+
+		FOCOStore->DeleteOCO(
+			FExchange.c_str(),
+			FSymbol.c_str(),
+			nsOrderMessageDefine::sBuy,
+			price);
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TOrderBookList::DelAllSellOCO(void)
+{
+	if(FOCOStore == NULL)
+		return;
+
+	for( register int i = 0; i < FSellOCOQty.Length; i++ )
+	{
+		if( FSellOCOQty[i] <= 0 )
+			continue;
+
+		double price = GetPxFromIndex(i);
+		if( FIsPairingOCO && FCurrentPairOCO->OrderSide1 == nsOrderMessageDefine::sSell && FCurrentPairOCO->ConditionPrice1 == price )
+		{
+			FOCOStore->CancelPairingOCO(
+				FExchange.c_str(),
+				FSymbol.c_str(),
+				nsOrderMessageDefine::sSell,
+				price);
+			continue;
+		}
+
+		FOCOStore->DeleteOCO(
+			FExchange.c_str(),
+			FSymbol.c_str(),
+			nsOrderMessageDefine::sSell,
+			price);
+	}
+}
+//---------------------------------------------------------------------------
 void __fastcall TOrderBookList::SetBuyStopTick( int Tick )
 {
 	FBuyStopTick = Tick;

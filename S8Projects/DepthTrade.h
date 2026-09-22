@@ -215,6 +215,8 @@ __published:	// IDE-managed Components
 	TShape *ExtraShape;
 	TLabel *CancelAllBuy;
 	TLabel *CancelAllSell;
+	TLabel *CancelAllOCOBuy;
+	TLabel *CancelAllOCOSell;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall FillToggleSwitchClick(TObject *Sender);
 	void __fastcall StopToggleSwitchClick(TObject *Sender);
@@ -324,6 +326,8 @@ __published:	// IDE-managed Components
 	void __fastcall CancelAllBuyClick(TObject *Sender);
 	void __fastcall CancelAllSellClick(TObject *Sender);
 	void __fastcall MarketToggleSwitchClick(TObject *Sender);
+	void __fastcall CancelAllOCOBuyClick(TObject *Sender);
+	void __fastcall CancelAllOCOSellClick(TObject *Sender);
 
 private:	// Interface TOrderQtyListener
 	virtual void OrderQtyChanged( MarketEnum Market, const String& Symbol, SideEnum Side, double Px, int Qty);
