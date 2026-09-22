@@ -1339,6 +1339,8 @@ void __fastcall TDepthForm::AdjuestFont( void )
 	MarketSellLabel->Font->Size  = FFontSize;
 	CancelAllBuy->Font->Size  = FFontSize;
 	CancelAllSell->Font->Size  = FFontSize;
+	CancelAllOCOBuy->Font->Size= FFontSize;
+    CancelAllOCOSell->Font->Size=FFontSize;
 	delete Font;
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
@@ -2415,11 +2417,14 @@ void __fastcall TDepthForm::ToolSVClosed(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::AlignLabels( void )
 {
-   CenterLabel->Left = OrderBookList->Left + (OrderBookList->Width - CenterLabel->Width )/2;
-   MarketBuyLabel->Left = CenterLabel->Left - 20 - MarketBuyLabel->Width;
-   MarketSellLabel->Left = CenterLabel->Left + 20 + CenterLabel->Width;
-   CancelAllBuy->Left = MarketBuyLabel->Left - 20 - CancelAllBuy->Width;
-   CancelAllSell->Left = MarketSellLabel->Left + 20 + MarketSellLabel->Width;
+	int space = FFontSize * 5;
+	CenterLabel->Left = OrderBookList->Left + (OrderBookList->Width - CenterLabel->Width )/2;
+	MarketBuyLabel->Left  =	CenterLabel->Left 	 - 	space - MarketBuyLabel->Width;
+	MarketSellLabel->Left = CenterLabel->Left 	 + 	space + CenterLabel->Width;
+	CancelAllBuy->Left 	  = MarketBuyLabel->Left - 	space - CancelAllBuy->Width;
+	CancelAllSell->Left   = MarketSellLabel->Left+  space + MarketSellLabel->Width;
+	CancelAllOCOBuy->Left = CancelAllBuy->Left 	 - 	space - CancelAllOCOBuy->Width;
+	CancelAllOCOSell->Left= CancelAllSell->Left  + 	space + CancelAllSell->Width;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
@@ -2924,6 +2929,8 @@ void __fastcall TDepthForm::EnableQuickMode( void )
 	StopLabel->Enabled = true;
 	StopToggleSwitch->Enabled = true;
 	OrderBookList->ConditionOrder = (StopToggleSwitch->State != tssOff);
+	CancelAllOCOBuy->Visible = false;
+	CancelAllOCOSell->Visible= false;
 
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
@@ -2945,7 +2952,9 @@ void __fastcall TDepthForm::EnableOCOMode( void )
 	OrderBookList->ShowOCO = true;
 	OrderBookList->ConditionOrder = false;
 	StopLabel->Enabled = false;
-    StopToggleSwitch->Enabled = false;
+	StopToggleSwitch->Enabled = false;
+	CancelAllOCOBuy->Visible = true;
+	CancelAllOCOSell->Visible= true;
 
 	if( ToolSV->Opened )
 		SetWidth( ToolSV->OpenedWidth );
@@ -3159,4 +3168,13 @@ void __fastcall TDepthForm::MarketToggleSwitchClick(TObject *Sender)
 	MarketToggleSwitch->StateCaptions->CaptionOff = L"Ãö³¬IOC";
 }
 //---------------------------------------------------------------------------
-
+void __fastcall TDepthForm::CancelAllOCOBuyClick(TObject *Sender)
+{
+	OrderBookList->DelAllBuyOCO();
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::CancelAllOCOSellClick(TObject *Sender)
+{
+	OrderBookList->DelAllSellOCO();
+}
+//---------------------------------------------------------------------------
