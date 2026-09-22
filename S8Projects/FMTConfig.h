@@ -192,7 +192,7 @@ private:
 	String FPassword;
 	bool FTryVersion;
 	bool FProxyLogon;
-    bool FPositionPort;
+    int FPositionPort;
 	TBrokerUser FAccounts;
 
     bool FStopLogon;
