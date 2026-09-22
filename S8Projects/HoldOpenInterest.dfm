@@ -11,7 +11,6 @@ object HoldOpenInterestForm: THoldOpenInterestForm
   Font.Height = -18
   Font.Name = #24494#36575#27491#40657#39636
   Font.Style = []
-  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Scaled = False
   StyleElements = []
