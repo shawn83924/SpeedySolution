@@ -147,10 +147,12 @@ bool TLiteService::GetPosition( bool IsTAIFEX, const String& Account, String& Ms
 	{
 		UFC::PClientSocket PositionSocket( ServerIP, FPositionPort, FALSE );	///< ThreadMode = FALSE，本函式內同步處理即可
 
+		UFC::AnsiString ansiAccount( Account.c_str() );
+		UFC::BufferedLog::Printf( " TLiteService::GetPosition 準備連線[%s:%d] IsTAIFEX[%d] Account[%s]", ServerIP.c_str(), FPositionPort, (int)IsTAIFEX, ansiAccount.c_str() );
+
 		PositionSocket.Connect( 5 );	///< 5 秒連線逾時
 
 		UFC::AnsiString ansiID( FID.c_str() );
-		UFC::AnsiString ansiAccount( Account.c_str() );
 		UFC::AnsiString rawPassword( FPassword.c_str() );
 		UFC::MD5 passwordMD5( (const UFC::UInt8*)rawPassword.c_str(), rawPassword.Length() );
 		UFC::AnsiString ansiPassword = passwordMD5.ToString();
