@@ -2275,13 +2275,17 @@ void __fastcall TSimTFXForm::AdminSubscriberMessage(const MString &Subject,
 			{
 				switch( Result )
 				{
-					case 0:
+					case 1:  FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_OK;
+							 FetchUserlist( Tree );
+							 BuildUserlist();
+							 break;
 					case -1: FStatusText = Scstrings_MAIN_ACCOUNT_NOT_EXISTS;break;
+					case -2: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_ALREADY_EXISTS;break;
+					case -3: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_NOT_ADMIN;break;
 					case -4: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_NO_RIGHTS;break;
-					default: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_OK;
-                             FetchUserlist( Tree );
-                             BuildUserlist();
-                             break;
+					case -5: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_SAME_PREV2;break;
+					case 0:
+					default: FStatusText = Scstrings_MAIN_MODIFY_PASSWORD_FAIL;break;
                 }
 				StatusBar->Panels->Items[0]->Text = FStatusText;
             }
