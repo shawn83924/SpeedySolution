@@ -154,8 +154,8 @@
         <VerInfo_MinorVer>0</VerInfo_MinorVer>
         <VerInfo_Release>0</VerInfo_Release>
         <ILINK_LibraryPath>C:\MBus\lib\Win32\;C:\Users\Public\Documents\Embarcadero\Studio\15.0\DCP\;C:\src\VCL;$(ILINK_LibraryPath)</ILINK_LibraryPath>
-        <VerInfo_Build>78</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileDescription=Monitoring program for Speedy Solution;FileVersion=3.0.0.78;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=3.0.0.78;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Build>79</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileDescription=Monitoring program for Speedy Solution;FileVersion=3.0.0.79;InternalName=Speedy Center;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=MDBS Speedy;OriginalFilename=Speedy Center;ProductName=Speedy Solution;ProductVersion=3.0.0.79;Comments=for TWSE,OTC,TAIFEX,PATS,FIX and StarWave;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <BT_BuildType>Debug</BT_BuildType>
     </PropertyGroup>
