@@ -246,7 +246,6 @@ __published:	// IDE-managed Components
 	TGraphButton *LowPxAlarmSoundButton;
 	TComboBox *LowPxAlarmSoundComboBox;
 	TGraphButton *LowPxAlarmSoundSwitch;
-	TGraphButtonV2 *LogoutBtn;
 	void __fastcall CMarketDataStoreAppConnected(TObject *Sender);
 	void __fastcall CMarketDataStoreContractDownloadCompleted(int Count, int UseMS);
 	void __fastcall ChartsStoreXAppConnected(TObject *Sender);
