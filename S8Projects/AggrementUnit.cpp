@@ -8,6 +8,7 @@
 #pragma package(smart_init)
 #pragma link "RoundFormEx"
 #pragma resource "*.dfm"
+#include "MDComponentStrings.hpp"
 TAggrementForm *AggrementForm;
 //---------------------------------------------------------------------------
 __fastcall TAggrementForm::TAggrementForm(TComponent* Owner)
@@ -38,8 +39,9 @@ void __fastcall TAggrementForm::CheckBox1Click(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TAggrementForm::FormCreate(TObject *Sender)
 {
-   Application->NormalizeTopMosts();
-   SetWindowPos( Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE + SWP_NOMOVE + SWP_NOSIZE);
+	this->Caption = Mdcomponentstrings_MD_SpeedyUnify_AppName + L" - 使用聲明書";
+	Application->NormalizeTopMosts();
+   	SetWindowPos( Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOACTIVATE + SWP_NOMOVE + SWP_NOSIZE);
 }
 //---------------------------------------------------------------------------
 

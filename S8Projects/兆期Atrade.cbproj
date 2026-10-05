@@ -4,7 +4,7 @@
         <ProjectVersion>18.4</ProjectVersion>
         <FrameworkType>VCL</FrameworkType>
         <AppType>Application</AppType>
-        <MainSource>兆期Pro.cpp</MainSource>
+        <MainSource>兆期Atrade.cpp</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
@@ -62,7 +62,7 @@
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
         <UWP_CppLogo44>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_44.png</UWP_CppLogo44>
         <UWP_CppLogo150>$(BDS)\bin\Artwork\Windows\UWP\cppreg_UwpDefault_150.png</UWP_CppLogo150>
-        <SanitizedProjectName>兆期Pro</SanitizedProjectName>
+        <SanitizedProjectName>兆期Atrade</SanitizedProjectName>
         <IncludePath>DSAudio\;..\MDComponent\vcl\;C:\src\UFC;C:\src\Migo;C:\src\COM\Lib\OrderConnection;C:\src\COM\Lib\OrderMessage;C:\src\StarWaveAPILib\MarketDataConnection;C:\src\StarWaveAPILib\MarketDataMessage;C:\src\StarWaveAPILib\ChartServerConnection;C:\src\MDComponent\MarketDataComponent;C:\src\MDComponent\vcl;$(IncludePath)</IncludePath>
         <VerInfo_Locale>1028</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
@@ -115,12 +115,12 @@
         <BCC_UseRegisterVariables>Always</BCC_UseRegisterVariables>
         <BCC_StackFrames>false</BCC_StackFrames>
         <Debugger_DebugSourcePath>C:\src\UFC\;$(Debugger_DebugSourcePath)</Debugger_DebugSourcePath>
-        <Icon_MainIcon>兆期Pro_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>兆期Atrade_Icon.ico</Icon_MainIcon>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
         <VerInfo_Keys>CompanyName=MDBS development inc.,;FileDescription=$(MSBuildProjectName);FileVersion=3.3.16.0;InternalName=SpeedyUnify;LegalCopyright=MDBS development inc.,;LegalTrademarks=Speedy Unify;OriginalFilename=SpeedyUnify.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=3.3.16.0;Comments=Speedy Unify trading client</VerInfo_Keys>
-        <UWP_CppLogo44>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo44>
-        <UWP_CppLogo150>C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png</UWP_CppLogo150>
+        <UWP_CppLogo44>MegaFuture_Atrade_ICON.png</UWP_CppLogo44>
+        <UWP_CppLogo150>MegaFuture_Atrade_ICON.png</UWP_CppLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
         <AppEnableHighDPI>true</AppEnableHighDPI>
         <VerInfo_Release>16</VerInfo_Release>
@@ -397,7 +397,7 @@
             <DependentOn>WebBrowserForm.h</DependentOn>
             <BuildOrder>36</BuildOrder>
         </CppCompile>
-        <CppCompile Include="兆期Pro.cpp">
+        <CppCompile Include="兆期Atrade.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>
         <FormResources Include="OCODetail.dfm"/>
@@ -452,7 +452,7 @@
                     <ProjectProperties Name="IndexFiles">False</ProjectProperties>
                 </ProjectProperties>
                 <Source>
-                    <Source Name="MainSource">兆期Pro.cpp</Source>
+                    <Source Name="MainSource">兆期Atrade.cpp</Source>
                 </Source>
                 <Excluded_Packages/>
                 <VFOLDERS>
@@ -490,7 +490,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\mdbs-user\Downloads\computer\logo_260514_desk_ICON.png" Configuration="Debug" Class="UWP_CppLogo44">
+                <DeployFile LocalName="MegaFuture_Atrade_ICON.png" Configuration="Debug" Class="UWP_CppLogo44">
                     <Platform Name="Win32">
                         <RemoteDir>Assets\</RemoteDir>
                         <RemoteName>Logo44x44.png</RemoteName>
@@ -512,20 +512,20 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\兆期Atrade.tds" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win32">
+                        <RemoteName>兆期Atrade.tds</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\兆期Atrade.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>兆期Atrade.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin\cc32250.dll" Class="DependencyModule">
                     <Platform Name="Win32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\兆期Pro.tds" Configuration="Debug" Class="DebugSymbols">
-                    <Platform Name="Win32">
-                        <RemoteName>兆期Pro.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\兆期Pro.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>兆期Pro.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

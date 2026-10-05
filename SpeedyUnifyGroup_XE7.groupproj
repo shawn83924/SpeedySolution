@@ -21,7 +21,7 @@
         <Projects Include="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="S8Projects\兆期Pro.cbproj">
+        <Projects Include="S8Projects\兆期Atrade.cbproj">
             <Dependencies/>
         </Projects>
         <Projects Include="S8Projects\RestartAgent.cbproj">
@@ -89,14 +89,14 @@
     <Target Name="S8MarketDataComponent_XE7:Make">
         <MSBuild Projects="MDComponent\MarketDataComponent\S8MarketDataComponent_XE7.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="兆期Pro">
-        <MSBuild Projects="S8Projects\兆期Pro.cbproj"/>
+    <Target Name="兆期Atrade">
+        <MSBuild Projects="S8Projects\兆期Atrade.cbproj"/>
     </Target>
-    <Target Name="兆期Pro:Clean">
-        <MSBuild Projects="S8Projects\兆期Pro.cbproj" Targets="Clean"/>
+    <Target Name="兆期Atrade:Clean">
+        <MSBuild Projects="S8Projects\兆期Atrade.cbproj" Targets="Clean"/>
     </Target>
-    <Target Name="兆期Pro:Make">
-        <MSBuild Projects="S8Projects\兆期Pro.cbproj" Targets="Make"/>
+    <Target Name="兆期Atrade:Make">
+        <MSBuild Projects="S8Projects\兆期Atrade.cbproj" Targets="Make"/>
     </Target>
     <Target Name="RestartAgent">
         <MSBuild Projects="S8Projects\RestartAgent.cbproj"/>
@@ -108,13 +108,13 @@
         <MSBuild Projects="S8Projects\RestartAgent.cbproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="UFC_XE7;StarWaveAPILib_XE7;SpeedyAPILib_XE7;MDComponent_XE7;MBusComponent_XE7;S8MarketDataComponent_XE7;兆期Pro;RestartAgent"/>
+        <CallTarget Targets="UFC_XE7;StarWaveAPILib_XE7;SpeedyAPILib_XE7;MDComponent_XE7;MBusComponent_XE7;S8MarketDataComponent_XE7;兆期Atrade;RestartAgent"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="UFC_XE7:Clean;StarWaveAPILib_XE7:Clean;SpeedyAPILib_XE7:Clean;MDComponent_XE7:Clean;MBusComponent_XE7:Clean;S8MarketDataComponent_XE7:Clean;兆期Pro:Clean;RestartAgent:Clean"/>
+        <CallTarget Targets="UFC_XE7:Clean;StarWaveAPILib_XE7:Clean;SpeedyAPILib_XE7:Clean;MDComponent_XE7:Clean;MBusComponent_XE7:Clean;S8MarketDataComponent_XE7:Clean;兆期Atrade:Clean;RestartAgent:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="UFC_XE7:Make;StarWaveAPILib_XE7:Make;SpeedyAPILib_XE7:Make;MDComponent_XE7:Make;MBusComponent_XE7:Make;S8MarketDataComponent_XE7:Make;兆期Pro:Make;RestartAgent:Make"/>
+        <CallTarget Targets="UFC_XE7:Make;StarWaveAPILib_XE7:Make;SpeedyAPILib_XE7:Make;MDComponent_XE7:Make;MBusComponent_XE7:Make;S8MarketDataComponent_XE7:Make;兆期Atrade:Make;RestartAgent:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
