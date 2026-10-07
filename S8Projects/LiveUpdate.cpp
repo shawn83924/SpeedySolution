@@ -52,7 +52,7 @@ void Config::LoadUpdateSetting( const char* FileName )
 	}
 	else
 	{
-		m_BaseURLs.Add( "https://mdbs-sharespace.mdevelop.com/SpeedyRelease/emegafuture-pro/" );
+		m_BaseURLs.Add( "https://megafuturesatrade.mpublic.net/files/" );
 		m_BaseURLs.Add( "https://unify-files.mpublic.net/");
 	}
 
@@ -441,7 +441,7 @@ const String& Config::SetupURL( void )
 		m_SetupURL = Value.c_str();
 	}
 	else
-		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/Unify/¥ü´ÁPro_Setup.exe";
+		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/Unify/¥ü´ÁAtrade_Setup.exe";
 	return m_SetupURL;
 }
 //------------------------------------------------------------------------------
