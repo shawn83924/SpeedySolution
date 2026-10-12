@@ -69,6 +69,9 @@ object MainForm: TMainForm
       Placement = svpLeft
       TabOrder = 0
       StyleElements = []
+      DesignSize = (
+        180
+        1356)
       object catMenuItems: TCategoryButtons
         Left = 0
         Top = 0
@@ -163,6 +166,57 @@ object MainForm: TMainForm
         TabOrder = 0
         StyleElements = []
       end
+      object LogoutBtn: TGraphButtonV2
+        Left = 0
+        Top = 1324
+        Width = 180
+        Height = 32
+        TabOrder = 1
+        OnClick = actLogoutExecute
+        Anchors = [akLeft, akRight, akBottom]
+        NormalGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
+          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
+          49454E44AE426082}
+        HoverGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
+          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          134944415478DA631449D9F79F010930922E00005BE708D9689A59F200000000
+          49454E44AE426082}
+        DownGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
+          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          134944415478DA631449D9F79F010930922E00005BE708D9689A59F200000000
+          49454E44AE426082}
+        DisableGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
+          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
+          49454E44AE426082}
+        SelectedGraph.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
+          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
+          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
+          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
+          49454E44AE426082}
+        FontAttrib.FontColor = clWhite
+        FontAttrib.FontShadowColor = clWhite
+        FontAttrib.HighlightFontColor = clWhite
+        FontAttrib.HighlightShadowColor = clWhite
+        FontAttrib.SelectedFontColor = clWhite
+        FontAttrib.DisabledFontColor = clWhite
+        FontAttrib.CaptionFont.Charset = ANSI_CHARSET
+        FontAttrib.CaptionFont.Color = clWhite
+        FontAttrib.CaptionFont.Height = -17
+        FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
+        FontAttrib.CaptionFont.Style = [fsBold]
+        ButtonText = #30331#20986
+      end
     end
     object SettingSV: TSplitView
       Left = 180
@@ -205,10 +259,6 @@ object MainForm: TMainForm
           Margins.Bottom = 7
           Caption = #19968#33324#35373#23450
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object NormalSettingLabel: TLabel
             Left = 69
             Top = 28
@@ -7541,10 +7591,6 @@ object MainForm: TMainForm
           ImageIndex = 2
           TabVisible = False
           OnMouseDown = TabHotKeyMouseDown
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object HotkeySettingLabel: TLabel
             Left = 69
             Top = 28
@@ -34800,10 +34846,6 @@ object MainForm: TMainForm
           ParentDoubleBuffered = False
           ParentFont = False
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object LoginLabel: TLabel
             Left = 69
             Top = 28
@@ -39214,7 +39256,7 @@ object MainForm: TMainForm
               Left = 62
               Top = 67
               Width = 506
-              Height = 31
+              Height = 60
               Margins.Left = 7
               Margins.Top = 7
               Margins.Right = 7
@@ -39247,7 +39289,7 @@ object MainForm: TMainForm
               Left = 62
               Top = 179
               Width = 506
-              Height = 31
+              Height = 60
               Margins.Left = 7
               Margins.Top = 7
               Margins.Right = 7
@@ -39300,10 +39342,6 @@ object MainForm: TMainForm
           ImageIndex = 4
           ParentFont = False
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label7: TLabel
             Left = 69
             Top = 28
@@ -40645,10 +40683,6 @@ object MainForm: TMainForm
           ImageIndex = 5
           TabVisible = False
           OnResize = TabSheetLoadingResize
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object ProgressPanel: TPanel
             Left = 256
             Top = 320
@@ -40733,10 +40767,6 @@ object MainForm: TMainForm
           DoubleBuffered = True
           ParentDoubleBuffered = False
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabSheet2: TTabSheet
           Margins.Left = 7
@@ -40746,10 +40776,6 @@ object MainForm: TMainForm
           Caption = #36984#25799#27402
           ImageIndex = 1
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabSheet3: TTabSheet
           Margins.Left = 7
@@ -40759,10 +40785,6 @@ object MainForm: TMainForm
           Caption = #25105#30340#26700#38754
           ImageIndex = 2
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabSheet4: TTabSheet
           Margins.Left = 7
@@ -40772,10 +40794,6 @@ object MainForm: TMainForm
           Caption = 'TabSheet4'
           ImageIndex = 3
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
         end
         object TabSheet5: TTabSheet
           Margins.Left = 7
@@ -40794,10 +40812,6 @@ object MainForm: TMainForm
           Caption = 'WebTabSheet'
           ImageIndex = 5
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object WebBrowser: TWebBrowser
             Left = 0
             Top = 0
@@ -57487,7 +57501,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 207
     Bitmap = {
-      494C010101004004FC0B14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010101004004000C14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000500000001400000001002000000000000019
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -57708,7 +57722,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 267
     Bitmap = {
-      494C01011C00C40074091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01011C00C40078091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006C000000380400000100200000000000801E
       0700000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -72843,7 +72857,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 327
     Bitmap = {
-      494C01010100080070085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100080074085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000058010000AF0000000100200000000000A0AC
       030000000000000000000000000000000000DA9B11FFDA9B11FFDA9B11FFDA9B
       11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B
@@ -80622,7 +80636,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 387
     Bitmap = {
-      494C010102000800D00936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800D40936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000D800000036000000010020000000000040B6
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -84163,7 +84177,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 88
     Bitmap = {
-      494C01010100D0009C0896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C01010100D000A00896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000580200001E00000001002000000000004019
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000020000000700000009000000080000000600000004000000020000
@@ -86426,7 +86440,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 147
     Bitmap = {
-      494C010101002400940828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C010101002400980828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000A00000002800000001002000000000000064
       0000000000000000000000000000000000002D1605002D1605002D1605002D16
       05002D1605002D1605002D1605002D1605002D1605002D1605002D1605002D16
@@ -87260,7 +87274,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 447
     Bitmap = {
-      494C01010100D4008C086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100D40090086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000090010000AF0000000100200000000000C045
       0400000000000000000000000000000000006666660066666600666666006666
       6600666666006666660066666600666666006666660066666600666666006666
@@ -96309,7 +96323,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 507
     Bitmap = {
-      494C0101010020019C086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C010101002001A0086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000B80100008C000000010020000000000080C2
       030000000000000000000000000000000000FFFFFF00FFFFFF00EFEFEF00D9D9
       D900CECECE00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
