@@ -1023,12 +1023,15 @@ void __fastcall TMainForm::LiveUpdate( void )
 			else if( Result == mrClose )  ////< Re-Install
 			{
 				UpdateForm->ShowModal();
+				/// Setup file name follows the built exe name, e.g. SpeedyUnify.exe -> SpeedyUnify_Setup.exe
+				String SetupFile = ExtractFilePath( Application->ExeName ) +
+								   ChangeFileExt( ExtractFileName( Application->ExeName ), L"" ) + L"_Setup.exe";
 				SHELLEXECUTEINFO si;
 				/// Fill SHELLEXECUTEINFO structure for ShellExecute Win API.
 				ZeroMemory( &si, sizeof(si) );
 				si.cbSize = sizeof(si);
 				si.lpVerb = L"open";
-				si.lpFile = L"SpeedyUnifySetup.exe";
+				si.lpFile = SetupFile.c_str();
 				si.lpParameters = L"";
 				si.hInstApp = GHinstance;
 				si.nShow = SW_SHOWDEFAULT;
