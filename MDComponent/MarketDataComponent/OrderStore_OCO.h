@@ -35,6 +35,7 @@ public:
     UFCType::Int64 NID;
     System::UnicodeString Caption;
 	OCOState State;
+	bool IsSending;     ///< NewOrder in progress, avoid re-entrant trigger while confirm dialog is shown.
 	int OrderQty1;
 	double ConditionPrice1;
 	SideEnum OrderSide1;
