@@ -86,6 +86,9 @@ public:
 private:
 	void EscapeDataString( UTF8String& EscStr );
 	virtual void Execute( void );
+	void __fastcall OnSSLStatusInfoEx( TObject* ASender, const Idsslopensslheaders::PSSL AsslSocket,
+									   const int AWhere, const int Aret,
+									   const String AType, const String AMsg );
 private:
 	void EmptyQueueAndTriggerError( String& Reason );
 	bool HandleResultDoc( TMemoryStream* Result, bool IsTest, String& Reason );

@@ -35,6 +35,9 @@ TCAChecker::TCAChecker( TComponent* Owner )
 	FSSLIOHandler = new TIdSSLIOHandlerSocketOpenSSL( FOwner );
 	FSSLIOHandler->SSLOptions->Method = sslvSSLv23;
 	FHTTP->IOHandler = FSSLIOHandler;
+	FSSLIOHandler->OnStatusInfoEx = OnSSLStatusInfoEx;
+	///< Cloudflare WAF blocks Indy default UA "Mozilla/3.0 (compatible; Indy Library)" with 403.
+	FHTTP->Request->UserAgent = L"Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)";
 }
 //---------------------------------------------------------------------------
 TCAChecker::~TCAChecker( void )
@@ -232,7 +235,9 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 
 		AnsiString AnsiURL( URL );
 		UFC::BufferedLog::Printf( " CA Request[%s]", AnsiURL.c_str( ));
+		UFC::BufferedLog::FlushToFile();
 
+		UFC::BufferedLog::FlushToFile();
 		FHTTP->Post( URL, Source, Result );
 		UFC::BufferedLog::Printf( " [CA][Post] HTTP ResponseCode[%d] ResultSize[%d]",
 								   FHTTP->ResponseCode, Result->Size );
@@ -248,7 +253,20 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 	catch( Exception& ex )
 	{
 		AnsiString AnsiExMsg( ex.Message );
-		UFC::BufferedLog::Printf( " [CA][Post] Exception[%s]", AnsiExMsg.c_str() );
+		AnsiString AnsiExClass( ex.ClassName() );
+		UFC::BufferedLog::Printf( " [CA][Post] Exception[%s] Class[%s]", AnsiExMsg.c_str(), AnsiExClass.c_str() );
+		AnsiString AnsiReqHeaders( FHTTP->Request->RawHeaders->Text );
+		AnsiString AnsiRespHeaders( FHTTP->Response->RawHeaders->Text );
+		UFC::BufferedLog::Printf( " [CA][Post] Request headers:\n%s", AnsiReqHeaders.c_str() );
+		UFC::BufferedLog::Printf( " [CA][Post] Response[%s] headers:\n%s",
+								   AnsiString( FHTTP->ResponseText ).c_str(), AnsiRespHeaders.c_str() );
+		EIdHTTPProtocolException* HttpEx = dynamic_cast<EIdHTTPProtocolException*>( &ex );
+		if( HttpEx != NULL )
+		{
+			AnsiString AnsiBody( HttpEx->ErrorMessage.SubString( 1, 2000 ) );
+			UFC::BufferedLog::Printf( " [CA][Post] Response body[%s]", AnsiBody.c_str() );
+		}
+		UFC::BufferedLog::FlushToFile();
 		Reason  = ex.Message;
 		FLastError  = Reason;
 		EmptyQueueAndTriggerError( Reason );
@@ -256,6 +274,8 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 	}
 	catch( ... )
 	{
+		UFC::BufferedLog::Printf( " [CA][Post] Unknown exception." );
+		UFC::BufferedLog::FlushToFile();
 		Reason = L"不明的HTTP錯誤!";
 		FLastError = Reason;
 		EmptyQueueAndTriggerError( Reason );// '不明的HTTP錯誤!'
@@ -602,3 +622,27 @@ const String& TCAChecker::ToErrorMessage( int code )
 
 
 
+//---------------------------------------------------------------------------
+///< Cloudflare WAF blocks the TLS ClientHello Indy sends by default (no padding extension).
+///< Turn on SSL_OP_TLSEXT_PADDING right before ClientHello is built. Requires OpenSSL 1.0.2u.
+void __fastcall TCAChecker::OnSSLStatusInfoEx( TObject* ASender, const Idsslopensslheaders::PSSL AsslSocket,
+											   const int AWhere, const int Aret,
+											   const String AType, const String AMsg )
+{
+	typedef long (__cdecl *TSSLCtrl)( void* ssl, int cmd, long larg, void* parg );
+	const int  SSL_CB_HANDSHAKE_START = 0x10;
+	const int  SSL_CTRL_OPTIONS       = 32;
+	const long SSL_OP_TLSEXT_PADDING  = 0x00000010L;
+
+	if( ( AWhere & SSL_CB_HANDSHAKE_START ) == 0 || AsslSocket == NULL )
+		return;
+
+	HMODULE SSLLib = GetModuleHandleW( L"ssleay32.dll" );
+	TSSLCtrl SSLCtrl = SSLLib != NULL ? (TSSLCtrl)GetProcAddress( SSLLib, "SSL_ctrl" ) : NULL;
+
+	if( SSLCtrl != NULL )
+		SSLCtrl( AsslSocket, SSL_CTRL_OPTIONS, SSL_OP_TLSEXT_PADDING, NULL );
+	else
+		UFC::BufferedLog::Printf( " [CA][SSL] SSL_ctrl not found, TLS padding not set." );
+}
+//---------------------------------------------------------------------------
