@@ -2,6 +2,7 @@
 #pragma hdrstop
 
 #include "OrderStore_OCO.h"
+#include <algorithm>
 #pragma package(smart_init)
 //---------------------------------------------------------------------------
 // ValidCtrCheck is used to assure that the components created do not have
@@ -372,7 +373,10 @@ void __fastcall TOrderStore_OCO::OrderingOCO(std::list<TOCOPair*>* TOCOPairs, do
 		TOCOPair* pair = *it;
 		if(pair == NULL)
 			continue;
-		if(pair->State != OCOState::Pending)
+		// Pair may be deleted while a nested confirm dialog was shown.
+		if( std::find( FOCOPairs.begin(), FOCOPairs.end(), pair ) == FOCOPairs.end() )
+			continue;
+		if(pair->State != OCOState::Pending || pair->IsSending)
 			continue;
 
 		int orderQty;
@@ -392,22 +396,40 @@ void __fastcall TOrderStore_OCO::OrderingOCO(std::list<TOCOPair*>* TOCOPairs, do
 			matchPrice = pair->ConditionPrice2;
 			side = pair->OrderSide2;
 		}
-        // Ordering OCO to market and get NID by reference
-		bool success = OrderingOCO(
-			pair->Ex,
-			pair->Symbol,
-			pair->StrategyName,
-			side,
-			orderQty,
-			matchPrice,
-			pair->NID );
+		// Ordering OCO to market and get NID by reference.
+		// NewOrder may show a modal confirm dialog which pumps messages, market data arriving
+		// meanwhile re-enters here. Mark pair as sending to avoid placing the same OCO repeatedly.
+		bool success;
+		pair->IsSending = true;
+		try
+		{
+			success = OrderingOCO(
+				pair->Ex,
+				pair->Symbol,
+				pair->StrategyName,
+				side,
+				orderQty,
+				matchPrice,
+				pair->NID );
+		}
+		catch( ... )
+		{
+			success = false;
+		}
+		// Pair may be deleted by user while confirm dialog is shown.
+		if( std::find( FOCOPairs.begin(), FOCOPairs.end(), pair ) == FOCOPairs.end() )
+		{
+			UFC::BufferedLog::Printf( "OrderOCO: pair deleted while sending, Success[%d]", success );
+			continue;
+		}
+		pair->IsSending = false;
 
 		if(!success)
 		{
 			pair->State = OCOState::Failed;
 			SendDataToListener( pair->Ex, pair->Symbol, pair, OCOUpdateType::Edit );
 			OnOrderOCOFailed(this, Mdcomponentstrings_MD_ORDERSTORE_OCO_ORDER_NEW_ERROR);
-			UFC::BufferedLog::Printf( "OrderOCOFail:%s ", pair->Caption);
+			UFC::BufferedLog::Printf( "OrderOCOFail:%s ", AnsiString( pair->Caption ).c_str() );
 			continue;
 		}
 
@@ -712,6 +734,8 @@ Classes::TStringList* __fastcall TOrderStore_OCO::GetSymbols( void )
 __fastcall TOCOPair::TOCOPair(void)
 {
     NID = 0;
+	IsSending = false;
+	OrderData = NULL;
 }
 //---------------------------------------------------------------------------
 UnicodeString __fastcall TOCOPair::GetStringField(int index)
