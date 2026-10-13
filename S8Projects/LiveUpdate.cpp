@@ -7,8 +7,28 @@
 //  Functions about live update.
 //
 //---------------------------------------------------------------------------
-const UFC::AnsiString MAIN_PROGRAM_NAME = "SpeedyUnify.exe";
-const UFC::AnsiString MAIN_PROGRAM_TEMP_NAME = "SpeedyUnify.ex_";
+/// Get the built exe name without extension, e.g. "SpeedyUnify".
+/// Uses Win32 API only, so it is safe during static initialization.
+static UFC::AnsiString GetMainProgramBaseName( void )
+{
+	wchar_t Path[ MAX_PATH ] = { 0 };
+	GetModuleFileNameW( NULL, Path, MAX_PATH );
+
+	wchar_t* Name = wcsrchr( Path, L'\\' );
+	Name = ( Name != NULL ) ? Name + 1 : Path;
+	wchar_t* Ext = wcsrchr( Name, L'.' );
+	if( Ext != NULL )
+		*Ext = L'\0';
+
+	char AnsiName[ MAX_PATH * 2 ] = { 0 };
+	WideCharToMultiByte( CP_ACP, 0, Name, -1, AnsiName, sizeof(AnsiName), NULL, NULL );
+	return UFC::AnsiString( AnsiName );
+}
+//---------------------------------------------------------------------------
+const UFC::AnsiString MAIN_PROGRAM_BASE_NAME  = GetMainProgramBaseName();
+const UFC::AnsiString MAIN_PROGRAM_NAME       = MAIN_PROGRAM_BASE_NAME + ".exe";
+const UFC::AnsiString MAIN_PROGRAM_TEMP_NAME  = MAIN_PROGRAM_BASE_NAME + ".ex_";
+const UFC::AnsiString MAIN_PROGRAM_SETUP_NAME = MAIN_PROGRAM_BASE_NAME + "_Setup.exe";
 //---------------------------------------------------------------------------
 namespace UFC
 {
@@ -309,7 +329,7 @@ bool Config::StartUpdate( bool& NeedRestart )
 		try
 		{
 			m_ThisFileBytes = 27058383;
-			SaveFile = new TFileStream( L"SpeedyUnifySetup.exe", fmCreate );
+			SaveFile = new TFileStream( String( MAIN_PROGRAM_SETUP_NAME.c_str() ), fmCreate );
 			m_pHTTP->Get( SetupURL(), SaveFile );
 			delete SaveFile;
 		}
@@ -396,7 +416,7 @@ int Config::GetCurrentUpdateProgress()
 UFC::AnsiString Config::GetCurrentUpdateFile()
 {
 	if( NeedsReInstall() == true )
-		return "SpeedyUnifySetup.exe";
+		return MAIN_PROGRAM_SETUP_NAME;
 	return m_CurrentItemIter != m_UpdateItems.end() ?
     	 (*m_CurrentItemIter).filename : UFC::AnsiString();
 }
