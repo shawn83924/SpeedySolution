@@ -379,7 +379,6 @@ private:
 	void __fastcall CACheckFail( TCAChecker* Sender, UnicodeString& Reason );
 	void __fastcall PrintLogHeader( void );
 	void __fastcall OSNotSupport( const AnsiString& OSStr );
-	void __fastcall LoginSimBroker( void );
 	void __fastcall CheckAgreement( void );
 	void __fastcall SetIE11( void );
 	void __fastcall ControlPosition( void );

@@ -42,7 +42,6 @@ __published:	// IDE-managed Components
 	TLabel *SaveAccountLabel;
 	TLabel *EnvLabel;
 	TLabel *VersionLabel;
-	TComboBox *NetworkComboBox;
 	TSpeedButton *CalendarButton;
 	TCheckBox *AtAOECheckBox;
 	TLabel *AtAOELabel;

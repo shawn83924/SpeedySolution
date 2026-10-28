@@ -374,11 +374,6 @@ private:
 	DWORD      m_Downloaded;
 	TStringList*                     m_StarWaveIPs;
 	TStringList*                     m_ChartIPs;
-	TStringList*                     m_VIPStarWaveIPs;
-	TStringList*                     m_VIPChartIPs;
-	TStringList*                     m_SimOrderIPs;
-	TStringList*                     m_ChNames;
-	TStringList*                     m_ChMaxLots;
 	UFC::PInt32List                  m_SignalTime;
 	UFC::PStringList                 m_Signal;
 	UFC::PInt32List                  m_Throughput;
@@ -387,12 +382,9 @@ private:
 	UFC::PHashedSet<UFC::AnsiString> m_FuncSet;
 	UFC::PHashedSet<UFC::AnsiString> m_LicenseIPSet;
 	UFC::PHashedSet<UFC::AnsiString> m_TFTLicenseIPSet;
-	UFC::PHashedSet<UFC::AnsiString> m_VIPSet;
 	UFC::PHashMap<UFC::AnsiString,UFC::AnsiString*> m_Params;
 	int        m_StarWaveIPIndex;
 	int        m_ChartIPsIndex;
-	int        m_VIPStarWaveIPIndex;
-	int        m_VIPChartIPsIndex;
 	int        m_BaseURLIndex;
 	int        m_OrderStoreRecoverOverlapSecond;
 
@@ -450,10 +442,6 @@ public:
 	String 			 GetCTPIPs( void );
 	String           GetStarWaveIP( int& Port, int DefPort = 34567 );
 	String           GetChartServerIP(  int& Port, int DefPort = 34569  );
-	String           GetVIPStarWaveIP( int& Port, int DefPort = 34567 );
-	String           GetVIPChartServerIP(  int& Port, int DefPort = 34569  );
-	String           GetSimOrderServerIP(  int& Port, const String& DefIP, int DefPort = 45678 );
-	int              GetMaxLots( void );
 	///< For different languages.
 	String           GetNewsURL( void );
 	String           GetContractListURL( void );
@@ -494,7 +482,6 @@ public:
 	int              GetOrderStoreIndex( TObject* OrderStore );
 	int              OrderStoreCount( void );
 	void             SetInternetConfig( int internet ) { m_InternetConfig = internet; }
-	TStringList*     GetInternetConfigNames( void ) { return m_ChNames; }
 public:
 	void             SetFunctionSet( const String& FuncStr );
 	bool             IsSupportFunction( const char* FuncStr );
@@ -529,7 +516,6 @@ public:
 	bool            SupportExchange( const String& Exchange );
 	bool            FuturesExchange( const String& Exchange );
 	bool            Save( void );
-	bool            IamVIP( const String& IP );
 	bool            IPLicense( const String& IP );
 	bool            TFTLicense( const String& IP );
 	int             BrokerCount( void )       { return m_Brokers.ItemCount(); }

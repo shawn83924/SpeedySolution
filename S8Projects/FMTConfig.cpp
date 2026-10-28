@@ -22,7 +22,8 @@ Config g_Config;
 //
 //  FMTSetting.ini    Basic setting.(Install path)
 //  FMTConfig.ini     Deskup display settings.
-//  FMTMD.ini         StarWave Setting, and MDBS web services URLs.
+//  FMTMD.ini         MDBS web services URLs, update setting.
+//  LiteService.ini   StarWave Setting(MD/Chart).
 //  FMTBroker.ini     Speedy Setting by Broker.
 //
 //------------------------------------------------------------------------------
@@ -32,8 +33,6 @@ Config::Config()
 :m_CancelUpdate( false )
 ,m_StarWaveIPIndex( -1 )
 ,m_ChartIPsIndex( -1 )
-,m_VIPStarWaveIPIndex( -1 )
-,m_VIPChartIPsIndex( -1 )
 ,m_AutoUpdate( true )
 ,m_ConfigFile( "FileList.ini" )
 ,m_ini( NULL )
@@ -41,11 +40,6 @@ Config::Config()
 	m_SSLIOHandler       = new TIdSSLIOHandlerSocketOpenSSL( NULL );
 	m_StarWaveIPs        = new TStringList();
 	m_ChartIPs           = new TStringList();
-	m_VIPStarWaveIPs        = new TStringList();
-	m_VIPChartIPs           = new TStringList();
-	m_SimOrderIPs        = new TStringList();
-	m_ChNames            = new TStringList();
-	m_ChMaxLots          = new TStringList();
 	m_pHTTP              = new TIdHTTP( NULL );
 	m_pHTTP->HandleRedirects = true;
 	m_pHTTP->OnWork      = Work;
@@ -63,13 +57,13 @@ Config::~Config()
 //------------------------------------------------------------------------------
 void  Config::LoadStarWaveSettingIni( void )
 {
-	LoadStarWaveSetting( "FMTMD.ini" );   ///< Load market data serversetting
+	LoadStarWaveSetting( "LiteService.ini" );   ///< Load market data serversetting
 }
 //------------------------------------------------------------------------------
 void  Config::LoadAllIni( void )
 {
 	LoadBasicSetting( "FMTSetting.ini" ); ///< Load basic setting
-	LoadStarWaveSetting( "FMTMD.ini" );   ///< Load market data serversetting
+	LoadStarWaveSetting( "LiteService.ini" );   ///< Load market data serversetting
 	LoadSpeedySetting( "FMTBroker.ini" );
 	LoadUpdateSetting( "FMTMD.ini" );
 	if( m_ini != NULL )
@@ -133,8 +127,6 @@ void Config::ReleaseResource( void )
 {
 	delete m_StarWaveIPs;
 	delete m_ChartIPs;
-	delete m_VIPStarWaveIPs;
-	delete m_VIPChartIPs;
 }
 //------------------------------------------------------------------------------
 void Config::GetProcessDir( void )
@@ -348,112 +340,11 @@ void Config::LoadStarWaveSetting( const char* FileName ) ///< Speedy Unify
 
 	m_ChartIPs->Clear();
 	m_StarWaveIPs->Clear();
-	m_VIPChartIPs->Clear();
-	m_VIPStarWaveIPs->Clear();
-	m_SimOrderIPs->Clear();
-	m_ChNames->Clear();
-	m_ChMaxLots->Clear();
-	if( GSimMatch == false )
-	{
-		if( m_UseBackup == false )
-			Session = "Host"; ///< Production
-		else
-			Session = "BackupHost";
-	}
-	else
-		Session = "SimHost"; ///< Simulator
+	Session = "Setting"; ///< LiteService.ini [Setting]
 	///< Load StraWave Server connection information
 	LoadCHSetting( SettingsFile, Session, "MD", "60.250.82.135", m_StarWaveIPs );
 	///< Load Chart Server connection information
 	LoadCHSetting( SettingsFile, Session, "Chart", "60.250.82.135", m_ChartIPs );
-	///< Load VIP StraWave Server connection information
-	LoadCHSetting( SettingsFile, "VIPServer", "MD", "60.250.82.135", m_VIPStarWaveIPs );
-	///< Load VIP　Chart Server connection information
-	LoadCHSetting( SettingsFile, "VIPServer", "Chart", "60.250.82.135", m_VIPChartIPs );
-	///< Load Simulator Order Server connection information
-	LoadCHSetting( SettingsFile, Session, "Order", "60.250.82.135", m_SimOrderIPs );
-	///< Load MD/Chart Server connection name.
-	LoadCHSetting( SettingsFile, Session, "Name", "正式環境", m_ChNames );
-	///< Load Max Lots setting
-	LoadCHSetting( SettingsFile, Session, "MaxLots", "10", m_ChMaxLots );
-	///<  Load URLs for Speedy Unify web services.
-	if( GIsTestingMode == true )
-		Sect = "Test";
-	else
-		Sect = "Prod";
-	if( SettingsFile.GetValue( Sect, "RegisterURL", Value) ) ///< New User (Login Page)
-		m_RegisterURL = Value.c_str();
-	else
-		m_RegisterURL = L"http://tomcat85-4.mdevelop.com/Unify/reg.do";
-	if( SettingsFile.GetValue( Sect, "ForgetPassword", Value) ) ///< Forget Password (Login Page)
-		m_ForgetPassword = Value.c_str();
-	else
-		m_ForgetPassword = L"http://tomcat85-4.mdevelop.com/Unify/forgetPwd.do";
-	if( SettingsFile.GetValue( Sect, "LogonURL", Value) ) ///< Unify login (Login Page)
-		m_LogonURL = Value.c_str();
-	else
-		m_LogonURL = L"https://tomcat85-4.mdevelop.com/Unify/dataTrans.do";
-	if( SettingsFile.GetValue( Sect, "EditURL", Value) ) ///< Edit user frofile.( Main form )
-		m_EditURL = Value.c_str();
-	else
-		m_EditURL = L"http://tomcat85-4.mdevelop.com/Unify/memberInfoEdit.do";
-	if( SettingsFile.GetValue( Sect, "XFlashURL", Value) ) ///< Subscribe Unify.( Main form )
-		m_XFlashURL = Value.c_str();
-	else
-		m_XFlashURL = L"http://tomcat85-4.mdevelop.com/Unify/makePurchase.do";
-	if( SettingsFile.GetValue( Sect, "PurchaseList", Value) ) ///< Purchase List.( Main form )
-		m_PurchaseListURL = Value.c_str();
-	else
-		m_PurchaseListURL = L"https://tomcat85-4.mdevelop.com/AOEApi/orderByMember.do";
-
-	if( SettingsFile.GetValue( Sect, "Report", Value) ) ///< See report Unify.( Main form )
-		m_ReportURL = Value.c_str();
-	else
-		m_ReportURL = L"http://tomcat85-4.mdevelop.com/Unify/calendar/table.do";
-	if( SettingsFile.GetValue( Sect, "MegaCAURL", Value) ) ///< Subscribe Unify.( Main form )
-		m_MegaCAURL = Value.c_str();
-	else
-		m_MegaCAURL = L"http://ekeytest.emega.com.tw:8080/VA/StockP1VerifySign.jsp";
-
-	if( SettingsFile.GetValue( Sect, "MegaBackendURL", Value) ) ///< Subscribe Unify.( Main form )
-		m_MegaBackendURL = Value.c_str();
-	else
-		m_MegaBackendURL = L"https://rayin.emega.com.tw/query/indexf.jsp";
-
-	m_LicenseIPSet.Clear();
-	for( int i = 1; ; i++ )
-	{
-		Name.Printf( "IP%d", i );
-		if( SettingsFile.GetValue( "License", Name, Value ) == FALSE )
-			break;
-		m_LicenseIPSet.Add( Value.c_str() );
-	}
-	m_TFTLicenseIPSet.Clear();
-	for( int i = 1; ; i++ )
-	{
-		Name.Printf( "IP%d", i );
-		if( SettingsFile.GetValue( "TFTLicense", Name, Value ) == FALSE )
-			break;
-		m_TFTLicenseIPSet.Add( Value.c_str() );
-	}
-	m_VIPSet.Clear();
-	for( int i = 1; ; i++ )
-	{
-		Name.Printf( "VIP%d", i );
-		if( SettingsFile.GetValue( "VIPServer", Name, Value ) == FALSE )
-			break;
-		m_VIPSet.Add( Value.c_str() );
-	}
-	LoadParameter( SettingsFile );
-	LoadSignal( SettingsFile );
-	LoadThroughput( SettingsFile );
-}
-//------------------------------------------------------------------------------
-bool Config::IamVIP( const String& ID )
-{
-	AnsiString AnsiID( ID );
-
-	return m_VIPSet.Exists( AnsiID.c_str() );
 }
 //------------------------------------------------------------------------------
 bool Config::IPLicense( const String& IP )
@@ -490,18 +381,6 @@ void Config::LoadOpenCloseTime( const char* FileName )
 	UFC::SetTradeingHour( OpenHr, OpenMin, CloseHr, CloseMin );
 }
 //------------------------------------------------------------------------------
-int Config::GetMaxLots(  void  ) ///< Speedy Unify
-{
-	AnsiString  MaxLotsStr;
-	int         Value;
-
-	MaxLotsStr = m_ChMaxLots->Strings[ m_InternetConfig  ];
-	Value = MaxLotsStr.ToInt();
-	if( Value == 0 )
-		return 10;
-	return Value;
-}
-//------------------------------------------------------------------------------
 String Config::GetStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
 {
 	AnsiString       IPPortStr;
@@ -532,60 +411,6 @@ String  Config::GetChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	SplitIPPort( IPs[ m_ChartIPsIndex ], IP, Port, DefPort );
 	m_ChartIPsIndex++;
 	return IP.c_str();
-}
-//------------------------------------------------------------------------------
-String Config::GetVIPStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
-{
-	AnsiString       IPPortStr;
-	UFC::AnsiString  IP;
-	UFC::PStringList IPs;
-
-	IPPortStr = m_VIPStarWaveIPs->Strings[ 0  ];
-	IPs.SetStrings( IPPortStr.c_str(), "," );
-	if( m_VIPStarWaveIPIndex == -1 )
-		m_VIPStarWaveIPIndex = 0;
-	m_VIPStarWaveIPIndex = m_VIPStarWaveIPIndex%IPs.ItemCount();
-	SplitIPPort( IPs[ m_VIPStarWaveIPIndex ], IP, Port, DefPort );
-	m_VIPStarWaveIPIndex++;
-	return IP.c_str();
-}
-//------------------------------------------------------------------------------
-String  Config::GetVIPChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unify
-{
-	AnsiString      IPPortStr;
-	UFC::AnsiString IP;
-	UFC::PStringList IPs;
-
-	IPPortStr = m_VIPChartIPs->Strings[ 0 ];
-	IPs.SetStrings( IPPortStr.c_str(), "," );
-	if( m_VIPChartIPsIndex == -1 )
-		m_VIPChartIPsIndex = 0;
-	m_VIPChartIPsIndex = m_VIPChartIPsIndex%IPs.ItemCount();
-	SplitIPPort( IPs[ m_VIPChartIPsIndex ], IP, Port, DefPort );
-	m_VIPChartIPsIndex++;
-	return IP.c_str();
-}
-//------------------------------------------------------------------------------
-String  Config::GetSimOrderServerIP(  int& Port,  const String& DefIP, int DefPort  ) ///< Speedy Unify
-{
-	AnsiString      IPPortStr;
-	UFC::AnsiString IP;
-	UFC::PStringList IPs;
-	int IPIndex;
-
-	if( m_SimOrderIPs->Count > m_InternetConfig )
-	{
-		IPPortStr = m_SimOrderIPs->Strings[ m_InternetConfig ];
-		IPs.SetStrings( IPPortStr.c_str(), "," ); ///< IP1:Port1,IP2:Port2,IP3:Port3...
-		if( IPs.ItemCount() > 0 )
-		{
-			IPIndex = m_StarWaveIPIndex%IPs.ItemCount();
-			SplitIPPort( IPs[ IPIndex ], IP, Port, DefPort );
-			return IP.c_str();
-		}
-	}
-	Port = DefPort;
-	return DefIP;
 }
 //------------------------------------------------------------------------------
 bool  Config::SupportExchange( const String& Exchange )

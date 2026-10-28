@@ -834,8 +834,6 @@ void __fastcall TMainForm::Connect()
 		ServerIP = MD_SERVER_IP;
 		Port     = MD_SERVER_PORT;
 	}
-	else if( GVIPServer == true )
-		ServerIP = g_Config.GetVIPStarWaveIP( Port );
 	else
 		ServerIP = g_Config.GetStarWaveIP( Port );
 	CMarketDataStore->IP   = ServerIP;
@@ -853,8 +851,6 @@ void __fastcall TMainForm::Connect()
 		ServerIP = CHART_SERVER_IP;
 		Port = CHART_SERVER_PORT;
 	}
-	else if (GVIPServer == true)
-		ServerIP = g_Config.GetVIPChartServerIP(Port);
 	else
 		ServerIP = g_Config.GetChartServerIP(Port);
 	ChartsStore->IP = ServerIP;
@@ -1388,57 +1384,6 @@ void __fastcall TMainForm::CheckAgreement( void )
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Reason );
 		OrderStore->Disconnect( true );
 	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TMainForm::LoginSimBroker( void )
-{
-	AnsiString       PhoneNo( gUser.UserID.c_str() );
-	UFC::AnsiString  VAccount;
-	String           OrderIP;
-	AnsiString       LogFilePrefix;
-	int              OrderPort;
-
-	if( PhoneNo.Length()>= 10 )
-		VAccount =  UFC::AnsiString( PhoneNo.c_str() + 3 );
-	else
-		VAccount =  UFC::AnsiString( PhoneNo.c_str() );
-	VAccount.PadThis( 7 , '8' );
-
-	OrderIP = g_Config.GetSimOrderServerIP( OrderPort, CMarketDataStore->IP, 45678 );
-	FProxyLogon               = true;
-	gUser.LoginUserID         = VAccount.c_str();
-	gUser.AccountType         = hatBoth;
-	LogFilePrefix.printf( "SU_SIM_%s", VAccount.c_str() );
-	OrderStore->ClearPosStatisticRecHoldPosition();
-	OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
-	OrderStore->IP            = OrderIP;  //L"60.250.82.135";
-	OrderStore->Port          = OrderPort;
-	OrderStore->BrokerID      = "F888000";
-	OrderStore->TWSEBrokerID  = "8888";
-	OrderStore->ClearMemberID = "F888";
-	OrderStore->ID            = VAccount.c_str();
-	OrderStore->Account       = VAccount.c_str();
-	OrderStore->TWSEAccount   = VAccount.c_str();
-	OrderStore->IB            = L"000";
-	OrderStore->Password      = "888888";
-	OrderStore->Version       = LoginForm->Version;
-	//OrderStore->TryVersion    = gIsExpired;
-	OrderStore->TryVersion    = false;
-	OrderStore->MaxLots 	  =	g_Config.GetMaxLots();
-	if( OrderStore->RecoverFileExist() == true )
-	{
-		if( TUnifyDlgs::AskYesNoDialog( L"練功房", L"是否刪除之前的練習成績?" ) == true )
-			OrderStore->RemoveRecoverFile();
-	}
-	FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account, gUser.Nickname );
-	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
-	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
-	PaintStatusBar( );
-	s888::CTaifexFeeQueryObject*     FeeObj = new s888::CTaifexFeeQueryObject( L"TaifexFee.xml", OrderStore->Account  );
-	s888::CTaifexTaxRateQueryObject* TaxObj = new s888::CTaifexTaxRateQueryObject( L"TaifexTax.xml" );
-	delete FeeObj;
-	delete TaxObj;
-	OrderStore->Connect();
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::CancelButtonClick(TObject *Sender)

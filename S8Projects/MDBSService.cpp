@@ -13,7 +13,6 @@ extern bool        GSimMatch;
 extern bool        gNuclear;
 extern TUnifyUser  gUser;
 extern bool        gTFT;
-extern bool        GVIPServer;
 //---------------------------------------------------------------------------
 const String& Config::GetRegisterURL( void )
 {

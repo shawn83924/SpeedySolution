@@ -25,7 +25,6 @@ TLoginForm *LoginForm;
 extern TUnifyUser gUser;
 extern bool       GIsTestingMode;
 extern bool       GSimMatch;
-extern bool       GVIPServer;
 //---------------------------------------------------------------------------
 const int FREE_DAYS = 3;
 //---------------------------------------------------------------------------
@@ -40,13 +39,11 @@ __fastcall TLoginForm::TLoginForm(TComponent* Owner)
 			EnvLabel->Caption = L"測試環境";
 		else
 			EnvLabel->Caption = L"正式環境";
-		NetworkComboBox->Visible = false;
 		CalendarButton->Visible  = false;
 	}
 	else
 	{
 		EnvLabel->Caption = L"練功模式";
-		NetworkComboBox->Visible = true;
 		CalendarButton->Visible  = true;
 		AtAOELabel->Visible = false;
 		AtAOECheckBox->Visible = false;
@@ -108,11 +105,10 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 	StatusLabel->Caption = Msg;
 	Application->ProcessMessages();
 
-	GVIPServer = g_Config.IamVIP( IDEdit->Text );
 	g_Config.SetInternetConfig( 0 );
 
 	g_Config.LoadStarWaveSettingIni();
-	UFC::BufferedLog::Printf( " TLoginForm::LoginButtonClick 開始登入. ID=[%s] GSimMatch=[%d] NetworkIndex=[%d]", AnsiString(IDEdit->Text).c_str(), (int)GSimMatch, NetworkComboBox->ItemIndex );
+	UFC::BufferedLog::Printf( " TLoginForm::LoginButtonClick 開始登入. ID=[%s] GSimMatch=[%d]", AnsiString(IDEdit->Text).c_str(), (int)GSimMatch );
 	if( !Logon() )
 	{
 		UFC::BufferedLog::Printf( " TLoginForm::LoginButtonClick Logon() 失敗. ID=[%s]", AnsiString(IDEdit->Text).c_str() );
@@ -257,10 +253,7 @@ bool __fastcall TLoginForm::RequestLogon(
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::FormShow(TObject *Sender)
 {
-   NetworkComboBox->Items->Clear();
-   NetworkComboBox->Items->AddStrings( g_Config.GetInternetConfigNames() );
    AccountCheckBox->Checked      = g_Config.GetBoolProperty("Setting","SaveLoginInfo",true);
-   NetworkComboBox->ItemIndex	 = g_Config.GetIntegerProperty("Setting","InternetConfig", 0 );
    ExLabel->Visible = true;
    LoadIDPassword();
 }

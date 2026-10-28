@@ -8047,27 +8047,6 @@ object LoginForm: TLoginForm
     FontAttrib.CaptionFont.Style = []
     SizeFitBmp = True
   end
-  object NetworkComboBox: TComboBox
-    Left = 199
-    Top = 254
-    Width = 165
-    Height = 31
-    Style = csDropDownList
-    Color = clSkyBlue
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clBlack
-    Font.Height = -18
-    Font.Name = #24494#36575#27491#40657#39636
-    Font.Style = []
-    ItemIndex = 0
-    ParentFont = False
-    TabOrder = 4
-    Text = #23526#25136#29677'-'#32178#38555#32178#36335
-    Items.Strings = (
-      #23526#25136#29677'-'#32178#38555#32178#36335
-      #23526#25136#29677'-'#21855#33945#25945#23460
-      #27169#25836#21934'-'#27491#24335#34892#24773)
-  end
   object AtAOECheckBox: TCheckBox
     Left = 539
     Top = 394

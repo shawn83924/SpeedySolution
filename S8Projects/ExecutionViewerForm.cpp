@@ -22,7 +22,6 @@ extern TOrderStore*       gOrderStore;
 extern bool               GIsTestingMode;
 extern bool               GSimMatch;
 extern TUnifyUser         gUser;
-extern bool               GVIPServer;
 //---------------------------------------------------------------------------
 const int EXEC_FONT_SIZE_MIN = 9;
 const int EXEC_FONT_SIZE_DEF = 11;

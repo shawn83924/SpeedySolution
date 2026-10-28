@@ -26,7 +26,6 @@ extern TCMarketDataStore* gMarketDataStore;
 extern DSAudio            gDSAudio;
 extern bool               GSimMatch;
 extern bool               gNuclear;
-extern bool               GVIPServer; ///< Use AOE production server.
 extern bool               gTFT;  ///< Enable TFT functions
 extern TUnifyUser         gUser;
 //---------------------------------------------------------------------------
@@ -345,9 +344,9 @@ void __fastcall TDepthForm::AdjustByExchange( const String& Ex )
 		NormalButton->Visible    = true;
 		LoanButton->Visible      = true;
 		LoanShareButton->Visible = true;
-		W50GraphButton->Visible = GVIPServer;
-		W100GraphButton->Visible = GVIPServer;
-		W200GraphButton->Visible = GVIPServer;
+		W50GraphButton->Visible = false;
+		W100GraphButton->Visible = false;
+		W200GraphButton->Visible = false;
 		NormalButtonClick( NormalButton );
     }
 }
