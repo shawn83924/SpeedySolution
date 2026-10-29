@@ -15,7 +15,7 @@ extern bool gCheckCA;
 extern bool GSimMatch;
 extern TOrderStore*   gOrderStore;
 //---------------------------------------------------------------------------
-const int ALGOR_SHA256 = 0x10004;
+const int ALGOR_SHA256 = 0x04;
 //---------------------------------------------------------------------------
 TCAChecker::TCAChecker( TComponent* Owner )
 :UFC::PThread( NULL, FALSE )
@@ -164,7 +164,7 @@ int TCAChecker::Sign( const String& Content, String& Sign )
 															 Content.c_str(),
 															 FSignSubject.c_str(),
 															 0x2,
-															 0x10004, ///< USE CG_ALGOR_SHA256
+															 ALGOR_SHA256, ///< USE CG_ALGOR_SHA256
 															 0x80);
 
 		int ErrCode = FCAObject->GetErrorCode();
