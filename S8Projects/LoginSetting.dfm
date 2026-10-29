@@ -40,6 +40,7 @@ object LoginSettingForm: TLoginSettingForm
     TitleCaptions.Strings = (
       #21517#31281
       #20540)
+    OnEditButtonClick = SettingListEditorEditButtonClick
     OnKeyPress = SettingListEditorKeyPress
     ColWidths = (
       123

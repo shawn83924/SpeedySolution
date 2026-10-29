@@ -123,6 +123,7 @@ typedef void __fastcall (__closure *TOnContractReloadEvent)( const MString& Exch
 typedef void __fastcall (__closure *TOnContractReloadCompleteEvent)( const MString& Exchange, MStringList& SymbolList );
 typedef void __fastcall (__closure *TOnServerAckEvent)( int RTT );
 typedef void __fastcall (__closure *TOnLeaderBoardEvent)( TStringList* Board );
+typedef void __fastcall (__closure *TOnLogonReplyEvent)( TObject* Sender, bool OK, const String& Msg );
 //---------------------------------------------------------------------------
 typedef UFC::PHashedList<UFC::AnsiString, UnicodeString*> StringHashedList;
 typedef UFC::PHashedList<UFC::AnsiString, BasicInformation*> InfoTable;
@@ -186,6 +187,7 @@ private:
 	TNotifyEvent                     FOnDisconnected;
 	TOnServerAckEvent                FOnServerAck;
 	TOnLeaderBoardEvent              FOnLeaderBoard;
+	TOnLogonReplyEvent               FOnLogonReply;
 	TOnContractDownloadCompleteEvent FOnContractDownloadComplete;
 	TOnContractReloadCompleteEvent   FOnContractReloadComplete;
 	TOnContractReloadEvent           FOnContractReload;
@@ -198,7 +200,7 @@ private:
 	///< Implement Market Data Listener interface
 	virtual void OnConnected( void );
 	virtual void OnDisconnected( void );
-	virtual void OnLogonReply( bool OK,const UFC::AnsiString& Msg ) {}
+	virtual void OnLogonReply( bool OK,const UFC::AnsiString& Msg );
 	virtual void OnContractDownloadComplete( int ExchangeCount, int UseMS );
 	virtual void OnServerAck( int RTT );
 	virtual void OnLeaderboard( UFC::PStringList& Board );
@@ -246,6 +248,7 @@ public:
 	void __fastcall Clear( void );
 	void __fastcall Connect( int Timeout );
 	void __fastcall Disconnect( void );
+	bool __fastcall Logon( const UFC::AnsiString& ID, const UFC::AnsiString& Password, UFC::AnsiString& Msg );
 	void __fastcall Subscribe( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, IMarketDataListener* Listener, SubscribeType Type = stSnapshotWithUpdate );
 	void __fastcall Unsubscribe( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, IMarketDataListener* Listener );
 	void __fastcall Unsubscribe( IMarketDataListener* Listener );
@@ -323,6 +326,7 @@ __published:
 	__property TOnContractReloadCompleteEvent   OnContractReloadComplete    = { read = FOnContractReloadComplete, write = FOnContractReloadComplete };
 	__property TOnServerAckEvent                OnMarketDataServerAck       = { read = FOnServerAck, write = FOnServerAck };
 	__property TOnLeaderBoardEvent              OnLeaderBoard               = { read = FOnLeaderBoard, write = FOnLeaderBoard };
+	__property TOnLogonReplyEvent               OnMarketDataLogonReply      = { read = FOnLogonReply, write = FOnLogonReply };
 	__property unsigned long long AcmRecvBytes = { read = GetAcuRecvBytes };
 	__property unsigned long long AcmRecvMsgs  = { read = GetAcuRecvMsgs };
 	__property bool SupportOptions = { read = FSupportOptions };

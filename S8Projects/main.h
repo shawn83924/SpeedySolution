@@ -397,6 +397,7 @@ private:
 	void __fastcall SelectSymbol( TObject* Sender, TSelectActionType Type, const String& Ex, const String& Sym );
 	void __fastcall SystemInfo( void );
 	void __fastcall UpdateAutoCancel( void );
+	void __fastcall CMarketDataStoreLogonReply( TObject* Sender, bool OK, const String& Msg );
 public:		// User declarations
 	__fastcall TMainForm(TComponent* Owner);
 	__fastcall ~TMainForm( void );

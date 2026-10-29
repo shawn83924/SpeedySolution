@@ -127,6 +127,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CMarketDataStore->LoadChineseName( );
 	gMarketDataStore = CMarketDataStore;
 	TExecution::FMarketDataStorePtr = CMarketDataStore;
+	CMarketDataStore->OnMarketDataLogonReply = CMarketDataStoreLogonReply;
 
 	s888::gQueryObjsPool.LoadExchangeInformation( L"ExchangeInfo.ini" );
 
@@ -838,9 +839,13 @@ void __fastcall TMainForm::Connect()
 		ServerIP = g_Config.GetStarWaveIP( Port );
 	CMarketDataStore->IP   = ServerIP;
 	CMarketDataStore->Port = Port;
-	CMarketDataStore->Connect( 5 );
-	if( CMarketDataStore->IsConnected() != true )
+
+	UFC::AnsiString LogonMsg;
+
+	if( CMarketDataStore->Logon( g_Config.GetMDID(), g_Config.GetMDPass(), LogonMsg ) == false ||
+		CMarketDataStore->IsConnected() != true )
 	{
+		UFC::BufferedLog::Printf( " TMainForm::Connect 行情主機登入失敗. Msg=[%s]", LogonMsg.c_str() );
 		FConnectFailed = true;
 		return;
 	}
@@ -868,6 +873,16 @@ bool __fastcall TMainForm::Ready( void )
 		FDownloadOK == true )
 		return true;
 	return false;
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CMarketDataStoreLogonReply( TObject* Sender, bool OK, const String& Msg )
+{
+	UFC::BufferedLog::Printf( " TMainForm::CMarketDataStoreLogonReply OK=[%d] Msg=[%s]", (int)OK, AnsiString( Msg ).c_str() );
+	if( OK == false )
+	{
+		LoginForm->StatusLabel->Caption = L"行情主機登入失敗: " + Msg;
+		FConnectFailed = true;
+	}
 }
 //---------------------------------------------------------------------------
 

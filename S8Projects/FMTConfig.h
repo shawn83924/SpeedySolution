@@ -374,6 +374,8 @@ private:
 	DWORD      m_Downloaded;
 	TStringList*                     m_StarWaveIPs;
 	TStringList*                     m_ChartIPs;
+	UFC::AnsiString                  m_MDID;
+	UFC::AnsiString                  m_MDPass;
 	UFC::PInt32List                  m_SignalTime;
 	UFC::PStringList                 m_Signal;
 	UFC::PInt32List                  m_Throughput;
@@ -442,6 +444,8 @@ public:
 	String 			 GetCTPIPs( void );
 	String           GetStarWaveIP( int& Port, int DefPort = 34567 );
 	String           GetChartServerIP(  int& Port, int DefPort = 34569  );
+	const UFC::AnsiString& GetMDID( void ) { return m_MDID; }
+	const UFC::AnsiString& GetMDPass( void ) { return m_MDPass; }
 	///< For different languages.
 	String           GetNewsURL( void );
 	String           GetContractListURL( void );

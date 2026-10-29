@@ -2,6 +2,7 @@
 #include <IniFiles.hpp>
 #include <stdio.h>
 #include "FMTConfig.h"
+#include "UnifyUtility.h"
 #include "TradingObjects.h"
 #include "TradingObjectPool.h"
 #include "OrderStore.h"
@@ -345,6 +346,13 @@ void Config::LoadStarWaveSetting( const char* FileName ) ///< Speedy Unify
 	LoadCHSetting( SettingsFile, Session, "MD", "60.250.82.135", m_StarWaveIPs );
 	///< Load Chart Server connection information
 	LoadCHSetting( SettingsFile, Session, "Chart", "60.250.82.135", m_ChartIPs );
+	///< Load StraWave Server logon ID/Password
+	if( SettingsFile.GetValue( Session, "MD_ID", Value ) == FALSE )
+		Value = "";
+	m_MDID = Value;
+	if( SettingsFile.GetValue( Session, "MD_Pass", Value ) == FALSE )
+		Value = "";
+	m_MDPass = AnsiString( Base64Decode( Value.c_str() ) ).c_str(); ///< MD_Pass is saved as Base64 (same as Login password)
 }
 //------------------------------------------------------------------------------
 bool Config::IPLicense( const String& IP )
