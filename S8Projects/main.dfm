@@ -69,9 +69,6 @@ object MainForm: TMainForm
       Placement = svpLeft
       TabOrder = 0
       StyleElements = []
-      DesignSize = (
-        180
-        1356)
       object catMenuItems: TCategoryButtons
         Left = 0
         Top = 0
@@ -166,57 +163,6 @@ object MainForm: TMainForm
         TabOrder = 0
         StyleElements = []
       end
-      object LogoutBtn: TGraphButtonV2
-        Left = 0
-        Top = 1324
-        Width = 180
-        Height = 32
-        TabOrder = 1
-        OnClick = actLogoutExecute
-        Anchors = [akLeft, akRight, akBottom]
-        NormalGraph.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
-          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
-          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
-          49454E44AE426082}
-        HoverGraph.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
-          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
-          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-          134944415478DA631449D9F79F010930922E00005BE708D9689A59F200000000
-          49454E44AE426082}
-        DownGraph.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
-          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
-          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-          134944415478DA631449D9F79F010930922E00005BE708D9689A59F200000000
-          49454E44AE426082}
-        DisableGraph.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
-          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
-          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
-          49454E44AE426082}
-        SelectedGraph.Data = {
-          0954506E67496D61676589504E470D0A1A0A0000000D49484452000000040000
-          00040806000000A9F19E7E000000017352474200AECE1CE90000000467414D41
-          0000B18F0BFC6105000000097048597300000EC300000EC301C76FA864000000
-          134944415478DA6394734AFBCF80041849170000168F07198FDC72FB00000000
-          49454E44AE426082}
-        FontAttrib.FontColor = clWhite
-        FontAttrib.FontShadowColor = clWhite
-        FontAttrib.HighlightFontColor = clWhite
-        FontAttrib.HighlightShadowColor = clWhite
-        FontAttrib.SelectedFontColor = clWhite
-        FontAttrib.DisabledFontColor = clWhite
-        FontAttrib.CaptionFont.Charset = ANSI_CHARSET
-        FontAttrib.CaptionFont.Color = clWhite
-        FontAttrib.CaptionFont.Height = -17
-        FontAttrib.CaptionFont.Name = #24494#36575#27491#40657#39636
-        FontAttrib.CaptionFont.Style = [fsBold]
-        ButtonText = #30331#20986
-      end
     end
     object SettingSV: TSplitView
       Left = 180
@@ -243,7 +189,7 @@ object MainForm: TMainForm
         Margins.Top = 7
         Margins.Right = 7
         Margins.Bottom = 7
-        ActivePage = ProdTabSheet
+        ActivePage = TabHotKey
         Align = alClient
         Font.Charset = ANSI_CHARSET
         Font.Color = clWindowText
@@ -7771,7 +7717,7 @@ object MainForm: TMainForm
             end
             object CxCloseAllLabel: TLabel
               Left = 62
-              Top = 521
+              Top = 446
               Width = 153
               Height = 22
               Margins.Left = 7
@@ -7804,7 +7750,7 @@ object MainForm: TMainForm
             end
             object Label34: TLabel
               Left = 334
-              Top = 521
+              Top = 446
               Width = 219
               Height = 22
               Margins.Left = 7
@@ -7823,10 +7769,11 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               Shape = bsBottomLine
+              Visible = False
             end
             object NuclearBuyLabel: TLabel
               Left = 62
-              Top = 446
+              Top = 521
               Width = 51
               Height = 22
               Margins.Left = 7
@@ -7834,10 +7781,11 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               Caption = #26680#29190#36023
+              Visible = False
             end
             object NuclearSellLabel: TLabel
               Left = 401
-              Top = 446
+              Top = 521
               Width = 51
               Height = 22
               Margins.Left = 7
@@ -7845,10 +7793,11 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               Caption = #26680#29190#36067
+              Visible = False
             end
             object NuclearSellText: TGraphButton
               Left = 458
-              Top = 442
+              Top = 517
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -7856,6 +7805,7 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               TabOrder = 14
+              Visible = False
               OnMouseDown = BuyTextMouseDown
               OnClick = BuyTextClick
               GraphCount = 5
@@ -9995,7 +9945,7 @@ object MainForm: TMainForm
             end
             object NuclearBuyText: TGraphButton
               Left = 119
-              Top = 442
+              Top = 517
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -10003,6 +9953,7 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               TabOrder = 13
+              Visible = False
               OnMouseDown = BuyTextMouseDown
               OnClick = BuyTextClick
               GraphCount = 5
@@ -13229,7 +13180,7 @@ object MainForm: TMainForm
             end
             object CloseAllStepComboBox: TComboBox
               Left = 423
-              Top = 518
+              Top = 442
               Width = 90
               Height = 30
               Margins.Left = 7
@@ -30450,8 +30401,8 @@ object MainForm: TMainForm
               ImageIndex = 0
             end
             object CancelAllandCloseText: TGraphButton
-              Left = 218
-              Top = 518
+              Left = 220
+              Top = 442
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -57501,7 +57452,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 207
     Bitmap = {
-      494C010101004004000C14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C0101010040040C0C14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000500000001400000001002000000000000019
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -57722,7 +57673,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 267
     Bitmap = {
-      494C01011C00C40078091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01011C00C40084091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006C000000380400000100200000000000801E
       0700000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -72857,7 +72808,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 327
     Bitmap = {
-      494C01010100080074085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100080080085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000058010000AF0000000100200000000000A0AC
       030000000000000000000000000000000000DA9B11FFDA9B11FFDA9B11FFDA9B
       11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B
@@ -80636,7 +80587,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 387
     Bitmap = {
-      494C010102000800D40936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800E00936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000D800000036000000010020000000000040B6
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -84177,7 +84128,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 88
     Bitmap = {
-      494C01010100D000A00896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C01010100D000AC0896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000580200001E00000001002000000000004019
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000020000000700000009000000080000000600000004000000020000
@@ -86440,7 +86391,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 147
     Bitmap = {
-      494C010101002400980828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C010101002400A40828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000A00000002800000001002000000000000064
       0000000000000000000000000000000000002D1605002D1605002D1605002D16
       05002D1605002D1605002D1605002D1605002D1605002D1605002D1605002D16
@@ -87274,7 +87225,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 447
     Bitmap = {
-      494C01010100D40090086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100D4009C086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000090010000AF0000000100200000000000C045
       0400000000000000000000000000000000006666660066666600666666006666
       6600666666006666660066666600666666006666660066666600666666006666
@@ -96323,7 +96274,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 507
     Bitmap = {
-      494C010101002001A0086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C010101002001AC086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000B80100008C000000010020000000000080C2
       030000000000000000000000000000000000FFFFFF00FFFFFF00EFEFEF00D9D9
       D900CECECE00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
