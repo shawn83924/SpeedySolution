@@ -280,7 +280,7 @@ void MDAXConnection::OnRecoverFinished( const UFC::AnsiString& Exchange, int Cou
 {
 	WideString ExStr( Exchange.c_str() );
 
-	FInstance->Fire_OnRecoverFinished( ExStr.Copy(), Count );
+	FInstance->Fire_OnRecoverFinished( ExStr.c_bstr(), Count );
 }
 //------------------------------------------------------------------------------
 void MDAXConnection::OnReload( const UFC::AnsiString& Exchange, UFC::PStringList& IDList, const UFC::AnsiString& ReloadID )
@@ -298,7 +298,7 @@ void MDAXConnection::OnReloadComplete( const UFC::AnsiString& Exchange, UFC::PSt
 	WideString ExStr( Exchange.c_str() );
 
 	printf( " 3. OnReloadComplete Exchange[%s]\n",Exchange.c_str() );
-	FInstance->Fire_OnContractReloaded(ExStr.Copy() );
+	FInstance->Fire_OnContractReloaded(ExStr.c_bstr() );
 }
 //------------------------------------------------------------------------------
 bool MDAXConnection::Logon( const UFC::AnsiString& ID, const UFC::AnsiString& Password, const UFC::AnsiString& Version, UFC::AnsiString& Msg )

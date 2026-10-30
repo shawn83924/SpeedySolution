@@ -34,7 +34,7 @@
       <logicalFolder name="f1" displayName="MarketDataConnection" projectFiles="true">
         <itemPath>MarketDataConnection/MarketDataConnection.cpp</itemPath>
         <itemPath>MarketDataConnection/TMDThreadApp.cpp</itemPath>
-        <itemPath>MarketDataConnection/Utility.cpp</itemPath>
+        <itemPath>/disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="MarketDataMessage" projectFiles="true">
         <itemPath>MarketDataMessage/DepthObject.cpp</itemPath>
@@ -42,7 +42,9 @@
       </logicalFolder>
       <logicalFolder name="f2" displayName="Message Handler" projectFiles="true">
         <itemPath>MarketDataConnection/CMEMessageHandler.cpp</itemPath>
+        <itemPath>/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp</itemPath>
         <itemPath>MarketDataConnection/ChinaMessageHandler.cpp</itemPath>
+        <itemPath>/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp</itemPath>
         <itemPath>MarketDataConnection/TAIFEXMessageHandler.cpp</itemPath>
         <itemPath>MarketDataConnection/TWSEMessageHandler.cpp</itemPath>
       </logicalFolder>
@@ -53,6 +55,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="3">
@@ -69,7 +74,7 @@
             <pElem>../Migo</pElem>
             <pElem>../UFC</pElem>
           </incDir>
-          <commandLine>-pthread -fPIC</commandLine>
+          <commandLine>-pthread -fPIC -std=c++11</commandLine>
           <preprocessorList>
             <Elem>__LINUX</Elem>
           </preprocessorList>
@@ -78,6 +83,21 @@
           <output>dist/Debug/${CND_PLATFORM}/libstarwaveapilib.a</output>
         </archiverTool>
       </compileType>
+      <item path="/disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="ChartServerConnection/ChartServerConnection.cpp"
             ex="false"
             tool="1"
@@ -127,8 +147,6 @@
             ex="false"
             tool="1"
             flavor2="0">
-      </item>
-      <item path="MarketDataConnection/Utility.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MarketDataConnection/Utility.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -166,7 +184,7 @@
             <pElem>../Migo</pElem>
             <pElem>../UFC</pElem>
           </incDir>
-          <commandLine>-pthread -fPIC</commandLine>
+          <commandLine>-pthread -fPIC -std=c++11</commandLine>
           <preprocessorList>
             <Elem>__LINUX</Elem>
           </preprocessorList>
@@ -178,6 +196,21 @@
           <output>../Release/StarWaveAPI.a</output>
         </archiverTool>
       </compileType>
+      <item path="/disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="ChartServerConnection/ChartServerConnection.cpp"
             ex="false"
             tool="1"
@@ -227,8 +260,6 @@
             ex="false"
             tool="1"
             flavor2="0">
-      </item>
-      <item path="MarketDataConnection/Utility.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MarketDataConnection/Utility.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -278,6 +309,21 @@
           <output>../Release/StarWaveAPI_64.a</output>
         </archiverTool>
       </compileType>
+      <item path="/disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
       <item path="ChartServerConnection/ChartServerConnection.cpp"
             ex="false"
             tool="1"
@@ -327,8 +373,6 @@
             ex="false"
             tool="1"
             flavor2="0">
-      </item>
-      <item path="MarketDataConnection/Utility.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="MarketDataConnection/Utility.h" ex="false" tool="3" flavor2="0">
       </item>

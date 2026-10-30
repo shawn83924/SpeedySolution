@@ -233,7 +233,11 @@ MarketDataConnection::MarketDataConnection( HINSTANCE Instance,
     FCallbackFuncs.Add( "ES",              &FOnTWSEMessage );//15
     FCallbackFuncs.Add( "TAIFEX",          &FOnTAIFEXMessage );//16
     FCallbackFuncs.Add( "TFX",             &FOnTAIFEXMessage );//16.1
-    FCallbackFuncs.Add( "HKEx",            &FOnHKExMessage );//6    
+    FCallbackFuncs.Add( "TAIFEXFUT.Reg",   &FOnTAIFEXMessage );//16.2
+    FCallbackFuncs.Add( "TAIFEXOPT.Reg",   &FOnTAIFEXMessage );//16.3
+    FCallbackFuncs.Add( "TAIFEXFUT.AH",    &FOnTAIFEXMessage );//16.4
+    FCallbackFuncs.Add( "TAIFEXOPT.AH",    &FOnTAIFEXMessage );//16.5
+    FCallbackFuncs.Add( "HKEx",            &FOnHKExMessage );//6
 
 
     ///< China
@@ -355,6 +359,80 @@ MarketDataConnection::MarketDataConnection( HINSTANCE Instance,
     FCallbackFuncs.Add( "TT.MTF",		 &FOnCQGMarketData );//112
     FCallbackFuncs.Add( "TT.SFE",		 &FOnCQGMarketData );//113
     FCallbackFuncs.Add( "TT.CBOE",		 &FOnCQGMarketData );//114
+    
+    ///< QST
+    FCallbackFuncs.Add( "QST.CME",      &FOnCQGMarketData );//115
+    FCallbackFuncs.Add( "QST.COMEX",    &FOnCQGMarketData );//116
+    FCallbackFuncs.Add( "QST.CBOT",     &FOnCQGMarketData );//117
+    FCallbackFuncs.Add( "QST.CBT",      &FOnCQGMarketData );//118
+    FCallbackFuncs.Add( "QST.NYMEX",    &FOnCQGMarketData );//119
+    FCallbackFuncs.Add( "QST.NYM",      &FOnCQGMarketData );//120
+    FCallbackFuncs.Add( "QST.SGX",      &FOnCQGMarketData );//121
+    FCallbackFuncs.Add( "QST.HKF",      &FOnCQGMarketData );//122
+    FCallbackFuncs.Add( "QST.HKE",      &FOnCQGMarketData );//123
+    FCallbackFuncs.Add( "QST.EURONEXT", &FOnCQGMarketData );//124
+    
+    FCallbackFuncs.Add( "QST.EUREX",    &FOnCQGMarketData );//125
+    FCallbackFuncs.Add( "QST.EUX",      &FOnCQGMarketData );//126
+    FCallbackFuncs.Add( "QST.EUXTW",    &FOnCQGMarketData );//127
+    
+    FCallbackFuncs.Add( "QST.TOCOM",    &FOnCQGMarketData );//128
+    FCallbackFuncs.Add( "QST.TCE",      &FOnCQGMarketData );//129
+    FCallbackFuncs.Add( "QST.OSE",      &FOnCQGMarketData );//130
+    
+    FCallbackFuncs.Add( "QST.NYB",      &FOnCQGMarketData );//131
+    FCallbackFuncs.Add( "QST.NYBOT",    &FOnCQGMarketData );//132
+    
+    FCallbackFuncs.Add( "QST.ICE",      &FOnCQGMarketData );//133
+    FCallbackFuncs.Add( "QST.ICEUS",    &FOnCQGMarketData );//134
+    FCallbackFuncs.Add( "QST.ICEEU",    &FOnCQGMarketData );//135
+    FCallbackFuncs.Add( "QST.ICEUK",    &FOnCQGMarketData );//136
+    FCallbackFuncs.Add( "QST.ICESG",    &FOnCQGMarketData );//137
+    
+    FCallbackFuncs.Add( "QST.IPE",      &FOnCQGMarketData );//138
+    FCallbackFuncs.Add( "QST.KBT",      &FOnCQGMarketData );//139
+    FCallbackFuncs.Add( "QST.LIF",      &FOnCQGMarketData );//140
+    FCallbackFuncs.Add( "QST.LME",      &FOnCQGMarketData );//141
+    FCallbackFuncs.Add( "QST.MTF",      &FOnCQGMarketData );//142
+    FCallbackFuncs.Add( "QST.SFE",      &FOnCQGMarketData );//143
+    FCallbackFuncs.Add( "QST.CBOE",     &FOnCQGMarketData );//144
+    
+    ///< AUTO
+    FCallbackFuncs.Add( "AUTO.CME",      &FOnCQGMarketData );//145
+    FCallbackFuncs.Add( "AUTO.COMEX",    &FOnCQGMarketData );//146
+    FCallbackFuncs.Add( "AUTO.CBOT",     &FOnCQGMarketData );//147
+    FCallbackFuncs.Add( "AUTO.CBT",      &FOnCQGMarketData );//148
+    FCallbackFuncs.Add( "AUTO.NYMEX",    &FOnCQGMarketData );//149
+    FCallbackFuncs.Add( "AUTO.NYM",      &FOnCQGMarketData );//150
+    FCallbackFuncs.Add( "AUTO.SGX",      &FOnCQGMarketData );//151
+    FCallbackFuncs.Add( "AUTO.HKF",      &FOnCQGMarketData );//152
+    FCallbackFuncs.Add( "AUTO.HKE",      &FOnCQGMarketData );//153
+    FCallbackFuncs.Add( "AUTO.EURONEXT", &FOnCQGMarketData );//154
+
+    FCallbackFuncs.Add( "AUTO.EUREX",    &FOnCQGMarketData );//155
+    FCallbackFuncs.Add( "AUTO.EUX",      &FOnCQGMarketData );//156
+    FCallbackFuncs.Add( "AUTO.EUXTW",    &FOnCQGMarketData );//157
+
+    FCallbackFuncs.Add( "AUTO.TOCOM",    &FOnCQGMarketData );//158
+    FCallbackFuncs.Add( "AUTO.TCE",      &FOnCQGMarketData );//159
+    FCallbackFuncs.Add( "AUTO.OSE",      &FOnCQGMarketData );//160
+
+    FCallbackFuncs.Add( "AUTO.NYB",      &FOnCQGMarketData );//161
+    FCallbackFuncs.Add( "AUTO.NYBOT",    &FOnCQGMarketData );//162
+
+    FCallbackFuncs.Add( "AUTO.ICE",      &FOnCQGMarketData );//163
+    FCallbackFuncs.Add( "AUTO.ICEUS",    &FOnCQGMarketData );//164
+    FCallbackFuncs.Add( "AUTO.ICEEU",    &FOnCQGMarketData );//165
+    FCallbackFuncs.Add( "AUTO.ICEUK",    &FOnCQGMarketData );//166
+    FCallbackFuncs.Add( "AUTO.ICESG",    &FOnCQGMarketData );//167
+
+    FCallbackFuncs.Add( "AUTO.IPE",      &FOnCQGMarketData );//168
+    FCallbackFuncs.Add( "AUTO.KBT",      &FOnCQGMarketData );//169
+    FCallbackFuncs.Add( "AUTO.LIF",      &FOnCQGMarketData );//170
+    FCallbackFuncs.Add( "AUTO.LME",      &FOnCQGMarketData );//171
+    FCallbackFuncs.Add( "AUTO.MTF",      &FOnCQGMarketData );//172
+    FCallbackFuncs.Add( "AUTO.SFE",      &FOnCQGMarketData );//173
+    FCallbackFuncs.Add( "AUTO.CBOE",     &FOnCQGMarketData );//174
 }
 //---------------------------------------------------------------------------
 MarketDataConnection::~MarketDataConnection()
@@ -1368,9 +1446,9 @@ bool MarketDataConnection::RegSymbol( const UFC::AnsiString& Exchange, const UFC
     TExRegInfo* RegInfo;
 
     if( FLimitSubscribe == false )
-            return true;
+        return true;
     if( FSubscribeExchange.GetObjectByKey( Exchange, RegInfo ) == TRUE)
-            return RegInfo->AddReg( Symbol );
+        return RegInfo->AddReg( Symbol );
     return false;
 }
 //---------------------------------------------------------------------------

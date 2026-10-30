@@ -97,13 +97,6 @@ public:// IStarWaveActiveX
   STDMETHOD(SendNews(BSTR Group, BSTR Message));
   STDMETHOD(Subscribe(BSTR Exchange, BSTR Symbol, EnumSubscribeType SubscribeType, VARIANT_BOOL* Value));
 
-
-
-
-
-
-
-
   STDMETHOD(SubscribeNews(BSTR Group));
   STDMETHOD(SubscribeSystemMessage(BSTR Exchange));
   STDMETHOD(SubscribeX(BSTR Exchange, BSTR ProductID, BSTR SettlementMonth, EnumCallPut CallPutCode,

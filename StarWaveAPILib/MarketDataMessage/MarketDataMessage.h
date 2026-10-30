@@ -204,6 +204,8 @@ protected:
     bool                FIsTest;
     TradingSession      FTradingSession;
     UFC::Int32          FHKExTrdType;
+    UFC::Int32          FStatusRemarks;
+	UFC::Int32          FRaiseFallRemarks;
 public:
     MatchInfo( const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol );
     MatchInfo() {}
@@ -216,6 +218,8 @@ public:
     bool             IsTestMatch( void ) { return FIsTest; }
     TradingSession   GetTradingSession( void ) { return FTradingSession; }
     UFC::Int32       GetHKExTrdType( void ) { return FHKExTrdType; }
+    UFC::Int32       GetStatusRemarks(void) { return FStatusRemarks; }
+	UFC::Int32       GetRaiseFallRemarks(void) { return FRaiseFallRemarks; }
 
     void SetMatchTime( const UFC::AnsiString& Time ) { FTradeTime = Time; }
     void SetMatchQty( UFC::Int32 Qty ) { FTradeQty = Qty; }
@@ -225,6 +229,8 @@ public:
     void SetTestMatch( bool YN ) { FIsTest = YN; }
     void SetTradingSession( TradingSession TS ){ FTradingSession =TS; }
     void SetHKExTrdType( int TT ){FHKExTrdType = TT; }
+    void SetStatusRemarks(int Remarks) { FStatusRemarks = Remarks; }
+	void SetRaiseFallRemarks(int Remarks) { FRaiseFallRemarks = Remarks; }
 };
 //---------------------------------------------------------------------------
 //						class TotalMatch
@@ -313,6 +319,8 @@ protected:
 	UFC::Int32	FDerivedSellQty;
 	bool        FIsTest;
 	TradingSession FTradingSession;
+	UFC::Int32     FStatusRemarks;
+	UFC::Int32     FRaiseFallRemarks;
 public:
 	OrderBookData( const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol );
 	OrderBookData( const OrderBookData& Msg );
@@ -357,6 +365,8 @@ public:
 	UFC::Int32 GetDerivedSellQty( void ) { return FDerivedSellQty; }
 	bool       IsTestMatch( void ) { return FIsTest; }
 	TradingSession GetTradingSession( void ) { return FTradingSession; }
+	UFC::Int32 GetStatusRemarks(void) { return FStatusRemarks; }
+	UFC::Int32 GetRaiseFallRemarks(void) { return FRaiseFallRemarks; }
 
 	void SetBuyDepth( int Depth, double Px, int Qty ) { FDepth.SetBidDepth( Depth, Px, Qty ); }
 	void SetSellDepth( int Depth, double Px, int Qty ) { FDepth.SetAskDepth( Depth, Px, Qty ); }
@@ -367,6 +377,8 @@ public:
 	void SetDerivedSellQty( UFC::Int32 Qty ) { FDerivedSellQty = Qty; }
 	void SetTestMatch( bool YN ) { FIsTest = YN; }
 	void SetTradingSession( TradingSession TS ){ FTradingSession =TS; }
+	void SetStatusRemarks(int Remarks) { FStatusRemarks = Remarks; }
+	void SetRaiseFallRemarks(int Remarks) { FRaiseFallRemarks = Remarks; }
 
 	void LoadDepthFromStream( UFC::PStream* Stream ) { FDepth.LoadFromStream( Stream ); }
 };
@@ -715,54 +727,5 @@ public:
 	UFC::Int32 GetFunctionCode() { return FFunctionCode; }
 	UFC::PStream* GetAdvancedData(){return FAdvancedData;}
 };
-//// class  TAIFEXBasicMessage
-////---------------------------------------------------------------------------
-//class TAIFEXBasicMessage : public  BaseMessage 
-//{
-//protected:
-//	Int32			FFunctionCode;
-//public:
-//	TAIFEXBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol);
-//};
-////---------------------------------------------------------------------------
-//// class  TAIFEXSystemMessage
-////---------------------------------------------------------------------------
-//class TAIFEXSystemMessage : public  BaseMessage
-//{
-//protected:
-//	Int32			FFunctionCode;
-//public:
-//	TAIFEXSystemMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString & Symbol);
-//};
-////---------------------------------------------------------------------------
-//// class  TWSEBasicMessage
-////---------------------------------------------------------------------------
-//class TWSEBasicMessage : public  BaseMessage
-//{
-//protected:
-//	Int32			FFunctionCode;
-//public:
-//	TWSEBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol);
-//};
-////---------------------------------------------------------------------------
-//// class  TWSEOrderStatsMessage
-////---------------------------------------------------------------------------
-//class TWSEOrderStatsMessage : public  BaseMessage
-//{
-//protected:
-//	Int32			FFunctionCode;
-//public:
-//	TWSEOrderStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol);
-//};
-////---------------------------------------------------------------------------
-//// class  TWSETradeStatsMessage
-////---------------------------------------------------------------------------
-//class TWSETradeStatsMessage : public  BaseMessage
-//{
-//protected:
-//	Int32			FFunctionCode;
-//public:
-//	TWSETradeStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol);
-//};
 ////---------------------------------------------------------------------------
 #endif

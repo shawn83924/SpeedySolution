@@ -186,7 +186,7 @@ private:
     UFC::PHashedList<UFC::AnsiString, MDEventFunc*> FCallbackFuncs;
 private:
     UFC::AnsiString			                    	FLogonID;
-    UFC::PHashMap<UFC::AnsiString,TExRegInfo*>      FSubscribeExchange;
+    UFC::PHashMap<UFC::AnsiString, TExRegInfo*>     FSubscribeExchange;
     bool                                            RegSymbol( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol );
     void                                            UnregSymbol( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol );
     bool                                            CanRegExchange( const UFC::AnsiString& Exchange );
@@ -223,9 +223,9 @@ private:
     void OnCMESettlePx( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
     ///< TWSE/OTC Message Handler
     void OnTWSEMessage( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, MTree* Data );
-    void OnTWSETrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession );
+    void OnTWSETrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession, int StatusRemarks, int RaiseFallRemarks, int Seq);
     void OnTWSETotalTrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession );
-    void OnTWSEOrderBook( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession );
+    void OnTWSEOrderBook( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession, int StatusRemarks, int RaiseFallRemarks );
     void OnTWSEDayHighLow( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
     void OnTWSEOpen( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );
     void OnTWSEIndex( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream );

@@ -35,6 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/e70d7e82/Utility_MDC.o \
+	${OBJECTDIR}/_ext/aa328a3e/CQGMessageHandler.o \
+	${OBJECTDIR}/_ext/aa328a3e/HKExMessageHandler.o \
 	${OBJECTDIR}/ChartServerConnection/ChartServerConnection.o \
 	${OBJECTDIR}/MarketDataConnection/CMEMessageHandler.o \
 	${OBJECTDIR}/MarketDataConnection/ChinaMessageHandler.o \
@@ -42,7 +45,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/MarketDataConnection/TAIFEXMessageHandler.o \
 	${OBJECTDIR}/MarketDataConnection/TMDThreadApp.o \
 	${OBJECTDIR}/MarketDataConnection/TWSEMessageHandler.o \
-	${OBJECTDIR}/MarketDataConnection/Utility.o \
 	${OBJECTDIR}/MarketDataMessage/DepthObject.o \
 	${OBJECTDIR}/MarketDataMessage/MarketDataMessage.o
 
@@ -72,6 +74,21 @@ LDLIBSOPTIONS=
 	${RM} ../Release/StarWaveAPI_64.a
 	${AR} -rv ../Release/StarWaveAPI_64.a ${OBJECTFILES} 
 	$(RANLIB) ../Release/StarWaveAPI_64.a
+
+${OBJECTDIR}/_ext/e70d7e82/Utility_MDC.o: /disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/e70d7e82
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -D__LINUX -IMarketDataConnection -IMarketDataMessage -I../Migo -I../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/e70d7e82/Utility_MDC.o /disk2/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/Utility_MDC.cpp
+
+${OBJECTDIR}/_ext/aa328a3e/CQGMessageHandler.o: /home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/aa328a3e
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -D__LINUX -IMarketDataConnection -IMarketDataMessage -I../Migo -I../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/aa328a3e/CQGMessageHandler.o /home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/CQGMessageHandler.cpp
+
+${OBJECTDIR}/_ext/aa328a3e/HKExMessageHandler.o: /home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/aa328a3e
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -D__LINUX -IMarketDataConnection -IMarketDataMessage -I../Migo -I../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/aa328a3e/HKExMessageHandler.o /home/yuan/src/SpeedySolution/Simulator/StarWaveAPILib/MarketDataConnection/HKExMessageHandler.cpp
 
 ${OBJECTDIR}/ChartServerConnection/ChartServerConnection.o: ChartServerConnection/ChartServerConnection.cpp
 	${MKDIR} -p ${OBJECTDIR}/ChartServerConnection
@@ -107,11 +124,6 @@ ${OBJECTDIR}/MarketDataConnection/TWSEMessageHandler.o: MarketDataConnection/TWS
 	${MKDIR} -p ${OBJECTDIR}/MarketDataConnection
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -D__LINUX -IMarketDataConnection -IMarketDataMessage -I../Migo -I../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MarketDataConnection/TWSEMessageHandler.o MarketDataConnection/TWSEMessageHandler.cpp
-
-${OBJECTDIR}/MarketDataConnection/Utility.o: MarketDataConnection/Utility.cpp
-	${MKDIR} -p ${OBJECTDIR}/MarketDataConnection
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -D__LINUX -IMarketDataConnection -IMarketDataMessage -I../Migo -I../UFC -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MarketDataConnection/Utility.o MarketDataConnection/Utility.cpp
 
 ${OBJECTDIR}/MarketDataMessage/DepthObject.o: MarketDataMessage/DepthObject.cpp
 	${MKDIR} -p ${OBJECTDIR}/MarketDataMessage

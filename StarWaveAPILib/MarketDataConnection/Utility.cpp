@@ -8,6 +8,10 @@ Lookup::Lookup()
 {
 	FExMap.Add( "TAIFEX", etTAIFEX );
 	FExMap.Add( "TFX",    etTAIFEX );
+	FExMap.Add( "TAIFEXFUT.Reg",  etTAIFEX );
+	FExMap.Add( "TAIFEXOPT.Reg",  etTAIFEX );
+	FExMap.Add( "TAIFEXFUT.AH",   etTAIFEX );
+	FExMap.Add( "TAIFEXOPT.AH",   etTAIFEX );
 
 	FExMap.Add( "TWSE",   etTWStock );
 	FExMap.Add( "OTC",    etTWStock );
@@ -66,6 +70,12 @@ Lookup::Lookup()
 	FExMap.Add( "CQG.TCE",    etCQGLike );
 	FExMap.Add( "CQG.CBOE",   etCQGLike );
 	FExMap.Add( "CQG.OSE",    etCQGLike );
+	FExMap.Add( "CQG.EURONEXT",   etCQGLike );
+	FExMap.Add( "CQG.TOCOM",      etCQGLike );
+	FExMap.Add( "CQG.NYBOT",      etCQGLike );
+	FExMap.Add( "CQG.ICEUS",      etCQGLike );
+	FExMap.Add( "CQG.ICEEU",      etCQGLike );
+	FExMap.Add( "CQG.ICEUK",      etCQGLike );
 
 	FExMap.Add( "PATS.CME",    etCQGLike ); 
 	FExMap.Add( "PATS.COMEX",  etCQGLike ); 
@@ -96,6 +106,101 @@ Lookup::Lookup()
 	FExMap.Add( "PATS.SFE",    etCQGLike );
 	FExMap.Add( "PATS.TCE",    etCQGLike );
 	FExMap.Add( "PATS.CBOE",   etCQGLike );
+	FExMap.Add( "PATS.NYBOT",      etCQGLike );
+	FExMap.Add( "PATS.ICEUK",      etCQGLike );
+
+	FExMap.Add( "QST.CME",        etCQGLike );
+	FExMap.Add( "QST.COMEX",      etCQGLike );
+	FExMap.Add( "QST.CBOT",       etCQGLike );
+	FExMap.Add( "QST.CBT",        etCQGLike );
+	FExMap.Add( "QST.NYMEX",      etCQGLike );
+	FExMap.Add( "QST.NYM",        etCQGLike );
+	FExMap.Add( "QST.SGX",        etCQGLike );
+	FExMap.Add( "QST.HKF",        etCQGLike );
+	FExMap.Add( "QST.HKE",        etCQGLike );
+	FExMap.Add( "QST.EURONEXT",   etCQGLike );
+	FExMap.Add( "QST.EUREX",      etCQGLike );
+	FExMap.Add( "QST.EUX",        etCQGLike );
+	FExMap.Add( "QST.EUXTW",      etCQGLike );
+	FExMap.Add( "QST.TOCOM",      etCQGLike );
+	FExMap.Add( "QST.TCE",        etCQGLike );
+	FExMap.Add( "QST.OSE",        etCQGLike );
+	FExMap.Add( "QST.NYB",        etCQGLike );
+	FExMap.Add( "QST.NYBOT",      etCQGLike );
+	FExMap.Add( "QST.ICE",        etCQGLike );
+	FExMap.Add( "QST.ICEUS",      etCQGLike );
+	FExMap.Add( "QST.ICEEU",      etCQGLike );
+	FExMap.Add( "QST.ICEUK",      etCQGLike );
+	FExMap.Add( "QST.ICESG",      etCQGLike );
+	FExMap.Add( "QST.IPE",        etCQGLike );
+	FExMap.Add( "QST.KBT",        etCQGLike );
+	FExMap.Add( "QST.LIF",        etCQGLike );
+	FExMap.Add( "QST.LME",        etCQGLike );
+	FExMap.Add( "QST.MTF",        etCQGLike );
+	FExMap.Add( "QST.SFE",        etCQGLike );
+	FExMap.Add( "QST.CBOE",       etCQGLike );
+
+	FExMap.Add( "TT.CME",         etCQGLike );
+	FExMap.Add( "TT.COMEX",       etCQGLike );
+	FExMap.Add( "TT.CBOT",        etCQGLike );
+	FExMap.Add( "TT.CBT",         etCQGLike );
+	FExMap.Add( "TT.NYMEX",       etCQGLike );
+	FExMap.Add( "TT.NYM",         etCQGLike );
+	FExMap.Add( "TT.SGX",         etCQGLike );
+	FExMap.Add( "TT.HKF",         etCQGLike );
+	FExMap.Add( "TT.HKE",         etCQGLike );
+	FExMap.Add( "TT.EURONEXT",    etCQGLike );
+	FExMap.Add( "TT.EUREX",       etCQGLike );
+	FExMap.Add( "TT.EUX",         etCQGLike );
+	FExMap.Add( "TT.EUXTW",       etCQGLike );
+	FExMap.Add( "TT.TOCOM",       etCQGLike );
+	FExMap.Add( "TT.TCE",         etCQGLike );
+	FExMap.Add( "TT.OSE",         etCQGLike );
+	FExMap.Add( "TT.NYB",         etCQGLike );
+	FExMap.Add( "TT.NYBOT",       etCQGLike );
+	FExMap.Add( "TT.ICE",         etCQGLike );
+	FExMap.Add( "TT.ICEUS",       etCQGLike );
+	FExMap.Add( "TT.ICEEU",       etCQGLike );
+	FExMap.Add( "TT.ICEUK",       etCQGLike );
+	FExMap.Add( "TT.ICESG",       etCQGLike );
+	FExMap.Add( "TT.IPE",         etCQGLike );
+	FExMap.Add( "TT.KBT",         etCQGLike );
+	FExMap.Add( "TT.LIF",         etCQGLike );
+	FExMap.Add( "TT.LME",         etCQGLike );
+	FExMap.Add( "TT.MTF",         etCQGLike );
+	FExMap.Add( "TT.SFE",         etCQGLike );
+	FExMap.Add( "TT.CBOE",        etCQGLike );
+
+	FExMap.Add( "AUTO.CME",       etCQGLike );
+	FExMap.Add( "AUTO.COMEX",     etCQGLike );
+	FExMap.Add( "AUTO.CBOT",      etCQGLike );
+	FExMap.Add( "AUTO.CBT",       etCQGLike );
+	FExMap.Add( "AUTO.NYMEX",     etCQGLike );
+	FExMap.Add( "AUTO.NYM",       etCQGLike );
+	FExMap.Add( "AUTO.SGX",       etCQGLike );
+	FExMap.Add( "AUTO.HKF",       etCQGLike );
+	FExMap.Add( "AUTO.HKE",       etCQGLike );
+	FExMap.Add( "AUTO.EURONEXT",  etCQGLike );
+	FExMap.Add( "AUTO.EUREX",     etCQGLike );
+	FExMap.Add( "AUTO.EUX",       etCQGLike );
+	FExMap.Add( "AUTO.EUXTW",     etCQGLike );
+	FExMap.Add( "AUTO.TOCOM",     etCQGLike );
+	FExMap.Add( "AUTO.TCE",       etCQGLike );
+	FExMap.Add( "AUTO.OSE",       etCQGLike );
+	FExMap.Add( "AUTO.NYB",       etCQGLike );
+	FExMap.Add( "AUTO.NYBOT",     etCQGLike );
+	FExMap.Add( "AUTO.ICE",       etCQGLike );
+	FExMap.Add( "AUTO.ICEUS",     etCQGLike );
+	FExMap.Add( "AUTO.ICEEU",     etCQGLike );
+	FExMap.Add( "AUTO.ICEUK",     etCQGLike );
+	FExMap.Add( "AUTO.ICESG",     etCQGLike );
+	FExMap.Add( "AUTO.IPE",       etCQGLike );
+	FExMap.Add( "AUTO.KBT",       etCQGLike );
+	FExMap.Add( "AUTO.LIF",       etCQGLike );
+	FExMap.Add( "AUTO.LME",       etCQGLike );
+	FExMap.Add( "AUTO.MTF",       etCQGLike );
+	FExMap.Add( "AUTO.SFE",       etCQGLike );
+	FExMap.Add( "AUTO.CBOE",      etCQGLike );
 	
 	FDigiMap.Add( "TXF",  tdtTXFLike );
 	FDigiMap.Add( "XIO",  tdtTXFLike );
@@ -469,6 +574,9 @@ void BasicInformation::LoadFromString( const UFC::AnsiString& Msg )
 	{
      	FLastTradeDate = FEndDate;
 	}
+
+	if( ExchangeType == etTAIFEX && FMsg.Get( "Chinese", Value ) )
+		FChineseName = Value;
 
 	if( FMsg.Get( "Spot", Value ) )
 	{

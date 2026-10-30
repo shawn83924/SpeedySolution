@@ -1,0 +1,60 @@
+# ===== NetBeans C/C++ (Makefile / Linux build) =====
+build/
+dist/
+nbproject/private/
+*.o
+*.o.d
+*.d
+.dep.inc
+*.a
+*.so
+
+# ===== C++Builder / RAD Studio (Windows build) =====
+# Build output
+Win32/
+Win64/
+Debug/
+Release/
+*.obj
+*.lib
+*.dll
+*.exe
+*.ocx
+*.bpl
+*.bpi
+*.dcu
+*.tds
+*.map
+*.drc
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.pch
+*.#*
+*.rsm
+*.res.bak
+# IDE history / backups / temp
+__history/
+__recovery/
+*.~*
+*.bak
+*.dsk
+*.identcache
+*.tvsconfig
+*.cbproj.local.bak
+
+# ===== Visual Studio Code =====
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/c_cpp_properties.json
+.vscode/ipch/
+.vscode/browse.vc.db*
+
+# ===== Misc =====
+# Nested working copy (accidental checkout inside repo)
+/StarWaveAPILib/
+*.log
+Thumbs.db
+desktop.ini

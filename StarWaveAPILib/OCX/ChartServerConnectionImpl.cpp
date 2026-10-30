@@ -180,13 +180,6 @@ STDMETHODIMP TChartServerConnectionImpl::Destroy()
 //------------------------------------------------------------------------------
 STDMETHODIMP TChartServerConnectionImpl::Connect(BSTR IP, long Port, long Timeout)
 
-
-
-
-
-
-
-
 {
 	if( FConnection != NULL )
 	{
@@ -260,13 +253,6 @@ STDMETHODIMP TChartServerConnectionImpl::RequestTicks(ISecurityDefinition* Contr
 //------------------------------------------------------------------------------
 STDMETHODIMP TChartServerConnectionImpl::Subscribe(ISecurityDefinition* Security)
 
-
-
-
-
-
-
-
 {
 	WideString WEx,WSym;
 	double BullPx,BearPx;
@@ -287,13 +273,6 @@ STDMETHODIMP TChartServerConnectionImpl::Subscribe(ISecurityDefinition* Security
 }
 //------------------------------------------------------------------------------
 STDMETHODIMP TChartServerConnectionImpl::Unsubscribe(ISecurityDefinition* Contract)
-
-
-
-
-
-
-
 
 {
 	WideString WEx,WSym;

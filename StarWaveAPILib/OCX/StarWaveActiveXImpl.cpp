@@ -778,13 +778,6 @@ STDMETHODIMP TStarWaveActiveXImpl::GetSymbol(BSTR Exchange, long Index, BSTR* Sy
 
 
 
-
-
-
-
-
-
-
 {
   try
   {

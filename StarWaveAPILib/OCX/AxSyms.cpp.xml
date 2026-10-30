@@ -1,5 +1,5 @@
 <Index>
-  <AddFile fileId="1" fileName="C:\src\StarWaveAPILib\OCX\AxSyms.cpp" timestamp="1637604668" options="" />
+  <AddFile fileId="1" fileName="C:\src\StarWaveAPILib\OCX\AxSyms.cpp" timestamp="1605701958" options="" />
   <AddFile fileId="2" fileName="c:\program files (x86)\embarcadero\studio\19.0\include\windows\rtl\System.hpp" timestamp="1520668500" options="" />
   <AddHeader fileId="1" headerId="2" result="1" />
   <AddDecl declId="1" name="SystemHPP" usr="2@MR@SystemHPP@8@9" parentId="0" kind="9" flags="0" result="1" />

@@ -6,6 +6,9 @@ void MarketDataConnection::OnTWSEMessage( const UFC::AnsiString& Exchange, const
 	UFC::Int32 mkt;
 	int ReadSize;
 	int TSession = 0;
+    int StatusRemarks = -1;
+	int RaiseFallRemarks = -1;
+    int Seq = 0;
 	char* Buffer;
 
 	if ( Data->get( "MsgType", Type )
@@ -17,7 +20,10 @@ void MarketDataConnection::OnTWSEMessage( const UFC::AnsiString& Exchange, const
 		switch( Type )
 		{
 			case mtTrade:               Data->get( "Sim", TSession );
-										OnTWSETrade( Exchange, Symbol, (Market)mkt, &Stream, TSession );
+										Data->get("StatusRemarks", StatusRemarks);	     //StatusRemarks
+										Data->get("RaiseFallRemarks", RaiseFallRemarks); //RaiseFallRemarks
+                                        Data->get("Seq", Seq); //Seq
+										OnTWSETrade( Exchange, Symbol, (Market)mkt, &Stream, TSession, StatusRemarks, RaiseFallRemarks, Seq );
 										break;
 			case mtTotalTrade:          Data->get( "Sim", TSession );
 										OnTWSETotalTrade( Exchange, Symbol, (Market)mkt, &Stream, TSession );
@@ -27,7 +33,7 @@ void MarketDataConnection::OnTWSEMessage( const UFC::AnsiString& Exchange, const
 			case mtUnderlyingIndexInfo: OnTWSEIndex( Exchange, Symbol, (Market)mkt, &Stream ); break;
 			case mtClosingMarketData:   OnTWSEClose( Exchange, Symbol, (Market)mkt, &Stream ); break;
 			case mtOrderBookData:       Data->get( "Sim", TSession );
-										OnTWSEOrderBook( Exchange, Symbol, (Market)mkt, &Stream, TSession );
+										OnTWSEOrderBook( Exchange, Symbol, (Market)mkt, &Stream, TSession, StatusRemarks, RaiseFallRemarks );
 										break;
 			case mtRecover: break;
 			case mtBasicInfo: break;
@@ -44,7 +50,7 @@ void MarketDataConnection::OnTWSEMessage( const UFC::AnsiString& Exchange, const
 	}
 }
 //------------------------------------------------------------------------------
-void MarketDataConnection::OnTWSETrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession )
+void MarketDataConnection::OnTWSETrade( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession, int StatusRemarks, int RaiseFallRemarks, int Seq)
 {
 
 	UFC::NDouble NPx;
@@ -68,6 +74,8 @@ void MarketDataConnection::OnTWSETrade( const UFC::AnsiString& Exchange, const U
 	else
 		Match.SetTestMatch( false );
 	Match.SetTradingSession( (TradingSession)TSession );
+    Match.SetStatusRemarks(StatusRemarks);
+	Match.SetRaiseFallRemarks(RaiseFallRemarks);
 	FListener->OnMarketDataMessage( Exchange, Symbol, &Match );
 	UFC::BufferedLog::DebugPrintf( UFC::dlInformation, " [%s] OnTWSETrade() LastPx[%0.2f] Qty[%d] MatchTime[%02d:%02d:%02d]",
 			Symbol.c_str(), NPx.ToDouble(), NQty.ToInt32(), MatchTime.getHour(), MatchTime.getMinute(), MatchTime.getSecond() );
@@ -97,7 +105,7 @@ void MarketDataConnection::OnTWSETotalTrade( const UFC::AnsiString& Exchange, co
 		Symbol.c_str(), NQty.ToInt32(), MatchTimeStr.c_str() );
 }
 //------------------------------------------------------------------------------
-void MarketDataConnection::OnTWSEOrderBook( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession )
+void MarketDataConnection::OnTWSEOrderBook( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, Market mkt, UFC::PStream* Stream, int TSession, int StatusRemarks, int RaiseFallRemarks)
 {
 	OrderBookData Msg( Exchange, mkt, Symbol );
 	UFC::UDateTime MatchTime;
@@ -113,6 +121,8 @@ void MarketDataConnection::OnTWSEOrderBook( const UFC::AnsiString& Exchange, con
 	else
 		Msg.SetTestMatch( false );
 	Msg.SetTradingSession( (TradingSession)TSession );
+	Msg.SetStatusRemarks(StatusRemarks);
+	Msg.SetRaiseFallRemarks(RaiseFallRemarks);
 	FListener->OnMarketDataMessage( Exchange, Symbol, &Msg );
 	UFC::BufferedLog::DebugPrintf( UFC::dlInformation, " [%s] OnTWSEOrderBook() MessageTime[%s]", Symbol.c_str(), MatchTimeStr.c_str() );
 }

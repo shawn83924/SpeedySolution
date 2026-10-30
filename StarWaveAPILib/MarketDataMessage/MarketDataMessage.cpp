@@ -368,7 +368,8 @@ MarketDataMessage::MarketDataMessage( UFC::PStream* Stream )
 
     NPreClosePx.LoadFromStream( Stream );
 
-    if(FExchange == "TAIFEX" || FExchange == "TWSE" || FExchange == "OTC" || FExchange == "TWSEOdd" || FExchange == "OTCOdd" || FExchange == "HKEx" )
+    if( FExchange == "TAIFEX" || FExchange == "TAIFEXDay.FUT" || FExchange == "TAIFEXDay.OPT" || FExchange == "TAIFEXNight.FUT" || FExchange == "TAIFEXNight.OPT"
+            || FExchange == "TWSE" || FExchange == "OTC" || FExchange == "TWSEOdd" || FExchange == "OTCOdd" || FExchange == "ES" || FExchange == "HKEx" )
         FPreClosePx = NPreClosePx.ToDouble();
     else
         FPreClosePx = 0;
@@ -508,44 +509,4 @@ AdvancedMessage::AdvancedMessage(const UFC::AnsiString& Exchange, Market mkt, co
 		FFunctionCode = 0;
 	}
 }
-//---------------------------------------------------------------------------
-//// class  TAIFEXBasicMessage
-////---------------------------------------------------------------------------
-//TAIFEXBasicMessage::TAIFEXBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
-//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
-//{
-//
-//}
-////---------------------------------------------------------------------------
-//// class  TAIFEXSystemMessage
-////---------------------------------------------------------------------------
-//TAIFEXSystemMessage::TAIFEXSystemMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
-//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
-//{
-//
-//}
-////---------------------------------------------------------------------------
-//// class  TWSEBasicMessage
-////---------------------------------------------------------------------------
-//TWSEBasicMessage::TWSEBasicMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol)
-//	:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
-//{
-//
-//}
-////---------------------------------------------------------------------------
-//// class  TWSEOrderStatsMessage
-////---------------------------------------------------------------------------
-//TWSEOrderStatsMessage::TWSEOrderStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol) 
-//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
-//{
-//
-//}
-////---------------------------------------------------------------------------
-//// class  TWSETradeStatsMessage
-////---------------------------------------------------------------------------
-//TWSETradeStatsMessage::TWSETradeStatsMessage(const UFC::AnsiString& Exchange, Market mkt, const UFC::AnsiString& Symbol) 
-//:BaseMessage(mtErrorMsg, Exchange, mkt, Symbol)
-//{
-//
-//}
 //---------------------------------------------------------------------------

@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/MarketDataConnection",
+                "${workspaceFolder}/MarketDataMessage",
+                "${workspaceFolder}/../Migo",
+                "${workspaceFolder}/../UFC"
+            ],
+            "defines": [
+                "__LINUX"
+            ],
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

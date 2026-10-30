@@ -5,7 +5,7 @@
         <FrameworkType>VCL</FrameworkType>
         <MainSource>StarWaveOCXAPI.cpp</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Library</AppType>
@@ -62,7 +62,7 @@
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <IncludePath>c:\src\StarWaveAPILib\MarketDataConnection;c:\src\StarWaveAPILib\MarketDataMessage;c:\src\StarWaveAPILib\ChartServerConnection;c:\src\Migo;c:\src\UFC;$(BDS)\include;$(IncludePath)</IncludePath>
         <Manifest_File>None</Manifest_File>
-        <BCC_Defines>USING_DAX;$(BCC_Defines)</BCC_Defines>
+        <BCC_Defines>USING_DAX;VARIANT_COPIES_BSTR;$(BCC_Defines)</BCC_Defines>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <Multithreaded>true</Multithreaded>
         <SanitizedProjectName>StarWaveOCXAPI</SanitizedProjectName>
@@ -70,7 +70,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <ProjectType>CppActiveLibrary</ProjectType>
-        <CLANG_Defines>USING_DAX;$(CLANG_Defines)</CLANG_Defines>
+        <CLANG_Defines>USING_DAX;VARIANT_COPIES_BSTR;$(CLANG_Defines)</CLANG_Defines>
         <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
         <IntermediateOutputDir>.\$(Platform)\$(Config)</IntermediateOutputDir>
         <FinalOutputDir>c:\MBus\lib\$(Platform)</FinalOutputDir>
@@ -144,9 +144,9 @@
         <TASM_Debugging>None</TASM_Debugging>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <VerInfo_MajorVer>2</VerInfo_MajorVer>
-        <VerInfo_Build>46</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=MDBS;FileDescription=StarWave API;FileVersion=2.0.0.46;InternalName=StarWave API;LegalCopyright=MDBS ;LegalTrademarks=StarWave;OriginalFilename=;ProductName=StarWave API;ProductVersion=2.0.0.46;Comments=StarWave API with ActiveX support;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_MajorVer>3</VerInfo_MajorVer>
+        <VerInfo_Build>41</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=MDBS;FileDescription=StarWave API;FileVersion=3.0.0.41;InternalName=StarWave API;LegalCopyright=MDBS ;LegalTrademarks=StarWave;OriginalFilename=;ProductName=StarWave API;ProductVersion=3.0.0.41;Comments=StarWave API with ActiveX support;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -157,9 +157,9 @@
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=MDBS;FileDescription=$(MSBuildProjectName);FileVersion=2.0.0.46;InternalName=StarWave API 64;LegalCopyright=MDBS;LegalTrademarks=StarWave;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=2.0.0.46;Comments=StarWave API with ActiveX support 64bit</VerInfo_Keys>
-        <VerInfo_MajorVer>2</VerInfo_MajorVer>
-        <VerInfo_Build>46</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=MDBS;FileDescription=$(MSBuildProjectName);FileVersion=3.0.0.41;InternalName=StarWave API 64;LegalCopyright=MDBS;LegalTrademarks=StarWave;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=3.0.0.41;Comments=StarWave API with ActiveX support 64bit</VerInfo_Keys>
+        <VerInfo_MajorVer>3</VerInfo_MajorVer>
+        <VerInfo_Build>41</VerInfo_Build>
         <VerInfo_DLL>true</VerInfo_DLL>
     </PropertyGroup>
     <ItemGroup>
@@ -325,10 +325,7 @@
                 <Source>
                     <Source Name="MainSource">StarWaveOCXAPI.cpp</Source>
                 </Source>
-                <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcboffice2k250.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\bcbofficexp250.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                </Excluded_Packages>
+                <Excluded_Packages/>
                 <VFOLDERS>
                     <VFOLDER ID="{8FE57D81-726D-4B90-8CBF-136219D3D1F8}" name="ChartServerConnection"/>
                     <VFOLDER ID="{8B1AEC21-2451-4F4F-94DD-FF98A8CE23A9}" name="Messages"/>
@@ -336,7 +333,11 @@
                 </VFOLDERS>
             </CPlusPlusBuilder.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="c:\MBul\lib\Win32\StarWaveOCXAPI" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
+                    <Platform Name="Win64">
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName=".\Win32\Debug\StarWaveOCXAPI" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32c250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
@@ -403,13 +404,9 @@
                 <DeployFile LocalName="c:\MBus\lib\Win32\StarWaveAPI_XE7.tds" Configuration="Debug" Class="DebugSymbols"/>
                 <DeployFile LocalName=".\Win32\Debug\Project2.tds" Configuration="Debug" Class="DebugSymbols"/>
                 <DeployFile LocalName="c:\MBus\lib\Win32\StarWaveOCXAPI" Configuration="Debug" Class="ProjectOutput"/>
+                <DeployFile LocalName="c:\MBul\lib\Win32\StarWaveOCXAPI" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64160.dll" Class="DependencyModule"/>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin64\cc64160mt.dll" Class="DependencyModule"/>
-                <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'!='true'" LocalName="$(BDS)\bin64\cc64250.dll" Class="DependencyModule">
-                    <Platform Name="Win64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>

@@ -81,15 +81,6 @@ STDMETHODIMP TBrokerQueueImpl::get_ItemType(long index, EnumBrokerQueueType* Val
 
 
 
-
-
-
-
-
-
-
-
-
 {
 	if( index < 40 )
 		*Value = (EnumBrokerQueueType)FTypes[index];

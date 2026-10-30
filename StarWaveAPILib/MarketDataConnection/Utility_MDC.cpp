@@ -9,6 +9,10 @@ Lookup::Lookup()
 {
 	FExMap.Add( "TAIFEX", etTAIFEX );
 	FExMap.Add( "TFX",    etTAIFEX );
+    FExMap.Add( "TAIFEXFUT.Reg",    etTAIFEX );
+    FExMap.Add( "TAIFEXOPT.Reg",    etTAIFEX );
+    FExMap.Add( "TAIFEXFUT.AH",    etTAIFEX );
+    FExMap.Add( "TAIFEXOPT.AH",    etTAIFEX );
 
 	FExMap.Add( "TWSE",   etTWStock );
 	FExMap.Add( "OTC",    etTWStock );
@@ -150,6 +154,78 @@ Lookup::Lookup()
     FExMap.Add( "TT.SFE",        etCQGLike );
     FExMap.Add( "TT.CBOE",       etCQGLike );
 	
+    FExMap.Add( "QST.CME",        etCQGLike );
+    FExMap.Add( "QST.COMEX",      etCQGLike );
+    FExMap.Add( "QST.CBOT",       etCQGLike );
+    FExMap.Add( "QST.CBT",        etCQGLike );
+    FExMap.Add( "QST.NYMEX",      etCQGLike );
+    FExMap.Add( "QST.NYM",        etCQGLike );
+    FExMap.Add( "QST.SGX",        etCQGLike );
+    FExMap.Add( "QST.HKF",        etCQGLike );
+    FExMap.Add( "QST.HKE",        etCQGLike );
+    FExMap.Add( "QST.EURONEXT",   etCQGLike );
+
+    FExMap.Add( "QST.EUREX",      etCQGLike );
+    FExMap.Add( "QST.EUX",        etCQGLike );
+    FExMap.Add( "QST.EUXTW",      etCQGLike );
+
+    FExMap.Add( "QST.TOCOM",      etCQGLike );
+    FExMap.Add( "QST.TCE",        etCQGLike );
+    FExMap.Add( "QST.OSE",        etCQGLike );
+
+    FExMap.Add( "QST.NYB",        etCQGLike );
+    FExMap.Add( "QST.NYBOT",      etCQGLike );
+
+    FExMap.Add( "QST.ICE",        etCQGLike );
+    FExMap.Add( "QST.ICEUS",      etCQGLike );
+    FExMap.Add( "QST.ICEEU",      etCQGLike );
+    FExMap.Add( "QST.ICEUK",      etCQGLike );
+    FExMap.Add( "QST.ICESG",      etCQGLike );
+
+    FExMap.Add( "QST.IPE",        etCQGLike );
+    FExMap.Add( "QST.KBT",        etCQGLike );
+    FExMap.Add( "QST.LIF",        etCQGLike );
+    FExMap.Add( "QST.LME",        etCQGLike );
+    FExMap.Add( "QST.MTF",        etCQGLike );
+    FExMap.Add( "QST.SFE",        etCQGLike );
+    FExMap.Add( "QST.CBOE",       etCQGLike );
+    
+    FExMap.Add( "AUTO.CME",        etCQGLike );
+    FExMap.Add( "AUTO.COMEX",      etCQGLike );
+    FExMap.Add( "AUTO.CBOT",       etCQGLike );
+    FExMap.Add( "AUTO.CBT",        etCQGLike );
+    FExMap.Add( "AUTO.NYMEX",      etCQGLike );
+    FExMap.Add( "AUTO.NYM",        etCQGLike );
+    FExMap.Add( "AUTO.SGX",        etCQGLike );
+    FExMap.Add( "AUTO.HKF",        etCQGLike );
+    FExMap.Add( "AUTO.HKE",        etCQGLike );
+    FExMap.Add( "AUTO.EURONEXT",   etCQGLike );
+
+    FExMap.Add( "AUTO.EUREX",      etCQGLike );
+    FExMap.Add( "AUTO.EUX",        etCQGLike );
+    FExMap.Add( "AUTO.EUXTW",      etCQGLike );
+
+    FExMap.Add( "AUTO.TOCOM",      etCQGLike );
+    FExMap.Add( "AUTO.TCE",        etCQGLike );
+    FExMap.Add( "AUTO.OSE",        etCQGLike );
+
+    FExMap.Add( "AUTO.NYB",        etCQGLike );
+    FExMap.Add( "AUTO.NYBOT",      etCQGLike );
+
+    FExMap.Add( "AUTO.ICE",        etCQGLike );
+    FExMap.Add( "AUTO.ICEUS",      etCQGLike );
+    FExMap.Add( "AUTO.ICEEU",      etCQGLike );
+    FExMap.Add( "AUTO.ICEUK",      etCQGLike );
+    FExMap.Add( "AUTO.ICESG",      etCQGLike );
+
+    FExMap.Add( "AUTO.IPE",        etCQGLike );
+    FExMap.Add( "AUTO.KBT",        etCQGLike );
+    FExMap.Add( "AUTO.LIF",        etCQGLike );
+    FExMap.Add( "AUTO.LME",        etCQGLike );
+    FExMap.Add( "AUTO.MTF",        etCQGLike );
+    FExMap.Add( "AUTO.SFE",        etCQGLike );
+    FExMap.Add( "AUTO.CBOE",       etCQGLike );
+    
 	FDigiMap.Add( "TXF",  tdtTXFLike );
 	FDigiMap.Add( "XIO",  tdtTXFLike );
 	FDigiMap.Add( "MXF",  tdtTXFLike );
@@ -584,6 +660,9 @@ void BasicInformation::LoadFromString( const UFC::AnsiString& Msg )
      	FLastTradeDate = FEndDate;
 	}
 
+	if( ExchangeType == etTAIFEX && FMsg.Get( "Chinese", Value ) )
+		FChineseName = Value;
+
 	if( FMsg.Get( "Spot", Value ) )
 	{
 		UFC::PStringList StringList;
@@ -822,8 +901,7 @@ UFC::AnsiString BasicInformation::GetTickListSymbol( void )
 //---------------------------------------------------------------------------
 bool BasicInformation::IsMultileg( void )
 {
-	if( ( FExchange == "TAIFEX" && FMarket == mTWFutures && FSymbol.AnsiPos( '/' ) > 0 ) || 
-        ( FExchange == "TFX" && FMarket == mPATSFutures && FSymbol.AnsiPos( '/' ) > 0 ) )
+	if( (FMarket == mTWFutures || FMarket == mPATSAll ) && FSymbol.AnsiPos( '/' ) > 0 )
 		return true;
 	return false;
 }
@@ -984,6 +1062,10 @@ void ExchangeInfo::LoadTradingSupports( UFC::UiniFile& ExchangeConfig )
 		FMarketOrd = true;
 	if( FExchangeName == "TAIFEX" ||
 		FExchangeName == "TAIFEX.RMB" ||
+        FExchangeName == "TAIFEXFUT.Reg" ||
+        FExchangeName == "TAIFEXOPT.Reg" ||
+        FExchangeName == "TAIFEXFUT.AH" ||
+        FExchangeName == "TAIFEXOPT.AH" ||
 		//FExchangeName == "TFX" ||
 		FExchangeName == "SHFE" ||
 		FExchangeName == "CZCE" ||
@@ -1250,7 +1332,7 @@ int __fastcall GenerateTicks( const UFC::AnsiString& Exchange,
 							  std::vector<double>& TickVector )
 {
 	double Tick = -1;
-	if( Exchange == "TAIFEX" || Exchange == "TFX" )
+	if( Exchange == "TAIFEX" || Exchange == "TFX" || Exchange == "TAIFEXFUT.Reg" || Exchange == "TAIFEXOPT.Reg" || Exchange == "TAIFEXFUT.AH" || Exchange == "TAIFEXOPT.AH" )
 	{
 		UFC::AnsiString Prefix( Symbol.SubString( 0, 2 ) );
 
