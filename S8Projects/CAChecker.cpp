@@ -493,7 +493,7 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 			ExMarket = "ForeignFUT";
 		}
 		if( SType == smtNew )
-			Text.Printf( "SpeedyUnify_Mega_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
+			Text.Printf( "MEGAAtrade_Mega_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
 					  ExMarket.c_str(),
 					  ExecType.c_str(),
 					  Msg->GetBrokerID(),
@@ -504,7 +504,7 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 					  (Msg->GetSide() == nsOrderMessageDefine::sBuy)?"B":"S",
 					  TIF.c_str(), PE.c_str(), FAnsiLocalIP.c_str() );
 		else
-			Text.Printf( "SpeedyUnify_Mega_%s_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
+			Text.Printf( "MEGAAtrade_Mega_%s_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
 					  ExMarket.c_str(),
 					  ExecType.c_str(),
                       Msg->GetOrderID(),

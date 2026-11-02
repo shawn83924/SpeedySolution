@@ -512,7 +512,7 @@ bool TMegaService::SignAgreememt( const String& Account, TCAChecker* CAChecker, 
 		 {
 			 String SignTxt;
 
-			 SignTxt.printf( L"SpeedyUnify_Mega_%s_Signed_Agreement", Account );
+			 SignTxt.printf( L"MEGAAtrade_Mega_%s_Signed_Agreement", Account );
 			 if( CAChecker->SignAgrement( SignTxt, Msg ) == true )
 			 {
 				 g_Config.SetIntegerProperty( Account, "Agreement", 1 );

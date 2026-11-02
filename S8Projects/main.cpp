@@ -209,7 +209,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 
 	g_Config.GetCurrentDir( CurrDir );
 	UFC::GetTradeYYYYMMDD( Today );
-	FileName.Printf( "%slog\\SpeedyUnify_AP_Log%s.txt", CurrDir,Today.c_str() );
+	FileName.Printf( "%slog\\MEGAAtrade_AP_Log%s.txt", CurrDir,Today.c_str() );
 	UFC::BufferedLog::SetLogObject( new UFC::BufferedLog( FileName, 10240, true, true ) );
 	//PrintLogHeader( );
 
