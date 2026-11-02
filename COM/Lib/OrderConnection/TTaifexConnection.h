@@ -973,6 +973,7 @@ public: ///< CA Functions
 	bool CreateUniFSCAObject();
 	bool CreateMLTWCAObject();
 	bool CreateTSCGCCAObject();
+	bool CreateIBFTWCAObject();
 	bool CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult );
 };
 //------------------------------------------------------------------------------

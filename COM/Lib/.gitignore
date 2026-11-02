@@ -1,0 +1,55 @@
+# === Build output ===
+build/
+dist/
+Debug_Build/
+Win32/
+x64/
+Debug/
+Release/
+*.obj
+*.o
+*.o.d
+*.d
+.dep.inc
+*.exe
+*.dll
+*.lib
+*.a
+*.so
+*.so.*
+*.exp
+*.pdb
+*.ilk
+*.map
+*.tds
+*.idb
+
+# === C++ Builder / RAD Studio (Embarcadero) ===
+__history/
+__recovery/
+*.identcache
+*.local
+*.tvsconfig
+*.stat
+*.cache
+*.otares
+*.dsk
+*.drc
+*.~*
+
+# === Visual Studio ===
+*.vcxproj.user
+*.sdf
+*.opensdf
+*.ncb
+*.suo
+*.VC.db
+*.VC.VC.opendb
+ipch/
+.vs/
+
+# === NetBeans (nbproject) ===
+nbproject/private/
+
+# === VS Code ===
+.vscode/

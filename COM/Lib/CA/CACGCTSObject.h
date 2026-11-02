@@ -179,6 +179,7 @@ class CTSCGCCAObject : public CApiCADllObject
 {
 public:
     static UFC::AnsiString GetErrorMsgA(int ErrorID);
+
 protected:
     HINSTANCE FDllInstance;
 
@@ -277,13 +278,26 @@ protected:
     CGCAPIMemFreePtr                  FfnCGCAPIMemFree;
     CGXCAPIFreeHandlePtr              FfnCGXCAPIFreeHandle;
 */
-    UFC::AnsiString FOrganizationalUnit;
-    UFC::AnsiString FCommonName;
+    UFC::AnsiString FSignerCertFilter0;
+    UFC::AnsiString FSignerCertFilter1;
 
 public:
     CTSCGCCAObject(const UFC::AnsiString& CommonName, const UFC::AnsiString& DllFileName, UFC::BufferedLog* LogPtr);
 
+    UFC::AnsiString GetSignerCertFilter0() {return FSignerCertFilter0;};
+    void SetSignerCertFilter0(const UFC::AnsiString& NewValue) {FSignerCertFilter0 = NewValue;};
+
+    UFC::AnsiString GetSignerCertFilter1() {return FSignerCertFilter1;};
+    void SetSignerCertFilter1(const UFC::AnsiString& NewValue) {FSignerCertFilter1 = NewValue;};
+
     virtual bool LoadCADynamicLibrary();
 
+    int GenerateP1SignatureAndCAData(const UFC::AnsiString& PlainText, CAResultData& ResultData);
+    int GenerateP7SignatureAndCAData(const UFC::AnsiString& PlainText, CAResultData& ResultData);
+    int GenerateSignatureAndCAData(const UFC::AnsiString& PlainText, CAResultData& ResultData);
+    int GenerateLogonSignatureAndCAData(const UFC::AnsiString& LogonID, CAResultData& ResultData);
+    int GenerateReqMsgSignatureAndCAData(TBaseMessage* ReqPtr, const UFC::AnsiString& ReqTelegram, CAResultData& ResultData);
+
+    void DumpCAResult(const UFC::AnsiString& LogPrefix, CAResultData& ResultData);
 };
 #endif

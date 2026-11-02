@@ -1428,10 +1428,14 @@ int TTaifexConnection::SendNewsRequest(const UFC::AnsiString &FuncStr, const UFC
 //---------------------------------------------------------------------------
 bool TTaifexConnection::MarginPositionRequest(const UFC::AnsiString &BrokerID, const UFC::AnsiString &Account, UFC::AnsiString &Result)
 {
-    UFC::AnsiString DataStr;
+    UFC::AnsiString DataStr, FuncStr;
 
     ///< Check BrokerID, Account
-    if (BrokerID.Length() != 7)
+    if( BrokerID.Length() == 7 )
+        FuncStr = "ReqFUTMargin";
+    else if( BrokerID.Length() == 4 )
+        FuncStr = "ReqSTKMargin";
+    else
     {
         Result = "{\"Error\":\"Invalid BrokerID.\"}";
         return false;
@@ -1450,7 +1454,7 @@ bool TTaifexConnection::MarginPositionRequest(const UFC::AnsiString &BrokerID, c
 
     ///< Send Request to SpeedyGataway
     DataStr.Printf("%s,%s", BrokerID.c_str(), Account.c_str());
-    SendNewsRequest("ReqFUTMargin", DataStr, 0, 0); ///< Resets FRequestEvent internally before sending.
+    SendNewsRequest( FuncStr, DataStr, 0, 0 ); ///< Resets FRequestEvent internally before sending.
 
     ///< Wait for Response; drop stale replies of earlier requests.
     Int32 BeginMS = (Int32)UFC::GetTickCountMS();

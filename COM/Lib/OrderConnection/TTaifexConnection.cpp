@@ -7,6 +7,10 @@
 #include "../CA/MLTWCAObject.h"
 #include "../CA/CACGCTSObject.h"
 #endif
+#ifdef __LINUX
+#include "../CA/TWCA_LINUX_IBFObject.h"
+#endif
+
 //------------------------------------------------------------------------------
 BOOL              UseRes;
 UFC::BufferedLog* GStdout = NULL;
@@ -77,7 +81,7 @@ void TTaifexConnection::InitGlobal()
 {
     if( GStdout == NULL )        
         GStdout = new UFC::BufferedLog();
-	if( Glog == NULL )
+    if( Glog == NULL )
         Glog = GStdout;    
 }
 //------------------------------------------------------------------------------
@@ -750,7 +754,7 @@ void TTaifexConnection::ReceiveNews( MTree* pTree )
             NewsMsg.SetMsgCount( MsgCount );
         if( pTree->get( "INDEX", MsgIndex ) )
             NewsMsg.SetMsgNum( MsgIndex );
-        if( Func == "ReqFUTMargin" )
+        if( Func == "ReqFUTMargin" || Func == "ReqSTKMargin" )
         {
             if( FLastReqUID == NewsID )
             {
@@ -939,14 +943,15 @@ void TTaifexConnection::SpeedyProxyLogon( const char* ID,
         }
         FAdminListener = new TMdListener( FTransport, this, SUBJECT_ADMIN.c_str(), FUniquekey.c_str() );
 
-        UFC::AnsiString signatureStr = "";
+//        UFC::AnsiString signatureStr = "";
+//        UFC::AnsiString caPlainText = "";
         UFC::AnsiString caErrorMessage = "";
-        UFC::AnsiString caPlainText = "";
 
         Glog->fprintf( " %s() Check CA Logon Data.", __func__ );
         CAResultData caResult;
+        caResult.SetLogonAccountNos( accountNoCSV );
         caResult.SetPlainText( id );
-        if ( !CheckCALogonData( id, caResult) )
+        if ( !CheckCALogonData( id, caResult ) )
         {
             caErrorMessage = caResult.GetResultMsg();
             Glog->fprintf( " %s() Check CA Error:%s.", __func__, caErrorMessage.c_str() );
@@ -1134,7 +1139,7 @@ void LogonThread::Execute( void )
     }       
     if( FApiCAObjPtr != 0 )
     {
-	if( FCAPlainText.Length() > 0 )
+        if( FCAPlainText.Length() > 0 )
             LogonMsg.SetStringValue( "CAPLAINTEXT", FCAPlainText.c_str() );
         else
             Glog->fprintf( " No CA PlainText.");        
@@ -1142,15 +1147,15 @@ void LogonThread::Execute( void )
             LogonMsg.SetStringValue( "CASIGNATURE", FCASignature.c_str() );
         else
             Glog->fprintf( " No CA Signature.");        
-	if( FCASubject.Length() > 0 )
+        if( FCASubject.Length() > 0 )
             LogonMsg.SetStringValue( "CASUBJECT", FCASubject.c_str() );
         else
             Glog->fprintf( " No CA Subject.");
-	if( FCASerialNumber.Length() > 0 )
+        if( FCASerialNumber.Length() > 0 )
             LogonMsg.SetStringValue( "CASERIALNUMBER", FCASerialNumber.c_str() );
         else
             Glog->fprintf( " No CA Serial Number.");
-	if( FCANotAfter.Length() > 0 )
+        if( FCANotAfter.Length() > 0 )
             LogonMsg.SetStringValue( "CANOTAFTER", FCANotAfter.c_str() );
         else
             Glog->fprintf( " No CA Not After.");
@@ -2167,37 +2172,53 @@ bool TTaifexConnection::CreateTSCGCCAObject()
 	return isSuccess;
 }  //TTaifexConnection::CreateTSCGCCAObject()
 //---------------------------------------------------------------------------
+bool TTaifexConnection::CreateIBFTWCAObject()
+{
+    bool isSuccess = false;
+#ifdef __LINUX
+    FApiCAObjPtr = new CIBFTWCAObject(FCADLLFileName, FCAPFXFilePathName, FCAPassword, Glog);
+    if (FApiCAObjPtr->IsWorking())
+    {
+        isSuccess = true;
+        Glog->fprintf( " Create IBF TWCA Object success." );
+    }
+    else
+        Glog->fprintf( " Create IBF TWCA Object failed." );
+#endif
+	return isSuccess;
+}  //TTaifexConnection::CreateMLTWCAObject()
+//---------------------------------------------------------------------------
 bool TTaifexConnection::CheckCALogonData( const UFC::AnsiString& LogonData, CAResultData& CAResult )
 {
-	bool isSuccess = false;
-	UFC::AnsiString checkMsg = "";
-	if (FApiCAObjPtr != 0)
-	{
-		if( FApiCAObjPtr->IsWorking() )
-		{
-                    CAResult.SetCAObj( FApiCAObjPtr );
-                    if (FApiCAObjPtr->GenerateLogonSignatureAndCAData(LogonData, CAResult) == 0)
-                    {
-                        isSuccess = true;
-                        Glog->fprintf( " %s() PlainText[%s].", __func__, CAResult.GetPlainText().c_str() );
-                        Glog->fprintf( " %s() Subject[%s].", __func__, CAResult.GetSubject().c_str() );
-                        Glog->fprintf( " %s() NotBefore[%s].", __func__, CAResult.GetNotBefore().c_str() );
-                        Glog->fprintf( " %s() NotAfter[%s].", __func__, CAResult.GetNotAfter().c_str() );
-                        Glog->fprintf( " %s() SerialNumber[%s].", __func__, CAResult.GetSerialNumber().c_str() );
-                    }
-                    else
-                        Glog->fprintf( " %s() Error:%s.", __func__, CAResult.GetResultMsg().c_str() );
-		}
-		else
-                    checkMsg.Printf( "CA Object is not Working." );
-		CAResult.SetResultMsg(checkMsg);
-	}
-	else
-	{
-            Glog->fprintf( " %s() No CA Object.", __func__ );
-            isSuccess = true;
-	}
-	return isSuccess;
+    bool isSuccess = false;
+    UFC::AnsiString checkMsg = "";
+    if( FApiCAObjPtr != 0 )
+    {
+        if( FApiCAObjPtr->IsWorking() )
+        {
+            CAResult.SetCAObj( FApiCAObjPtr );
+            if( FApiCAObjPtr->GenerateLogonSignatureAndCAData(LogonData, CAResult) == 0 )
+            {
+                isSuccess = true;
+                Glog->fprintf( " %s() PlainText[%s].", __func__, CAResult.GetPlainText().c_str() );
+                Glog->fprintf( " %s() Subject[%s].", __func__, CAResult.GetSubject().c_str() );
+                Glog->fprintf( " %s() NotBefore[%s].", __func__, CAResult.GetNotBefore().c_str() );
+                Glog->fprintf( " %s() NotAfter[%s].", __func__, CAResult.GetNotAfter().c_str() );
+                Glog->fprintf( " %s() SerialNumber[%s].", __func__, CAResult.GetSerialNumber().c_str() );
+            }
+            else
+                Glog->fprintf( " %s() Error:%s.", __func__, CAResult.GetResultMsg().c_str() );
+        }
+        else
+            checkMsg.Printf( "CA Object is not Working." );
+        CAResult.SetResultMsg(checkMsg);
+    }
+    else
+    {
+        Glog->fprintf( " %s() No CA Object.", __func__ );
+        isSuccess = true;
+    }
+    return isSuccess;
 }  //TTaifexConnection::CheckCALogonData()
 //---------------------------------------------------------------------------
 void  TTaifexConnection::Stdout( BOOL ToStdOut )
