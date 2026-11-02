@@ -266,8 +266,8 @@ object DepthForm: TDepthForm
     object SmallButton: TGraphButton
       Left = 196
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#32302#23567
       Margins.Left = 5
       Margins.Top = 5
@@ -293,8 +293,8 @@ object DepthForm: TDepthForm
     object LargeButton: TGraphButton
       Left = 224
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #23383#22411#21152#22823
       Margins.Left = 5
       Margins.Top = 5
@@ -320,8 +320,8 @@ object DepthForm: TDepthForm
     object SettingButton: TGraphButton
       Left = 5
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35774#23450
       Margins.Left = 5
       Margins.Top = 5
@@ -402,8 +402,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 330
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #39023#31034'K'#32218#22294
       Margins.Left = 5
       Margins.Top = 5
@@ -432,8 +432,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 359
       Top = 5
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #35079#35069#38275#38651
       Margins.Left = 5
       Margins.Top = 5
@@ -2170,8 +2170,8 @@ object DepthForm: TDepthForm
       Tag = 10
       Left = 84
       Top = 49
-      Width = 0
-      Height = 0
+      Width = 27
+      Height = 27
       Hint = #20572#29992#30070#27798
       Margins.Left = 5
       Margins.Top = 5
@@ -2286,7 +2286,7 @@ object DepthForm: TDepthForm
       Margins.Top = 5
       Margins.Right = 5
       Margins.Bottom = 5
-      ActivePage = SettingTabSheet
+      ActivePage = StopSettingTabSheet
       Align = alClient
       DoubleBuffered = False
       Font.Charset = ANSI_CHARSET
@@ -3237,6 +3237,7 @@ object DepthForm: TDepthForm
             Font.Style = [fsBold]
             ParentFont = False
             TabOrder = 7
+            Visible = False
             object Label7: TLabel
               Left = 7
               Top = 29
@@ -5610,7 +5611,7 @@ object DepthForm: TDepthForm
     Left = 288
     Top = 328
     Bitmap = {
-      494C010103000800D0010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000800D4010F000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000003C0000000F0000000100200000000000100E
       000000000000000000000000000000000000DD7C3C00DD7C3C00DD7C3C00DD7C
       3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C3C00DD7C

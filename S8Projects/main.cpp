@@ -69,7 +69,7 @@ const int BOTTOM_H  = 32;
 //---------------------------------------------------------------------------
 bool               gCheckCA   = false;  ///< Needs CA
 bool   			   gIsExpired = false;  ///< SpeedyUnify License Expired
-bool               gNuclear   = true;  ///< AOE Nuclear class
+bool               gNuclear   = false;  ///< AOE Nuclear class
 bool               gTFT       = false; ///< Enable TFT functions. ( Turn on 創富 tab )
 //---------------------------------------------------------------------------
 bool               GVIPServer = false; ///< Use AOE production server.
@@ -2620,8 +2620,6 @@ void __fastcall TMainForm::UnifyLicense( void )
 			FCopyRights.printf( L"%s© [試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
 		EnableUnifyLicense( false );
 	}
-	if( Support( Nuclear1Key, YYYYMMDD ) == true || Support( Nuclear2Key, YYYYMMDD ) || Support( Nuclear2Key, YYYYMMDD ) )
-		gNuclear = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::UseLastLicense( UFC::PHashMap<String,UnifyProductInfo*>& InfoMap, const String& ID, const String& ExpDate )
