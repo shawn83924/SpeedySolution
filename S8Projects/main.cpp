@@ -368,8 +368,14 @@ void __fastcall TMainForm::PrintLogHeader( void )
 	}
 	if( GHz < 3.0 ) ///< less than 2.5 GHz memory
 	{
-		 ErrMsg.printf( L"注意!您的CPU只有[%0.2fGHz]會導致交易速度不佳!建議升級CPU.", GHz );
-		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
+		 int Today = FormatDateTime( L"yyyymmdd", Date() ).ToInt();
+		 if( g_Config.GetIntegerProperty( "Setting", "CPUWarningDate", 0 ) != Today ) ///< 每天只提示一次
+		 {
+			 ErrMsg.printf( L"注意!您的CPU只有[%0.2fGHz]會導致交易速度不佳!建議升級CPU.", GHz );
+			 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
+			 g_Config.SetIntegerProperty( "Setting", "CPUWarningDate", Today );
+             g_Config.Save();
+		 }
 	}
 	UFC::BufferedLog::Printf( "                                                                 ");
 	UFC::BufferedLog::Printf( "    主機記憶體: %d MB", TotalMem );
