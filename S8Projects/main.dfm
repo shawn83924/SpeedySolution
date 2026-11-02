@@ -7771,7 +7771,7 @@ object MainForm: TMainForm
             end
             object CxCloseAllLabel: TLabel
               Left = 62
-              Top = 521
+              Top = 446
               Width = 153
               Height = 22
               Margins.Left = 7
@@ -7804,14 +7804,14 @@ object MainForm: TMainForm
             end
             object Label34: TLabel
               Left = 334
-              Top = 521
-              Width = 219
+              Top = 446
+              Width = 263
               Height = 22
               Margins.Left = 7
               Margins.Top = 7
               Margins.Right = 7
               Margins.Bottom = 7
-              Caption = #20006#20197#25104#20132#20729'                        '#24179#20489' '
+              Caption = #20006#20197#25104#20132#20729'                                   '#24179#20489' '
             end
             object Bevel13: TBevel
               Left = 62
@@ -7823,10 +7823,11 @@ object MainForm: TMainForm
               Margins.Right = 7
               Margins.Bottom = 7
               Shape = bsBottomLine
+              Visible = False
             end
             object NuclearBuyLabel: TLabel
               Left = 62
-              Top = 446
+              Top = 521
               Width = 51
               Height = 22
               Margins.Left = 7
@@ -7837,7 +7838,7 @@ object MainForm: TMainForm
             end
             object NuclearSellLabel: TLabel
               Left = 401
-              Top = 446
+              Top = 521
               Width = 51
               Height = 22
               Margins.Left = 7
@@ -7848,7 +7849,7 @@ object MainForm: TMainForm
             end
             object NuclearSellText: TGraphButton
               Left = 458
-              Top = 442
+              Top = 518
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -9995,7 +9996,7 @@ object MainForm: TMainForm
             end
             object NuclearBuyText: TGraphButton
               Left = 119
-              Top = 442
+              Top = 518
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -13228,8 +13229,8 @@ object MainForm: TMainForm
               SizeFitBmp = True
             end
             object CloseAllStepComboBox: TComboBox
-              Left = 423
-              Top = 518
+              Left = 405
+              Top = 442
               Width = 90
               Height = 30
               Margins.Left = 7
@@ -30450,8 +30451,8 @@ object MainForm: TMainForm
               ImageIndex = 0
             end
             object CancelAllandCloseText: TGraphButton
-              Left = 218
-              Top = 518
+              Left = 200
+              Top = 442
               Width = 110
               Height = 28
               Margins.Left = 7
@@ -57501,7 +57502,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 207
     Bitmap = {
-      494C010101004004000C14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010101004004040C14001400FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000500000001400000001002000000000000019
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -57722,7 +57723,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 267
     Bitmap = {
-      494C01011C00C40078091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01011C00C4007C091B008700FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000006C000000380400000100200000000000801E
       0700000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -72857,7 +72858,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 327
     Bitmap = {
-      494C01010100080074085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100080078085600AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000058010000AF0000000100200000000000A0AC
       030000000000000000000000000000000000DA9B11FFDA9B11FFDA9B11FFDA9B
       11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B11FFDA9B
@@ -80636,7 +80637,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 387
     Bitmap = {
-      494C010102000800D40936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010102000800D80936003600FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000D800000036000000010020000000000040B6
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -84177,7 +84178,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 88
     Bitmap = {
-      494C01010100D000A00896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C01010100D000A40896001E00FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000580200001E00000001002000000000004019
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000020000000700000009000000080000000600000004000000020000
@@ -86440,7 +86441,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 147
     Bitmap = {
-      494C010101002400980828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
+      494C0101010024009C0828002800FFFFFFFF2000FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000A00000002800000001002000000000000064
       0000000000000000000000000000000000002D1605002D1605002D1605002D16
       05002D1605002D1605002D1605002D1605002D1605002D1605002D1605002D16
@@ -87274,7 +87275,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 447
     Bitmap = {
-      494C01010100D40090086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C01010100D40094086400AF0005162D002110FFFFFFFFFFFFFFFF424D3600
       000000000000360000002800000090010000AF0000000100200000000000C045
       0400000000000000000000000000000000006666660066666600666666006666
       6600666666006666660066666600666666006666660066666600666666006666
@@ -96323,7 +96324,7 @@ object MainForm: TMainForm
     Left = 1120
     Top = 507
     Bitmap = {
-      494C010101002001A0086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
+      494C010101002001A4086E008C0005162D002110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000B80100008C000000010020000000000080C2
       030000000000000000000000000000000000FFFFFF00FFFFFF00EFEFEF00D9D9
       D900CECECE00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCCCC00CCCC
