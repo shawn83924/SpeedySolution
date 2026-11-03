@@ -126,7 +126,7 @@ void __fastcall TGraphButtonV2::DrawCaption(void)
 	}
 
 	// Main text
-	Canvas->Font->Color = Enabled ? FFontInfo->FontColor : clGrayText;
+	Canvas->Font->Color = Enabled ? FFontInfo->FontColor : FFontInfo->DisabledFontColor;
 	Canvas->TextOut(offsetX, offsetY, CaptionText);
 }
 //---------------------------------------------------------------------------
