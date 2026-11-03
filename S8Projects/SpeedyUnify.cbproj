@@ -56,7 +56,7 @@
         <ProjectType>CppVCLApplication</ProjectType>
         <PackageImports>CloudService;FireDAC;FireDACCommon;FireDACCommonDriver;FireDACIBDriver;FireDACSqliteDriver;inet;RESTBackendComponents;RESTComponents;soapmidas;soaprtl;soapserver;$(PackageImports)</PackageImports>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
-        <AllPackageLibs>rtl.lib;vcl.lib;S8MarketDataComponent_XE7.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib;vclwinx.lib;vclimg.lib;MDComponent_XE7.lib;bcbsmp.lib;vclx.lib;bcbie.lib;vclie.lib;xmlrtl.lib</AllPackageLibs>
+        <AllPackageLibs>rtl.lib;vcl.lib;S8MarketDataComponent_XE7.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib;vclwinx.lib;vclimg.lib;MDComponent_XE7.lib;bcbsmp.lib;vclx.lib;bcbie.lib;vclie.lib;vcledge.lib;xmlrtl.lib</AllPackageLibs>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <Multithreaded>true</Multithreaded>
         <Icon_MainIcon>$(BDS)\bin\cbuilder_PROJECTICON.ico</Icon_MainIcon>
@@ -108,7 +108,7 @@
         <ILINK_TranslatedLibraryPath>$(BDSLIB)\$(PLATFORM)\debug\$(LANGDIR);$(ILINK_TranslatedLibraryPath)</ILINK_TranslatedLibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <LinkPackageStatics>rtl.lib;vcl.lib;S8MarketDataComponent_XE7.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib;vclwinx.lib;vclimg.lib;MDComponent_XE7.lib;bcbsmp.lib;vclx.lib;bcbie.lib;vclie.lib;xmlrtl.lib</LinkPackageStatics>
+        <LinkPackageStatics>rtl.lib;vcl.lib;S8MarketDataComponent_XE7.lib;IndyCore.lib;IndySystem.lib;IndyProtocols.lib;vclwinx.lib;vclimg.lib;MDComponent_XE7.lib;bcbsmp.lib;vclx.lib;bcbie.lib;vclie.lib;vcledge.lib;xmlrtl.lib</LinkPackageStatics>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>

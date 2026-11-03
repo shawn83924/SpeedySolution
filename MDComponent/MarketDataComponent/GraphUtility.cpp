@@ -22,52 +22,46 @@ void __fastcall GDIUtility::DrawGradientBar( TDirect2DCanvas* canvas, TRect& dRe
 	D2D1_RECT_F DrawRect = D2D1::RectF( 0,0, dRect.Width(), dRect.Height() );
 
 	canvas->RenderTarget->SetTransform(D2D1::Matrix3x2F::Translation(dRect.left, dRect.top));
-	canvas->RenderTarget->FillRectangle(&DrawRect, GradientBrush );
+	// C++Builder 13: RenderTarget 為 Delphi 介面包裝 (_di_ID2D1RenderTarget)，
+	// FillRectangle 需傳入 const D2D1_RECT_F& 與 _di_ID2D1Brush
+	// SDK 的 ::ID2D1Brush 與 RTL 的 Winapi::D2d1::ID2D1Brush 為同一 COM 介面(相同 vtable)，僅 C++ 型別不同
+	Winapi::D2d1::_di_ID2D1Brush Brush( reinterpret_cast<Winapi::D2d1::ID2D1Brush*>( static_cast< ::ID2D1Brush*>( GradientBrush ) ) );
+	canvas->RenderTarget->FillRectangle( DrawRect, Brush );
 	canvas->RenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
 }
 //------------------------------------------------------------------------------
 void __fastcall GDIUtility::DrawGradientBar( HDC GDIDC, TRect& dRect,TColor UpCol, TColor DownCol, bool IsVert )
 {
-								  ///< Vertex 1
-	TRIVERTEX      Vertex[ 2 ] ={{dRect.Left,                  ///< X
-								  dRect.Top,                   ///< Y
-								  GetRValue( (DWORD)UpCol)<<8, ///< R
-								  GetGValue( (DWORD)UpCol)<<8, ///< G
-								  GetBValue( (DWORD)UpCol)<<8, ///< B
-								  0x0000  },                     ///< Alpha
-								  ///< Vertex 2
-								 {dRect.Right,                  ///< X
-								  dRect.Bottom,                 ///< Y
-								  GetRValue( (DWORD)DownCol)<<8,///< R
-								  GetGValue( (DWORD)DownCol)<<8,///< G
-								  GetBValue( (DWORD)DownCol)<<8,///< B
-								  0x0000  }};                     ///< Alpha
-	GRADIENT_RECT  gRect    = { 0, 1 };
-	ULONG          FillMode = ( IsVert == true )? GRADIENT_FILL_RECT_V:GRADIENT_FILL_RECT_H;
-
-	GradientFill( GDIDC, Vertex, 2, &gRect, 1, FillMode );
+	DrawGradientBar( GDIDC, dRect, UpCol, DownCol, 0, IsVert );
 }
 //------------------------------------------------------------------------------
 void __fastcall GDIUtility::DrawGradientBar( HDC GDIDC, TRect& dRect,TColor UpCol, TColor DownCol, int Alpha, bool IsVert )
 {
-								  ///< Vertex 1
-	TRIVERTEX      Vertex[ 2 ] ={{dRect.Left,                  ///< X
-								  dRect.Top,                   ///< Y
-								  GetRValue( (DWORD)UpCol)<<8, ///< R
-								  GetGValue( (DWORD)UpCol)<<8, ///< G
-								  GetBValue( (DWORD)UpCol)<<8, ///< B
-								  Alpha << 8 },                     ///< Alpha
-								  ///< Vertex 2
-								 {dRect.Right,                  ///< X
-								  dRect.Bottom,                 ///< Y
-								  GetRValue( (DWORD)DownCol)<<8,///< R
-								  GetGValue( (DWORD)DownCol)<<8,///< G
-								  GetBValue( (DWORD)DownCol)<<8,///< B
-								  Alpha << 8 }};                     ///< Alpha
-	GRADIENT_RECT  gRect    = { 0, 1 };
-	ULONG          FillMode = ( IsVert == true )? GRADIENT_FILL_RECT_V:GRADIENT_FILL_RECT_H;
+	TRIVERTEX Vertex[ 2 ];
 
-	GradientFill( GDIDC, Vertex, 2, &gRect, 1, FillMode );
+	///< Vertex 1
+	Vertex[ 0 ].x     = dRect.left;
+	Vertex[ 0 ].y     = dRect.top;
+	Vertex[ 0 ].Red   = (COLOR16)( GetRValue( (DWORD)UpCol ) << 8 );
+	Vertex[ 0 ].Green = (COLOR16)( GetGValue( (DWORD)UpCol ) << 8 );
+	Vertex[ 0 ].Blue  = (COLOR16)( GetBValue( (DWORD)UpCol ) << 8 );
+	Vertex[ 0 ].Alpha = (COLOR16)( Alpha << 8 );
+
+	///< Vertex 2
+	Vertex[ 1 ].x     = dRect.right;
+	Vertex[ 1 ].y     = dRect.bottom;
+	Vertex[ 1 ].Red   = (COLOR16)( GetRValue( (DWORD)DownCol ) << 8 );
+	Vertex[ 1 ].Green = (COLOR16)( GetGValue( (DWORD)DownCol ) << 8 );
+	Vertex[ 1 ].Blue  = (COLOR16)( GetBValue( (DWORD)DownCol ) << 8 );
+	Vertex[ 1 ].Alpha = (COLOR16)( Alpha << 8 );
+
+	GRADIENT_RECT gRect;
+	gRect.UpperLeft  = 0;
+	gRect.LowerRight = 1;
+
+	ULONG FillMode = IsVert ? GRADIENT_FILL_RECT_V : GRADIENT_FILL_RECT_H;
+
+	::GradientFill( GDIDC, Vertex, 2, &gRect, 1, FillMode );
 }
 //------------------------------------------------------------------------------
 void __fastcall GDIUtility::DrawGradientBar( TCanvas* canvas, TRect& dRect, TColor UpCol, TColor DownCol, bool IsVert )
