@@ -12,6 +12,9 @@
 //---------------------------------------------------------------------------
 typedef enum { vaTop, vaCenter, vaBottom } TEditVertAlign;
 //---------------------------------------------------------------------------
+enum TInputFilterFlag { iffLetters, iffDigits, iffSpace, iffChinese, iffSpecial };
+typedef Set<TInputFilterFlag, iffLetters, iffSpecial> TInputFilterFlags;
+//---------------------------------------------------------------------------
 class PACKAGE TAlignEdit : public TCustomControl
 {
 private:
@@ -28,6 +31,7 @@ private:
 	int FImagePosX;
 	int FImagePosY;
 	TNotifyEvent FOnChange;
+	TInputFilterFlags FInputFilter;
 
 	UnicodeString __fastcall GetText(void);
 	void __fastcall SetText(const UnicodeString Value);
@@ -56,6 +60,8 @@ private:
 	void __fastcall ImageChanged(TObject *Sender);
 	void __fastcall EditorClick(TObject *Sender);
 	void __fastcall EditorChange(TObject *Sender);
+	void __fastcall EditorKeyPress(TObject *Sender, System::WideChar &Key);
+	void __fastcall SetInputFilter(TInputFilterFlags Value);
 protected:
 	virtual void __fastcall CreateWnd(void);
 	DYNAMIC void __fastcall Resize(void);
@@ -83,6 +89,7 @@ __published:
 	__property TAlignment Alignment = { read = FAlignment, write = SetAlignment, default = taLeftJustify };
 	__property TEditVertAlign VertAlign = { read = FVertAlign, write = SetVertAlign, default = vaTop };
 	__property TNotifyEvent OnChange = { read = FOnChange, write = FOnChange };
+	__property TInputFilterFlags InputFilter = { read = FInputFilter, write = SetInputFilter, default = 0x1F };
 
 	__property Align;
 	__property Anchors;
