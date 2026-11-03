@@ -331,6 +331,7 @@ private:	// User declarations
 	int FGroup;
 	int FNetPos;
 	int FFontSize;
+	int FPostSizeOffset;
 	int FNuclearUpperLots;
 	int FNuclearLowerLots;
 	UFC::PHashMap<TButton*,TPanel*>  FExpBtn2Panel;
