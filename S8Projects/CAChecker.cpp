@@ -547,7 +547,7 @@ const String& TCAChecker::ToErrorMessage( int code )
 		case 5002: FErrMsg = L"配置記憶體發生錯誤";break;
 		case 5003: FErrMsg = L"空間不足";break;
 		case 5004: FErrMsg = L"未支援功能";break;
-		case 5005: FErrMsg = L"錯誤的參數";break;
+		case 5005: FErrMsg = L"查無憑證";break;
 		case 5006: FErrMsg = L"錯誤的handle";break;
 		case 5007: FErrMsg = L"試用版期限已過";break;
 		case 5008: FErrMsg = L"編碼錯誤";break;
