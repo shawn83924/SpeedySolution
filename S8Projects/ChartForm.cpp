@@ -29,15 +29,15 @@ extern TOrderStore*       gOrderStore;
 extern TCMarketDataStore* gMarketDataStore;
 extern TUnifyUser         gUser;
 //------------------------------------------------------------------------------
-TColor ChartColor[2]      = {clWhite,RGB(53,53,53)};
-TColor ChartTextColor[2]  =	{RGB(5,22,45),RGB(153,153,153)};
-TColor ChartGridColor[2]  = {RGB(229,229,229),RGB(66,68,70)};
+TColor ChartColor[2]      = {clWhite,(TColor)RGB(53,53,53)};
+TColor ChartTextColor[2]  =	{(TColor)RGB(5,22,45),(TColor)RGB(153,153,153)};
+TColor ChartGridColor[2]  = {(TColor)RGB(229,229,229),(TColor)RGB(66,68,70)};
 TColor CandleLineColor[2] = {Graphics::clNone,Graphics::clNone};
-TColor BullColor[2]       = {RGB(230,0,0),RGB(230,0,0)};
-TColor BearColor[2]       = {RGB(33,140,4),RGB(33,140,4)};
-TColor MAColor1[2]        = {RGB(143,255,254),RGB(143,255,254)};
-TColor MAColor2[2]        = {RGB(255,241,92),RGB(255,241,92)};
-TColor MAColor3[2]        = {RGB(255,93,220),RGB(255,93,220)};
+TColor BullColor[2]       = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor BearColor[2]       = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
+TColor MAColor1[2]        = {(TColor)RGB(143,255,254),(TColor)RGB(143,255,254)};
+TColor MAColor2[2]        = {(TColor)RGB(255,241,92),(TColor)RGB(255,241,92)};
+TColor MAColor3[2]        = {(TColor)RGB(255,93,220),(TColor)RGB(255,93,220)};
 //---------------------------------------------------------------------------
 __fastcall TGraphButtonGroup::TGraphButtonGroup()
 :FSelected( NULL )
@@ -177,7 +177,7 @@ void __fastcall TLineChartForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::GetSymbolProperties( BasicInformation* Info )
@@ -191,7 +191,7 @@ void __fastcall TLineChartForm::GetSymbolProperties( BasicInformation* Info )
 	FMarket         = (MarketEnum)Info->GetMarket();
 	FRefIntPx       = UFC::DoubleToInt( Info->GetRefPrice(), Info->GetDecimalLocator() );
 	if( FMarket == nsOrderMessageDefine::mTSE || FMarket == nsOrderMessageDefine::mOTC )
-		FDisplayName.printf( L"%s(%s)",Info->GetDisplayName(), FSymbol );
+		FDisplayName.printf( L"%s(%s)",Info->GetDisplayName(), FSymbol.c_str() );
 	else
 		FDisplayName    = Info->GetDisplayName();
 	switch( Info->GetCallPut() )
@@ -1482,10 +1482,10 @@ void __fastcall TLineChartForm::CandleStickChartReplacePx(TObject *Sender, SideE
 				return;
 			}
 			else
-				Msg.printf( L"э基ア毖,ユ┮[%s]ぃや穿э基", FExchange );
+				Msg.printf( L"э基ア毖,ユ┮[%s]ぃや穿э基", FExchange.c_str() );
 		}
 		else
-			Msg.printf( L"э基ア毖,ユ┮[%s]ぃ", FExchange );
+			Msg.printf( L"э基ア毖,ユ┮[%s]ぃ", FExchange.c_str() );
 	}
 	catch( UFC::Exception& execp )
 	{
@@ -1650,8 +1650,8 @@ bool __fastcall TLineChartForm::SaveAskOrderConfirm(  bool NewVal )
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::LoadStopSetting( void )
 {
-	CandleStickChart->BuyStopOrderType  = g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit );
-	CandleStickChart->SellStopOrderType = g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit );
+	CandleStickChart->BuyStopOrderType  = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit ) );
+	CandleStickChart->SellStopOrderType = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit ) );
 	CandleStickChart->BuyStopTick  = g_Config.GetIntegerProperty("StopSetting","BuyTick", 0 );
 	CandleStickChart->SellStopTick = g_Config.GetIntegerProperty("StopSetting","SellTick", 0 );
 }

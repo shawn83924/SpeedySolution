@@ -58,6 +58,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.17;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.17;Comments=</VerInfo_Keys>
         <VerInfo_Locale>1028</VerInfo_Locale>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -65,7 +66,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Build>17</VerInfo_Build>
         <ILINK_GenerateDRC>True</ILINK_GenerateDRC>
-        <IncludePath>..\UFC;$(IncludePath)</IncludePath>
+        <IncludePath>..\UFC;..\MDComponent\vcl;..\MDComponent\MarketDataComponent;$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;bdertl.bpi;bcbsmp.bpi;dclusr.bpi;dbrtl.bpi;adortl.bpi;vcldb.bpi;vcldbx.bpi;dsnap.bpi;dsnap.bpi;dsnapcon.bpi;teeui.bpi;teedb.bpi;tee.bpi;ibxpress.bpi;indycore.bpi;indysystem.bpi;$(PackageImports)</PackageImports>
@@ -90,7 +91,7 @@
         <VerInfo_Keys>CompanyName=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Icon_MainIcon>Agent_Icon4.ico</Icon_MainIcon>
-        <BCC_UserSuppliedOptions> -Vx -Ve</BCC_UserSuppliedOptions>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -121,7 +122,7 @@
         <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <BCC_UserSuppliedOptions> -Vx -Ve -k</BCC_UserSuppliedOptions>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <BCC_Defines>_DEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
         <VerInfo_Build>21</VerInfo_Build>
         <VerInfo_Locale>1033</VerInfo_Locale>
@@ -139,7 +140,7 @@
         <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath);$(ILINK_LibraryPath)</ILINK_LibraryPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <BCC_UserSuppliedOptions> -Vx -Ve -r</BCC_UserSuppliedOptions>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileVersion=1.0.0.24;InternalName=Speedy Unify Agent;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.24;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
@@ -164,6 +165,9 @@
             <BuildOrder>8</BuildOrder>
             <BuildOrder>0</BuildOrder>
         </CppCompile>
+        <DelphiCompile Include="..\MDComponent\MarketDataComponent\MDComponentStrings.pas">
+            <BuildOrder>3</BuildOrder>
+        </DelphiCompile>
         <ResFiles Include="RestartAgent.res">
             <BuildOrder>2</BuildOrder>
             <BuildOrder>1</BuildOrder>

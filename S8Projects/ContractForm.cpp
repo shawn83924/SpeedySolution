@@ -132,7 +132,7 @@ void __fastcall TContractInfoForm::WndProc( TMessage &Msg )
 			 Msg.Result = 1;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::SwitchPage( int index )
@@ -357,7 +357,7 @@ void __fastcall TContractInfoForm::AddExchangeSymbols( const UFC::AnsiString& Ex
 		String Ex( Exchange.c_str() );
 		String ErrMsg;
 
-		ErrMsg.printf( L"交易所[%s]沒有期貨或選擇權商品.", Ex );
+		ErrMsg.printf( L"交易所[%s]沒有期貨或選擇權商品.", Ex.c_str() );
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 		return;
     }
@@ -556,7 +556,7 @@ void __fastcall TContractInfoForm::AddSymbol( TLabel* StatusLabel )
 				if( StatusLabel != NULL )
 				{
 					String Msg;
-					Msg.printf( L"整理交易所[%s]商品", ExchangeUnicode );
+					Msg.printf( L"整理交易所[%s]商品", ExchangeUnicode.c_str() );
 					StatusLabel->Caption = Msg;
 					Application->ProcessMessages();
 				}

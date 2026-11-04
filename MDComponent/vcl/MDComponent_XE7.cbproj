@@ -46,6 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <BPILibOutputDir>C:\MBus\lib\$(Platform)</BPILibOutputDir>
         <FinalOutputDir>C:\MBus\lib\$(Platform)</FinalOutputDir>
         <ILINK_GenerateDRC>True</ILINK_GenerateDRC>
@@ -155,10 +157,6 @@
             <DependentOn>Marquee.h</DependentOn>
             <BuildOrder>8</BuildOrder>
         </CppCompile>
-        <PCHCompile Include="MDComponentPCH1.h">
-            <BuildOrder>2</BuildOrder>
-            <PCH>true</PCH>
-        </PCHCompile>
         <CppCompile Include="MDComponent_XE7.cpp">
             <BuildOrder>0</BuildOrder>
         </CppCompile>

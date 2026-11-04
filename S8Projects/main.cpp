@@ -254,7 +254,7 @@ void __fastcall TMainForm::OSNotSupport( const AnsiString& OSStr )
 	 String ErrMsg;
 	 String OSVer( OSStr.c_str() );
 
-	 ErrMsg.printf( L"您的作業系統[%s]版本太舊,無法執行本程式!", OSVer );
+	 ErrMsg.printf( L"您的作業系統[%s]版本太舊,無法執行本程式!", OSVer.c_str() );
 	 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 	 Application->Terminate();
 }
@@ -292,7 +292,7 @@ void __fastcall TMainForm::PrintLogHeader( void )
 
 	UFC::BufferedLog::Printf( "  _______________________________________________________________");
 	UFC::BufferedLog::Printf( "                                                                 ");
-	UFC::BufferedLog::Printf( "    %s Version:%d.%d.%d.%d ", Mdcomponentstrings_MD_SpeedyUnify_AppName, AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100, AppVer%100);
+	UFC::BufferedLog::Printf( "    %s Version:%d.%d.%d.%d ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str(), AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100, AppVer%100);
 	UFC::BufferedLog::Printf( "                                                                 ");
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
 	ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
@@ -612,7 +612,7 @@ void __fastcall TMainForm::OnNCPaint( TMessage &Message )
 {
 	if( WindowState == wsMinimized )
 	{
-		inherited::WndProc( Message );
+		TForm::WndProc( Message );
 		return;
 	}
 	///< wParam
@@ -696,14 +696,14 @@ void __fastcall TMainForm::OnNCHitTest( TMessage &Message )
 		Message.Result = HTCAPTION;
 		return;
 	}
-	inherited::WndProc( Message );
+	TForm::WndProc( Message );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OnNCActive( TMessage &Message )
 {
 	{
 		SuppressStyle ss( Handle, WS_VISIBLE );
-		inherited::WndProc( Message );
+		TForm::WndProc( Message );
 	}
 	RedrawWindow( Handle, NULL, NULL, RDW_INVALIDATE|RDW_FRAME );
 	Message.Result = 1;
@@ -723,7 +723,7 @@ void __fastcall TMainForm::WndProc( TMessage &Msg )
 							Application->BringToFront();
 							return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 HRGN __fastcall TMainForm::ExcludeRect( HRGN CaptionRgn, TRect EraseRect )
@@ -1177,12 +1177,12 @@ void __fastcall TMainForm::FormShow(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::DefaultSymbol( String& Ex, String& Sym )
 {
-	if( (gMarketDataStore->GetBasicInformation( "TAIFEX", "TXFFront1", false ))!= NULL )
+	if( (gMarketDataStore->GetBasicInformation( UFC::AnsiString( "TAIFEX" ), UFC::AnsiString( "TXFFront1" ), false ))!= NULL )
 	{
 		Ex  = L"TAIFEX";
 		Sym = L"TXFFront1";
 	}
-	else if( (gMarketDataStore->GetBasicInformation( "TWSE", "2330", false ))!= NULL )
+	else if( (gMarketDataStore->GetBasicInformation( UFC::AnsiString( "TWSE" ), UFC::AnsiString( "2330" ), false ))!= NULL )
 	{
 		Ex  = L"TWSE";
 		Sym = L"2330";
@@ -1616,7 +1616,7 @@ void __fastcall TMainForm::LoginSimBroker( void )
 		if( TUnifyDlgs::AskYesNoDialog( L"練功房", L"是否刪除之前的練習成績?" ) == true )
 			OrderStore->RemoveRecoverFile();
 	}
-	FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account, gUser.Nickname );
+	FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account.c_str(), gUser.Nickname.c_str() );
 	CAButton->Left = RTTGraphRect.Right + 10 + FStatusBuffer->Canvas->TextWidth( FLoginUserStr );
 	CxlWorkingButton->Left = CAButton->Left + CAButton->Width + 10;
 	PaintStatusBar( );
@@ -1640,7 +1640,7 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 		if( FLoginBroker->GetService()->LoginBroker( IDEdit->Text, PasswordEdit->Text, errMsg ) == true )
 		{
 			gUser.LoginUserID         = IDEdit->Text;
-			LogFilePrefix.printf( L"SU_%s", IDEdit->Text );
+			LogFilePrefix.printf( L"SU_%s", IDEdit->Text.c_str() );
 			FLoginBroker->GetService()->ClearPosition( IDEdit->Text );
 			OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
 		#ifdef __TO_TEST
@@ -1675,7 +1675,7 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 				TAccountInfo* FutAcc = User->FuturesAccount( FFutAccIndex );
 				OrderStore->Account  = FutAcc->Account;
 				OrderStore->BrokerID = FutAcc->BrokerID;
-				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
+				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account.c_str(), User->GetName().c_str() );
 				gUser.AccountType = hatTAIFEX;
 			}
 			if( User->StockAccountCount() > 0 )
@@ -1685,7 +1685,7 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 				TAccountInfo* StocAcc = User->StockAccount( FTseAccIndex );
 				OrderStore->TWSEAccount   = StocAcc->Account;
 				OrderStore->TWSEBrokerID  = StocAcc->BrokerID;
-				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount, User->GetName() );
+				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount.c_str(), User->GetName().c_str() );
 				gUser.AccountType = hatTWSE;
 			}
 			if( User->FuturesAccountCount() > 0 && User->StockAccountCount() > 0 )
@@ -2073,9 +2073,9 @@ void __fastcall TMainForm::OrderStoreNewOrder(TObject *Sender, const UnicodeStri
 		String Msg;
 
 		if( Side == sBuy )
-			Msg.printf( L"要買[%s] %d@%0.3f 嗎?", Symbol, Qty, Px );
+			Msg.printf( L"要買[%s] %d@%0.3f 嗎?", Symbol.c_str(), Qty, Px );
 		else
-			Msg.printf( L"要賣[%s] %d@%0.3f 嗎?", Symbol, Qty, Px );
+			Msg.printf( L"要賣[%s] %d@%0.3f 嗎?", Symbol.c_str(), Qty, Px );
 		IsAccept = TUnifyDlgs::AskYesNoDialog( L"新單確認", Msg );
 	}
 	else
@@ -2104,7 +2104,7 @@ void __fastcall TMainForm::OrderStoreCancelByOrderID(TObject *Sender, const Unic
 	{
 		String Msg;
 
-		Msg.printf( L"要刪除委託單[%s]嗎?", OrderID );
+		Msg.printf( L"要刪除委託單[%s]嗎?", OrderID.c_str() );
 		IsAccept = TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
 	}
 	else
@@ -2212,7 +2212,7 @@ void __fastcall TMainForm::OrderStoreFilledReply(TObject *Sender,
 					{
 						String Year = Date.SubString( 1,4 );
 						String Mon  = Date.SubString( 5,2 );
-						Msg.printf( L"%s%s年%s月在%0.*f成交%d口", ChSym, Year, Mon,  SymInfo->GetDigit(), Px, Qty );
+						Msg.printf( L"%s%s年%s月在%0.*f成交%d口", ChSym.c_str(), Year.c_str(), Mon.c_str(),  SymInfo->GetDigit(), Px, Qty );
 						Speak( Msg );
 					}
 				}
@@ -2224,7 +2224,7 @@ void __fastcall TMainForm::OrderStoreFilledReply(TObject *Sender,
 				{
 					String Sym( SymInfo->GetChineseName().c_str() );
 
-					Msg.printf( L"%s在%0.*f成交%d張",Sym, SymInfo->GetDigit(), Px, Qty );
+					Msg.printf( L"%s在%0.*f成交%d張",Sym.c_str(), SymInfo->GetDigit(), Px, Qty );
 					Speak( Msg );
 				}
 			}
@@ -2441,9 +2441,9 @@ void __fastcall TMainForm::RTTTimerTimer(TObject *Sender)
 	String Msg;
 
 	if( HoldOpenInterestForm != NULL && GSimMatch == true )
-		Msg.printf( L"%s|%s|%0.1f|%d|", gUser.UserID, gUser.Nickname, HoldOpenInterestForm->GetTotalProfit(), FMDRTT );
+		Msg.printf( L"%s|%s|%0.1f|%d|", gUser.UserID.c_str(), gUser.Nickname.c_str(), HoldOpenInterestForm->GetTotalProfit(), FMDRTT );
 	else
-		Msg.printf( L"%s|%s|%0.1f|%d|", gUser.UserID, gUser.Nickname, 0, FMDRTT );
+		Msg.printf( L"%s|%s|%0.1f|%d|", gUser.UserID.c_str(), gUser.Nickname.c_str(), 0, FMDRTT );
 	UTF8String UTF8Msg( Msg );
 	AnsiString AnsiMsg( UTF8Msg );
 	CMarketDataStore->SendMessageToServer( AnsiMsg.c_str(), 1 );
@@ -2608,25 +2608,25 @@ void __fastcall TMainForm::UnifyLicense( void )
 	{
 		EnableUnifyLicense( true );
 		if( gTFT == true  )
-			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		else
-			FCopyRights.printf( L"%s© [專屬服務器]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [專屬服務器]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 	}
 	else if( gTFT == true  )
 	{
 		EnableUnifyLicense( true );
 		if( GVIPServer == true  )
-			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [創富專屬服務器]", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		else
-			FCopyRights.printf( L"%s© [創富投資]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [創富投資]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 	}
 	else if( g_Config.IPLicense( gUser.ClientIP ) == true )
 	{
 		EnableUnifyLicense( true );
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"%s© [學員在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [學員在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		else
-			FCopyRights.printf( L"%s© [在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [在啟蒙基地]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		gUser.IsAOEMember = true;
 	}
 	else if( Support( UnifyKey, YYYYMMDD ) == true || Support( ProdUnifyKey, YYYYMMDD ) )
@@ -2634,9 +2634,9 @@ void __fastcall TMainForm::UnifyLicense( void )
 		int TodayInt = Today.ToInt();
 
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"%s© 啟蒙學員[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName, YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
+			FCopyRights.printf( L"%s© 啟蒙學員[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str(), YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
 		else
-			FCopyRights.printf( L"%s© 授權至[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName, YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
+			FCopyRights.printf( L"%s© 授權至[%04d-%02d-%02d]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str(), YYYYMMDD/10000,(YYYYMMDD/100)%100,YYYYMMDD%100 );
 		if( YYYYMMDD >= TodayInt )
 			EnableUnifyLicense( true );
 		else
@@ -2645,9 +2645,9 @@ void __fastcall TMainForm::UnifyLicense( void )
 	else
 	{
 		if( gUser.IsAOEMember == true )
-			FCopyRights.printf( L"%s© [啟蒙學員試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [啟蒙學員試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		else
-			FCopyRights.printf( L"%s© [試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName );
+			FCopyRights.printf( L"%s© [試用版]    ", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str() );
 		EnableUnifyLicense( false );
 	}
 	if( Support( Nuclear1Key, YYYYMMDD ) == true || Support( Nuclear2Key, YYYYMMDD ) || Support( Nuclear2Key, YYYYMMDD ) )
@@ -2844,7 +2844,7 @@ void __fastcall TMainForm::SystemInfo( void )
 	int             AppVer = g_Config.GetVersion();
 
 	///< Unify Version
-	Msg.printf( L"%s 版本: %d.%d.%d", Mdcomponentstrings_MD_SpeedyUnify_AppName, AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
+	Msg.printf( L"%s 版本: %d.%d.%d", Mdcomponentstrings_MD_SpeedyUnify_AppName.c_str(), AppVer/1000000, (AppVer%1000000)/10000, (AppVer%10000)/100);
 	SUVerLabel->Caption = Msg;
 	///< OS Version
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
@@ -2914,7 +2914,7 @@ void __fastcall TMainForm::SystemInfo( void )
 				}
 				OSLabel->Font->Color = clBlack;
 			}
-			Msg.printf( L"%s 版本: %d.%d", OSStr, osvi.dwMajorVersion, osvi.dwMinorVersion );
+			Msg.printf( L"%s 版本: %d.%d", OSStr.c_str(), osvi.dwMajorVersion, osvi.dwMinorVersion );
 			OSLabel->Caption = Msg;
 	}
 	else
@@ -2956,14 +2956,14 @@ void __fastcall TMainForm::SystemInfo( void )
 	else
 		FreeMemLabel->Font->Color = clGreen;
 	///< MarketData Server IP
-	Msg.printf( L"行情主機: %s ", CMarketDataStore->IP);
+	Msg.printf( L"行情主機: %s ", CMarketDataStore->IP.c_str());
 	MarketDataLabel->Caption = Msg;
-	Msg.printf( L"線圖主機: %s ", ChartsStore->IP );
+	Msg.printf( L"線圖主機: %s ", ChartsStore->IP.c_str() );
 	ChartServerLabel->Caption = Msg;
 	///< Order Server IP
 	if( OrderStore->IsLogon() == true )
 	{
-		Msg.printf( L"交易主機: %s", OrderStore->IP );
+		Msg.printf( L"交易主機: %s", OrderStore->IP.c_str() );
 		TradeServerLabel->Font->Color = clBlack;
 	}
 	else
@@ -2973,7 +2973,7 @@ void __fastcall TMainForm::SystemInfo( void )
 	}
 	TradeServerLabel->Caption = Msg;
 
-	Msg.printf( L"對外IP: %s", gUser.ClientIP );
+	Msg.printf( L"對外IP: %s", gUser.ClientIP.c_str() );
 	GWIPLabel->Caption = Msg;
 	///< Network
 	if( FMDRTTDataList->Count < 10 )
@@ -3023,7 +3023,7 @@ void __fastcall TMainForm::SystemInfo( void )
 				Note = L"品質差,請多注意";
 			NetworkLabel->Font->Color = clRed;
 		}
-		Msg.printf( L"網路延遲: %d ms 最大: %d ms [%s]", Avg, Max, Note );
+		Msg.printf( L"網路延遲: %d ms 最大: %d ms [%s]", Avg, Max, Note.c_str() );
 	}
 	NetworkLabel->Caption = Msg;
 }
@@ -3060,12 +3060,12 @@ void __fastcall TMainForm::UpdateAccount( bool IsFut )
 		{
 			TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
 			if( IsFut == true )
-				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
+				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account.c_str(), User->GetName().c_str() );
 			else
-				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount,User->GetName() );
+				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount.c_str(),User->GetName().c_str() );
 		}
 		else
-			FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account, gUser.Nickname );
+			FLoginUserStr.printf( L"虛擬帳號:%s %s",OrderStore->Account.c_str(), gUser.Nickname.c_str() );
 	}
 	else
 		FLoginUserStr = L"交易帳號:尚未登入";
@@ -3190,7 +3190,7 @@ void __fastcall TMainForm::GetPositionSymbol( int index , String& Ex,String& Sym
 			if( (Info = gMarketDataStore->GetBasicInformation( Ex,Sym,false )) != NULL )
 			{
 				if( Info->GetMarket() == nsOrderMessageDefine::mTSE || Info->GetMarket() == nsOrderMessageDefine::mOTC )
-					Disp.printf( L"%s(%s)",Info->GetDisplayName(),Sym );
+					Disp.printf( L"%s(%s)",Info->GetDisplayName(),Sym.c_str() );
 				else
 					Disp.printf( L"%s", Info->GetDisplayName());
 			}

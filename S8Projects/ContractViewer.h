@@ -46,7 +46,7 @@ public:
 		else
 			ChineseName = Info->GetDisplayName();
 
-		DispName.printf(L"[%s] %s", String( Info->GetSymbol().c_str()) ,ChineseName );
+		DispName.printf(L"[%s] %s", String( Info->GetSymbol().c_str()).c_str() ,ChineseName.c_str() );
 	}
 
 	__fastcall TSymbolItem( const String& Name )
@@ -71,7 +71,7 @@ public:
 		else
 			ChineseName = Info->GetDisplayName();
 
-		DispName.printf(L"[%s] %s", String( Info->GetSymbol().c_str()) ,ChineseName );
+		DispName.printf(L"[%s] %s", String( Info->GetSymbol().c_str()).c_str() ,ChineseName.c_str() );
 	}
 	bool __fastcall IsContract( void ) { return (Info!=NULL); }
 };

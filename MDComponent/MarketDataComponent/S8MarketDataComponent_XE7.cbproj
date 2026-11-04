@@ -46,6 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <IntermediateOutputDir>.\$(Platform)\$(Config)_Obj</IntermediateOutputDir>
         <BCC_wdiu>false</BCC_wdiu>
@@ -244,6 +246,9 @@
         </CppCompile>
         <PackageImport Include="rtl.bpi">
             <BuildOrder>43</BuildOrder>
+        </PackageImport>
+        <PackageImport Include="xmlrtl.bpi">
+            <BuildOrder>44</BuildOrder>
         </PackageImport>
         <CppCompile Include="S8MarketDataComponent_XE7.cpp">
             <BuildOrder>0</BuildOrder>

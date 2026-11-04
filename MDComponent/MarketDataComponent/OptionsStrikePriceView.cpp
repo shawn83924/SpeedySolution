@@ -961,7 +961,7 @@ void __fastcall TOptionsStrikePriceView::UpdateUnderlyingBuffer( TOptRecord* Und
 		Buffer->Canvas->Pen->Width   = 2;
 		Buffer->Canvas->Font->Color  = TXTColor;//FHeaderCallColor;
 		///< Get Text width
-		TabText.printf( L"%s[%s] %s %.*f 漲 999  ",UnderlyingRec->GetYearMonth(), UnderlyingRec->GetDisplayName(), Mdcomponentstrings_MD_OPTIONS_TBAR_FILLPX, UnderlyingRec->GetDigit(), Px );
+		TabText.printf( L"%s[%s] %s %.*f 漲 999  ",UnderlyingRec->GetYearMonth().c_str(), UnderlyingRec->GetDisplayName().c_str(), String( Mdcomponentstrings_MD_OPTIONS_TBAR_FILLPX ).c_str(), UnderlyingRec->GetDigit(), Px );
 		FieldLeft = Buffer->Canvas->TextWidth( UnderlyingRec->GetYearMonth());
 		TabWidth  = Buffer->Canvas->TextWidth( TabText );
 		///< Draw background
@@ -977,7 +977,7 @@ void __fastcall TOptionsStrikePriceView::UpdateUnderlyingBuffer( TOptRecord* Und
 		Buffer->Canvas->Pen->Width  = 1;
 		///< Draw Display name
 		FieldLeft += 35;
-		DrawText.printf( L"[%s]", UnderlyingRec->GetDisplayName() );
+		DrawText.printf( L"[%s]", UnderlyingRec->GetDisplayName().c_str() );
 		Buffer->Canvas->Brush->Style = bsClear;
 		Buffer->Canvas->Font->Color  = TXTColor;//FHeaderCommodColor;
 		Buffer->Canvas->TextOut( FieldLeft, 4, 	DrawText );
@@ -2340,13 +2340,13 @@ void __fastcall TOptionsStrikePriceView::WndProc( TMessage &Msg )
 				Msg.Result = 1;
 			 }
 			 else
-				inherited::WndProc( Msg );
+				TCustomGrid::WndProc( Msg );
 			 break;
 		case WM_ERASEBKGND:
 			 Msg.Result = 1;
 			 break;
 		default:
-			 inherited::WndProc( Msg );
+			 TCustomGrid::WndProc( Msg );
 			 break;
 	}
 }

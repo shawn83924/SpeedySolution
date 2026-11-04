@@ -291,7 +291,7 @@ BasicInformation* __fastcall TMarketDataList::GetSymbol( int index )
 	for( int i = 0; i < Items->Count; i++ )
 		 if( Items->Item[ i ]->Index == index )
 			 return (BasicInformation*)Items->Item[ i ]->Data;
-	return FStore->GetBasicInformation( "TAIFEX", "TXFFront1", false );
+	return FStore->GetBasicInformation( UFC::AnsiString( "TAIFEX" ), UFC::AnsiString( "TXFFront1" ), false );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMarketDataList::SetStore( TCMarketDataStore* Store )
@@ -1496,7 +1496,7 @@ void __fastcall TMarketDataList::WndProc( TMessage &Msg )
 				Msg.Result = 1;
 			}
 			else
-				inherited::WndProc( Msg );
+				TCustomListView::WndProc( Msg );
 			break;
 		case WM_ERASEBKGND:
 			if(  ViewStyle == vsReport )
@@ -1505,10 +1505,10 @@ void __fastcall TMarketDataList::WndProc( TMessage &Msg )
 				Msg.Result = 1;
 			}
 			else
-				inherited::WndProc( Msg );
+				TCustomListView::WndProc( Msg );
 			break;
 		default:
-			inherited::WndProc( Msg );
+			TCustomListView::WndProc( Msg );
 			break;
 	}
 }

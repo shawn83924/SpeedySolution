@@ -28,24 +28,24 @@ const int EXEC_FONT_SIZE_MIN = 9;
 const int EXEC_FONT_SIZE_DEF = 11;
 const int EXEC_FONT_SIZE_MAX = 28;
 //---------------------------------------------------------------------------
-NewBuyColor[2]        = {RGB(187,187,187),RGB(51,51,51)};
-NewBuyBkColor[2]      = {RGB(48,0,0),RGB(253,233,234)};
-FillBuyColor[2]       = {RGB(187,187,187),RGB(51,51,51)};
-FillBuyBkColor[2]     = {RGB(58,0,0),RGB(253,223,224)};
-PartialBuyColor[2]    = {RGB(187,187,187),RGB(51,51,51)};
-PartialBuyBkColor[2]  = {RGB(53,0,0),RGB(253,228,229)};
-NewSellColor[2]       = {RGB(187,187,187),RGB(51,51,51)};
-NewSellBkColor[2]     = {RGB(22,50,1),RGB(243,255,235)};
-FillSellColor[2]      = {RGB(187,187,187),RGB(51,51,51)};
-FillSellBKColor[2]    = {RGB(22,60,1),RGB(233,255,225)};
-PartialSellColor[2]   = {RGB(187,187,187),RGB(51,51,51)};
-PartialSellBKColor[2] = {RGB(22,55,1),RGB(238,255,230)};
-PendingColor[2]       = {RGB(187,187,187),RGB(51,51,51)};
-PendingBKColor[2]     = {RGB(1,52,53),RGB(255,255,203)};
-RejectColor[2]        = {RGB(187,187,187),RGB(51,51,51)};
-RejectBKColor[2]      = {RGB(128,0,0),RGB(255,128,128)};
-CancelColor[2]        = {RGB(187,187,187),RGB(51,51,51)};
-CancelBkColor[2]      = {RGB(76,76,76),RGB(229,229,229)};
+TColor NewBuyColor[2]        = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor NewBuyBkColor[2]      = {(TColor)RGB(48,0,0),(TColor)RGB(253,233,234)};
+TColor FillBuyColor[2]       = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor FillBuyBkColor[2]     = {(TColor)RGB(58,0,0),(TColor)RGB(253,223,224)};
+TColor PartialBuyColor[2]    = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor PartialBuyBkColor[2]  = {(TColor)RGB(53,0,0),(TColor)RGB(253,228,229)};
+TColor NewSellColor[2]       = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor NewSellBkColor[2]     = {(TColor)RGB(22,50,1),(TColor)RGB(243,255,235)};
+TColor FillSellColor[2]      = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor FillSellBKColor[2]    = {(TColor)RGB(22,60,1),(TColor)RGB(233,255,225)};
+TColor PartialSellColor[2]   = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor PartialSellBKColor[2] = {(TColor)RGB(22,55,1),(TColor)RGB(238,255,230)};
+TColor PendingColor[2]       = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor PendingBKColor[2]     = {(TColor)RGB(1,52,53),(TColor)RGB(255,255,203)};
+TColor RejectColor[2]        = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor RejectBKColor[2]      = {(TColor)RGB(128,0,0),(TColor)RGB(255,128,128)};
+TColor CancelColor[2]        = {(TColor)RGB(187,187,187),(TColor)RGB(51,51,51)};
+TColor CancelBkColor[2]      = {(TColor)RGB(76,76,76),(TColor)RGB(229,229,229)};
 //---------------------------------------------------------------------------
 const char* DEF_FIELDS = "1=56,2=56,3=92,28=56,16=44,25=56,29=56,19=56,30=92,26=56,21=74,27=56,24=56,33=56,";
 //---------------------------------------------------------------------------
@@ -84,7 +84,7 @@ void __fastcall TExecutionForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 OrderFilterEnum __fastcall TExecutionForm::SelectBtn(TObject *Sender)
@@ -571,7 +571,7 @@ void __fastcall TExecutionForm::TAIFEXBalanceURL( String& URL )
 	UFC::MD5   ChkSum( (const UFC::UInt8*)ChkSumStr.c_str(), ChkSumStr.Length() );
 	String     Key( ChkSum.ToString().c_str() );
 
-	URL.printf( L"%s?branch_id=098&cust_id=%s&key=%s", g_Config.GetMegaBackendURL(), Acc, Key );
+	URL.printf( L"%s?branch_id=098&cust_id=%s&key=%s", g_Config.GetMegaBackendURL().c_str(), Acc.c_str(), Key.c_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::TWSEBalanceURL( String& URL )
@@ -581,7 +581,7 @@ void __fastcall TExecutionForm::TWSEBalanceURL( String& URL )
 	UFC::MD5   ChkSum( (const UFC::UInt8*)ChkSumStr.c_str(), ChkSumStr.Length() );
 	String     Key( ChkSum.ToString().c_str() );
 
-	URL.printf( L"https://rayin.emega.com.tw/bking.jsp?branch_id=7000&cust_id=%s&key=%s", Acc, Key );
+	URL.printf( L"https://rayin.emega.com.tw/bking.jsp?branch_id=7000&cust_id=%s&key=%s", Acc.c_str(), Key.c_str() );
 }
 //---------------------------------------------------------------------------
 void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
@@ -606,7 +606,7 @@ void __fastcall TExecutionForm::ShowBalanceWeb( int i  )
 	{
 		String URL;
 
-		URL.printf( L"%s?mobile=%s&login_token=%s", g_Config.GetReportURL(), gUser.UserID, gUser.Token );
+		URL.printf( L"%s?mobile=%s&login_token=%s", g_Config.GetReportURL().c_str(), gUser.UserID.c_str(), gUser.Token.c_str() );
 		WebBrowser->Navigate( URL.c_str() );
 	}
 }

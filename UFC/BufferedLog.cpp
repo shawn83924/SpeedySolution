@@ -6,14 +6,12 @@
 #include "iniFile.h"
 #include <iostream>
 //------------------------------------------------------------------------------
-#if defined(_WIN32) && !(defined(__BORLANDC__) && defined(_WIN64))
-static char* stpcpy(char* dst, const char* src)
+static char* UFC_stpcpy(char* dst, const char* src)
 {
     while ((*dst++ = *src++) != '\0')
         ;
     return dst - 1;   // 指向 NUL
 }
-#endif
 //------------------------------------------------------------------------------
 namespace UFC
 {
@@ -330,7 +328,7 @@ UInt16 BufferedLog::fprint( const char* str )
         char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
-        TextBuf = stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str);
         CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
@@ -351,8 +349,8 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1 )
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
         CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
@@ -373,9 +371,9 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2 
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
         CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
@@ -396,9 +394,9 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
         while ((*TextBuf++ = *str3++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -420,10 +418,10 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
         while ((*TextBuf++ = *str4++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -445,11 +443,11 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
         while ((*TextBuf++ = *str5++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -471,12 +469,12 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
         while ((*TextBuf++ = *str6++) != 0);                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -498,13 +496,13 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
         while ((*TextBuf++ = *str7++) != 0);                                        
         CharCount = TextBuf - Buffer -1 ;
         WriteString( (const char*)Buffer, CharCount );
@@ -526,14 +524,14 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
         while ((*TextBuf++ = *str8++) != 0);                                        
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -555,15 +553,15 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
         while ((*TextBuf++ = *str9++) != 0);                                        
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -585,16 +583,16 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
         while ((*TextBuf++ = *str10++) != 0);                                                
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -616,17 +614,17 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
         while ((*TextBuf++ = *str11++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -648,18 +646,18 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
         while ((*TextBuf++ = *str12++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -681,19 +679,19 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
         while ((*TextBuf++ = *str13++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -715,20 +713,20 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
         while ((*TextBuf++ = *str14++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -750,21 +748,21 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
-        TextBuf = stpcpy(TextBuf, str14);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str14);
         while ((*TextBuf++ = *str15++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -786,22 +784,22 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
-        TextBuf = stpcpy(TextBuf, str14);
-        TextBuf = stpcpy(TextBuf, str15);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str14);
+        TextBuf = UFC_stpcpy(TextBuf, str15);
         while ((*TextBuf++ = *str16++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -823,23 +821,23 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
-        TextBuf = stpcpy(TextBuf, str14);
-        TextBuf = stpcpy(TextBuf, str15);
-        TextBuf = stpcpy(TextBuf, str16);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str14);
+        TextBuf = UFC_stpcpy(TextBuf, str15);
+        TextBuf = UFC_stpcpy(TextBuf, str16);
         while ((*TextBuf++ = *str17++) != 0); 
         CharCount = TextBuf - Buffer -1;
         WriteString( (const char*)Buffer, CharCount );
@@ -861,25 +859,25 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
-        TextBuf = stpcpy(TextBuf, str14);
-        TextBuf = stpcpy(TextBuf, str15);
-        TextBuf = stpcpy(TextBuf, str16);
-        TextBuf = stpcpy(TextBuf, str17);
-        TextBuf = stpcpy(TextBuf, str18);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str14);
+        TextBuf = UFC_stpcpy(TextBuf, str15);
+        TextBuf = UFC_stpcpy(TextBuf, str16);
+        TextBuf = UFC_stpcpy(TextBuf, str17);
+        TextBuf = UFC_stpcpy(TextBuf, str18);
         CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )
@@ -900,26 +898,26 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
         register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
-        TextBuf = stpcpy(TextBuf, str);
-        TextBuf = stpcpy(TextBuf, str1);
-        TextBuf = stpcpy(TextBuf, str2);
-        TextBuf = stpcpy(TextBuf, str3);
-        TextBuf = stpcpy(TextBuf, str4);
-        TextBuf = stpcpy(TextBuf, str5);
-        TextBuf = stpcpy(TextBuf, str6);
-        TextBuf = stpcpy(TextBuf, str7);
-        TextBuf = stpcpy(TextBuf, str8);
-        TextBuf = stpcpy(TextBuf, str9);
-        TextBuf = stpcpy(TextBuf, str10);
-        TextBuf = stpcpy(TextBuf, str11);
-        TextBuf = stpcpy(TextBuf, str12);
-        TextBuf = stpcpy(TextBuf, str13);
-        TextBuf = stpcpy(TextBuf, str14);
-        TextBuf = stpcpy(TextBuf, str15);
-        TextBuf = stpcpy(TextBuf, str16);
-        TextBuf = stpcpy(TextBuf, str17);
-        TextBuf = stpcpy(TextBuf, str18);
-        TextBuf = stpcpy(TextBuf, str19);
+        TextBuf = UFC_stpcpy(TextBuf, str);
+        TextBuf = UFC_stpcpy(TextBuf, str1);
+        TextBuf = UFC_stpcpy(TextBuf, str2);
+        TextBuf = UFC_stpcpy(TextBuf, str3);
+        TextBuf = UFC_stpcpy(TextBuf, str4);
+        TextBuf = UFC_stpcpy(TextBuf, str5);
+        TextBuf = UFC_stpcpy(TextBuf, str6);
+        TextBuf = UFC_stpcpy(TextBuf, str7);
+        TextBuf = UFC_stpcpy(TextBuf, str8);
+        TextBuf = UFC_stpcpy(TextBuf, str9);
+        TextBuf = UFC_stpcpy(TextBuf, str10);
+        TextBuf = UFC_stpcpy(TextBuf, str11);
+        TextBuf = UFC_stpcpy(TextBuf, str12);
+        TextBuf = UFC_stpcpy(TextBuf, str13);
+        TextBuf = UFC_stpcpy(TextBuf, str14);
+        TextBuf = UFC_stpcpy(TextBuf, str15);
+        TextBuf = UFC_stpcpy(TextBuf, str16);
+        TextBuf = UFC_stpcpy(TextBuf, str17);
+        TextBuf = UFC_stpcpy(TextBuf, str18);
+        TextBuf = UFC_stpcpy(TextBuf, str19);
         CharCount = TextBuf - Buffer;
         WriteString( (const char*)Buffer, CharCount );
         if( FStdOut == TRUE )

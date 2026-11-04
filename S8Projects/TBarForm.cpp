@@ -30,28 +30,28 @@ TOptionsTBarForm *OptionsTBarForm;
 const String STR_TBAR_OPTION( L"選擇權報價" );
 const String STR_TBAR_ALL_MONTH( L"所有" );
 //---------------------------------------------------------------------------
-TColor HeaderCommodColor[2]      = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderCallColor[2]        = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderPutColor[2]         = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderCommodBKColor[2]    = {RGB(40,90,159),RGB(45,45,45)};
-TColor HeaderCallBKColor[2]      = {RGB(40,90,159),RGB(45,45,45)};
-TColor HeaderPutBKColor[2]       = {RGB(40,90,159),RGB(45,45,45)};
-TColor FieldNameCommodColor[2]   = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNameCallColor[2]     = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNamePutColor[2]      = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNameCallBKColor[2]   = {clWhite,RGB(104,104,104)};
-TColor FieldNamePutBKColor[2]    = {clWhite,RGB(104,104,104)};
-TColor FieldNameCommodBKColor[2] = {clWhite,RGB(104,104,104)};
+TColor HeaderCommodColor[2]      = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderCallColor[2]        = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderPutColor[2]         = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderCommodBKColor[2]    = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor HeaderCallBKColor[2]      = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor HeaderPutBKColor[2]       = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor FieldNameCommodColor[2]   = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNameCallColor[2]     = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNamePutColor[2]      = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNameCallBKColor[2]   = {clWhite,(TColor)RGB(104,104,104)};
+TColor FieldNamePutBKColor[2]    = {clWhite,(TColor)RGB(104,104,104)};
+TColor FieldNameCommodBKColor[2] = {clWhite,(TColor)RGB(104,104,104)};
 TColor StkPxColor[2]             = {clWhite,clWhite};
-TColor StkPxBKColor[2]           = {RGB(40,90,159),RGB(53,53,53)};
-TColor CallBKColor[2]            = {clWhite,RGB(53,53,53)};
-TColor PutBKColor[2]             = {clWhite,RGB(53,53,53)};
-TColor RisePxColor[2]            = {RGB(230,0,0),RGB(230,0,0)};
-TColor FallPxColor[2]            = {RGB(33,140,4),RGB(33,140,4)};
-TColor EqualPxColor[2]           = {RGB(85,85,85),RGB(153,153,153)};
-TColor HGridColor[2]             = {RGB(205,205,205),RGB(73,73,73)};
-TColor VGridColor[2]             = {clWhite,RGB(53,53,53)};
-TColor BKBarColor[2]             = {RGB(255,246,231),RGB(8,16,27)};
+TColor StkPxBKColor[2]           = {(TColor)RGB(40,90,159),(TColor)RGB(53,53,53)};
+TColor CallBKColor[2]            = {clWhite,(TColor)RGB(53,53,53)};
+TColor PutBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
+TColor RisePxColor[2]            = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor FallPxColor[2]            = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
+TColor EqualPxColor[2]           = {(TColor)RGB(85,85,85),(TColor)RGB(153,153,153)};
+TColor HGridColor[2]             = {(TColor)RGB(205,205,205),(TColor)RGB(73,73,73)};
+TColor VGridColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
+TColor BKBarColor[2]             = {(TColor)RGB(255,246,231),(TColor)RGB(8,16,27)};
 //---------------------------------------------------------------------------
 __fastcall TOptionsTBarForm::TOptionsTBarForm(TComponent* Owner, int ID )
 :TForm(Owner)
@@ -108,7 +108,7 @@ void __fastcall TOptionsTBarForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::EraseBK( HDC DC )
@@ -195,9 +195,9 @@ void __fastcall TOptionsTBarForm::SetTBarFormID( int ID )
 	FID = ID;
 
 	if( FID == 0 )
-		FormName.printf( L"%s", STR_TBAR_OPTION ); ///< 選擇權報價
+		FormName.printf( L"%s", STR_TBAR_OPTION.c_str() ); ///< 選擇權報價
 	else
-		FormName.printf( L"%s-%d", STR_TBAR_OPTION, ID ); ///< 選擇權報價
+		FormName.printf( L"%s-%d", STR_TBAR_OPTION.c_str(), ID ); ///< 選擇權報價
 	Caption = FormName;
 }
 //---------------------------------------------------------------------------
@@ -564,9 +564,9 @@ void __fastcall TOptionsTBarForm::SavePinsSetting( void )
 	String RegKey;
 
 	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 ) ///< All Maturity month
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
 	else
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
 	for( int i =0; i < FYearMonth.ItemCount();i++)
 	{
 		TListItem*   CheckItem = FPList->Items->Item[i];
@@ -610,7 +610,7 @@ void __fastcall TOptionsTBarForm::GenExcludeSet( UFC::PHashMap<UFC::AnsiString, 
 
 	UFC::PHashedSet<double>* StrikePxSet  = new UFC::PHashedSet<double>();
 
-	RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+	RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
 	AnsiYearMonth = OptionsStrikePriceView->YearMonth;
 	Fields = g_Config.GetDesktopString( RegKey, OptionsStrikePriceView->YearMonth, L"" );
 	GenStrikePxSet( StrikePxSet, Fields );

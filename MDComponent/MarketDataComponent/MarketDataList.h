@@ -245,7 +245,7 @@ __published:
 	__property TNotifyEvent OnItemPosChanged = { read = FOnItemPosChanged, write = FOnItemPosChanged };
 };
 //---------------------------------------------------------------------------
-struct PACKAGE SortParam
+struct SortParam
 {
 	public:
 		TMarketDataList::OrderType TOrderType;

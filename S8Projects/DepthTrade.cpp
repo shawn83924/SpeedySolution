@@ -34,41 +34,41 @@ const int FONT_SIZE_MIN = 9;
 const int FONT_SIZE_DEF = 10;
 const int FONT_SIZE_MAX = 15;
 //---------------------------------------------------------------------------
-TColor FixedRowBidColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
-TColor FixedRowAskColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
+TColor FixedRowBidColor[2]  = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
+TColor FixedRowAskColor[2]  = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
 TColor FixedRowColor[2]     = {clBlack,clWhite};
-TColor FixedRowBKColor[2]   = {RGB(239,239,239),RGB(84,84,84)};
-TColor GridColor[2]	        = {RGB(224,224,224),RGB(104,104,104)};
+TColor FixedRowBKColor[2]   = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
+TColor GridColor[2]	        = {(TColor)RGB(224,224,224),(TColor)RGB(104,104,104)};
 ///< Tick row colors
-TColor TickBKColor[2]       = {RGB(249,249,249),RGB(8,16,27)};
-TColor TickUpperColor[2]    = {RGB(230,0,0),RGB(230,0,0)};
-TColor TickLowerColor[2]    = {RGB(33,140,4),RGB(33,140,4)};
+TColor TickBKColor[2]       = {(TColor)RGB(249,249,249),(TColor)RGB(8,16,27)};
+TColor TickUpperColor[2]    = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor TickLowerColor[2]    = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
 TColor FillColor[2]         = {clWhite,clWhite};
-TColor FillBKColor[2]       = {RGB(50,195,190),RGB(9,60,62)};
+TColor FillBKColor[2]       = {(TColor)RGB(50,195,190),(TColor)RGB(9,60,62)};
 TColor BetterBuyColor[2]    = {clWhite,clWhite};
-TColor BetterBuyBKColor[2]  = {RGB(255,109,135),RGB(74,19,25)};
+TColor BetterBuyBKColor[2]  = {(TColor)RGB(255,109,135),(TColor)RGB(74,19,25)};
 TColor BetterSellColor[2]   = {clWhite,clWhite};
-TColor BetterSellBKColor[2] = {RGB(72,137,193),RGB(10,32,73)};
+TColor BetterSellBKColor[2] = {(TColor)RGB(72,137,193),(TColor)RGB(10,32,73)};
 TColor DayHiColor[2]        = {clRed,clRed};
 TColor DayLoColor[2]        = {clGreen,clGreen};
 TColor AvgPriceColor[2]     = {clWhite,clWhite};
 ///< Buy side color
-TColor BidDepth5BKColor[2]       = {clWhite,RGB(53,53,53)};
-TColor BidDepth5Color[2]         = {RGB(248,152,154),RGB(255,166,166)};
-TColor BuyBKColor[2]             = {clWhite,RGB(53,53,53)};
+TColor BidDepth5BKColor[2]       = {clWhite,(TColor)RGB(53,53,53)};
+TColor BidDepth5Color[2]         = {(TColor)RGB(248,152,154),(TColor)RGB(255,166,166)};
+TColor BuyBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyColor[2]               = {clBlack,clWhite};
-TColor BuyFillBKColor[2]         = {clWhite,RGB(53,53,53)};
+TColor BuyFillBKColor[2]         = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyFillColor[2]           = {clBlack,clWhite};
-TColor BuyConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
+TColor BuyConditionColBKColor[2] = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyConditionColColor[2]   = {clBlack,clWhite};
 ///<Sell side color
-TColor AskDepth5BKColor[2]        = {clWhite,RGB(53,53,53)};
-TColor AskDepth5Color[2]          = {RGB(124,186,63),RGB(149,255,116)};
-TColor SellBKColor[2]             = {clWhite,RGB(53,53,53)};
+TColor AskDepth5BKColor[2]        = {clWhite,(TColor)RGB(53,53,53)};
+TColor AskDepth5Color[2]          = {(TColor)RGB(124,186,63),(TColor)RGB(149,255,116)};
+TColor SellBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellColor[2]               = {clBlack,clWhite};
-TColor SellFillBKColor[2]         = {clWhite,RGB(53,53,53)};
+TColor SellFillBKColor[2]         = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellFillColor[2]           = {clBlack,clWhite};
-TColor SellConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
+TColor SellConditionColBKColor[2] = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellConditionColColor[2]   = {clBlack,clWhite};
 //---------------------------------------------------------------------------
 UFC::PHashMap<UFC::AnsiString, UFC::List<TDepthForm*>*> FStopCloseMap;
@@ -200,7 +200,7 @@ void __fastcall TDepthForm::UpdateCaption( void )
 	{
 		String StockName;
 
-		StockName.printf( L"%s(%s)", OrderBookList->ChineseName , FSym );
+		StockName.printf( L"%s(%s)", OrderBookList->ChineseName.c_str() , FSym.c_str() );
 		Caption = StockName;
 	}
 	else
@@ -229,7 +229,7 @@ void __fastcall TDepthForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::AutoCenterSwitchClick(TObject *Sender)
@@ -375,9 +375,9 @@ void __fastcall TDepthForm::ChangeSymbol( void )
 			UFC::SleepMS(10);
 		}
 		OrderBookList->SetSymbol( FEx, FSym );
-		FMarket   = FSymInfo->GetMarket();
+		FMarket   = static_cast<nsOrderMessageDefine::MarketEnum>( FSymInfo->GetMarket() );
 		FSym      = FSymInfo->GetSymbol().c_str();
-		FCallPut  = FSymInfo->GetCallPut();
+		FCallPut  = static_cast<EventTypeEnum>( FSymInfo->GetCallPut() );
 		FStrikePX = FSymInfo->GetStrikePrice();
 		FBullPx   = FSymInfo->GetBullPrice();
 		FDigit    = FSymInfo->GetDigit();
@@ -762,10 +762,10 @@ void __fastcall TDepthForm::OrderBookListReplacePx(TObject *Sender, SideEnum sid
 				return;
 			}
 			else
-				Msg.printf( L"э基ア毖,ユ┮[%s]ぃや穿э基", FEx );
+				Msg.printf( L"э基ア毖,ユ┮[%s]ぃや穿э基", FEx.c_str() );
 		}
 		else
-			Msg.printf( L"э基ア毖,ユ┮[%s]ぃ", FEx );
+			Msg.printf( L"э基ア毖,ユ┮[%s]ぃ", FEx.c_str() );
 	}
 	catch( UFC::Exception& execp )
 	{
@@ -2014,8 +2014,8 @@ void __fastcall TDepthForm::PrintStopSetting( void )
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadStopSetting( void )
 {
-	OrderBookList->BuyStopOrderType  = g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit );
-	OrderBookList->SellStopOrderType = g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit );
+	OrderBookList->BuyStopOrderType  = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit ) );
+	OrderBookList->SellStopOrderType = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit ) );
 	OrderBookList->BuyStopTick  = g_Config.GetIntegerProperty("StopSetting","BuyTick", 0 );
 	OrderBookList->SellStopTick = g_Config.GetIntegerProperty("StopSetting","SellTick", 0 );
 }
@@ -2742,13 +2742,13 @@ void __fastcall TDepthForm::AutoStop( SideEnum side, double Price, int Qty, cons
 		{
 			OrderType = OrderBookList->SellStopOrderType;
 			ExecPrice = OrderBookList->GetBetterPrice( Price, OrderBookList->SellStopTick );
-			UFC::BufferedLog::Printf( " [OrderBookList::%s.Sell-%d ticks]", Msg, OrderBookList->SellStopTick );
+			UFC::BufferedLog::Printf( " [OrderBookList::%s.Sell-%d ticks]", Msg.c_str(), OrderBookList->SellStopTick );
 		}
 		else
 		{
 			OrderType = OrderBookList->BuyStopOrderType;
 			ExecPrice = OrderBookList->GetBetterPrice( Price, OrderBookList->BuyStopTick );
-			UFC::BufferedLog::Printf( " [OrderBookList::%d.Buy+%d ticks]", Msg, OrderBookList->BuyStopTick );
+			UFC::BufferedLog::Printf( " [OrderBookList::%s.Buy+%d ticks]", Msg.c_str(), OrderBookList->BuyStopTick );
 		}
 		gOrderStore->NewStopOrderRequest( FEx,                            ///< Stop Exchange
 										  FSym,                           ///< Stop symbol

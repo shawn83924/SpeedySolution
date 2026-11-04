@@ -41,6 +41,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <IntermediateOutputDir>.\$(Platform)\$(Config)_Obj</IntermediateOutputDir>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <SanitizedProjectName>UFC_XE7</SanitizedProjectName>

@@ -64,7 +64,7 @@ void __fastcall TLoginForm::WndProc( TMessage &Msg )
 		case WM_ERASEBKGND: Msg.Result = 1; return;
 		case WM_NCHITTEST:  OnNCHitTest( Msg );	return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TLoginForm::OnNCHitTest( TMessage &Message )
@@ -80,7 +80,7 @@ void __fastcall TLoginForm::OnNCHitTest( TMessage &Message )
 		Message.Result = HTCAPTION;
 		return;
 	}
-	inherited::WndProc( Message );
+	TForm::WndProc( Message );
 }
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::CheckFreeTry( void )
@@ -174,7 +174,7 @@ void __fastcall TLoginForm::LoginButtonClick(TObject *Sender)
 
     ExLabel->Visible = false;
 	LoginButton->Enabled = false;
-	Msg.printf( L"用戶[%s]嘗試登入系統",IDEdit->Text );
+	Msg.printf( L"用戶[%s]嘗試登入系統",IDEdit->Text.c_str() );
 	StatusLabel->Caption = Msg;
 	Application->ProcessMessages();
 
@@ -372,7 +372,7 @@ void __fastcall TLoginForm::GenData( const String& ID, const String& Password, S
 	AnsiString IDpPasswd = ID + Password + L"1";
 	UFC::MD5   ChkSum( (const UFC::UInt8*)IDpPasswd.c_str(), IDpPasswd.Length() );
 	String     CheckSum( ChkSum.ToString().c_str() );
-	Out.printf( L"{\"account\":\"%s\",\"pwd\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}",ID,Password,CheckSum );
+	Out.printf( L"{\"account\":\"%s\",\"pwd\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}",ID.c_str(),Password.c_str(),CheckSum.c_str() );
 }
 //---------------------------------------------------------------------------
 bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Password, TMemoryStream* OutStream )
@@ -388,7 +388,7 @@ bool __fastcall TLoginForm::RequestLogon( const String& ID, const String& Passwo
 		String URLPrefix = g_Config.GetLogonURL();
 
 		GenData( ID, Password, Data );
-		URL.printf( L"%s?data=%s&txid=IUN_O_01&vender=UnifyAP",URLPrefix, Data );
+		URL.printf( L"%s?data=%s&txid=IUN_O_01&vender=UnifyAP",URLPrefix.c_str(), Data.c_str() );
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{
 			SSLIOHandler->SSLOptions->Method = sslvSSLv23;

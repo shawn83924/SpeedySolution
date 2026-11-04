@@ -97,7 +97,7 @@ void __fastcall TGraphMarquee::WndProc( TMessage &Msg )
     }
     else
     {
-        inherited::WndProc( Msg );
+        TCustomControl::WndProc( Msg );
     }
 }
 //---------------------------------------------------------------------------

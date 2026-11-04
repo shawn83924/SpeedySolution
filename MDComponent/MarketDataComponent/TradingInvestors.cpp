@@ -42,7 +42,7 @@ void CMarketAccount::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockTy
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"MarketAccount[%d][%s]:[%s].", FMarket, DescribeMarket(FMarket), FAccount);
+	dumpMessage.printf(L"MarketAccount[%d][%s]:[%s].", FMarket, DescribeMarket(FMarket).c_str(), FAccount.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CMarketAccount::DumpData()
@@ -74,7 +74,7 @@ void CTransferBank::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockTyp
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"TransferBank[%s]:[%s].", FBankCode, FBankName);
+	dumpMessage.printf(L"TransferBank[%s]:[%s].", FBankCode.c_str(), FBankName.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CTransferBank::DumpData()
@@ -117,10 +117,10 @@ void CBankAccount::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockType
 		String bankCode = FTransferBankPtr->GetBankCode(rwNotLock);
 		String bankName = FTransferBankPtr->GetBankName(rwNotLock);
 		FTransferBankPtr->UnlockForRead();
-		dumpMessage.printf(L"BankAccount[%s]: Bank[%s][%s] Currency[%s] Typr[%s].", FBankAccount, bankCode, bankName, FCurrency, FBankType);
+		dumpMessage.printf(L"BankAccount[%s]: Bank[%s][%s] Currency[%s] Typr[%s].", FBankAccount.c_str(), bankCode.c_str(), bankName.c_str(), FCurrency.c_str(), FBankType.c_str());
 	}
 	else
-		dumpMessage.printf(L"BankAccount[%s]: Bank[Null] Currency[%s] Typr[%s].", FBankAccount, FCurrency, FBankType);
+		dumpMessage.printf(L"BankAccount[%s]: Bank[Null] Currency[%s] Typr[%s].", FBankAccount.c_str(), FCurrency.c_str(), FBankType.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CBankAccount::DumpData()
@@ -155,16 +155,16 @@ String CCTPTransferRecord::GenerateLog(ReadWrietLockTypeEnum RWLockType)
 	if (FTradeCode == L"202001")
 	{
 		if (FErrorId != 0)
-			logStr.printf(L"%s %s 由[%s:%s]帳號[%s]轉金額[%13.2lf]到期貨錯誤:%d[%s].", FTradeDate, FTradeTime, FBankId, FBankName, FBankAccount, FTradeAmount, FErrorId, FErrorMessage);
+			logStr.printf(L"%s %s 由[%s:%s]帳號[%s]轉金額[%13.2lf]到期貨錯誤:%d[%s].", FTradeDate.c_str(), FTradeTime.c_str(), FBankId.c_str(), FBankName.c_str(), FBankAccount.c_str(), FTradeAmount, FErrorId, FErrorMessage.c_str());
 		else
-			logStr.printf(L"%s %s 由[%s:%s]帳號[%s]轉金額[%13.2lf]到期貨成功.", FTradeDate, FTradeTime, FBankId, FBankName, FBankAccount, FTradeAmount);
+			logStr.printf(L"%s %s 由[%s:%s]帳號[%s]轉金額[%13.2lf]到期貨成功.", FTradeDate.c_str(), FTradeTime.c_str(), FBankId.c_str(), FBankName.c_str(), FBankAccount.c_str(), FTradeAmount);
 	}
 	else if (FTradeCode == L"202002")
 	{
 		if (FErrorId != 0)
-			logStr.printf(L"%s %s 由期貨轉金額[%13.2lf]到[%s:%s]帳號[%s]錯誤:%d[%s].", FTradeDate, FTradeTime, FTradeAmount, FBankId, FBankName, FBankAccount, FErrorId, FErrorMessage);
+			logStr.printf(L"%s %s 由期貨轉金額[%13.2lf]到[%s:%s]帳號[%s]錯誤:%d[%s].", FTradeDate.c_str(), FTradeTime.c_str(), FTradeAmount, FBankId.c_str(), FBankName.c_str(), FBankAccount.c_str(), FErrorId, FErrorMessage.c_str());
 		else
-			logStr.printf(L"%s %s 由期貨轉金額[%13.2lf]到[%s:%s]帳號[%s]成功.", FTradeDate, FTradeTime, FTradeAmount, FBankId, FBankName, FBankAccount);
+			logStr.printf(L"%s %s 由期貨轉金額[%13.2lf]到[%s:%s]帳號[%s]成功.", FTradeDate.c_str(), FTradeTime.c_str(), FTradeAmount, FBankId.c_str(), FBankName.c_str(), FBankAccount.c_str());
 	}
 	Unlock(RWLockType);
 	return logStr;
@@ -481,10 +481,10 @@ String CContractPosition::GenerateLogStr(nsOrderMessageDefine::SideEnum Side, Re
 	Lock(RWLockType);
 	if (Side == nsOrderMessageDefine::sBuy)
 		logStr.printf(L"[%s %s]B Hold[%04d] DH[%04d], Order: C[%04d] CT[%04d], Fill: O[%04d] C[%04d] CT[%04d]",
-					  FExchangeCode, FSymbol, FBuyHoldQuantity, FBuyDetailHoldQuantity, FBuyOrderCloseQuantity, FBuyOrderCloseTodayQuantity, FBuyFillOpenQuantity, FBuyFillCloseQuantity, FBuyFillCloseTodayQuantity);
+					  FExchangeCode.c_str(), FSymbol.c_str(), FBuyHoldQuantity, FBuyDetailHoldQuantity, FBuyOrderCloseQuantity, FBuyOrderCloseTodayQuantity, FBuyFillOpenQuantity, FBuyFillCloseQuantity, FBuyFillCloseTodayQuantity);
 	else if (Side == nsOrderMessageDefine::sSell)
 		logStr.printf(L"[%s %s]S Hold[%04d] DH[%04d], Order: C[%04d] CT[%04d], Fill: O[%04d] C[%04d] CT[%04d]",
-					  FExchangeCode, FSymbol, FSellHoldQuantity, FSellDetailHoldQuantity, FSellOrderCloseQuantity, FSellOrderCloseTodayQuantity, FSellFillOpenQuantity, FSellFillCloseQuantity, FSellFillCloseTodayQuantity);
+					  FExchangeCode.c_str(), FSymbol.c_str(), FSellHoldQuantity, FSellDetailHoldQuantity, FSellOrderCloseQuantity, FSellOrderCloseTodayQuantity, FSellFillOpenQuantity, FSellFillCloseQuantity, FSellFillCloseTodayQuantity);
 	Unlock(RWLockType);
 	return logStr;
 }  //CContractPosition::GenerateLogStr()
@@ -701,13 +701,13 @@ bool CTradingAccount::AddFee(CFeeObject *FeePtr, ReadWrietLockTypeEnum RWLockTyp
 		isSuccess = true;
 		if (!InsertFeeIntoTradeCodeIndex(exchangeCode, tradeContractCode, FeePtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Fee[%s-%s] into Trade Contract Code Index falied. trade[%s]", exchangeCode, contractCode, tradeContractCode);
+			logStr.printf(L"Insert Fee[%s-%s] into Trade Contract Code Index falied. trade[%s]", exchangeCode.c_str(), contractCode.c_str(), tradeContractCode.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 	}
 	else
 	{
-		logStr.printf(L"Insert Fee[%s-%s] into Contract Code Index falied. trade[%s]", exchangeCode, contractCode, tradeContractCode);
+		logStr.printf(L"Insert Fee[%s-%s] into Contract Code Index falied. trade[%s]", exchangeCode.c_str(), contractCode.c_str(), tradeContractCode.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 	}
 	Unlock(RWLockType);
@@ -726,16 +726,16 @@ int CTradingAccount::LoadTestFeeData()
 {
 	String logHead = L"CTradingObjectsPool::LoadTestFeeData()";
 	String logMsg = L"";
-	logMsg.printf(L"begin... ID=%s", FLogonId);
+	logMsg.printf(L"begin... ID=%s", FLogonId.c_str());
 	WriteUFCLog(logHead, logMsg, constFlush);
 
 	int commodityCount = 0;
 	String testFeeFileName = L"";
-	testFeeFileName.printf(L"testFee%s.ini", FLogonId);
+	testFeeFileName.printf(L"testFee%s.ini", FLogonId.c_str());
 	UFC::AnsiString ansiTestFeeFileName = ConvertUnicodeToUFCAnsiStr(testFeeFileName);
 	if (UFC::FileExists(ansiTestFeeFileName) == FALSE)
 	{
-		logMsg.printf(L"File[%s] not Exist.", testFeeFileName);
+		logMsg.printf(L"File[%s] not Exist.", testFeeFileName.c_str());
 		WriteUFCLog(logHead, logMsg, constFlush);
 		return commodityCount;
 	}
@@ -791,7 +791,7 @@ int CTradingAccount::LoadTestFeeData()
 					{
 						String fieldName = UTF8ToUnicodeString(ansiFieldName);
 						String fieldValue = UTF8ToUnicodeString(ansiFieldValue);
-						logMsg.printf(L"Wrong Setting valus%s=%s", fieldName, fieldValue);
+						logMsg.printf(L"Wrong Setting valus%s=%s", fieldName.c_str(), fieldValue.c_str());
 						WriteUFCLog(logHead, logMsg, constFlush);
 					}
 				}  //if (sectionPtr->GetNameValue(j, ansiContractCode, ansiFeeStr) == TRUE)
@@ -812,7 +812,7 @@ int CTradingAccount::LoadTestFeeData()
 			}
 			else
 			{
-				logMsg.printf(L"Fee Object[%s-%s] not Exist", exchangeCode, contractCode);
+				logMsg.printf(L"Fee Object[%s-%s] not Exist", exchangeCode.c_str(), contractCode.c_str());
 				WriteUFCLog(logHead, logMsg, constFlush);
 			}  //if (feeObjPtr != 0)
 			UnlockForWrite();
@@ -876,13 +876,13 @@ bool CTradingAccount::AddBankAccount(CBankAccount *BankAccountPtr, ReadWrietLock
 		isSuccess = true;
 		if (!AppendBankAccountToArray(BankAccountPtr, rwNotLock))
 		{
-			logStr.printf(L"Append BankAccount[%s] into Array falied.", bankAccount);
+			logStr.printf(L"Append BankAccount[%s] into Array falied.", bankAccount.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 	}
 	else
 	{
-		logStr.printf(L"Insert BankAccount[%s] into Code Index falied", bankAccount);
+		logStr.printf(L"Insert BankAccount[%s] into Code Index falied", bankAccount.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 	}
 	Unlock(RWLockType);
@@ -1008,7 +1008,7 @@ CContractPosition *CTradingAccount::FindOrCreateContractPositionSymbolIndex(cons
 		{
 			String logHead = L"CTradingAccount::FindOrCreateContractPositionSymbolIndex()";
 			String logStr;
-			logStr.printf(L"Insert ContractPosition[%s-%s] into Symbol Index falied.", ExchangeCode, Symbol);
+			logStr.printf(L"Insert ContractPosition[%s-%s] into Symbol Index falied.", ExchangeCode.c_str(), Symbol.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 			delete positionPtr;
 			positionPtr = 0;
@@ -1072,7 +1072,7 @@ bool CTradingAccount::AddCommodityCancelStatistic(const String& ExchangeCode, co
 		{
 			String logHead = L"CTradingAccount::AddCommodityCancelStatistic()";
 			String logStr;
-			logStr.printf(L"Insert CommodityCancelStatistic[%s-%s] into Code Index falied. Quantity[%d], Count[%d]", ExchangeCode, ContractCode, CancelQuantity, CancelCount);
+			logStr.printf(L"Insert CommodityCancelStatistic[%s-%s] into Code Index falied. Quantity[%d], Count[%d]", ExchangeCode.c_str(), ContractCode.c_str(), CancelQuantity, CancelCount);
 			WriteUFCLog(logHead, logStr, constFlush);
 			delete cancelStatisticPtr;
 			cancelStatisticPtr = 0;
@@ -1142,7 +1142,7 @@ bool CTradingAccount::AddContractCancelStatistic(const String& ExchangeCode, con
 		{
 			String logHead = L"CTradingAccount::AddContractCancelStatistic()";
 			String logStr;
-			logStr.printf(L"Insert AddContractCancelStatistic[%s-%s] into Symbol Index falied. Quantity[%d], Count[%d]", ExchangeCode, Symbol, CancelQuantity, CancelCount);
+			logStr.printf(L"Insert AddContractCancelStatistic[%s-%s] into Symbol Index falied. Quantity[%d], Count[%d]", ExchangeCode.c_str(), Symbol.c_str(), CancelQuantity, CancelCount);
 			WriteUFCLog(logHead, logStr, constFlush);
 			delete cancelStatisticPtr;
 			cancelStatisticPtr = 0;
@@ -1195,13 +1195,13 @@ void CTradingAccount::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockT
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"TradingAccount: LogonID[%s] Name[%s] BrokerID[%s] UserKey[%s].", FLogonId, FAccountName, FBrokerId, FUserKey);
+	dumpMessage.printf(L"TradingAccount: LogonID[%s] Name[%s] BrokerID[%s] UserKey[%s].", FLogonId.c_str(), FAccountName.c_str(), FBrokerId.c_str(), FUserKey.c_str());
 	WriteUFCLog(dumpMessage, constNotFlush);
 
 	for (int marketAccountIndex = 0; marketAccountIndex < FMarketCount; marketAccountIndex++)
 		FMarketAccountArray[marketAccountIndex]->DumpData(constNotFlush, rwLockForRead);
 
-	dumpMessage.printf(L"[%s]: %d Taifex Hold Position Data.", FLogonId, FTaifexHoldPositionArray.size());
+	dumpMessage.printf(L"[%s]: %d Taifex Hold Position Data.", FLogonId.c_str(), FTaifexHoldPositionArray.size());
 	WriteUFCLog(dumpMessage, constNotFlush);
 	for (unsigned int i = 0; i < FTaifexHoldPositionArray.size(); i++)
 	{
@@ -1209,7 +1209,7 @@ void CTradingAccount::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockT
 		holdPosPtr->DumpData(constNotFlush, rwLockForRead);
 	}
 
-	dumpMessage.printf(L"[%s]: %d Overseas Hold Position Data.", FLogonId, FOverseasHoldPositionArray.size());
+	dumpMessage.printf(L"[%s]: %d Overseas Hold Position Data.", FLogonId.c_str(), FOverseasHoldPositionArray.size());
 	WriteUFCLog(dumpMessage, constNotFlush);
 	for (unsigned int i = 0; i < FOverseasHoldPositionArray.size(); i++)
 	{
@@ -1217,7 +1217,7 @@ void CTradingAccount::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockT
 		holdPosPtr->DumpData(constNotFlush, rwLockForRead);
 	}
 
-	dumpMessage.printf(L"[%s]: %d Fee Data.", FLogonId, FFeeCodeIndex.size());
+	dumpMessage.printf(L"[%s]: %d Fee Data.", FLogonId.c_str(), FFeeCodeIndex.size());
 	CWStrTradingObjPtrHMap::iterator feeIt;
 	for (feeIt = FFeeCodeIndex.begin(); feeIt != FFeeCodeIndex.end(); feeIt++)
 	{

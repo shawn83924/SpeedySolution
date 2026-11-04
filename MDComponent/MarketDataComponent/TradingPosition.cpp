@@ -126,8 +126,8 @@ void CMatchSummary::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockTyp
 	String dumpMsg;
 	Lock(RWLockType);
 	dumpMsg.printf(L"Order[%s] [%s-%s] %s %s qty=%d px=%15.6lf amount=%15.6lf tax=%15.6lf fee=%15.6lf Exec[%s] ",
-				   FOrderId, FExchangeCode, FSymbol, DescribeBuySell(FSide), DescribePositionEffect(FPositionEffect),
-				   FMatchQuantity, FMatchPrice, FMatchAmount, FTax, FFee, FExecId);
+				   FOrderId.c_str(), FExchangeCode.c_str(), FSymbol.c_str(), DescribeBuySell(FSide).c_str(), DescribePositionEffect(FPositionEffect).c_str(),
+				   FMatchQuantity, FMatchPrice, FMatchAmount, FTax, FFee, FExecId.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(L"MatchSummary:", dumpMsg, DoFlushToFile);
 }  //CMatchSummary::DumpData()
@@ -261,7 +261,7 @@ void COffsetUnitRecord::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLoc
 	nsOrderMessageDefine::PositionEffectEnum openPositionEffect = FOpenMatchSummaryPtr->GetPositionEffect(rwNotLock);
 	double openMatchPrice = FOpenMatchSummaryPtr->GetMatchPrice(rwNotLock);
 	FOpenMatchSummaryPtr->UnlockForRead();
-	openMsg.printf(L"[%s %s %s Px=%15.6lf %s]", openOrderId, DescribeBuySell(openSide), DescribePositionEffect(openPositionEffect), openMatchPrice, openExecId);
+	openMsg.printf(L"[%s %s %s Px=%15.6lf %s]", openOrderId.c_str(), DescribeBuySell(openSide).c_str(), DescribePositionEffect(openPositionEffect).c_str(), openMatchPrice, openExecId.c_str());
 
 	if (FCloseMatchSummaryPtr != 0)
 	{
@@ -272,14 +272,14 @@ void COffsetUnitRecord::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLoc
 		nsOrderMessageDefine::PositionEffectEnum closePositionEffect = FCloseMatchSummaryPtr->GetPositionEffect(rwNotLock);
 		double closeMatchPrice = FCloseMatchSummaryPtr->GetMatchPrice(rwNotLock);
 		FCloseMatchSummaryPtr->UnlockForRead();
-		closeMsg.printf(L"[%s %s %s Px=%15.6lf %s]", closeOrderId, DescribeBuySell(closeSide), DescribePositionEffect(closePositionEffect), closeMatchPrice, closeExecId);
+		closeMsg.printf(L"[%s %s %s Px=%15.6lf %s]", closeOrderId.c_str(), DescribeBuySell(closeSide).c_str(), DescribePositionEffect(closePositionEffect).c_str(), closeMatchPrice, closeExecId.c_str());
 	}
 	Unlock(RWLockType);
 	String dumpMsg = L"";
 	if (closeMsg.Length() <= 0)
-		dumpMsg.printf(L"open interest unit[%s-%s] %s lastPx=%15.6lf floatingProfit=%15.6lf", exchangeCode, symbol, openMsg, FLastPrice, FFloatingProfit);
+		dumpMsg.printf(L"open interest unit[%s-%s] %s lastPx=%15.6lf floatingProfit=%15.6lf", exchangeCode.c_str(), symbol.c_str(), openMsg.c_str(), FLastPrice, FFloatingProfit);
 	else
-		dumpMsg.printf(L"offset unit[%s-%s] %s %s closeProfit=%15.6lf", exchangeCode, symbol, openMsg, closeMsg, FCloseProfit);
+		dumpMsg.printf(L"offset unit[%s-%s] %s %s closeProfit=%15.6lf", exchangeCode.c_str(), symbol.c_str(), openMsg.c_str(), closeMsg.c_str(), FCloseProfit);
 	WriteUFCLog(dumpMsg, DoFlushToFile);
 }  //COffsetUnitRecord::DumpData()
 
@@ -479,7 +479,7 @@ void CMatchPriceStatisticRecord::DumpData(bool DoFlushToFile, ReadWrietLockTypeE
 {
 	String dumpMsg = L"";
 	Lock(RWLockType);
-	dumpMsg.printf(L"%s Px=%15.6lf Qty[OpenInterest=%d DayTradeOpen=%d Open=%d Rolled=%d Close=%d]", DescribeBuySell(FSide), FMatchPrice, FOpenInterestQuantity, FDayTradeOpenQuantity, FOpenQuantity, FRolledQuantity, FCloseQuantity);
+	dumpMsg.printf(L"%s Px=%15.6lf Qty[OpenInterest=%d DayTradeOpen=%d Open=%d Rolled=%d Close=%d]", DescribeBuySell(FSide).c_str(), FMatchPrice, FOpenInterestQuantity, FDayTradeOpenQuantity, FOpenQuantity, FRolledQuantity, FCloseQuantity);
 	Unlock(RWLockType);
 	WriteUFCLog(L"MatchPriceStatistic:", dumpMsg, DoFlushToFile);
 }  //CMatchPriceStatisticRecord::DumpData()
@@ -859,7 +859,7 @@ CMatchPriceStatisticRecord *CPositionStatisticRecord::FindOrCreatPxQtyStatistic(
 			delete pxQtyStatisticPtr;
 			pxQtyStatisticPtr = 0;
 			String logMsg;
-			logMsg.printf(L"CPositionStatisticRecord::FindOrCreatPxQtyStatistic() Insert %s Price[%15.6lf] into Price Index Failed.", DescribeBuySell(Side), MatchPrice);
+			logMsg.printf(L"CPositionStatisticRecord::FindOrCreatPxQtyStatistic() Insert %s Price[%15.6lf] into Price Index Failed.", DescribeBuySell(Side).c_str(), MatchPrice);
 			WriteUFCLog(logMsg, constFlush);
 		}
 	}
@@ -1137,13 +1137,13 @@ bool CPositionStatisticRecord::ProcessMatchSummary(CMatchSummary *MatchSummaryPt
 			if (closeQuantity < matchQuantity)
 			{
 				isSuccess = false;
-				logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has no enough open interest.", orderId, execId, FExchangeCode, FSymbol);
+				logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has no enough open interest.", orderId.c_str(), execId.c_str(), FExchangeCode.c_str(), FSymbol.c_str());
 			}
 		}
 		else
 		{
 			isSuccess = false;
-			logMsg.printf(L"OrderId[%s] ExecId[%s] Wrong PositionEffect %d[%s]", orderId, execId, positionEffect, DescribePositionEffect(positionEffect));
+			logMsg.printf(L"OrderId[%s] ExecId[%s] Wrong PositionEffect %d[%s]", orderId.c_str(), execId.c_str(), positionEffect, DescribePositionEffect(positionEffect).c_str());
 		}
 
 		if (side == nsOrderMessageDefine::sBuy)
@@ -1167,7 +1167,7 @@ bool CPositionStatisticRecord::ProcessMatchSummary(CMatchSummary *MatchSummaryPt
 	else
 	{
 		isSuccess = false;
-		logMsg.printf(L"OrderId[%s] ExecId[%s] has Wrong Side %d[%s]", orderId, execId, side, DescribeBuySell(side));
+		logMsg.printf(L"OrderId[%s] ExecId[%s] has Wrong Side %d[%s]", orderId.c_str(), execId.c_str(), side, DescribeBuySell(side).c_str());
 	}  //if ((side == nsOrderMessageDefine::sBuy) || (side == nsOrderMessageDefine::sSell))
 
 	if (logMsg.Length() > 0) WriteUFCLog(L"CPositionStatisticRecord::ProcessMatchSummary()", logMsg, constFlush);
@@ -1201,7 +1201,7 @@ bool CPositionStatisticRecord::ProcessMatchSummaryBySide(CMatchSummary *MatchSum
 	MatchSummaryPtr->UnlockForWrite();
 	if ((side != nsOrderMessageDefine::sBuy) && (side != nsOrderMessageDefine::sSell))
 	{
-		logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has wrong Side[%d].", orderId, execId, FExchangeCode, FSymbol, side);
+		logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has wrong Side[%d].", orderId.c_str(), execId.c_str(), FExchangeCode.c_str(), FSymbol.c_str(), side);
 		WriteUFCLog(logHaed, logMsg, constFlush);
 		return false;
 	}
@@ -1262,7 +1262,7 @@ bool CPositionStatisticRecord::ProcessMatchSummaryBySide(CMatchSummary *MatchSum
 		if (closeQuantity < matchQuantity)
 		{
 			isSuccess = false;
-			logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has no enough open interest.", orderId, execId, FExchangeCode, FSymbol);
+			logMsg.printf(L"OrderId[%s] ExecId[%s] [%s-%s] has no enough open interest.", orderId.c_str(), execId.c_str(), FExchangeCode.c_str(), FSymbol.c_str());
 			WriteUFCLog(logHaed, logMsg, constFlush);
 		}
 	}  //if (closeMatchQuantity > 0)
@@ -1422,12 +1422,12 @@ bool CPositionStatisticRecord::AddFillReportData(const String& OrderId, const St
 		}
 		else
 		{
-			errorLog.printf(L"Insert Match Summary(OrderId[%s] ExecId[%s] Symbol[%s-%s]) into ExecID index failed.", OrderId, ExecId, FExchangeCode, FSymbol);
+			errorLog.printf(L"Insert Match Summary(OrderId[%s] ExecId[%s] Symbol[%s-%s]) into ExecID index failed.", OrderId.c_str(), ExecId.c_str(), FExchangeCode.c_str(), FSymbol.c_str());
 			delete newMatchSummaryPtr;
 		}
 	}
 	else
-		errorLog.printf(L"Insert Match Summary(OrderId[%s] ExecId[%s] Symbol[%s-%s]) Exist in ExecID index failed.", OrderId, ExecId, FExchangeCode, FSymbol);
+		errorLog.printf(L"Insert Match Summary(OrderId[%s] ExecId[%s] Symbol[%s-%s]) Exist in ExecID index failed.", OrderId.c_str(), ExecId.c_str(), FExchangeCode.c_str(), FSymbol.c_str());
 	Unlock(RWLockType);
 	if (errorLog.Length() > 0) WriteUFCLog(logHead, errorLog, constFlush);
 	return isSuccess;
@@ -1620,7 +1620,7 @@ void CPositionStatisticRecord::DumpTitle(ReadWrietLockTypeEnum RWLockType)
 	String isMarketDataReceivedStr = L"No Market Data Received";
 	Lock(RWLockType);
 	if (FIsMarketDataReceived) isMarketDataReceivedStr = L"Market Data Received";
-	dumpMsg.printf(L"Position Statistic[%s-%s(%s)] TaxRate=%-15.6lf LastPx=%-15.6lf Multiplier=%-15.6lf SubscribeCount=%d(%s)", FExchangeCode, FSymbol, FTradeSymbol, FTaxRate, FLastPrice, FContractMultiplier, FSubscribeCount, isMarketDataReceivedStr);
+	dumpMsg.printf(L"Position Statistic[%s-%s(%s)] TaxRate=%-15.6lf LastPx=%-15.6lf Multiplier=%-15.6lf SubscribeCount=%d(%s)", FExchangeCode.c_str(), FSymbol.c_str(), FTradeSymbol.c_str(), FTaxRate, FLastPrice, FContractMultiplier, FSubscribeCount, isMarketDataReceivedStr.c_str());
 	WriteUFCLog(dumpMsg, constNotFlush);
 	Unlock(RWLockType);
 }  //CPositionStatisticRecord::DumpTitle()
@@ -1629,9 +1629,9 @@ void CPositionStatisticRecord::DumpFee(ReadWrietLockTypeEnum RWLockType)
 {
 	String dumpMsg = L"";
 	Lock(RWLockType);
-	dumpMsg.printf(L"[%s-%s] Price  Fee Rate[Open=%-15.6lf Close=%-15.6lf CloseToday=%-15.6lf]", FExchangeCode, FSymbol, FOpenFeeRate, FCloseFeeRate, FCloseTodayFeeRate);
+	dumpMsg.printf(L"[%s-%s] Price  Fee Rate[Open=%-15.6lf Close=%-15.6lf CloseToday=%-15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FOpenFeeRate, FCloseFeeRate, FCloseTodayFeeRate);
 	WriteUFCLog(dumpMsg, constNotFlush);
-	dumpMsg.printf(L"[%s-%s] Volume Fee Unit[Open=%-15.6lf Close=%-15.6lf CloseToday=%-15.6lf]", FExchangeCode, FSymbol, FOpenUnitFee, FCloseUnitFee, FCloseTodayUnitFee);
+	dumpMsg.printf(L"[%s-%s] Volume Fee Unit[Open=%-15.6lf Close=%-15.6lf CloseToday=%-15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FOpenUnitFee, FCloseUnitFee, FCloseTodayUnitFee);
 	WriteUFCLog(dumpMsg, constNotFlush);
 	Unlock(RWLockType);
 }  //CPositionStatisticRecord::DumpFee()
@@ -1640,13 +1640,13 @@ void CPositionStatisticRecord::DumpQuantitySummary(ReadWrietLockTypeEnum RWLockT
 {
 	String dumpMsg = L"";
 	Lock(RWLockType);
-	dumpMsg.printf(L"[%s-%s] Buy  Qty[OI=%4d HO=%4d DT=%4d O=%4d CT=%4d C=%4d Sum=%4d] Amt[%15.6lf]", FExchangeCode, FSymbol, FBuyOpenInterestQuantity, FBuyHoldOpenQuantity, FBuyDayTradeOpenQuantity, FBuyOpenQuantity, FBuyRolledQuantity, FBuyCloseQuantity, FBuyQuantity, FBuyAmount);
+	dumpMsg.printf(L"[%s-%s] Buy  Qty[OI=%4d HO=%4d DT=%4d O=%4d CT=%4d C=%4d Sum=%4d] Amt[%15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FBuyOpenInterestQuantity, FBuyHoldOpenQuantity, FBuyDayTradeOpenQuantity, FBuyOpenQuantity, FBuyRolledQuantity, FBuyCloseQuantity, FBuyQuantity, FBuyAmount);
 	WriteUFCLog(dumpMsg, constNotFlush);
-	dumpMsg.printf(L"[%s-%s] Sell Qty[OI=%4d HO=%4d DT=%4d O=%4d CT=%4d C=%4d Sum=%4d] Amt[%15.6lf]", FExchangeCode, FSymbol, FSellOpenInterestQuantity, FSellHoldOpenQuantity, FSellDayTradeOpenQuantity, FSellOpenQuantity, FSellRolledQuantity, FSellCloseQuantity, FSellQuantity, FSellAmount);
+	dumpMsg.printf(L"[%s-%s] Sell Qty[OI=%4d HO=%4d DT=%4d O=%4d CT=%4d C=%4d Sum=%4d] Amt[%15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FSellOpenInterestQuantity, FSellHoldOpenQuantity, FSellDayTradeOpenQuantity, FSellOpenQuantity, FSellRolledQuantity, FSellCloseQuantity, FSellQuantity, FSellAmount);
 	WriteUFCLog(dumpMsg, constNotFlush);
-	dumpMsg.printf(L"[%s-%s] CloseProfit[%15.6lf] Tax[%15.6lf] Fee[%15.6lf]", FExchangeCode, FSymbol, FCloseProfit, FTax, FFee);
+	dumpMsg.printf(L"[%s-%s] CloseProfit[%15.6lf] Tax[%15.6lf] Fee[%15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FCloseProfit, FTax, FFee);
 	WriteUFCLog(dumpMsg, constNotFlush);
-	dumpMsg.printf(L"[%s-%s] FloatingProfit[%15.6lf] OITax[%15.6lf] OIFee[%15.6lf]", FExchangeCode, FSymbol, FFloatingProfit, FOpenInterestTax, FOpenInterestFee);
+	dumpMsg.printf(L"[%s-%s] FloatingProfit[%15.6lf] OITax[%15.6lf] OIFee[%15.6lf]", FExchangeCode.c_str(), FSymbol.c_str(), FFloatingProfit, FOpenInterestTax, FOpenInterestFee);
 	WriteUFCLog(dumpMsg, constNotFlush);
 	Unlock(RWLockType);
 }  //CPositionStatisticRecord::DumpQuantitySummary()

@@ -46,7 +46,7 @@ void __fastcall TLeaderBoardForm::WndProc( TMessage &Msg )
 		case WM_ERASEBKGND: Msg.Result = 1;
 							return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 String __fastcall TLeaderBoardForm::StatusToString( int status )

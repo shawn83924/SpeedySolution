@@ -24,12 +24,12 @@ const String STR_CONTRACTLIST( L"行情表");
 //------------------------------------------------------------------------------
 extern TCMarketDataStore   *gMarketDataStore;
 //------------------------------------------------------------------------------
-TColor CLTextColor[2]    = {RGB(51,51,51),RGB(187,187,187)};
-TColor CLOddRowColor[2]  = {RGB(255,255,255),RGB(53,53,53)};
-TColor CLEvenRowColor[2] = {RGB(248,248,248),RGB(69,69,69)};
-TColor CLRiseBKColor[2]  = {RGB(230,0,0),RGB(230,0,0)};
-TColor CLFallBKColor[2]  = {RGB(33,140,4),RGB(33,140,4)};
-TColor CLSymbolColor[2]  = {RGB(51,51,51),RGB(0,255,255)};
+TColor CLTextColor[2]    = {(TColor)RGB(51,51,51),(TColor)RGB(187,187,187)};
+TColor CLOddRowColor[2]  = {(TColor)RGB(255,255,255),(TColor)RGB(53,53,53)};
+TColor CLEvenRowColor[2] = {(TColor)RGB(248,248,248),(TColor)RGB(69,69,69)};
+TColor CLRiseBKColor[2]  = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor CLFallBKColor[2]  = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
+TColor CLSymbolColor[2]  = {(TColor)RGB(51,51,51),(TColor)RGB(0,255,255)};
 //------------------------------------------------------------------------------
 UFC::List<BasicInformation*> TContractListForm::FCustomMDList[CUSTOM_LIST_COUNT];
 //------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ void __fastcall TContractListForm::WndProc( TMessage &Msg )
 							  Msg.Result = MA_ACTIVATE;
 							  return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //------------------------------------------------------------------------------
 void __fastcall TContractListForm::SetContractListFormID( int ID )
@@ -70,7 +70,7 @@ void __fastcall TContractListForm::SetContractListFormID( int ID )
     if( FID == 0 )
 		FormName = STR_CONTRACTLIST;///< 商品表
     else
-		FormName.printf( L"%s-%d", STR_CONTRACTLIST, ID );
+		FormName.printf( L"%s-%d", STR_CONTRACTLIST.c_str(), ID );
     Caption = FormName;
 }
 //------------------------------------------------------------------------------

@@ -142,7 +142,7 @@ void TMegaService::GenData( const String& ID, const String& Password, String& Ou
 	String     CheckSum( ChkSum.ToString().c_str() );
 	String     Param;
 
-	Param.printf( L"{\"checksum\":\"%s\",\"cust_id\":\"%s\",\"pwd\":\"%s\"}",CheckSum, ID,Password );
+	Param.printf( L"{\"checksum\":\"%s\",\"cust_id\":\"%s\",\"pwd\":\"%s\"}",CheckSum.c_str(), ID.c_str(),Password.c_str() );
 	Out = Base64Encode( Param );  ///< Base64 Encode
 }
 //---------------------------------------------------------------------------
@@ -153,7 +153,7 @@ void TMegaService::GenData( const String& ID, const String& Password, const Stri
 	String     CheckSum( ChkSum.ToString().c_str() );
 	String     Param;
 
-	Param.printf( L"{\"checksum\":\"%s\",\"branch_id\":\"%s\",\"cust_id\":\"%s\",\"pwd\":\"%s\"}",CheckSum,IB,ID,Password );
+	Param.printf( L"{\"checksum\":\"%s\",\"branch_id\":\"%s\",\"cust_id\":\"%s\",\"pwd\":\"%s\"}",CheckSum.c_str(),IB.c_str(),ID.c_str(),Password.c_str() );
 	Out = Base64Encode( Param );  ///< Base64 Encode
 }
 //---------------------------------------------------------------------------
@@ -164,7 +164,7 @@ void TMegaService::GenData2( const String& ID, const String& Password, const Str
 	String     CheckSum( ChkSum.ToString().c_str() );
 	String     Param;
 
-	Param.printf( L"{\"checksum\":\"%s\",\"branch_id\":\"%s\",\"cust_id\":\"%s\",\"tip\":\"1\"}",CheckSum,IB,ID );
+	Param.printf( L"{\"checksum\":\"%s\",\"branch_id\":\"%s\",\"cust_id\":\"%s\",\"tip\":\"1\"}",CheckSum.c_str(),IB.c_str(),ID.c_str() );
 	Out = Base64Encode( Param );  ///< Base64 Encode
 }
 //---------------------------------------------------------------------------
@@ -179,7 +179,7 @@ bool TMegaService::RequestLogon( TMemoryStream* OutStream, String& Msg )
 	try
 	{
 		GenData( FID, FPassword, Data );
-		URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_01", FBaseURL, Data );
+		URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_01", FBaseURL.c_str(), Data.c_str() );
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{
 			SSLIOHandler->SSLOptions->Method = sslvSSLv23;
@@ -212,12 +212,12 @@ bool TMegaService::RequestPosition(  bool IsTAIFEX, const String& Account, TMemo
 		if( IsTAIFEX == true )
 		{
 			GenData( Account, FPassword, L"098",  Data ); ///< Mega only one branch F030000 map to 098
-			URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_03", FBaseURL, Data );
+			URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_03", FBaseURL.c_str(), Data.c_str() );
 		}
 		else
 		{
 			GenData2( Account, FPassword, L"000",  Data );
-			URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_06", FBaseURL, Data );
+			URL.printf( L"%sdataTrans.do?data=%s&txid=IFT_O_06", FBaseURL.c_str(), Data.c_str() );
         }
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{
@@ -451,10 +451,10 @@ void TMegaService::AddPosition( const String& Account, TJSONArray *PosArray )
 				holdPositionPtr->SetTradeDate( TradeDate, rwNotLock);
 				AccountPtr->AppendTaifexHoldPositionToArray(holdPositionPtr, rwLockForWrite);
 
-				Msg.printf( L" %s %s %d@%0.3f", symbol, side, quantity, matchPrice );
+				Msg.printf( L" %s %s %d@%0.3f", symbol.c_str(), side.c_str(), quantity, matchPrice );
 			}
 			else
-				Msg.printf( L" Prod[%s][%s] Side[%s] %d@%0.3f not found!", ProdID, maturityYearMonth, side, quantity, matchPrice );
+				Msg.printf( L" Prod[%s][%s] Side[%s] %d@%0.3f not found!", ProdID.c_str(), maturityYearMonth.c_str(), side.c_str(), quantity, matchPrice );
 			AnsiString AnsiMsg( Msg );
 			UFC::BufferedLog::Printf( " %s", AnsiMsg.c_str());
 		}
@@ -505,7 +505,7 @@ bool TMegaService::SignAgreememt( const String& Account, TCAChecker* CAChecker, 
 		 {
 			 String SignTxt;
 
-			 SignTxt.printf( L"SpeedyUnify_Mega_%s_Signed_Agreement", Account );
+			 SignTxt.printf( L"SpeedyUnify_Mega_%s_Signed_Agreement", Account.c_str() );
 			 if( CAChecker->SignAgrement( SignTxt, Msg ) == true )
 			 {
 				 g_Config.SetIntegerProperty( Account, "Agreement", 1 );

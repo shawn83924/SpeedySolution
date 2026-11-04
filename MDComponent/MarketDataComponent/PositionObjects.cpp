@@ -256,11 +256,11 @@ void TOpenInterestRecord::DumpData(const String& PrefixMsg)
 	String dumpMsg = L"";
 	if (PrefixMsg.Length() > 0)
 		dumpMsg.printf(L"%s[%s %s] %s Px=%12.5lf  MQty=%d  OI=%d  C=%d",
-					   PrefixMsg, FExchangeCode, FSymbolCode, sideName,
+					   PrefixMsg.c_str(), FExchangeCode.c_str(), FSymbolCode.c_str(), sideName.c_str(),
 					   FMatchPrice, FMatchQuantity, FOpenQuantity, FCloseQuantity);
 	else
 		dumpMsg.printf(L"[%s %s] %s Px=%12.5lf  MQty=%d  OI=%d  C=%d",
-					   FExchangeCode, FSymbolCode, sideName,
+					   FExchangeCode.c_str(), FSymbolCode.c_str(), sideName.c_str(),
 					   FMatchPrice, FMatchQuantity, FOpenQuantity, FCloseQuantity);
 	AnsiString ansiDumpMsg = s888::ConvertUnicodeToAnsiStr(dumpMsg);
 	UFC::BufferedLog::Printf(" %s", ansiDumpMsg.c_str());
@@ -351,11 +351,11 @@ void TMatchPriceSumRecord::DumpData(const String& PrefixMsg)
 	String dumpMsg = L"";
 	if (PrefixMsg.Length() > 0)
 		dumpMsg.printf(L"%s[%s %s] %s Px=%13.6lf  Qty=%d  O=%d  C=%d",
-					   PrefixMsg, FExchangeCode, FSymbolCode, sideName,
+					   PrefixMsg.c_str(), FExchangeCode.c_str(), FSymbolCode.c_str(), sideName.c_str(),
 					   FMatchPrice, FMatchQuantity, FMatchQuantity - FCloseQuantity, FCloseQuantity);
 	else
 		dumpMsg.printf(L"[%s %s] %s Px=%13.6lf  Qty=%d  O=%d  C=%d",
-					   FExchangeCode, FSymbolCode, sideName,
+					   FExchangeCode.c_str(), FSymbolCode.c_str(), sideName.c_str(),
 					   FMatchPrice, FMatchQuantity, FMatchQuantity - FCloseQuantity, FCloseQuantity);
 	AnsiString ansiDumpMsg = s888::ConvertUnicodeToAnsiStr(dumpMsg);
 	UFC::BufferedLog::Printf(" %s", ansiDumpMsg.c_str());
@@ -747,7 +747,7 @@ void TPositionRecord::OffsetPosition(nsOrderMessageDefine::SideEnum Side,
 	String errorLog = L"";
 	if ((Side != nsOrderMessageDefine::sBuy) && (Side != nsOrderMessageDefine::sSell))
 	{
-		errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] Wrong Side[%d]. MatchPx=%13.6lf, MatchQty[%d]", FExchangeCode, FSymbolCode, Side, MatchPrice, MatchQuantity);
+		errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] Wrong Side[%d]. MatchPx=%13.6lf, MatchQty[%d]", FExchangeCode.c_str(), FSymbolCode.c_str(), Side, MatchPrice, MatchQuantity);
 		UFC::BufferedLog::Printf(" %s", s888::ConvertUnicodeToAnsiStr(errorLog).c_str());
 		UFC::BufferedLog::FlushToFile();
 		return;
@@ -819,7 +819,7 @@ void TPositionRecord::OffsetPosition(nsOrderMessageDefine::SideEnum Side,
 		SumFillData(Side, MatchPrice, MatchQuantity, newOIRecPtr->GetCloseQuantity());
 		if (newOIRecPtr->GetOpenQuantity() > 0)
 		{
-			errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] PositionEffect[%d], MatchPx=%13.6lf, not engogh OpenQty, MatchQty[%d] - OpenQty = %d.", FExchangeCode, FSymbolCode, PositionEffect, MatchPrice, MatchQuantity, newOIRecPtr->GetOpenQuantity());
+			errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] PositionEffect[%d], MatchPx=%13.6lf, not engogh OpenQty, MatchQty[%d] - OpenQty = %d.", FExchangeCode.c_str(), FSymbolCode.c_str(), PositionEffect, MatchPrice, MatchQuantity, newOIRecPtr->GetOpenQuantity());
 			UFC::BufferedLog::Printf(" %s", s888::ConvertUnicodeToAnsiStr(errorLog).c_str());
 		}
 		delete newOIRecPtr;
@@ -827,7 +827,7 @@ void TPositionRecord::OffsetPosition(nsOrderMessageDefine::SideEnum Side,
 	else
 	{
 		delete newOIRecPtr;
-		errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] Wrong PositionEffect[%d]. MatchPx=%13.6lf, MatchQty[%d]", FExchangeCode, FSymbolCode, PositionEffect, MatchPrice, MatchQuantity);
+		errorLog.printf(L"TPositionRecord::OffsetPosition() [%s-%s] Wrong PositionEffect[%d]. MatchPx=%13.6lf, MatchQty[%d]", FExchangeCode.c_str(), FSymbolCode.c_str(), PositionEffect, MatchPrice, MatchQuantity);
 		UFC::BufferedLog::Printf(" %s", s888::ConvertUnicodeToAnsiStr(errorLog).c_str());
 	}
 	UFC::BufferedLog::FlushToFile();
@@ -858,7 +858,7 @@ bool TPositionRecord::AddFillReportData(const String& OrderID, const String& Exe
 	else
 	{
 		String errorLog = L"";
-		errorLog.printf(L"TPositionRecord::AddFillReportData() Insert OrderId[%s] ExecId[%s] Symbol[%s-%s] Match Record ExecID index failed.", OrderID, ExecID, FExchangeCode, FSymbolCode);
+		errorLog.printf(L"TPositionRecord::AddFillReportData() Insert OrderId[%s] ExecId[%s] Symbol[%s-%s] Match Record ExecID index failed.", OrderID.c_str(), ExecID.c_str(), FExchangeCode.c_str(), FSymbolCode.c_str());
 		UFC::BufferedLog::Printf(" %s", s888::ConvertUnicodeToAnsiStr(errorLog).c_str());
 		UFC::BufferedLog::FlushToFile();
 		delete newMatchRecPtr;

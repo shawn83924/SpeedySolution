@@ -15,7 +15,7 @@
 const int COL_COUNT = 13;
 const int ShortWidth = 30;
 const int DEPTH_COUNT = 10;
-const PAINT_TIMER_ID = 100079;
+const int PAINT_TIMER_ID = 100079;
 //---------------------------------------------------------------------------
 UFC::List<TOrderBookList*>  TOrderBookList::FSyncDepth;
 //---------------------------------------------------------------------------
@@ -1772,7 +1772,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 				OnKeySellDown( );
 			else
 				OnKeyBuyDown();
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 			{
 				if( (Dapth = FSyncDepth[i]) != this )
 				{
@@ -1796,7 +1796,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 				OnKeyBuyDown();
 			else
 				OnKeySellDown();
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 			{
 				if( (Dapth = FSyncDepth[i]) != this )
 				{
@@ -1816,7 +1816,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 
 		if( FSync == true )
 		{
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 				 FSyncDepth[i]->ChangeBetterValue( NewBetter );
 		}
 		else
@@ -1829,7 +1829,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 
 		if( FSync == true )
 		{
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 				 FSyncDepth[i]->ChangeBetterValue( NewBetter );
 		}
 		else
@@ -1845,7 +1845,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 				FOnNewMarketOrder( this, nsOrderMessageDefine::sSell, FClickQty );
 			else
 				FOnNewMarketOrder( this, nsOrderMessageDefine::sBuy, FClickQty );
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 			{
 				if( (Dapth = FSyncDepth[i]) != this )
 				{
@@ -1869,7 +1869,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 				FOnNewMarketOrder( this, nsOrderMessageDefine::sBuy, FClickQty );
 			else
 				FOnNewMarketOrder( this, nsOrderMessageDefine::sSell, FClickQty );
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 			{
 				if( (Dapth = FSyncDepth[i]) != this )
 				{
@@ -1887,7 +1887,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 	{
 		if( FSync == true )
 		{
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 				 FSyncDepth[i]->TriggerCancelAllBuyOrders( );
 		}
 		else
@@ -1897,7 +1897,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 	{
 		if( FSync == true )
 		{
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 				 FSyncDepth[i]->TriggerCancelAllSellOrders( );
 		}
 		else
@@ -1909,7 +1909,7 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 	{
 		if( FSync == true )
 		{
-			for( register i = 0; i< FSyncDepth.ItemCount();i++)
+			for( register int i = 0; i< FSyncDepth.ItemCount();i++)
 			{
 				FSyncDepth[i]->TriggerCancelAllBuyOrders();
 				FSyncDepth[i]->TriggerCancelAllSellOrders( );
@@ -3265,7 +3265,7 @@ void __fastcall TOrderBookList::WndProc( TMessage &Msg )
 			}
 			break;
 	}
-	inherited::WndProc( Msg );
+	TCustomGrid::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOrderBookList::EnableHotkey( bool Enable )

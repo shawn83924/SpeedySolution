@@ -5,6 +5,7 @@
 #include "UFC.h"
 #include "iniFile.h"
 #include "AgentForm.h"
+#include "MDComponentStrings.hpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -63,10 +64,10 @@ void RegisterDlls( void )
 				String dllName( SectionName.c_str() );
 				String Msg,VerStr;
 
-				Msg.printf( L"註冊動態連結庫:%s", dllName );
+				Msg.printf( L"註冊動態連結庫:%s", dllName.c_str() );
 				AgentMain->Memo->Lines->Add( Msg );
 				FileVersion( SectionName.c_str(), VerStr );
-				Msg.printf( L"版本[%s]",VerStr );
+				Msg.printf( L"版本[%s]",VerStr.c_str() );
 				AgentMain->Memo->Lines->Add( Msg );
 				Application->ProcessMessages();
 				CMD.Printf( "regsvr32 /s %s", SectionName.c_str() );
@@ -125,13 +126,13 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		///< Backup the old version. SpeedyUnify.exe -> SpeedyUnifyPrev.exe
 		FileVersion( MAIN_EXE, VerStr );
 		AgentMain->Memo->Lines->Add( L"更新 " + Mdcomponentstrings_MD_SpeedyUnify_AppName);
-		Msg.printf( L"移除舊版[%s]",VerStr );
+		Msg.printf( L"移除舊版[%s]",VerStr.c_str() );
 		AgentMain->Memo->Lines->Add( Msg );
 		if( MoveFileEx( MAIN_EXE, PREV_EXE, MOVEFILE_REPLACE_EXISTING ) )///< Rename old EXE file
 		{	// SpeedyUnify.ex_ > SpeedyUnify.exe
 			MoveFile( NEW_EXE, MAIN_EXE );  ///< rename to new
 			FileVersion( MAIN_EXE, VerStr );
-			Msg.printf( L"更新成新版[%s]",VerStr );
+			Msg.printf( L"更新成新版[%s]",VerStr.c_str() );
 			AgentMain->Memo->Lines->Add( Msg );
 		}
 	}

@@ -824,7 +824,7 @@ bool __fastcall THoldOpenInterestForm::CloseOrder( TOrderStore* OrdStore, BasicI
 	}
 	try
 	{
-		nsOrderMessageDefine::MarketEnum      Market = Info->GetMarket();
+		nsOrderMessageDefine::MarketEnum      Market = static_cast<nsOrderMessageDefine::MarketEnum>( Info->GetMarket() );
 		nsOrderMessageDefine::OrderTypeEnum   OrderType = nsOrderMessageDefine::otLimit;
 		nsOrderMessageDefine::TimeInForceEnum TIF = nsOrderMessageDefine::tifROD;
 
@@ -917,7 +917,7 @@ void __fastcall THoldOpenInterestForm::CloseAllItemClick(TObject *Sender)
 	{
 		String StockName;
 
-		StockName.printf( L"енн▄[%s]", Item->Caption );
+		StockName.printf( L"енн▄[%s]", Item->Caption.c_str() );
 		AskCloseAllForm->Caption = StockName;
 		if( AskCloseAllForm->ShowModal() == mrOk )
 		{
@@ -941,7 +941,7 @@ void __fastcall THoldOpenInterestForm::CloseAllPosItemClick(TObject *Sender)
 		if( Item != NULL && Item->Data != NULL && Item->Selected == true )
 		{
 			String StockName;
-			StockName.printf( L"[%s]", Item->Caption );
+			StockName.printf( L"[%s]", Item->Caption.c_str() );
 			CaptionText += StockName;
 		}
 	}

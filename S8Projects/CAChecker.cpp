@@ -56,7 +56,7 @@ bool TCAChecker::InitialCheckerAndTest( String& Reason /* out */ )
 		Reason = L"虛擬交易CA無須驗證";
 		return true;
     }
-	FSignSubject.printf( L"CN=%s\nOU=MegaSecurities\tCN=%s\nOU=Mega Securities:ADMIN\tCN=%s\nOU=International Securities Co.,",FID,FID,FID);
+	FSignSubject.printf( L"CN=%s\nOU=MegaSecurities\tCN=%s\nOU=Mega Securities:ADMIN\tCN=%s\nOU=International Securities Co.,",FID.c_str(),FID.c_str(),FID.c_str());
 	FLocalIP = gOrderStore->LocalIP;
 	FAnsiLocalIP = gOrderStore->LocalIP;
 	if( gCheckCA == true ) ///< Check CA
@@ -225,7 +225,7 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 		bool            Rtn;
 
 		URL.printf( L"%s?srccode=SP&bizcode=%s&loginip=%s&pid=%s&loginacc=mega&loginpass=123123&data=%s&sn=%s&p1sign=%s&operation=p1verifysign",
-					  FURL, BizCode, FLocalIP, FID, Content, FCASerial, sign );
+					  FURL.c_str(), BizCode.c_str(), FLocalIP.c_str(), FID.c_str(), Content.c_str(), FCASerial.c_str(), sign.c_str() );
 		FHTTP->Request->Method       = L"POST";
 		FHTTP->Request->ContentType  = L"application/x-www-form-urlencoded";
 		FHTTP->ConnectTimeout        = 90000; ///< 90 sec IIS default(Paul said)

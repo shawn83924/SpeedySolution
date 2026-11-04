@@ -1278,7 +1278,7 @@ BasicInformation* __fastcall TCMarketDataStore::GetFUTInfo( const String& Exchan
 {
 	String Key;
 
-	Key.printf( L"%s.%s.%s", Exchange, SymbolPrefix, MaturityDate );
+	Key.printf( L"%s.%s.%s", Exchange.c_str(), SymbolPrefix.c_str(), MaturityDate.c_str() );
 	return FQueryTable.GetObjectByKey( UFC::AnsiString( Key.c_str()) );
 }
 //---------------------------------------------------------------------------
@@ -1286,7 +1286,7 @@ BasicInformation* __fastcall TCMarketDataStore::GetFUTInfo( const String& Exchan
 {
 	String Key;
 
-	Key.printf( L"%s.%s.%s.%s", Exchange, SymbolPrefix, MaturityDate1, MaturityDate2 );
+	Key.printf( L"%s.%s.%s.%s", Exchange.c_str(), SymbolPrefix.c_str(), MaturityDate1.c_str(), MaturityDate2.c_str() );
 	return FQueryTable.GetObjectByKey( UFC::AnsiString( Key.c_str() ) );
 }
 //---------------------------------------------------------------------------
@@ -1294,7 +1294,7 @@ BasicInformation* __fastcall TCMarketDataStore::GetOPTInfo( const String& Exchan
 {
 	String Key;
 
-	Key.printf( L"%s.%s.%s.%d.%c", Exchange, SymbolPrefix, MaturityDate, UFC::DoubleToInt( StrikePrice, 4 ), CP == cpCall?'C':'P' );
+	Key.printf( L"%s.%s.%s.%d.%c", Exchange.c_str(), SymbolPrefix.c_str(), MaturityDate.c_str(), UFC::DoubleToInt( StrikePrice, 4 ), CP == cpCall?'C':'P' );
 	return FQueryTable.GetObjectByKey( UFC::AnsiString( Key.c_str() ) );
 }
 //---------------------------------------------------------------------------
@@ -1302,7 +1302,7 @@ const UFC::List<BasicInformation*>* __fastcall TCMarketDataStore::GetMDSeries( c
 {
 	String Key;
 
-	Key.printf( L"%s.%s", Exchange, SymbolPrefix );
+	Key.printf( L"%s.%s", Exchange.c_str(), SymbolPrefix.c_str() );
 	return FPrefixMap.GetObjectByKey( UFC::AnsiString(Key.c_str() )  );
 }
 //---------------------------------------------------------------------------
@@ -1334,7 +1334,7 @@ const TStringList* TCMarketDataStore::GetOPTMonthYear( const String& Exchange, c
 {
 	String Key;
 
-	Key.printf( L"%s.%s", Exchange, SymbolPrefix );
+	Key.printf( L"%s.%s", Exchange.c_str(), SymbolPrefix.c_str() );
 	return FOPTYearMonthTable.GetObjectByKey( UFC::AnsiString(Key.c_str() ) );
 }
 //---------------------------------------------------------------------------
@@ -1342,7 +1342,7 @@ const UFC::List<BasicInformation*>* __fastcall TCMarketDataStore::GetOPTMDSeries
 {
 	String Key;
 
-	Key.printf( L"%s.%s.%s", Exchange, SymbolPrefix, MonthYear );
+	Key.printf( L"%s.%s.%s", Exchange.c_str(), SymbolPrefix.c_str(), MonthYear.c_str() );
 	return FOPTStrikePriceTable.GetObjectByKey( UFC::AnsiString(Key.c_str() ) );
 }
 //---------------------------------------------------------------------------
@@ -1397,7 +1397,7 @@ const TTickList* __fastcall TCMarketDataStore::GetTickList( const String& Exchan
 	TTickList* List = FTickTable.GetObjectByKey( symbol.c_str() );
 	if( List == NULL ) ////< not in the table, add one.
 	{
-		BasicInformation* Info = GetBasicInformation( exchange.c_str(), symbol.c_str(), false );
+		BasicInformation* Info = GetBasicInformation( UFC::AnsiString( exchange.c_str() ), UFC::AnsiString( symbol.c_str() ), false );
 		if( Info != NULL )
 		{
 			List = new TTickList( Info );

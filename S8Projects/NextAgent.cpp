@@ -28,7 +28,7 @@ USEFORM("AgentForm.cpp", AgentMain );
 	ShellExecuteEx( &si );   /// Execute the PMFNext
 } */
 //------------------------------------------------------------------------------
-WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR CMD, int)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR CMD, int)
 {
 	try
 	{

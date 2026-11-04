@@ -161,7 +161,7 @@ void __fastcall TContractViewerForm::AddSymbols(  TLabel* StatusLabel  )
 			if( StatusLabel != NULL )
 			{
 				String Msg;
-				Msg.printf( L"建立[%s]商品索引", Exchange );
+				Msg.printf( L"建立[%s]商品索引", Exchange.c_str() );
 				StatusLabel->Caption = Msg;
 				Application->ProcessMessages();
 			}
@@ -216,10 +216,10 @@ void __fastcall TContractViewerForm::AddTAIFEX( String Exchange )
 					{
 						CMarketDataStore->TAIFEXStockProduct( Info->GetProductID(), StockID );
 						Stock = StockID.c_str();
-						DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()) ,Info->GetDisplayName(), Stock );
+						DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()).c_str() ,Info->GetDisplayName(), Stock.c_str() );
 					}
 					else
-						DispName.printf( L"[%s] %s", String( Info->GetSymbol().c_str()) ,Info->GetDisplayName() );
+						DispName.printf( L"[%s] %s", String( Info->GetSymbol().c_str()).c_str() ,Info->GetDisplayName() );
 					FTAIFEXFuturesSearchKeys->AddObject( DispName, new TSymbolItem( Info ) );
 				}
 			}
@@ -231,10 +231,10 @@ void __fastcall TContractViewerForm::AddTAIFEX( String Exchange )
 					{
 						CMarketDataStore->TAIFEXStockProduct( Info->GetProductID(), StockID );
 						Stock = StockID.c_str();
-						DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()) ,Info->GetDisplayName(), Stock );
+						DispName.printf( L"[%s] %s %s", String( Info->GetSymbol().c_str()).c_str() ,Info->GetDisplayName(), Stock.c_str() );
 					}
 					else
-						DispName.printf( L"[%s] %s", String(Info->GetSymbol().c_str()) ,Info->GetDisplayName() );
+						DispName.printf( L"[%s] %s", String(Info->GetSymbol().c_str()).c_str() ,Info->GetDisplayName() );
 					FTAIFEXOptionsSearchKeys->AddObject( DispName, new TSymbolItem( Info ) );
 				}
 			}
@@ -262,7 +262,7 @@ void __fastcall TContractViewerForm::AddStock( String Exchange )
 			UFC::AnsiString UTF8ChineseName( Info->GetChineseName() ) ;
 
 			ChineseName = UTF8ToString( UTF8ChineseName.c_str() );
-			DispName.printf(L"[%s] %s", String(Info->GetSymbol().c_str()) ,ChineseName );
+			DispName.printf(L"[%s] %s", String(Info->GetSymbol().c_str()).c_str() ,ChineseName.c_str() );
 			if( Info->IsWarrant( ) == true )
 			{
 				if( Info->GetMarket() == ::mTSE )
@@ -1268,14 +1268,14 @@ TDepthForm* __fastcall TContractViewerForm::OpenOrderBookForm( String Exchange, 
 		MaxCount = 2;
 	if( FDepthForms.ItemCount() < MaxCount )
 	{
-		if( (gMarketDataStore->GetBasicInformation( exchange.c_str(), symbol.c_str(), false ))!= NULL )
+		if( (gMarketDataStore->GetBasicInformation( UFC::AnsiString( exchange.c_str() ), UFC::AnsiString( symbol.c_str() ), false ))!= NULL )
 		{
 			if( PageIndex == -1 )
 				PageIndex = MainForm->PageControl->ActivePageIndex;
 			ActivePage = MainForm->PageControl->Pages[ PageIndex ];
 			if( ActivePage == NULL )
 				ActivePage = MainForm->PageControl->ActivePage;
-			if( IsListExists( exchange.c_str(), symbol.c_str(), PageIndex ) == false ) ///< Not opened
+			if( IsListExists( UFC::AnsiString( exchange.c_str() ), UFC::AnsiString( symbol.c_str() ), PageIndex ) == false ) ///< Not opened
 			{ 	///< Create list of same symbol.
 				SymbolDepthFormList = new UFC::List<TDepthForm*>();
 				///< Add to map
@@ -1285,7 +1285,7 @@ TDepthForm* __fastcall TContractViewerForm::OpenOrderBookForm( String Exchange, 
 			}
 			else ///< Already exist
 			{
-				if( (SymbolDepthFormList = SearchListFromMap( exchange.c_str(), symbol.c_str() )) != NULL )
+				if( (SymbolDepthFormList = SearchListFromMap( UFC::AnsiString( exchange.c_str() ), UFC::AnsiString( symbol.c_str() ) )) != NULL )
 				{
 					if( NewIfExist == false ) ///< Already exists, Focus it.
 					{

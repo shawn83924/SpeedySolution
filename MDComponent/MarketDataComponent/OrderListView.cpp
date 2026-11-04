@@ -1136,13 +1136,13 @@ void __fastcall TOrderListView::WndProc(Messages::TMessage &Message)
 				Message.Result = 1;
 			}
 			else
-				inherited::WndProc( Message );
+				TCustomListView::WndProc( Message );
 			break;
 		case WM_ERASEBKGND:
 			Message.Result = 1;
 			return;
 		default:
-			inherited::WndProc( Message );
+			TCustomListView::WndProc( Message );
 			break;
 	}  //switch(Message.Msg)
 }  //TOrderListView::WndProc()

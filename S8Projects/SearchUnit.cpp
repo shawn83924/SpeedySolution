@@ -23,7 +23,7 @@ void __fastcall TSearchSymbolForm::WndProc( TMessage &Msg )
 		case WM_ERASEBKGND: PaintBk( Msg );
 							return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TSearchSymbolForm::PaintBk( TMessage &Msg )
