@@ -1375,11 +1375,19 @@ object CASettingForm: TCASettingForm
         Height = 19
         Caption = #24977#35657#27284#26696
       end
-      object DirectoryListBox: TDirectoryListBox
+      object DriveComboBox: TDriveComboBox
         Left = 3
         Top = 3
         Width = 191
-        Height = 183
+        Height = 25
+        DirList = DirectoryListBox
+        TabOrder = 3
+      end
+      object DirectoryListBox: TDirectoryListBox
+        Left = 3
+        Top = 33
+        Width = 191
+        Height = 153
         FileList = FileListBox
         ItemHeight = 19
         TabOrder = 0

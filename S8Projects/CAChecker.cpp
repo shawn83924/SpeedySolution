@@ -70,7 +70,7 @@ bool TCAChecker::InitialCheckerAndTest( String& Reason /* out */ )
 			FCAObject = new TMEGASECCAPI( FOwner );
 		if( FCAObject != NULL )
 		{
-			String Content( L"CATest" );
+			String Content( L"Atrade_login" );
 			int    Err = Sign( Content, sign );
 
 			if( Err != 0 )
@@ -443,7 +443,7 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 	{
 		ComType CType;
 		String Content,Reason;
-		UFC::AnsiString Text, TIF, PE, ExMarket,ExecType;
+		UFC::AnsiString Text, TIF, PE, ExMarket,ExecType, TimeStamp;
 
 		switch( SType )
 		{
@@ -492,8 +492,12 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 			CType = ctInternational;
 			ExMarket = "ForeignFUT";
 		}
+		SYSTEMTIME ST;
+		GetLocalTime( &ST );
+		TimeStamp.Printf( "%04d%02d%02d%02d%02d%02d%03d", ST.wYear, ST.wMonth, ST.wDay,
+						  ST.wHour, ST.wMinute, ST.wSecond, ST.wMilliseconds );
 		if( SType == smtNew )
-			Text.Printf( "MEGAAtrade_Mega_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
+			Text.Printf( "Atrade_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
 					  ExMarket.c_str(),
 					  ExecType.c_str(),
 					  Msg->GetBrokerID(),
@@ -502,9 +506,12 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 					  Msg->GetOrderQty(),
 					  Msg->GetPrice(),
 					  (Msg->GetSide() == nsOrderMessageDefine::sBuy)?"B":"S",
-					  TIF.c_str(), PE.c_str(), FAnsiLocalIP.c_str() );
+					  TIF.c_str(),
+					  PE.c_str(),
+					  FAnsiLocalIP.c_str(),
+					  TimeStamp.c_str() );
 		else
-			Text.Printf( "MEGAAtrade_Mega_%s_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s",
+			Text.Printf( "Atrade_%s_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
 					  ExMarket.c_str(),
 					  ExecType.c_str(),
                       Msg->GetOrderID(),
@@ -514,7 +521,10 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 					  Msg->GetOrderQty(),
 					  Msg->GetPrice(),
 					  (Msg->GetSide() == nsOrderMessageDefine::sBuy)?"B":"S",
-					  TIF.c_str(), PE.c_str(), FAnsiLocalIP.c_str() );
+					  TIF.c_str(),
+					  PE.c_str(),
+					  FAnsiLocalIP.c_str(),
+					  TimeStamp.c_str() );
 
 		Content = Text.c_str();
 		///< Send to CA queue

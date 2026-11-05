@@ -28,18 +28,27 @@ void __fastcall TCASettingForm::BrowseButtonClick(TObject *Sender)
 
 	if( FileExists( CAFileEdit->Text ) == true )
 	{
-		DirectoryListBox->Directory = Dir;
+		SetBrowseDirectory( Dir );
 		FileListBox->FileName = File;
 	}
 	else
 	{
 		if( DirectoryExists( Dir ) == true )
-			DirectoryListBox->Directory = Dir;
+			SetBrowseDirectory( Dir );
 		else
-			DirectoryListBox->Directory = GetCurrentDir();
+			SetBrowseDirectory( GetCurrentDir() );
 		FileListBox->FileName = "";
 	}
 	PageControl->ActivePage = FileTabSheet;
+}
+//---------------------------------------------------------------------------
+void __fastcall TCASettingForm::SetBrowseDirectory(const String& Dir)
+{
+	// 先同步磁碟機再設定目錄，讓 DriveComboBox 與目錄清單一致
+	String Drive = ExtractFileDrive( Dir );
+	if( Drive.Length() == 2 && Drive[2] == L':' )
+		DriveComboBox->Drive = Drive[1];
+	DirectoryListBox->Directory = Dir;
 }
 //---------------------------------------------------------------------------
 void __fastcall TCASettingForm::CheckCAButtonClick(TObject *Sender)

@@ -36,6 +36,7 @@ __published:	// IDE-managed Components
 	TPageControl *PageControl;
 	TTabSheet *CATabSheet;
 	TTabSheet *FileTabSheet;
+	TDriveComboBox *DriveComboBox;
 	TDirectoryListBox *DirectoryListBox;
 	TFileListBox *FileListBox;
 	TEdit *SelectFileEdit;
@@ -52,6 +53,7 @@ __published:	// IDE-managed Components
 	void __fastcall FormCloseQuery(TObject *Sender, bool &CanClose);
 	void __fastcall ApplyCAButtonClick(TObject *Sender);
 private:	// User declarations
+	void __fastcall SetBrowseDirectory(const String& Dir);
 	bool FCloseMainForm;
 private:
     AnsiString __fastcall GetApplyCAUrl(const char* FileName);
