@@ -93,13 +93,13 @@ int WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE, LPTSTR CMD, int)
 		if( GCommand.Pos(L"-s") != 0 || GCommand.Pos(L"-S") != 0 || GCommand.Pos(L"-sim") != 0 )
 		{
 			GSimMatch = true;
-			MutexName = "SpeedyUnify_Sim";
+			MutexName = "Atradeplus_Sim";
 			WindowCaption = Mdcomponentstrings_MD_SpeedyUnify_AppName + " Sim";
 		}
 		else
 		{
 			GSimMatch = false;
-			MutexName = "SpeedyUnify";
+			MutexName = "Atradeplus"; ///< 需與 RestartAgent (AgentForm.cpp) 等待的 mutex 名稱一致
 			WindowCaption = Mdcomponentstrings_MD_SpeedyUnify_AppName;
 		}
 		if((hMutex = OpenMutexA( MUTEX_ALL_ACCESS, FALSE, MutexName.c_str() ))!=NULL)

@@ -3,7 +3,7 @@ object AgentMain: TAgentMain
   Top = 0
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
-  Caption = 'Speedy Unify Update'
+  Caption = #20806#26399'Atrade+ Update'
   ClientHeight = 351
   ClientWidth = 463
   Color = clBtnFace

@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 #pragma link "C:\\MBus\\Lib\\Win32\\UFC_XE7.lib"
 //------------------------------------------------------------------------------
-#define MUTEX_NAME     "SpeedyUnify"      /// The PowerBox main program mutex name.
+#define MUTEX_NAME     "Atradeplus"       /// The ¥ü´ÁAtrade+ main program mutex name.
 //------------------------------------------------------------------------------
 USEFORM("AgentForm.cpp", AgentMain );
 //------------------------------------------------------------------------------

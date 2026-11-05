@@ -65,7 +65,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Build>17</VerInfo_Build>
         <ILINK_GenerateDRC>True</ILINK_GenerateDRC>
-        <IncludePath>..\UFC;$(IncludePath)</IncludePath>
+        <IncludePath>..\UFC;..\MDComponent\MarketDataComponent;$(IncludePath)</IncludePath>
         <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
         <LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
         <PackageImports>vcl.bpi;rtl.bpi;vclx.bpi;bdertl.bpi;bcbsmp.bpi;dclusr.bpi;dbrtl.bpi;adortl.bpi;vcldb.bpi;vcldbx.bpi;dsnap.bpi;dsnap.bpi;dsnapcon.bpi;teeui.bpi;teedb.bpi;tee.bpi;ibxpress.bpi;indycore.bpi;indysystem.bpi;$(PackageImports)</PackageImports>
@@ -142,7 +142,7 @@
         <BCC_UserSuppliedOptions> -Vx -Ve -r</BCC_UserSuppliedOptions>
         <BCC_Defines>NDEBUG;$(BCC_Defines);$(BCC_Defines)</BCC_Defines>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileVersion=1.0.0.24;InternalName=Speedy Unify Agent;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.24;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=MDBS Development Inc.,;FileVersion=1.0.0.24;InternalName=兆期Atrade+ Agent;LegalCopyright=MDBS Development Inc.,;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.24;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_Build>24</VerInfo_Build>
         <UWP_CppLogo44>logo.png</UWP_CppLogo44>
         <UWP_CppLogo150>logo.png</UWP_CppLogo150>
@@ -168,6 +168,9 @@
             <BuildOrder>2</BuildOrder>
             <BuildOrder>1</BuildOrder>
         </ResFiles>
+        <DelphiCompile Include="..\MDComponent\MarketDataComponent\MDComponentStrings.pas">
+            <BuildOrder>3</BuildOrder>
+        </DelphiCompile>
         <FormResources Include="AgentForm.dfm"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
