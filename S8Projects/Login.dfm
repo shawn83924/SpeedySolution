@@ -14491,7 +14491,7 @@ object LoginForm: TLoginForm
     ImagePosX = 15
     ImagePosY = 9
     VertAlign = vaCenter
-    InputFilter = [iffLetters, iffDigits, iffChinese]
+    InputFilter = [iffLetters, iffDigits, iffChinese, iffSpecial]
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
     Font.Height = -17
