@@ -497,9 +497,7 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 		TimeStamp.Printf( "%04d%02d%02d%02d%02d%02d%03d", ST.wYear, ST.wMonth, ST.wDay,
 						  ST.wHour, ST.wMinute, ST.wSecond, ST.wMilliseconds );
 		if( SType == smtNew )
-			Text.Printf( "Atrade_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
-					  ExMarket.c_str(),
-					  ExecType.c_str(),
+			Text.Printf( "Atradeplus_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
 					  Msg->GetBrokerID(),
 					  Msg->GetAccount(),
 					  Msg->GetSymbol(),
@@ -511,9 +509,7 @@ void TCAChecker::OnCACheck( nsOrderMessageDefine::MarketEnum Market,
 					  FAnsiLocalIP.c_str(),
 					  TimeStamp.c_str() );
 		else
-			Text.Printf( "Atrade_%s_%s_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
-					  ExMarket.c_str(),
-					  ExecType.c_str(),
+			Text.Printf( "Atradeplus_%s_%s_%s_%s_%d_%0.2f_%s_%s_%s_%s_%s",
                       Msg->GetOrderID(),
 					  Msg->GetBrokerID(),
 					  Msg->GetAccount(),
