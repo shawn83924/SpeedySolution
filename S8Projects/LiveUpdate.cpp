@@ -461,7 +461,7 @@ const String& Config::SetupURL( void )
 		m_SetupURL = Value.c_str();
 	}
 	else
-		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/Unify/兆期AtradePlus測試版_Setup.exe";
+		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/emegafuture-pro/兆期AtradePlus測試版_Setup.exe";
 	return m_SetupURL;
 }
 //------------------------------------------------------------------------------
