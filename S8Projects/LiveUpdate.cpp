@@ -461,7 +461,7 @@ const String& Config::SetupURL( void )
 		m_SetupURL = Value.c_str();
 	}
 	else
-		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/Unify/¥ü´ÁPro_Setup.exe";
+		m_SetupURL = L"https://mdbs-sharespace.mdevelop.com/SpeedyRelease/Unify/¥ü´ÁAtradePlus´ú¸Õª©_Setup.exe";
 	return m_SetupURL;
 }
 //------------------------------------------------------------------------------
