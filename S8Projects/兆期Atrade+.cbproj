@@ -118,7 +118,7 @@
         <Icon_MainIcon>兆期Atrade_Icon.ico</Icon_MainIcon>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_MinorVer>3</VerInfo_MinorVer>
-        <VerInfo_Keys>CompanyName=MDBS development inc.,;FileDescription=$(MSBuildProjectName);FileVersion=3.3.16.0;InternalName=SpeedyUnify;LegalCopyright=MDBS development inc.,;LegalTrademarks=Speedy Unify;OriginalFilename=SpeedyUnify.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=3.3.16.0;Comments=Speedy Unify trading client</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=MDBS development inc.,;FileDescription=$(MSBuildProjectName);FileVersion=3.3.16.0;InternalName=兆期Atrade+;LegalCopyright=MDBS development inc.,;LegalTrademarks=兆期Atrade+;OriginalFilename=兆期Atrade+.exe;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=3.3.16.0;Comments=</VerInfo_Keys>
         <UWP_CppLogo44>MegaFuture_Atrade_ICON.png</UWP_CppLogo44>
         <UWP_CppLogo150>MegaFuture_Atrade_ICON.png</UWP_CppLogo150>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
@@ -502,6 +502,12 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
+                <DeployFile LocalName=".\Win32\Debug\兆期Atrade+.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>兆期Atrade+.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile Condition="'$(DynamicRTL)'=='true' And '$(Multithreaded)'=='true'" LocalName="$(BDS)\bin\cc32250mt.dll" Class="DependencyModule">
                     <Platform Name="Win32">
                         <Overwrite>true</Overwrite>
@@ -515,12 +521,6 @@
                 <DeployFile LocalName=".\Win32\Debug\兆期Atrade+.tds" Configuration="Debug" Class="DebugSymbols">
                     <Platform Name="Win32">
                         <RemoteName>兆期Atrade+.tds</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName=".\Win32\Debug\兆期Atrade+.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>兆期Atrade+.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
