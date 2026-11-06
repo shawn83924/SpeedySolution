@@ -330,7 +330,7 @@ bool Config::StartUpdate( bool& NeedRestart )
 		{
 			m_ThisFileBytes = 27058383;
 			SaveFile = new TFileStream( String( MAIN_PROGRAM_SETUP_NAME.c_str() ), fmCreate );
-			m_pHTTP->Get( SetupURL(), SaveFile );
+			m_pHTTP->Get( m_pHTTP->URL->URLEncode( SetupURL() ), SaveFile ); ///< URL may contain non-ASCII chars; Indy sends them as "?" unless encoded (=> 403).
 			delete SaveFile;
 		}
 		catch(...)
@@ -361,7 +361,7 @@ bool Config::StartUpdate( bool& NeedRestart )
 					DownloadFileName = FileName+".download";
 				m_ThisFileBytes = Item.filesize;
 				SaveFile = new TFileStream( DownloadFileName, fmCreate );
-				m_pHTTP->Get( URL, SaveFile );
+				m_pHTTP->Get( m_pHTTP->URL->URLEncode( String( URL ) ), SaveFile ); ///< Encode non-ASCII file names (UTF-8 percent-encoding).
 				delete SaveFile;
 				if( Item.compress == true )
 				{
