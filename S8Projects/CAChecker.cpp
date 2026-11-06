@@ -226,9 +226,11 @@ bool TCAChecker::Post( const String& Content, const String& sign, const String& 
 		TMemoryStream*  Result = new TMemoryStream();
 		String          URL;
 		bool            Rtn;
+		UTF8String      EscContent( Content );
 
+		EscapeDataString( EscContent ); ///< escape '+' etc., otherwise server decodes '+' as space and verify fails
 		URL.printf( L"%s?srccode=SP&bizcode=%s&loginip=%s&pid=%s&loginacc=mega&loginpass=123123&data=%s&sn=%s&p1sign=%s&operation=p1verifysign",
-					  FURL, BizCode, FLocalIP, FID, Content, FCASerial, sign );
+					  FURL, BizCode, FLocalIP, FID, String( EscContent ), FCASerial, sign );
 		FHTTP->Request->Method       = L"POST";
 		FHTTP->Request->ContentType  = L"application/x-www-form-urlencoded";
 		FHTTP->ConnectTimeout        = 90000; ///< 90 sec IIS default(Paul said)
