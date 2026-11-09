@@ -199,6 +199,7 @@ private:
     std::map<std::string, SignalID>  primitive_set;      // 用 項目 + 運算子 + 指定值 當 key，濾掉重複的比對項目
     
     ExecutionTimer  exec_time;
+    unsigned int    trigger_option; // 0:無設定值 1:穿價忽略張數  added on 2026/10/16.
 
 private:
     bool CheckEditingMode()
@@ -222,7 +223,7 @@ private:
     SignalID AddPrimitiveSignal(const PrimitiveSignal& primitive_signal);
 
 public:
-    TTriggeringCondition() : editing_mode(false), syntax_error(true){}
+    TTriggeringCondition() : editing_mode(false), syntax_error(true), trigger_option(0){}
 
     // 開始編輯觸價條件。之前設定的觸價條件(價量判斷或指定時間)皆會被清除
     void BeginEditing();
@@ -298,6 +299,8 @@ public:
     // 將 triggering condition 轉換成可閱讀的表示式。triggering condition 設定有錯 或處於 editing mode 時回傳空字串。
     const char* ToExpression();
     
+    void SetTriggerOption(unsigned int opt_value) { trigger_option = opt_value; }; // added on 2026/10/16
+
     // ---- 以下功能僅 Speedy API 內部使用，不需要對外開放 ------------
     // 將 triggering condition 轉換為供程式處理用的字串型態內容。triggering condition 設定有錯 或處於 editing mode 時回傳空字串。
     std::string  ToString();     

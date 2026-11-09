@@ -3431,6 +3431,7 @@ public:
   virtual HRESULT STDMETHODCALLTYPE get_Instance(VARIANT* Value/*[out,retval]*/) = 0; // [219]
   virtual HRESULT STDMETHODCALLTYPE SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
                                                      VARIANT_BOOL* Value/*[out,retval]*/) = 0; // [220]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggerOption(unsigned opt_value/*[in]*/) = 0; // [221]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3619,6 +3620,9 @@ public:
   virtual HRESULT STDMETHODCALLTYPE SetTriggeringCondition(Speedyapi_tlb::ITriggeringCondition* ttc/*[in]*/) = 0; // [215]
   virtual HRESULT STDMETHODCALLTYPE GetNID(__int64* NID/*[out,retval]*/) = 0; // [216]
   virtual HRESULT STDMETHODCALLTYPE GetLastErrorMsg(BSTR* Value/*[out,retval]*/) = 0; // [217]
+  virtual HRESULT STDMETHODCALLTYPE SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                        Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/,
+                                                                        VARIANT_BOOL* value/*[out,retval]*/) = 0; // [218]
 
 #if !defined(__TLB_NO_INTERFACE_WRAPPERS)
 
@@ -3676,6 +3680,14 @@ public:
     BSTR Value = 0;
     OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
     return Value;
+  }
+
+  VARIANT_BOOL __fastcall SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                              Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/)
+  {
+    VARIANT_BOOL value;
+    OLECHECK(this->SetTriggeredAction(to_cancel, to_add, (VARIANT_BOOL*)&value));
+    return value;
   }
 
 
@@ -6765,6 +6777,7 @@ public:
   HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
                                               VARIANT_BOOL* Value/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
+  HRESULT         __fastcall SetTriggerOption(unsigned opt_value/*[in]*/);
 
 };
 typedef TCOMITriggeringConditionT<ITriggeringCondition> TCOMITriggeringCondition;
@@ -6888,6 +6901,7 @@ public:
   HRESULT         __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/,
                                               VARIANT_BOOL* Value/*[out,retval]*/);
   VARIANT_BOOL    __fastcall SetExecutionTime(unsigned hour/*[in]*/, unsigned minute/*[in]*/);
+  HRESULT         __fastcall SetTriggerOption(unsigned opt_value/*[in]*/);
 
 };
 typedef ITriggeringConditionDispT<ITriggeringCondition> ITriggeringConditionDisp;
@@ -6936,6 +6950,11 @@ public:
   __int64         __fastcall GetNID(void);
   HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
   BSTR            __fastcall GetLastErrorMsg(void);
+  HRESULT         __fastcall SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                 Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/,
+                                                                 VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                 Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/);
 
 };
 typedef TCOMITouchOrderCommandT<ITouchOrderCommand> TCOMITouchOrderCommand;
@@ -7014,6 +7033,11 @@ public:
   __int64         __fastcall GetNID(void);
   HRESULT         __fastcall GetLastErrorMsg(BSTR* Value/*[out,retval]*/);
   BSTR            __fastcall GetLastErrorMsg(void);
+  HRESULT         __fastcall SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                 Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/,
+                                                                 VARIANT_BOOL* value/*[out,retval]*/);
+  VARIANT_BOOL    __fastcall SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                 Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/);
 
 };
 typedef ITouchOrderCommandDispT<ITouchOrderCommand> ITouchOrderCommandDisp;
@@ -20313,6 +20337,12 @@ TCOMITriggeringConditionT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned m
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+TCOMITriggeringConditionT<T>::SetTriggerOption(unsigned opt_value/*[in]*/)
+{
+  return (*this)->SetTriggerOption(opt_value);
+}
+
 // *********************************************************************//
 // DispIntf:  ITriggeringCondition
 // Flags:     (4416) Dual OleAutomation Dispatchable
@@ -20699,6 +20729,15 @@ ITriggeringConditionDispT<T>::SetExecutionTime(unsigned hour/*[in]*/, unsigned m
   return Value;
 }
 
+template <class T> HRESULT __fastcall
+ITriggeringConditionDispT<T>::SetTriggerOption(unsigned opt_value/*[in]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggerOption"), DISPID(221));
+  TAutoArgs<1> _args;
+  _args[1] = opt_value /*[VT_UINT:0]*/;
+  return OleFunction(_dispid, _args);
+}
+
 // *********************************************************************//
 // SmartIntf: TCOMITouchOrderCommand
 // Interface: ITouchOrderCommand
@@ -20873,6 +20912,23 @@ TCOMITouchOrderCommandT<T>::GetLastErrorMsg(void)
   BSTR Value = 0;
   OLECHECK(this->GetLastErrorMsg((BSTR*)&Value));
   return Value;
+}
+
+template <class T> HRESULT __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/,
+                                                                VARIANT_BOOL* value/*[out,retval]*/)
+{
+  return (*this)->SetTriggeredAction(to_cancel, to_add, value);
+}
+
+template <class T> VARIANT_BOOL __fastcall
+TCOMITouchOrderCommandT<T>::SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/)
+{
+  VARIANT_BOOL value;
+  OLECHECK(this->SetTriggeredAction(to_cancel/*[in]*/, to_add/*[in]*/, (VARIANT_BOOL*)&value));
+  return value;
 }
 
 // *********************************************************************//
@@ -21099,6 +21155,27 @@ ITouchOrderCommandDispT<T>::GetLastErrorMsg(void)
   BSTR Value;
   this->GetLastErrorMsg((BSTR*)&Value);
   return Value;
+}
+
+template <class T> HRESULT __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/,
+                                                                VARIANT_BOOL* value/*[out,retval]*/)
+{
+  _TDispID _dispid(*this, OLETEXT("SetTriggeredAction"), DISPID(218));
+  TAutoArgs<2> _args;
+  _args[1] = (LPDISPATCH)(Speedyapi_tlb::ICancelOrderMessage*)to_cancel /*[VT_USERDEFINED:1]*/;
+  _args[2] = (LPDISPATCH)(Speedyapi_tlb::INewOrderMessage*)to_add /*[VT_USERDEFINED:1]*/;
+  return OutRetValSetterPtr(value /*[VT_BOOL:1]*/, _args, OleFunction(_dispid, _args));
+}
+
+template <class T> VARIANT_BOOL __fastcall
+ITouchOrderCommandDispT<T>::SetTriggeredAction(Speedyapi_tlb::ICancelOrderMessage* to_cancel/*[in]*/,
+                                                                Speedyapi_tlb::INewOrderMessage* to_add/*[in]*/)
+{
+  VARIANT_BOOL value;
+  this->SetTriggeredAction(to_cancel, to_add, (VARIANT_BOOL*)&value);
+  return value;
 }
 
 // *********************************************************************//

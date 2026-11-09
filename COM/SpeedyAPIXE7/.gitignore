@@ -1,7 +1,55 @@
+# RAD Studio / C++Builder build output
+__history/
+__recovery/
+Win32/
+Win64/
+Android/
+Android64/
+iOSDevice*/
+iOSSimulator/
+OSX32/
+OSX64/
+Linux64/
 build/
 dist/
+
+# Per-user project settings
+*.cbproj.local
+*.groupproj.local
+*.identcache
+*.tvsconfig
+*.stat
+
+# Compiler / linker intermediates
+*.obj
 *.o
 *.o.d
 *.d
 .dep.inc
+*.pch
+*.#*
+*.tds
+*.map
+*.drc
+*.dres
+*.rsm
+*.dcu
+*.dcp
+*.bpl
+*.lib
+*.a
+*.exp
+*.ilc
+*.ils
+*.ilf
+*.ild
+
+# IDE
+.idea/
+.vs/
 nbproject/private/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini

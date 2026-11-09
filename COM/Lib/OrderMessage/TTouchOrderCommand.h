@@ -39,7 +39,8 @@ public:
         taCxlOrder,        // 觸價下刪單
         taRpxOrder,        // 觸價下改單
         taCxlTouchedOrder, // 觸價刪觸價單(觸價買或觸價賣)
-        taWarning          // 觸價送訊息       
+        taWarning,         // 觸價送訊息
+        taCxlnNew          // 觸價下刪單並且下新單
     };
 
 private:
@@ -56,16 +57,19 @@ private:
     std::string FPrice;
     std::string FUserData;
     std::string FTouchOrderID;
-    std::map<std::string, std::string> FTriggeredAction;
+    std::map<std::string, std::string> FTriggeredAction;  // 主觸發行為
+    std::map<std::string, std::string> FTriggeredAction2; // 次要觸發行為
     std::string FTriggeringCondition;
     std::string FTriggerExpression;
     
     std::string FLastErrMsg;
 
-    double      FTouchedActionPrice;                             // 記錄觸價下單時的委託價
-    std::string FTouchedActionSymbol;                            // 記錄觸價下單時的商品代碼
-    nsOrderMessageDefine::MarketEnum FTouchedActionMarket;       // 記錄觸價下單時的市場別，方便判斷要下單的商品是期貨或選擇權
-    nsOrderMessageDefine::OrderTypeEnum FTouchedActionOrderType; // 記錄觸價下新單時用的是市價還是限價(只對觸價下新單有意義)
+    double      FTouchedActionPrice;                              // 記錄觸價下單時的委託價
+    std::string FTouchedActionSymbol;                             // 記錄觸價下單時的商品代碼
+    nsOrderMessageDefine::MarketEnum FTouchedActionMarket;        // 記錄觸價下單時的市場別，方便判斷要下單的商品是期貨或選擇權
+    nsOrderMessageDefine::OrderTypeEnum FTouchedActionOrderType;  // 記錄觸價下新單時用的是市價還是限價(只對觸價下新單有意義)
+    double      FTouchedAction2Price;                             // 記錄觸價刪單下新單時的新單委託價
+    nsOrderMessageDefine::OrderTypeEnum FTouchedAction2OrderType; // 記錄觸價刪單下新單時新單委託用的是市價還是限價
 
 private:
     void ClearTriggeredAction();
@@ -73,7 +77,8 @@ private:
     BOOL ToTriggeredAction(TCancelOrderMessage* order);   
     BOOL ToTriggeredAction(TReplaceOrderMessage* order);  
     BOOL ToTriggeredAction(TTouchOrderCommand* toc);      
-    BOOL ToTriggeredAction(const char* warning);    
+    BOOL ToTriggeredAction(const char* warning);
+    BOOL ToTriggeredAction(TCancelOrderMessage* to_cancel, TNewOrderMessage* to_add); // added on 2026/10/16
 
 public:
 
@@ -139,7 +144,12 @@ public:
     // 設定觸價後刪觸價單
     BOOL SetTriggeredAction(TTouchOrderCommand* toc)     { return ToTriggeredAction(toc); }     
     // 設定觸價後發警示用
-    BOOL SetTriggeredAction(const char* msg)             { return ToTriggeredAction(msg); }     
+    BOOL SetTriggeredAction(const char* msg)             { return ToTriggeredAction(msg); }    
+    // 設定觸價後下刪單跟新單
+    BOOL SetTriggeredAction(TCancelOrderMessage* to_cancel, TNewOrderMessage* to_add) 
+    { 
+        return ToTriggeredAction(to_cancel, to_add); 
+    }
     // 設定設定觸價條件
     void SetTriggeringCondition(TTriggeringCondition* ttc);
     
@@ -156,8 +166,9 @@ public:
     std::string GetTouchOrderID()                                   { return FTouchOrderID; }
     std::string GetTriggeringCondition()                            { return FTriggeringCondition; }
     std::string GetTriggerExpression()                              { return FTriggerExpression; }
-    std::string GetTriggeredAction();                               
-    std::string GetTouchedActionSymbol()                            { return FTouchedActionSymbol; }               
+    std::string GetTriggeredAction();
+    std::string GetTriggeredAction2();
+    std::string GetTouchedActionSymbol()                            { return FTouchedActionSymbol; }
     nsOrderMessageDefine::MarketEnum GetTouchedActionMarket()       { return FTouchedActionMarket; }
     TouchedActionEnum                GetTouchedActionType()         { return FTouchedActionType; }
     // 給 TTaifexConnection 在 TouchOrderControl() 時設定錯誤訊息

@@ -212,3 +212,9 @@ STDMETHODIMP TTriggeringConditionImpl::SetExecutionTime(unsigned hour, unsigned 
 	*Value = FCondition.SetExecutionTime(hour, minute);
 	return S_OK;
 }
+// ---------------------------------------------------------------------------
+STDMETHODIMP TTriggeringConditionImpl::SetTriggerOption(unsigned opt_value)
+{
+	FCondition.SetTriggerOption(opt_value);
+	return S_OK;
+}

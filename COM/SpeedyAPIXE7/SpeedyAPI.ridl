@@ -1613,6 +1613,8 @@ library SpeedyAPI
     HRESULT _stdcall Instance([out, retval] VARIANT* Value);
     [id(0x000000DC)]
     HRESULT _stdcall SetExecutionTime([in] unsigned int hour, [in] unsigned int minute, [out, retval] VARIANT_BOOL* Value);
+    [id(0x000000DD)]
+    HRESULT _stdcall SetTriggerOption([in] unsigned int opt_value);
   };
 
   [
@@ -1657,6 +1659,8 @@ library SpeedyAPI
     HRESULT _stdcall GetNID([out, retval] __int64* NID);
     [id(0x000000D9)]
     HRESULT _stdcall GetLastErrorMsg([out, retval] BSTR* Value);
+    [id(0x000000DA)]
+    HRESULT _stdcall SetTriggeredAction([in] ICancelOrderMessage* to_cancel, [in] INewOrderMessage* to_add, [out, retval] VARIANT_BOOL* value);
   };
 
   [

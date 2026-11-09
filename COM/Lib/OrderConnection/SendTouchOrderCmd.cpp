@@ -96,6 +96,9 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     std::string action = toc->GetTriggeredAction();
     std::string scene = toc->GetTriggeringCondition();
     std::string expression = toc->GetTriggerExpression();
+    std::string action2;
+    if (TTouchOrderCommand::taCxlnNew == tact_type)
+        action2 = toc->GetTriggeredAction2();
     
     long long NID = GenerateNID(nsOrderMessageDefine::mtNew);
     toc->SetNID(NID);
@@ -150,10 +153,14 @@ BOOL TTaifexConnection::TouchOrderControl(TTouchOrderCommand* toc)
     MBusClient->WriteString(MHandle, "ACTION", action.c_str());
     MBusClient->WriteString(MHandle, "SCENE", scene.c_str());
     MBusClient->WriteString(MHandle, "EXPRESSION", expression.c_str());
+    if (!action2.empty())
+        MBusClient->WriteString(MHandle, "ACTION2", action2.c_str());
 
     Glog->fprintf("  [ACTION]:%s", action.c_str());
     Glog->fprintf("  [SCENE]:%s", scene.c_str());
     Glog->fprintf("  [EXPRESSION]:%s", expression.c_str());
+    if (!action2.empty())
+        Glog->fprintf("  [ACTION2]:%s", action2.c_str());
     
     return MBusClient->EndSend(MHandle);
 }

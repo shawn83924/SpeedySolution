@@ -696,9 +696,11 @@ const char* TTriggeringCondition::ToExpression()
         for (size_t i = 0; i < logic_gates.size(); ++i)
         {
             SignalID signal_id = static_cast<SignalID>(i) | 0x0200;
-            if (logic_gates[i].output_to.empty())
+            if (logic_gates[i].output_to.empty()) // construct expression from root node
             {
                 expression = SignalIDToExpression(signal_id, true);
+                if (trigger_option)
+                    expression += ", ignore volume if traded through";
                 return expression.c_str();
             }
         }
@@ -733,7 +735,7 @@ std::string TTriggeringCondition::ToString()
     }
 
     // the format of output string
-    // triggering condition (scene)  ---> 訊號組成列表;訊號關聯性列表;指定執行時間;
+    // triggering condition (scene)  ---> 訊號組成列表;訊號關聯性列表;指定執行時間;[trigger option;]
     // 訊號組成列表                    ---> 訊號單元1,訊號單元2,.....訊號單元N
     //
     // 訊號單元                       ---> [訊號代碼]:[價格比較項目識別碼]#[比較運算子識別碼]$[指定價格整數部位].[指定價格小數部位]  => 比較價格
@@ -836,6 +838,10 @@ std::string TTriggeringCondition::ToString()
         snprintf(hhmm, sizeof(hhmm), "%02d:%02d", exec_time.hour, exec_time.minute);
         ss << GROUP_SEPARATOR << GROUP_SEPARATOR /*";;"*/ << hhmm << GROUP_SEPARATOR;//";";
     }
+
+    // added on 2026/10/16 
+    if (trigger_option != 0)
+        ss << "to=" << trigger_option << GROUP_SEPARATOR;
 
     return ss.str();
 }

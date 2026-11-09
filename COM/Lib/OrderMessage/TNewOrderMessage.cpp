@@ -217,7 +217,10 @@ BOOL TNewOrderMessage::SetTakeProfit(BOOL isTrailingStop, UFCType::Int32 ticks, 
 //---------------------------------------------------------------------------
 const char* TNewOrderMessage::GetStopOrderSetting()
 {
-    if (FStopLossSetting.IsEmpty() && FTakeProfitSetting.IsEmpty() && FNewOrderIfMatchSetting.IsEmpty())
+    if (FStopLossSetting.IsEmpty() && 
+        FTakeProfitSetting.IsEmpty() && 
+        FNewOrderIfMatchSetting.IsEmpty() && 
+        !FToMarketOrderIfOpen)
         return "";
     
     if (!FStopLossSetting.IsEmpty())
