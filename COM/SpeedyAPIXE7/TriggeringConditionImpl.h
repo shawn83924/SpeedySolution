@@ -54,5 +54,6 @@ protected:
   STDMETHOD(ToExpression(BSTR* triggeringCondition));
   STDMETHOD(get_Instance(VARIANT* Value));
   STDMETHOD(SetExecutionTime(unsigned hour, unsigned minute, VARIANT_BOOL* Value));
+  STDMETHOD(SetTriggerOption(unsigned opt_value));
 };
 #endif //TriggeringConditionImplH

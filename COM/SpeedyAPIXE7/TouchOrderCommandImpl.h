@@ -31,14 +31,20 @@ public:
   STDMETHOD(SetFloatingOrderPrice(PriceDependOnEnum depend_on, int ticks));
   STDMETHOD(SetUserData(BSTR data));
   STDMETHOD(SetTriggeredActionNewOrder(INewOrderMessage* order, VARIANT_BOOL* value));
+
   STDMETHOD(SetTriggeredActionCancelOrder(ICancelOrderMessage* order, VARIANT_BOOL* value));
+
   STDMETHOD(SetTriggeredActionReplaceOrder(IReplaceOrderMessage* order, VARIANT_BOOL* value));
+
   STDMETHOD(SetTriggeredActionTouchOrderCmd(ITouchOrderCommand* toc, VARIANT_BOOL* value));
+
   STDMETHOD(get_Instance(VARIANT* Value));
   STDMETHOD(SetTriggeredActionMsg(BSTR msg, VARIANT_BOOL* value));
   STDMETHOD(SetTriggeringCondition(ITriggeringCondition* ttc));
   STDMETHOD(GetNID(__int64* NID));
   STDMETHOD(GetLastErrorMsg(BSTR* Value));
+  STDMETHOD(SetTriggeredAction(ICancelOrderMessage* to_cancel, INewOrderMessage* to_add,
+          VARIANT_BOOL* value));
   __fastcall TTouchOrderCommandImpl();
   __fastcall TTouchOrderCommandImpl(
 	Speedyapi_tlb::TouchedOrderCommandEnum toc_type,

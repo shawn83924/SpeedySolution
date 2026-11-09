@@ -59,6 +59,7 @@ static void createFactory()
 #pragma startup createFactory 32
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTouchOrderCommandImpl::SetCmdType(TouchedOrderCommandEnum toc_type)
+
 {
 	TTouchOrderCommand::TouchedOrderCommandEnum Type = static_cast<TTouchOrderCommand::TouchedOrderCommandEnum>(static_cast<int>(toc_type));
 	FCommand->SetCmdType(Type);
@@ -116,7 +117,7 @@ STDMETHODIMP TTouchOrderCommandImpl::SetUserData(BSTR data)
 }
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionNewOrder(INewOrderMessage* order,
-          VARIANT_BOOL* value)
+		  VARIANT_BOOL* value)
 {
 	VARIANT MessageInstance;
 	order->get_Instance( &MessageInstance );
@@ -168,6 +169,7 @@ STDMETHODIMP TTouchOrderCommandImpl::get_Instance(VARIANT* Value)
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionMsg(BSTR msg, VARIANT_BOOL* value)
 
+
 {
 	AnsiString Msg(msg);
 	*value = FCommand->SetTriggeredAction(Msg.c_str());
@@ -175,6 +177,7 @@ STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredActionMsg(BSTR msg, VARIANT_BOO
 }
 // ---------------------------------------------------------------------------
 STDMETHODIMP TTouchOrderCommandImpl::SetTriggeringCondition(ITriggeringCondition* ttc)
+
 {
 	VARIANT ConditionInstance;
 	ttc->get_Instance(&ConditionInstance);
@@ -193,5 +196,21 @@ STDMETHODIMP TTouchOrderCommandImpl::GetLastErrorMsg(BSTR* Value)
 {
 	WideString msg(FCommand->GetLastErrorMsg());
 	*Value = msg.Copy();
+	return S_OK;
+}
+// ---------------------------------------------------------------------------
+STDMETHODIMP TTouchOrderCommandImpl::SetTriggeredAction(
+	ICancelOrderMessage* to_cancel,
+	INewOrderMessage* to_add,
+	VARIANT_BOOL* value)
+{
+	VARIANT CancelInstance;
+	VARIANT NewInstance;
+	to_cancel->get_Instance( &CancelInstance );
+	to_add->get_Instance( &NewInstance );
+	if( CancelInstance.byref != NULL && NewInstance.byref != NULL )
+		*value = FCommand->SetTriggeredAction(
+					static_cast<TCancelOrderMessage*>(CancelInstance.byref),
+					static_cast<TNewOrderMessage*>(NewInstance.byref) ) ? VARIANT_TRUE : VARIANT_FALSE;
 	return S_OK;
 }
