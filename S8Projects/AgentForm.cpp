@@ -5,6 +5,7 @@
 #include "UFC.h"
 #include "iniFile.h"
 #include "AgentForm.h"
+#include "MDComponentStrings.hpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -63,10 +64,10 @@ void RegisterDlls( void )
 				String dllName( SectionName.c_str() );
 				String Msg,VerStr;
 
-				Msg.printf( L"註冊動態連結庫:%s", dllName );
+				Msg.printf( L"註冊動態連結庫:%s", dllName.c_str() );
 				AgentMain->Memo->Lines->Add( Msg );
 				FileVersion( SectionName.c_str(), VerStr );
-				Msg.printf( L"版本[%s]",VerStr );
+				Msg.printf( L"版本[%s]",VerStr.c_str() );
 				AgentMain->Memo->Lines->Add( Msg );
 				Application->ProcessMessages();
 				CMD.Printf( "regsvr32 /s %s", SectionName.c_str() );
@@ -89,7 +90,7 @@ void __fastcall TAgentMain::OKButtonClick(TObject *Sender)
 void __fastcall TAgentMain::FormShow(TObject *Sender)
 {
 	Memo->Lines->Clear();
-	Memo->Lines->Add( L"等待Speedy Unify程式停止...");
+	Memo->Lines->Add( L"等待" + Mdcomponentstrings_MD_SpeedyUnify_AppName + L"程式停止...");
 	OKButton->Enabled = false;
 	CheckProcessTimer->Enabled = true;
 }
@@ -106,7 +107,7 @@ void __fastcall TAgentMain::CheckProcessTimerTimer(TObject *Sender)
 		 CloseHandle( hMutex );
 	}
 	Sleep( 500 );
-	Memo->Lines->Add( L"Speedy Unify程式已停止.");
+	Memo->Lines->Add( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"程式已停止.");
 	UpdateTimer->Enabled = true;
 }
 //---------------------------------------------------------------------------
@@ -124,19 +125,19 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		String Msg;
 		///< Backup the old version. SpeedyUnify.exe -> SpeedyUnifyPrev.exe
 		FileVersion( MAIN_EXE, VerStr );
-		AgentMain->Memo->Lines->Add( L"更新 Speedy Unify");
-		Msg.printf( L"移除舊版[%s]",VerStr );
+		AgentMain->Memo->Lines->Add( L"更新 " + Mdcomponentstrings_MD_SpeedyUnify_AppName);
+		Msg.printf( L"移除舊版[%s]",VerStr.c_str() );
 		AgentMain->Memo->Lines->Add( Msg );
 		if( MoveFileEx( MAIN_EXE, PREV_EXE, MOVEFILE_REPLACE_EXISTING ) )///< Rename old EXE file
 		{	// SpeedyUnify.ex_ > SpeedyUnify.exe
 			MoveFile( NEW_EXE, MAIN_EXE );  ///< rename to new
 			FileVersion( MAIN_EXE, VerStr );
-			Msg.printf( L"更新成新版[%s]",VerStr );
+			Msg.printf( L"更新成新版[%s]",VerStr.c_str() );
 			AgentMain->Memo->Lines->Add( Msg );
 		}
 	}
 	else
-		AgentMain->Memo->Lines->Add( L"Speedy Unify主程式並無更新." );
+		AgentMain->Memo->Lines->Add( Mdcomponentstrings_MD_SpeedyUnify_AppName + L"主程式並無更新." );
 	///< Rename all *.*.download to *.*
 	UFC::FileList( ".", "*.download", Files );
 	for( int i=0;i< Files.ItemCount(); i ++)
@@ -163,7 +164,7 @@ void __fastcall TAgentMain::UpdateTimerTimer(TObject *Sender)
 		UFC::RemoveFile( DelFile );
 	}
 	AgentMain->Memo->Lines->Add( L"程式更新完畢!" );
-	AgentMain->Memo->Lines->Add( L"請重新啟動 Speedy Unify." );
+	AgentMain->Memo->Lines->Add( L"請重新啟動 " + Mdcomponentstrings_MD_SpeedyUnify_AppName + L"." );
 	OKButton->Enabled = true;
 }
 //---------------------------------------------------------------------------

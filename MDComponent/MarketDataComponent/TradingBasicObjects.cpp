@@ -72,7 +72,7 @@ String CExchangeContractKey::BuildKey(const String& ExchangeCode, const String& 
 String CExchangeContractKey::BuildKey(nsOrderMessageDefine::MarketEnum Market, const String& ContractCode)
 {
 	String keyValue;
-	keyValue.printf(L"%d%s", Market, ContractCode);
+	keyValue.printf(L"%d%s", Market, ContractCode.c_str());
 	return keyValue;
 }  //CExchangeContractKey::BuildKey()
 //---------------------------------------------------------------------------
@@ -169,7 +169,7 @@ String CExchangeSymbolKey::BuildKey(const String& ExchangeCode, const String& Sy
 String CExchangeSymbolKey::BuildKey(nsOrderMessageDefine::MarketEnum Market, const String& Symbol)
 {
 	String keyValue;
-	keyValue.printf(L"%d%s", Market, Symbol);
+	keyValue.printf(L"%d%s", Market, Symbol.c_str());
 	return keyValue;
 }  //CExchangeSymbolKey::BuildKey()
 //---------------------------------------------------------------------------

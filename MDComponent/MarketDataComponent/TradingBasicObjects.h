@@ -4,6 +4,31 @@
 #define TradingBasicObjectsH
 #include "TradingUtility.h"
 //---------------------------------------------------------------------------
+// hash_value overloads for stdext::hash_map keys of UnicodeString / AnsiString.
+// hash_compare calls hash_value(key) unqualified (found via ADL); the default template
+// casts the key to size_t, which bcc32c rejects for string classes.
+// Hash is computed from the string contents (FNV, same as Dinkumware _Hash_value).
+namespace System
+{
+inline std::size_t hash_value(const UnicodeString& Key)
+{
+	std::size_t val = 2166136261U;
+	const WideChar* p = Key.c_str();
+	for (int i = 0, n = Key.Length(); i < n; i++)
+		val = 16777619U * val ^ (std::size_t)p[i];
+	return val;
+}
+template <unsigned short CP>
+inline std::size_t hash_value(const AnsiStringT<CP>& Key)
+{
+	std::size_t val = 2166136261U;
+	const char* p = Key.c_str();
+	for (int i = 0, n = Key.Length(); i < n; i++)
+		val = 16777619U * val ^ (std::size_t)(unsigned char)p[i];
+	return val;
+}
+}  // namespace System
+//---------------------------------------------------------------------------
 namespace s888
 {
 //---------------------------------------------------------------------------
@@ -153,7 +178,7 @@ CTradingBasicObject *FindTradingObjFromMap(MapType& ObjectMap, const KeyType& Ke
 {
 	CTradingBasicObject *objectPtr = 0;
 	DoLockObject(LockObjPtr, RWLockType);
-	MapType::iterator it = ObjectMap.find(KeyValue);
+	typename MapType::iterator it = ObjectMap.find(KeyValue);
 	if (it != ObjectMap.end()) objectPtr = it->second;
 	DoUnlockObject(LockObjPtr, RWLockType);
 	return objectPtr;
@@ -165,7 +190,7 @@ bool InsertTradingObjIntoMap(MapType& ObjectMap, const KeyType& KeyValue, CTradi
 	if (ObjectPtr == 0) return false;
 	DoLockObject(LockObjPtr, RWLockType);
 	if (DoCheckExist && (FindTradingObjFromMap(ObjectMap, KeyValue, LockObjPtr, rwNotLock) != 0)) return false;
-	std::pair<MapType::iterator, bool> insertPair = ObjectMap.insert(MapType::value_type(KeyValue, ObjectPtr));
+	std::pair<typename MapType::iterator, bool> insertPair = ObjectMap.insert(typename MapType::value_type(KeyValue, ObjectPtr));
 	DoUnlockObject(LockObjPtr, RWLockType);
 	return insertPair.second;
 }  //InsertTradingObjIntoMap()
@@ -175,7 +200,7 @@ CTradingBasicObject *RemoveTradingObjFromMap(MapType& ObjectMap, const KeyType& 
 {
 	CTradingBasicObject *objectPtr = 0;
 	DoLockObject(LockObjPtr, RWLockType);
-	MapType::iterator it = ObjectMap.find(KeyValue);
+	typename MapType::iterator it = ObjectMap.find(KeyValue);
 	if (it != ObjectMap.end())
 	{
 		objectPtr = it->second;
@@ -192,7 +217,7 @@ int ClearTradingObjMap(MapType& ObjectMap, bool DoDelete, LockType *LockObjPtr, 
 	DoLockObject(LockObjPtr, RWLockType);
 	if (DoDelete)
 	{
-		MapType::iterator it;
+		typename MapType::iterator it;
 		for (it = ObjectMap.begin(); it != ObjectMap.end(); it++)
 		{
 			CTradingBasicObject *tradingObjPtr = it->second;
@@ -211,7 +236,7 @@ int ClearTradingObjMap(MapType& ObjectMap, bool DoDelete, LockType *LockObjPtr, 
 template<typename MapType, typename LockType>
 void DumpTradingObjMap(MapType& TradingObjMap, bool DoFlush, LockType *LockObjPtr, ReadWrietLockTypeEnum RWLockType)
 {
-	MapType::iterator it;
+	typename MapType::iterator it;
 	DoLockObject(LockObjPtr, RWLockType);
 	for (it = TradingObjMap.begin(); it != TradingObjMap.end(); it++)
 	{
@@ -226,11 +251,11 @@ void DumpTradingObjMap(MapType& TradingObjMap, bool DoFlush, LockType *LockObjPt
 typedef std::deque<CTradingBasicObject*> CTradingObjQueue;
 //---------------------------------------------------------------------------
 template<typename QueueType, typename LockType>
-CTradingBasicObject *IsQueueEmpty(QueueType& TradingObjQueue, LockType *LockObjPtr, ReadWrietLockTypeEnum RWLockType)
+bool IsQueueEmpty(QueueType& TradingObjQueue, LockType *LockObjPtr, ReadWrietLockTypeEnum RWLockType)
 {
 	DoLockObject(LockObjPtr, RWLockType);
 	bool isEmpty = TradingObjQueue.empty();
-	UnlockObject(LockObjPtr, RWLockType);
+	DoUnlockObject(LockObjPtr, RWLockType);
 	return isEmpty;
 }  //GetTradingObjFromQueue()
 //---------------------------------------------------------------------------
@@ -328,7 +353,7 @@ void DumpTradingObjQueue(QueueType& TradingObjQueue, bool DoFlush, LockType *Loc
 	DoLockObject(LockObjPtr, RWLockType);
 	if (TradingObjQueue.empty())
 	{
-		UnlockForReadWrite(RWLockPtr, RWLockType);
+		DoUnlockObject(LockObjPtr, RWLockType);
 		return;
 	}
 

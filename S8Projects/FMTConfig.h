@@ -25,6 +25,8 @@ const UFC::AnsiString FUNC_PINGPONG( L"1001" );
 const UFC::AnsiString FUNC_MULTI_ACCOUNT( L"1002" );
 const UFC::AnsiString FUNC_ENABLE_S8_API( L"1003" );
 const UFC::AnsiString FUNC_OVER_SEA_FUT( L"1004" );
+/// Main program file names, derived from the built exe name. (Defined in LiveUpdate.cpp)
+extern const UFC::AnsiString MAIN_PROGRAM_SETUP_NAME;
 class TOrderStore;
 class TCAChecker;
 //---------------------------------------------------------------------------
@@ -371,6 +373,7 @@ private:
 	void 			 LoadSignal( UFC::UiniFile& SettingsFile );
 	void             LoadThroughput( UFC::UiniFile& SettingsFile );
 	void 			 LoadCHSetting( UFC::UiniFile& SettingsFile, const UFC::AnsiString& Session, const UFC::AnsiString& ValName, const UFC::AnsiString& DefVal, TStringList* mList );
+	void             LoadBlackList( UFC::UiniFile& SettingsFile );
 public:
 	Config();
 	~Config();

@@ -74,6 +74,7 @@ object ContractInfoForm: TContractInfoForm
         TabOrder = 0
         StyleElements = []
         OnClick = FutDrawGridClick
+        OnContextPopup = FutDrawGridContextPopup
         OnDblClick = FutDrawGridDblClick
         OnDrawCell = FutDrawGridDrawCell
         OnMouseDown = FutDrawGridMouseDown
@@ -666,6 +667,7 @@ object ContractInfoForm: TContractInfoForm
         PopupMenu = PopupMenu
         TabOrder = 0
         OnClick = OptDrawGridClick
+        OnContextPopup = OptDrawGridContextPopup
         OnDblClick = OptDrawGridDblClick
         OnDrawCell = OptDrawGridDrawCell
         OnMouseDown = OptDrawGridMouseDown
@@ -4355,6 +4357,7 @@ object ContractInfoForm: TContractInfoForm
       Margins.Right = 4
       Margins.Bottom = 4
       TabOrder = 2
+      Visible = False
       OnClick = StockTabButtonClick
       GraphCount = 5
       ButtonGraph.Data = {

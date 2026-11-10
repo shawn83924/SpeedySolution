@@ -53,7 +53,7 @@ bool CBasicTradingQueryObject::PrepareHttpObject(const String& QueryURL, int Con
 	} catch (Exception& e) {
 		String logHead = FQueryName + L"::PrepareHttpObject()";
 		String logStr;
-		logStr.printf(L"Exception:%s. URL=[%s]", e.Message, QueryURL);
+		logStr.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), QueryURL.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 		FHttpPtr = 0;
 		SetQueryStatus(qsFailed);
@@ -67,7 +67,7 @@ bool CBasicTradingQueryObject::SendQueryURL(TIdHTTP *HttpPtr, const String& Quer
 {
 	String logHead = FQueryName + L"::SendQueryURL()";
 	String logStr;
-	logStr.printf(L"[%s]", QueryURL);
+	logStr.printf(L"[%s]", QueryURL.c_str());
 	WriteUFCLog(logHead, logStr, constFlush);
 	logStr = L"";
 	bool isSuccess = false;
@@ -77,11 +77,11 @@ bool CBasicTradingQueryObject::SendQueryURL(TIdHTTP *HttpPtr, const String& Quer
 		isSuccess = true;
 		SetQueryStatus(qsRequestSended);
 	} catch (EIdException& e) {
-		logStr.printf(L"EIdException:%s. URL=[%s]", e.Message, QueryURL);
+		logStr.printf(L"EIdException:%s. URL=[%s]", e.Message.c_str(), QueryURL.c_str());
 	} catch (Exception& e) {
-		logStr.printf(L"Exception:%s. URL=[%s]", e.Message, QueryURL);
+		logStr.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), QueryURL.c_str());
 	} catch (...) {
-		logStr.printf(L"Unknown Exception. URL=[%s]", QueryURL);
+		logStr.printf(L"Unknown Exception. URL=[%s]", QueryURL.c_str());
 	}  //try
 
 	if (!isSuccess)
@@ -116,11 +116,11 @@ _di_IXMLDocument CBasicTradingQueryObject::CreateXMLDocument(TStringStream *Data
 		if (newXMLDoc->Active && FDoDump && (FDumpFileName.Length() > 0))
 			newXMLDoc->SaveToFile(FDumpFileName);
 	} catch (EXMLDocError& e) {
-		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message,FQueryURL);
+		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(),FQueryURL.c_str());
 	} catch (Exception& e) {
-		logStr.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logStr.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}
 
 	if (logStr.Length() > 0)
@@ -161,7 +161,7 @@ void __fastcall CBasicTradingQueryObject::Execute(void)
 	delete queryResponse;
 	CoUninitialize();
 	String logMessage;
-	logMessage.printf(L"%s::Execute() QureyEnded.", FQueryName);
+	logMessage.printf(L"%s::Execute() QureyEnded.", FQueryName.c_str());
 	WriteUFCLog(logMessage, constFlush);
 }  //CBasicTradingQueryObject::Execute()
 
@@ -230,7 +230,7 @@ void CTaifexContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode)
 
 		if (contractCode.Length() <= 0)
 		{
-			logMessage.printf(L"%s::ParseCommodityNode(): No Contract Code.", FQueryName);
+			logMessage.printf(L"%s::ParseCommodityNode(): No Contract Code.", FQueryName.c_str());
 			WriteUFCLog(logHead, L"No Contract Code.", constFlush);
 			return;
 		}
@@ -261,25 +261,25 @@ void CTaifexContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode)
 				FCommodityCount++;
 				if (!gQueryObjsPool.InsertCommodityIntoTradeCodeIndex(FExchangeCode, tradeContractCode, curCommodityPtr, constCheckExist, rwNotLock))
 				{
-					logMessage.printf(L"Insert Commodity[%s-%s] Trade Code[%s] Index Failed.", FExchangeCode, contractCode, tradeContractCode);
+					logMessage.printf(L"Insert Commodity[%s-%s] Trade Code[%s] Index Failed.", FExchangeCode.c_str(), contractCode.c_str(), tradeContractCode.c_str());
 					WriteUFCLog(logHead, logMessage, constFlush);
 				}
 
 				if (!gQueryObjsPool.InsertCommodityIntoBrokerCodeIndex(FExchangeCode, brokerContractCode, curCommodityPtr, constCheckExist, rwNotLock))
 				{
-					logMessage.printf(L"Insert Commodity[%s-%s] Broker Code[%s] Index Failed.", FExchangeCode, contractCode, brokerContractCode);
+					logMessage.printf(L"Insert Commodity[%s-%s] Broker Code[%s] Index Failed.", FExchangeCode.c_str(), contractCode.c_str(), brokerContractCode.c_str());
 					WriteUFCLog(logHead, logMessage, constFlush);
 				}
 
 				if (!gQueryObjsPool.InsertCommodityIntoMarketCodeIndex(FMarket, contractCode, curCommodityPtr, constCheckExist, rwNotLock))
 				{
-					logMessage.printf(L"Insert Commodity[%s-%s] Market[%s] Code Index Failed.", FExchangeCode, contractCode, DescribeMarket(FMarket));
+					logMessage.printf(L"Insert Commodity[%s-%s] Market[%s] Code Index Failed.", FExchangeCode.c_str(), contractCode.c_str(), DescribeMarket(FMarket).c_str());
 					WriteUFCLog(logHead, logMessage, constFlush);
 				}
 			}
 			else
 			{
-				logMessage.printf(L"Insert Commodity[%s-%s] Code Index Failed.", FExchangeCode, contractCode);
+				logMessage.printf(L"Insert Commodity[%s-%s] Code Index Failed.", FExchangeCode.c_str(), contractCode.c_str());
 				WriteUFCLog(logHead, logMessage, constFlush);
 				delete curCommodityPtr;
 				curCommodityPtr = 0;
@@ -300,11 +300,11 @@ void CTaifexContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode)
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -344,11 +344,11 @@ bool CTaifexContractQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML)
 		}  //if (rootNode != 0)
 		isSuccess = true;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess)
@@ -405,11 +405,11 @@ void CTaifexFuturesContractQueryObject::ParseContractNode(CTradingCommodity *Com
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -438,14 +438,14 @@ void CTaifexFuturesContractQueryObject::ParseContractNode(CTradingCommodity *Com
 		if (maturityYearMonth.Length() > 0) newContractPtr->SetMaturityYearMonthStr(maturityYearMonth, rwNotLock);
 		if (!gQueryObjsPool.AddContract(newContractPtr, s888::rwLockForWrite))
 		{
-			logMessage.printf(L"Add Contract[%s-%s] Failed.", FExchangeCode, symbol);
+			logMessage.printf(L"Add Contract[%s-%s] Failed.", FExchangeCode.c_str(), symbol.c_str());
 			WriteUFCLog(logHead, logMessage, constFlush);
 			delete newContractPtr;
 		}
 	}
 	else
 	{
-		logMessage.printf(L"Wrong Symbol[%s]. URL=[%s]", symbol, FQueryURL);
+		logMessage.printf(L"Wrong Symbol[%s]. URL=[%s]", symbol.c_str(), FQueryURL.c_str());
 		WriteUFCLog(logHead, logMessage, constFlush);
 	}  //if (symbolLength > 2)
 }  //CTaifexFuturesContractQueryObject::ParseContractNode()
@@ -526,14 +526,14 @@ void CTaifexOptionsContractQueryObject::ParseStrikePriceNode(CTradingCommodity *
 						if (MaturityYearMonth.Length() > 0) newContractPtr->SetMaturityYearMonthStr(MaturityYearMonth, rwNotLock);
 						if (!gQueryObjsPool.AddContract(newContractPtr, s888::rwLockForWrite))
 						{
-							logMessage.printf(L"Add Contract[%s-%s] Failed.", FQueryName, FExchangeCode, curSymbol);
+							logMessage.printf(L"Add Contract[%s-%s] Failed.", FQueryName.c_str(), FExchangeCode.c_str(), curSymbol.c_str());
 							WriteUFCLog(logHead, logMessage, constFlush);
 							delete newContractPtr;
 						}  //if (!gQueryObjsPool.AddContract(newContractPtr, s888::rwLockForWrite))
 					}
 					else
 					{
-						logMessage.printf(L"Wrong Symbol[%s] or StrikePrice[%s]. URL=[%s]", curSymbol, curStrikePriceStr, FQueryURL);
+						logMessage.printf(L"Wrong Symbol[%s] or StrikePrice[%s]. URL=[%s]", curSymbol.c_str(), curStrikePriceStr.c_str(), FQueryURL.c_str());
 						WriteUFCLog(logHead, logMessage, constFlush);
 					}  //if ((curSymbol.Length() > 0) && (curStrikePrice > 0.0))
 				}  //if (curFieldName == L"stkprc")
@@ -542,11 +542,11 @@ void CTaifexOptionsContractQueryObject::ParseStrikePriceNode(CTradingCommodity *
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -604,16 +604,16 @@ void CTaifexOptionsContractQueryObject::ParseContractNode(CTradingCommodity *Com
 		}
 		else
 		{
-			logMessage.printf(L"Missing Contract Code[%s] or MaturityYearMonth[%s]", contractCode, maturityYearMonth);
+			logMessage.printf(L"Missing Contract Code[%s] or MaturityYearMonth[%s]", contractCode.c_str(), maturityYearMonth.c_str());
 			WriteUFCLog(logHead, logMessage, constFlush);
 		}  //if ((contractCode.Length() > 0) && (maturityYearMonth.Length() >= 6))
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -695,11 +695,11 @@ void COverseasContractQueryObject::ParseContractNode(CTradingExchange *ExchangeP
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMessage.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMessage.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -717,7 +717,7 @@ void COverseasContractQueryObject::ParseContractNode(CTradingExchange *ExchangeP
 	if (brokerContractCode.Length() <= 0) brokerContractCode = CommodityPtr->GetBrokerContractCode(rwLockForRead);
 	if (tradeSymbol.Length() <= 0)
 	{
-		logMessage.printf(L"No Contract tradeSymbol. Exchange[%s] Broker[%s-%s]", exchangeCode, brokerExchangeCode, brokerContractCode);
+		logMessage.printf(L"No Contract tradeSymbol. Exchange[%s] Broker[%s-%s]", exchangeCode.c_str(), brokerExchangeCode.c_str(), brokerContractCode.c_str());
 		WriteUFCLog(logHead, logMessage, constFlush);
 		return;
 	}
@@ -731,7 +731,7 @@ void COverseasContractQueryObject::ParseContractNode(CTradingExchange *ExchangeP
 		FContractCount++;
 	else
 	{
-		logMessage.printf(L"Add Contract[%s-%s] Failed. Trade[%s]", FQueryName, exchangeCode, symbol, tradeSymbol);
+		logMessage.printf(L"Add Contract[%s-%s] Failed. Trade[%s]", FQueryName.c_str(), exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str());
 		WriteUFCLog(logHead, logMessage, constFlush);
 		delete newContractPtr;
 	}  //if (!gQueryObjsPool.AddContract(newContractPtr, s888::rwLockForWrite))
@@ -800,11 +800,11 @@ void COverseasContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode
 		isExceptionHappened = false;
 	}
 	catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -839,7 +839,7 @@ void COverseasContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode
 	}
 	else
 	{
-		logMsg.printf(L"Wrong Borker Exchange Code[%s].", brokerExchangeCode);
+		logMsg.printf(L"Wrong Borker Exchange Code[%s].", brokerExchangeCode.c_str());
 		WriteUFCLog(logHead, logMsg, constFlush);
 	}  //if (exchangePtr != 0)
 
@@ -860,7 +860,7 @@ void COverseasContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode
 
 		if (!gQueryObjsPool.AddCommodity(curCommodityPtr, rwLockForWrite))
 		{
-			logMsg.printf(L"Add Commodity[%s-%s] Failed.  Broker[%s]", exchangeCode, contractCode, brokerContractCode);
+			logMsg.printf(L"Add Commodity[%s-%s] Failed.  Broker[%s]", exchangeCode.c_str(), contractCode.c_str(), brokerContractCode.c_str());
 			WriteUFCLog(logHead, logMsg, constFlush);
 			delete curCommodityPtr;
 			curCommodityPtr = 0;
@@ -885,11 +885,11 @@ void COverseasContractQueryObject::ParseCommodityNode(_di_IXMLNode CommodityNode
 		isExceptionHappened = false;
 	}
 	catch (EXMLDocError& e) {
-		logMsg.printf(L"Parse Contract Loop, EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Parse Contract Loop, EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Parse Contract Loop, Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Parse Contract Loop, Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Parse Contract Loop, Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Parse Contract Loop, Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened && (logMsg.Length() > 0))
@@ -936,11 +936,11 @@ void COverseasContractQueryObject::ParseExchangeNode(_di_IXMLNode ExchangeNode)
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e1) {
-		logMsg.printf(L"Exception:%s. URL[%s]", e1.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL[%s]", e1.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -969,7 +969,7 @@ void COverseasContractQueryObject::ParseExchangeNode(_di_IXMLNode ExchangeNode)
 				FExchangeCount++;
 				if (!gQueryObjsPool.InsertExchangeIntoBrokerCodeIndex(brokerExchangeCode, exchangePtr, constCheckExist, rwNotLock))
 				{
-					logMsg.printf(L"Insert Exchange[%s] Broker[%s] Code Index Failed.", exchangeCode, brokerExchangeCode);
+					logMsg.printf(L"Insert Exchange[%s] Broker[%s] Code Index Failed.", exchangeCode.c_str(), brokerExchangeCode.c_str());
 					WriteUFCLog(logHead, logMsg, constNotFlush);
 				}
 			}
@@ -977,7 +977,7 @@ void COverseasContractQueryObject::ParseExchangeNode(_di_IXMLNode ExchangeNode)
 			{
 				delete exchangePtr;
 				exchangePtr = 0;
-				logMsg.printf(L"Insert Exchange[%s] Code Index Failed. Broker[%s]", exchangeCode, brokerExchangeCode);
+				logMsg.printf(L"Insert Exchange[%s] Code Index Failed. Broker[%s]", exchangeCode.c_str(), brokerExchangeCode.c_str());
 				WriteUFCLog(logHead, logMsg, constNotFlush);
 			}
 		}  //if (exchangePtr == 0)
@@ -985,7 +985,7 @@ void COverseasContractQueryObject::ParseExchangeNode(_di_IXMLNode ExchangeNode)
 	}
 	else
 	{
-		logMsg.printf(L"Missing ExchangeCode. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Missing ExchangeCode. URL=[%s]", FQueryURL.c_str());
 		WriteUFCLog(logHead, logMsg, constNotFlush);
 	}  //if (exchangeCode.Length() > 0)
 	FlushUFCLog();
@@ -1031,11 +1031,11 @@ bool COverseasContractQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML
 		}  //if (rootNode != 0)
 		isSuccess = true;
 	} catch (EXMLDocError& e) {
-		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logStr.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logStr.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logStr.Length() > 0))
@@ -1120,7 +1120,7 @@ void CTaifexTaxRateQueryObject::ParseTaxRateNode(_di_IXMLNode RateNode)
 					createCount++;
 				else
 				{
-					logStr.printf(L"Add Tax Rate[%s-%s] Failed. taxRate[%s], broker[%s]", FExchangeCode, contractCode, taxRateStr, brokerContractCode);
+					logStr.printf(L"Add Tax Rate[%s-%s] Failed. taxRate[%s], broker[%s]", FExchangeCode.c_str(), contractCode.c_str(), taxRateStr.c_str(), brokerContractCode.c_str());
 					WriteUFCLog(logHead, logStr, constNotFlush);
 					delete newTaxRateObjPtr;
 				}
@@ -1129,11 +1129,11 @@ void CTaifexTaxRateQueryObject::ParseTaxRateNode(_di_IXMLNode RateNode)
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logStr.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logStr.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logStr.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logStr.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened && (logStr.Length() > 0))
@@ -1199,11 +1199,11 @@ bool CTaifexTaxRateQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML )
 			}  //if (!isSuccess)
 		}  //if (rootNode != 0)
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logMsg.Length() > 0))
@@ -1264,8 +1264,8 @@ CTaifexFeeQueryObject::CTaifexFeeQueryObject(const String& QueryURL, const Strin
  FBrokerID(BrokerID),
  FAccountPtr(0)
 {
-	FQueryName.printf(L"TaifexFee_%s", FLogonID);
-	if (DumpFileName.Length() <= 0) FDumpFileName.printf(L"Super888_%s_TaifexFee.xml", FLogonID);
+	FQueryName.printf(L"TaifexFee_%s", FLogonID.c_str());
+	if (DumpFileName.Length() <= 0) FDumpFileName.printf(L"Super888_%s_TaifexFee.xml", FLogonID.c_str());
 
 	FAccountPtr = gTradingObjsPool.FindAccountFromLogonIdIndex(FLogonID, rwLockForRead);
 	if (FAccountPtr != 0)
@@ -1365,14 +1365,14 @@ void CTaifexFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 						else
 						{
 							delete feeObjPtr;
-							logMsg.printf(L"Add commodity[%s-%s] fee into Account[%s] Falied. Broker[%s]", FExchangeCode, contractCode, FLogonID, brokerContractCode);
+							logMsg.printf(L"Add commodity[%s-%s] fee into Account[%s] Falied. Broker[%s]", FExchangeCode.c_str(), contractCode.c_str(), FLogonID.c_str(), brokerContractCode.c_str());
 							WriteUFCLog(logHead, logMsg, constFlush);
 						}
 					}  //if (brokerContractCode == L"STOCKFUT")
 				}
 				else
 				{
-					logMsg.printf(L"Account[%s] Not Exist. commodity[%s-%s] Broker[%s]", FLogonID, FExchangeCode, contractCode, brokerContractCode);
+					logMsg.printf(L"Account[%s] Not Exist. commodity[%s-%s] Broker[%s]", FLogonID.c_str(), FExchangeCode.c_str(), contractCode.c_str(), brokerContractCode.c_str());
 					WriteUFCLog(logHead, logMsg, constFlush);
 				}
 
@@ -1381,11 +1381,11 @@ void CTaifexFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L" EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L" EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened && (logMsg.Length() > 0))
@@ -1451,11 +1451,11 @@ bool CTaifexFeeQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML )
 			}  //if (!isSuccess)
 		}  //if (rootNode != 0)
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logMsg.Length() > 0))
@@ -1493,9 +1493,9 @@ COverseasFeeQueryObject::COverseasFeeQueryObject(const String& QueryURL, const S
  FUserKey(LogonID),
  FAccountPtr(0)
 {
-	FQueryName.printf(L"OverseasFee_%s", FLogonID);
+	FQueryName.printf(L"OverseasFee_%s", FLogonID.c_str());
 	if (DumpFileName.Length() <= 0)
-		FDumpFileName.printf(L"Super888_%s_OverseasFee.xml", FLogonID);
+		FDumpFileName.printf(L"Super888_%s_OverseasFee.xml", FLogonID.c_str());
 
 	FAccountPtr = gTradingObjsPool.FindAccountFromLogonIdIndex(FLogonID, rwLockForRead);
 	if (FAccountPtr != 0)
@@ -1547,11 +1547,11 @@ bool COverseasFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 		}  //while (curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -1575,7 +1575,7 @@ bool COverseasFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 		exchangeCode = exchangePtr->GetExchangeCode(rwLockForRead);
 	else
 	{
-		logMsg.printf(L"Exchange[%s] not found in ExchangeCode Index and broker ExchangeCode Index.", exchangeCode);
+		logMsg.printf(L"Exchange[%s] not found in ExchangeCode Index and broker ExchangeCode Index.", exchangeCode.c_str());
 		WriteUFCLog(logHead, logMsg, constFlush);
 	}
 
@@ -1598,7 +1598,7 @@ bool COverseasFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 	}
 	else
 	{
-		logMsg.printf(L"Commodity[%s-%s] Not Found in ContractCode Index and broker ContractCode Index. broker[%s]", exchangeCode, contractCode, brokerContractCode);
+		logMsg.printf(L"Commodity[%s-%s] Not Found in ContractCode Index and broker ContractCode Index. broker[%s]", exchangeCode.c_str(), contractCode.c_str(), brokerContractCode.c_str());
 		WriteUFCLog(logHead, logMsg, constFlush);
 	}
 
@@ -1620,14 +1620,14 @@ bool COverseasFeeQueryObject::ParseFeeNode(_di_IXMLNode FeeNode)
 		if (!FAccountPtr->AddFee(feeObjPtr, rwLockForWrite))
 		{
 			delete feeObjPtr;
-			logMsg.printf(L"Add commodity[%s-%s] fee into Account[%s] Falied. Broker[%s]", exchangeCode, contractCode, FLogonID, brokerContractCode);
+			logMsg.printf(L"Add commodity[%s-%s] fee into Account[%s] Falied. Broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FLogonID.c_str(), brokerContractCode.c_str());
 			WriteUFCLog(logHead, logMsg, constFlush);
 		}
 		return true;
 	}
 	else
 	{
-		logMsg.printf(L"Account[%s] Not Exist. commodity[%s-%s] Broker[%s]", FLogonID, exchangeCode, contractCode, brokerContractCode);
+		logMsg.printf(L"Account[%s] Not Exist. commodity[%s-%s] Broker[%s]", FLogonID.c_str(), exchangeCode.c_str(), contractCode.c_str(), brokerContractCode.c_str());
 		WriteUFCLog(logHead, logMsg, constFlush);
 		return false;
 	}
@@ -1675,13 +1675,13 @@ bool COverseasFeeQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML)
 
 			if (responseAccount != FLogonID)
 			{
-				logMsg.printf(L"different Account. ResponseAcc[%s], QueryLogonID[%s]", responseAccount, FLogonID);
+				logMsg.printf(L"different Account. ResponseAcc[%s], QueryLogonID[%s]", responseAccount.c_str(), FLogonID.c_str());
 				WriteUFCLog(logHead, logMsg, constFlush);
 			}
 
 			if (!isSuccess)
 			{
-				logMsg.printf(L"Query result is not \"Y\", error:[%s], userKey[%s], company[%s]", errorMessage, responseUserKey, responseCompany);
+				logMsg.printf(L"Query result is not \"Y\", error:[%s], userKey[%s], company[%s]", errorMessage.c_str(), responseUserKey.c_str(), responseCompany.c_str());
 				WriteUFCLog(logHead, logMsg, constFlush);
 			}
 			else
@@ -1703,11 +1703,11 @@ bool COverseasFeeQueryObject::ParseResponseXML(_di_IXMLDocument ResponseXML)
 			}  //if (!isSuccess)
 		}  //if (rootNode != 0)
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logMsg.Length() > 0))
@@ -1789,9 +1789,9 @@ CTaifexHoldPositionQueryObject::CTaifexHoldPositionQueryObject(const String& Que
  FAccountPtr(0),
  FExchangePtr(0)
 {
-	FQueryName.printf(L"TaifexHoldPosition_%s", FAccount);
+	FQueryName.printf(L"TaifexHoldPosition_%s", FAccount.c_str());
 	if (DumpFileName.Length() <= 0)
-		FDumpFileName.printf(L"Super888_%s_TaifexHoldPosition.xml", FAccount);
+		FDumpFileName.printf(L"Super888_%s_TaifexHoldPosition.xml", FAccount.c_str());
 	FExchangePtr = gTradingObjsPool.FindExchangeFromCodeIndex(FExchangeCode, rwLockForRead);
 	FAccountPtr = gTradingObjsPool.FindAccountFromLogonIdIndex(Account, rwLockForRead);
 	if (FAccountPtr != 0)
@@ -1925,11 +1925,11 @@ bool CTaifexHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPosi
 		}  //while(curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"%Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -1955,7 +1955,7 @@ bool CTaifexHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPosi
 		gTradingObjsPool.UnlockCommodity(rwLockForRead);
 		if (commodityPtr == 0)
 		{
-			logMsg.printf(L"commodity[%s-%s] not Found.", FExchangeCode, contractCode);
+			logMsg.printf(L"commodity[%s-%s] not Found.", FExchangeCode.c_str(), contractCode.c_str());
 			WriteUFCLog(logHead, logMsg, constNotFlush);
 			return false;
 		}
@@ -1964,7 +1964,7 @@ bool CTaifexHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPosi
 		CTradingContract *contractPtr = gTradingObjsPool.FindContractFromSymbolIndex(FExchangeCode, symbol, rwLockForRead);
 		if (contractPtr == 0)
 		{
-			logMsg.printf(L"contract[%s-%s] not Found.", FExchangeCode, symbol);
+			logMsg.printf(L"contract[%s-%s] not Found.", FExchangeCode.c_str(), symbol.c_str());
 			WriteUFCLog(logHead, logMsg, constNotFlush);
 			return false;
 		}
@@ -2032,11 +2032,11 @@ bool CTaifexHoldPositionQueryObject::ParseResponseXML(_di_IXMLDocument ResponseX
 		}  //if (rootNode != 0)
 		isSuccess = true;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logMsg.Length() > 0))
@@ -2046,7 +2046,7 @@ bool CTaifexHoldPositionQueryObject::ParseResponseXML(_di_IXMLDocument ResponseX
 		if (FOnError != NULL) FOnError(logMsg);
 	}  //if (!isSuccess && (logMessage.Length() > 0))
 
-	logMsg.printf(L"Account[%s], UK[%s], Company[%s],Process %d Hold Position Node, Create %d Hold Position Object", responseAccount, responseUserKey, responseCompany, processCount, holdPositionCount);
+	logMsg.printf(L"Account[%s], UK[%s], Company[%s],Process %d Hold Position Node, Create %d Hold Position Object", responseAccount.c_str(), responseUserKey.c_str(), responseCompany.c_str(), processCount, holdPositionCount);
 	WriteUFCLog(logHead, logMsg, constFlush);
 	return isSuccess;
 }  //CTaifexHoldPositionQueryObject::ParseResponseXML()
@@ -2077,9 +2077,9 @@ COverseasHoldPositionQueryObject::COverseasHoldPositionQueryObject(const String&
  FUserKey(Account),
  FAccountPtr(0)
 {
-	FQueryName.printf(L"OverseasHoldPosition_%s", FAccount);
+	FQueryName.printf(L"OverseasHoldPosition_%s", FAccount.c_str());
 	if (DumpFileName.Length() <= 0)
-		FDumpFileName.printf(L"Super888_%s_OverseasHoldPosition.xml", FAccount);
+		FDumpFileName.printf(L"Super888_%s_OverseasHoldPosition.xml", FAccount.c_str());
 
 	FAccountPtr = gTradingObjsPool.FindAccountFromLogonIdIndex(Account, rwLockForRead);
 	if (FAccountPtr != 0)
@@ -2208,11 +2208,11 @@ bool COverseasHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPo
 		}  //while(curFieldNode != 0)
 		isExceptionHappened = false;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (isExceptionHappened)
@@ -2238,7 +2238,7 @@ bool COverseasHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPo
 		gTradingObjsPool.UnlockExchange(rwLockForRead);
 		if (exchangePtr == 0)
 		{
-			logMsg.printf(L"exchange[%s] not Found.", exchangeCode);
+			logMsg.printf(L"exchange[%s] not Found.", exchangeCode.c_str());
 			WriteUFCLog(logHead, logMsg, constFlush);
 			return false;
 		}
@@ -2247,7 +2247,7 @@ bool COverseasHoldPositionQueryObject::ParseHoldPositionNode(_di_IXMLNode HoldPo
 		CTradingContract *contractPtr = gTradingObjsPool.FindContractFromTradeSymbolIndex(exchangeCode, tradeSymbol, rwLockForRead);
 		if (contractPtr == 0)
 		{
-			logMsg.printf(L"contract[%s-%s] not Found in TradeSymbolIndex.", exchangeCode, tradeSymbol);
+			logMsg.printf(L"contract[%s-%s] not Found in TradeSymbolIndex.", exchangeCode.c_str(), tradeSymbol.c_str());
 			WriteUFCLog(logHead, logMsg, constFlush);
 			return false;
 		}
@@ -2325,11 +2325,11 @@ bool COverseasHoldPositionQueryObject::ParseResponseXML(_di_IXMLDocument Respons
 		}  //if (rootNode != 0)
 		isSuccess = true;
 	} catch (EXMLDocError& e) {
-		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"EXMLDocError Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (Exception& e) {
-		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message, FQueryURL);
+		logMsg.printf(L"Exception:%s. URL=[%s]", e.Message.c_str(), FQueryURL.c_str());
 	} catch (...) {
-		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL);
+		logMsg.printf(L"Unknown Exception. URL=[%s]", FQueryURL.c_str());
 	}  //try
 
 	if (!isSuccess && (logMsg.Length() > 0))
@@ -2339,7 +2339,7 @@ bool COverseasHoldPositionQueryObject::ParseResponseXML(_di_IXMLDocument Respons
 		if (FOnError != NULL) FOnError(logMsg);
 	}  //if (!isSuccess && (logMessage.Length() > 0))
 
-	logMsg.printf(L"Account[%s], UK[%s], Company[%s], CalculateTime[%s] Process %d Hold Position Node, Create %d Hold Position Object", responseAccount, responseUserKey, responseCompany, calculateTime, processCount, holdPositionCount);
+	logMsg.printf(L"Account[%s], UK[%s], Company[%s], CalculateTime[%s] Process %d Hold Position Node, Create %d Hold Position Object", responseAccount.c_str(), responseUserKey.c_str(), responseCompany.c_str(), calculateTime.c_str(), processCount, holdPositionCount);
 	WriteUFCLog(logHead, logMsg, constFlush);
 	return isSuccess;
 }  //COverseasHoldPositionQueryObject::ParseResponseXML()
@@ -2395,7 +2395,7 @@ void __fastcall CWaitQueryHoldPositionObject::Execute(void)
 	}  //while (!isTaifexHoldPositionQueried || !isOverseasHoldPositionQueried)
 
 	String logMessage = L"";
-	logMessage.printf(L"CWaitQueryHoldPositionObject::Execute() Account[%s] OrderStore[%d] Query Open Interest Terminate.", FAccount, FOrderStroeIndex);
+	logMessage.printf(L"CWaitQueryHoldPositionObject::Execute() Account[%s] OrderStore[%d] Query Open Interest Terminate.", FAccount.c_str(), FOrderStroeIndex);
 	WriteUFCLog(logMessage, constFlush);
 	UFC::BufferedLog::Printf(" %s", ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 }  //CWaitQueryHoldPositionObject::Execute()

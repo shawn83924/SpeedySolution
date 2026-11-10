@@ -52,7 +52,7 @@ const String& Config::GetEditURL( void )
 //---------------------------------------------------------------------------
 const String& Config::GetEditURL( const String& ID, const String& token )
 {
-	m_EditURLWithParams.printf( L"%s?mobile=%s&login_token=%s", m_EditURL, ID,token );
+	m_EditURLWithParams.printf( L"%s?mobile=%s&login_token=%s", m_EditURL.c_str(), ID.c_str(),token.c_str() );
 	return m_EditURLWithParams;
 }
 //---------------------------------------------------------------------------
@@ -63,8 +63,8 @@ const String& Config::GePurchaseListURL( const String& ID, const String& token )
 	String     CheckSum( ChkSum.ToString().c_str() );
 	String     json;
 
-	json.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"checksum\":\"%s\"}", ID, token,CheckSum );
-	m_PurchaseListURLWithParams.printf( L"%s?data=%s&txid=IUN_O_19&vender=UnifyAP", m_PurchaseListURL, json);
+	json.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"checksum\":\"%s\"}", ID.c_str(), token.c_str(),CheckSum.c_str() );
+	m_PurchaseListURLWithParams.printf( L"%s?data=%s&txid=IUN_O_19&vender=UnifyAP", m_PurchaseListURL.c_str(), json.c_str());
 	return m_PurchaseListURLWithParams;
 }
 //---------------------------------------------------------------------------
@@ -75,9 +75,9 @@ const String& Config::GetXFlashURL( const String& ID, const String& token )
 	String     CheckSum( ChkSum.ToString().c_str() );
 	String     json;
 
-	json.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}", ID,token,CheckSum );
+	json.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"cp\":\"1\",\"checksum\":\"%s\"}", ID.c_str(),token.c_str(),CheckSum.c_str() );
 
-	m_XFlashURLWithParams.printf( L"%s?data=%s&txid=IUN_O_09&vender=UnifyAP", m_XFlashURL, json);//Base64Encode( json ));
+	m_XFlashURLWithParams.printf( L"%s?data=%s&txid=IUN_O_09&vender=UnifyAP", m_XFlashURL.c_str(), json.c_str());//Base64Encode( json ));
 	return m_XFlashURLWithParams;
 }
 //---------------------------------------------------------------------------
@@ -120,7 +120,7 @@ void Config::GenData( String& Out )
 	UFC::MD5   ChkSum( (const UFC::UInt8*)CheckSumData.c_str(), CheckSumData.Length() );
 	String     CheckSum( ChkSum.ToString().c_str() );
 
-	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID,gUser.Token,CheckSum );
+	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID.c_str(),gUser.Token.c_str(),CheckSum.c_str() );
 }
 //---------------------------------------------------------------------------
 void Config::GenData(  String& Out, const String& Param )
@@ -129,7 +129,7 @@ void Config::GenData(  String& Out, const String& Param )
 	UFC::MD5   ChkSum( (const UFC::UInt8*)CheckSumData.c_str(), CheckSumData.Length() );
 	String     CheckSum( ChkSum.ToString().c_str() );
 
-	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"parm\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID,gUser.Token,Param,CheckSum );
+	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"parm\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID.c_str(),gUser.Token.c_str(),Param.c_str(),CheckSum.c_str() );
 }
 //---------------------------------------------------------------------------
 void Config::GenData(  String& Out, const String& Param, const String& Value )
@@ -138,7 +138,7 @@ void Config::GenData(  String& Out, const String& Param, const String& Value )
 	UFC::MD5   ChkSum( (const UFC::UInt8*)CheckSumData.c_str(), CheckSumData.Length() );
 	String     CheckSum( ChkSum.ToString().c_str() );
 
-	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"parm\":\"%s\",\"value\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID,gUser.Token,Param,Value,CheckSum );
+	Out.printf( L"{\"account\":\"%s\",\"token\":\"%s\",\"parm\":\"%s\",\"value\":\"%s\",\"checksum\":\"%s\"}",gUser.UserID.c_str(),gUser.Token.c_str(),Param.c_str(),Value.c_str(),CheckSum.c_str() );
 }
 //---------------------------------------------------------------------------
 void Config::GenUploadData( const String& Items, String& Out )
@@ -152,12 +152,12 @@ void Config::GenUploadData( const String& Items, String& Out )
 	String          FileName;
 
 	Out.printf( L"data={\"account\":\"%s\",\"token\":\"%s\",\"txAccount\":\"%s\",\"txType\":\"%s\",\"productList\":%s,\"checksum\":\"%s\"}",
-				gUser.UserID,gUser.Token,gUser.LoginUserID,String(Type),Items,CheckSum );
+				gUser.UserID.c_str(),gUser.Token.c_str(),gUser.LoginUserID.c_str(),String(Type).c_str(),Items.c_str(),CheckSum.c_str() );
 
 	TStringList* strings = new TStringList();
 	strings->Add( Out );
 	UFC::GetYYYYMMDD( Today );
-	FileName.printf( L"%slog\\FilledList_%s_%s.txt", g_Config.GetCurrentDir(), gUser.UserID,String(Today.c_str()) );
+	FileName.printf( L"%slog\\FilledList_%s_%s.txt", g_Config.GetCurrentDir().c_str(), gUser.UserID.c_str(),String(Today.c_str()).c_str() );
 	strings->SaveToFile( FileName );
 	delete strings;
 }
@@ -174,7 +174,7 @@ bool Config::MDBSRequest( TMemoryStream* OutStream, const String& Func, const St
 		String URLPrefix = GetLogonURL();
 		String URL;
 
-		URL.printf( L"%s?data=%s&txid=%s&vender=UnifyAP",URLPrefix, Data, Func );
+		URL.printf( L"%s?data=%s&txid=%s&vender=UnifyAP",URLPrefix.c_str(), Data.c_str(), Func.c_str() );
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{
 			SSLIOHandler->SSLOptions->Method = sslvSSLv23;
@@ -207,7 +207,7 @@ bool Config::MDBSUploadRequest( TMemoryStream* OutStream, const String& FilledIt
 		String UploadData,StringParams;
 
 		GenUploadData( FilledItems, UploadData );
-		StringParams.printf( L"%s&txid=IUN_O_06&vender=UnifyAP",UploadData );
+		StringParams.printf( L"%s&txid=IUN_O_06&vender=UnifyAP",UploadData.c_str() );
 		StreamParams = new TStringStream( StringParams, TEncoding::UTF8, true );
 		if( URL.Pos( L"https" ) != 0 ) ///< Use https
 		{
@@ -348,13 +348,13 @@ bool Config::UploadFilled( const String& Items, int FC )
 				if( ResultStr == L"0" )
 				{
 					ErrMsg.printf( L"成功上傳%d筆成交資料!", FC );
-					TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 					IsOk = true;
 				}
 				else
 				{
-					ErrMsg.printf( L"上傳%d筆成交資料失敗:%s", FC, MessageStr );
-					TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+					ErrMsg.printf( L"上傳%d筆成交資料失敗:%s", FC, MessageStr.c_str() );
+					TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 				}
 
 			}

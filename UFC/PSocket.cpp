@@ -249,7 +249,7 @@ void PSocket::Bind( const AnsiString& Address, Int32 Port )
     else
         addr_sin.sin_addr.s_addr = inet_addr( Address.c_str() );
 
-    if( bind( FFD, (struct sockaddr*)&addr_sin, sizeof(addr_sin) ) == SOCKET_ERROR )
+    if( ::bind( FFD, (struct sockaddr*)&addr_sin, sizeof(addr_sin) ) == SOCKET_ERROR )
     {
         AnsiString Reson;
         #ifdef _WIN32

@@ -99,7 +99,7 @@ void DoUnlockObject(UFC::PReadWriteLock *LockObjPtr, ReadWrietLockTypeEnum RWLoc
 template<typename fieldType, typename LockType> fieldType GetFieldValue(const fieldType& Field, LockType *LockObjPtr, ReadWrietLockTypeEnum RWLockType)
 {
 	DoLockObject(LockObjPtr, RWLockType);
-	fieldType resultValue = MemberField;
+	fieldType resultValue = Field;
 	DoUnlockObject(LockObjPtr, RWLockType);
 	return resultValue;
 }  //GetFieldValueRWLock()
@@ -108,7 +108,7 @@ template<typename fieldType, typename LockType> fieldType GetFieldValue(const fi
 template<typename fieldType, typename LockType> void SetFieldValue(const fieldType& NewValue, fieldType& Field, LockType *LockObjPtr, ReadWrietLockTypeEnum RWLockType)
 {
 	DoLockObject(LockObjPtr, RWLockType);
-	MemberField = NewValue;
+	Field = NewValue;
 	DoUnlockObject(LockObjPtr, RWLockType);
 }  //SetFieldValueRWLock()
 

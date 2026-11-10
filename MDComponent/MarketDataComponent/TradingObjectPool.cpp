@@ -77,7 +77,7 @@ void CTradingObjectsPool::DumpExchangeCodeIndex(ReadWrietLockTypeEnum RWLockType
 {
 	String logStr;
 	LockExchange(RWLockType);
-	logStr.printf(L"===== Dump %s %d Exchanges Code Index =====", FPoolName, FExchangeCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Exchanges Code Index =====", FPoolName.c_str(), FExchangeCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FExchangeCodeIndex, constNotFlush, &FExchangeCSLock, rwNotLock);
 	UnlockExchange(RWLockType);
@@ -109,7 +109,7 @@ void CTradingObjectsPool::DumpExchangeBrokerCodeIndex(ReadWrietLockTypeEnum RWLo
 {
 	String logStr;
 	LockExchange(RWLockType);
-	logStr.printf(L"===== Dump %s %d Exchanges Broker Code Index =====", FPoolName, FExchangeBrokerCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Exchanges Broker Code Index =====", FPoolName.c_str(), FExchangeBrokerCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FExchangeBrokerCodeIndex, constNotFlush, &FExchangeCSLock, rwNotLock);
 	UnlockExchange(RWLockType);
@@ -148,10 +148,10 @@ bool CTradingObjectsPool::AddExchange(CTradingExchange *ExchangePtr, ReadWrietLo
 	{
 		isSuccess = true;
 		if (!InsertExchangeIntoBrokerCodeIndex(brokerExchangeCode, ExchangePtr, constCheckExist, rwNotLock))
-			logStr.printf(L"Insert Exchange[%s] into %s Broker Code Index falied. broker[%s]", exchangeCode, FPoolName, brokerExchangeCode);
+			logStr.printf(L"Insert Exchange[%s] into %s Broker Code Index falied. broker[%s]", exchangeCode.c_str(), FPoolName.c_str(), brokerExchangeCode.c_str());
 	}
 	else
-		logStr.printf(L"Insert Exchange[%s] into %s Code Index falied. broker[%s]", exchangeCode, FPoolName, brokerExchangeCode);
+		logStr.printf(L"Insert Exchange[%s] into %s Code Index falied. broker[%s]", exchangeCode.c_str(), FPoolName.c_str(), brokerExchangeCode.c_str());
 	UnlockExchange(RWLockType);
 	if (logStr.Length() > 0) WriteUFCLog(logHead, logStr, constFlush);
 	return isSuccess;
@@ -212,7 +212,7 @@ bool CTradingObjectsPool::LoadExchangeInformation(const String& InformationFileN
 					exchangePtr = new CTradingExchange(exchangeCode, exchangeName, isDayTradeOpenSupported, isStopOrderSupported, brokerExchangeCode);
 					if (!AddExchange(exchangePtr, rwNotLock))
 					{
-						logMsg.printf(L"Add Exchange[%s] falied. Broker[%s]", exchangeCode, brokerExchangeCode);
+						logMsg.printf(L"Add Exchange[%s] falied. Broker[%s]", exchangeCode.c_str(), brokerExchangeCode.c_str());
 						WriteUFCLog(logHead, logMsg, constNotFlush);
 						delete exchangePtr;
 						exchangePtr = 0;
@@ -224,7 +224,7 @@ bool CTradingObjectsPool::LoadExchangeInformation(const String& InformationFileN
 		isLoadSuccess = true;
 	} catch(UFC::FileException e) {
 		String exceptionStr = UTF8ToUnicodeString(e.what());
-		logMsg.printf(L"FileException:[%s]", exceptionStr);
+		logMsg.printf(L"FileException:[%s]", exceptionStr.c_str());
 		WriteUFCLog(logHead, logMsg, constNotFlush);
 	}
 	logMsg = L"End...";
@@ -260,7 +260,7 @@ void CTradingObjectsPool::DumpCommodityCodeIndex(ReadWrietLockTypeEnum RWLockTyp
 {
 	String logStr;
 	LockCommodity(RWLockType);
-	logStr.printf(L"===== Dump %s %d Commodity Code Index =====", FPoolName, FCommodityCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Commodity Code Index =====", FPoolName.c_str(), FCommodityCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FCommodityCodeIndex, constNotFlush, &FCommodityCSLock, rwNotLock);
 	UnlockCommodity(RWLockType);
@@ -295,7 +295,7 @@ void CTradingObjectsPool::DumpCommodityTradeCodeIndex(ReadWrietLockTypeEnum RWLo
 {
 	String logStr;
 	LockCommodity(RWLockType);
-	logStr.printf(L"===== Dump %s %d Commodity Trade Code Index =====", FPoolName, FCommodityTradeCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Commodity Trade Code Index =====", FPoolName.c_str(), FCommodityTradeCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FCommodityTradeCodeIndex, constNotFlush, &FCommodityCSLock, rwNotLock);
 	UnlockCommodity(RWLockType);
@@ -330,7 +330,7 @@ void CTradingObjectsPool::DumpCommodityBrokerCodeIndex(ReadWrietLockTypeEnum RWL
 {
 	String logStr;
 	LockCommodity(RWLockType);
-	logStr.printf(L"===== Dump %s %d Commodity Broker Code Index =====", FPoolName, FCommodityBrokerCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Commodity Broker Code Index =====", FPoolName.c_str(), FCommodityBrokerCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FCommodityBrokerCodeIndex, constNotFlush, &FCommodityCSLock, rwNotLock);
 	UnlockCommodity(RWLockType);
@@ -365,7 +365,7 @@ void CTradingObjectsPool::DumpCommodityMarketCodeIndex(ReadWrietLockTypeEnum RWL
 {
 	String logStr;
 	LockCommodity(RWLockType);
-	logStr.printf(L"===== Dump %s %d Commodity Market Code Index =====", FPoolName, FCommodityMarketCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Commodity Market Code Index =====", FPoolName.c_str(), FCommodityMarketCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FCommodityMarketCodeIndex, constNotFlush, &FCommodityCSLock, rwNotLock);
 	UnlockCommodity(RWLockType);
@@ -393,25 +393,25 @@ bool CTradingObjectsPool::AddCommodity(CTradingCommodity *CommodityPtr, ReadWrie
 		isSuccess = true;
 		if (!InsertCommodityIntoTradeCodeIndex(exchangeCode, tradeContractCode, CommodityPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Commodity[%s-%s] into %s Trade Contract Code Index falied. trade[%s] broker[%s]", exchangeCode, contractCode, FPoolName, tradeContractCode, brokerContractCode);
+			logStr.printf(L"Insert Commodity[%s-%s] into %s Trade Contract Code Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), tradeContractCode.c_str(), brokerContractCode.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 
 		if (!InsertCommodityIntoBrokerCodeIndex(exchangeCode, brokerContractCode, CommodityPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Commodity[%s-%s] into %s Broker Contract Code Index falied. trade[%s] broker[%s]", exchangeCode, contractCode, FPoolName, tradeContractCode, brokerContractCode);
+			logStr.printf(L"Insert Commodity[%s-%s] into %s Broker Contract Code Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), tradeContractCode.c_str(), brokerContractCode.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 
 		if (!InsertCommodityIntoMarketCodeIndex(market, contractCode, CommodityPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Commodity[%s-%s] into %s Market Contract Code Index falied. trade[%s] broker[%s] Market[%s]", exchangeCode, contractCode, FPoolName, tradeContractCode, brokerContractCode, DescribeMarket(market));
+			logStr.printf(L"Insert Commodity[%s-%s] into %s Market Contract Code Index falied. trade[%s] broker[%s] Market[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), tradeContractCode.c_str(), brokerContractCode.c_str(), DescribeMarket(market).c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 	}
 	else
 	{
-		logStr.printf(L"Insert Commodity[%s-%s] into %s Contract Code Index falied. trade[%s] broker[%s]", exchangeCode, contractCode, FPoolName, tradeContractCode, brokerContractCode);
+		logStr.printf(L"Insert Commodity[%s-%s] into %s Contract Code Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), tradeContractCode.c_str(), brokerContractCode.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 	}
 	UnlockCommodity(RWLockType);
@@ -457,7 +457,7 @@ void CTradingObjectsPool::DumpTaxRateCodeIndex(ReadWrietLockTypeEnum RWLockType)
 {
 	String logStr;
 	LockTaxRate(RWLockType);
-	logStr.printf(L"===== Dump %s %d Tax Rate Code Index =====", FPoolName, FTaxRateCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Tax Rate Code Index =====", FPoolName.c_str(), FTaxRateCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FTaxRateCodeIndex, constNotFlush, &FTaxRateCSLock, rwNotLock);
 	UnlockTaxRate(RWLockType);
@@ -494,7 +494,7 @@ void CTradingObjectsPool::DumpTaxRateBrokerCodeIndex(ReadWrietLockTypeEnum RWLoc
 {
 	String logStr;
 	LockTaxRate(RWLockType);
-	logStr.printf(L"===== Dump %s %d Tax Rate Broker Code Index =====", FPoolName, FTaxRateBrokerCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Tax Rate Broker Code Index =====", FPoolName.c_str(), FTaxRateBrokerCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FTaxRateBrokerCodeIndex, constNotFlush, &FTaxRateCSLock, rwNotLock);
 	UnlockTaxRate(RWLockType);
@@ -520,13 +520,13 @@ bool CTradingObjectsPool::AddTaxRate(CTaxRateObject *TaxRatePtr, ReadWrietLockTy
 		isSuccess = true;
 		if (!InsertTaxRateIntoBrokerCodeIndex(exchangeCode, brokerContractCode, TaxRatePtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert TaxRate[%s-%s] into %s Broker Contract Code Index falied. broker[%s]", exchangeCode, contractCode, FPoolName, brokerContractCode);
+			logStr.printf(L"Insert TaxRate[%s-%s] into %s Broker Contract Code Index falied. broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), brokerContractCode.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 	}
 	else
 	{
-		logStr.printf(L"Insert TaxRate[%s-%s] into %s Contract Code Index falied. broker[%s]", exchangeCode, contractCode, FPoolName, brokerContractCode);
+		logStr.printf(L"Insert TaxRate[%s-%s] into %s Contract Code Index falied. broker[%s]", exchangeCode.c_str(), contractCode.c_str(), FPoolName.c_str(), brokerContractCode.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 	}
 	UnlockTaxRate(RWLockType);
@@ -568,7 +568,7 @@ void CTradingObjectsPool::DumpContractSymbolIndex(ReadWrietLockTypeEnum RWLockTy
 {
 	String logStr;
 	LockContract(RWLockType);
-	logStr.printf(L"===== Dump %s %d Contract Symbol Index =====", FPoolName, FContractSymbolIndex.size());
+	logStr.printf(L"===== Dump %s %d Contract Symbol Index =====", FPoolName.c_str(), FContractSymbolIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FContractSymbolIndex, constNotFlush, &FContractCSLock, rwNotLock);
 	UnlockContract(RWLockType);
@@ -603,7 +603,7 @@ void CTradingObjectsPool::DumpContractTradeSymbolIndex(ReadWrietLockTypeEnum RWL
 {
 	String logStr;
 	LockContract(RWLockType);
-	logStr.printf(L"===== Dump %s %d Contract Trade Symbol Index =====", FPoolName, FContractTradeSymbolIndex.size());
+	logStr.printf(L"===== Dump %s %d Contract Trade Symbol Index =====", FPoolName.c_str(), FContractTradeSymbolIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FContractTradeSymbolIndex, constNotFlush, &FContractCSLock, rwNotLock);
 	UnlockContract(RWLockType);
@@ -638,7 +638,7 @@ void CTradingObjectsPool::DumpContractBrokerSymbolIndex(ReadWrietLockTypeEnum RW
 {
 	String logStr;
 	LockContract(RWLockType);
-	logStr.printf(L"===== Dump %s %d Contract Broker Symbol Index =====", FPoolName, FContractBrokerSymbolIndex.size());
+	logStr.printf(L"===== Dump %s %d Contract Broker Symbol Index =====", FPoolName.c_str(), FContractBrokerSymbolIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FContractBrokerSymbolIndex, constNotFlush, &FContractCSLock, rwNotLock);
 	UnlockContract(RWLockType);
@@ -673,7 +673,7 @@ void CTradingObjectsPool::DumpContractMarketSymbolIndex(ReadWrietLockTypeEnum RW
 {
 	String logStr;
 	LockContract(RWLockType);
-	logStr.printf(L"===== Dump %s %d Contract Market Symbol Index =====", FPoolName, FContractMarketSymbolIndex.size());
+	logStr.printf(L"===== Dump %s %d Contract Market Symbol Index =====", FPoolName.c_str(), FContractMarketSymbolIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FContractMarketSymbolIndex, constNotFlush, &FContractCSLock, rwNotLock);
 	UnlockContract(RWLockType);
@@ -721,25 +721,25 @@ bool CTradingObjectsPool::AddContract(CTradingContract *ContractPtr, ReadWrietLo
 		isSuccess = true;
 		if (!InsertContractIntoTradeSymbolIndex(exchangeCode, tradeSymbol, ContractPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Contract[%s-%s] into %s Trade Symbol Index falied. trade[%s] broker[%s]", exchangeCode, symbol, FPoolName, tradeSymbol, brokerSymbol);
+			logStr.printf(L"Insert Contract[%s-%s] into %s Trade Symbol Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), symbol.c_str(), FPoolName.c_str(), tradeSymbol.c_str(), brokerSymbol.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 
 		if (!InsertContractIntoBrokerSymbolIndex(exchangeCode, brokerSymbol, ContractPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Contract[%s-%s] into %s Broker Symbol Index falied. trade[%s] broker[%s]", exchangeCode, symbol, FPoolName, tradeSymbol, brokerSymbol);
+			logStr.printf(L"Insert Contract[%s-%s] into %s Broker Symbol Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), symbol.c_str(), FPoolName.c_str(), tradeSymbol.c_str(), brokerSymbol.c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 
 		if (!InsertContractIntoMarketSymbolIndex(market, symbol, ContractPtr, constCheckExist, rwNotLock))
 		{
-			logStr.printf(L"Insert Contract[%s-%s] into %s Market Symbol Index falied. trade[%s] broker[%s] Market[%s]", exchangeCode, symbol, FPoolName, tradeSymbol, brokerSymbol, DescribeMarket(market));
+			logStr.printf(L"Insert Contract[%s-%s] into %s Market Symbol Index falied. trade[%s] broker[%s] Market[%s]", exchangeCode.c_str(), symbol.c_str(), FPoolName.c_str(), tradeSymbol.c_str(), brokerSymbol.c_str(), DescribeMarket(market).c_str());
 			WriteUFCLog(logHead, logStr, constFlush);
 		}
 	}
 	else
 	{
-		logStr.printf(L"Insert Contract[%s-%s] into %s Symbol Index falied. trade[%s] broker[%s]", exchangeCode, symbol, FPoolName, tradeSymbol, brokerSymbol);
+		logStr.printf(L"Insert Contract[%s-%s] into %s Symbol Index falied. trade[%s] broker[%s]", exchangeCode.c_str(), symbol.c_str(), FPoolName.c_str(), tradeSymbol.c_str(), brokerSymbol.c_str());
 		WriteUFCLog(logHead, logStr, constFlush);
 	}
 	UnlockContract(RWLockType);
@@ -780,7 +780,7 @@ void CTradingObjectsPool::DumpTransferBankCodeIndex(ReadWrietLockTypeEnum RWLock
 {
 	String logStr;
 	LockContract(RWLockType);
-	logStr.printf(L"===== Dump %s %d Transfer Bank Code Index =====", FPoolName, FTransferBankCodeIndex.size());
+	logStr.printf(L"===== Dump %s %d Transfer Bank Code Index =====", FPoolName.c_str(), FTransferBankCodeIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FTransferBankCodeIndex, constNotFlush, &FTransferBankCSLock, rwNotLock);
 	UnlockContract(RWLockType);
@@ -812,7 +812,7 @@ void CTradingObjectsPool::DumpAccountLogonIDIndex(ReadWrietLockTypeEnum RWLockTy
 {
 	String logStr;
 	LockAccount(RWLockType);
-	logStr.printf(L"===== Dump %s %d Trading Account LogonId Index =====", FPoolName, FTradingAccountLogonIdIndex.size());
+	logStr.printf(L"===== Dump %s %d Trading Account LogonId Index =====", FPoolName.c_str(), FTradingAccountLogonIdIndex.size());
 	WriteUFCLog(logStr, constNotFlush);
 	DumpTradingObjMap(FTradingAccountLogonIdIndex, constNotFlush, &FAccountCSLock, rwNotLock);
 	UnlockAccount(RWLockType);
@@ -857,7 +857,7 @@ CContractPosition *CTradingObjectsPool::FindAccountContractPosition(const String
 	if (accountPtr == 0)
 	{
 		ProcessCode = -1;
-		ProcessMsg.printf(L"Account[%s] not found.", LogonId);
+		ProcessMsg.printf(L"Account[%s] not found.", LogonId.c_str());
 		return 0;
 	}
 
@@ -880,13 +880,13 @@ CContractPosition *CTradingObjectsPool::FindAccountContractPosition(const String
 				delete positionPtr;
 				positionPtr = 0;
 				ProcessCode = -3;
-				ProcessMsg.printf(L"Insert Account[%s] ContractPosition[%s-%s] Failed.", LogonId, ExchangeCode, Symbol);
+				ProcessMsg.printf(L"Insert Account[%s] ContractPosition[%s-%s] Failed.", LogonId.c_str(), ExchangeCode.c_str(), Symbol.c_str());
 			}
 		}
 		else
 		{
 			ProcessCode = -2;
-			ProcessMsg.printf(L"Account[%s] ContractPosition[%s-%s] not Found.", LogonId, ExchangeCode, Symbol);
+			ProcessMsg.printf(L"Account[%s] ContractPosition[%s-%s] not Found.", LogonId.c_str(), ExchangeCode.c_str(), Symbol.c_str());
 		}
 	}
 	accountPtr->Unlock(RWLockType);
@@ -1003,7 +1003,7 @@ int CTradingObjectsPool::SetTaifexCommodityFeeObject(CTradingAccount *AccountPtr
 				createCount++;
 			else
 			{
-				logMsg.printf(L"Add Fee[%s-%s] into Account[%s] Falied.", curExchangeCode, curContractCode, logonId);
+				logMsg.printf(L"Add Fee[%s-%s] into Account[%s] Falied.", curExchangeCode.c_str(), curContractCode.c_str(), logonId.c_str());
 				WriteUFCLog(logHead, logMsg, constFlush);
 				delete curFeeObjPtr;
 			}

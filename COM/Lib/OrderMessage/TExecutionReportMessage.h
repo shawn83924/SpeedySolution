@@ -62,7 +62,7 @@ private:
     double          FLegPrice1;
     double          FLegPrice2;
     bool            FReplacePx;
-    Int64           FOrigNID;
+	UFC::Int64      FOrigNID;
     nsOrderMessageDefine::OrderTypeEnum             FOrderType;
     nsOrderMessageDefine::SideEnum                  FSide;
     nsOrderMessageDefine::TimeInForceEnum           FTimeInForce;
@@ -165,7 +165,7 @@ public:
     void SetReplacePx( bool Rpx  )                                                            { FReplacePx = Rpx; }
     void SetSellSideAccount( const char* Value )                                              { FSellSideAccount = Value; }
     void SetExchangeOrderID( const char* Value )                                              { FExchangeOrderID = Value; }
-    void SetOrigNID( Int64 ONID )                                                             { FOrigNID = ONID; }
+	void SetOrigNID( UFC::Int64 ONID )                                                        { FOrigNID = ONID; }
     void SetFixCxlRejResponseTo( long Value )                                                 { FFixCxlRejResponseTo = Value; }
     void SetFixCxlRejReason( long Value )                                                     { FFixCxlRejReason = Value; }
     void SetFixOrdRejReason( long Value )                                                     { FFixOrdRejReason = Value; }
@@ -244,7 +244,7 @@ public:
     const char*                                     GetSellSideAccount( void )          {return FSellSideAccount.c_str(); }
     const char*                                     GetExchangeOrderID( void )          {return FExchangeOrderID.c_str(); }
     bool                                            IsReplacePx( void )                 {return FReplacePx; }
-    Int64                                           GetOrigNID( void )                  {return FOrigNID; }
+    UFC::Int64                                      GetOrigNID( void )                  {return FOrigNID; }
     long                                            GetFixCxlRejResponseTo()            {return FFixCxlRejResponseTo; }
     long                                            GetFixCxlRejReason()                {return FFixCxlRejReason; }
     long                                            GetFixOrdRejReason()                {return FFixOrdRejReason; }

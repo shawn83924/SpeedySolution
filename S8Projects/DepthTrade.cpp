@@ -34,41 +34,41 @@ const int FONT_SIZE_MIN = 9;
 const int FONT_SIZE_DEF = 10;
 const int FONT_SIZE_MAX = 15;
 //---------------------------------------------------------------------------
-TColor FixedRowBidColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
-TColor FixedRowAskColor[2]  = {RGB(239,239,239),RGB(84,84,84)};
+TColor FixedRowBidColor[2]  = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
+TColor FixedRowAskColor[2]  = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
 TColor FixedRowColor[2]     = {clBlack,clWhite};
-TColor FixedRowBKColor[2]   = {RGB(239,239,239),RGB(84,84,84)};
-TColor GridColor[2]	        = {RGB(224,224,224),RGB(104,104,104)};
+TColor FixedRowBKColor[2]   = {(TColor)RGB(239,239,239),(TColor)RGB(84,84,84)};
+TColor GridColor[2]	        = {(TColor)RGB(224,224,224),(TColor)RGB(104,104,104)};
 ///< Tick row colors
-TColor TickBKColor[2]       = {RGB(249,249,249),RGB(8,16,27)};
-TColor TickUpperColor[2]    = {RGB(230,0,0),RGB(230,0,0)};
-TColor TickLowerColor[2]    = {RGB(33,140,4),RGB(33,140,4)};
+TColor TickBKColor[2]       = {(TColor)RGB(249,249,249),(TColor)RGB(8,16,27)};
+TColor TickUpperColor[2]    = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor TickLowerColor[2]    = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
 TColor FillColor[2]         = {clWhite,clWhite};
-TColor FillBKColor[2]       = {RGB(50,195,190),RGB(9,60,62)};
+TColor FillBKColor[2]       = {(TColor)RGB(50,195,190),(TColor)RGB(9,60,62)};
 TColor BetterBuyColor[2]    = {clWhite,clWhite};
-TColor BetterBuyBKColor[2]  = {RGB(255,109,135),RGB(74,19,25)};
+TColor BetterBuyBKColor[2]  = {(TColor)RGB(255,109,135),(TColor)RGB(74,19,25)};
 TColor BetterSellColor[2]   = {clWhite,clWhite};
-TColor BetterSellBKColor[2] = {RGB(72,137,193),RGB(10,32,73)};
+TColor BetterSellBKColor[2] = {(TColor)RGB(72,137,193),(TColor)RGB(10,32,73)};
 TColor DayHiColor[2]        = {clRed,clRed};
 TColor DayLoColor[2]        = {clGreen,clGreen};
 TColor AvgPriceColor[2]     = {clWhite,clWhite};
 ///< Buy side color
-TColor BidDepth5BKColor[2]       = {clWhite,RGB(53,53,53)};
-TColor BidDepth5Color[2]         = {RGB(248,152,154),RGB(255,166,166)};
-TColor BuyBKColor[2]             = {clWhite,RGB(53,53,53)};
+TColor BidDepth5BKColor[2]       = {clWhite,(TColor)RGB(53,53,53)};
+TColor BidDepth5Color[2]         = {(TColor)RGB(248,152,154),(TColor)RGB(255,166,166)};
+TColor BuyBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyColor[2]               = {clBlack,clWhite};
-TColor BuyFillBKColor[2]         = {clWhite,RGB(53,53,53)};
+TColor BuyFillBKColor[2]         = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyFillColor[2]           = {clBlack,clWhite};
-TColor BuyConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
+TColor BuyConditionColBKColor[2] = {clWhite,(TColor)RGB(53,53,53)};
 TColor BuyConditionColColor[2]   = {clBlack,clWhite};
 ///<Sell side color
-TColor AskDepth5BKColor[2]        = {clWhite,RGB(53,53,53)};
-TColor AskDepth5Color[2]          = {RGB(124,186,63),RGB(149,255,116)};
-TColor SellBKColor[2]             = {clWhite,RGB(53,53,53)};
+TColor AskDepth5BKColor[2]        = {clWhite,(TColor)RGB(53,53,53)};
+TColor AskDepth5Color[2]          = {(TColor)RGB(124,186,63),(TColor)RGB(149,255,116)};
+TColor SellBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellColor[2]               = {clBlack,clWhite};
-TColor SellFillBKColor[2]         = {clWhite,RGB(53,53,53)};
+TColor SellFillBKColor[2]         = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellFillColor[2]           = {clBlack,clWhite};
-TColor SellConditionColBKColor[2] = {clWhite,RGB(53,53,53)};
+TColor SellConditionColBKColor[2] = {clWhite,(TColor)RGB(53,53,53)};
 TColor SellConditionColColor[2]   = {clBlack,clWhite};
 //---------------------------------------------------------------------------
 UFC::PHashMap<UFC::AnsiString, UFC::List<TDepthForm*>*> FStopCloseMap;
@@ -95,6 +95,7 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 ,FGroup( Page )
 ,FNetPos( 0 )
 ,FFontSize( FONT_SIZE_DEF )
+,FPostSizeOffset( 5 )
 ,FLeft(0)
 ,FTop(0)
 ,FFateTesting( false )
@@ -199,7 +200,7 @@ void __fastcall TDepthForm::UpdateCaption( void )
 	{
 		String StockName;
 
-		StockName.printf( L"%s(%s)", OrderBookList->ChineseName , FSym );
+		StockName.printf( L"%s(%s)", OrderBookList->ChineseName.c_str() , FSym.c_str() );
 		Caption = StockName;
 	}
 	else
@@ -228,7 +229,7 @@ void __fastcall TDepthForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::AutoCenterSwitchClick(TObject *Sender)
@@ -374,9 +375,9 @@ void __fastcall TDepthForm::ChangeSymbol( void )
 			UFC::SleepMS(10);
 		}
 		OrderBookList->SetSymbol( FEx, FSym );
-		FMarket   = FSymInfo->GetMarket();
+		FMarket   = static_cast<nsOrderMessageDefine::MarketEnum>( FSymInfo->GetMarket() );
 		FSym      = FSymInfo->GetSymbol().c_str();
-		FCallPut  = FSymInfo->GetCallPut();
+		FCallPut  = static_cast<EventTypeEnum>( FSymInfo->GetCallPut() );
 		FStrikePX = FSymInfo->GetStrikePrice();
 		FBullPx   = FSymInfo->GetBullPrice();
 		FDigit    = FSymInfo->GetDigit();
@@ -448,14 +449,14 @@ bool __fastcall TDepthForm::CheckOrder( int Qty )
 {
 	if( Qty == 0 )
 	{
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"口數不能為0" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"口數不能為0" );
 		return false;
 	}
 	if( FMarket == nsOrderMessageDefine::mTSE || FMarket == nsOrderMessageDefine::mOTC )
 	{
 		if( gUser.AccountType == hatTAIFEX )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"證券帳號不存在" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"證券帳號不存在" );
 			return false;
 		}
 	}
@@ -463,7 +464,7 @@ bool __fastcall TDepthForm::CheckOrder( int Qty )
 	{
 		if( gUser.AccountType == hatTWSE )
 		{
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"期貨帳號不存在" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"期貨帳號不存在" );
 			return false;
 		}
 	}
@@ -525,7 +526,7 @@ bool __fastcall TDepthForm::PlaceOrder( SideEnum side, double Price, int Qty,Ord
 	{
 		String Msg;
 		Msg.printf( L"委託失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 委託失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 委託失敗
 		return false;
 	}
 }
@@ -555,7 +556,7 @@ void __fastcall TDepthForm::PlaceMarketOrder( SideEnum side, int Qty,TimeInForce
 	{
 		String Msg;
 		Msg.printf( L"委託失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg );
 	}
 }
 //---------------------------------------------------------------------------
@@ -607,7 +608,7 @@ void __fastcall TDepthForm::OrderBookListNewOrders(TObject *Sender, SideEnum sid
 			 PlaceOrder( side, PriceArray[i], LotsUpDown->Position, nsOrderMessageDefine::otLimit, false );
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewOrder(TObject *Sender, SideEnum side,
@@ -621,7 +622,7 @@ void __fastcall TDepthForm::OrderBookListNewOrder(TObject *Sender, SideEnum side
 		PlaceOrder( side, Price, LotsUpDown->Position, nsOrderMessageDefine::otLimit, true );
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNewMarketOrder(TObject *Sender, SideEnum side,
@@ -630,7 +631,7 @@ void __fastcall TDepthForm::OrderBookListNewMarketOrder(TObject *Sender, SideEnu
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( side, LotsUpDown->Position, GetTimeInForce( true ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 
 }
 //---------------------------------------------------------------------------
@@ -659,7 +660,7 @@ void __fastcall TDepthForm::OrderBookListNewConditionOrder(TObject *Sender, Side
 										  true );                         ///< client side stop order.
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 //
@@ -710,13 +711,13 @@ void __fastcall TDepthForm::OrderBookListReduceQty(TObject *Sender, SideEnum sid
 		if( gOrderStore->IsReady() == true )
 			gOrderStore->CancelOrder( FMarket, FEx, FSym, side, Price);
 		else
-			TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 	}
 	catch( UFC::Exception& execp )
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 刪單失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 }
 //---------------------------------------------------------------------------
@@ -740,7 +741,7 @@ void __fastcall TDepthForm::OrderBookListDeleteAllOrders(TObject *Sender, SideEn
 	{
 		String Msg;
 		Msg.printf( L"刪單失敗[%s]", execp.what() );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 刪單失敗
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 	DelCount = CxCount;
 }
@@ -761,16 +762,16 @@ void __fastcall TDepthForm::OrderBookListReplacePx(TObject *Sender, SideEnum sid
 				return;
 			}
 			else
-				Msg.printf( L"改價失敗,交易所[%s]不支援改價", FEx );
+				Msg.printf( L"改價失敗,交易所[%s]不支援改價", FEx.c_str() );
 		}
 		else
-			Msg.printf( L"改價失敗,交易所[%s]不存在", FEx );
+			Msg.printf( L"改價失敗,交易所[%s]不存在", FEx.c_str() );
 	}
 	catch( UFC::Exception& execp )
 	{
 		Msg.printf( L"改價失敗,原因[%s]", execp.what() );
 	}
-	TUnifyDlgs::MessageDialog( "Speedy Unify", Msg ); ///< 改價失敗
+	TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 改價失敗
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListNetPositionUpdate(TObject *Sender, int NetPosition,
@@ -819,7 +820,7 @@ void __fastcall TDepthForm::LotsPerOrderEditKeyUp(TObject *Sender, WORD &Key, TS
 		{
 			LotsPerOrderEdit->Text = L"0";
 			ErrMsg.printf( L"輸入的口數[%d],超過口數上限[%d]",Qty,LotsUpDown->Max );
-			TUnifyDlgs::MessageDialog( "Speedy Unify",  ErrMsg );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
 		}
 		else if( Qty <= 1  )
 			LotsPerOrderEdit->Text = L"1";
@@ -899,7 +900,7 @@ void __fastcall TDepthForm::NuclearBuy( void )
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::NuclearSell( void )
@@ -946,7 +947,7 @@ void __fastcall TDepthForm::NuclearSell( void )
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TShiftState Shift)
@@ -1012,7 +1013,7 @@ void __fastcall TDepthForm::OrderBookListKeyDown(TObject *Sender, WORD &Key, TSh
 
 			LotsUpDown->Position = 1;
 			ErrMsg.printf( L"輸入的口數[%d],超過口數上限[%d]",NewQty,LotsUpDown->Max );
-			TUnifyDlgs::MessageDialog( "Speedy Unify",  ErrMsg );
+			TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName,  ErrMsg );
 		}
 		else
 			LotsUpDown->Position = NewQty;
@@ -1288,9 +1289,11 @@ void __fastcall TDepthForm::AdjuestFont( void )
 	OrderBookList->Font = Font;
 	Canvas->Font = Font;
 	RoundFormEx->CaptionFont->Size  = FFontSize;
-	NetPosText->Font->Size  = FFontSize;
+	NetPosText->Font->Size  = FFontSize + FPostSizeOffset;
+	Canvas->Font->Size = FFontSize + FPostSizeOffset;
 	NetPosText->Width  = Canvas->TextWidth( L"淨部位   ");
 	NetPosText->Height = Canvas->TextHeight( L"淨部位   ");
+	Canvas->Font->Size = FFontSize;
 	NetPosText->Top = ((pnlToolbar->Height - Bevel4->Height) - NetPosText->Height )/2;
 	PosLabel->Font->Size  = FFontSize;
 	PosLabel->SetBounds( NetPosText->Left + NetPosText->Width,
@@ -2011,8 +2014,8 @@ void __fastcall TDepthForm::PrintStopSetting( void )
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::LoadStopSetting( void )
 {
-	OrderBookList->BuyStopOrderType  = g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit );
-	OrderBookList->SellStopOrderType = g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit );
+	OrderBookList->BuyStopOrderType  = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","BuyOrdType", nsOrderMessageDefine::otLimit ) );
+	OrderBookList->SellStopOrderType = static_cast<nsOrderMessageDefine::OrderTypeEnum>( g_Config.GetIntegerProperty("StopSetting","SellOrdType", nsOrderMessageDefine::otLimit ) );
 	OrderBookList->BuyStopTick  = g_Config.GetIntegerProperty("StopSetting","BuyTick", 0 );
 	OrderBookList->SellStopTick = g_Config.GetIntegerProperty("StopSetting","SellTick", 0 );
 }
@@ -2283,7 +2286,7 @@ void __fastcall TDepthForm::MarketBuyLabelClick(TObject *Sender)
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( sBuy, LotsUpDown->Position, GetTimeInForce( false ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::MarketSellLabelClick(TObject *Sender)
@@ -2291,7 +2294,7 @@ void __fastcall TDepthForm::MarketSellLabelClick(TObject *Sender)
 	if( gOrderStore->IsReady() == true )
 		PlaceMarketOrder( sSell, LotsUpDown->Position, GetTimeInForce( false ) );
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 bool __fastcall TDepthForm::CanClose( void )
@@ -2421,7 +2424,7 @@ void __fastcall TDepthForm::FateTestButtonClick(TObject *Sender)
 		}
 	}
 	else
-		TUnifyDlgs::MessageDialog( "Speedy Unify", L"請先登入下單服務器" );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, L"請先登入下單服務器" );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::FateTestCancelButtonClick(TObject *Sender)
@@ -2739,13 +2742,13 @@ void __fastcall TDepthForm::AutoStop( SideEnum side, double Price, int Qty, cons
 		{
 			OrderType = OrderBookList->SellStopOrderType;
 			ExecPrice = OrderBookList->GetBetterPrice( Price, OrderBookList->SellStopTick );
-			UFC::BufferedLog::Printf( " [OrderBookList::%s.Sell-%d ticks]", Msg, OrderBookList->SellStopTick );
+			UFC::BufferedLog::Printf( " [OrderBookList::%s.Sell-%d ticks]", Msg.c_str(), OrderBookList->SellStopTick );
 		}
 		else
 		{
 			OrderType = OrderBookList->BuyStopOrderType;
 			ExecPrice = OrderBookList->GetBetterPrice( Price, OrderBookList->BuyStopTick );
-			UFC::BufferedLog::Printf( " [OrderBookList::%d.Buy+%d ticks]", Msg, OrderBookList->BuyStopTick );
+			UFC::BufferedLog::Printf( " [OrderBookList::%s.Buy+%d ticks]", Msg.c_str(), OrderBookList->BuyStopTick );
 		}
 		gOrderStore->NewStopOrderRequest( FEx,                            ///< Stop Exchange
 										  FSym,                           ///< Stop symbol

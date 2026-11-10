@@ -1,0 +1,54 @@
+# ---- C++Builder / Delphi build output ----
+Win32/
+Win64/
+Debug/
+Release/
+Debug_Build/
+Release_Build/
+*.obj
+*.o
+*.dcu
+*.dcp
+*.bpi
+*.bpl
+*.lib
+*.a
+*.exe
+*.dll
+*.map
+*.tds
+*.pdb
+*.drc
+*.rsm
+*.#*
+*.pch
+*.~*
+
+# Incremental linker state
+*.ilc
+*.ild
+*.ilf
+*.ils
+
+# Precompiled headers
+*.csm
+*.#00
+*.#01
+
+# ---- IDE local / temporary files ----
+__history/
+__recovery/
+*.local
+*.identcache
+*.stat
+*.dsk
+*.dsm
+*.ddp
+*.cbproj.2007
+*.bak
+*.tmp
+
+# ---- OS ----
+Thumbs.db
+Desktop.ini
+.DS_Store

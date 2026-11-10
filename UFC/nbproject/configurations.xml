@@ -45,7 +45,6 @@
       <logicalFolder name="New Folder 5" displayName="Utility" projectFiles="true">
         <itemPath>BufferedLog.h</itemPath>
         <itemPath>ContainerTemplate.h</itemPath>
-        <itemPath>FIFO.h</itemPath>
         <itemPath>MD5.h</itemPath>
         <itemPath>NameValueMessage.h</itemPath>
         <itemPath>PInt32.h</itemPath>
@@ -136,11 +135,11 @@
       </logicalFolder>
       <logicalFolder name="New Folder 5" displayName="Utility" projectFiles="true">
         <itemPath>BufferedLog.cpp</itemPath>
-        <itemPath>FIFO.cpp</itemPath>
         <itemPath>MD5.cpp</itemPath>
         <itemPath>NameValueMessage.cpp</itemPath>
         <itemPath>PInt32.cpp</itemPath>
         <itemPath>PQueue.cpp</itemPath>
+        <itemPath>PSharedData.cpp</itemPath>
         <itemPath>Profiler.cpp</itemPath>
         <itemPath>TDataFormat.cpp</itemPath>
         <itemPath>TDataset.cpp</itemPath>
@@ -179,9 +178,6 @@
       <itemPath>Makefile_UFC.mk</itemPath>
     </logicalFolder>
   </logicalFolder>
-  <sourceRootList>
-    <Elem>UFC</Elem>
-  </sourceRootList>
   <projectmakefile>Makefile_UFC.mk</projectmakefile>
   <confs>
     <conf name="LINUX_Release_64" type="3">
@@ -199,12 +195,11 @@
         <ccTool>
           <developmentMode>5</developmentMode>
           <architecture>2</architecture>
-          <standard>8</standard>
           <incDir>
             <pElem>.</pElem>
             <pElem>MDS</pElem>
           </incDir>
-          <commandLine>-pthread -fPIC -std=c++11 -g</commandLine>
+          <commandLine>-pthread -fPIC -std=c++11</commandLine>
           <preprocessorList>
             <Elem>__LINUX</Elem>
           </preprocessorList>
@@ -301,10 +296,6 @@
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FIFO.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="FIFO.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="AnsiString.h" ex="false" tool="3" flavor2="0">
@@ -386,6 +377,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -498,7 +491,7 @@
             <pElem>.</pElem>
             <pElem>MDS</pElem>
           </incDir>
-          <commandLine>-Wno-deprecated -fPIC -std=c++11</commandLine>
+          <commandLine>-pthread -Wno-deprecated -fPIC -std=c++0x</commandLine>
           <preprocessorList>
             <Elem>_REENTRANT</Elem>
             <Elem>__LINUX</Elem>
@@ -513,7 +506,7 @@
           <architecture>2</architecture>
         </asmTool>
         <archiverTool>
-          <output>../Release/libUFC_64D.a</output>
+          <output>/MBus/lib/libUFC_64D.a</output>
         </archiverTool>
       </compileType>
       <item path="../Migo/MApp.cpp" ex="false" tool="1" flavor2="0">
@@ -593,10 +586,6 @@
       <item path="../zlib/zutil.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="FIFO.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="FIFO.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -679,6 +668,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -889,10 +880,6 @@
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FIFO.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="FIFO.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="AnsiString.h" ex="false" tool="3" flavor2="0">
@@ -974,6 +961,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -1183,16 +1172,6 @@
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FIFO.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="FIFO.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="AnsiString.h" ex="false" tool="3" flavor2="0">
@@ -1274,6 +1253,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -1484,16 +1465,6 @@
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FIFO.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="FIFO.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="9">
       </item>
       <item path="AnsiString.h" ex="false" tool="3" flavor2="0">
@@ -1575,6 +1546,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="9">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -1786,16 +1759,6 @@
       </item>
       <item path="../zlib/zutil.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="FIFO.cpp"
-            ex="false"
-            tool="1"
-            flavor2="0">
-      </item>
-      <item path="FIFO.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
       <item path="AnsiString.cpp" ex="false" tool="1" flavor2="9">
       </item>
       <item path="AnsiString.h" ex="false" tool="3" flavor2="0">
@@ -1877,6 +1840,8 @@
       <item path="PServerSocket.cpp" ex="false" tool="1" flavor2="9">
       </item>
       <item path="PServerSocket.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PSharedData.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="PSharedData.h" ex="false" tool="3" flavor2="0">
       </item>

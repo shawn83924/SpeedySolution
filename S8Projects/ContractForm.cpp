@@ -132,7 +132,7 @@ void __fastcall TContractInfoForm::WndProc( TMessage &Msg )
 			 Msg.Result = 1;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::SwitchPage( int index )
@@ -269,21 +269,21 @@ void __fastcall TContractInfoForm::SortTAIFEXOptSerials( int Index )
 	{
 		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TXO" ))!= -1 )
 			FOptChineseSerials[Index]->Move( SIndex, 0 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX1" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX1" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX2" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX2" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX3" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX3" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX4" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX4" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX5" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TX5" ))!= -1 && 1 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move( SIndex, 1 );
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TEO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TEO" ))!= -1 && 3 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,3);
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TFO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"TFO" ))!= -1 && 4 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,4);
-		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"XIO" ))!= -1 )
+		if( (SIndex = FOptChineseSerials[Index]->IndexOf( L"XIO" ))!= -1 && 5 < FOptChineseSerials[Index]->Count )
 			FOptChineseSerials[Index]->Move(SIndex,5);
 	}
 }
@@ -357,8 +357,8 @@ void __fastcall TContractInfoForm::AddExchangeSymbols( const UFC::AnsiString& Ex
 		String Ex( Exchange.c_str() );
 		String ErrMsg;
 
-		ErrMsg.printf( L"交易所[%s]沒有期貨或選擇權商品.", Ex );
-		TUnifyDlgs::MessageDialog( "Speedy Unify", ErrMsg );
+		ErrMsg.printf( L"交易所[%s]沒有期貨或選擇權商品.", Ex.c_str() );
+		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 		return;
     }
 	if( MarketTabSet->Tabs->Count <= 1 )
@@ -556,7 +556,7 @@ void __fastcall TContractInfoForm::AddSymbol( TLabel* StatusLabel )
 				if( StatusLabel != NULL )
 				{
 					String Msg;
-					Msg.printf( L"整理交易所[%s]商品", ExchangeUnicode );
+					Msg.printf( L"整理交易所[%s]商品", ExchangeUnicode.c_str() );
 					StatusLabel->Caption = Msg;
 					Application->ProcessMessages();
 				}
@@ -568,7 +568,7 @@ void __fastcall TContractInfoForm::AddSymbol( TLabel* StatusLabel )
 			}
 			catch( UFC::Exception& ex )
 			{
-				TUnifyDlgs::MessageDialog( "Speedy Unify", ex.what() );
+				TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ex.what() );
 			}
 		}
 	}
@@ -679,6 +679,7 @@ void __fastcall TContractInfoForm::AdjuestOptSize( int  MaturityCount )
 	}
 	if( FOptPageWidth < 220 )
 		FOptPageWidth = 220;
+	SerialComboBox->Width = FOptPageWidth - SerialComboBox->Left * 2;
 	if( FPicker == true )
 	{
 		ClientHeight = FOptPageHeight;
@@ -1311,14 +1312,17 @@ void __fastcall TContractInfoForm::AddToMDListMenuItemClick(TObject *Sender)
 void __fastcall TContractInfoForm::FutDrawGridMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
-	int             Col,Row,Key;
+	if (!Shift.Contains( ssLeft ) && !Shift.Contains( ssRight ))
+		return;
+
+	int             Col, Row, Key;
 	TPoint          CurPos = Mouse->CursorPos;
+	CurPos = FutDrawGrid->ScreenToClient( CurPos );
+	FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	Key = Col*1000 + Row;
 
 	if( Shift.Contains( ssLeft ) )
     {
-	    CurPos = FutDrawGrid->ScreenToClient( CurPos );
- 		FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-	    Key = Col*1000 + Row;
        	if( !FFutSelectSet.Exists( Key ) )
         	FFutSelectSet.Add( Key );
    	    else
@@ -1331,20 +1335,25 @@ void __fastcall TContractInfoForm::FutDrawGridMouseDown(TObject *Sender, TMouseB
    	    FutDrawGrid->Invalidate();
 	}
 	else if( Shift.Contains( ssRight ) )
-		PopupMenu->Tag = 0;
+	{
+		FutDrawGridRightMouseDown(Col, Row, Key);
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::OptDrawGridMouseDown(TObject *Sender, TMouseButton Button,
           TShiftState Shift, int X, int Y)
 {
+	if (!Shift.Contains( ssLeft ) && !Shift.Contains( ssRight ))
+		return;
+
 	int             Col,Row,Key;
 	TPoint          CurPos = Mouse->CursorPos;
+	CurPos = OptDrawGrid->ScreenToClient( CurPos );
+	OptDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	Key = Col*1000 + Row;
 
 	if( Shift.Contains( ssLeft ) )
 	{
-		CurPos = OptDrawGrid->ScreenToClient( CurPos );
-		OptDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-		Key = Col*1000 + Row;
 		if( !FOptSelectSet.Exists( Key ) )
 			FOptSelectSet.Add( Key );
 		else
@@ -1357,7 +1366,9 @@ void __fastcall TContractInfoForm::OptDrawGridMouseDown(TObject *Sender, TMouseB
 		OptDrawGrid->Invalidate();
 	}
 	else if( Shift.Contains( ssRight ) )
-		PopupMenu->Tag = 0;
+	{
+		OptDrawGridRightMouseDown(Col, Row, Key);
+	}
 }
 //---------------------------------------------------------------------------
 bool __fastcall TContractInfoForm::SelectSymbol( String& Exchange, String& Symbol, int Page )
@@ -1458,20 +1469,20 @@ void __fastcall TContractInfoForm::LoadProperties( const String& Profile )
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::FutDrawGridClick(TObject *Sender)
 {
-	if( FPicker == true )
-	{
-		int             Col,Row;
-		TPoint          CurPos = Mouse->CursorPos;
-		UFC::AnsiString FutExchange,FutSymbol;
+	if( FPicker != true )
+		return;
 
-		CurPos = FutDrawGrid->ScreenToClient( CurPos );
-		FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
-		ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
-		FPickSymbol = FutSymbol.c_str();
-		FPickExchange = FutExchange.c_str();
-		if( FPickSymbol.Length( ) > 0 && FPickExchange.Length( ) > 0 )
-			ModalResult = mrOk;
-	}
+	int             Col,Row;
+	TPoint          CurPos = Mouse->CursorPos;
+	UFC::AnsiString FutExchange, FutSymbol;
+
+	CurPos = FutDrawGrid->ScreenToClient( CurPos );
+	FutDrawGrid->MouseToCell( CurPos.x, CurPos.y, Col, Row );
+	ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
+	FPickSymbol = FutSymbol.c_str();
+	FPickExchange = FutExchange.c_str();
+	if( FPickSymbol.Length( ) > 0 && FPickExchange.Length( ) > 0 )
+		ModalResult = mrOk;
 }
 //---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::OptDrawGridClick(TObject *Sender)
@@ -1761,6 +1772,50 @@ void __fastcall TContractInfoForm::SelectrFutSerials( int Page, int Index )
 	FutDrawGrid->TopRow = Index;
 }
 //---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::FutDrawGridRightMouseDown( int Col, int Row,	int Key )
+{
+	bool LeftinRange  = Col >= FutDrawGrid->Selection.Left;
+	bool RightinRange = Col <= FutDrawGrid->Selection.Right;
+	bool TopinRange	  = Row >= FutDrawGrid->Selection.Top;
+	bool DowninRange  = Row <= FutDrawGrid->Selection.Bottom;
+	bool inRange	  = LeftinRange && RightinRange && TopinRange && DowninRange;
+
+	if( !FFutSelectSet.Exists( Key )  && !inRange )
+	{
+		FFutSelectSet.Clear();
+		FFutSelectSet.Add( Key );
+
+		TGridRect SelRect;
+		SelRect.Left = SelRect.Right  = Col;
+		SelRect.Top  = SelRect.Bottom = Row;
+		FutDrawGrid->Selection = SelRect;
+
+	}
+	FutDrawGrid->Invalidate();
+	PopupMenu->Tag = 0;
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::OptDrawGridRightMouseDown( int Col, int Row,	int Key )
+{
+	bool LeftinRange  = Col >= OptDrawGrid->Selection.Left;
+	bool RightinRange = Col <= OptDrawGrid->Selection.Right;
+	bool TopinRange	  = Row >= OptDrawGrid->Selection.Top;
+	bool DowninRange  = Row <= OptDrawGrid->Selection.Bottom;
+	bool inRange	  = LeftinRange && RightinRange && TopinRange && DowninRange;
+	if( !FOptSelectSet.Exists( Key )  && !inRange )
+	{
+		FOptSelectSet.Clear();
+		FOptSelectSet.Add( Key );
+
+		TGridRect SelRect;
+		SelRect.Left = SelRect.Right  = Col;
+		SelRect.Top  = SelRect.Bottom = Row;
+		OptDrawGrid->Selection = SelRect;
+	}
+	OptDrawGrid->Invalidate();
+	PopupMenu->Tag = 0;
+}
+//---------------------------------------------------------------------------
 void __fastcall TContractInfoForm::SearchFutButtonClick(TObject *Sender)
 {
 	String SearchStr = FutSerachEdit->Text;
@@ -1821,12 +1876,98 @@ void __fastcall TContractInfoForm::SearchFutButtonClick(TObject *Sender)
 	}
 }
 //---------------------------------------------------------------------------
-
 void __fastcall TContractInfoForm::FutSerachEditKeyDown(TObject *Sender, WORD &Key,
 		  TShiftState Shift)
 {
 	if( Key == VK_RETURN )
 		SearchFutButtonClick( this );
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::FutDrawGridContextPopup(TObject *Sender, TPoint &MousePos,
+          bool &Handled)
+{
+	// 例:點到表頭、空白格、或某條件不符 → 不顯示選單
+	int Col, Row;
+	FutDrawGrid->MouseToCell( MousePos.x, MousePos.y, Col, Row );
+
+	// 點到表頭
+	if( Col <= 0 || Row <= 0 )
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 空白格
+	UFC::AnsiString FutSymbol, FutExchange;
+	ToFuturesSymbol( Col, Row, FutExchange, FutSymbol );
+	if(FutSymbol.Length() == 0)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 沒選到商品
+	TGridRect rect = FutDrawGrid->Selection;
+	if( FFutSelectSet.ItemCount() == 0 &&
+		rect.Left == rect.Right &&
+		rect.Top  == rect.Bottom)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 放開右鍵時滑鼠位置不在選擇的商品上
+	if(	rect.Left > Col || rect.Right < Col ||
+		rect.Top  > Row || rect.Bottom< Row)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	Handled = false;        // 允許彈出
+}
+//---------------------------------------------------------------------------
+void __fastcall TContractInfoForm::OptDrawGridContextPopup(TObject *Sender, TPoint &MousePos,
+          bool &Handled)
+{
+	// 例:點到表頭、空白格、或某條件不符 → 不顯示選單
+	int Col, Row;
+	OptDrawGrid->MouseToCell( MousePos.x, MousePos.y, Col, Row );
+
+	// 點到表頭
+	if( Col <= 0 || Row <= 0 )
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 空白格
+	UFC::AnsiString OptSymbol, OptExchange;
+	ToOptionsSymbol( Col, Row, OptExchange, OptSymbol );
+	if(OptSymbol.Length() == 0)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	TGridRect rect = OptDrawGrid->Selection;
+	if( FOptSelectSet.ItemCount() == 0 &&
+		rect.Left == rect.Right &&
+		rect.Top  == rect.Bottom)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	// 放開右鍵時滑鼠位置不在選擇的商品上
+	if(	rect.Left > Col || rect.Right < Col ||
+		rect.Top  > Row || rect.Bottom< Row)
+	{
+		Handled = true;     // 取消彈出
+		return;
+	}
+
+	Handled = false;        // 允許彈出
 }
 //---------------------------------------------------------------------------
 

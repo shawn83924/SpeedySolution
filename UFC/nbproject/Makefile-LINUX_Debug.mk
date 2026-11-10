@@ -58,7 +58,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/AnsiString.o \
 	${OBJECTDIR}/BufferedLog.o \
 	${OBJECTDIR}/Exception.o \
-	${OBJECTDIR}/FIFO.o \
 	${OBJECTDIR}/FileStream.o \
 	${OBJECTDIR}/List.o \
 	${OBJECTDIR}/MD5.o \
@@ -79,6 +78,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/PInt32.o \
 	${OBJECTDIR}/PQueue.o \
 	${OBJECTDIR}/PServerSocket.o \
+	${OBJECTDIR}/PSharedData.o \
 	${OBJECTDIR}/PSocket.o \
 	${OBJECTDIR}/PThread.o \
 	${OBJECTDIR}/PUDPClient.o \
@@ -242,11 +242,6 @@ ${OBJECTDIR}/Exception.o: Exception.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Exception.o Exception.cpp
 
-${OBJECTDIR}/FIFO.o: FIFO.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FIFO.o FIFO.cpp
-
 ${OBJECTDIR}/FileStream.o: FileStream.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -346,6 +341,11 @@ ${OBJECTDIR}/PServerSocket.o: PServerSocket.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PServerSocket.o PServerSocket.cpp
+
+${OBJECTDIR}/PSharedData.o: PSharedData.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PSharedData.o PSharedData.cpp
 
 ${OBJECTDIR}/PSocket.o: PSocket.cpp
 	${MKDIR} -p ${OBJECTDIR}

@@ -436,12 +436,12 @@ void TExecution::GenerateOrderLogStr( String& orderLogStr  )
 	String fieldValue;
 
 	if (FTransactTime.Length() > 0)
-		fieldValue.printf(L"%s%c", FTransactTime, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FTransactTime.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 1
 	if (FLocalMessageTime.Length() > 0)
-		fieldValue.printf(L"%s%c", FLocalMessageTime, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FLocalMessageTime.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 2
@@ -454,19 +454,19 @@ void TExecution::GenerateOrderLogStr( String& orderLogStr  )
 	fieldValue.printf(L"%d%c", FStatusCode, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 6
 	if (FText.Length() > 0)
-		fieldValue.printf(L"%s%c", FText, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FText.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 7
 	fieldValue.printf(L"%d%c", FMarket, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 8
 	if (FExchangeCode.Length() > 0)
-		fieldValue.printf(L"%s%c", FExchangeCode, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FExchangeCode.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  // 9
 	if (FOrderID.Length() > 0)
-		fieldValue.printf(L"%s%c", FOrderID, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FOrderID.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //10
@@ -489,12 +489,12 @@ void TExecution::GenerateOrderLogStr( String& orderLogStr  )
 	fieldValue.printf(L"%17.6lf%c", FPrice, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //19
 	if (GetSymbol() != 0)
-		fieldValue.printf(L"%s%c", GetSymbol()->GetOriginalSymbol(), FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", GetSymbol()->GetOriginalSymbol().c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //20
 	if (FDisplayName.Length() > 0)
-		fieldValue.printf(L"%s%c", FDisplayName, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FDisplayName.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //21
@@ -521,19 +521,19 @@ void TExecution::GenerateOrderLogStr( String& orderLogStr  )
 	fieldValue.printf(L"%17.6lf%c", FAvgPx, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //32
 	if (FExecID.Length() > 0)
-		fieldValue.printf(L"%s%c", FExecID, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FExecID.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //33
 	fieldValue.printf(L"%lld%c", FRootNID, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //34
 	if (FStopExchangeCode.Length() > 0)
-		fieldValue.printf(L"%s%c", FStopExchangeCode, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FStopExchangeCode.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //35
 	if (FStopSymbol.Length() > 0)
-		fieldValue.printf(L"%s%c", FStopSymbol, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FStopSymbol.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //36
@@ -542,17 +542,17 @@ void TExecution::GenerateOrderLogStr( String& orderLogStr  )
 	fieldValue.printf(L"%17.6lf%c", FStopMarketPrice, FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //38
 	if (FStrategyName.Length() > 0)
-		fieldValue.printf(L"%s%c", FStrategyName, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FStrategyName.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //39
 	if (FAccount.Length() > 0)
-		fieldValue.printf(L"%s%c", FAccount, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FAccount.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //40
 	if( FTradeSymbol.Length() > 0)
-		fieldValue.printf(L"%s%c", FTradeSymbol, FOrderLogDelimiter);
+		fieldValue.printf(L"%s%c", FTradeSymbol.c_str(), FOrderLogDelimiter);
 	else
 		fieldValue.printf(L"%c", FOrderLogDelimiter);
 	orderLogStr = orderLogStr + fieldValue;  //41
@@ -1455,10 +1455,10 @@ UnicodeString TExecution::GetStringField(int Index, int LanguageID)
 			ResultString.printf(L"%.*lf", DecimalPartLength, FAvgPx);
 			break;
 		case 36:
-			ResultString.printf(L"%s", FExecID);
+			ResultString.printf(L"%s", FExecID.c_str());
 			break;
 		case 37:
-			ResultString.printf(L"%s", FStrategyName);
+			ResultString.printf(L"%s", FStrategyName.c_str());
 			break;
 		case 38:
 			Symbol0 = FSymbol->GetSymbol(0);

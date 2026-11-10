@@ -23,6 +23,7 @@
 #include <Vcl.ComCtrls.hpp>
 #include <System.ImageList.hpp>
 #include <Vcl.ImgList.hpp>
+#include "cgauges.h"
 //---------------------------------------------------------------------------
 using namespace nsOrderMessageDefine;
 //---------------------------------------------------------------------------
@@ -124,6 +125,7 @@ __published:	// IDE-managed Components
 	void __fastcall HeaderBKColorBoxChange(TObject *Sender);
 	void __fastcall OptionsStrikePriceViewTBarFieldsChanged(TObject *Sender);
 	void __fastcall InvertLabelClick(TObject *Sender);
+	void __fastcall ReloadPinsTimerTimer(TObject *Sender);
 
 private:	// User declarations
 	int  FID;
@@ -153,6 +155,7 @@ private:	// User declarations
 	UFC::PStringList FYearMonth;
 	UFC::PDoubleList FStrikePx;
 	UFC::PDoubleList FSpotPx;
+    bool FOpeningTBarOrderBook;
 public:
 	void __fastcall Init( bool IsAll, int Digi, UFC::PStringList& YM, UFC::PDoubleList& StrikePx, UFC::PDoubleList& SpotPx,	UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& Exclude  );
 	void __fastcall SavePinsSetting( void );

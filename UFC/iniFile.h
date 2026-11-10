@@ -57,7 +57,7 @@ public:
     bool       Save( void );
     void       Load( const UFC::AnsiString& iniFileName, BOOL CreateFile = FALSE );
     BOOL       SectionExists( const UFC::AnsiString& Section );
-    void       AddSection( Section* NewSection ) { FSections.Add( NewSection ); }
+    void       AddSection( Section* NewSection ) { FSections.Add( NewSection ); FSectionMap.Add( NewSection->GetSectionName(), NewSection ); }
     BOOL       DeleteSection( const UFC::AnsiString& SectionName );
     void       DeleteSection( int Index );
     Section*   GetSection( int Index ){ return FSections.GetItem( Index );}

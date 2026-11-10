@@ -254,7 +254,7 @@ object DepthForm: TDepthForm
       OnMouseDown = LotsPerOrderEditMouseDown
     end
     object SmallButton: TGraphButton
-      Left = 186
+      Left = 196
       Top = 5
       Width = 0
       Height = 0
@@ -280,7 +280,7 @@ object DepthForm: TDepthForm
       ImageIndex = 9
     end
     object LargeButton: TGraphButton
-      Left = 214
+      Left = 224
       Top = 5
       Width = 0
       Height = 0
@@ -358,7 +358,7 @@ object DepthForm: TDepthForm
       StyleElements = []
     end
     object PosLabel: TStaticText
-      Left = 127
+      Left = 137
       Top = 2
       Width = 49
       Height = 33

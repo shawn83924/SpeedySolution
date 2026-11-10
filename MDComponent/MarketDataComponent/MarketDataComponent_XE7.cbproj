@@ -46,6 +46,8 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <BCC_UseClassicCompiler>false</BCC_UseClassicCompiler>
+        <BCC_UserSuppliedOptions> -Wno-register -Wno-dynamic-exception-spec</BCC_UserSuppliedOptions>
         <_TCHARMapping>wchar_t</_TCHARMapping>
         <IntermediateOutputDir>.\$(Platform)\$(Config)_Obj</IntermediateOutputDir>
         <Defines>_CTP;$(Defines)</Defines>

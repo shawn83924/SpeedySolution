@@ -139,16 +139,9 @@ void Config::ReleaseResource( void )
 //------------------------------------------------------------------------------
 void Config::GetProcessDir( void )
 {
-	HANDLE processHandle;
 	TCHAR filename[MAX_PATH];
-
-	processHandle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, FALSE, GetCurrentProcessId() );
-	if( processHandle != NULL)
-	{
-		if( GetModuleFileNameEx(processHandle, NULL, filename, MAX_PATH) != 0)
-			m_CurrentDir = ExtractFileDir( filename ) + L"\\";
-		CloseHandle(processHandle);
-	}
+	if( GetModuleFileName( NULL, filename, MAX_PATH ) != 0 )
+		m_CurrentDir = ExtractFileDir( filename ) + L"\\";
 }
 //------------------------------------------------------------------------------
 // Load settings
@@ -175,10 +168,10 @@ void Config::LoadBasicSetting( const char* FileName )  ///< Speedy Unify
 		UFC::UiniFile   Cfg( FileName, true );
 		UFC::AnsiString Value;
 
-		if( Cfg.GetValue( "Setting","InstallPath", Value ) ) ///< get the install path.
+		if( Cfg.GetValue( "Setting","InstallPath", Value ) && DirectoryExists( Value.c_str() ) ) ///< get the install path.
 			m_CurrentDir = Value.c_str();
 		else
-			m_CurrentDir = ::GetCurrentDir() + "\\";
+			GetProcessDir();
 		SetCurrentDir( m_CurrentDir );
 		if( Cfg.GetValue( "Setting","IsBackup", Value) ) ///< Connect to backup servers?
 			m_UseBackup = Value.ToInt();
@@ -323,6 +316,33 @@ void Config::LoadThroughput( UFC::UiniFile& SettingsFile )
 	}
 }
 //------------------------------------------------------------------------------
+void Config::LoadBlackList( UFC::UiniFile& SettingsFile )
+{
+	if( gMarketDataStore == NULL )
+		return;
+	UFC::Section* BlackList = SettingsFile.GetSection( "BlackList" );
+	if(BlackList == NULL)
+	{
+    	return;
+	}
+	for ( int i = 0; i < BlackList->ItemCount(); i++ )
+	{
+		UFC::AnsiString Name, Value;
+		BlackList->GetNameValue( i , Name, Value );
+		if( Name.Length() <= 0 || Value.Length() <= 0 )
+			continue;
+		// spit Value by ","
+		UFC::PStringList* List = new UFC::PStringList();
+		List->SetStrings( Value, "," );
+		for ( int j = 0; j < List->ItemCount(); j++ )
+		{
+			UFC::AnsiString Symbol = List->GetItem(j);
+			gMarketDataStore->SetBlackList( Name, Symbol.c_str() );
+		}
+		delete List;
+	}
+}
+//------------------------------------------------------------------------------
 int Config::GetThroughput( const UFC::AnsiString& Account )
 {
 	int index = m_ThroughputAccount.IndexOf( Account );
@@ -454,6 +474,7 @@ void Config::LoadStarWaveSetting( const char* FileName ) ///< Speedy Unify
 	LoadParameter( SettingsFile );
 	LoadSignal( SettingsFile );
 	LoadThroughput( SettingsFile );
+	LoadBlackList( SettingsFile );
 }
 //------------------------------------------------------------------------------
 bool Config::IamVIP( const String& ID )
@@ -514,8 +535,10 @@ String Config::GetStarWaveIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	AnsiString       IPPortStr;
 	UFC::AnsiString  IP;
 	UFC::PStringList IPs;
+	int              Index;
 
-	IPPortStr = m_StarWaveIPs->Strings[ m_InternetConfig  ];
+	Index = ( m_StarWaveIPs->Count > m_InternetConfig ) ? m_InternetConfig : 0;
+	IPPortStr = m_StarWaveIPs->Strings[ Index ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_StarWaveIPIndex == -1 )
 		m_StarWaveIPIndex = gUser.UserID.ToInt() % IPs.ItemCount();
@@ -530,8 +553,10 @@ String  Config::GetChartServerIP(  int& Port, int DefPort  ) ///< Speedy Unify
 	AnsiString      IPPortStr;
 	UFC::AnsiString IP;
 	UFC::PStringList IPs;
+	int             Index;
 
-	IPPortStr = m_ChartIPs->Strings[ m_InternetConfig ];
+	Index = ( m_ChartIPs->Count > m_InternetConfig ) ? m_InternetConfig : 0;
+	IPPortStr = m_ChartIPs->Strings[ Index ];
 	IPs.SetStrings( IPPortStr.c_str(), "," );
 	if( m_ChartIPsIndex == -1 )
 		m_ChartIPsIndex = gUser.UserID.ToInt() % IPs.ItemCount();

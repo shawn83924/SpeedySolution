@@ -92,6 +92,7 @@ private:	// User declarations
 	void __fastcall WndProc( TMessage &Msg );
 	void __fastcall SaveColor( void );
 	void __fastcall DefaultColor( void );
+    void __fastcall OnColumnClick(TObject* Sender, TListColumn* Column);
 public:		// User declarations
 	__fastcall TContractListForm(TComponent* Owner, int ID );
 	void __fastcall SetContractListFormID( int ID );

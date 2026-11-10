@@ -3625,7 +3625,7 @@ void __fastcall TStockChartEx::WndProc( TMessage &Msg )
 		case WM_SETFOCUS:   Paint();
 							break;
 	}
-	inherited::WndProc( Msg );
+	TCustomControl::WndProc( Msg );
 }
 //------------------------------------------------------------------------------
 //

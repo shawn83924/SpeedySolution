@@ -130,7 +130,7 @@ void __fastcall TMarquee::SetTextAlign(TTextAlign Value)
 //---------------------------------------------------------------------------
 void __fastcall TMarquee::SetEnabled(bool Value)
 {
-    inherited::Enabled = Value;
+    TCustomControl::Enabled = Value;
     FTimer->Enabled = Value;
 }
 //---------------------------------------------------------------------------
@@ -147,7 +147,7 @@ TFont * __fastcall TMarquee::GetFont()
 //---------------------------------------------------------------------------
 bool __fastcall TMarquee::GetEnabled()
 {
-    return inherited::Enabled;
+    return TCustomControl::Enabled;
 }
 //---------------------------------------------------------------------------
 void __fastcall TMarquee::OnTimerUpdate(TObject *)
@@ -204,7 +204,7 @@ void __fastcall TMarquee::WndProc( TMessage &Msg )
     }
     else
     {
-         inherited::WndProc( Msg );
+         TCustomControl::WndProc( Msg );
     }
 }
 //---------------------------------------------------------------------------

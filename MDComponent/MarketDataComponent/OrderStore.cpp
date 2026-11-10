@@ -996,7 +996,7 @@ int TOrderStore::CancelOrder(nsOrderMessageDefine::MarketEnum Market,
 		typedef CStringTExecutionMultiMap::iterator MI;
 		std::pair<MI, MI> g;
 		String            IndexKey;
-		IndexKey.printf( L"%s%1d%20.5lf", SymbolCode, Side, Price);
+		IndexKey.printf( L"%s%1d%20.5lf", SymbolCode.c_str(), Side, Price);
 		g = FOrderSymbolSidePriceIndex.equal_range( IndexKey );
 		for( MI p = g.first; p != g.second; p++)
 		{
@@ -2082,7 +2082,7 @@ void TOrderStore::OnMarketDataUpdate(MatchInfo* Msg)  //For Fill
 		if( posStatisticRecPtr->IsMarketDataReceived(s888::rwNotLock) == false )
 		{
 			posStatisticRecPtr->SetMarketDataReceived( true, s888::rwNotLock );
-			logMsg.printf(L"First Market Data[%s-%s] arrived.", exchangeCode, symbol );
+			logMsg.printf(L"First Market Data[%s-%s] arrived.", exchangeCode.c_str(), symbol.c_str() );
 			s888::WriteUFCLog(logHead, logMsg, s888::constFlush);
 		}
 		double origLastPrice = posStatisticRecPtr->GetLastPrice(s888::rwNotLock);
@@ -2118,7 +2118,7 @@ void TOrderStore::OnMarketDataUpdate(MatchInfo* Msg)  //For Fill
 	}
 	else  ///< Position Not exists
 	{
-		logMsg.printf(L"Find or Create Position Statistic Record [%s-%s] Failed.", exchangeCode, symbol );
+		logMsg.printf(L"Find or Create Position Statistic Record [%s-%s] Failed.", exchangeCode.c_str(), symbol.c_str() );
 		s888::WriteUFCLog( logHead, logMsg, s888::constFlush );
 		return;
 	}
@@ -2610,7 +2610,7 @@ s888::CPositionStatisticRecord *TOrderStore::FindOrCreatePosStatisticRec(const S
 			AppendPosStatisticRecToArray(positionStatisticRecPtr, s888::rwNotLock);
 		else
 		{
-			logMsg.printf(L"Insert Position Statistic Record[%s-%s] into Trade Symbol[%s] Index Failed.", ExchangeCode, orderSymbol, tradeSymbol);
+			logMsg.printf(L"Insert Position Statistic Record[%s-%s] into Trade Symbol[%s] Index Failed.", ExchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str());
 			s888::WriteUFCLog(logHead, logMsg, s888::constFlush);
 			delete positionStatisticRecPtr;
 			positionStatisticRecPtr = 0;
@@ -3111,9 +3111,9 @@ bool TOrderStore::ProcessPendingNewMsg(TExecution *NewRptPtr,
 			}
 			String logMessage;
 			logMessage.printf(L" PendingNew Order Report NID[%lld] [%s-%s(%s)] side[%s] pe[%s] Qty[%d] Px[%15.6lf].",
-							  RptNID, exchangeCode, symbol, tradeSymbol,
-							  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+							  RptNID, exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str(),
+							  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 							  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetPrice());
 			UFC::BufferedLog::Printf(" TOrderStore::ProcessPendingNewMsg() %s",
 									 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -3255,9 +3255,9 @@ bool TOrderStore::ProcessNewMsg(TExecution *NewRptPtr,
 			}
 			String logMessage;
 			logMessage.printf(L" New Order Report NID[%lld] [%s-%s(%s)] side[%s] pe[%s] Qty[%d] Px[%15.6lf].",
-							  RptNID, exchangeCode, symbol, tradeSymbol,
-							  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+							  RptNID, exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str(),
+							  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 							  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetPrice());
 			UFC::BufferedLog::Printf(" TOrderStore::ProcessNewMsg() %s",
 									 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -3581,9 +3581,9 @@ bool TOrderStore::ProcessCanceledMsg(TExecution *NewRptPtr,
 					positionPtr->SubstractOrderQuantity(OrderRootPtr->GetPositionEffect(), OrderRootPtr->GetSide(), leavesQty, s888::rwNotLock);
 					String logMessage;
 					logMessage.printf(L" Cancel Report[%s] NID[%lld] [%s-%s(%s)] side[%s] pe[%s] Qty[%d] leavesQty[%d].",
-									  RptOrderId, RptNID, exchangeCode, symbol, tradeSymbol,
-									  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+									  RptOrderId.c_str(), RptNID, exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str(),
+									  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 									  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetLeavesQty());
 					UFC::BufferedLog::Printf(" TOrderStore::ProcessCanceledMsg() %s",
 											 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -3591,10 +3591,10 @@ bool TOrderStore::ProcessCanceledMsg(TExecution *NewRptPtr,
 					positionPtr->UnlockForWrite();
 				}
 				else
-					positionMsg.printf(L"Account[%s] Contract Position[%s-%s(%s)] not found.", FID, exchangeCode, symbol, tradeSymbol);
+					positionMsg.printf(L"Account[%s] Contract Position[%s-%s(%s)] not found.", FID.c_str(), exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str());
 			}
 			else
-				positionMsg.printf(L"Account[%s] not Found.", FID);
+				positionMsg.printf(L"Account[%s] not Found.", FID.c_str());
 
 			if (positionMsg.Length() > 0)
 			{
@@ -3626,7 +3626,7 @@ bool TOrderStore::ProcessFilledMsg(TExecution *NewRptPtr,
 	String execId       = NewRptPtr->GetExecID();
 	if (CheckReportExecIDExist(NewRptPtr))  //Report Message Already Exist
 	{
-		logMessage.printf(L"OrderId[%s] [%s-%s(%s)]: ExecId[%s] Exist Error.", orderId, exchangeCode, orderSymbol, tradeSymbol, execId);
+		logMessage.printf(L"OrderId[%s] [%s-%s(%s)]: ExecId[%s] Exist Error.", orderId.c_str(), exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str(), execId.c_str());
 		UFC::BufferedLog::Printf(" TOrderStore::ProcessFilledMsg() %s",
 								 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		UFC::BufferedLog::FlushToFile();
@@ -3794,9 +3794,9 @@ bool TOrderStore::ProcessFilledMsg(TExecution *NewRptPtr,
 					}
 				}
 				logMessage.printf(L" Filled Report[%s] NID[%lld] [%s-%s(%s)] side[%s] pe[%s] LastQty[%d] LastPx[%15.6lf].",
-								  RptOrderId, RptNID, exchangeCode, orderSymbol, tradeSymbol,
-								  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-								  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+								  RptOrderId.c_str(), RptNID, exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str(),
+								  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+								  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 								  OrderRootPtr->GetLastQty(), OrderRootPtr->GetLastPx());
 				UFC::BufferedLog::Printf(" TOrderStore::ProcessFilledMsg() %s",
 										 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -3954,9 +3954,9 @@ bool TOrderStore::ProcessRejectedMsg(TExecution *NewRptPtr,
 					positionPtr->SubstractOrderQuantity(OrderRootPtr->GetPositionEffect(), OrderRootPtr->GetSide(), leavesQty, s888::rwNotLock);
 					String logMessage;
 					logMessage.printf(L" Reject Report[%s] NID[%lld] [%s-%s(%s)] side[%s] pe[%s] Qty[%d] leavesQty[%d].",
-									  RptOrderId, RptNID, exchangeCode, symbol, tradeSymbol,
-									  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+									  RptOrderId.c_str(), RptNID, exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str(),
+									  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 									  OrderRootPtr->GetOrderQty(), leavesQty);
 					UFC::BufferedLog::Printf(" TOrderStore::ProcessRejectedMsg(() %s",
 											 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -3964,10 +3964,10 @@ bool TOrderStore::ProcessRejectedMsg(TExecution *NewRptPtr,
 					positionPtr->UnlockForWrite();
 				}
 				else
-					positionMsg.printf(L"Account[%s] Contract Position[%s-%s(%s)] not found.", FID, exchangeCode, symbol, tradeSymbol);
+					positionMsg.printf(L"Account[%s] Contract Position[%s-%s(%s)] not found.", FID.c_str(), exchangeCode.c_str(), symbol.c_str(), tradeSymbol.c_str());
 			}
 			else
-				positionMsg.printf(L"Account[%s] not Found.", FID);
+				positionMsg.printf(L"Account[%s] not Found.", FID.c_str());
 
 			if (positionMsg.Length() > 0)
 			{
@@ -4102,7 +4102,7 @@ int TOrderStore::GetSellHoldQuantity(String ExchangeCode, String SymbolCode)
 bool TOrderStore::IsStrategyExists( const UFC::AnsiString& Symbol, SideEnum Side )
 {
 	UFC::AnsiString Key;
-	Key.Printf( "%s_%c", Symbol, Side == sBuy?'B':'S' );
+	Key.Printf( "%s_%c", Symbol.c_str(), Side == sBuy?'B':'S' );
 
 	if( FStrategyListenerTable.IsExists( Key ) )
 		return true;
@@ -4112,7 +4112,7 @@ bool TOrderStore::IsStrategyExists( const UFC::AnsiString& Symbol, SideEnum Side
 void TOrderStore::AddStrategyOrderListener( const UFC::AnsiString& Symbol, SideEnum Side, IStrategyOrderListener* Listener )
 {
 	UFC::AnsiString Key;
-	Key.Printf( "%s_%c", Symbol, Side == sBuy?'B':'S' );
+	Key.Printf( "%s_%c", Symbol.c_str(), Side == sBuy?'B':'S' );
 
 	if( !FStrategyListenerTable.IsExists( Key ) )
 	{
@@ -4123,7 +4123,7 @@ void TOrderStore::AddStrategyOrderListener( const UFC::AnsiString& Symbol, SideE
 void TOrderStore::ExecuteStrategyOrderListener( const UFC::AnsiString& Symbol, SideEnum Side, double LastPx, int LastQty, int LeavesQty )
 {
 	UFC::AnsiString Key;
-	Key.Printf( "%s_%c", Symbol, Side == sBuy ? 'B' : 'S' );
+	Key.Printf( "%s_%c", Symbol.c_str(), Side == sBuy ? 'B' : 'S' );
 
 	if( FStrategyListenerTable.IsExists( Key ) )
 	{
@@ -4138,7 +4138,7 @@ void TOrderStore::ExecuteStrategyOrderListener( const UFC::AnsiString& Symbol, S
 void TOrderStore::RemoveStrategyOrderListener( const UFC::AnsiString& Symbol, SideEnum Side )
 {
 	UFC::AnsiString Key;
-	Key.Printf( "%s_%c", Symbol, Side == sBuy?'B':'S' );
+	Key.Printf( "%s_%c", Symbol.c_str(), Side == sBuy?'B':'S' );
 
 	if( FStrategyListenerTable.IsExists( Key ) )
 	{
@@ -4276,7 +4276,7 @@ String TOrderStore::GenerateNewOrderID()
 		newIdSequence = FTestOrderIdSeq;
 	}
 	String newOrderID;
-	newOrderID.printf(L"%s%02d", GenerateNewIDPrefix(), newIdSequence);
+	newOrderID.printf(L"%s%02d", GenerateNewIDPrefix().c_str(), newIdSequence);
 	return newOrderID;
 }  //TOrderStore::GenerateNewOrderID()
 //------------------------------------------------------------------------------
@@ -4289,7 +4289,7 @@ String TOrderStore::GenerateNewExecID()
 		newIdSequence = FTestExecIdSeq;
 	}
 	String newExecID;
-	newExecID.printf(L"%s%04d", GenerateNewIDPrefix(), newIdSequence);
+	newExecID.printf(L"%s%04d", GenerateNewIDPrefix().c_str(), newIdSequence);
 	return newExecID;
 }  //TOrderStore::GenerateNewExecID()
 //------------------------------------------------------------------------------
@@ -4811,22 +4811,22 @@ bool TOrderStore::AddCancelStatistic(const String& ExchangeCode, const String& S
 					if (tradingAccountPtr->AddCommodityCancelStatistic(ExchangeCode, contractCode, CancelQty, 1, s888::rwNotLock))
 						isSuccess = true;
 					else
-						logMsg.printf(L"Add Trading Account[%s] Commodity[%s-%s] Cancel Statistic falied.", logonID, ExchangeCode, contractCode);
+						logMsg.printf(L"Add Trading Account[%s] Commodity[%s-%s] Cancel Statistic falied.", logonID.c_str(), ExchangeCode.c_str(), contractCode.c_str());
 				}
 				else
-					logMsg.printf(L"Add Trading Account[%s] Contract[%s-%s] has no Commodity.", logonID, ExchangeCode, Symbol);
+					logMsg.printf(L"Add Trading Account[%s] Contract[%s-%s] has no Commodity.", logonID.c_str(), ExchangeCode.c_str(), Symbol.c_str());
 			}
 			else
-				logMsg.printf(L"Trading Account[%s]'s Contract[%s-%s] not Found.", logonID, ExchangeCode, Symbol);
+				logMsg.printf(L"Trading Account[%s]'s Contract[%s-%s] not Found.", logonID.c_str(), ExchangeCode.c_str(), Symbol.c_str());
 		}
 		else
-			logMsg.printf(L"Add Trading Account[%s] Contract[%s-%s] Cancel Statistic falied.", logonID, ExchangeCode, Symbol);
+			logMsg.printf(L"Add Trading Account[%s] Contract[%s-%s] Cancel Statistic falied.", logonID.c_str(), ExchangeCode.c_str(), Symbol.c_str());
 tradingAccountPtr->DumpContractCancelStatistic(s888::rwNotLock);
 tradingAccountPtr->DumpCommodityCancelStatistic(s888::rwNotLock);
 		tradingAccountPtr->UnlockForWrite();
 	}
 	else
-		logMsg.printf(L"Trading Account[%s] not Found.", logonID);
+		logMsg.printf(L"Trading Account[%s] not Found.", logonID.c_str());
 	if (logMsg.Length() > 0)
 	{
 		UFC::BufferedLog::DebugPrintf(" TOrderStore::AddCancelStatistic() [%s]",
@@ -4864,13 +4864,13 @@ void TOrderStore::RecalculateCommodityCancelStatistic()
 				{
 					String contractCode = commodityPtr->GetContractCode(s888::rwLockForRead);
 					if (!tradingAccountPtr->AddCommodityCancelStatistic(exchangeCode, contractCode, cancelQty, cancelCount, s888::rwNotLock))
-					logMsg.printf(L"Account[%s] Contract[%s-%s]'s Commodity[%s] not Found.", logonID, exchangeCode, symbol, contractCode);
+					logMsg.printf(L"Account[%s] Contract[%s-%s]'s Commodity[%s] not Found.", logonID.c_str(), exchangeCode.c_str(), symbol.c_str(), contractCode.c_str());
 				}
 				else
-					logMsg.printf(L"Account[%s] Contract[%s-%s]'s Commodity not Found.", logonID, exchangeCode, symbol);
+					logMsg.printf(L"Account[%s] Contract[%s-%s]'s Commodity not Found.", logonID.c_str(), exchangeCode.c_str(), symbol.c_str());
 			}
 			else
-				logMsg.printf(L"Account[%s] Contract[%s-%s] not Found.", logonID, exchangeCode, symbol);
+				logMsg.printf(L"Account[%s] Contract[%s-%s] not Found.", logonID.c_str(), exchangeCode.c_str(), symbol.c_str());
 
 			if (logMsg.Length() > 0)
 				UFC::BufferedLog::DebugPrintf(" TOrderStore::RecalculateCommodityCancelStatistic() [%s]",
@@ -4881,7 +4881,7 @@ tradingAccountPtr->DumpCommodityCancelStatistic(s888::rwNotLock);
 		tradingAccountPtr->UnlockForWrite();
 	}
 	else
-		logMsg.printf(L"Trading Account[%s] not Found.", logonID);
+		logMsg.printf(L"Trading Account[%s] not Found.", logonID.c_str());
 
 	if (logMsg.Length() > 0)
 		UFC::BufferedLog::DebugPrintf(" TOrderStore::RecalculateCommodityCancelStatistic() [%s]",

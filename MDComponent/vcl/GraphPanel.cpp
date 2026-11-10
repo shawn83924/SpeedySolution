@@ -50,7 +50,7 @@ void __fastcall TGraphPanel::SetAutoSize(bool Value)
 		if(FAutoSize && !FGlyph->Empty &&
 			(Width!=FGlyph->Width || Height!=FGlyph->Height) )
 		{
-			inherited::SetBounds( Left, Top, FGlyph->Width, FGlyph->Height );
+			TCustomPanel::SetBounds( Left, Top, FGlyph->Width, FGlyph->Height );
 		}
 	}
 }
@@ -78,9 +78,9 @@ void __fastcall TGraphPanel::SetTransparent(bool Value)
 void __fastcall TGraphPanel::SetBounds(int ALeft, int ATop, int AWidth, int AHeight)
 {
 	 if(!FAutoSize)
-		  inherited::SetBounds(ALeft, ATop, AWidth, AHeight);
+		  TCustomPanel::SetBounds(ALeft, ATop, AWidth, AHeight);
 	 else
-		  inherited::SetBounds(ALeft, ATop, Width, Height);
+		  TCustomPanel::SetBounds(ALeft, ATop, Width, Height);
 }
 //---------------------------------------------------------------------------
 void __fastcall TGraphPanel::SetClip( TCanvas* canvas )
@@ -109,7 +109,7 @@ void __fastcall TGraphPanel::Paint(void)
 	if( !FGlyph->Empty ) ///< Contains image
 	{
 		if( FTransparent == true ) ///< FTransparent = true, draw the background image first.
-			inherited::Paint();
+			TCustomPanel::Paint();
 		if( FStretchGlyph && !FAutoSize )
 		{
 			TRect PaintRect( 0,0,Width + 1,Height);
@@ -171,7 +171,7 @@ void __fastcall TGraphPanel::WndProc( TMessage &Msg )
 		Msg.Result = 1;
 		return;
 	}
-	inherited::WndProc( Msg );
+	TCustomPanel::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 namespace Graphpanel

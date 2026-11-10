@@ -71,7 +71,7 @@ bool TOrderStore::RemoveStopOrderTimeNIDIndex( TExecution* StopOrderPtr )
 	{
 		String TimeNIDKey;
 
-		TimeNIDKey.printf(L"%s%lld", StopOrderPtr->GetLocalMessageTime(), StopOrderPtr->GetNID());
+		TimeNIDKey.printf(L"%s%lld", StopOrderPtr->GetLocalMessageTime().c_str(), StopOrderPtr->GetNID());
 		CStringTExecutionMap::iterator it = FStopOrderTimeNIDIndex.find( TimeNIDKey );
 		if( it != FStopOrderTimeNIDIndex.end())
 		{
@@ -101,7 +101,7 @@ TExecution* TOrderStore::FindStopOrderConditionIndex(const UnicodeString& StopEx
 		(ExchangeCode.Length() <= 0) || (Symbol.Length() <= 0))
 		return NULL;
 
-	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode, StopSymbol,StopPrice );
+	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode.c_str(), StopSymbol.c_str(),StopPrice );
 	PriceString.printf(L"%020.5lf", Price);
 
 	typedef CStringTExecutionMultiMap::iterator MI;
@@ -195,10 +195,10 @@ bool TOrderStore::AddStopOrder( TExecution* NewStopOrderPtr )
 		String TimeNIDKey;
 		String StopOrderKey;
 
-		TimeNIDKey.printf( L"%s%lld", NewStopOrderPtr->GetLocalMessageTime(), NewStopOrderPtr->GetNID());
+		TimeNIDKey.printf( L"%s%lld", NewStopOrderPtr->GetLocalMessageTime().c_str(), NewStopOrderPtr->GetNID());
 		if( FindStopOrderByTimeNID( TimeNIDKey ) == 0 )
 		{
-			StopOrderKey.printf( L"%s%s%020.5lf", NewStopOrderPtr->GetStopExchangeCode(), NewStopOrderPtr->GetStopSymbol(), NewStopOrderPtr->GetStopPrice() );
+			StopOrderKey.printf( L"%s%s%020.5lf", NewStopOrderPtr->GetStopExchangeCode().c_str(), NewStopOrderPtr->GetStopSymbol().c_str(), NewStopOrderPtr->GetStopPrice() );
 			FStopOrderTimeNIDIndex.insert( CStringTExecutionMap::value_type( TimeNIDKey, NewStopOrderPtr ));
 			FStopOrderConditionIndex.insert( CStringTExecutionMultiMap::value_type(StopOrderKey, NewStopOrderPtr));
 			return true;
@@ -218,7 +218,7 @@ bool TOrderStore::RemoveStopOrder( const String& StopExchangeCode,
 	CStringTExecutionMultiMap::iterator CurStopOrderIt;
 	String StopOrderKey;
 
-	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode, StopSymbol, StopPrice );
+	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode.c_str(), StopSymbol.c_str(), StopPrice );
 	if( FindStopOrder( StopOrderKey, Exchange, Symbol, Price,Side, CurStopOrderIt ) == true )
 	{
 		FStopOrderConditionIndex.erase( CurStopOrderIt );
@@ -244,7 +244,7 @@ void TOrderStore::NewStopOrder( TExecution* NewStopOrderPtr, bool UpQtyOnly)
 		String StopOrderKey;
 		CStringTExecutionMultiMap::iterator CurStopOrderIt;
 
-		StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode, StopSymbol, StopPrice );
+		StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode.c_str(), StopSymbol.c_str(), StopPrice );
 		//Find and Delete Old Stop Order with Same Condition
 		if( FindStopOrder( StopOrderKey, OrderExchangeCode, OrderSymbol, OrderPrice, OrderSide, CurStopOrderIt ) == true )
 		{
@@ -435,7 +435,7 @@ int TOrderStore::CancelStopOrder(const UnicodeString& StopExchangeCode,
 	if( (StopInfoPtr = GetCommodityBasicInformation(StopExchangeCode, StopSymbol)) == NULL )
 		return DeleteCount;
 	StopMarket = (nsOrderMessageDefine::MarketEnum)StopInfoPtr->GetMarket();
-	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode, StopSymbol, StopPrice);
+	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode.c_str(), StopSymbol.c_str(), StopPrice);
 
 	//Do Search
 	typedef CStringTExecutionMultiMap::iterator MI;
@@ -632,7 +632,7 @@ int TOrderStore::RemoveStopOrderConditionIndex(const UnicodeString& StopExchange
 	String StopOrderKey;//,PriceString;
 
 
-	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode, StopSymbol, StopPrice );
+	StopOrderKey.printf(L"%s%s%020.5lf", StopExchangeCode.c_str(), StopSymbol.c_str(), StopPrice );
 //	PriceString.printf(L"%020.5lf", Price);
 
 	typedef CStringTExecutionMultiMap::iterator MI;

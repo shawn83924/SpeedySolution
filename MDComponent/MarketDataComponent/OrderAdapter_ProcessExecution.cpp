@@ -27,8 +27,8 @@ void TOrderAdapter::ProcessPendingNewMsg( nsOrderMessageDefine::OrderStatusEnum 
 
 	GetLocalSystemTime( LocalMessageTimeStr, true );
 	NewReportPtr->SetLocalMessageTime(LocalMessageTimeStr);
-	TimeOrderIDKey.printf( L"%s%lld", LocalMessageTimeStr, RptNID );
-	contractFullSymbol.printf( L"%s-%s", exchangeCode, orderSymbol );
+	TimeOrderIDKey.printf( L"%s%lld", LocalMessageTimeStr.c_str(), RptNID );
+	contractFullSymbol.printf( L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str() );
 	NewReportPtr->SetTimeOrderIDKey( TimeOrderIDKey );
 	if( rptExecId.Length() <= 0 )
 	{
@@ -37,7 +37,7 @@ void TOrderAdapter::ProcessPendingNewMsg( nsOrderMessageDefine::OrderStatusEnum 
 	}
 	if (FOrderStore->FindOrderMessageByExecID(rptExecId) != 0)
 	{
-		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId);
+		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId.c_str());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessPendingNewMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		UFC::BufferedLog::FlushToFile();
 		return;
@@ -135,9 +135,9 @@ void TOrderAdapter::ProcessPendingNewMsg( nsOrderMessageDefine::OrderStatusEnum 
 			else
 				UFC::BufferedLog::Printf(" TOrderAdapter::ProcessPendingNewMsg() Wrong Position Efferc %d, NID[%lld].", OrderRootPtr->GetPositionEffect(), NewReportPtr->GetNID());
 			logMessage.printf(L" PendingNew Order Report NID[%lld] [%s] side[%s] pe[%s] Qty[%d] Px[%15.6lf].",
-							  RptNID, contractFullSymbol,
-							  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+							  RptNID, contractFullSymbol.c_str(),
+							  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 							  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetPrice());
 			UFC::BufferedLog::Printf(" TOrderAdapter::ProcessPendingNewMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 			positionPtr->DumpData(s888::constFlush, s888::rwLockForRead );
@@ -166,7 +166,7 @@ void TOrderAdapter::ProcessNewMsg(nsOrderMessageDefine::OrderStatusEnum MsgOrder
 
 	UFC::BufferedLog::Printf(" NewOrder[%s] Use[%d]ms", RecvMsg->GetOrderID(), RecvMsg->GetUseus()/1000 );
 	GetLocalSystemTime( LocalMessageTimeStr, true );
-	contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+	contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 	///< OrderID not exists !!!
 	if ((RptOrderId.Length() <= 0 ) || (RptOrderId == L"00000"))
 	{
@@ -240,9 +240,9 @@ void TOrderAdapter::ProcessNewMsg(nsOrderMessageDefine::OrderStatusEnum MsgOrder
 			OrderRootPtr->SetLeavesQty(OrderRootPtr->GetOrderQty());
 		}
 		logMessage.printf(L" Order Root [%lld] not Found, Create One, [%s] side[%s] pe[%s] Qty[%d] Px[%15.6lf].",
-						  RptNID, contractFullSymbol,
-						  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-						  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+						  RptNID, contractFullSymbol.c_str(),
+						  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+						  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 						  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetPrice());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessNewMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 	}
@@ -267,7 +267,7 @@ void TOrderAdapter::ProcessNewMsg(nsOrderMessageDefine::OrderStatusEnum MsgOrder
 											NewReportPtr->GetPrice(), NewReportPtr->GetOrderQty());
             }
 			delete NewReportPtr;
-			logMessage.printf(L"OrderRoot OrderID[%s] Status is not pendingNew. NID=%lld.", RptOrderId, RptNID);
+			logMessage.printf(L"OrderRoot OrderID[%s] Status is not pendingNew. NID=%lld.", RptOrderId.c_str(), RptNID);
 			UFC::BufferedLog::Printf(" TOrderAdapter::ProcessNewMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 			return;
 		}
@@ -346,9 +346,9 @@ void TOrderAdapter::ProcessNewMsg(nsOrderMessageDefine::OrderStatusEnum MsgOrder
 			else
 				UFC::BufferedLog::Printf(" TOrderAdapter::ProcessNewMsg() Wrong Position Efferc %d, NID[%lld].", OrderRootPtr->GetPositionEffect(), NewReportPtr->GetNID());
 			logMessage.printf(L" PendingNew Order Report NID[%lld] [%s] side[%s] pe[%s] Qty[%d] Px[%15.6lf].",
-							  RptNID, contractFullSymbol,
-							  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+							  RptNID, contractFullSymbol.c_str(),
+							  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+							  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 							  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetPrice());
 			UFC::BufferedLog::Printf(" TOrderAdapter::ProcessNewMsg() %s",
 									 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -436,7 +436,7 @@ void TOrderAdapter::ProcessFilledMsg(nsOrderMessageDefine::OrderStatusEnum MsgOr
 	nsOrderMessageDefine::ExecTypeEnum RptExecType = NewReportPtr->GetExecType();
 
 	GetLocalSystemTime( LocalMessageTimeStr, true );
-	contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+	contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 	if ((RptOrderId.Length() <= 0) || (RptOrderId == L"00000"))
 	{
 		if (!FIsRecovering && (FOrderStore->OnErrorMessage != 0))
@@ -471,7 +471,7 @@ void TOrderAdapter::ProcessFilledMsg(nsOrderMessageDefine::OrderStatusEnum MsgOr
 	}
 	if (FOrderStore->FindOrderMessageByExecID(rptExecId) != 0)
 	{
-		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId);
+		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId.c_str());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessFilledMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		UFC::BufferedLog::FlushToFile();
 		return;
@@ -482,7 +482,7 @@ void TOrderAdapter::ProcessFilledMsg(nsOrderMessageDefine::OrderStatusEnum MsgOr
 	bool IsOrderStatusChanged = false;
 	if (OrderRootPtr == 0)
 	{   //No Order Root Exists, Create a New Order Root
-		logMessage.printf(L"OrderRoot not Found by OrderID[%s], NID[%lld]. Create One.", RptOrderId, RptNID);
+		logMessage.printf(L"OrderRoot not Found by OrderID[%s], NID[%lld]. Create One.", RptOrderId.c_str(), RptNID);
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessFilledMsg() %s", s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		IsOrderStatusChanged = true;
 		OrderRootPtr = new TExecution(RecvMsg);
@@ -640,9 +640,9 @@ void TOrderAdapter::ProcessFilledMsg(nsOrderMessageDefine::OrderStatusEnum MsgOr
 					}
 				}
 				logMessage.printf(L" Filled Report[%s] NID[%lld] [%s] side[%s] pe[%s] LastQty[%d] LastPx[%15.6lf].",
-								  RptOrderId, RptNID, contractFullSymbol,
-								  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-								  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+								  RptOrderId.c_str(), RptNID, contractFullSymbol.c_str(),
+								  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+								  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 								  OrderRootPtr->GetLastQty(), OrderRootPtr->GetLastPx());
 				UFC::BufferedLog::Printf(" TOrderAdapter::ProcessFilledMsg() %s",
 										 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -712,9 +712,9 @@ void TOrderAdapter::ProcessReplacedMsg(nsOrderMessageDefine::OrderStatusEnum Msg
 
 	GetLocalSystemTime( LocalMessageTimeStr, true );
 	if (orderSymbol != tradeSymbol)
-		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode, orderSymbol, tradeSymbol);
+		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str());
 	else
-		contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+		contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 
 	if( RecvMsg->GetMarket() == nsOrderMessageDefine::mTWFutures || RecvMsg->GetMarket() == nsOrderMessageDefine::mTWOptions )
 	{
@@ -945,9 +945,9 @@ void TOrderAdapter::ProcessCanceledMsg(nsOrderMessageDefine::OrderStatusEnum Msg
 
 	GetLocalSystemTime( LocalMessageTimeStr, true );
 	if (orderSymbol != tradeSymbol)
-		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode, orderSymbol, tradeSymbol);
+		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str());
 	else
-		contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+		contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 
 	if ((RptOrderId.Length() <= 0) || (RptOrderId == L"00000"))
 	{
@@ -989,7 +989,7 @@ void TOrderAdapter::ProcessCanceledMsg(nsOrderMessageDefine::OrderStatusEnum Msg
 
 	if (FOrderStore->FindOrderMessageByExecID(rptExecId) != 0)
 	{
-		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId);
+		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId.c_str());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessCanceledMsg() %s",
 								 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		UFC::BufferedLog::FlushToFile();
@@ -1125,9 +1125,9 @@ void TOrderAdapter::ProcessCanceledMsg(nsOrderMessageDefine::OrderStatusEnum Msg
 					positionPtr->LockForWrite();
 					positionPtr->SubstractOrderQuantity(OrderRootPtr->GetPositionEffect(), OrderRootPtr->GetSide(), leavesQty, s888::rwNotLock);
 					logMessage.printf(L" Cancel Report[%s] NID[%lld] [%s] side[%s] pe[%s] Qty[%d] leavesQty[%d].",
-									  OrderRootOrderId, RptNID, contractFullSymbol,
-									  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+									  OrderRootOrderId.c_str(), RptNID, contractFullSymbol.c_str(),
+									  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 									  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetLeavesQty());
 					UFC::BufferedLog::Printf(" TOrderAdapter::ProcessCanceledMsg() %s",
 											 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -1135,10 +1135,10 @@ void TOrderAdapter::ProcessCanceledMsg(nsOrderMessageDefine::OrderStatusEnum Msg
 					positionPtr->UnlockForWrite();
 				}
 				else
-					positionMsg.printf(L"Account[%s] Contract Position[%s] not found.", FOrderStore->ID, contractFullSymbol);
+					positionMsg.printf(L"Account[%s] Contract Position[%s] not found.", FOrderStore->ID.c_str(), contractFullSymbol.c_str());
 			}
 			else
-				positionMsg.printf(L"Account[%s] not Found.", FID);
+				positionMsg.printf(L"Account[%s] not Found.", FID.c_str());
 
 			if (positionMsg.Length() > 0)
 			{
@@ -1172,9 +1172,9 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 
 	GetLocalSystemTime( LocalMessageTimeStr, true );
 	if (orderSymbol != tradeSymbol)
-		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode, orderSymbol, tradeSymbol);
+		contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str());
 	else
-		contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+		contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 
 	String IdStr;
 	if ((RptOrderId.Length() <= 0) || (RptOrderId == L"00000"))
@@ -1206,7 +1206,7 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 
 	if (FOrderStore->FindOrderMessageByExecID(rptExecId) != 0)
 	{
-		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId);
+		logMessage.printf(L"Duplicate Exec ID[%s], Skip this Message.", rptExecId.c_str());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessRejectedMsg() %s",
 								 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		UFC::BufferedLog::FlushToFile();
@@ -1220,7 +1220,7 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 	bool IsOrderStatusChanged = false;
 	if (OrderRootPtr == 0)
 	{   //No Order Root Exists, Create a New Order Root
-		logMessage.printf(L"Find no Order Root By OrderID[%s], NID[%lld].", RptOrderId, RptNID);
+		logMessage.printf(L"Find no Order Root By OrderID[%s], NID[%lld].", RptOrderId.c_str(), RptNID);
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessRejectedMsg() %s",
 						 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		IsOrderStatusChanged = true;
@@ -1251,11 +1251,11 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 		if ((tradeSymbol.Length() <= 0) || (tradeSymbol != rootTradeSymbol))
 			tradeSymbol = rootTradeSymbol;
 		if (orderSymbol != tradeSymbol)
-			contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode, orderSymbol, tradeSymbol);
+			contractFullSymbol.printf(L"%s-%s(%s)", exchangeCode.c_str(), orderSymbol.c_str(), tradeSymbol.c_str());
 		else
-			contractFullSymbol.printf(L"%s-%s", exchangeCode, orderSymbol);
+			contractFullSymbol.printf(L"%s-%s", exchangeCode.c_str(), orderSymbol.c_str());
 		logMessage.printf(L"Find Order Root[%s] By OrderID[%s], NID[%lld] [%s] Qty[%d] leavesQty[%d] CxlRejResponseTo[%d] pe[%d].",
-		OrderRootPtr->GetOrderID(), RptOrderId, RptNID, contractFullSymbol, OrderRootPtr->GetOrderQty(), OrderRootPtr->GetLeavesQty(), RecvMsg->GetCxlRejResponseTo(), OrderRootPtr->GetPositionEffect());
+		OrderRootPtr->GetOrderID().c_str(), RptOrderId.c_str(), RptNID, contractFullSymbol.c_str(), OrderRootPtr->GetOrderQty(), OrderRootPtr->GetLeavesQty(), RecvMsg->GetCxlRejResponseTo(), OrderRootPtr->GetPositionEffect());
 		UFC::BufferedLog::Printf(" TOrderAdapter::ProcessRejectedMsg() %s",
 						 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
 		isOrderRootExist = true;
@@ -1373,9 +1373,9 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 					positionPtr->LockForWrite();
 					positionPtr->SubstractOrderQuantity(OrderRootPtr->GetPositionEffect(), OrderRootPtr->GetSide(), leavesQty, s888::rwNotLock);
 					logMessage.printf(L" Reject Report[%s] NID[%lld] [%s] side[%s] pe[%s] Qty[%d] leavesQty[%d].",
-									  RptOrderId, RptNID, contractFullSymbol,
-									  s888::DescribeBuySell(OrderRootPtr->GetSide()),
-									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()),
+									  RptOrderId.c_str(), RptNID, contractFullSymbol.c_str(),
+									  s888::DescribeBuySell(OrderRootPtr->GetSide()).c_str(),
+									  s888::DescribePositionEffect(OrderRootPtr->GetPositionEffect()).c_str(),
 									  OrderRootPtr->GetOrderQty(), OrderRootPtr->GetLeavesQty());
 					UFC::BufferedLog::Printf(" TOrderAdapter::ProcessRejectedMsg() %s",
 											 s888::ConvertUnicodeToUFCAnsiStr(logMessage).c_str());
@@ -1383,10 +1383,10 @@ void TOrderAdapter::ProcessRejectedMsg( nsOrderMessageDefine::OrderStatusEnum Ms
 					positionPtr->UnlockForWrite();
 				}
 				else
-					positionMsg.printf(L"Account[%s] Contract Position[%s] not found.", FOrderStore->ID, contractFullSymbol);
+					positionMsg.printf(L"Account[%s] Contract Position[%s] not found.", FOrderStore->ID.c_str(), contractFullSymbol.c_str());
 			}
 			else
-				positionMsg.printf(L"Account[%s] not Found.", FID);
+				positionMsg.printf(L"Account[%s] not Found.", FID.c_str());
 
 			if (positionMsg.Length() > 0)
 			{

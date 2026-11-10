@@ -465,52 +465,68 @@ Int32 PClientSocket::ProcessQueue( void)
     Int32 TotalSize = 0;
     std::string WriteData;
 
-    while( TryPopFront( WriteData ) )
+    ///< peek -> send -> pop only on success: if BlockSend throws (dying socket),
+    ///< the front message stays queued instead of being lost. BlockSend runs
+    ///< outside IOLock. Assumes a single sender per socket (front is stable;
+    ///< concurrent SendQueue only push_back to the tail).
+    for( ;; )
     {
+        {
+            UFC::PLockObject LockObj( IOLock );
+            if( FWriteQueue.empty() )
+                break;
+            WriteData = FWriteQueue.front();   ///< copy out, keep in queue
+        }
         Int32 WriteSize = (UFCType::Int32)WriteData.size();
         if( WriteSize > 0 )
         {
-            BlockSend( (char*)WriteData.c_str(), WriteSize );
+            BlockSend( (char*)WriteData.c_str(), WriteSize );   ///< throw -> front NOT popped below
             TotalSize += WriteSize;
+        }
+        {
+            UFC::PLockObject LockObj( IOLock );
+            if( FWriteQueue.empty() == false )
+                FWriteQueue.pop_front();       ///< remove only after a successful send (or empty msg)
         }
     }
     return TotalSize;
 }
 //---------------------------------------------------------------------------
-// Batch version of ProcessQueue: take the whole queue in one lock, then
-// coalesce messages up to BATCH_SEND_LIMIT bytes per BlockSend call.
-// Byte order on the wire is identical to ProcessQueue; only the number of
-// lock acquisitions and send syscalls differs. Messages enqueued while
-// sending are picked up by the caller's next round (same contract).
+// Batch version of ProcessQueue: coalesce up to BATCH_SEND_LIMIT bytes per
+// BlockSend call. Messages are PEEKED (copied) under the lock and only popped
+// from the front after their BlockSend succeeds, so a throw on a dying socket
+// leaves the un-sent messages queued instead of dropping them. Byte order on
+// the wire is identical to ProcessQueue. Assumes a single sender per socket.
 //---------------------------------------------------------------------------
 static const size_t BATCH_SEND_LIMIT = 65536; ///< 64KB per BlockSend
 //---------------------------------------------------------------------------
 Int32 PClientSocket::ProcessQueueBatch( void )
 {
-    QUEUE       WorkQueue;
-    std::string Buffer;
-    Int32       TotalSize = 0;
+    Int32 TotalSize = 0;
 
+    for( ;; )
     {
-        UFC::PLockObject Lock( IOLock );
-        WorkQueue.swap( FWriteQueue );
-    }
-    for( QUEUE::iterator It = WorkQueue.begin(); It != WorkQueue.end(); ++It )
-    {
-        if( It->empty() )
-            continue;
-        Buffer.append( *It );
-        if( Buffer.size() >= BATCH_SEND_LIMIT )
+        std::string Buffer;
+        size_t      Count = 0;              ///< messages coalesced into Buffer this round
         {
-            BlockSend( (char*)Buffer.c_str(), (Int32)Buffer.size() );
-            TotalSize += (Int32)Buffer.size();
-            Buffer.clear();
+            UFC::PLockObject Lock( IOLock );
+            if( FWriteQueue.empty() )
+                break;
+            for( QUEUE::iterator It = FWriteQueue.begin();
+                 It != FWriteQueue.end() && Buffer.size() < BATCH_SEND_LIMIT; ++It )
+            {
+                Buffer.append( *It );       ///< peek+coalesce (copy), do NOT remove yet
+                ++Count;
+            }
         }
-    }
-    if( !Buffer.empty() )
-    {
-        BlockSend( (char*)Buffer.c_str(), (Int32)Buffer.size() );
+        if( Buffer.empty() == false )
+            BlockSend( (char*)Buffer.c_str(), (Int32)Buffer.size() );  ///< throw -> nothing popped below
         TotalSize += (Int32)Buffer.size();
+        {
+            UFC::PLockObject Lock( IOLock );
+            for( size_t i = 0; i < Count && FWriteQueue.empty() == false; ++i )
+                FWriteQueue.pop_front();    ///< remove only the messages we successfully sent
+        }
     }
     return TotalSize;
 }

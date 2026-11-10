@@ -132,7 +132,7 @@ void __fastcall TIniEditBox::OnDelete( TObject* Sender )
 		TSectionObject* Section = dynamic_cast<TSectionObject*>( Items->Objects[FSelectIndex] );
 		if( Section != NULL ) ///< Delete Section
 		{
-			Msg.printf( L"Do you want to delete section[%s] and all values in section?", String( Section->GetName()) );
+			Msg.printf( L"Do you want to delete section[%s] and all values in section?", String( Section->GetName()).c_str() );
 			if( MessageDlg( Msg, mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 			{
 				TiniObject* DelItem;
@@ -164,7 +164,7 @@ void __fastcall TIniEditBox::OnDelete( TObject* Sender )
 		{
 			TNameValueObject* Item = dynamic_cast< TNameValueObject*>( Items->Objects[FSelectIndex] );
 
-			Msg.printf( L"Do you want to delete value[%s] ?", String( Item->GetName()) );
+			Msg.printf( L"Do you want to delete value[%s] ?", String( Item->GetName()).c_str() );
 			if( MessageDlg( Msg, mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 			{
 				delete  Items->Objects[FSelectIndex];

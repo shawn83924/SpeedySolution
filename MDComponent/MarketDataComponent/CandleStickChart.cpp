@@ -16,7 +16,7 @@ const int MAX_CANDLE_VIEW_PORT = 320;
 const int MIN_CANDLE_VIEW_PORT = 10;
 //---------------------------------------------------------------------------
 const int FONT_DEF_SIZE  = 11;
-const PAINT_TIMER_ID = 100078;
+const int PAINT_TIMER_ID = 100078;
 //---------------------------------------------------------------------------
 const int HINT_W = 140;
 //const int HINT_H = 105;
@@ -275,7 +275,7 @@ __fastcall TCandleStickChart::TCandleStickChart(TComponent* Owner)
 ,FFirstPivotExists( false )
 ,FShowAvgPx( true )
 ,FReplacePx( false )
-,FCursorType( ctBoth )
+,FCursorType( ctVLine )
 ,FCanUpdate( true )
 {
 	DoubleBuffered = false;
@@ -719,7 +719,7 @@ void __fastcall TCandleStickChart::DrawPxLine( TCanvas* canvas, TColor LineC, in
 			Dir = L"¡¿";
 			canvas->Font->Color = clGreen;
 		}
-		PxStr.printf( L"%.*f %s%0.2f", FDigit, Px, Dir, Percent );
+		PxStr.printf( L"%.*f %s%0.2f", FDigit, Px, Dir.c_str(), Percent );
 	}
 	else
 	{
@@ -3143,7 +3143,7 @@ void __fastcall TCandleStickChart::DrawQtyGrid( TCanvas* canvas,  int QtyUpperLi
 	double Q1Percent = FChartPercent + (1.0-FChartPercent)/4.0;
 	double Q3Percent = HalfPercent + (1.0-FChartPercent)/4.0;
 	FMaxQty = GetMaxQty();
-	canvas->Pen->Color = 0x00DD7C3C;// FGridColor;//clGray;
+	canvas->Pen->Color = static_cast<TColor>( 0x00DD7C3C );// FGridColor;//clGray;
 	canvas->Pen->Width = 3;
 	canvas->MoveTo( 0, QtyUpperLineY );
 	canvas->LineTo( Width - FYAxisOffset, QtyUpperLineY );

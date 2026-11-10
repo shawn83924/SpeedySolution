@@ -164,6 +164,7 @@ private:
 	UFC::PHashedList<UFC::AnsiString, TTickList*>   FTickTable;
 	UFC::PHashedList<UFC::AnsiString, TTickList*>   FTickTableEx;
 	UFC::PHashedList<UFC::AnsiString, AnsiString*>  FSpotList;
+	UFC::PHashedList<UFC::AnsiString, TStringList*> FBlackList;
 private:
 	UFC::PCriticalSection                              FEpdateCS;
     int                                                FUpdateInterval;
@@ -307,6 +308,7 @@ public:
 	bool __fastcall IsOpen( const UFC::AnsiString& ExchangeName, const UFC::AnsiString& ProductID );
 	bool __fastcall ExchangeSupportFutures( const UFC::AnsiString& Exchange );
 	bool __fastcall ExchangeSupportOptions( const UFC::AnsiString& Exchange );
+	void __fastcall SetBlackList( const UFC::AnsiString& Exchange, const String& Symbol );
 private: /// Rewrite
 	void __fastcall LoadExchangeTable( void );
 	void __fastcall AddToStoreTable( const UFC::AnsiString& Exchange, const UFC::AnsiString& Symbol, BasicInformation* Info );

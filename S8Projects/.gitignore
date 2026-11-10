@@ -1,0 +1,61 @@
+# ===== C++Builder / RAD Studio build output =====
+Debug/
+Release/
+Win32/
+Win64/
+Win64x/
+
+# Compiler / linker intermediates
+*.obj
+*.o
+*.pch
+*.#*
+*.tds
+*.map
+*.drc
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.il?
+*.rsm
+*.pdi
+*.bpi
+*.bpl
+*.dcu
+*.lib.bak
+
+# ===== IDE local / user-specific files =====
+*.local
+*.identcache
+*.stat
+*.dsk
+*.dsv
+*.tvsconfig
+*.cbproj.local
+*.groupproj.local
+
+# IDE backups / history
+__history/
+__recovery/
+*.~*
+*.bak
+
+# ===== JetBrains (CLion) =====
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/dictionaries/
+
+# ===== Visual Studio Code =====
+.vscode/
+
+# ===== Runtime logs =====
+*.log
+log/
+
+# ===== OS files =====
+Thumbs.db
+Desktop.ini
+.DS_Store

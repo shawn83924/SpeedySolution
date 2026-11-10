@@ -17,6 +17,7 @@
 #pragma link "OptionsStrikePriceView"
 #pragma link "RoundFormEx"
 #pragma link "GraphButton"
+#pragma link "cgauges"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 extern TCMarketDataStore   *gMarketDataStore;
@@ -29,34 +30,35 @@ TOptionsTBarForm *OptionsTBarForm;
 const String STR_TBAR_OPTION( L"¿ï¾ÜÅv³ø»ù" );
 const String STR_TBAR_ALL_MONTH( L"©Ò¦³" );
 //---------------------------------------------------------------------------
-TColor HeaderCommodColor[2]      = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderCallColor[2]        = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderPutColor[2]         = {RGB(252,255,23),RGB(1,234,237)};
-TColor HeaderCommodBKColor[2]    = {RGB(40,90,159),RGB(45,45,45)};
-TColor HeaderCallBKColor[2]      = {RGB(40,90,159),RGB(45,45,45)};
-TColor HeaderPutBKColor[2]       = {RGB(40,90,159),RGB(45,45,45)};
-TColor FieldNameCommodColor[2]   = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNameCallColor[2]     = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNamePutColor[2]      = {RGB(34,34,34),RGB(238,238,238)};
-TColor FieldNameCallBKColor[2]   = {clWhite,RGB(104,104,104)};
-TColor FieldNamePutBKColor[2]    = {clWhite,RGB(104,104,104)};
-TColor FieldNameCommodBKColor[2] = {clWhite,RGB(104,104,104)};
+TColor HeaderCommodColor[2]      = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderCallColor[2]        = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderPutColor[2]         = {(TColor)RGB(252,255,23),(TColor)RGB(1,234,237)};
+TColor HeaderCommodBKColor[2]    = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor HeaderCallBKColor[2]      = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor HeaderPutBKColor[2]       = {(TColor)RGB(40,90,159),(TColor)RGB(45,45,45)};
+TColor FieldNameCommodColor[2]   = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNameCallColor[2]     = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNamePutColor[2]      = {(TColor)RGB(34,34,34),(TColor)RGB(238,238,238)};
+TColor FieldNameCallBKColor[2]   = {clWhite,(TColor)RGB(104,104,104)};
+TColor FieldNamePutBKColor[2]    = {clWhite,(TColor)RGB(104,104,104)};
+TColor FieldNameCommodBKColor[2] = {clWhite,(TColor)RGB(104,104,104)};
 TColor StkPxColor[2]             = {clWhite,clWhite};
-TColor StkPxBKColor[2]           = {RGB(40,90,159),RGB(53,53,53)};
-TColor CallBKColor[2]            = {clWhite,RGB(53,53,53)};
-TColor PutBKColor[2]             = {clWhite,RGB(53,53,53)};
-TColor RisePxColor[2]            = {RGB(230,0,0),RGB(230,0,0)};
-TColor FallPxColor[2]            = {RGB(33,140,4),RGB(33,140,4)};
-TColor EqualPxColor[2]           = {RGB(85,85,85),RGB(153,153,153)};
-TColor HGridColor[2]             = {RGB(205,205,205),RGB(73,73,73)};
-TColor VGridColor[2]             = {clWhite,RGB(53,53,53)};
-TColor BKBarColor[2]             = {RGB(255,246,231),RGB(8,16,27)};
+TColor StkPxBKColor[2]           = {(TColor)RGB(40,90,159),(TColor)RGB(53,53,53)};
+TColor CallBKColor[2]            = {clWhite,(TColor)RGB(53,53,53)};
+TColor PutBKColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
+TColor RisePxColor[2]            = {(TColor)RGB(230,0,0),(TColor)RGB(230,0,0)};
+TColor FallPxColor[2]            = {(TColor)RGB(33,140,4),(TColor)RGB(33,140,4)};
+TColor EqualPxColor[2]           = {(TColor)RGB(85,85,85),(TColor)RGB(153,153,153)};
+TColor HGridColor[2]             = {(TColor)RGB(205,205,205),(TColor)RGB(73,73,73)};
+TColor VGridColor[2]             = {clWhite,(TColor)RGB(53,53,53)};
+TColor BKBarColor[2]             = {(TColor)RGB(255,246,231),(TColor)RGB(8,16,27)};
 //---------------------------------------------------------------------------
 __fastcall TOptionsTBarForm::TOptionsTBarForm(TComponent* Owner, int ID )
 :TForm(Owner)
 ,FFontSize( FONT_SIZE_DEF )
 ,FDepthFormIndex( -1 )///< -1 means open new.
 ,FIsInit( false )
+,FOpeningTBarOrderBook( false )
 {
 	FOptExchanges = new	TStringList();
 	FOptSerial    = new TStringList();
@@ -106,7 +108,7 @@ void __fastcall TOptionsTBarForm::WndProc( TMessage &Msg )
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}
-	inherited::WndProc( Msg );
+	TForm::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::EraseBK( HDC DC )
@@ -181,8 +183,9 @@ void __fastcall TOptionsTBarForm::InitTBar( void )
 		InitExchange( 0 ); ///< First exchange.
 		InitSerial( 0, 0 );///< First exchange and first serial.
 		OptionsSerialComboBoxChange( this );
+		SelectPinsButtonClick(NULL);
 		FIsInit = true;
-    }
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::SetTBarFormID( int ID )
@@ -192,9 +195,9 @@ void __fastcall TOptionsTBarForm::SetTBarFormID( int ID )
 	FID = ID;
 
 	if( FID == 0 )
-		FormName.printf( L"%s", STR_TBAR_OPTION ); ///< ¿ï¾ÜÅv³ø»ù
+		FormName.printf( L"%s", STR_TBAR_OPTION.c_str() ); ///< ¿ï¾ÜÅv³ø»ù
 	else
-		FormName.printf( L"%s-%d", STR_TBAR_OPTION, ID ); ///< ¿ï¾ÜÅv³ø»ù
+		FormName.printf( L"%s-%d", STR_TBAR_OPTION.c_str(), ID ); ///< ¿ï¾ÜÅv³ø»ù
 	Caption = FormName;
 }
 //---------------------------------------------------------------------------
@@ -207,7 +210,7 @@ void __fastcall TOptionsTBarForm::SetMaturityComboBox( const String& Exchange, c
 	MaturityComboBox->Items->AddStrings( MYlist );
 	if( MaturityComboBox->Items->Strings[0] == L"(null)" )
         MaturityComboBox->Items->Delete( 0 );
-	MaturityComboBox->Items->Add( STR_TBAR_ALL_MONTH );
+	//MaturityComboBox->Items->Add( STR_TBAR_ALL_MONTH );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::OptionsSerialComboBoxChange(TObject *Sender)
@@ -226,24 +229,12 @@ void __fastcall TOptionsTBarForm::OptionsSerialComboBoxChange(TObject *Sender)
 //---------------------------------------------------------------------------
 String __fastcall TOptionsTBarForm::GetMaturityString( void )
 {
-	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 )
-	{
-		TStringList* MYlist = new TStringList();
-		String Rtn;
-
-		MYlist->Delimiter = '^';
-		for( int i = 0; i < MaturityComboBox->ItemIndex; i++ )
-			MYlist->Add( MaturityComboBox->Items->Strings[i] );
-		Rtn = MYlist->DelimitedText;
-		delete MYlist;
-		return Rtn;
-	}
-	else
-		return MaturityComboBox->Items->Strings[ MaturityComboBox->ItemIndex ];
+	return MaturityComboBox->Items->Strings[ MaturityComboBox->ItemIndex ];
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::MaturityComboBoxChange(TObject *Sender)
 {
+	SavePinsSetting( );
 	///< setup TBar control.
 	OptionsStrikePriceView->Exchange  = FOptExchanges->Strings[ OptMarketTabSet->TabIndex ];;
 	OptionsStrikePriceView->Symbol    = FOptSerial->Strings[ OptionsSerialComboBox->ItemIndex ];
@@ -270,6 +261,7 @@ void __fastcall TOptionsTBarForm::FormShow(TObject *Sender)
 {
 	InitTBar();
 	AdjuestFont();
+	ReloadPinsTimer->Enabled = true; ///< å•Ÿå‹•æ‰¹æ¬¡é‡ç®—/é‡ç¹ª(dfm é è¨­ Enabled=False)
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::LargeButtonClick(TObject *Sender)
@@ -439,10 +431,15 @@ void __fastcall TOptionsTBarForm::SaveProperties( const String& Profile )
 void __fastcall TOptionsTBarForm::OptionsStrikePriceViewTBarStrikePxMouseClick(TObject *Sender,
 		  UnicodeString Symbol, CallPutCode CallPut)
 {
+	if(FOpeningTBarOrderBook == true)
+		return;
+
+	FOpeningTBarOrderBook = true;
 	String Exchange = FOptExchanges->Strings[ OptMarketTabSet->TabIndex ];
 
 	FDepthFormIndex = ContractViewerForm->OpenTBarOrderBookForm( Exchange, Symbol, FDepthFormIndex );
 	SendToBack();
+	FOpeningTBarOrderBook = false;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::Release( void )
@@ -482,6 +479,7 @@ void __fastcall TOptionsTBarForm::OptMarketTabSetChange(TObject *Sender, int New
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::FormClose(TObject *Sender, TCloseAction &Action)
 {
+	ReloadPinsTimer->Enabled = false;
 	OptionsStrikePriceView->Clear( );
 }
 //---------------------------------------------------------------------------
@@ -526,6 +524,7 @@ void __fastcall TOptionsTBarForm::LoadPinsSetting( void )
 		Init( true, StrikePxDigit, YMs,  StrikePxs, SpotPxs, ExcludeStkPxSet );
 	else
 		Init( false, StrikePxDigit, YMs,  StrikePxs, SpotPxs, ExcludeStkPxSet );
+	SelectPinsButtonClick(NULL);
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::Init( bool IsAll, int Digi, UFC::PStringList& YMs, UFC::PDoubleList& StrikePxs, UFC::PDoubleList& SpotPxs,UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& Exclude )
@@ -565,9 +564,9 @@ void __fastcall TOptionsTBarForm::SavePinsSetting( void )
 	String RegKey;
 
 	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 ) ///< All Maturity month
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
 	else
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
+		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
 	for( int i =0; i < FYearMonth.ItemCount();i++)
 	{
 		TListItem*   CheckItem = FPList->Items->Item[i];
@@ -609,34 +608,14 @@ void __fastcall TOptionsTBarForm::GenExcludeSet( UFC::PHashMap<UFC::AnsiString, 
 	AnsiString AnsiYearMonth;
 	String RegKey,Fields;
 
-	if( MaturityComboBox->ItemIndex == MaturityComboBox->Items->Count -1 ) ///< All Maturity month
-	{
-		TStringList* MYlist = new TStringList();
+	UFC::PHashedSet<double>* StrikePxSet  = new UFC::PHashedSet<double>();
 
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s_all", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
-		MYlist->Delimiter = '^';
-		MYlist->DelimitedText = OptionsStrikePriceView->YearMonth;
-		for( int i = 0; i < MYlist->Count; i ++ )
-		{
-			UFC::PHashedSet<double>* StrikePxSet = new UFC::PHashedSet<double>();
+	RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange.c_str(), OptionsStrikePriceView->Symbol.c_str() );
+	AnsiYearMonth = OptionsStrikePriceView->YearMonth;
+	Fields = g_Config.GetDesktopString( RegKey, OptionsStrikePriceView->YearMonth, L"" );
+	GenStrikePxSet( StrikePxSet, Fields );
 
-			AnsiYearMonth = MYlist->Strings[i];
-			Fields = g_Config.GetDesktopString( RegKey, AnsiYearMonth, "" );
-			GenStrikePxSet( StrikePxSet, Fields );
-			ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
-		}
-		delete MYlist;
-	}
-	else
-	{
-		UFC::PHashedSet<double>* StrikePxSet  = new UFC::PHashedSet<double>();
-
-		RegKey.printf( L"Options\\TBarForm\\Exclude\\%s_%s", OptionsStrikePriceView->Exchange, OptionsStrikePriceView->Symbol );
-		AnsiYearMonth = OptionsStrikePriceView->YearMonth;
-		Fields = g_Config.GetDesktopString( RegKey, OptionsStrikePriceView->YearMonth, L"" );
-		GenStrikePxSet( StrikePxSet, Fields );
-		ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
-	}
+	ExcludeStkPxList.Add( AnsiYearMonth.c_str(), StrikePxSet );
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::ClearExcludeSet( UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& ExcludeStkPxList )
@@ -658,7 +637,15 @@ void __fastcall TOptionsTBarForm::UpdateOptionsStrikePriceViewPins( void )
 	UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*> ExcludeStkPxSet;
 
 	GenExcludeSet( ExcludeStkPxSet );
-	OptionsStrikePriceView->UpdateTable( ExcludeStkPxSet );
+	OptionsStrikePriceView->Locked = true;
+	try
+	{
+		OptionsStrikePriceView->UpdateTable( ExcludeStkPxSet );
+	}
+	__finally
+	{
+		OptionsStrikePriceView->Locked = false;
+	}
 	ClearExcludeSet( ExcludeStkPxSet );
 
 	TBarWidth = OptionsStrikePriceView->BestFitWidth + RoundFormEx->LeftGraph->Width/2 +  RoundFormEx->RightGraph->Width/2 + 18;
@@ -686,7 +673,6 @@ void __fastcall TOptionsTBarForm::SelectPinsButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TOptionsTBarForm::ApplyButtonClick(TObject *Sender)
 {
-	SavePinsSetting( );
 	MaturityComboBoxChange( NULL );
 }
 //---------------------------------------------------------------------------
@@ -933,7 +919,9 @@ void __fastcall TOptionsTBarForm::SetVisible( bool IsVisible )
 {
 	this->Visible = IsVisible;
 }
-
+void __fastcall TOptionsTBarForm::ReloadPinsTimerTimer(TObject *Sender)
+{
+	OptionsStrikePriceView->BatchTimer( Sender );
+}
 //---------------------------------------------------------------------------
-
 

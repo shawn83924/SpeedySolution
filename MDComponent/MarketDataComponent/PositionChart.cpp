@@ -6,10 +6,10 @@
 
 #include "PositionChart.h"
 #pragma package(smart_init)
-const LEFT_BORDER = 10;
-const TOP_BORDER = 10;
-const RIGHT_BORDER = 10;
-const BOTTOM_BORDER = 10;
+const int LEFT_BORDER = 10;
+const int TOP_BORDER = 10;
+const int RIGHT_BORDER = 10;
+const int BOTTOM_BORDER = 10;
 //---------------------------------------------------------------------------
 ChartRecord::ChartRecord( const UFC::AnsiString& Symbol, Market market, double StrikePx, CallPutCode CallPut, nsOrderMessageDefine::SideEnum Side, double ContracMultiplier )
 :FSymbol( Symbol )
@@ -452,7 +452,7 @@ void __fastcall TPositionChart::WndProc( TMessage &Msg )
 	}
 	else
 	{
-		inherited::WndProc( Msg );
+		TCustomControl::WndProc( Msg );
 	}
 }
 //---------------------------------------------------------------------------

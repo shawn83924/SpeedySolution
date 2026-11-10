@@ -299,7 +299,7 @@ void __fastcall TInfoHint::WndProc( TMessage &Msg )
 		case WM_CREATE:     ChangeShape( );
 							break;
 	}
-	inherited::WndProc( Msg );
+	TCustomHintWindow::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TInfoHint::SetPosition( int x, int y )
@@ -453,16 +453,16 @@ void __fastcall TTickHint::Paint(  int x, int y, int MaxX, TCanvas* canvas )
 	FBuffer->Canvas->Brush->Style = bsClear;
 	if( FIsEmpty == false )
 	{
-		Msg.printf( L"%s:%5.*f", Mdcomponentstrings_MD_ORDERLIST_FILL_PX, FPxDigi, FFillPx );///<Θユ基
+		Msg.printf( L"%s:%5.*f", Mdcomponentstrings_MD_ORDERLIST_FILL_PX.c_str(), FPxDigi, FFillPx );///<Θユ基
 		FBuffer->Canvas->TextRect(TRect(14,16,HINT_W,36),14,16 ,Msg);
-		Msg.printf( L"%s%d",Mdcomponentstrings_MD_CHART_FILL_QTY, FQty);//Θユ秖:
+		Msg.printf( L"%s%d",Mdcomponentstrings_MD_CHART_FILL_QTY.c_str(), FQty);//Θユ秖:
 		FBuffer->Canvas->TextRect(TRect(14,36,HINT_W,56),14,36,Msg);
 	}
 	else
 	{
-		Msg.printf( L"%s:-----", Mdcomponentstrings_MD_ORDERLIST_FILL_PX );///<Θユ基
+		Msg.printf( L"%s:-----", Mdcomponentstrings_MD_ORDERLIST_FILL_PX.c_str() );///<Θユ基
 		FBuffer->Canvas->TextRect(TRect(14,36,HINT_W,36),14,16 ,Msg);
-		Msg.printf( L"%s-----", Mdcomponentstrings_MD_CHART_FILL_QTY ); //Θユ秖:
+		Msg.printf( L"%s-----", Mdcomponentstrings_MD_CHART_FILL_QTY.c_str() ); //Θユ秖:
 		FBuffer->Canvas->TextRect(TRect(14,36,HINT_W,56),14,36,Msg);
 	}
 	SetClip( canvas, x,y, IsRight );
@@ -1278,7 +1278,7 @@ void __fastcall TStockChart::WndProc( TMessage &Msg )
 		case WM_SETFOCUS:   Paint();
 							break;
 	}
-	inherited::WndProc( Msg );
+	TCustomControl::WndProc( Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TStockChart::SetFontColor( TColor Color )

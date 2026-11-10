@@ -6,7 +6,7 @@
 #include "iniFile.h"
 #include <iostream>
 //------------------------------------------------------------------------------
-#if defined(_WIN32) && !(defined(__BORLANDC__) && defined(_WIN64))
+#if defined(_WIN32) && !defined(__BORLANDC__)   // C++Builder (Win32/Win64) 的 RTL 已提供 stpcpy
 static char* stpcpy(char* dst, const char* src)
 {
     while ((*dst++ = *src++) != '\0')

@@ -83,7 +83,7 @@ void CTradingExchange::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLock
 	else
 		stopOrderStr = L"StopOrder[false]";
 
-	dumpMessage.printf(L"Exchange[%s]: %s%s Broker[%s].", FExchangeCode, dayTradeStr, stopOrderStr, FBrokerExchangeCode);
+	dumpMessage.printf(L"Exchange[%s]: %s%s Broker[%s].", FExchangeCode.c_str(), dayTradeStr.c_str(), stopOrderStr.c_str(), FBrokerExchangeCode.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CTradingExchange::DumpData()
@@ -112,7 +112,7 @@ void CTaxRateObject::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockTy
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"TaxRate[%s-%s] %15.6lf. Broker[%s].", FExchangeCode, FContractCode, FTaxRate, FBrokerContractCode);
+	dumpMessage.printf(L"TaxRate[%s-%s] %15.6lf. Broker[%s].", FExchangeCode.c_str(), FContractCode.c_str(), FTaxRate, FBrokerContractCode.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CTaxRateObject::DumpData()
@@ -171,9 +171,9 @@ void CFeeObject::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLockType)
 	String dumpMessage;
 	Lock(RWLockType);
 	dumpMessage.printf(L"Fee[%s][%s-%s] O[M=%10.6lf V=%10.6lf] C[M=%10.6lf V=%10.6lf] CT[M=%10.6lf V=%10.6lf], Trade[%s], Broker[%s].",
-				FAccount, FExchangeCode, FContractCode,
+				FAccount.c_str(), FExchangeCode.c_str(), FContractCode.c_str(),
 				FOpenRateByMoney, FOpenRateByVolume, FCloseRateByMoney, FCloseRateByVolume, FCloseTodayRateByMoney, FCloseTodayRateByVolume,
-				FTradeContractCode, FBrokerContractCode);
+				FTradeContractCode.c_str(), FBrokerContractCode.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CFeeObject::DumpData()
@@ -222,7 +222,7 @@ void CCommodityCancelStatistic::DumpData(bool DoFlushToFile, ReadWrietLockTypeEn
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"Commodity[%s-%s] Cancel Statistic: Qty=%d Times=%d.", FExchangeCode, FContractCode, FCancelQuantity, FCancelReportCount);
+	dumpMessage.printf(L"Commodity[%s-%s] Cancel Statistic: Qty=%d Times=%d.", FExchangeCode.c_str(), FContractCode.c_str(), FCancelQuantity, FCancelReportCount);
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CCommodityCancelStatistic::DumpData()
@@ -271,7 +271,7 @@ void CContractCancelStatistic::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnu
 {
 	String dumpMessage;
 	Lock(RWLockType);
-	dumpMessage.printf(L"Contract[%s-%s] Cancel Statistic: Qty=%d Times=%d.", FExchangeCode, FSymbol, FCancelQuantity, FCancelReportCount);
+	dumpMessage.printf(L"Contract[%s-%s] Cancel Statistic: Qty=%d Times=%d.", FExchangeCode.c_str(), FSymbol.c_str(), FCancelQuantity, FCancelReportCount);
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CContractCancelStatistic::DumpData()
@@ -379,7 +379,7 @@ void CTradingCommodity::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLoc
 
 	String dumpMessage;
 	dumpMessage.printf(L"Commodity[%s-%s] %s %s Multiplier[%12.5lf] TaxRate[%12.5lf]. Market[%s],Broker[%s],Trade[%s],Name[%s]",
-					   FExchangeCode, FContractCode, dayTradeStr, stopOrderStr, FContractMultiplier, FTaxRate, DescribeMarket(FMarket), FBrokerContractCode, FTradeContractCode, FCommodityName);
+					   FExchangeCode.c_str(), FContractCode.c_str(), dayTradeStr.c_str(), stopOrderStr.c_str(), FContractMultiplier, FTaxRate, DescribeMarket(FMarket).c_str(), FBrokerContractCode.c_str(), FTradeContractCode.c_str(), FCommodityName.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CTradingCommodity::DumpData()
@@ -628,9 +628,9 @@ String CTradingContract::GenerateTaifexSymbol(const String& ContractCode, double
 		if ((yearCode != 0) && (monthCode != 0))
 		{
 			if ((CallOrPut != nsOrderMessageDefine::evtCall) && (CallOrPut != nsOrderMessageDefine::evtPut))
-				symbol.printf(L"%s%c%c", ContractCode, monthCode, yearCode);
+				symbol.printf(L"%s%c%c", ContractCode.c_str(), monthCode, yearCode);
 			else
-				symbol.printf(L"%s%05.0lf%c%c", ContractCode, StrikePrice, monthCode, yearCode);
+				symbol.printf(L"%s%05.0lf%c%c", ContractCode.c_str(), StrikePrice, monthCode, yearCode);
 		}
 	}  //if ((MaturityYear != 0) && (MaturityMonth != 0))
 	return symbol;
@@ -650,9 +650,9 @@ String CTradingContract::GenerateRfaSymbol(const String& ContractCode, double St
 		if ((yearCode != 0) && (monthCode != 0))
 		{
 			if ((CallOrPut != nsOrderMessageDefine::evtCall) && (CallOrPut != nsOrderMessageDefine::evtPut))
-				symbol.printf(L"%s%c%c", ContractCode, monthCode, yearCode);
+				symbol.printf(L"%s%c%c", ContractCode.c_str(), monthCode, yearCode);
 			else
-				symbol.printf(L"%s%.0lf%c%c", ContractCode, StrikePrice, monthCode, yearCode);
+				symbol.printf(L"%s%.0lf%c%c", ContractCode.c_str(), StrikePrice, monthCode, yearCode);
 		}
 	}  //if ((MaturityYear != 0) && (MaturityMonth != 0))
 	return symbol;
@@ -672,11 +672,11 @@ String CTradingContract::GenerateOverseasTradeSymbol(const String& TradeContract
 		if ((yearCode != 0) && (monthCode != 0))
 		{
 			if ((CallOrPut == nsOrderMessageDefine::evtCall))      //KS200H4_C_242.5, 履約價去0
-				tradeSymbol.printf(L"%s%c%c_C_%s", TradeContractCode, monthCode, yearCode, StrikePriceStr);
+				tradeSymbol.printf(L"%s%c%c_C_%s", TradeContractCode.c_str(), monthCode, yearCode, StrikePriceStr.c_str());
 			else if ((CallOrPut == nsOrderMessageDefine::evtPut))  //KS200H4_P_247.5
-				tradeSymbol.printf(L"%s%c%c_P_%s", TradeContractCode, monthCode, yearCode, StrikePriceStr);
+				tradeSymbol.printf(L"%s%c%c_P_%s", TradeContractCode.c_str(), monthCode, yearCode, StrikePriceStr.c_str());
 			else  //期貨維持一樣KS200H4
-				tradeSymbol.printf(L"%s%c%c", TradeContractCode, monthCode, yearCode);
+				tradeSymbol.printf(L"%s%c%c", TradeContractCode.c_str(), monthCode, yearCode);
 		}
 	}  //if ((MaturityYear != 0) && (MaturityMonth != 0))
 	return tradeSymbol;
@@ -857,7 +857,7 @@ void CTradingContract::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLock
 	String dumpMessage;
 	Lock(RWLockType);
 	dumpMessage.printf(L"Contract[%s-%s]%s: StrikePx=%15.6lf, %s, MaturityDate[%s], FractionLength[%d] Multiplier=%15.6lf. Trade[%s], Broker[%s], Leg1[%s], Leg2[%s]",
-					   FExchangeCode, FSymbol, FContractName, FStrikePrice, DescribeCallPut(FCallPut), FMaturityYearMonthStr, FFractionPartLength, FContractMultiplier, FTradeSymbol, FBrokerSymbol, FLeg1Symbol, FLeg2Symbol);
+					   FExchangeCode.c_str(), FSymbol.c_str(), FContractName.c_str(), FStrikePrice, DescribeCallPut(FCallPut).c_str(), FMaturityYearMonthStr.c_str(), FFractionPartLength, FContractMultiplier, FTradeSymbol.c_str(), FBrokerSymbol.c_str(), FLeg1Symbol.c_str(), FLeg2Symbol.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CTradingContract::DumpData()
@@ -923,7 +923,7 @@ void CHoldPositionData::DumpData(bool DoFlushToFile, ReadWrietLockTypeEnum RWLoc
 	String dumpMessage;
 	Lock(RWLockType);
 	String combineStr = L"";
-	dumpMessage.printf(L"HoldPosition[%s-%s]: %s Qty[%5d] MatchPX[%15.6lf] TradeDate[%s]. Trade[%s]", FExchangeCode, FSymbol, DescribeBuySell(FSide), FHoldQuantity, FMatchPrice, FTradeDate, FTradeSymbol);
+	dumpMessage.printf(L"HoldPosition[%s-%s]: %s Qty[%5d] MatchPX[%15.6lf] TradeDate[%s]. Trade[%s]", FExchangeCode.c_str(), FSymbol.c_str(), DescribeBuySell(FSide).c_str(), FHoldQuantity, FMatchPrice, FTradeDate.c_str(), FTradeSymbol.c_str());
 	Unlock(RWLockType);
 	WriteUFCLog(dumpMessage, DoFlushToFile);
 }  //CHoldPositionData::DumpData()

@@ -77,6 +77,7 @@ TOptRecord::TOptRecord( BasicInformation* Info, bool Underlying )
 ,FOpenInterestDiff( 0 )
 ,FIsUnderlying( Underlying )
 ,FValueWidth( 0 )
+,FNeedGreeks( false )
 ,FProdID( Info->GetProductID().c_str())
 ,FMaxHDays( Info->GetMaxHistoryVolDays() )
 ,FExpiryDays((double)Info->GetExpiryDays())
@@ -359,6 +360,7 @@ __fastcall TOptionsStrikePriceView::TOptionsStrikePriceView(TComponent* Owner)
 ,FYearMonth( L"200910" )
 ,FDisplayName( L"台指期 TXO" )
 ,FIsLoaded( false )
+,FLocked( false )
 ,FHeaderCallColor( clBlack )
 ,FHeaderCallBKColor( clSkyBlue )
 ,FHeaderPutColor( clBlack )
@@ -422,6 +424,9 @@ __fastcall TOptionsStrikePriceView::TOptionsStrikePriceView(TComponent* Owner)
 	FTimer->Interval  = 60000;
 	FTimer->OnTimer   = TradetimeTimer;
 	FTimer->Enabled   = false;
+	///< 批次處理旗標: 行情 tick 只累積旗標, 由外部(TBarForm)的 TTimer 週期呼叫 BatchTimer 統一處理
+	FBatchDirty       = false;
+	FPaintDirty       = false;
 	FHeaderRowText->Add( Mdcomponentstrings_MD_OPTIONS_TBAR_CALL );
 	FHeaderRowText->Add( Mdcomponentstrings_MD_OPTIONS_TBAR_PUT );
 	PopupMenu = new TPopupMenu(this);
@@ -683,7 +688,53 @@ void __fastcall TOptionsStrikePriceView::UpdateBKBar( bool FindMax )
 		if( (Rec = (TOptRecord*)(FPutList->Items[i])) != NULL && Rec->IsUnderlying() == false )
 			Rec->UpdateValueWidth( FBKCol, FBKValueMax, FTotalWidth );
 	}
-	Invalidate();
+	FPaintDirty = true; ///< 改由 BatchTimer 統一重繪
+}
+//---------------------------------------------------------------------------
+//  批次處理: 行情 tick 只累積旗標, 由外部(TBarForm 的 ReloadPinsTimer)週期呼叫,
+//  統一重算希臘值/BK Bar 並重繪一次, 避免每筆 tick 都在 UI 執行緒做重運算與繪製。
+//---------------------------------------------------------------------------
+void __fastcall TOptionsStrikePriceView::BatchTimer( System::TObject* Sender )
+{
+	if( ComponentState.Contains( csDestroying ) )
+		return;
+
+	if( FBatchDirty )
+	{
+		FBatchDirty = false;
+		RecalcDirtyGreeks(); ///< 只重算本輪有變動的履約價希臘值
+		UpdateBKBar( true );  ///< 重新取 BK Bar 最大值與各列寬度(內部會設 FPaintDirty)
+	}
+	if( FPaintDirty )
+	{
+		FPaintDirty = false;
+		if( HandleAllocated() )
+			Invalidate(); ///< 整表統一重繪一次, 由系統合併為單一 WM_PAINT
+	}
+}
+//---------------------------------------------------------------------------
+//  只針對本輪有標記 NeedGreeks 的履約價重算希臘值(隱含波動 Newton 迭代較貴)。
+//---------------------------------------------------------------------------
+void __fastcall TOptionsStrikePriceView::RecalcDirtyGreeks( void )
+{
+	TOptRecord* Rec;
+
+	for( register int i = 0; i < FCallList->Count; i++ )
+	{
+		if( (Rec = (TOptRecord*)FCallList->Items[i]) != NULL && Rec->NeedGreeks() )
+		{
+			Rec->UpdateGreeks( FTimeToClose );
+			Rec->SetNeedGreeks( false );
+		}
+	}
+	for( register int i = 0; i < FPutList->Count; i++ )
+	{
+		if( (Rec = (TOptRecord*)FPutList->Items[i]) != NULL && Rec->NeedGreeks() )
+		{
+			Rec->UpdateGreeks( FTimeToClose );
+			Rec->SetNeedGreeks( false );
+		}
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::SetSymbol( UnicodeString Symbol )
@@ -714,12 +765,8 @@ void __fastcall TOptionsStrikePriceView::SetMarketDataStore( TCMarketDataStore* 
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateCell( int ColIndex, int RowIndex )
 {
-	if( ColIndex < ColCount && ColIndex >= 0  && RowIndex < RowCount && RowIndex >= 0 )
-	{
-		TRect UpdateRect = CellRect( ColIndex,  RowIndex );
-
-		DrawCell( ColIndex, RowIndex , UpdateRect, (TGridDrawState)0 );
-	}
+	///< 不再於 tick 中同步繪製, 改標記待重繪, 由 BatchTimer 統一 Invalidate
+	FPaintDirty = true;
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateRow( int RowIndex )
@@ -748,8 +795,6 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( MarketDataMessage* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int RowIndex;
-
 		if( Rec->IsUnderlying() == false )
 		{
 			Rec->SetBidPx( Msg->GetBuyPrice1() );
@@ -762,19 +807,8 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( MarketDataMessage* Msg )
 			Rec->SetHighPx( Msg->GetDayHighPrice() );
 			Rec->SetLowPx( Msg->GetDayLowPrice() );
 			Rec->SetOpenInterest( Msg->GetOpenInterest() );
-			Rec->UpdateGreeks( FTimeToClose );
-			if( Rec->GetCallPut() == cpCall )
-			{
-				RowIndex = FCallList->IndexOf( Rec );
-				if( RowIndex >= 0 )
-					UpdateCallRow( RowIndex + 2 );
-			}
-			else
-			{
-				RowIndex = FPutList->IndexOf( Rec );
-				if( RowIndex >= 0 )
-					UpdatePutRow( RowIndex + 2 );
-			}
+			Rec->SetNeedGreeks( true ); ///< 希臘值延後到 BatchTimer 統一重算
+			FBatchDirty = true;
 		}
 		else
 		{
@@ -793,22 +827,10 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( MarketDataMessage* Msg )
 				CurrRec->SetHighPx( Msg->GetDayHighPrice() );
 				CurrRec->SetLowPx( Msg->GetDayLowPrice() );
 				UpdateUnderlyingBuffer( CurrRec  );
-				UpdateRow( CurrRec->GetRowIndex() );
-				int Index = CurrRec->GetUnderlyingStrikePxIndex( );
-				int PrevIndex = CurrRec->GetPrevUnderlyingStrikePxIndex( );
-				if( Index != 0 )
-					UpdateCell( FStrikePxColIndex, Index );
-				if( Index != PrevIndex )
-					UpdateCell( FStrikePxColIndex, PrevIndex );
 				CurrRec = CurrRec->Next;
 			}
 		}
-		FResponseCount++;
-		if( FResponseCount >= FSubsceibeSymbolList.ItemCount() )
-		{
-			FResponseCount = 0;
-			UpdateBKBar( true );
-        }
+		FPaintDirty = true; ///< 標記待重繪, 由 BatchTimer 統一 Invalidate
 	}
 }
 //---------------------------------------------------------------------------
@@ -820,59 +842,12 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( MatchInfo* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int RowIndex,ColIndex;
-		bool IsUpdateRow = false;
-		UFC::PHashMap<OptStkColName, int >*  FieldTypeMap;
-
 		if( Rec->IsUnderlying() == false )
 		{
 			Rec->SetTradePx( Msg->GetMatchPrice() );
 			Rec->SetTradeQty( Msg->GetMatchQty() );
-			Rec->UpdateGreeks( FTimeToClose );
-			if( FBKCol == obIMP_VAR )
-			{
-				if( Rec->GetGreeks().dImpv > FBKValueMax )
-				{
-					FBKValueMax = Rec->GetBKBarValue( FBKCol );
-					UpdateBKBar( false );
-					return;
-				}
-				else
-				{
-					Rec->UpdateValueWidth( FBKCol, FBKValueMax, FTotalWidth );
-					IsUpdateRow = true;
-				}
-			}
-			if( Rec->GetCallPut() == cpCall )
-			{
-				RowIndex = FCallList->IndexOf( Rec );
-				FieldTypeMap = &FCallFieldTypeMap;
-			}
-			else
-			{
-				RowIndex = FPutList->IndexOf( Rec );
-				FieldTypeMap = &FPutFieldTypeMap;
-			}
-			if( RowIndex >= 0 )
-			{
-				RowIndex += 2;
-				if( IsUpdateRow == true )
-				{
-					if( Rec->GetCallPut() == cpCall )
-						UpdateCallRow( RowIndex );
-					else
-						UpdatePutRow( RowIndex );
-				}
-				else
-				{
-					if( FieldTypeMap->GetObjectByKey( TRADE_PX, ColIndex ) == true )
-						UpdateCell( ColIndex, RowIndex );
-					if( FieldTypeMap->GetObjectByKey( TRADE_QTY, ColIndex ) == true )
-						UpdateCell( ColIndex, RowIndex );
-					if( FieldTypeMap->GetObjectByKey( DIFF_PX, ColIndex ) == true )
-						UpdateCell( ColIndex, RowIndex );
-				}
-			}
+			Rec->SetNeedGreeks( true ); ///< 希臘值/隱含波動延後到 BatchTimer 統一重算(含 BK Bar 取最大值)
+			FBatchDirty = true;
 		}
 		else
 		{
@@ -883,16 +858,10 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( MatchInfo* Msg )
 				CurrRec->SetTradePx( Msg->GetMatchPrice() );
 				CurrRec->SetTradeQty( Msg->GetMatchQty() );
 				UpdateUnderlyingBuffer( CurrRec  );
-				UpdateRow( CurrRec->GetRowIndex() );
-				int Index = CurrRec->GetUnderlyingStrikePxIndex( );
-				int PrevIndex = CurrRec->GetPrevUnderlyingStrikePxIndex( );
-				if( Index != 0 )
-					UpdateCell( FStrikePxColIndex, Index );
-				if( Index != PrevIndex )
-					UpdateCell( FStrikePxColIndex, PrevIndex );
 				CurrRec = CurrRec->Next;
 			}
 		}
+		FPaintDirty = true;
 	}
 }
 //---------------------------------------------------------------------------
@@ -904,51 +873,10 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( TotalMatch* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int RowIndex,ColIndex;
-		bool IsUpdateRow = false;
-		UFC::PHashMap<OptStkColName, int >*  FieldTypeMap;
-
 		Rec->SetTotalQty( Msg->GetTotalMatchQty() );
 		if( FBKCol == obTOTAL_QTY && Rec->IsUnderlying() == false )
-		{
-			if( (double)Msg->GetTotalMatchQty() > FBKValueMax )
-			{
-				FBKValueMax = Rec->GetBKBarValue( FBKCol );
-				UpdateBKBar( false );
-				return;
-			}
-			else
-			{
-				IsUpdateRow = true;
-				Rec->UpdateValueWidth( FBKCol, FBKValueMax, FTotalWidth );
-			}
-		}
-		if( Rec->GetCallPut() == cpCall )
-		{
-			RowIndex = FCallList->IndexOf( Rec );
-			FieldTypeMap = &FCallFieldTypeMap;
-		}
-		else
-		{
-			RowIndex = FPutList->IndexOf( Rec );
-			FieldTypeMap = &FPutFieldTypeMap;
-		}
-		if( RowIndex >= 0 )
-		{
-			RowIndex += 2;
-			if( IsUpdateRow == true )
-			{
-				if( Rec->GetCallPut() == cpCall )
-					UpdateCallRow( RowIndex );
-				else
-					UpdatePutRow( RowIndex );
-			}
-			else
-			{
-				if( FieldTypeMap->GetObjectByKey( TOTAL_QTY, ColIndex ) == true )
-					UpdateCell( ColIndex, RowIndex );
-			}
-		}
+			FBatchDirty = true; ///< BK Bar(總量)最大值/寬度改由 BatchTimer 統一重算
+		FPaintDirty = true;
 	}
 }
 //---------------------------------------------------------------------------
@@ -960,35 +888,11 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( OrderBookData* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int RowIndex,ColIndex;
-		UFC::PHashMap<OptStkColName, int >*  FieldTypeMap;
-
 		Rec->SetBidPx( Msg->GetBuyPrice1() );
 		Rec->SetBidQty( Msg->GetBuyQty1() );
 		Rec->SetAskPx( Msg->GetSellPrice1() );
 		Rec->SetAskQty( Msg->GetSellQty1() );
-		if( Rec->GetCallPut() == cpCall )
-		{
-			RowIndex = FCallList->IndexOf( Rec );
-			FieldTypeMap = &FCallFieldTypeMap;
-		}
-		else
-		{
-			RowIndex = FPutList->IndexOf( Rec );
-			FieldTypeMap = &FPutFieldTypeMap;
-		}
-		if( RowIndex >= 0 )
-		{
-			RowIndex += 2;
-			if( FieldTypeMap->GetObjectByKey( BUY_PX, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-			if( FieldTypeMap->GetObjectByKey( SELL_PX, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-			if( FieldTypeMap->GetObjectByKey( BUY_QTY, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-			if( FieldTypeMap->GetObjectByKey( SELL_QTY, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-		}
+		FPaintDirty = true;
 	}
 }
 //---------------------------------------------------------------------------
@@ -1000,29 +904,9 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( DayHighLowPrice* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int RowIndex,ColIndex;
-		UFC::PHashMap<OptStkColName, int >*  FieldTypeMap;
-
 		Rec->SetHighPx( Msg->GetDayHighPrice() );
 		Rec->SetLowPx( Msg->GetDayLowPrice() );
-		if( Rec->GetCallPut() == cpCall )
-		{
-			RowIndex = FCallList->IndexOf( Rec );
-			FieldTypeMap = &FCallFieldTypeMap;
-		}
-		else
-		{
-			RowIndex = FPutList->IndexOf( Rec );
-			FieldTypeMap = &FPutFieldTypeMap;
-		}
-		if( RowIndex >= 0 )
-		{
-			RowIndex += 2;
-			if( FieldTypeMap->GetObjectByKey( HIGH_PX, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-			if( FieldTypeMap->GetObjectByKey( LOW_PX, ColIndex ) == true )
-				UpdateCell( ColIndex, RowIndex );
-		}
+		FPaintDirty = true;
 	}
 }
 //---------------------------------------------------------------------------
@@ -1034,53 +918,12 @@ void TOptionsStrikePriceView::OnMarketDataUpdate( ClosingMarketData* Msg )
 	TOptRecord* Rec = FTable.GetObjectByKey( Msg->GetSymbol() );
 	if( Rec != NULL )
 	{
-		int  RowIndex,ColIndex;
-		bool IsUpdateRow = false;
-		UFC::PHashMap<OptStkColName, int >*  FieldTypeMap;
-
 		if( Msg->GetMsgType() ==  mtClosingMarketDataWithSettlementPriceAndOpenInterest )
 		{
 			Rec->SetOpenInterest( ( ( ClosingMarketDataWithSettlementPriceAndOpenInterest*)Msg)->GetOpenInterest() );
 			if( FBKCol == obOPEN_INTEREST )
-			{
-				if( (double)Rec->GetOpenInterest() > FBKValueMax )
-				{
-					FBKValueMax = Rec->GetBKBarValue( FBKCol );
-					UpdateBKBar( false );
-					return;
-				}
-				else
-				{
-					IsUpdateRow = true;
-					Rec->UpdateValueWidth( FBKCol, FBKValueMax, FTotalWidth );
-				}
-			}
-			if( Rec->GetCallPut() == cpCall )
-			{
-				RowIndex = FCallList->IndexOf( Rec );
-				FieldTypeMap = &FCallFieldTypeMap;
-			}
-			else
-			{
-				RowIndex = FPutList->IndexOf( Rec );
-				FieldTypeMap = &FPutFieldTypeMap;
-			}
-			if( RowIndex >= 0 )
-			{
-				RowIndex += 2;
-				if( IsUpdateRow == true )
-				{
-					if( Rec->GetCallPut() == cpCall )
-						UpdateCallRow( RowIndex );
-					else
-						UpdatePutRow( RowIndex );
-				}
-				else
-				{
-					if( FieldTypeMap->GetObjectByKey( OPEN_INTEREST, ColIndex ) == true )
-						UpdateCell( ColIndex, RowIndex );
-				}
-			}
+				FBatchDirty = true; ///< BK Bar(未平倉)最大值/寬度改由 BatchTimer 統一重算
+			FPaintDirty = true;
 		}
 	}
 }
@@ -1118,7 +961,7 @@ void __fastcall TOptionsStrikePriceView::UpdateUnderlyingBuffer( TOptRecord* Und
 		Buffer->Canvas->Pen->Width   = 2;
 		Buffer->Canvas->Font->Color  = TXTColor;//FHeaderCallColor;
 		///< Get Text width
-		TabText.printf( L"%s[%s] %s %.*f 漲 999  ",UnderlyingRec->GetYearMonth(), UnderlyingRec->GetDisplayName(), Mdcomponentstrings_MD_OPTIONS_TBAR_FILLPX, UnderlyingRec->GetDigit(), Px );
+		TabText.printf( L"%s[%s] %s %.*f 漲 999  ",UnderlyingRec->GetYearMonth().c_str(), UnderlyingRec->GetDisplayName().c_str(), String( Mdcomponentstrings_MD_OPTIONS_TBAR_FILLPX ).c_str(), UnderlyingRec->GetDigit(), Px );
 		FieldLeft = Buffer->Canvas->TextWidth( UnderlyingRec->GetYearMonth());
 		TabWidth  = Buffer->Canvas->TextWidth( TabText );
 		///< Draw background
@@ -1134,7 +977,7 @@ void __fastcall TOptionsStrikePriceView::UpdateUnderlyingBuffer( TOptRecord* Und
 		Buffer->Canvas->Pen->Width  = 1;
 		///< Draw Display name
 		FieldLeft += 35;
-		DrawText.printf( L"[%s]", UnderlyingRec->GetDisplayName() );
+		DrawText.printf( L"[%s]", UnderlyingRec->GetDisplayName().c_str() );
 		Buffer->Canvas->Brush->Style = bsClear;
 		Buffer->Canvas->Font->Color  = TXTColor;//FHeaderCommodColor;
 		Buffer->Canvas->TextOut( FieldLeft, 4, 	DrawText );
@@ -2152,19 +1995,31 @@ void __fastcall TOptionsStrikePriceView::BuidPinList( TList* CallPins,
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateTable( UFC::PHashMap<UFC::AnsiString, UFC::PHashedSet<double>*>& ExcludeStkPxSet )
 {
-	Clear( );
+	bool LockRedraw = HandleAllocated(); ///< 視窗已建立才需要鎖重繪
 
-	if( !ComponentState.Contains( csDesigning ) && FIsLoaded && FStore != NULL  )
+	if( LockRedraw )
+		SendMessage( Handle, WM_SETREDRAW, (WPARAM)FALSE, 0 ); ///< 重建期間鎖住重繪，避免中途反覆重畫
+	try
 	{
-		BuidPinList( FCallList, FPutList, FTable, ExcludeStkPxSet );
-		BuildStrikePriceList();
-		TradetimeTimer( this );
-		FTimer->Enabled = true;
+		Clear( );
+
+		if( !ComponentState.Contains( csDesigning ) && FIsLoaded && FStore != NULL  )
+		{
+			BuidPinList( FCallList, FPutList, FTable, ExcludeStkPxSet );
+			BuildStrikePriceList();
+			TradetimeTimer( this );
+			FTimer->Enabled = true;
+		}
+		CalSize();
+		Subscribe();
+		FixedRows = 2;
 	}
-	CalSize();
-	Invalidate();
-	Subscribe();
-	FixedRows = 2;
+	__finally
+	{
+		if( LockRedraw )
+			SendMessage( Handle, WM_SETREDRAW, (WPARAM)TRUE, 0 ); ///< 解除重繪鎖
+		Invalidate(); ///< 結束後統一重畫一次
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TOptionsStrikePriceView::UpdateTable( void )
@@ -2205,10 +2060,11 @@ void __fastcall TOptionsStrikePriceView::Subscribe( void )
 	{
 		UFC::AnsiString Sym = FSubsceibeSymbolList[ i ];
 
-		FStore->Subscribe( FSubsceibeExchange, Sym, this );
-		UFC::SleepMS( 2 );
-		if( i % 10 == 0 )
-			Application->ProcessMessages();
+		//FStore->Subscribe( FSubsceibeExchange, Sym, this );
+		//UFC::SleepMS( 2 );
+		//if( i % 10 == 0 )
+		//	Application->ProcessMessages();
+		FStore->Subscribe( FSubsceibeExchange, Sym, this ); ///< 批次訂閱：移除逐檔 SleepMS(2) 與 ProcessMessages，整批一次送出
 	}
 }
 //---------------------------------------------------------------------------
@@ -2274,8 +2130,9 @@ void __fastcall TOptionsStrikePriceView::Clear( void )
 
 	for( int i = 0; i < FSubsceibeSymbolList.ItemCount(); i++ )
 	{
-		FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this );
-		UFC::SleepMS( 2 );
+		//FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this );
+		//UFC::SleepMS( 2 );
+		FStore->Unsubscribe( FSubsceibeExchange, FSubsceibeSymbolList[ i ], this ); ///< 批次退訂：移除逐檔 SleepMS(2)，整批一次退訂
 	}
 	ClearList( FCallList, FPutList );
 }
@@ -2460,6 +2317,18 @@ void __fastcall TOptionsStrikePriceView::WndProc( TMessage &Msg )
 {
 	NMHDR* pnmh;
 	POINT Point;
+
+	///< 鎖定狀態下，攔截並丟棄所有滑鼠/鍵盤輸入，禁止使用者互動
+	if( FLocked )
+	{
+		if( ( Msg.Msg >= WM_MOUSEFIRST && Msg.Msg <= WM_MOUSELAST ) ||
+			( Msg.Msg >= WM_KEYFIRST   && Msg.Msg <= WM_KEYLAST ) )
+		{
+			Msg.Result = 0;
+			return;
+		}
+	}
+
 	switch( Msg.Msg )
 	{
 		case WM_NOTIFY:
@@ -2471,13 +2340,13 @@ void __fastcall TOptionsStrikePriceView::WndProc( TMessage &Msg )
 				Msg.Result = 1;
 			 }
 			 else
-				inherited::WndProc( Msg );
+				TCustomGrid::WndProc( Msg );
 			 break;
 		case WM_ERASEBKGND:
 			 Msg.Result = 1;
 			 break;
 		default:
-			 inherited::WndProc( Msg );
+			 TCustomGrid::WndProc( Msg );
 			 break;
 	}
 }

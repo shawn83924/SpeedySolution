@@ -70,7 +70,7 @@ void __fastcall TOrdConfirmForm::BuildBtnText( int Qty )
 	String     BtnText;
 	String     PxStr = PxComboBox->Text;
 
-	BtnText.printf( L"%s%d%s@%s", FSideStr, Qty,FUnit, PxStr );
+	BtnText.printf( L"%s%d%s@%s", FSideStr.c_str(), Qty,FUnit.c_str(), PxStr.c_str() );
 	OKButton->Caption = BtnText;
 }
 //---------------------------------------------------------------------------

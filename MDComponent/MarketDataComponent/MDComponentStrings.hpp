@@ -1,16 +1,18 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2026 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'MDComponentStrings.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'MDComponentStrings.pas' rev: 37.00 (Windows)
 
-#ifndef MdcomponentstringsHPP
-#define MdcomponentstringsHPP
+#ifndef MDComponentStringsHPP
+#define MDComponentStringsHPP
 
 #pragma delphiheader begin
 #pragma option push
+#if defined(__BORLANDC__) && !defined(__clang__)
 #pragma option -w-      // All warnings off
 #pragma option -Vx      // Zero-length empty class member 
+#endif
 #pragma pack(push,8)
 #include <System.hpp>
 #include <SysInit.hpp>
@@ -23,6 +25,8 @@ namespace Mdcomponentstrings
 //-- forward type declarations -----------------------------------------------
 //-- type declarations -------------------------------------------------------
 //-- var, const, procedure ---------------------------------------------------
+extern DELPHI_PACKAGE System::ResourceString _MD_SpeedyUnify_AppName;
+#define Mdcomponentstrings_MD_SpeedyUnify_AppName System::LoadResourceString(&Mdcomponentstrings::_MD_SpeedyUnify_AppName)
 extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL;
 #define Mdcomponentstrings_MD_CANDEL_FILL System::LoadResourceString(&Mdcomponentstrings::_MD_CANDEL_FILL)
 extern DELPHI_PACKAGE System::ResourceString _MD_CANDEL_FILL_EMPTY;
@@ -458,4 +462,4 @@ using namespace Mdcomponentstrings;
 
 #pragma delphiheader end.
 //-- end unit ----------------------------------------------------------------
-#endif	// MdcomponentstringsHPP
+#endif	// MDComponentStringsHPP
