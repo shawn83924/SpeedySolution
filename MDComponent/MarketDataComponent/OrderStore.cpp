@@ -11,6 +11,7 @@
 #include "OrderStore.h"
 #include "TradingObjects.h"
 #include "TradingObjectPool.h"
+#include "MDComponentStrings.hpp"
 #include <System.JSON.hpp>
 #include <WideStrUtils.hpp>
 #pragma package(smart_init)
@@ -303,7 +304,12 @@ void __fastcall TOrderStore::InitialOrderAdapter( void )
 		UFC::AnsiString tradeDate;
 		UFC::GetTradeYYYYMMDD( tradeDate );
 		String logTime = UTF8ToUnicodeString(tradeDate.c_str());
-		FConnectionLogFileName = TempOrderLogPath + L"SpeedyUnifyTrading" + logTime + L".log";
+		FConnectionLogFileName =
+			TempOrderLogPath +
+			Mdcomponentstrings_MD_SpeedyUnify_AppName +
+			L"Trading" +
+			logTime +
+			L".log";
 		FAdapter = new TOrderAdapter( this,
 									  FAppName,
 									  FBrokerID,
