@@ -1,0 +1,62 @@
+# ===== Embarcadero C++Builder / RAD Studio =====
+
+# Build output directories
+Win32/
+Win64/
+Win64x/
+Debug/
+Release/
+Debug_Build/
+Release_Build/
+
+# Compiler / linker intermediate files
+*.obj
+*.o
+*.a
+*.lib
+*.bpi
+*.bpl
+*.dcu
+*.dcp
+*.tds
+*.map
+*.drc
+*.rsm
+*.pch
+*.#*
+*.ilc
+*.ild
+*.ilf
+*.ili
+*.ils
+*.csm
+*.cgl
+*.pdi
+
+# Executables / libraries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE local / user-specific files
+*.local
+*.identcache
+*.stat
+*.dsk
+*.dsm
+*.~*
+*.bak
+*.tvsconfig
+*.otares.bak
+
+# IDE history and auto-recovery
+__history/
+__recovery/
+
+# ===== OS / misc =====
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+*.tmp

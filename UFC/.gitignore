@@ -1,0 +1,50 @@
+# Build outputs (GCC / C++Builder)
+*.o
+*.obj
+*.d
+*.o.d
+.dep.inc
+*.a
+*.lib
+*.so
+*.dll
+*.exe
+*.tds
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.map
+*.pch
+*.#*
+
+# Build / dist directories (NetBeans)
+build/
+dist/
+
+# NetBeans private settings
+nbproject/private/
+
+# C++Builder / RAD Studio IDE files
+__history/
+__recovery/
+*.local
+*.identcache
+*.dsk
+*.stat
+*.~*
+
+# Backup / temp files
+*.bak
+*~
+*.tmp
+
+# Other VCS metadata
+.svn/
+.git.orphaned_backup_*/
+
+# Editor
+.vscode/
+
+# Source snapshot tarballs: kept on disk, not tracked
+*.tar.gz

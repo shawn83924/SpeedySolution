@@ -283,6 +283,7 @@ private:
 public:
     SInt( int InitVal = 0 ) : FInt( InitVal ) {}
     SInt( const SInt& rhs ) : FInt( rhs.FInt.load() ) {}
+    SInt& operator =( const SInt& rhs ) { FInt.store( rhs.FInt.load() ); return *this; }
     SInt& operator =( const int Value ) { FInt.store( Value );          return *this; }
     SInt  operator ++( int )            { SInt old(*this); FInt.fetch_add( 1 ); return old; }
     SInt  operator --( int )            { SInt old(*this); FInt.fetch_sub( 1 ); return old; }
@@ -302,6 +303,10 @@ private:
     }
 public:
     SInt( int InitVal = 0 ) : FInt( InitVal ) {}
+    ///< Copy must NOT copy FCountCS (a mutex): default-construct a fresh one and
+    ///< snapshot only the value. Mirrors the C++11 branch's atomic copy ctor.
+    SInt( const SInt& rhs ) : FInt( rhs.FInt ) {}
+    SInt& operator =( const SInt& rhs ) { return operator =( (int)rhs ); }
     SInt& operator =( const int Value )
     {
         FCountCS.Enter();

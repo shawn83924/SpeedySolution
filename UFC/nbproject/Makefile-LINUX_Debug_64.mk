@@ -58,7 +58,6 @@ OBJECTFILES= \
 	${OBJECTDIR}/AnsiString.o \
 	${OBJECTDIR}/BufferedLog.o \
 	${OBJECTDIR}/Exception.o \
-	${OBJECTDIR}/FIFO.o \
 	${OBJECTDIR}/FileStream.o \
 	${OBJECTDIR}/List.o \
 	${OBJECTDIR}/MD5.o \
@@ -79,6 +78,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/PInt32.o \
 	${OBJECTDIR}/PQueue.o \
 	${OBJECTDIR}/PServerSocket.o \
+	${OBJECTDIR}/PSharedData.o \
 	${OBJECTDIR}/PSocket.o \
 	${OBJECTDIR}/PThread.o \
 	${OBJECTDIR}/PUDPClient.o \
@@ -105,8 +105,8 @@ OBJECTFILES= \
 CFLAGS=-m64 -pthread -fPIC
 
 # CC Compiler Flags
-CCFLAGS=-m64 -Wno-deprecated -fPIC -std=c++11
-CXXFLAGS=-m64 -Wno-deprecated -fPIC -std=c++11
+CCFLAGS=-m64 -pthread -Wno-deprecated -fPIC -std=c++0x
+CXXFLAGS=-m64 -pthread -Wno-deprecated -fPIC -std=c++0x
 
 # Fortran Compiler Flags
 FFLAGS=-m64
@@ -119,13 +119,13 @@ LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ../Release/libUFC_64D.a
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk /MBus/lib/libUFC_64D.a
 
-../Release/libUFC_64D.a: ${OBJECTFILES}
-	${MKDIR} -p ../Release
-	${RM} ../Release/libUFC_64D.a
-	${AR} -rv ../Release/libUFC_64D.a ${OBJECTFILES} 
-	$(RANLIB) ../Release/libUFC_64D.a
+/MBus/lib/libUFC_64D.a: ${OBJECTFILES}
+	${MKDIR} -p /MBus/lib
+	${RM} /MBus/lib/libUFC_64D.a
+	${AR} -rv /MBus/lib/libUFC_64D.a ${OBJECTFILES} 
+	$(RANLIB) /MBus/lib/libUFC_64D.a
 
 ${OBJECTDIR}/_ext/d2987a93/MApp.o: ../Migo/MApp.cpp
 	${MKDIR} -p ${OBJECTDIR}/_ext/d2987a93
@@ -242,11 +242,6 @@ ${OBJECTDIR}/Exception.o: Exception.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Exception.o Exception.cpp
 
-${OBJECTDIR}/FIFO.o: FIFO.cpp
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/FIFO.o FIFO.cpp
-
 ${OBJECTDIR}/FileStream.o: FileStream.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -346,6 +341,11 @@ ${OBJECTDIR}/PServerSocket.o: PServerSocket.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PServerSocket.o PServerSocket.cpp
+
+${OBJECTDIR}/PSharedData.o: PSharedData.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -Wall -D_REENTRANT -D__LINUX -I. -IMDS -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PSharedData.o PSharedData.cpp
 
 ${OBJECTDIR}/PSocket.o: PSocket.cpp
 	${MKDIR} -p ${OBJECTDIR}

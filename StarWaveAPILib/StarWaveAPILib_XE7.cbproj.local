@@ -5,7 +5,7 @@
     <Transaction>2012/03/06 23:49:57.748.ridl,C:\src\StarWaveAPILib\StarWaveAPILib.ridl=</Transaction>
     <Transaction>2012/03/06 23:49:57.775.cpp,C:\src\StarWaveAPILib\StarWaveAPILib_TLB.cpp=</Transaction>
     <Transaction>2014/09/22 21:28:36.000.007,=C:\src\StarWaveAPILib\StarWaveAPILib.otares</Transaction>
-    <Transaction>2014/10/27 21:00:12.000.283,C:\src\StarWaveAPILib\StarWaveAPILib_XE7.cbproj=C:\src\StarWaveAPILib\StarWaveAPILib.cbproj</Transaction>
+    <Transaction>2014/10/27 21:00:12.000.283,C:\src\StarWaveAPILib\StarWaveAPILib.cbproj=C:\src\StarWaveAPILib\StarWaveAPILib_XE7.cbproj</Transaction>
     <Transaction>2019/05/22 01:18:53.000.644,=C:\src\StarWaveAPILib\HKExMessageHandler.cpp</Transaction>
     <Transaction>2019/12/02 18:18:30.000.407,=C:\src\StarWaveAPILib\MarketDataConnection\HKExMessageHandler.cpp</Transaction>
     <Transaction>2020/06/01 00:14:00.000.512,=C:\src\StarWaveAPILib\MarketDataConnection\Utility_MDC.cpp</Transaction>
