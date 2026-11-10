@@ -1640,7 +1640,7 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 		if( FLoginBroker->GetService()->LoginBroker( IDEdit->Text, PasswordEdit->Text, errMsg ) == true )
 		{
 			gUser.LoginUserID         = IDEdit->Text;
-			LogFilePrefix.printf( L"SU_%s", IDEdit->Text );
+			LogFilePrefix.printf( L"MEGAAtradePlus_%s", IDEdit->Text );
 			FLoginBroker->GetService()->ClearPosition( IDEdit->Text );
 			OrderStore->OrderLogFileNamePrefix = LogFilePrefix;
 		#ifdef __TO_TEST
