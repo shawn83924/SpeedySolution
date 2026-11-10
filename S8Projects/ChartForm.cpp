@@ -68,9 +68,10 @@ void __fastcall TGraphButtonGroup::Select( TGraphButton* Btn )
 //---------------------------------------------------------------------------
 void __fastcall TGraphButtonGroup::Select( int index )
 {
-	TGraphButton* CurBtn;
+    TGraphButton* CurBtn;
 	for( int i = 0; i < FGroup.ItemCount(); i++ )
 	{
+        CurBtn = FGroup.GetItem(i);
 		if( i == index )
 		{
 			CurBtn->Selected = true;
