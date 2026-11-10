@@ -166,6 +166,21 @@ void __fastcall TCMarketDataStore::Disconnect( void )
 		FConnection->Disconnect();
 }
 //---------------------------------------------------------------------------
+bool __fastcall TCMarketDataStore::Logon( const UFC::AnsiString& ID, const UFC::AnsiString& Password, UFC::AnsiString& Msg )
+{
+	if( FConnection == NULL )
+	{
+        Msg = "MarketDataConnection not created!";
+		return false;
+	}
+
+	UFC::AnsiString IPStr( FIP.c_str());
+	FConnection->SetIP( IPStr );
+	FConnection->SetPort( FPort );
+	return FConnection->Logon( ID, Password, Msg );
+
+}
+//---------------------------------------------------------------------------
 void __fastcall TCMarketDataStore::DownloadContract( void )
 {
 	if( FConnection != NULL && FConnection->IsConnected() )
@@ -455,6 +470,12 @@ void TCMarketDataStore::OnServerAck( int RTT )
 {
 	if( FOnServerAck != NULL )
 		FOnServerAck( RTT );
+}
+//---------------------------------------------------------------------------
+void TCMarketDataStore::OnLogonReply( bool OK,const UFC::AnsiString& Msg )
+{
+	if( FOnLogonReply != NULL )
+		FOnLogonReply( this, OK, String( Msg.c_str() ) );
 }
 //---------------------------------------------------------------------------
 void TCMarketDataStore::OnLeaderboard( UFC::PStringList& Board )

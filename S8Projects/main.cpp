@@ -104,6 +104,13 @@ const int    MD_SERVER_PORT    = 34567;
 const String CHART_SERVER_IP   = L"10.1.8.82";//L"203.75.198.98";//L"61.220.47.67"; //L"60.250.82.135";
 const int    CHART_SERVER_PORT = 34569;
 //---------------------------------------------------------------------------
+// 行情主機 Logon 設定 (暫時寫死)
+//---------------------------------------------------------------------------
+const String          MD_LOGON_IP   = L"35.229.178.209";
+const int             MD_LOGON_PORT = 34567;
+const UFC::AnsiString MD_LOGON_ID   = "MLUnify01";
+const UFC::AnsiString MD_LOGON_PASS = "1qazxsw2";
+//---------------------------------------------------------------------------
 __fastcall TokenExpiredThread::TokenExpiredThread()
 :TThread( false )
 {
@@ -144,6 +151,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CMarketDataStore->LoadChineseName( );
 	gMarketDataStore = CMarketDataStore;
 	TExecution::FMarketDataStorePtr = CMarketDataStore;
+	CMarketDataStore->OnMarketDataLogonReply = CMarketDataStoreLogonReply;
 
 	s888::gQueryObjsPool.LoadExchangeInformation( L"ExchangeInfo.ini" );
 
@@ -861,19 +869,13 @@ void __fastcall TMainForm::Connect( void )
 	String ServerIP;
 	int Port;
 
-	if( GUseFixIP == true )
-	{
-		ServerIP = MD_SERVER_IP;
-		Port     = MD_SERVER_PORT;
-	}
-	else if( GVIPServer == true )
-		ServerIP = g_Config.GetVIPStarWaveIP( Port );
-	else
-		ServerIP = g_Config.GetStarWaveIP( Port );
-	CMarketDataStore->IP   = ServerIP;
-	CMarketDataStore->Port = Port;
-	CMarketDataStore->Connect( 5 );
-	if( CMarketDataStore->IsConnected() == true )
+	///< 行情主機改以 Logon 方式連線，IP/Port/帳號/密碼暫時寫死
+	CMarketDataStore->IP   = MD_LOGON_IP;
+	CMarketDataStore->Port = MD_LOGON_PORT;
+
+	UFC::AnsiString LogonMsg;
+	if( CMarketDataStore->Logon( MD_LOGON_ID, MD_LOGON_PASS, LogonMsg ) == true &&
+		CMarketDataStore->IsConnected() == true )
 	{
 		LoginForm->StatusLabel->Caption = L"連線線圖伺服器...";
 		Application->ProcessMessages();
@@ -893,7 +895,20 @@ void __fastcall TMainForm::Connect( void )
 			FConnectFailed = true;
 	}
 	else
+	{
+		UFC::BufferedLog::Printf( " TMainForm::Connect 行情主機登入失敗. Msg=[%s]", LogonMsg.c_str() );
 		FConnectFailed = true;
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TMainForm::CMarketDataStoreLogonReply( TObject* Sender, bool OK, const String& Msg )
+{
+	UFC::BufferedLog::Printf( " TMainForm::CMarketDataStoreLogonReply OK=[%d] Msg=[%s]", (int)OK, AnsiString( Msg ).c_str() );
+	if( OK == false )
+	{
+		LoginForm->StatusLabel->Caption = L"行情主機登入失敗: " + Msg;
+		FConnectFailed = true;
+	}
 }
 //---------------------------------------------------------------------------
 bool __fastcall TMainForm::Ready( void )
