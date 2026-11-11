@@ -168,10 +168,20 @@ void Config::LoadBasicSetting( const char* FileName )  ///< Speedy Unify
 		UFC::UiniFile   Cfg( FileName, true );
 		UFC::AnsiString Value;
 
-		if( Cfg.GetValue( "Setting","InstallPath", Value ) && DirectoryExists( Value.c_str() ) ) ///< get the install path.
-			m_CurrentDir = Value.c_str();
-		else
-			GetProcessDir();
+		///< Install path is always the exe directory.
+		///< If InstallPath in the ini is missing or differs from it, write the exe directory back to the ini.
+		GetProcessDir();
+		if( Cfg.GetValue( "Setting","InstallPath", Value ) == FALSE ||
+			SameText( IncludeTrailingPathDelimiter( ExpandFileName( String( Value.c_str() ) ) ),
+					  IncludeTrailingPathDelimiter( ExpandFileName( m_CurrentDir ) ) ) == false )
+		{
+			AnsiString ProcessDir( m_CurrentDir );
+
+			UFC::BufferedLog::Printf( " [Config] InstallPath[%s] differs from process dir[%s], update it.", Value.c_str(), ProcessDir.c_str() );
+			Cfg.SetValue( "Setting","InstallPath", ProcessDir.c_str() );
+			if( Cfg.Save() == false )
+				UFC::BufferedLog::Printf( " [Config] Save InstallPath to [%s] failed.", FileName );
+		}
 		SetCurrentDir( m_CurrentDir );
 		if( Cfg.GetValue( "Setting","IsBackup", Value) ) ///< Connect to backup servers?
 			m_UseBackup = Value.ToInt();
