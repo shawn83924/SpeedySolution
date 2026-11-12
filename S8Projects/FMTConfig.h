@@ -19,6 +19,7 @@
 #include "RoundFormEx.h"
 #include "OrderMessageDefine.h"
 #include "TTaifexConnection.h"
+#include "TickList.h"
 //---------------------------------------------------------------------------
 #include "TradingInvestors.h"
 const UFC::AnsiString FUNC_PINGPONG( L"1001" );
@@ -356,6 +357,7 @@ private:
 	UFC::UiniFile* m_ini;
 	UFC::AnsiString m_RiskDisclosureContent;
 	UFC::AnsiString m_RiskDisclosureUrl;
+	TTickRules      m_TickRules;      ///< Tick size rules (FMTMD.ini), used by TTickList.
 private:
 	void 			GetProcessDir( void );
 	DWORD           FileVersion( const char* FileName, const char* FileName2 = "" );
@@ -381,6 +383,7 @@ private:
 	void             LoadThroughput( UFC::UiniFile& SettingsFile );
 	void 			 LoadCHSetting( UFC::UiniFile& SettingsFile, const UFC::AnsiString& Session, const UFC::AnsiString& ValName, const UFC::AnsiString& DefVal, TStringList* mList );
 	void             LoadBlackList( UFC::UiniFile& SettingsFile );
+	void             LoadTickSetting( const char* FileName );
 public:
 	Config();
 	~Config();
@@ -495,6 +498,7 @@ public:
 	TSpeedyConfig*  SpeedyConfig( int Broker, int Config );
 	void            LoadAllIni( void );
 	void            LoadStarWaveSettingIni( void );
+	const TTickRules* GetTickRules( void ) const { return &m_TickRules; }
 private:
 	String	   m_RegisterURL;
 	String	   m_LogonURL;

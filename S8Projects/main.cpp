@@ -128,6 +128,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	CMarketDataStore->SetLanguage( lTraditionalChinese );
 	CMarketDataStore->LoadChineseName( );
 	gMarketDataStore = CMarketDataStore;
+	CMarketDataStore->SetTickRules( g_Config.GetTickRules() ); ///< Tick rules loaded from FMTMD.ini
 	TExecution::FMarketDataStorePtr = CMarketDataStore;
 
 	s888::gQueryObjsPool.LoadExchangeInformation( L"ExchangeInfo.ini" );

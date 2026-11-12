@@ -163,6 +163,7 @@ private:
 	UFC::PHashedList<UFC::AnsiString, UFC::List<BasicInformation*>*> FOPTStrikePriceTable;
 	UFC::PHashedList<UFC::AnsiString, TTickList*>   FTickTable;
 	UFC::PHashedList<UFC::AnsiString, TTickList*>   FTickTableEx;
+	const TTickRules*                               FTickRules; ///< Tick rules for new TTickList (owned by caller).
 	UFC::PHashedList<UFC::AnsiString, AnsiString*>  FSpotList;
 	UFC::PHashedList<UFC::AnsiString, TStringList*> FBlackList;
 private:
@@ -244,6 +245,9 @@ protected:
 public:
 	__fastcall TCMarketDataStore(TComponent* Owner);
 	__fastcall ~TCMarketDataStore();
+	/// Set tick rules used when creating tick lists. NULL means built-in defaults.
+	/// The rules object must outlive this store. Tick lists already created are not regenerated.
+	void __fastcall SetTickRules( const TTickRules* Rules ) { FTickRules = Rules; }
 	void __fastcall Clear( void );
 	void __fastcall Connect( int Timeout );
 	void __fastcall Disconnect( void );

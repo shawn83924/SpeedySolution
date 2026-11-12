@@ -72,6 +72,7 @@ void  Config::LoadAllIni( void )
 	LoadStarWaveSetting( "FMTMD.ini" );   ///< Load market data serversetting
 	LoadSpeedySetting( "FMTBroker.ini" );
 	LoadUpdateSetting( "FMTMD.ini" );
+	LoadTickSetting( "FMTMD.ini" );     ///< Load tick size rules for TTickList
 	if( m_ini != NULL )
 		delete m_ini;
 	m_ini = new UFC::UiniFile( "FMTConfig.ini", true );
@@ -516,6 +517,37 @@ void Config::LoadOpenCloseTime( const char* FileName )
 	if( SettingsFile.GetValue( "Host", "CloseMinutes", Value ) == TRUE )
 		CloseMin = Value.ToInt();
 	UFC::SetTradeingHour( OpenHr, OpenMin, CloseHr, CloseMin );
+}
+//------------------------------------------------------------------------------
+/// Load tick size rules for TTickList.
+/// Sections are [TickTAIFEXFutures], [TickTAIFEXOptions], [TickExchange].
+/// Items in ini override the built-in defaults, items not in ini keep the defaults.
+void Config::LoadTickSetting( const char* FileName )
+{
+	UFC::UiniFile   SettingsFile( FileName, true );
+	UFC::AnsiString Name, Value;
+
+	m_TickRules.LoadDefaults();
+	for( int g = 0; g < TTickRules::GroupCount(); g++ )
+	{
+		const char*   Group = TTickRules::GroupName( g );
+		UFC::Section* Sect  = SettingsFile.GetSection( Group );
+
+		if( Sect == NULL )
+			continue;
+		for( int i = 0; i < Sect->ItemCount(); i++ )
+		{
+			Sect->GetNameValue( i, Name, Value );
+			if( Name.Length() <= 0 || Value.Length() <= 0 )
+				continue;
+			if( m_TickRules.SetLadder( Group, Name.c_str(), Value.c_str() ) == false )
+				UFC::BufferedLog::Printf( " [Config::LoadTickSetting] Invalid tick rule [%s] %s=%s, use default.",
+										  Group, Name.c_str(), Value.c_str() );
+		}
+	}
+	///< MarketDataStore is created after g_Config, main form also sets it after the store is created.
+	if( gMarketDataStore != NULL )
+		gMarketDataStore->SetTickRules( &m_TickRules );
 }
 //------------------------------------------------------------------------------
 int Config::GetMaxLots(  void  ) ///< Speedy Unify

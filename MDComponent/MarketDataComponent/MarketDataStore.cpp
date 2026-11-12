@@ -89,6 +89,7 @@ __fastcall TCMarketDataStore::TCMarketDataStore(TComponent* Owner)
 ,FPort(34567)
 ,FSupportOptions( false )
 ,FLanguage( lSimplifiedChinese )
+,FTickRules( NULL )
 ,FUpdateInterval( 50 )///< 20 FPS
 {
 	if( !ComponentState.Contains( csDesigning ) )
@@ -1405,7 +1406,7 @@ const TTickList* __fastcall TCMarketDataStore::GetTickList( const String& Exchan
 		BasicInformation* Info = GetBasicInformation( exchange.c_str(), symbol.c_str(), false );
 		if( Info != NULL )
 		{
-			List = new TTickList( Info );
+			List = new TTickList( Info, FTickRules );
 			FTickTable.Add( symbol.c_str(), List );
 		}
 	}
@@ -1419,7 +1420,7 @@ const TTickList* __fastcall TCMarketDataStore::GetTickList( const String& Exchan
 	TTickList* List = FTickTable.GetObjectByKey( symbol );
 	if( List == NULL ) ////< not in the table, add one.
 	{
-		List = new TTickList( Info );
+		List = new TTickList( Info, FTickRules );
 		FTickTable.Add( symbol, List );
 	}
 	return List;
@@ -1443,7 +1444,7 @@ const TTickList* __fastcall TCMarketDataStore::GetTickListEx( const String& Exch
 				MaxPx = BullPx;
 			if( MinPx > BearPx )
 				MinPx = BearPx;
-			List = new TTickList( Info, MaxPx, MinPx );
+			List = new TTickList( Info, MaxPx, MinPx, FTickRules );
 			FTickTableEx.Add( symbol, List );
 		}
 	}

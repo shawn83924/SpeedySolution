@@ -2,39 +2,197 @@
 #pragma hdrstop
 #include "TickList.h"
 #include "math.h"
+#include <algorithm>
+#include <stdio.h>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------
+//
+//	class TTickRules
+//
+//---------------------------------------------------------------------------
+static const char* const TICK_RULE_GROUPS[] =
+{
+	"TickTAIFEXFutures",
+	"TickTAIFEXOptions",
+	"TickExchange"
+};
+//---------------------------------------------------------------------------
+TTickRules::TTickRules( void )
+{
+	LoadDefaults( );
+}
+//---------------------------------------------------------------------------
+int TTickRules::GroupCount( void )
+{
+	return sizeof( TICK_RULE_GROUPS ) / sizeof( TICK_RULE_GROUPS[0] );
+}
+//---------------------------------------------------------------------------
+const char* TTickRules::GroupName( int Index )
+{
+	if( Index < 0 || Index >= GroupCount() )
+		return "";
+	return TICK_RULE_GROUPS[ Index ];
+}
+//---------------------------------------------------------------------------
+std::string TTickRules::MakeKey( const char* Group, const char* Key )
+{
+	return std::string( Group ) + "." + Key;
+}
+//---------------------------------------------------------------------------
+static bool TickStepGreater( const TTickStep& A, const TTickStep& B )
+{
+	return A.Threshold > B.Threshold;
+}
+//---------------------------------------------------------------------------
+/// Parse "Threshold:Tick,Threshold:Tick,...,0:Tick" or a single fixed "Tick".
+bool TTickRules::ParseLadder( const char* LadderStr, TTickLadder& Ladder )
+{
+	std::string Src( LadderStr == NULL ? "" : LadderStr );
+	size_t      Pos = 0;
+
+	Ladder.clear();
+	while( Pos < Src.size() )
+	{
+		size_t Comma = Src.find( ',', Pos );
+		if( Comma == std::string::npos )
+			Comma = Src.size();
+		std::string Item = Src.substr( Pos, Comma - Pos );
+		Pos = Comma + 1;
+		if( Item.find_first_not_of( " \t" ) == std::string::npos )
+			continue;
+
+		double    Threshold = 0, Tick = 0;
+		TTickStep Step;
+
+		if( Item.find( ':' ) == std::string::npos ) ///< Fixed tick.
+		{
+			if( sscanf( Item.c_str(), "%lf", &Tick ) != 1 )
+				return false;
+		}
+		else if( sscanf( Item.c_str(), "%lf : %lf", &Threshold, &Tick ) != 2 )
+			return false;
+		Step.Threshold = UFC::DoubleToInt( Threshold, Digit );
+		Step.Tick      = UFC::DoubleToInt( Tick, Digit );
+		if( Step.Tick <= 0 || Step.Threshold < 0 )
+			return false;
+		Ladder.push_back( Step );
+	}
+	if( Ladder.empty() )
+		return false;
+	std::sort( Ladder.begin(), Ladder.end(), TickStepGreater );
+	return Ladder.back().Threshold == 0; ///< Must have the default (0:Tick) step.
+}
+//---------------------------------------------------------------------------
+int TTickRules::StepOf( const TTickLadder& Ladder, int ScaledPx )
+{
+	for( size_t i = 0; i < Ladder.size(); i++ )
+	{
+		if( ScaledPx > Ladder[i].Threshold )
+			return Ladder[i].Tick;
+	}
+	return Ladder.empty() ? 0 : Ladder.back().Tick;
+}
+//---------------------------------------------------------------------------
+/// Built-in rules, used when FMTMD.ini has no tick setting.
+void TTickRules::LoadDefaults( void )
+{
+	FLadders.clear();
+	///< TAIFEX futures, fixed tick.
+	SetLadder( "TickTAIFEXFutures", "TX", "1" );
+	SetLadder( "TickTAIFEXFutures", "MX", "1" );
+	SetLadder( "TickTAIFEXFutures", "T5", "1" );
+	SetLadder( "TickTAIFEXFutures", "TM", "1" );
+	SetLadder( "TickTAIFEXFutures", "XI", "1" );
+	SetLadder( "TickTAIFEXFutures", "UN", "1" );
+	SetLadder( "TickTAIFEXFutures", "G2", "1" );
+	SetLadder( "TickTAIFEXFutures", "UD", "1" );
+	SetLadder( "TickTAIFEXFutures", "EX", "0.05" );
+	SetLadder( "TickTAIFEXFutures", "GT", "0.05" );
+	SetLadder( "TickTAIFEXFutures", "SP", "0.25" );
+	SetLadder( "TickTAIFEXFutures", "FX", "0.2" );
+	SetLadder( "TickTAIFEXFutures", "GB", "0.005" );
+	SetLadder( "TickTAIFEXFutures", "CP", "0.005" );
+	SetLadder( "TickTAIFEXFutures", "MS", "0.1" );
+	SetLadder( "TickTAIFEXFutures", "GD", "0.1" );
+	SetLadder( "TickTAIFEXFutures", "TG", "0.5" );
+	///< TAIFEX ETF futures.
+	SetLadder( "TickTAIFEXFutures", "NZ", "50:0.05,0:0.01" );
+	SetLadder( "TickTAIFEXFutures", "NY", "50:0.05,0:0.01" );
+	SetLadder( "TickTAIFEXFutures", "OA", "50:0.05,0:0.01" );
+	///< TAIFEX stock futures.
+	SetLadder( "TickTAIFEXFutures", "Default", "2500:5,500:1,100:0.5,50:0.1,10:0.05,0:0.01" );
+	///< TAIFEX options.
+	SetLadder( "TickTAIFEXOptions", "TX", "1000:10,500:5,50:1,10:0.5,0:0.1" );
+	SetLadder( "TickTAIFEXOptions", "TE", "50:0.5,25:0.25,2.5:0.05,0.5:0.025,0:0.005" );
+	SetLadder( "TickTAIFEXOptions", "MS", "50:0.5,25:0.25,2.5:0.05,0.5:0.025,0:0.005" );
+	SetLadder( "TickTAIFEXOptions", "GT", "50:0.5,25:0.25,2.5:0.05,0.5:0.025,0:0.005" );
+	SetLadder( "TickTAIFEXOptions", "TF", "200:2,100:1,10:0.2,2:0.1,0:0.02" );
+	SetLadder( "TickTAIFEXOptions", "XI", "2000:20,1000:10,100:2,20:1,0:0.2" );
+	SetLadder( "TickTAIFEXOptions", "TG", "0.5" );
+	///< TAIFEX stock options.
+	SetLadder( "TickTAIFEXOptions", "Default", "1000:5,150:1,50:0.5,15:0.1,5:0.05,0:0.01" );
+	///< Stock exchanges.
+	SetLadder( "TickExchange", "TWSE", "1000:5,500:1,100:0.5,50:0.1,10:0.05,0:0.01" );
+	SetLadder( "TickExchange", "OTC",  "1000:5,500:1,100:0.5,50:0.1,10:0.05,0:0.01" );
+	SetLadder( "TickExchange", "KRX",  "3:0.05,0:0.01" );
+}
+//---------------------------------------------------------------------------
+bool TTickRules::SetLadder( const char* Group, const char* Key, const char* LadderStr )
+{
+	TTickLadder Ladder;
+
+	if( ParseLadder( LadderStr, Ladder ) == false )
+		return false;
+	FLadders[ MakeKey( Group, Key ) ] = Ladder;
+	return true;
+}
+//---------------------------------------------------------------------------
+const TTickLadder* TTickRules::Find( const char* Group, const char* Key, bool UseDefault ) const
+{
+	std::map<std::string, TTickLadder>::const_iterator It = FLadders.find( MakeKey( Group, Key ) );
+
+	if( It == FLadders.end() && UseDefault == true )
+		It = FLadders.find( MakeKey( Group, "Default" ) );
+	if( It == FLadders.end() )
+		return NULL;
+	return &It->second;
+}
 //---------------------------------------------------------------------------
 //
 //	class TTickList
 //
 //---------------------------------------------------------------------------
-TTickList::TTickList( void  )
+TTickList::TTickList( const TTickRules* Rules )
 :FExchange( "" )
 ,FSymbol( "" )
 ,FContractMultiplier(0)
 ,FBullPx( 0 )
 ,FBearPx( 0 )
+,FRules( Rules )
 {
 }
 //---------------------------------------------------------------------------
-TTickList::TTickList( BasicInformation* Info )
+TTickList::TTickList( BasicInformation* Info, const TTickRules* Rules )
 :FInfo( Info )
 ,FExchange( Info->GetExchange() )
 ,FSymbol( Info->GetSymbol() )
 ,FBullPx( Info->GetBullPrice() )
 ,FBearPx( Info->GetBearPrice() )
+,FRules( Rules )
 {
 	InitTicks( );
 	FContractMultiplier = Info->GetContractMultiplier();
 }
 //---------------------------------------------------------------------------
-TTickList::TTickList( BasicInformation* Info, double MaxPx, double MinPx )
+TTickList::TTickList( BasicInformation* Info, double MaxPx, double MinPx, const TTickRules* Rules )
 :FInfo( Info )
 ,FExchange( Info->GetExchange() )
 ,FSymbol( Info->GetSymbol() )
 ,FBullPx( Info->GetBullPrice() )
 ,FBearPx( Info->GetBearPrice() )
+,FRules( Rules )
 {
 	if( MaxPx > FBullPx )
 		FBullPx = MaxPx;
@@ -66,283 +224,54 @@ void TTickList::InitTicks( )
 	}
 }
 //---------------------------------------------------------------------------
+const TTickRules& TTickList::GetRules( void ) const
+{
+	static TTickRules DefaultRules;
+
+	return ( FRules != NULL ) ? *FRules : DefaultRules;
+}
+//---------------------------------------------------------------------------
+void TTickList::GenerateByLadder( const TTickLadder& Ladder, double BullPx, double BearPx )
+{
+	int TickPx = UFC::DoubleToInt( BullPx, TTickRules::Digit );
+	int EndPx  = UFC::DoubleToInt( BearPx, TTickRules::Digit );
+
+	while( TickPx >= EndPx )
+	{
+		FTickArray.push_back( UFC::IntToDouble( TickPx, TTickRules::Digit ) );
+		int Step = TTickRules::StepOf( Ladder, TickPx );
+		if( Step <= 0 )
+			break;
+		TickPx -= Step;
+	}
+}
+//---------------------------------------------------------------------------
 void TTickList::GenerateTicks( double BullPx, double BearPx )
 {
+	const TTickRules&  Rules  = GetRules();
+	const TTickLadder* Ladder = NULL;
+
 	if( FExchange == "TAIFEX" || FExchange == "TFX" )
 	{
 		UFC::AnsiString Prefix( FSymbol.SubString( 0, 2 ) );
-		//UFC::BufferedLog::Printf( " FSymbol = %s", FSymbol.c_str() );
-		int Tick = -1;
-		if( FSymbol.Length() == 5 || FSymbol.Length() == 8 ) /// Futures, Fix tick.
-		{
-			int TickPx = UFC::DoubleToInt( BullPx, 3 );
-			int EndPx = UFC::DoubleToInt( BearPx , 3 );
-			if( Prefix == "TX" || Prefix == "MX" || Prefix == "T5" || Prefix == "TM"|| Prefix == "XI" ||
-				Prefix == "UN" || Prefix == "G2" || Prefix == "UD" )
-				Tick = 1000;  ///< 1.0
-			else if( Prefix == "EX" || Prefix == "GT" )
-				Tick = 50;    ///< 0.05
-			else if( Prefix == "SP" )
-				Tick = 250;  ///< 0.25
-			else if( Prefix == "FX" )
-				Tick = 200;
-			else if( Prefix == "GB" || Prefix == "CP" )
-				Tick = 5;
-			else if( Prefix == "MS" || Prefix == "GD" )
-				Tick = 100;
-			else if( Prefix == "TG" )
-				Tick = 500;
 
-			if( Tick > 0 )
-			{
-				while( TickPx >= EndPx )
-				{
-					FTickArray.push_back( UFC::IntToDouble( TickPx, 3 ) );
-					TickPx -= Tick;
-				}
-			}
-			else ///< Stock Futures
-			{
-				 ///<  ETF Futures
-				if( Prefix == "NZ" || Prefix == "NY" || Prefix == "OA" )
-				{
-					//UFC::BufferedLog::Printf( " ETF Futures = %s", Prefix.c_str( ) );
-					while( TickPx >= EndPx )
-					{
-						FTickArray.push_back( UFC::IntToDouble( TickPx, 3 ) );
-						//UFC::BufferedLog::Printf( " ETF TickPx = %d", TickPx );
-						if( TickPx > 50000 )
-							TickPx -= 50;
-						else
-							TickPx -= 10;
-					}
-				}
-				else
-				{
-					//UFC::BufferedLog::Printf( " Stock Futures = %s", Prefix.c_str( ) );
-					while( TickPx >= EndPx )
-					{
-						FTickArray.push_back( UFC::IntToDouble( TickPx, 3 ) );
-						if( TickPx > 1000000 )
-							TickPx -= 5000;
-						else if( TickPx > 500000 )
-							TickPx -= 1000;
-						else if( TickPx > 100000 )
-							TickPx -= 500;
-						else if( TickPx > 50000 )
-							TickPx -= 100;
-						else if( TickPx > 10000 )
-							TickPx -= 50;
-						else
-							TickPx -= 10;
-					}
-				}
-			}
-		}
+		if( FSymbol.Length() == 5 || FSymbol.Length() == 8 ) /// Futures
+			Ladder = Rules.Find( "TickTAIFEXFutures", Prefix.c_str(), true );
 		else ///< Options
 		{
-			double TickPx = BullPx;
-
-			if( Prefix == "TX")
+			if( Prefix == "TX" && BullPx < 300 )
 			{
-				if( TickPx < 300 )
-				{
-					TickPx = 300;
-					BearPx = 0.1;
-				}
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					if( TickPx > 1000 )
-						TickPx -= 10;
-					else if( TickPx > 500 )
-						TickPx -= 5;
-					else if( TickPx > 50 )
-						TickPx -= 1;
-					else if( TickPx > 10 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 50, 2 );
-					}
-					else
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 10, 2 );
-					}
-				}
+				BullPx = 300;
+				BearPx = 0.1;
 			}
-			else if( Prefix == "TE" || Prefix == "MS" || Prefix == "GT" )
-			{
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					if( TickPx > 50 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 50, 2 );
-					}
-					else if( TickPx > 25 )
-					{
-						int TmpValue = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 25, 2 );
-					}
-					else if( TickPx > 2.5 )
-					{
-						int TmpValue = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 5, 2 );
-
-					}
-					else if( TickPx > 0.5 )
-					{
-						int TmpValue = UFC::DoubleToInt( TickPx, 3 );
-						TickPx = UFC::IntToDouble( TmpValue - 25, 3 );
-					}
-					else
-					{
-						int TmpValue = UFC::DoubleToInt( TickPx, 3 );
-						TickPx = UFC::IntToDouble( TmpValue - 5, 3 );
-					}
-				}
-			}
-			else if( Prefix == "TF" )
-			{
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					if( TickPx > 200 )
-						TickPx -= 2;
-					else if( TickPx > 100 )
-						TickPx -= 1;
-					else if( TickPx > 10 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 20, 2 );
-					}
-					else if( TickPx > 2 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 10, 2 );
-					}
-					else
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 2, 2 );
-					}
-				}
-			}
-			else if( Prefix == "XI" )
-			{
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					if( TickPx > 2000 )
-						TickPx -= 20;
-					else if( TickPx > 1000 )
-						TickPx -= 10;
-					else if( TickPx > 100 )
-						TickPx -= 2;
-					else if( TickPx > 20 )
-						TickPx -= 1;
-					else
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 20, 2 );
-					}
-				}
-			}
-			else if( Prefix == "TG" )
-			{
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					TickPx -= 0.5;
-				}
-			}
-			else ///< Stock Options
-			{
-				while( TickPx >= BearPx )
-				{
-					FTickArray.push_back( TickPx );
-					if( TickPx > 1000 )
-						TickPx -= 5;
-					else if( TickPx > 150 )
-						TickPx -= 1;
-					else if( TickPx > 50 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 50, 2 );
-					}
-					else if( TickPx > 15 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 10, 2 );
-					}
-					else if( TickPx > 5 )
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 5, 2 );
-					}
-					else
-					{
-						int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-						TickPx = UFC::IntToDouble( TmpValue - 1, 2 );
-					}
-				}
-			}
+			Ladder = Rules.Find( "TickTAIFEXOptions", Prefix.c_str(), true );
 		}
+		if( Ladder != NULL )
+			GenerateByLadder( *Ladder, BullPx, BearPx );
 	}
-	else if( FExchange == "TWSE" ||  FExchange == "OTC")
+	else if( ( Ladder = Rules.Find( "TickExchange", FExchange.c_str(), false ) ) != NULL )
 	{
-		double TickPx = BullPx;
-
-		while( TickPx >= BearPx )
-		{
-			FTickArray.push_back( TickPx );
-			if( TickPx > 1000 ) /// 1000 and above       Tick 5.00
-				TickPx -= 5;
-			else if( TickPx > 500 ) /// 500 <= Px < 1000 Tick 1.00
-				TickPx -= 1;
-			else if( TickPx > 100 ) /// 100 <= Px < 500  Tick 0.50
-			{
-				int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 50, 2 );
-			}
-			else if( TickPx > 50 ) /// 50 <= Px < 100    Tick 0.10
-			{
-				int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 10, 2 );
-			}
-			else if( TickPx > 10 ) /// 10 <= Px < 50     Tick 0.05
-			{
-				int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 5, 2 );
-			}
-			else                   /// 0.01 <= Px < 10   Tick 0.01
-			{
-				int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 1, 2 );
-			}
-		}
-	}
-	else if( FExchange == "KRX" )
-	{
-		double TickPx = BullPx;
-
-		while( TickPx >= BearPx )
-		{
-			FTickArray.push_back( TickPx );
-
-			if( TickPx > 3 ) /// 3 and above       Tick 0.05
-			{
-            	int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 5, 2 );
-			}
-			else
-			{
-				int TmpValue  = UFC::DoubleToInt( TickPx, 2 );
-				TickPx = UFC::IntToDouble( TmpValue - 1, 2 );
-			}
-		}
+		GenerateByLadder( *Ladder, BullPx, BearPx );
 	}
 	else if( FExchange == "CFFEX" ||  FExchange == "DCE" ||  FExchange == "CZCE" ||  FExchange == "SHFE"  ||  FExchange == "SSE" )
 	{
