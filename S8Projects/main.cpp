@@ -3046,6 +3046,8 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender, TMouseButton Button, T
 		{
 			if( GSimMatch == false )
 			{
+			// 移除帳號切換視窗顯示功能
+			/*
 				TBrokerUser* User = FLoginBroker->GetService()->GetAccount();
 				DefAccForm = new TDefAccForm( this );
 				for( int i = 0; i < User->FuturesAccountCount(); i++ )// -1; i >=0; i -- )
@@ -3068,6 +3070,7 @@ void __fastcall TMainForm::FormMouseDown(TObject *Sender, TMouseButton Button, T
 					g_Config.SetDesktopInteger( L"SpeedyUnify\\ExAccount", "TWSE", FTseAccIndex );
 				}
 				delete DefAccForm;
+			*/
 			}
 		}
 		else
