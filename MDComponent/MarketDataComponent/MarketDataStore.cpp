@@ -2177,15 +2177,20 @@ void __fastcall TCMarketDataStore::LoadExchangeTable( void )
 				ExchangeInfo*    Info;
 				UFC::PStringList ProductList;
 				UFC::AnsiString  Value;
+				UFC::AnsiString  ExchangeName;
 
 				StringList.SetStrings( pSection->GetSectionName(), "." ); ///< Example: SGX.STW
+				///< Exchange key: use "Exchange=" if specified (allows a dotted name, e.g. Exchange=CQG.CBT),
+				///< otherwise the part before the first '.' of the section name.
+				if( pSection->GetValue( "Exchange", ExchangeName ) != TRUE || ExchangeName.Length() == 0 )
+					ExchangeName = StringList[0];
 				pSection->GetValue( "ProductID", Value ); ///< Example: ProductID=STW,.TAMSCI
 				ProductList.SetStrings( Value, "," );
 
-				if( !FExchangeTable.IsExists( StringList[0] ) ) ///< Exchange exists?
-					FExchangeTable.Add( StringList[0], ExchangeList = new UFC::PHashedList<UFC::AnsiString, ExchangeInfo*>() );
+				if( !FExchangeTable.IsExists( ExchangeName ) ) ///< Exchange exists?
+					FExchangeTable.Add( ExchangeName, ExchangeList = new UFC::PHashedList<UFC::AnsiString, ExchangeInfo*>() );
 				else
-					FExchangeTable.GetObjectByKey( StringList[0], ExchangeList );
+					FExchangeTable.GetObjectByKey( ExchangeName, ExchangeList );
 				Info = new ExchangeInfo( pSection->GetSectionName(), ExchangeConfig );
 				for( register int j = 0; j < ProductList.ItemCount(); j++ )
 				{
