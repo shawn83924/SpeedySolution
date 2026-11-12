@@ -114,6 +114,7 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 {
 	OrderBookList->Store = gMarketDataStore;
 	OrderBookList->OCOStore = gOrderStore_OCO;
+	OrderBookList->OnConfirmCancelAll = OrderBookListConfirmCancelAll;
 	Parent = FParent;
 	ToolSV->UseAnimation = false;
 	ToolSV->Opened = false;
@@ -723,7 +724,7 @@ void __fastcall TDepthForm::OrderBookListDeleteAllOrders(TObject *Sender, SideEn
 	{	///< Cancel all limit orders.
 		for( register int i = 0; i < PxCount; i ++ )
 		{
-			 CxCount += gOrderStore->CancelOrder( FMarket, FEx, FSym, side, PriceArray[i] );
+			 CxCount += gOrderStore->CancelOrder( FMarket, FEx, FSym, side, PriceArray[i], true );
 			 Application->ProcessMessages();
 		}
 		///< Cancel all Market Orders.( Px = 0.0 )
@@ -736,6 +737,11 @@ void __fastcall TDepthForm::OrderBookListDeleteAllOrders(TObject *Sender, SideEn
 		TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, Msg ); ///< 刪單失敗
 	}
 	DelCount = CxCount;
+}
+//---------------------------------------------------------------------------
+void __fastcall TDepthForm::OrderBookListConfirmCancelAll(TObject *Sender, TCancelSide Side, int Count, bool &IsAccept)
+{
+	IsAccept = MainForm->ConfirmCancelAll( FSym, Side, Count );
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::OrderBookListReplacePx(TObject *Sender, SideEnum side,
@@ -2587,8 +2593,8 @@ void __fastcall TDepthForm::FateTestCancelButtonClick(TObject *Sender)
 		FateTestResultLabel->Caption = L"結果: 用戶取消測試";
 		if( gOrderStore->IsReady() == true )
 		{
-			gOrderStore->CancelOrder( FMarket, FEx, FSym, sBuy, FBid1Px );
-			gOrderStore->CancelOrder( FMarket, FEx, FSym, sSell, FAsk1Px );
+			gOrderStore->CancelOrder( FMarket, FEx, FSym, sBuy, FBid1Px, true ); ///< Fate test cleanup, no confirm.
+			gOrderStore->CancelOrder( FMarket, FEx, FSym, sSell, FAsk1Px, true ); ///< Fate test cleanup, no confirm.
 		}
 	}
 }
@@ -2719,14 +2725,14 @@ void TDepthForm::OnOrderFilled( const String &Exchange,const String &Symbol, con
 		MainForm->UnsubscribeFilled( FEx, FSym, this );
 		if( Side == sBuy )
 		{
-			gOrderStore->CancelOrder( FMarket, FEx, FSym, sSell, FAsk1Px );
+			gOrderStore->CancelOrder( FMarket, FEx, FSym, sSell, FAsk1Px, true ); ///< Fate test cleanup, no confirm.
 			if( FBid1Qty < 0 )
 				FBid1Qty = 0;
 			Result.printf( L"結果: 買單假單%d張", FBid1Qty );
 		}
 		else
 		{
-			gOrderStore->CancelOrder( FMarket, FEx, FSym, sBuy, FBid1Px );
+			gOrderStore->CancelOrder( FMarket, FEx, FSym, sBuy, FBid1Px, true ); ///< Fate test cleanup, no confirm.
 			if( FAsk1Qty < 0 )
 				FAsk1Qty = 0;
 			Result.printf( L"結果: 賣單假單%d張", FAsk1Qty );
@@ -3153,13 +3159,15 @@ void __fastcall TDepthForm::TabBtnClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::CancelAllBuyClick(TObject *Sender)
 {
-	OrderBookList->TriggerCancelAllBuyOrders();
+	if( OrderBookList->ConfirmCancelAll( csBuy ) == true )
+		OrderBookList->TriggerCancelAllBuyOrders();
 }
 //---------------------------------------------------------------------------
 
 void __fastcall TDepthForm::CancelAllSellClick(TObject *Sender)
 {
-	OrderBookList->TriggerCancelAllSellOrders();
+	if( OrderBookList->ConfirmCancelAll( csSell ) == true )
+		OrderBookList->TriggerCancelAllSellOrders();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::MarketToggleSwitchClick(TObject *Sender)

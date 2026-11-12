@@ -230,6 +230,7 @@ __published:	// IDE-managed Components
           int Qty);
 	void __fastcall OrderBookListDeleteAllOrders(TObject *Sender, SideEnum side, const TDoubleDynArray &PriceArray,
           int &DelCount);
+	void __fastcall OrderBookListConfirmCancelAll(TObject *Sender, TCancelSide Side, int Count, bool &IsAccept);
 	void __fastcall OrderBookListReplacePx(TObject *Sender, SideEnum side, double Price,
           double NewPrice);
 	void __fastcall OrderBookListNetPositionUpdate(TObject *Sender, int NetPosition,

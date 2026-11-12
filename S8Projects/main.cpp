@@ -151,6 +151,7 @@ __fastcall TMainForm::TMainForm(TComponent* Owner)
 	OrderStore->OnNewOrder        = OrderStoreNewOrder;
 	OrderStore->OnStopOrderChange =	StopOrderChange;
 	OrderStore->OnCancelByOrderID = OrderStoreCancelByOrderID;
+	OrderStore->OnCancelBySymbolPrice = OrderStoreCancelBySymbolPrice;
 	OrderStore->OnRejectedReply   = OrderStoreRejectedReply;
 	OrderStore->OnNewOrderReply   = OrderStoreNewOrderReply;
 	OrderStore->OnFilledReply     = OrderStoreFilledReply;
@@ -2108,6 +2109,42 @@ void __fastcall TMainForm::OrderStoreCancelByOrderID(TObject *Sender, const Unic
 	}
 	else
 		IsAccept = true;
+}
+//---------------------------------------------------------------------------
+///< Cancel by Symbol + Side + Price ( DepthTrade right click / delete button ).
+void __fastcall TMainForm::OrderStoreCancelBySymbolPrice(TObject *Sender, const UnicodeString &Symbol,
+		  SideEnum Side, double Price, bool &IsAccept)
+{
+	if( CancelConfirmSwitch->Selected == true )
+	{
+		String Msg;
+
+		if( Side == sBuy )
+			Msg.printf( L"要刪除[%s] 買單 @%0.3f 嗎?", Symbol.c_str(), Price );
+		else
+			Msg.printf( L"要刪除[%s] 賣單 @%0.3f 嗎?", Symbol.c_str(), Price );
+		IsAccept = TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
+	}
+	else
+		IsAccept = true;
+}
+//---------------------------------------------------------------------------
+///< Ask once before a user-initiated cancel-all from DepthTrade.
+bool __fastcall TMainForm::ConfirmCancelAll( const String& Symbol, TCancelSide Side, int Count )
+{
+	if( CancelConfirmSwitch->Selected == false )
+		return true;
+
+	String SideText;
+	switch( Side )
+	{
+		case csBuy:  SideText = L"全部買單"; break;
+		case csSell: SideText = L"全部賣單"; break;
+		default:     SideText = L"全部買賣單"; break;
+	}
+	String Msg;
+	Msg.printf( L"要刪除[%s] %s嗎? (共 %d 個價位)", Symbol.c_str(), SideText.c_str(), Count );
+	return TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OrderStoreRejectedReply(TObject *Sender)

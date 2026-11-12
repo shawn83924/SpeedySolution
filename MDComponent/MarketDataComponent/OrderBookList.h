@@ -83,6 +83,8 @@ typedef void __fastcall (__closure *TOnNewPingPongOrderEvent)(System::TObject* S
 typedef void __fastcall (__closure *TOnDeleteStopOrderEvent)(System::TObject* Sender, nsOrderMessageDefine::SideEnum side, double StopPx );
 typedef void __fastcall (__closure *TOnCenterEvent)(System::TObject* Sender );
 typedef void __fastcall (__closure *TOnAskCancelCount)(System::TObject* Sender, int& Count );
+///< Fired before a user-initiated cancel-all ( header click / hotkey ). Count = number of price levels with working orders.
+typedef void __fastcall (__closure *TOnConfirmCancelAll)(System::TObject* Sender, TCancelSide Side, int Count, bool& IsAccept );
 typedef void __fastcall(__closure * TOnReplacePxEvent)(System::TObject * Sender, nsOrderMessageDefine::SideEnum side,double Price, double NewPrice);
 typedef void __fastcall (__closure *TOnTick)(System::TObject* Sender, const AnsiString& time,  double MatchPx, int MatchQty );
 
@@ -302,6 +304,7 @@ private:
 	TOnCenterEvent FOnCenterPx;
 	TOnStepChangeEvent FOnStepChange;
 	TOnAskCancelCount  FOnAskCancelCount;
+	TOnConfirmCancelAll FOnConfirmCancelAll;
 	TOnTick            FOnTick;
 	TOnAutoStopEvent   FOnAutoStopLoss;
 	TOnAutoStopEvent   FOnAutoTakeProfit;
@@ -497,6 +500,8 @@ public:
 	void __fastcall DeleteSellOrders( bool Sync );
 	int __fastcall TriggerCancelAllBuyOrders( void );
 	int __fastcall TriggerCancelAllSellOrders( void );
+	int __fastcall WorkingOrderCount( TCancelSide Side );
+	bool __fastcall ConfirmCancelAll( TCancelSide Side, bool Sync = false );
 	void __fastcall Clear( bool IncludeDepth = true );
 	double __fastcall GetTickPrice( int Step );
 	bool __fastcall UpdateFill( void );
@@ -518,6 +523,7 @@ public:
 	static int    __fastcall SyncCount( void );
 	static TForm* __fastcall GetSyncForm( int i );
 	static void   __fastcall GetSyncFormInfo(  int i, String& FormText, bool& Invert );
+	__property TOnConfirmCancelAll OnConfirmCancelAll = { read = FOnConfirmCancelAll, write = FOnConfirmCancelAll };
 public:
 	virtual Classes::TStringList* __fastcall GetSymbols( void );
 	virtual void __fastcall UpdateOrder( AnsiString Symbol, double Price, nsOrderMessageDefine::SideEnum side, int Qty, nsOrderMessageDefine::OrderTypeEnum Type );

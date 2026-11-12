@@ -2128,6 +2128,8 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 	}
 	else if( Key == FKeyCancelBuy  )  ///< Cancel all buy orders
 	{
+		if( ConfirmCancelAll( csBuy, FSync ) == false )
+			return;
 		if( FSync == true )
 		{
 			for( register i = 0; i< FSyncDepth.ItemCount();i++)
@@ -2138,6 +2140,8 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 	}
 	else if( Key == FKeyCancelSell )  ///< Cancel all sell orders
 	{
+		if( ConfirmCancelAll( csSell, FSync ) == false )
+			return;
 		if( FSync == true )
 		{
 			for( register i = 0; i< FSyncDepth.ItemCount();i++)
@@ -2150,6 +2154,8 @@ void __fastcall TOrderBookList::KeyDown(System::Word &Key, Classes::TShiftState 
 		TriggerNewOrder();
 	else if( Key == FKeyCancelAll ) ///< Cancel all orders
 	{
+		if( ConfirmCancelAll( csBoth, FSync ) == false ) ///< Ask once for both sides.
+			return;
 		if( FSync == true )
 		{
 			for( register i = 0; i< FSyncDepth.ItemCount();i++)
@@ -2336,6 +2342,50 @@ int __fastcall TOrderBookList::TriggerCancelAllSellOrders( void )
 		PriceArray.Length = 0;  ///< Free dynamic double array's memory
 	}
 	return CCount;
+}
+//---------------------------------------------------------------------------
+///< Number of price levels that have working orders on the given side(s).
+int __fastcall TOrderBookList::WorkingOrderCount( TCancelSide Side )
+{
+	int Count = 0;
+
+	if( Side == csBoth || Side == csBuy )
+	{
+		for( register int i = 2; i < FUserBuyQty.Length; i++ )
+			if( FUserBuyQty[i] > 0 )
+				Count++;
+	}
+	if( Side == csBoth || Side == csSell )
+	{
+		for( register int i = 2; i < FUserSellQty.Length; i++ )
+			if( FUserSellQty[i] > 0 )
+				Count++;
+	}
+	return Count;
+}
+//---------------------------------------------------------------------------
+///< Ask once before a user-initiated cancel-all. Returns true when cancel should proceed.
+///< Not used by automatic paths ( DeleteAllOrders / CancelAll ), so those never prompt.
+bool __fastcall TOrderBookList::ConfirmCancelAll( TCancelSide Side, bool Sync )
+{
+	if( FOnConfirmCancelAll == NULL )
+		return true;
+
+	int Count = 0;
+	if( Sync == true )
+	{
+		for( register int i = 0; i < FSyncDepth.ItemCount(); i++ )
+			Count += FSyncDepth[i]->WorkingOrderCount( Side );
+	}
+	else
+		Count = WorkingOrderCount( Side );
+
+	if( Count <= 0 ) ///< Nothing to cancel, no need to ask.
+		return true;
+
+	bool IsAccept = true;
+	FOnConfirmCancelAll( this, Side, Count, IsAccept );
+	return IsAccept;
 }
 //------------------------------------------------------------------------------
 void __fastcall TOrderBookList::PlaceStepNewOrder( nsOrderMessageDefine::SideEnum Side, int BasePxIndex, int Qty )
@@ -2870,9 +2920,15 @@ void __fastcall TOrderBookList::MouseDown(Controls::TMouseButton Button, Classes
 		if( Coord.Y == 1 ) ///< Click header, trigger delete all event
 		{
 			if( ( ( Coord.X == BUY_DEL_BTN_COL && FIsCompact == false ) ||  ( Coord.X == BUY_ORDER_COL && FIsCompact == true ) ) && FOnDeleteAllOrders != NULL )
-				TriggerCancelAllBuyOrders();  ///< Delete all buy order
+			{
+				if( ConfirmCancelAll( csBuy ) == true )
+					TriggerCancelAllBuyOrders();  ///< Delete all buy order
+			}
 			else if( ( ( Coord.X == SELL_DEL_BTN_COL && FIsCompact == false ) ||  ( Coord.X == SELL_ORDER_COL && FIsCompact == true ) )  && FOnDeleteAllOrders != NULL )
-				TriggerCancelAllSellOrders(); ///< Delete all sell order
+			{
+				if( ConfirmCancelAll( csSell ) == true )
+					TriggerCancelAllSellOrders(); ///< Delete all sell order
+			}
 			else if( Coord.X == BUY_CONDITION_COL && ConditionOrder == TRUE )
 				DeleteAllStopOrder( nsOrderMessageDefine::sBuy ); ///< Delete all buy Stop order
 			else if( Coord.X == SELL_CONDITION_COL && ConditionOrder == TRUE )

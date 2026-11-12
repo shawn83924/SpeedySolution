@@ -305,6 +305,8 @@ __published:	// IDE-managed Components
 		  int Qty, OrderTypeEnum OrderType, TimeInForceEnum TimeInForce, PositionEffectEnum PositionEffect);
 	void __fastcall OrderStoreCancelByOrderID(TObject *Sender, const UnicodeString &OrderID,
 		  bool &IsAccept);
+	void __fastcall OrderStoreCancelBySymbolPrice(TObject *Sender, const UnicodeString &Symbol,
+		  SideEnum Side, double Price, bool &IsAccept);
 	void __fastcall OrderStoreFilledReply(TObject *Sender,
 		  const UnicodeString &Exchange,const UnicodeString &Symbol,const UnicodeString &OrderID, SideEnum Side,double Px,int Qty, OrderStatusEnum OrderStatus);
 	void __fastcall OrderStoreFloatingProfit( TObject *Sender,
@@ -458,6 +460,7 @@ public:		// User declarations
 	void __fastcall Speak( const String& Str );
 	void __fastcall SetPage( int Page );
 	int __fastcall  CloseBetterTick( void );
+	bool __fastcall ConfirmCancelAll( const String& Symbol, TCancelSide Side, int Count );
 	void __fastcall InitOrderStore( void );
 	void __fastcall LoadImage( const String& ImgFile );
 	void __fastcall HandleTokenExpired( void );
