@@ -37,6 +37,8 @@ public:
 	void            Unsubscribe( MSubscriber* Subscribe );
 	UFC::Int32      GetQueuesize( void ){ return FApp->GetQueueSize(); }
 	MApp*           GetMApp() { return FApp; }
+	///< Send PROXY protocol v2 (IPv4) header, let server update the peer IP of this connection.
+	BOOL            SendProxyHeader( const UFC::AnsiString& LocalIP, const UFC::AnsiString& PeerIP );
 public:
 	static  TTransport* CreateTransport(  HINSTANCE Instance, MAppListener* pListener, const char* AppName, BOOL IsWin32GUIApp );
 };

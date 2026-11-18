@@ -898,12 +898,13 @@ bool TTaifexConnection::CheckFLEXSymbol(const UFC::AnsiString &Symbol)
 void TTaifexConnection::NewOrder(TNewOrderMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
-    Msg->SetPeerIP(GetLocalIP().c_str());
-    UFC::AnsiString peerIP = Msg->GetPeerIP();
-    if (FUseAPI == atSpeedy)
+	Msg->SetPeerIP(GetLocalIP().c_str());
+	UFC::AnsiString peerIP = Msg->GetPeerIP();
+	//Glog->fprintf(" %s() GetLocalIP[%s].", __func__, peerIP.c_str());
+	if (FUseAPI == atSpeedy)
     {
-        UFC::AnsiString ExchangeSrc(Msg->GetSrc());
-        UFC::AnsiString UserData(Msg->GetAllUserData());
+		UFC::AnsiString ExchangeSrc(Msg->GetSrc());
+		UFC::AnsiString UserData(Msg->GetAllUserData());
         UFC::AnsiString Source("");
 
         GenerateNID(Msg);
@@ -918,7 +919,7 @@ void TTaifexConnection::NewOrder(TNewOrderMessage *Msg)
             UFC::AnsiString TestSymbol(Msg->GetSymbol());
             UFC::AnsiString TestAccount(Msg->GetAccount());
             UFC::AnsiString ErrorStr, TmpStr;
-            char R010[256];
+			char R010[256];
             bool RenderOK = false;
             Int64 Render, Now;
             Int64 Begin = UFC::GetTickCountUS();
@@ -1013,7 +1014,7 @@ void TTaifexConnection::NewOrder(TNewOrderMessage *Msg)
             Glog->fprintf(" NewOrder[%lld][%s] UserData[%s]", Msg->GetNID(), R010, UserData.c_str());
             if (TriggerEventAndSend(Msg, R010, UserData, smtNew, nsOrderMessageDefine::crrNew, Msg->GetTradingSessionID(), Source) == TRUE)
             {
-                Msg->SetIsRequestSend(true);
+				Msg->SetIsRequestSend(true);
                 if ((FEnablePendingNewAck == TRUE) && IsTAIWAN(Msg->GetMarket()) == TRUE)
                     PendingNew(Msg);
             }

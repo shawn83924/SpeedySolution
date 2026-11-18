@@ -372,7 +372,8 @@ public:
 	UFC::AnsiString                 FToken;
 	UFC::AnsiString                 FLocalIP;        ///< Local machine IP.
 	UFC::AnsiString                 FPeerIP;         ///< Client public IP obtained from HTTPS url (FMTMD.ini [PeerIP] Url).
-	UFC::PCriticalSection           FPeerIPCS;       ///< Protect FPeerIP, written by PeerIPThread.
+	UFC::PCriticalSection           FPeerIPCS;       ///< Protect FPeerIP / FPeerIPList, written by PeerIPThread.
+	UFC::PStringList                FPeerIPList;     ///< IPs listed in FMTMD.ini [PeerIP] (except Url); if FPeerIP matches one, GetLocalIP() returns FLocalIP.
 	PeerIPThread*                   FPeerIPThread;
 	int                             FAdmin;
 	int                             FIsDMA;
@@ -974,6 +975,8 @@ public:
 	UFC::AnsiString GetLocalIP( void );
 	void SetPeerIP( const UFC::AnsiString& IP );
 	void QueryPeerIP( void );
+	void SendProxyHeader( void );
+	void LoadPeerIPList( UFC::UiniFile& Ini );
 	void SetTWSE8DigiSeqVersion( bool Is8Digi );        
 	bool IsTWSE8DigiSeq( void ) { return FIsTWSE8DigiVersion; }
 	void SetThroughput( int PerSec ) { FOrderPerSec = PerSec; }

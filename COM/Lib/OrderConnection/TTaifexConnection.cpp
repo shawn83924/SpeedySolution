@@ -1310,6 +1310,7 @@ void PeerIPThread::Execute( void )
         {
             FConnection->SetPeerIP( IP );
             Glog->fprintf( " Query peer IP OK, IP[%s].", IP.c_str() );
+            FConnection->SendProxyHeader();
         }
         else
             Glog->fprintf( " Query peer IP failed, invalid response[%s].", IP.c_str() );
@@ -1322,18 +1323,69 @@ void PeerIPThread::Execute( void )
 //---------------------------------------------------------------------------
 // Peer IP
 //---------------------------------------------------------------------------
+/**
+ *  Return FPeerIP if it is set and not listed in FMTMD.ini [PeerIP];
+ *  otherwise return FLocalIP.
+ */
 UFC::AnsiString TTaifexConnection::GetLocalIP( void )
 {
     UFC::PLockObject Lock( FPeerIPCS );
-    if( FPeerIP.Length() > 0 )
+    if( FPeerIP.Length() > 0 && FPeerIPList.IndexOf( FPeerIP ) < 0 )
         return FPeerIP;
     return FLocalIP;
+}
+//---------------------------------------------------------------------------
+/**
+ *  Load IP list from FMTMD.ini [PeerIP], every entry except Url is an IP, e.g.
+ *      [PeerIP]
+ *      Url=https://...
+ *      IP1=1.2.3.4
+ *      IP2=5.6.7.8
+ */
+void TTaifexConnection::LoadPeerIPList( UFC::UiniFile& Ini )
+{
+    UFC::PLockObject Lock( FPeerIPCS );
+    FPeerIPList.Clear();
+
+    UFC::Section* PeerIPSection = Ini.GetSection( "PeerIP" );
+    if( PeerIPSection == NULL )
+        return;
+
+    UFC::AnsiString Name, Value;
+    for( int i = 0; i < PeerIPSection->ItemCount(); i++ )
+    {
+        if( PeerIPSection->GetNameValue( i, Name, Value ) == FALSE )
+            continue;
+        if( Name.AnsiCompareIC( "Url" ) == 0 || Value.Length() == 0 )
+            continue;
+        FPeerIPList.Add( Value );
+        Glog->fprintf( " %s [PeerIP] %s=%s", PEER_IP_INI_FILE, Name.c_str(), Value.c_str() );
+    }
 }
 //---------------------------------------------------------------------------
 void TTaifexConnection::SetPeerIP( const UFC::AnsiString& IP )
 {
     UFC::PLockObject Lock( FPeerIPCS );
     FPeerIP = IP;
+}
+//---------------------------------------------------------------------------
+/**
+ *  Send PROXY protocol v2 header to SpeedyProxy, so the server side
+ *  ClientSocket->GetPeerIPAddress() becomes GetLocalIP() (same IP as order PeerIP).
+ *  Called by PeerIPThread after public IP queried.
+ */
+void TTaifexConnection::SendProxyHeader( void )
+{
+    UFC::AnsiString LocalIP, PeerIP;
+
+    if( FTransport == NULL )
+        return;
+    PeerIP = GetLocalIP();
+    {
+        UFC::PLockObject Lock( FPeerIPCS );
+        LocalIP = FLocalIP;
+    }
+    FTransport->SendProxyHeader( LocalIP, PeerIP );
 }
 //---------------------------------------------------------------------------
 /**
@@ -1347,6 +1399,7 @@ void TTaifexConnection::QueryPeerIP( void )
     try
     {
         UFC::UiniFile Ini( PEER_IP_INI_FILE, TRUE ); ///< TRUE: do not throw if file not exists.
+        LoadPeerIPList( Ini );
         if( Ini.GetValue( "PeerIP", "Url", Url ) == FALSE || Url.Length() == 0 )
         {
             Glog->fprintf( " %s [PeerIP] Url not set, skip query peer IP.", PEER_IP_INI_FILE );
