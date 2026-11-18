@@ -898,6 +898,7 @@ bool TTaifexConnection::CheckFLEXSymbol(const UFC::AnsiString &Symbol)
 void TTaifexConnection::NewOrder(TNewOrderMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     UFC::AnsiString peerIP = Msg->GetPeerIP();
     if (FUseAPI == atSpeedy)
     {
@@ -1033,6 +1034,7 @@ void TTaifexConnection::NewOrder(TNewOrderMessage *Msg)
 void TTaifexConnection::CancelOrder(TCancelOrderMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     if (FUseAPI == atSpeedy)
     {
         UFC::AnsiString ExchangeSrc(Msg->GetSrc());
@@ -1119,6 +1121,7 @@ void TTaifexConnection::CancelOrder(TCancelOrderMessage *Msg)
 void TTaifexConnection::ReplaceOrder(TReplaceOrderMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     if (FUseAPI == atSpeedy)
     {
         UFC::AnsiString ExchangeSrc(Msg->GetSrc());
@@ -1201,6 +1204,7 @@ void TTaifexConnection::ReplaceOrder(TReplaceOrderMessage *Msg)
 void TTaifexConnection::OrderStatusRequest(TOrderStatusRequest *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     nsOrderMessageDefine::MarketEnum Market = Msg->GetMarket();
     UFC::AnsiString ExchangeSrc(Msg->GetSrc());
     UFC::AnsiString UserData(Msg->GetAllUserData());
@@ -1267,6 +1271,7 @@ void TTaifexConnection::OrderStatusRequest(TOrderStatusRequest *Msg)
 void TTaifexConnection::Quote(TQuoteMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     UFC::AnsiString Account = Msg->GetAccount();
     UFC::AnsiString Symbol = Msg->GetSymbol();
     UFC::AnsiString QuoteID = Msg->GetQuoteID();
@@ -1315,6 +1320,7 @@ void TTaifexConnection::Quote(TQuoteMessage *Msg)
 void TTaifexConnection::QuoteCancel(TQuoteCancelMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     UFC::AnsiString Account = Msg->GetAccount();
     UFC::AnsiString QuoteID = Msg->GetQuoteID();
     UFC::AnsiString Symbol = Msg->GetSymbol();
@@ -1359,6 +1365,7 @@ void TTaifexConnection::QuoteCancel(TQuoteCancelMessage *Msg)
 void TTaifexConnection::QuoteRequest(TQuoteRequestMessage *Msg)
 {
     Msg->SetIsRequestSend(false);
+    Msg->SetPeerIP(GetLocalIP().c_str());
     nsOrderMessageDefine::MarketEnum Market = Msg->GetMarket();
     UFC::AnsiString ExchangeSrc(Msg->GetSrc());
     UFC::AnsiString UserData(Msg->GetAllUserData());

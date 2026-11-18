@@ -318,6 +318,27 @@ public:
 	void Execute( void );
 };
 //------------------------------------------------------------------------------
+/**
+ *  Query client public(peer) IP from a HTTPS url in background,
+ *  so the caller thread will not be blocked.
+ *  Url is loaded from FMTMD.ini [PeerIP] Url=...
+ */
+class PeerIPThread : public UFC::PThread
+{
+private:
+	TTaifexConnection*   FConnection;
+	UFC::AnsiString      FUrl;
+	UFC::PCriticalSection FHandleCS;
+	void*                FSession;       ///< HINTERNET, closed by Abort() to break blocking call.
+	volatile bool        FDone;
+public:
+	PeerIPThread( TTaifexConnection* Connection, const UFC::AnsiString& Url );
+	void Abort( void );
+	bool IsDone( void ) { return FDone; }
+protected:
+	void Execute( void );
+};
+//------------------------------------------------------------------------------
 class TTaifexConnection : public MAppListener, public MessageListener
 {
 public:
@@ -349,7 +370,10 @@ public:
 	UFC::AnsiString                 FID;
 	UFC::AnsiString                 FPassword;
 	UFC::AnsiString                 FToken;
-	UFC::AnsiString                 FLocalIP;
+	UFC::AnsiString                 FLocalIP;        ///< Local machine IP.
+	UFC::AnsiString                 FPeerIP;         ///< Client public IP obtained from HTTPS url (FMTMD.ini [PeerIP] Url).
+	UFC::PCriticalSection           FPeerIPCS;       ///< Protect FPeerIP, written by PeerIPThread.
+	PeerIPThread*                   FPeerIPThread;
 	int                             FAdmin;
 	int                             FIsDMA;
 	int                             FCurrentConnectionID;
@@ -947,7 +971,9 @@ public:
 	bool IsTWFutures( const UFC::AnsiString& Symbol );
         void CancelWorking( CancelMarket Market, const UFC::AnsiString& AE, const UFC::AnsiString& Account, const UFC::AnsiString& UserData, const UFC::AnsiString& ProdID, const UFC::AnsiString& CancelUDD );
         UFC::BufferedLog* GetLogObj() { return Glog; }
-	const UFC::AnsiString& GetLocalIP( void ) { return FLocalIP; }
+	UFC::AnsiString GetLocalIP( void );
+	void SetPeerIP( const UFC::AnsiString& IP );
+	void QueryPeerIP( void );
 	void SetTWSE8DigiSeqVersion( bool Is8Digi );        
 	bool IsTWSE8DigiSeq( void ) { return FIsTWSE8DigiVersion; }
 	void SetThroughput( int PerSec ) { FOrderPerSec = PerSec; }

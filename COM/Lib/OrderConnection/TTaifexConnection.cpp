@@ -7,6 +7,13 @@
 #include "../CA/MLTWCAObject.h"
 #include "../CA/CACGCTSObject.h"
 #endif
+#ifdef _WIN32
+#include <wininet.h>
+#pragma comment( lib, "wininet.lib" )
+#endif
+#include <ctype.h>
+//------------------------------------------------------------------------------
+const char* const PEER_IP_INI_FILE = "FMTMD.ini"; ///< [PeerIP] Url=https://...
 //------------------------------------------------------------------------------
 BOOL              UseRes;
 UFC::BufferedLog* GStdout = NULL;
@@ -110,6 +117,8 @@ TTaifexConnection::TTaifexConnection( HINSTANCE AppInstance,
 ,FID( "" )
 ,FToken( "")
 ,FLocalIP( "127.0.0.1" )
+,FPeerIP( "" )
+,FPeerIPThread( NULL )
 ,FAdmin( 0 )
 ,FIsDMA( 0 )
 ,FCurrentConnectionID( 0 )
@@ -284,6 +293,13 @@ TTaifexConnection::TTaifexConnection( const char* AppName,
 //------------------------------------------------------------------------------
 TTaifexConnection::~TTaifexConnection( void )
 {
+    if( FPeerIPThread != NULL )
+    {
+        FPeerIPThread->Abort();
+        if( FPeerIPThread->WaitFor( 10 ) == TRUE ) ///< Abort() closes handle, should stop quickly.
+            delete FPeerIPThread;
+        FPeerIPThread = NULL;
+    }
     if( FUseAPI == atSpeedy )
     {
         Disconnect();
@@ -1178,6 +1194,184 @@ void LogoffThread::Execute( void )
 	FConnection->Disconnect();
 }
 //---------------------------------------------------------------------------
+// PeerIPThread
+//---------------------------------------------------------------------------
+const int PEER_IP_TIMEOUT_MS  = 5000;  ///< WinINet connect/send/receive timeout.
+const int PEER_IP_MAX_LENGTH  = 45;    ///< Max length of IPv6 text.
+//---------------------------------------------------------------------------
+PeerIPThread::PeerIPThread( TTaifexConnection* Connection, const UFC::AnsiString& Url )
+:UFC::PThread( NULL, FALSE ) ///< Owned by TTaifexConnection, do not free on terminate.
+,FConnection( Connection )
+,FUrl( Url )
+,FSession( NULL )
+,FDone( false )
+{
+    Start();
+}
+//---------------------------------------------------------------------------
+void PeerIPThread::Abort( void )
+{
+    Terminate();
+#ifdef _WIN32
+    UFC::PLockObject Lock( FHandleCS );
+    if( FSession != NULL ) ///< Close session handle to break blocking WinINet call.
+    {
+        InternetCloseHandle( (HINTERNET)FSession );
+        FSession = NULL;
+    }
+#endif
+}
+//---------------------------------------------------------------------------
+static bool IsValidIPText( const UFC::AnsiString& Text )
+{
+    int Len = Text.Length();
+
+    if( Len < 3 || Len > PEER_IP_MAX_LENGTH )
+        return false;
+    for( int i = 0; i < Len; i++ )
+    {
+        char c = Text.c_str()[i];
+        if( !isxdigit( (unsigned char)c ) && c != '.' && c != ':' )
+            return false;
+    }
+    return true;
+}
+//---------------------------------------------------------------------------
+void PeerIPThread::Execute( void )
+{
+#ifdef _WIN32
+    HINTERNET       hSession;
+    HINTERNET       hUrl = NULL;
+    DWORD           Timeout = PEER_IP_TIMEOUT_MS;
+    DWORD           StatusCode = 0;
+    DWORD           Size = sizeof( StatusCode );
+    char            Buffer[ 256 ] = "";
+    DWORD           Total = 0;
+    DWORD           Read = 0;
+    UFC::AnsiString IP;
+
+    if( (hSession = InternetOpenA( "SpeedyAPI", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0 )) == NULL )
+    {
+        Glog->fprintf( " Query peer IP failed, InternetOpen error[%d].", (int)GetLastError() );
+        FDone = true;
+        return;
+    }
+    InternetSetOptionA( hSession, INTERNET_OPTION_CONNECT_TIMEOUT, &Timeout, sizeof( Timeout ) );
+    InternetSetOptionA( hSession, INTERNET_OPTION_SEND_TIMEOUT,    &Timeout, sizeof( Timeout ) );
+    InternetSetOptionA( hSession, INTERNET_OPTION_RECEIVE_TIMEOUT, &Timeout, sizeof( Timeout ) );
+    {
+        UFC::PLockObject Lock( FHandleCS );
+        if( IsTerminated() == TRUE )
+        {
+            InternetCloseHandle( hSession );
+            FDone = true;
+            return;
+        }
+        FSession = hSession;
+    }
+    hUrl = InternetOpenUrlA( hSession, FUrl.c_str(), NULL, 0,
+                             INTERNET_FLAG_RELOAD | INTERNET_FLAG_NO_CACHE_WRITE |
+                             INTERNET_FLAG_NO_UI  | INTERNET_FLAG_NO_COOKIES, 0 );
+    if( hUrl == NULL )
+        Glog->fprintf( " Query peer IP failed, open url[%s] error[%d].", FUrl.c_str(), (int)GetLastError() );
+    else if( HttpQueryInfoA( hUrl, HTTP_QUERY_STATUS_CODE | HTTP_QUERY_FLAG_NUMBER, &StatusCode, &Size, NULL ) == FALSE ||
+             StatusCode != 200 )
+        Glog->fprintf( " Query peer IP failed, url[%s] HTTP status[%d].", FUrl.c_str(), (int)StatusCode );
+    else
+    {
+        while( Total < sizeof( Buffer ) - 1 &&
+               InternetReadFile( hUrl, Buffer + Total, sizeof( Buffer ) - 1 - Total, &Read ) == TRUE &&
+               Read > 0 )
+            Total += Read;
+        Buffer[ Total ] = '\0';
+        ///< Trim leading/trailing white spaces.
+        char* Begin = Buffer;
+        char* End   = Buffer + Total;
+        while( Begin < End && isspace( (unsigned char)*Begin ) )
+            Begin++;
+        while( End > Begin && isspace( (unsigned char)*(End - 1) ) )
+            End--;
+        *End = '\0';
+        IP = Begin;
+    }
+    {
+        UFC::PLockObject Lock( FHandleCS );
+        if( FSession != NULL ) ///< Not closed by Abort().
+        {
+            if( hUrl != NULL )
+                InternetCloseHandle( hUrl );
+            InternetCloseHandle( (HINTERNET)FSession );
+            FSession = NULL;
+        }
+    }
+    if( IsTerminated() == FALSE && IP.Length() > 0 )
+    {
+        if( IsValidIPText( IP ) == true )
+        {
+            FConnection->SetPeerIP( IP );
+            Glog->fprintf( " Query peer IP OK, IP[%s].", IP.c_str() );
+        }
+        else
+            Glog->fprintf( " Query peer IP failed, invalid response[%s].", IP.c_str() );
+    }
+#else
+    Glog->fprintf( " Query peer IP not supported on this platform." );
+#endif
+    FDone = true;
+}
+//---------------------------------------------------------------------------
+// Peer IP
+//---------------------------------------------------------------------------
+UFC::AnsiString TTaifexConnection::GetLocalIP( void )
+{
+    UFC::PLockObject Lock( FPeerIPCS );
+    if( FPeerIP.Length() > 0 )
+        return FPeerIP;
+    return FLocalIP;
+}
+//---------------------------------------------------------------------------
+void TTaifexConnection::SetPeerIP( const UFC::AnsiString& IP )
+{
+    UFC::PLockObject Lock( FPeerIPCS );
+    FPeerIP = IP;
+}
+//---------------------------------------------------------------------------
+/**
+ *  Load url from FMTMD.ini [PeerIP] Url=https://...
+ *  Start a background thread to query peer IP, never block caller.
+ */
+void TTaifexConnection::QueryPeerIP( void )
+{
+    UFC::AnsiString Url;
+
+    try
+    {
+        UFC::UiniFile Ini( PEER_IP_INI_FILE, TRUE ); ///< TRUE: do not throw if file not exists.
+        if( Ini.GetValue( "PeerIP", "Url", Url ) == FALSE || Url.Length() == 0 )
+        {
+            Glog->fprintf( " %s [PeerIP] Url not set, skip query peer IP.", PEER_IP_INI_FILE );
+            return;
+        }
+    }
+    catch( ... )
+    {
+        Glog->fprintf( " Load %s [PeerIP] Url failed.", PEER_IP_INI_FILE );
+        return;
+    }
+    if( FPeerIPThread != NULL )
+    {
+        if( FPeerIPThread->IsDone() == false )
+        {
+            Glog->fprintf( " Previous peer IP query still running, skip." );
+            return;
+        }
+        FPeerIPThread->WaitFor(); ///< Already done, return immediately.
+        delete FPeerIPThread;
+        FPeerIPThread = NULL;
+    }
+    FPeerIPThread = new PeerIPThread( this, Url );
+}
+//---------------------------------------------------------------------------
 bool TTaifexConnection::CheckPassword( const UFC::AnsiString& Password, const UFC::AnsiString& NewPassword, ChangePwdResult& Result )
 {
 	bool UpperChar = false;
@@ -1365,7 +1559,8 @@ void TTaifexConnection::ReceiveAdminMessage( MTree* pTree )
             FAdmin       = Msg.GetIntegerValue( "ADMIN", 0 );
             FIsDMA       = Msg.GetIntegerValue( "DMA", 0 );
             FUseNID64    = Msg.GetIntegerValue( "NID64", 0 );
-            FLocalIP     = Msg.GetStringValue( "ClientIP" );
+            FLocalIP     = FTransport->GetMApp()->GetLocalIPAddress(); ///< Use local machine IP.
+            QueryPeerIP();                                             ///< Query public IP in background.
             Use6DigiSeq  = Msg.GetIntegerValue( "SEQ_6", 1 );
 
             Glog->fprintf( " Encode order message[%s]", (FEncode == 1)?"Yes":"No" );
