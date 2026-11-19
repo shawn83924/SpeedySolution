@@ -1950,9 +1950,9 @@ void __fastcall TContractInfoForm::OptDrawGridContextPopup(TObject *Sender, TPoi
 	// 例:點到表頭、空白格、或某條件不符 → 不顯示選單
 	int Col, Row;
 	OptDrawGrid->MouseToCell( MousePos.x, MousePos.y, Col, Row );
-
-	// 點到表頭
-	if( Col <= 0 || Row <= 0 )
+	int CenterCol = OptDrawGrid->ColCount/2;
+	// 點到表頭或履約價欄位
+	if( Col == CenterCol || Row <= 0 )
 	{
 		Handled = true;     // 取消彈出
 		return;
