@@ -1561,7 +1561,6 @@ void __fastcall TLineChartForm::CandleStickChartNewOrder(TObject *Sender, SideEn
 
 		if( NeedsConfirm == true )
 		{
-			OrdConfirmForm->Parent = this;
 			OrdConfirmForm->Caption = Caption;
 			OrdConfirmForm->Init( FExchange, FSymbol, side,  Price );
 
