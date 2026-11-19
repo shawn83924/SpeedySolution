@@ -125,9 +125,6 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 	EnableStopAfterFilled( false );
 	TIFComboBox->ItemIndex = 0;
 
-	FExList = new TStringList();
-	FSymList = new TStringList();
-
 	FExpBtn2Panel.Add(SplitExpBtn,SplitPanel);
 	FExpBtn2Panel.Add(BullInExpBtn,BullInPanel);
 	FExpBtn2Panel.Add(BullOutExpBtn,BullOutPanel);
@@ -136,8 +133,6 @@ __fastcall TDepthForm::TDepthForm(TWinControl* Owner, int Page , String Ex, Stri
 //---------------------------------------------------------------------------
 __fastcall TDepthForm::~TDepthForm( void )
 {
-	delete FExList;
-	delete FSymList;
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SetWidth( int Add )
@@ -1178,9 +1173,9 @@ bool __fastcall TDepthForm::LoadProperty( const String& Profile )
 	SliceOrderSwitch->State = ( OrderBookList->SetEnable == true)?tssOn:tssOff;
 	StepUpDown->Position = OrderBookList->Step;
 	StepCountUpDown->Position = OrderBookList->StepCount;
+	int ExchangeComboBoxIdx = g_Config.GetIntegerProperty( Profile ,"ExchangeComboBox", 0 );
+	InitExchangeComboBox(ExchangeComboBoxIdx);  ///< Must set index before LoadCustomList() counts the list.
 	LoadCustomList();
-    int ExchangeComboBoxIdx = g_Config.GetIntegerProperty( Profile ,"ExchangeComboBox", 0 );
-	InitExchangeComboBox(ExchangeComboBoxIdx);
 	InitSmartOrderTabs(QuickTabBtn);
 	ApplyStopTick( StopTickUpDown->Position, StopProfitTickUpDown->Position );
 	RatioComboBoxChange( NULL );
@@ -2750,36 +2745,43 @@ void TDepthForm::OnOrderFilled( const String &Exchange,const String &Symbol, con
 	}
 }
 //---------------------------------------------------------------------------
+BasicInformation* __fastcall TDepthForm::GetCustomListItem( int Index )
+{
+	int ListIdx = ExchangeComboBox->ItemIndex;
+
+	if( ListIdx < 0 || ListIdx >= CUSTOM_LIST_COUNT )
+		return NULL;
+	if( Index < 0 || Index >= FCustomMDList[ ListIdx ].ItemCount() )
+		return NULL;
+	return FCustomMDList[ ListIdx ].GetItem( Index );
+}
+//---------------------------------------------------------------------------
 void __fastcall TDepthForm::UpdateSymbolListCount(void)
 {
-	FExList->Clear();
-	FSymList->Clear();
-	SymbolListBox->Count = FCustomMDList[ ExchangeComboBox->ItemIndex ].ItemCount();
+	int ListIdx = ExchangeComboBox->ItemIndex;
+
+	if( ListIdx < 0 || ListIdx >= CUSTOM_LIST_COUNT )
+		SymbolListBox->Count = 0;
+	else
+		SymbolListBox->Count = FCustomMDList[ ListIdx ].ItemCount();
 }
 //---------------------------------------------------------------------------
 void __fastcall TDepthForm::SymbolListBoxData(TWinControl *Control, int Index, UnicodeString &Data)
 {
-	if(FCustomMDList[ ExchangeComboBox->ItemIndex ].ItemCount()<=Index)
-        return;
-	BasicInformation* Info = FCustomMDList[ ExchangeComboBox->ItemIndex ].GetItem(Index);
-	if(Info == NULL)
+	BasicInformation* Info = GetCustomListItem( Index );
+	if( Info == NULL )
 		return;
-	if(Index == FExList->Count)
-		FExList->Add(Info->GetExchange().c_str());
-	if(Index == FSymList->Count)
-		FSymList->Add(Info->GetSymbol().c_str());
 	Data = Info->GetDisplayName();
 }
 //---------------------------------------------------------------------------
 bool __fastcall TDepthForm::GetExSymbol( String &Ex, String &Sym )
 {
-	int Index = SymbolListBox->ItemIndex;
-
-	if( Index == -1 )
+	BasicInformation* Info = GetCustomListItem( SymbolListBox->ItemIndex );
+	if( Info == NULL )
 		return false;
 
-	Ex  = FExList->Strings[ Index ];
-	Sym = FSymList->Strings[ Index ];
+	Ex  = Info->GetExchange().c_str();
+	Sym = Info->GetSymbol().c_str();
 	return true;
 }
 //---------------------------------------------------------------------------
@@ -2893,7 +2895,7 @@ void __fastcall TDepthForm::InitExchangeComboBox(int Idx)
 		ExchangeComboBox->Items->Strings[ i ] = CustomName;
 	}
 
-	if(Idx<0)
+	if( Idx < 0 || Idx >= CUSTOM_LIST_COUNT )
 		Idx = 0;
 	ExchangeComboBox->ItemIndex = Idx;
 }

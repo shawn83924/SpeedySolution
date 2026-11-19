@@ -338,8 +338,6 @@ private:	// Interface TOrderQtyListener
 									 double Px, int Qty,
 									 nsOrderMessageDefine::OrderTypeEnum OrderType );
 private:	// User declarations
-	TStringList* FExList;
-	TStringList* FSymList;
 	BasicInformation* FSymInfo;
 	TWinControl*      FParent;
 	int               FDigit;
@@ -416,6 +414,7 @@ private: ///< TFT Functions
 	void __fastcall SetExpBtnPanel( TButton* ExpBtn);
 	void __fastcall LockUI( bool Locked );
 	void __fastcall LockOtherPanel( bool Locked, TPanel* thisPanel );
+	BasicInformation* __fastcall GetCustomListItem( int Index );
 	bool __fastcall GetExSymbol( String &Ex, String &Sym );
 	void __fastcall CheckBullIn(  double MatchPx, int MatchQty );
 	void __fastcall CheckBullOut(  double MatchPx, int MatchQty );
