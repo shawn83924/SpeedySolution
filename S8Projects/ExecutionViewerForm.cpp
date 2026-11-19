@@ -83,6 +83,7 @@ void __fastcall TExecutionForm::WndProc( TMessage &Msg )
 		case WM_MOUSEACTIVATE:
 			 this->BringToFront();
 			 ContractViewerForm->ActiveClient( this );
+			 EnsureFocusInClientForm( this );
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}

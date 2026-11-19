@@ -54,6 +54,7 @@ void __fastcall TOCODetailForm::WndProc( TMessage &Msg )
 		case WM_MOUSEACTIVATE:
 			 BringToFront();
 			 ContractViewerForm->ActiveClient( this );
+			 EnsureFocusInClientForm( this );
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}

@@ -105,6 +105,7 @@ void __fastcall TOptionsTBarForm::WndProc( TMessage &Msg )
 			 Msg.Result = 1;
 			 return;
 		case WM_MOUSEACTIVATE:
+			 EnsureFocusInClientForm( this );
 			 Msg.Result = MA_ACTIVATE;
 			 return;
 	}

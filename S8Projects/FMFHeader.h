@@ -25,6 +25,25 @@ public:
 	virtual void        __fastcall SetVisible( bool Visible ) = 0;
 };
 //---------------------------------------------------------------------------
+///< Client forms are embedded child windows ( Parent = TabSheet ), they never get
+///< WM_ACTIVATE, so keyboard focus does not follow a click on non-focusable
+///< controls ( e.g. TGraphButton ) and stays on the previous form ( e.g. OrderBookList ).
+///< Call this in WM_MOUSEACTIVATE to move focus into the clicked form.
+inline void EnsureFocusInClientForm( TForm* Form )
+{
+	if( Form == NULL || Form->HandleAllocated() == false )
+		return;
+
+	HWND Focused = ::GetFocus();
+
+	if( Focused == Form->Handle || ::IsChild( Form->Handle, Focused ) )
+		return; ///< Focus already inside this form.
+	if( Form->ActiveControl != NULL && Form->ActiveControl->CanFocus() )
+		Form->ActiveControl->SetFocus();
+	else
+		::SetFocus( Form->Handle );
+}
+//---------------------------------------------------------------------------
 class UnifyProductKey
 {
 public:

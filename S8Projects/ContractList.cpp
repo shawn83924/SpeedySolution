@@ -56,6 +56,7 @@ void __fastcall TContractListForm::WndProc( TMessage &Msg )
 		case WM_MDIACTIVATE:  Msg.Result = 1; return;
 		case WM_MOUSEACTIVATE:BringWindowToTop( Handle );
 							  ContractViewerForm->ActiveClient( this );
+							  EnsureFocusInClientForm( this );
 							  Msg.Result = MA_ACTIVATE;
 							  return;
 	}
