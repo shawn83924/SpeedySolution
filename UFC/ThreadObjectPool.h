@@ -44,7 +44,7 @@ private:
             ///< New objects
             if( FCount.Value() <  FPoolSize )           
             {
-                for( register int i = 0; i < FNewPer50ms; i++ )
+                for( int i = 0; i < FNewPer50ms; i++ )
                 {
                     if( FQ.push( (void*) new T() ) == true )                            
                         FCount += 1;
@@ -64,7 +64,7 @@ public:
     ,FNewPer50ms( NewObjectPerSec / 20 )
     { 
         FQ.init( PoolSize*2 );
-        for( register size_t i = 0; i < FPoolSize; i++ )
+        for( size_t i = 0; i < FPoolSize; i++ )
         {
             if( FQ.push( (void*) new T() ) == true )
                 FCount += 1;
@@ -115,7 +115,7 @@ private:
             if( FQ.size() <  FPoolSize )           
             {
                 UFC::PLockObject Lock( FCS );                
-                for( register int i = 0; i < FNewPer50ms; i++ )
+                for( int i = 0; i < FNewPer50ms; i++ )
                      FQ.push( new T() );                            
             }            
         }
@@ -128,7 +128,7 @@ public:
     ,FPoolSize( PoolSize )
     ,FNewPer50ms( NewObjectPerSec / 20 )
     {         
-        for( register size_t i = 0; i < FPoolSize; i++ )
+        for( size_t i = 0; i < FPoolSize; i++ )
              FQ.push( new T() );
         Start();
     }   

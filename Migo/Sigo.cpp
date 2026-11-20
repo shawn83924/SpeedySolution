@@ -3,10 +3,27 @@
 *  @author Simon Chang
 *
 */
+#define MIGO_SIGO_LEGACY_CTORS   ///< also compile the pre-BuildDate constructor symbols (see Sigo.h)
 #include "Sigo.h"
 #include "BufferedLog.h"
+#include <map>
 //---------------------------------------------------------------------------
 const int REQ_MAX = 200;
+const UFC::AnsiString SYSTEM_BUILDDATE_QUERY = "SYSTEM.BUILDDATE_QUERY";
+const UFC::AnsiString SYSTEM_BUILDDATE_REPLY = "SYSTEM.BUILDDATE_REPLY";
+//----------------------------------------------------------------------------------------------------------------
+///< Build date per MessageObject, kept out of the object so sizeof(MessageObject) matches the
+///< pre-BuildDate header. Function-local statics avoid cross-file static-initialization order.
+static UFC::PCriticalSection& BuildDateLock()
+{
+    static UFC::PCriticalSection Lock;
+    return Lock;
+}
+static std::map<const MessageObject*, UFC::AnsiString>& BuildDates()
+{
+    static std::map<const MessageObject*, UFC::AnsiString> Dates;
+    return Dates;
+}
 //----------------------------------------------------------------------------------------------------------------
 AppExitThread::AppExitThread( int MS )
 :UFC::PThread( NULL, TRUE )
@@ -22,6 +39,38 @@ void AppExitThread::Execute( void )
     exit( 0 );
 }
 //----------------------------------------------------------------------------------------------------------------
+MessageObject::MessageObject( UFC::AnsiString AppName, UFC::AnsiString BuildDate )
+:UFC::PThread( NULL, FALSE )
+,FApp( NULL )
+,FListener( &FEmptyListener )
+,FAppName( AppName )
+,FResponseListener( this )
+{
+    MApp::MAppProperties AppProps;               // declare MAPP properties
+    AppProps.setAppName( AppName.c_str());       // set application name
+    InitMessageObject( AppProps, MApp::MAPP_DEF_PORT, BuildDate );
+}
+//----------------------------------------------------------------------------------------------------------------
+MessageObject::MessageObject( UFC::AnsiString AppName,
+                              UFC::AnsiString Version,
+                              UFC::AnsiString Description,
+                              UFCType::Int32 Port,
+                              UFC::AnsiString BuildDate )
+:UFC::PThread( NULL, FALSE )
+,FApp( NULL )
+,FListener( &FEmptyListener )
+,FAppName( AppName )
+,FResponseListener( this )
+{
+    MApp::MAppProperties AppProps;               // declare MAPP properties
+    AppProps.setAppName( AppName.c_str());       // set application name
+    AppProps.setAppVersion( Version.c_str() );   // set application version
+    AppProps.setAppInfo( Description.c_str() );  // set banner description
+    AppProps.setConfigURL( "Sigo" );
+    InitMessageObject( AppProps, Port, BuildDate );
+}
+//----------------------------------------------------------------------------------------------------------------
+///< Legacy constructors: same symbols as the pre-BuildDate Sigo.h (build date unknown).
 MessageObject::MessageObject( UFC::AnsiString AppName )
 :UFC::PThread( NULL, FALSE )
 ,FApp( NULL )
@@ -31,11 +80,7 @@ MessageObject::MessageObject( UFC::AnsiString AppName )
 {
     MApp::MAppProperties AppProps;               // declare MAPP properties
     AppProps.setAppName( AppName.c_str());       // set application name
-    FApp = new MApp( &AppProps, MApp::MAPP_DEF_PORT, MApp::MSG_QUEUE_SIZE  );
-    FApp->SetListener( this );
-    AddListener( "MBUS", "all", this );
-    FResponseSubject.Printf( "%s%s_%010u", UFC::Hostname, AppName.c_str(), UFC::GetTickCountMS() );
-    AddListener( FResponseSubject, "all", &FResponseListener );
+    InitMessageObject( AppProps, MApp::MAPP_DEF_PORT, "unknown" );
 }
 //----------------------------------------------------------------------------------------------------------------
 MessageObject::MessageObject( UFC::AnsiString AppName,
@@ -53,11 +98,22 @@ MessageObject::MessageObject( UFC::AnsiString AppName,
     AppProps.setAppVersion( Version.c_str() );   // set application version
     AppProps.setAppInfo( Description.c_str() );  // set banner description
     AppProps.setConfigURL( "Sigo" );
+    InitMessageObject( AppProps, Port, "unknown" );
+}
+//----------------------------------------------------------------------------------------------------------------
+///< Shared constructor body.
+void MessageObject::InitMessageObject( MApp::MAppProperties& AppProps, UFCType::Int32 Port, const UFC::AnsiString& BuildDate )
+{
+    {
+        UFC::PLockObject Lock( BuildDateLock() );
+        BuildDates()[ this ] = BuildDate;
+    }
     FApp = new MApp( &AppProps, Port, MApp::MSG_QUEUE_SIZE );
-    FApp->SetListener( this );    
+    FApp->SetListener( this );
     AddListener( "MBUS", "all", this );
-    FResponseSubject.Printf( "%s%s_%010u", UFC::Hostname, AppName.c_str(), UFC::GetTickCountMS() );
+    FResponseSubject.Printf( "%s%s_%010u", UFC::Hostname, FAppName.c_str(), UFC::GetTickCountMS() );
     AddListener( FResponseSubject, "all", &FResponseListener );
+    AddListener( SYSTEM_BUILDDATE_QUERY, FAppName, this );
 }
 //----------------------------------------------------------------------------------------------------------------
 MessageObject::~MessageObject( )
@@ -69,6 +125,8 @@ MessageObject::~MessageObject( )
         WaitFor();
         delete FApp;
     }
+    UFC::PLockObject Lock( BuildDateLock() );
+    BuildDates().erase( this );
 }
 //----------------------------------------------------------------------------------------------------------------
 void MessageObject::SetHost( const UFC::AnsiString& HostIP, int Port )
@@ -284,6 +342,11 @@ void MessageObject::OnMigoMessage( const UFC::AnsiString& Subject, const UFC::An
 {
     UFCType::Int32 CMD;
 
+    if( Subject == SYSTEM_BUILDDATE_QUERY )
+    {
+        ReplyBuildDate( Data );
+        return;
+    }
     if( Data->get( "CMD", CMD ) == TRUE )
     {
         switch( CMD )
@@ -307,7 +370,7 @@ void MessageObject::CheckStat( MTree* Data )
 
     if( Data->get( "COUNT", Count ) && Data->get( "HOST", Host ) )
     {        
-        for( register int i = 0; i < Count; i++ )
+        for( int i = 0; i < Count; i++ )
         {
             UFC::AnsiString FieldName( i );
              
@@ -328,6 +391,27 @@ void MessageObject::CheckStat( MTree* Data )
         }
         if( Host.AnsiCompare( UFC::Hostname ) == 0 )
             FListener->OnProcessList( ProcessList );
+    }
+}
+//------------------------------------------------------------------------------
+void MessageObject::ReplyBuildDate( MTree* Data )
+{
+    UFC::AnsiString ReplyKey;
+
+    if( Data->get( "ReplyKey", ReplyKey ) == TRUE )
+    {
+        MTree ReplyData;
+
+        UFC::AnsiString BuildDate( "unknown" );
+        {
+            UFC::PLockObject Lock( BuildDateLock() );
+            std::map<const MessageObject*, UFC::AnsiString>::const_iterator It = BuildDates().find( this );
+            if( It != BuildDates().end() )
+                BuildDate = It->second;
+        }
+        ReplyData.append( "Name", FAppName );
+        ReplyData.append( "BuildDate", BuildDate );
+        Send( SYSTEM_BUILDDATE_REPLY, ReplyKey, ReplyData, FALSE );
     }
 }
 //------------------------------------------------------------------------------

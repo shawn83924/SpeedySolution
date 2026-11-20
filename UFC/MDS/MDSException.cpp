@@ -10,7 +10,7 @@ MDSException::MDSException( void )
 {
 }
 //------------------------------------------------------------------------------------------------------------------------
-MDSException::~MDSException( void ) throw()
+MDSException::~MDSException( void ) UFC_NOEXCEPT
 {
 }
 //------------------------------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ void MDSException::Throw( const char* FormatStr, ... )
 	throw( *this );
 }
 //------------------------------------------------------------------------------------------------------------------------
-const char* MDSException::what( void ) const throw()
+const char* MDSException::what( void ) const UFC_NOEXCEPT
 {
 	return FMessage.c_str();
 }

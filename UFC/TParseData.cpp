@@ -65,7 +65,7 @@ TDataset* TParseData::Parse( PStream* pStream )
             int ListCount = StringList.ItemCount();
             AnsiString* str;
 
-            for( register int i = 0; i < ListCount; i++ )
+            for( int i = 0; i < ListCount; i++ )
             {
                 str = StringList.GetItem(i);
                 

@@ -40,7 +40,7 @@ public:
 class PStringTokenizer
 {
 private:
-	void Init(const AnsiString &deli) throw( AllocException );
+	void Init(const AnsiString &deli);
 	void Pack();
 
 	PList*       TokenList;
@@ -64,22 +64,22 @@ public:
     static void ReplaceChars(AnsiString &Replace, const AnsiString RepChar,
     						 char ToRep);
 
-	PStringTokenizer () throw();
-    PStringTokenizer (const AnsiString &str, const AnsiString& deli, Boolean quote = false) throw (AllocException);
-    PStringTokenizer (const AnsiString &str, Boolean quote = false) throw (AllocException);
-    PStringTokenizer (char* str, const AnsiString& deli, Boolean quote = false) throw (AllocException);
-    PStringTokenizer (char* str, Boolean quote = false) throw (AllocException); 
-    ~PStringTokenizer() throw();
+	PStringTokenizer ();
+    PStringTokenizer (const AnsiString &str, const AnsiString& deli, Boolean quote = false);
+    PStringTokenizer (const AnsiString &str, Boolean quote = false);
+    PStringTokenizer (char* str, const AnsiString& deli, Boolean quote = false);
+    PStringTokenizer (char* str, Boolean quote = false); 
+    ~PStringTokenizer();
 
 	void  SetWithDelimiter(BOOL withDelim) { FWithDelim = withDelim; }
-    BOOL  HasMoreTokens() throw() { return (TokenList->Count() != 0); }
-    Int16 CountTokens() throw() { return TokenList->Count(); }
-    AnsiString NextToken(Char *DelimChar = NULL) throw();
-    AnsiString GetToken(Int16 Index, Char *DelimChar = NULL) throw();
-    const Char* GetToken(Int16 Index, Int32& CharCount, Char *DelimChar = NULL ) throw();
-	BOOL AnyDelim() throw() { return DelimFound; }
+    BOOL  HasMoreTokens() { return (TokenList->Count() != 0); }
+    Int16 CountTokens() { return TokenList->Count(); }
+    AnsiString NextToken(Char *DelimChar = NULL);
+    AnsiString GetToken(Int16 Index, Char *DelimChar = NULL);
+    const Char* GetToken(Int16 Index, Int32& CharCount, Char *DelimChar = NULL );
+	BOOL AnyDelim() { return DelimFound; }
 
-	void DeleteTokens(Int16 Count) throw();
+	void DeleteTokens(Int16 Count);
 
 	void SetToken(const char *str, const AnsiString &deli, BOOL quote);
 	void ReToken(const AnsiString& Delimiter);

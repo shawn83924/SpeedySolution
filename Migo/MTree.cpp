@@ -67,7 +67,7 @@ MTree::MTree( const MTree& CopyTree )
 {
    MNode* CopyNode;
    FSize = sizeof( UFC::NInt32 );
-   for( register UFCType::Int32 i = 0; i < CopyTree.getNodeCount(); i++ )
+   for( UFCType::Int32 i = 0; i < CopyTree.getNodeCount(); i++ )
    {
         if( (CopyNode = CopyTree.FEnumerator.node( i ))!=NULL )
         {
@@ -81,8 +81,8 @@ void MTree::DeleteAllNodes( void )
 {
    if( FNodes.ItemCount() > 0 )
    {
-       register MNode* DelNode ;
-       for( register UFCType::Int32 i = 0; i < getNodeCount(); i++ )
+       MNode* DelNode ;
+       for( UFCType::Int32 i = 0; i < getNodeCount(); i++ )
        {
             if( (DelNode = FEnumerator.node( i ))!=NULL )
                 delete DelNode;
@@ -99,7 +99,7 @@ void MTree::Copy( const MTree& CopyTree )
    DeleteAllNodes();
    MNode* CopyNode;
    FSize = sizeof( UFC::NInt32 );
-   for( register UFCType::Int32 i = 0; i < CopyTree.getNodeCount(); i++ )
+   for( UFCType::Int32 i = 0; i < CopyTree.getNodeCount(); i++ )
    {
         if( (CopyNode = CopyTree.FEnumerator.node( i ))!=NULL )
         {
@@ -119,7 +119,7 @@ void MTree::LoadFromStream( UFC::PStream* Stream )
     UFC::NInt32  NodeCount;
 
     NodeCount.LoadFromStream( Stream );
-    for( register UFCType::Int32 i = NodeCount.ToInt32() - 1; i >= 0; i-- )
+    for( UFCType::Int32 i = NodeCount.ToInt32() - 1; i >= 0; i-- )
 	 append( new MNode( Stream ) );
     FSize = Stream->GetSize();
     FDirty = FALSE; /// Allen modify at 20190614
@@ -132,7 +132,7 @@ void MTree::SaveToStream( UFC::PStream* Stream )
     int OrigSize = Stream->GetSize();
     
     NodeCount.SaveToStream( Stream );  ///< write the Count of Nodes in MTree
-    for( register UFCType::Int32 i = 0; i < getNodeCount(); i++ )
+    for( UFCType::Int32 i = 0; i < getNodeCount(); i++ )
     {
     	Node = FEnumerator.node( i );
 	Node->SaveToStream( Stream );
@@ -451,7 +451,7 @@ UFCType::Int32 MTree::getSize()
         MNode* Node;
 
         FSize = sizeof( UFC::NInt32 );  ///< write the Count of Nodes in MTree
-        for( register UFCType::Int32 i = 0; i < getNodeCount(); i++ )
+        for( UFCType::Int32 i = 0; i < getNodeCount(); i++ )
         {
                 Node = FEnumerator.node( i );
                 FSize += Node->getSize();

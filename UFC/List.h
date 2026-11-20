@@ -90,7 +90,7 @@ public:
 template <class T>
 Int32 List<T>::IndexOf( const T& Val )
 {
-    for( register int i = 0; i < (Int32)FArray.size(); i ++ )
+    for( int i = 0; i < (Int32)FArray.size(); i ++ )
     {
         if( Val == FArray[ i ] )
             return i;
@@ -143,7 +143,7 @@ public:
 	Int32     IndexOf( T* Object );
 	Int32     Remove( T* Object );
 	T*        Delete( int Index );
-	T*        GetItem( Int32 Index ) throw();
+	T*        GetItem( Int32 Index );
 	T*        SetItem( Int32 Index, T* NewObject );
         T**       GetBuffer( void );
 	void      SetOwnObjects( BOOL Own ){ FOwnObjects = Own; }
@@ -200,7 +200,7 @@ Int32 PtrList<T>::IndexOf( T* Object )
 }
 //---------------------------------------------------------------------------
 template <class T>
-T* PtrList<T>::GetItem( Int32 Index ) throw()
+T* PtrList<T>::GetItem( Int32 Index )
 {
 	return (( T*)FList->GetItem( Index ));
 }

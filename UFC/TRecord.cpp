@@ -24,7 +24,7 @@ void TRecord::AddFieldValues()
 	if( FRefFieldSchema != NULL )
 	{
         FFieldCount = FRefFieldSchema->GetFieldCount();
-		for( register Int32 i = 0;i < FFieldCount; i++ )
+		for( Int32 i = 0;i < FFieldCount; i++ )
 		{
             FValueList.Add( new AnsiString( FRefFieldSchema->GetDefaultValue(i) ) );
         }
@@ -33,7 +33,7 @@ void TRecord::AddFieldValues()
 //---------------------------------------------------------------------------
 void TRecord::Reset()
 {
-    for( register Int32 i = 0;i < FFieldCount; i++ )
+    for( Int32 i = 0;i < FFieldCount; i++ )
     {
         *( FValueList.GetItem(i) ) = FRefFieldSchema->GetDefaultValue(i);
     }

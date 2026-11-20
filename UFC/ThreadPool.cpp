@@ -132,7 +132,7 @@ QueuedJob* PThreadPool::GetFromQueue( void )
 //-----------------------------------------------------------------------------------------
 int  PThreadPool::FindJob( PTaskObject* Task, void* Param )
 {
-    for( register int i = FJobQueue.ItemCount()-1; i >= 0; i-- )
+    for( int i = FJobQueue.ItemCount()-1; i >= 0; i-- )
     {
          if( FJobQueue.GetItem( i )->Same( Task, Param ) == TRUE )///< Find the job!
              return i;

@@ -8,7 +8,7 @@
 namespace PFC
 {
 //---------------------------------------------------------------------------
-PStringTokenizer::PStringTokenizer () throw()
+PStringTokenizer::PStringTokenizer ()
 	:TokenList( new PList() )
 	,FDelStr( FALSE )
 	,FQuote( FALSE )
@@ -17,7 +17,7 @@ PStringTokenizer::PStringTokenizer () throw()
 	CopyStr = new AnsiString( );
 }
 //---------------------------------------------------------------------------
-PStringTokenizer::PStringTokenizer ( char *str, const AnsiString &deli, Boolean quote) throw( AllocException )
+PStringTokenizer::PStringTokenizer ( char *str, const AnsiString &deli, Boolean quote)
 	:TokenList( new PList() )
 	,FDelStr( FALSE )
 	,FQuote( quote )
@@ -40,7 +40,7 @@ PStringTokenizer::PStringTokenizer ( char *str, const AnsiString &deli, Boolean 
     }
 }
 //---------------------------------------------------------------------------
-PStringTokenizer::PStringTokenizer ( char *str, Boolean quote) throw ( AllocException )
+PStringTokenizer::PStringTokenizer ( char *str, Boolean quote)
 	:TokenList(new PList() )
 	,FDelStr( FALSE )
 	,FQuote(quote)
@@ -65,7 +65,6 @@ PStringTokenizer::PStringTokenizer ( char *str, Boolean quote) throw ( AllocExce
 //---------------------------------------------------------------------------
 PStringTokenizer::PStringTokenizer (const AnsiString &str, const AnsiString &deli, 
 									Boolean quote )
-	throw( AllocException )
 	:TokenList(new PList())
 	,CopyStr(new AnsiString(str))
 	,FDelStr( true )
@@ -88,7 +87,6 @@ PStringTokenizer::PStringTokenizer (const AnsiString &str, const AnsiString &del
 }
 //---------------------------------------------------------------------------
 PStringTokenizer::PStringTokenizer (const AnsiString &str, Boolean quote)
-	throw (PAllocException)
 	:TokenList(new PList())
 	,CopyStr(new AnsiString(str))
 	,FDelStr( TRUE )
@@ -110,7 +108,7 @@ PStringTokenizer::PStringTokenizer (const AnsiString &str, Boolean quote)
     }
 }
 //---------------------------------------------------------------------------
-PStringTokenizer::~PStringTokenizer() throw()
+PStringTokenizer::~PStringTokenizer()
 {
     delete TokenList;
     if( !FDelStr )
@@ -122,13 +120,12 @@ PStringTokenizer::~PStringTokenizer() throw()
 }
 //---------------------------------------------------------------------------
 void PStringTokenizer::Init( const AnsiString &deli )
-	throw ( AllocException)
 {
 	if (CopyStr->Length())
 	{
 
-	   	register UInt16 index = 0;
-	   	register Int32  found;
+	   	UInt16 index = 0;
+	   	Int32  found;
 	    PCheckPoint     cp;
 	   	const Char*     StrPtr = CopyStr->c_str();
 	   	UInt16          charCount;
@@ -206,7 +203,6 @@ void PStringTokenizer::ReToken(const AnsiString& Delimiter)
 }
 //---------------------------------------------------------------------------
 AnsiString PStringTokenizer::GetToken(Int16 Index, Char *DelimChar)
-	throw()
 {
 	if( Index >= TokenList->Count() )
     	return AnsiString();
@@ -220,7 +216,6 @@ AnsiString PStringTokenizer::GetToken(Int16 Index, Char *DelimChar)
 }
 //---------------------------------------------------------------------------
 const Char* PStringTokenizer::GetToken(Int16 Index, Int32& CharCount, Char *DelimChar)
-	throw()
 {
 	if( Index >= TokenList->Count() )
     	return NULL;
@@ -233,7 +228,7 @@ const Char* PStringTokenizer::GetToken(Int16 Index, Int32& CharCount, Char *Deli
    	return cp.Offset;
 }
 //---------------------------------------------------------------------------
-AnsiString PStringTokenizer::NextToken(Char *DelimChar) throw()
+AnsiString PStringTokenizer::NextToken(Char *DelimChar)
 {
 	if( TokenList->Count() )
 	{
@@ -250,7 +245,7 @@ AnsiString PStringTokenizer::NextToken(Char *DelimChar) throw()
     return AnsiString();
 }
 //---------------------------------------------------------------------------
-void PStringTokenizer::DeleteTokens(Int16 Count) throw()
+void PStringTokenizer::DeleteTokens(Int16 Count)
 {
 	while ( TokenList->Count() && Count )
 	{
@@ -264,13 +259,13 @@ void PStringTokenizer::Pack()
 	if (TokenList->Count() > 0)
 	{
 		PCheckPoint cp = TokenList->Get(0);
-		register UInt32 diff = cp.Offset - CopyStr->StrBuffer;
+		UInt32 diff = cp.Offset - CopyStr->StrBuffer;
 		if (diff)
 		{
 			CopyStr->Delete(0, diff);
 			cp.Offset -= diff;
 			TokenList->Set(0, cp);
-			for ( register int i = 1 ; i < TokenList->Count() ; i++ )
+			for ( int i = 1 ; i < TokenList->Count() ; i++ )
 			{
 				cp = TokenList->Get(i);
 				cp.Offset -= diff;
@@ -339,8 +334,8 @@ void PStringTokenizer::ReplaceChars(AnsiString &Replace,
 									const AnsiString RepChars,
 									char ToRep)
 {
-	register int pos;
-	register int i = 1;
+	int pos;
+	int i = 1;
 
 	Replace.SetDelimiter( RepChars );
 	if (ToRep == '\0')

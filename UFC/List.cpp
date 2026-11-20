@@ -203,9 +203,9 @@ void* PList::SetItem( Int32 Index, void* NewData )
 //---------------------------------------------------------------------------
 Int32 PList::IndexOf( void *ToFind )
 {
-    register void *Data;
+    void *Data;
 
-	for( register Int32 i = 0; i < FPosition; i++)
+	for( Int32 i = 0; i < FPosition; i++)
 	{
         Data = *( FArray + i );
 		if( ToFind == Data)
@@ -254,7 +254,7 @@ PStringList::PStringList( const PStringList& Ref )
 {
 	int CpyCount = Ref.ItemCount();
 
-	for( register int i = 0; i < CpyCount; i++ )
+	for( int i = 0; i < CpyCount; i++ )
 		 Add( Ref.GetItem( i ) );    
 }
 //---------------------------------------------------------------------------
@@ -271,7 +271,7 @@ void PStringList::SetQuoteStrings( const UFC::AnsiString& Strings, const UFC::An
 		UFC::AnsiString Token;
 
 		Clear();
-		for( register int i = 0; i < len; i++ )
+		for( int i = 0; i < len; i++ )
 		{
 			ch = *( StrPtr + i );
 			if( ch == '"' )
@@ -374,7 +374,7 @@ void PStringList::SetStrings( const AnsiString& Strings, const AnsiString& Delim
 //---------------------------------------------------------------------------
 Int32 PStringList::IndexOf( const UFC::AnsiString& FindString )
 {
-	for( register Int32 i = 0; i < ItemCount(); i++)
+	for( Int32 i = 0; i < ItemCount(); i++)
 		 if( FArray[ i ] == FindString )
 			return i;
 	return -1;
@@ -384,7 +384,7 @@ Int32 PStringList::CopyFrom( UFC::PStringList& SrcList )
 {
 	int CpyCount = SrcList.ItemCount();
 
-	for( register int i = 0; i < CpyCount; i++ )
+	for( int i = 0; i < CpyCount; i++ )
 		 Add( SrcList[i] );
 	return CpyCount;
 }
@@ -395,7 +395,7 @@ void PStringList::Save( const UFC::AnsiString& FileName )
     int             CpyCount = ItemCount();
     char            buffer[ 32 ];
     
-    for( register int i = 0; i < CpyCount; i++ )
+    for( int i = 0; i < CpyCount; i++ )
     {
         UFC::AnsiString&  Line = FArray[ i ];                    
         saveini.Write( Line.c_str(), Line.Length() );
@@ -410,7 +410,7 @@ UFC::AnsiString PStringList::DelimiterString( char Delimiter )
     PStringBuffer StringBuf;    
     int           Count = ItemCount();
         
-    for( register int i = 0; i < Count; i++ )
+    for( int i = 0; i < Count; i++ )
     {
         StringBuf.Append( FArray[ i ] );
         if( i != Count - 1 )

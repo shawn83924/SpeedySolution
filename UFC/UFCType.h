@@ -2,6 +2,26 @@
 #ifndef UFC_TYPE_H
 #define UFC_TYPE_H
 //---------------------------------------------------------------------------
+// UFC_NOEXCEPT : non-throwing exception specification.
+//   C++11 and later -> noexcept
+//   C++98 / C++03   -> throw()
+// Checks:
+//   __cplusplus >= 201103L : GCC 4.7+, clang, and MSVC with /Zc:__cplusplus
+//   _MSC_VER >= 1900       : Visual C++ 2015+ (__cplusplus stays 199711L by default)
+//   __GXX_EXPERIMENTAL_CXX0X__ + GCC 4.6 : -std=c++0x on GCC 4.6 (__cplusplus was 1, noexcept already supported)
+//---------------------------------------------------------------------------
+#ifndef UFC_NOEXCEPT
+	#if defined(__cplusplus) && (__cplusplus >= 201103L)
+		#define UFC_NOEXCEPT noexcept
+	#elif defined(_MSC_VER) && (_MSC_VER >= 1900)
+		#define UFC_NOEXCEPT noexcept
+	#elif defined(__GXX_EXPERIMENTAL_CXX0X__) && defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 406)
+		#define UFC_NOEXCEPT noexcept
+	#else
+		#define UFC_NOEXCEPT throw()
+	#endif
+#endif
+//---------------------------------------------------------------------------
 namespace UFCType
 {
 

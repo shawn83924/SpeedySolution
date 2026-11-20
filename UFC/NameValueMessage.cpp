@@ -155,7 +155,7 @@ UFC::AnsiString NameValueMessage::ToString( bool WithRtn )
     UFC::MemoryStream ms( FList.ItemCount()*10 );
     UFC::AnsiString Str;
 
-    for( register int i = 0; i < FList.ItemCount(); i++ )
+    for( int i = 0; i < FList.ItemCount(); i++ )
     {
         Str = FList[i];
         ms.Write( Str.c_str(), Str.Length() );

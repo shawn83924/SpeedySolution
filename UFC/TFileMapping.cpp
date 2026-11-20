@@ -24,17 +24,17 @@ bool TMutex::Open( const UFC::AnsiString& Key, bool CreateNew )
 
     if( !CreateNew )
     {
-		FHandle = OpenMutexA( NULL,                //安全屬性。NULL表示使用預設的屬性
-							 FALSE,               //如果希望呼叫CreateMutex的這個執行緒擁有產生出來mutex就設為TRUE
-							 MutexName.c_str() ); //mutex的名稱
+		FHandle = OpenMutexA( NULL,                // Security attributes. NULL means use the default attributes
+							 FALSE,               // Set to TRUE if the thread calling CreateMutex should own the created mutex
+							 MutexName.c_str() ); // Name of the mutex
 		if( FHandle )
 			return true;
 	}
 	else
 	{
-		FHandle = CreateMutexA( NULL,                //安全屬性。NULL表示使用預設的屬性
-							   FALSE,               //如果希望呼叫CreateMutex的這個執行緒擁有產生出來mutex就設為TRUE
-							   MutexName.c_str() ); //mutex的名稱
+		FHandle = CreateMutexA( NULL,                // Security attributes. NULL means use the default attributes
+							   FALSE,               // Set to TRUE if the thread calling CreateMutex should own the created mutex
+							   MutexName.c_str() ); // Name of the mutex
         if( FHandle )
             return true;
     }

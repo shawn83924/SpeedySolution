@@ -509,11 +509,11 @@ void MultiplexingServer::CheckHeartbeat( void )
 {
     ///< Modify by Simon 2010/1/8
     ///< Check connections in FAllClients original check FIdleList
-    register PClientSocket* clientSocket;
+    PClientSocket* clientSocket;
     Int32        Count = FAllClients.ItemCount() - 1;     
     PLockObject  Lock( FClientListCS );
     
-    for( register Int32 i = Count; i >= 0; i-- )
+    for( Int32 i = Count; i >= 0; i-- )
     {
         if( ( clientSocket = (PClientSocket*)FAllClients.GetItem( i ) ) != NULL )
         {
@@ -526,12 +526,12 @@ void MultiplexingServer::CheckHeartbeat( void )
 int MultiplexingServer::ForceSendHeartbeat( void )
 {   ///< Add by Zhen 2024/04/17
     ///< Force connections Send Heart in FAllClients original check FIdleList
-    register PClientSocket* curClientSocketPtr = 0;
+    PClientSocket* curClientSocketPtr = 0;
     Int32        socketCount = FAllClients.ItemCount() - 1;     
     int          sentCount = 0;
     PLockObject  Lock( FClientListCS );
     
-    for( register Int32 i = socketCount; i >= 0; i-- )
+    for( Int32 i = socketCount; i >= 0; i-- )
     {
         if( ( curClientSocketPtr = (PClientSocket*)FAllClients.GetItem( i ) ) != NULL )
         {
@@ -581,7 +581,7 @@ void MultiplexingServer::PerformEpoll( void )
     }
     else ///< Data comming.
     {    
-        for( register int i = 0; i < SelectCount; i++)
+        for( int i = 0; i < SelectCount; i++)
         {
               if ((events[i].events & EPOLLERR) || (events[i].events & EPOLLHUP) || (!(events[i].events & EPOLLIN)))
               {
@@ -611,13 +611,13 @@ void MultiplexingServer::PerformEpoll( void )
 //------------------------------------------------------------------------------
 void MultiplexingServer::PrepareSelectSetAndSelect( void )
 {
-    register PClientSocket* ClientSocket;
-    register Int32          MaxFD = 0;
-    register Int32          CurrentFD;
+    PClientSocket* ClientSocket;
+    Int32          MaxFD = 0;
+    Int32          CurrentFD;
 
     FD_ZERO( &FReadSet );   ///< Reset the read set.
     FClientListCS.Enter();  ///< Enter critical section to prevent adding the invalidate FD to the set.
-    for( register Int32 i = FIdleList.ItemCount() -1; i >= 0 ; i-- )
+    for( Int32 i = FIdleList.ItemCount() -1; i >= 0 ; i-- )
     {
         if( ( ClientSocket = FIdleList.GetItem( i ) ) != NULL )
         {

@@ -250,8 +250,8 @@ PStringBuffer& PStringBuffer::Insert(UInt16 offset, Int32 i)
 //---------------------------------------------------------------------------
 PStringBuffer& PStringBuffer::Reverse()
 {
-	register int i = 0;
-	register int j = FLength - 1;
+	int i = 0;
+	int j = FLength - 1;
 	char tmpChar;
 
 	while (i < j)

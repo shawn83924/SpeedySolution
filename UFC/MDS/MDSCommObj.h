@@ -39,7 +39,7 @@ public:
 	char*	GetBuffer() const { return FBuffer; }
 	Int32	GetSize() const { return FSize; }
 public:
-	Int32	Compare( const MDSBinaryObj& rhs ) const throw();
+	Int32	Compare( const MDSBinaryObj& rhs ) const;
 public:
 	void	PaddingZero( int Size );
 	void	AppendBuffer( const char* Buf, Int32 Size );
@@ -77,7 +77,30 @@ public:
 // STL Setting
 //
 //------------------------------------------------------------------------------------------------------------------------
-#ifdef __GNUC__							     ///< For GCC compiler
+#if defined(__BORLANDC__) && defined(__clang__)  ///< C++Builder clang-based compilers (bcc32c / bcc64 / bcc64x)
+	///< Same choice as stl_config.h: C++11 unordered containers, independent of __GNUC__ / Dinkumware <hash_map>.
+	#include <unordered_set>
+	#include <unordered_map>
+	#ifndef hash_map
+		#define hash_map unordered_map
+	#endif
+	#ifndef hash_multimap
+		#define hash_multimap unordered_multimap
+	#endif
+	#ifndef hash_set
+		#define hash_set unordered_set
+	#endif
+	namespace std
+	{
+		template <> struct hash< MDS::MDSBinaryObj >
+		{
+			size_t operator()( const MDS::MDSBinaryObj& BinaryObj ) const
+			{
+				return HashBinary( BinaryObj.GetBuffer(), BinaryObj.GetSize() );
+			}
+		};
+	}
+#elif defined(__GNUC__)						     ///< For GCC compiler
 	#if __GNUC__ < 3                         ///< GCC 2.XX
 		#include <hash_map.h>
 		#include <hash_set.h>
@@ -154,6 +177,28 @@ public:
 		}
 		#endif
 	#endif
+#elif defined(_MSC_VER) && (_MSC_VER >= 1600)  ///< Visual C++ 2010 and later: use standard unordered containers
+	#include <unordered_set>
+	#include <unordered_map>
+	#ifndef hash_map
+		#define hash_map unordered_map
+	#endif
+	#ifndef hash_multimap
+		#define hash_multimap unordered_multimap
+	#endif
+	#ifndef hash_set
+		#define hash_set unordered_set
+	#endif
+	namespace std
+	{
+		template <> struct hash< MDS::MDSBinaryObj >
+		{
+			size_t operator()( const MDS::MDSBinaryObj& BinaryObj ) const
+			{
+				return HashBinary( BinaryObj.GetBuffer(), BinaryObj.GetSize() );
+			}
+		};
+	}
 #else      // ...there are other compilers, right?
 	#include <hash_map>
 	#include <hash_set>

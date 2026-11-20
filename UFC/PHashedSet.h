@@ -57,7 +57,7 @@ public:
 	  T operator [] ( Int32 Index )
 	  {
 		 TIterator iter = FHashSet.begin();
-		 for( register Int32 i = 0; i < Index; i++ )
+		 for( Int32 i = 0; i < Index; i++ )
 			  iter++;
 		 return *iter;
 	  }
@@ -111,7 +111,7 @@ public:
 	  T operator [] ( Int32 Index )
 	  {
 		 TIterator iter = FSet.begin();
-		 for( register Int32 i = 0; i < Index; i++ )
+		 for( Int32 i = 0; i < Index; i++ )
 			  iter++;
 		 return *iter;
 	  }

@@ -135,7 +135,7 @@ T PHashedList<K,T>::GetItem( Int32 Index )
 	if( Index >= (Int32)FHashTable.size() || Index < 0 )
 		return NULL;
 	Iterator iter = FHashTable.begin();
-	for( register Int32 i = 0; i < Index; i++ )
+	for( Int32 i = 0; i < Index; i++ )
 		 iter++;
 	return (T)iter->second;
 }
@@ -146,7 +146,7 @@ BOOL PHashedList<K,T>::GetItem( Int32 Index, K& Key, T& Obj )
    if( Index >= (Int32)FHashTable.size() || Index < 0 )
 	   return FALSE;
    Iterator iter = FHashTable.begin();
-   for( register Int32 i = 0; i < Index; i++ )
+   for( Int32 i = 0; i < Index; i++ )
 		iter++;
    Key = iter->first;
    Obj = (T)iter->second;
@@ -180,9 +180,9 @@ T  PHashedList<K,T>::Next( void )
 template <class K,class T>
 K PHashedList<K,T>::CurrentKey( void )
 {
-	///< 原本是 return (T)FIter->first; 把 key 轉成 value 的型別，
-	///< 只要被實例化就編不過，所以不可能有現存呼叫者。修正後可搭配
-	///< First()/Next() 做 O(n) 的鍵值迭代，取代 O(n) 的 GetItem( Index )。
+	///< Originally "return (T)FIter->first;", which cast the key to the value type
+	///< and failed to compile whenever instantiated, so no existing caller depends on it. Combined with
+	///< First()/Next() it now gives O(n) key iteration, replacing the O(n) GetItem( Index ).
 	return FIter->first;
 }
 //------------------------------------------------------------------------------
@@ -302,7 +302,7 @@ BOOL PHashMap<K,T>::GetItem( Int32 Index, T& Obj )
     if( Index >= (Int32)FHashTable.size() || Index < 0 )
         return FALSE;
     Iterator iter = FHashTable.begin();
-    for( register Int32 i = 0; i < Index; i++ )
+    for( Int32 i = 0; i < Index; i++ )
          iter++;
     Obj = (T)iter->second;
 	return TRUE;
@@ -314,7 +314,7 @@ BOOL PHashMap<K,T>::GetItem( Int32 Index, K& Key, T& Obj )
    if( Index >= (Int32)FHashTable.size() || Index < 0 )
        return FALSE;
    Iterator iter = FHashTable.begin();
-   for( register Int32 i = 0; i < Index; i++ )
+   for( Int32 i = 0; i < Index; i++ )
         iter++;
    Key = iter->first;
    Obj = (T)iter->second;

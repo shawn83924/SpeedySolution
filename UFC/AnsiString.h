@@ -62,7 +62,7 @@ private:                              ///< SSO(Small String Optimization)
 private:
     void   SetSize(UInt16 Size, bool KeepData = true);
     void   Append( const char *Str, const UInt16 Length);
-    void   TrimCheck(AnsiString &ResultStr, bool left, bool right) const throw();
+    void   TrimCheck(AnsiString &ResultStr, bool left, bool right) const;
     UInt16 StrNLen( const char *Str, const UInt16 MaxLength );
 public:
     /**
@@ -110,18 +110,18 @@ public:
      * @return (0) if equal, (< 0) if smaller than src and (> 0) if greater
      *         than src
      */
-    int          AnsiCompare( const AnsiString& src) const throw();
-    int          AnsiCompare( const char* src) const throw();
+    int          AnsiCompare( const AnsiString& src) const;
+    int          AnsiCompare( const char* src) const;
     /**
      * Case Insensititive Compare
      *
      * @return (0) if equal, (< 0) if smaller than src and (> 0) if greater
      *         than src
      */
-    int          AnsiCompareIC( const AnsiString& src) const throw();
-    int          AnsiCompareIC( const char* src) const throw();
-    int          AnsiNCompare( const char* src, Int16 Count ) const throw();
-    int	         AnsiNCompareIC( const char* src, Int16 Count ) const throw();
+    int          AnsiCompareIC( const AnsiString& src) const;
+    int          AnsiCompareIC( const char* src) const;
+    int          AnsiNCompare( const char* src, Int16 Count ) const;
+    int	         AnsiNCompareIC( const char* src, Int16 Count ) const;
     /**
      * @return the address of last character, NULL if empty
      */
@@ -130,9 +130,9 @@ public:
     /**
      * @return the index position of matching SubString, (-1) if no matching found
      */
-    Int32        AnsiPos( const AnsiString& subStr) const throw();
-    Int32        AnsiPos( const char *subStr) const throw();
-    Int32        AnsiPos( const char subChar) const throw();
+    Int32        AnsiPos( const AnsiString& subStr) const;
+    Int32        AnsiPos( const char *subStr) const;
+    Int32        AnsiPos( const char subChar) const;
 
     /**
      * Delete the count of characters from index position
@@ -142,37 +142,37 @@ public:
     /**
      * Set Delimiter for FirstDelimiter(), FirstDelimiter(UInt16), LastDelimiter() functions
      */
-    void         SetDelimiter( const AnsiString& delimiters ) const throw();
+    void         SetDelimiter( const AnsiString& delimiters ) const;
 
     /**
      * Find index position of delimiter found from the beginning of the string
      */
-    Int32        FirstDelimiter( void ) const throw();
+    Int32        FirstDelimiter( void ) const;
 
     /**
      * Find index position of delimiters found from the startIndex position of the string
      */
-    Int32        FirstDelimiter( UInt16 startIndex ) const throw();
+    Int32        FirstDelimiter( UInt16 startIndex ) const;
 
     /**
      * Find index position of delimiters found from the end of the string
      */
-    Int32        LastDelimiter( void ) const throw();
+    Int32        LastDelimiter( void ) const;
 
     /**
      * Find index position of delimiters found from the end of the string
      */
-    Int32        LastDelimiter( const AnsiString& delimiters ) const throw();
+    Int32        LastDelimiter( const AnsiString& delimiters ) const;
 
     /**
      * Find index position of delimiter found from the beginning of the string
      */
-    Int32        FirstDelimiter( const AnsiString& delimiters ) const throw();
+    Int32        FirstDelimiter( const AnsiString& delimiters ) const;
 
     /**
      * Find index position of delimiters found from the startIndex position of the string
      */
-    Int32        FirstDelimiter( UInt16 startIndex, const AnsiString& delimiters ) const throw();
+    Int32        FirstDelimiter( UInt16 startIndex, const AnsiString& delimiters ) const;
 
     /**
      * @return true if string is empty else false
@@ -182,7 +182,7 @@ public:
     /**
      * @return true if delimiters were found in the string from startIndex position
      */
-    bool         IsDelimiter( const AnsiString& delimiters, UInt16 startIndex) const throw();
+    bool         IsDelimiter( const AnsiString& delimiters, UInt16 startIndex) const;
 
     /**
      * Set the length of this AnsiString, no effect if setLength >= the lenght of this AnsiString
@@ -230,8 +230,8 @@ public:
     char* Rowdata( ) { return StrBuffer; }
 
     AnsiString&  PadThis( Int32 PadLength, char PadChar, bool PadRight = true );
-    AnsiString&  LowerThis( void ) throw();
-    AnsiString&  UpperThis( void ) throw();
+    AnsiString&  LowerThis( void );
+    AnsiString&  UpperThis( void );
     /**
      * @return a copy of the string in lowercase
      */
@@ -243,8 +243,8 @@ public:
     void         TrimLeft( char TrinCh = 10 );
     void         TrimRight( char TrinCh = 10 );
 
-    bool EndWith(const char* EndingStr) const throw();
-    bool EndWithIC(const char* EndingStr) const throw();
+    bool EndWith(const char* EndingStr) const;
+    bool EndWithIC(const char* EndingStr) const;
 
     char FirstChar( void )
     {
@@ -266,11 +266,11 @@ public:
     // Operators
     operator size_t() const;
     operator const char*() const { return StrBuffer; }
-    char&        operator [] (const int idx) throw();
-    const char   operator [] (const int idx) const  throw();
+    char&        operator [] (const int idx);
+    const char   operator [] (const int idx) const;
     AnsiString&  operator =( const wchar_t* rhs );
     AnsiString&  operator =( const char* rhs );
-    AnsiString&  operator =( const AnsiString& rhs ) throw();
+    AnsiString&  operator =( const AnsiString& rhs );
 
     AnsiString&  operator +=( const char* rhs );
     AnsiString&  operator +=( const AnsiString& rhs );
@@ -297,9 +297,9 @@ public:
     bool      operator >=( const AnsiString &rhs ) const { return (AnsiCompare(rhs) >= 0); }
     bool      operator >=( const char* rhs ) const { return (AnsiCompare(rhs) >= 0); }
 public:
-    static AnsiString IntToHex( UInt32 value ) throw();
-    static void AnsiStrToLower( char* str ) throw();
-    static void AnsiStrToLower( char* dst, const char* src ) throw();
+    static AnsiString IntToHex( UInt32 value );
+    static void AnsiStrToLower( char* str );
+    static void AnsiStrToLower( char* dst, const char* src );
     //static void MoveString(AnsiString& Dst, AnsiString& Src) throw();
     static Int32 StrToInt32( const char* str, int len );
     friend AnsiString operator +( const char* StrA, const AnsiString& StrB);

@@ -37,8 +37,8 @@ public:
 	//UException( const char* ErrStr, int ErrNo );
 	UException( AnsiString &ErrStr ) : FErrNo( 0 ), FErrMsg( ErrStr ) {}
 	UException( const char* ErrStr ) : FErrNo( 0 ), FErrMsg( ErrStr ) {}
-	virtual ~UException( ) throw() {}
-	virtual const char *what( ) const throw();
+	virtual ~UException( ) UFC_NOEXCEPT {}
+	virtual const char *what( ) const UFC_NOEXCEPT;
 };
 //------------------------------------------------------------------------------------------------------------------------
 class UIPCException : public UException
@@ -51,7 +51,7 @@ public:
 	UIPCException( int ErrNo, FunctionType ftype );
 	UIPCException( AnsiString &ErrStr ) : UException( ErrStr ) {}
 	UIPCException( const char* ErrStr ) : UException( ErrStr ) {}
-	virtual ~UIPCException() throw() {}
+	virtual ~UIPCException() UFC_NOEXCEPT {}
 	int GetErrno( void ) { return FErrNo; }
 };
 //------------------------------------------------------------------------------------------------------------------------

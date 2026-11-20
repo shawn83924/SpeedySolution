@@ -128,7 +128,7 @@ void MWinApp::FireOnMessage( MWinApp* App,DataMessage* MsgHeader )
 
 		if( (Subscribers = App->FindSubscriber( Subject, Key )) != NULL)
 		{
-			for( register int i = 0; i < Subscribers->ItemCount(); i++ )
+			for( int i = 0; i < Subscribers->ItemCount(); i++ )
 			{
 				Subscriber = Subscribers->GetItem( i );
 				if( ( EventListener = Subscriber->getListener() ) != NULL )

@@ -378,7 +378,7 @@ BOOL MemoryReadStream::ReadLine( UFC::AnsiString& Line )
 {
     int BeginPos = FPos;
 
-    for( register int i = BeginPos; i < FSize; i++ )
+    for( int i = BeginPos; i < FSize; i++ )
     {
         if( FPtr[ (size_t)FPos ] ==  0x0A || ///< LF
             FPtr[ (size_t)FPos ] ==  0x0D  ) ///< CR

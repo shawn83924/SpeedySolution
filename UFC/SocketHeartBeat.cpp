@@ -43,11 +43,11 @@ void SocketIoMonitor::Execute(void)
 //---------------------------------------------------------------------------
 void SocketIoMonitor::DecreaseSocketTimeCount(void)
 {
-    register PClientSocket* pSocket;
+    PClientSocket* pSocket;
 
     PLockObject Lock( *FClientListCS );
 
-    for( register Int32 i = FIdleList->ItemCount() - 1; i >= 0; i-- )
+    for( Int32 i = FIdleList->ItemCount() - 1; i >= 0; i-- )
     {
          if( (pSocket = FIdleList->GetItem(i)) != NULL )
               pSocket->HeartbeatTimerCountDown( );
@@ -56,9 +56,9 @@ void SocketIoMonitor::DecreaseSocketTimeCount(void)
 //---------------------------------------------------------------------------
 void SocketIoMonitor::ClearTrashConnections( void )
 {
-    register PSocket* TrashSocket;
+    PSocket* TrashSocket;
 
-    for( register Int32 i = FGarbageList.ItemCount() - 1; i >= 0; i-- )
+    for( Int32 i = FGarbageList.ItemCount() - 1; i >= 0; i-- )
     {
         if( ( TrashSocket = FGarbageList.GetItem( i ) ) != NULL )
         {

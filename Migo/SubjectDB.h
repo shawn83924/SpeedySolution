@@ -11,8 +11,8 @@ private:
     MString FKey;
 public:
     SubjectKeyPair( const MString& Subject, const MString& Key ):FSubject( Subject ),FKey( Key ){}
-    const MString& getSubject() { return FSubject; }
-    const MString& getKey()     { return FKey; }
+    const MString& getSubject() const { return FSubject; }
+    const MString& getKey()     const { return FKey; }
     BOOL  operator ==( const SubjectKeyPair &rhs ) const
     {
         if( FSubject == "all" || rhs.FSubject == "all")
@@ -29,6 +29,9 @@ private:
     BOOL                  FRegistAll;
     UFC::PStringHashedSet FKeys;
 public:
+    ///< NOTE: this object is walked one by one on the forwarding hot path; do not add fields here for cold-path needs --
+    ///< a larger cache footprint shows up directly in the per-message cost (measured: one extra MString made
+    ///< Search 10~27% slower). If you need the subject name, use PHashedList's CurrentKey().
     KeyInfo( void );
     BOOL  Interest( const MString& Key );
     void  Regist( const MString& Key );
@@ -37,23 +40,55 @@ public:
     BOOL  IsEmpty();
 };
 //------------------------------------------------------------------------------
+//  Accumulator for GetInterest: the list itself + the indexes used for dedup.
+//
+//  The original dedup scanned the whole list linearly on every insert, and that list is shared across all
+//  connections, so the total cost was O(pairs^2). Measured with 200 connections x 40 subjects (8000 pairs): one
+//  GetInterest took ~900ms while holding SubjectsDB's FCS the whole time -- i.e. every client
+//  register/unregister/disconnect blocked all message forwarding for almost a second.
+//
+//  This expands the original operator== matching semantics into three O(1) hash lookups; behavior is identical.
+//------------------------------------------------------------------------------
+class SubjectKeyAccumulator
+{
+private:
+    UFC::List<SubjectKeyPair>& FList;
+    UFC::PStringHashedSet      FExactPairs;     ///< "subject\x01key"; only entries whose key != "all"
+    UFC::PStringHashedSet      FAllKeySubjects; ///< subjects that already have (subject,"all")
+    BOOL                       FHasAllSubject;  ///< the list already has an entry with subject == "all"
+private:
+    static MString PairKey( const MString& Subject, const MString& Key );
+public:
+    SubjectKeyAccumulator( UFC::List<SubjectKeyPair>& List );
+    BOOL Add( const SubjectKeyPair& NewPair );
+};
+//------------------------------------------------------------------------------
 class ConnectionInfo
 {
 private:
     BOOL                                        FRegistAll;
     UFC::PHashedList<UFC::AnsiString,KeyInfo*>  FSubjects;
     UFC::PClientSocket*                         FSocket;
-private:
-    BOOL Add( UFC::List<SubjectKeyPair>& SubjectKeyList, SubjectKeyPair NewPair );
+    ///< Sequence number assigned when added to SubjectsDB. SubjectsDB's connection list is append-at-tail,
+    ///< delete-in-middle, so sequence order always equals list order. The reverse index uses it to restore
+    ///< candidate connections to exactly the same output order as the original linear scan.
+    UFCType::Int32                              FSeq;
 public:
     ConnectionInfo( UFC::PClientSocket* Socket );
     ~ConnectionInfo();
     UFC::PClientSocket* Socket( void ) { return FSocket; }
     BOOL InterestAll( void ){ return FRegistAll; }
+    UFCType::Int32  GetSeq( void ) const      { return FSeq; }
+    void            SetSeq( UFCType::Int32 S ){ FSeq = S; }
+    ///< For reverse-index maintenance: list the subjects this connection currently has registered
+    UFCType::Int32  GetSubjectNames( UFC::PStringList& Names );
+    BOOL            HasSubject( const MString& Subject );
     BOOL Interest( const MString& Subject, const MString& Key );
     void Regist( const MString& Subject, const MString& Key );
     void Unregist( const MString& Subject, const MString& Key );
     UFCType::Int32 GetInterest( UFC::List<SubjectKeyPair>& SubjectKeyList );
+    ///< Use this overload when accumulating across several connections so they share one dedup index
+    void GetInterest( SubjectKeyAccumulator& Acc );
 };
 //------------------------------------------------------------------------------
 class SubjectsDB
@@ -61,8 +96,27 @@ class SubjectsDB
 private:
     UFC::PtrList<ConnectionInfo> FConnectionsInfo;
     UFC::PCriticalSection        FCS;
+    ///< ---- subject reverse index ----
+    ///< Search used to scan every connection for each message (measured: 128 idle connections that receive
+    ///< nothing cut throughput by 45%). The index turns it into one hash lookup and only checks the few
+    ///< connections that actually registered that subject.
+    ///< Both candidate lists are kept in ascending FSeq order; Search does a merge walk,
+    ///< so the output order is exactly the same as the original linear scan.
+    UFC::PHashedList<UFC::AnsiString,UFC::PtrList<ConnectionInfo>*> FSubjectIndex;
+    UFC::PtrList<ConnectionInfo> FAllSubjectConns; ///< connections that registered subject == "all"
+    UFCType::Int32               FNextSeq;
+    ///< socket pointer -> ConnectionInfo. FindConnection used to scan the connection list linearly,
+    ///< once per register/unregister; measured with 500 connections, the last connection in the list
+    ///< took 11.7us to Regist versus 0.32us for the first.
+    UFC::PHashedList<size_t,ConnectionInfo*>         FConnBySocket; ///< key = (size_t)socket: pointer-sized on Win64 too; hash<size_t> exists in old ext/hash_map
 private:
     ConnectionInfo* FindConnection( UFC::PClientSocket* Connection );
+    void  IndexAdd( const MString& Subject, ConnectionInfo* Info );
+    void  IndexRemove( const MString& Subject, ConnectionInfo* Info );
+    void  IndexRemoveConnection( ConnectionInfo* Info );
+    void  IndexClear( void );
+    void  SearchIndexed( UFC::PtrList<UFC::PClientSocket>* ConnectionList,
+                         const MString& Subject, const MString& Key );
 public:
     SubjectsDB();
     ~SubjectsDB();
@@ -209,7 +263,7 @@ void  CSubjectDB<T>::Delete( T* Object )
     CSubjectRec<T>*  DelRecord;
     UFC::PLockObject FCSLock( FCS );
 
-    for( register UFCType::Int32 i =  FRecords.ItemCount() - 1; i >= 0; i-- )
+    for( UFCType::Int32 i =  FRecords.ItemCount() - 1; i >= 0; i-- )
     {
         DelRecord = FRecords.GetItem( i );
 		if( DelRecord->FObject == Object )
@@ -241,7 +295,7 @@ UFCType::Int32 CSubjectDB<T>::Search( UFC::PtrList<T>* List, DataMessage* Header
     CSubjectRec<T>   SearchRec( Header->getSubject(), Header->getKey(), Object );
     UFC::PLockObject FCSLock( FCS );
 
-    for( register UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
+    for( UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
     {
         Record = FRecords.GetItem( i );
         if( Record->Compare( &SearchRec ) == TRUE )
@@ -256,7 +310,7 @@ UFCType::Int32 CSubjectDB<T>::Search( UFC::PtrList<T>* List, DataMessage* Header
 template <class T>
 UFCType::Int32 CSubjectDB<T>::IndexOf( CSubjectRec<T>* rec )
 {
-    for( register UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
+    for( UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
     {
          if( rec->Compare( FRecords.GetItem( i ) ) == TRUE )
              return i;
@@ -267,9 +321,9 @@ UFCType::Int32 CSubjectDB<T>::IndexOf( CSubjectRec<T>* rec )
 template <class T>
 CSubjectRec<T>* CSubjectDB<T>::Search( const MString& Subject, const MString& Key, T* Object )
 {
-	register CSubjectRec<T>*  Record;
+	CSubjectRec<T>*  Record;
 
-	for( register UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
+	for( UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
 	{
 		Record = FRecords.GetItem( i );
 		if( Record->Compare( Subject, Key, Object ) == TRUE )
@@ -281,9 +335,9 @@ CSubjectRec<T>* CSubjectDB<T>::Search( const MString& Subject, const MString& Ke
 template <class T>
 CSubjectRec<T>* CSubjectDB<T>::ExactSearch( const MString& Subject, const MString& Key )
 {
-	register CSubjectRec<T>*  Record;
+	CSubjectRec<T>*  Record;
 
-	for( register UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
+	for( UFCType::Int32 i = FRecords.ItemCount() - 1; i >= 0; i-- )
 	{
 		Record = FRecords.GetItem( i );
 		if( Record->ExactCompare( Subject, Key ) == TRUE )

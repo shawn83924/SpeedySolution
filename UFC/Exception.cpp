@@ -28,7 +28,7 @@ void SocketException::ErrorToWhat( int ErrorCode )
     switch( ErrorCode )
     {
 
-#if _MSC_VER >= 1600 ///< for >= VC10 	
+#if defined(_WIN32) ///< All Windows compilers (Visual C++, C++Builder Win32/Win64): use the Winsock error names
         case WSAEBADF:       strncpy( Message,  "Socket error: One or more of the file descriptor sets specified a file descriptor that is not a valid open file descriptor or specified a file descriptor that does not support selection.", ERR_MSG_MAX);return;
         case WSAEINTR:       strcpy( Message,  "Socket error: A signal interrupted the call.");return;
         case EISDIR:         strcpy( Message,  "Socket error: One or more the file descriptor sets specified a file descriptor that refers to an open directory.");return;

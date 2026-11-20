@@ -36,7 +36,7 @@ PInitAnsiString::~PInitAnsiString()
         delete [] AnsiString::WCToMBBuffer;
 }
 //------------------------------------------------------------------------------
-AnsiString AnsiString::IntToHex(UInt32 value) throw()
+AnsiString AnsiString::IntToHex(UInt32 value)
 {
     char s[11];
 
@@ -46,9 +46,9 @@ AnsiString AnsiString::IntToHex(UInt32 value) throw()
 //------------------------------------------------------------------------------
 int AnsiString::LengthToMBStr( const wchar_t* src )
 {
-    register int      MBStrLen = 0;
-    register int      NeedSize;
-    register wchar_t* Str;
+    int      MBStrLen = 0;
+    int      NeedSize;
+    wchar_t* Str;
 
     if( WCToMBBuffer == NULL )
             WCToMBBuffer = new char[ MB_CUR_MAX ];
@@ -329,7 +329,7 @@ void AnsiString::SetSize(UInt16 Size, bool KeepData)
 //---------------------------------------------------------------------------
 UInt16 AnsiString::StrNLen( const char *Str, const UInt16 MaxLength )
 {
-    for( register Int32 i = 0; i < MaxLength; i++ )
+    for( Int32 i = 0; i < MaxLength; i++ )
     {
         if( *(Str+i) == '\0' )
             return i;
@@ -337,19 +337,19 @@ UInt16 AnsiString::StrNLen( const char *Str, const UInt16 MaxLength )
     return MaxLength;
 }
 //---------------------------------------------------------------------------
-int AnsiString::AnsiCompare( const char* rhs ) const throw()
+int AnsiString::AnsiCompare( const char* rhs ) const
 {
     const char* lhs = StrBuffer ? StrBuffer : "";
     if( rhs == NULL ) rhs = "";
     return strcmp( lhs, rhs );
 }
 //---------------------------------------------------------------------------
-int AnsiString::AnsiCompare( const AnsiString& rhs) const throw()
+int AnsiString::AnsiCompare( const AnsiString& rhs) const
 {
 	return AnsiCompare(rhs.StrBuffer);
 }
 //---------------------------------------------------------------------------
-int	AnsiString::AnsiNCompare( const char* src, Int16 Count ) const throw()
+int	AnsiString::AnsiNCompare( const char* src, Int16 Count ) const
 {
     if( StrBuffer == NULL )
         return -1;
@@ -357,7 +357,7 @@ int	AnsiString::AnsiNCompare( const char* src, Int16 Count ) const throw()
         return strncmp( StrBuffer, src, Count);
 }
 //---------------------------------------------------------------------------
-int	AnsiString::AnsiNCompareIC( const char* src, Int16 Count ) const throw()
+int	AnsiString::AnsiNCompareIC( const char* src, Int16 Count ) const
 {
     if( StrBuffer == NULL )
         return -1;
@@ -365,7 +365,7 @@ int	AnsiString::AnsiNCompareIC( const char* src, Int16 Count ) const throw()
         return strnicmp( StrBuffer, src, Count );
 }
 //---------------------------------------------------------------------------
-int AnsiString::AnsiCompareIC( const char* rhs ) const throw()
+int AnsiString::AnsiCompareIC( const char* rhs ) const
 {
 	if (rhs && FLength)
 	{
@@ -382,17 +382,17 @@ int AnsiString::AnsiCompareIC( const char* rhs ) const throw()
 	}
 }
 //---------------------------------------------------------------------------
-int AnsiString::AnsiCompareIC( const AnsiString& rhs) const throw()
+int AnsiString::AnsiCompareIC( const AnsiString& rhs) const
 {
 	return AnsiCompareIC(rhs.StrBuffer);
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::AnsiPos( const AnsiString& subStr) const throw()
+Int32 AnsiString::AnsiPos( const AnsiString& subStr) const
 {
 	return AnsiPos( subStr.StrBuffer );
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::AnsiPos( const char *subStr) const throw()
+Int32 AnsiString::AnsiPos( const char *subStr) const
 {
 	if (StrBuffer == NULL)
 	{
@@ -408,7 +408,7 @@ Int32 AnsiString::AnsiPos( const char *subStr) const throw()
 	}
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::AnsiPos( const char subChar) const throw()
+Int32 AnsiString::AnsiPos( const char subChar) const
 {
 	if (StrBuffer == NULL)
 	{
@@ -451,7 +451,7 @@ AnsiString&  AnsiString::Delete(UInt16 index, UInt16 count)
 	return *this;
 }
 //---------------------------------------------------------------------------
-bool AnsiString::IsDelimiter( const AnsiString& delimiters, UInt16 index) const throw()
+bool AnsiString::IsDelimiter( const AnsiString& delimiters, UInt16 index) const
 {
 	if( index < FLength )
 	{
@@ -461,69 +461,69 @@ bool AnsiString::IsDelimiter( const AnsiString& delimiters, UInt16 index) const 
 	return false;
 }
 //---------------------------------------------------------------------------
-void AnsiString::SetDelimiter( const AnsiString& delimiters) const throw()
+void AnsiString::SetDelimiter( const AnsiString& delimiters) const
 {
-	register UInt8 *DeliPtr;
+	UInt8 *DeliPtr;
 
 	memset( DelimiterLUT, 0, 256 );
 
 	DeliPtr = ( UInt8* ) delimiters.StrBuffer;
-	for( register Int16 i = 0; i < delimiters.FLength; i++ )
+	for( Int16 i = 0; i < delimiters.FLength; i++ )
 	{
 		 DelimiterLUT[ *DeliPtr ] = 1;
 		 DeliPtr++;
 	}
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::FirstDelimiter( UInt16 index ) const throw()
+Int32 AnsiString::FirstDelimiter( UInt16 index ) const
 {
-	for( register Int32 i = index; i < FLength ; i++ )
+	for( Int32 i = index; i < FLength ; i++ )
 		 if( DelimiterLUT[ (UInt8)*( StrBuffer + i ) ] == 1)
 	    	 return i;
 	return -1;
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::FirstDelimiter( void ) const throw()
+Int32 AnsiString::FirstDelimiter( void ) const
 {
-	for( register Int32 i =0; i < FLength ; i++ )
+	for( Int32 i =0; i < FLength ; i++ )
 	     if( DelimiterLUT[ (UInt8)*( StrBuffer + i) ] == 1 )
 	    	 return i;
 	return -1;
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::LastDelimiter( void ) const throw()
+Int32 AnsiString::LastDelimiter( void ) const
 {
-	for( register Int32 i = FLength - 1; i >= 0; i-- )
+	for( Int32 i = FLength - 1; i >= 0; i-- )
 	     if( DelimiterLUT[ (UInt8)*( StrBuffer + i) ] == 1)
 	     	 return i;
 	return -1;
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::FirstDelimiter( UInt16 index, const AnsiString& delimiters ) const throw()
+Int32 AnsiString::FirstDelimiter( UInt16 index, const AnsiString& delimiters ) const
 {
 	SetDelimiter( delimiters );
 
-	for( register Int32 i = index; i < FLength ; i++ )
+	for( Int32 i = index; i < FLength ; i++ )
 	     if( DelimiterLUT[ (UInt8)*( StrBuffer + i ) ] == 1)
 	    	 return i;
 	return -1;
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::FirstDelimiter( const AnsiString& delimiters ) const throw()
+Int32 AnsiString::FirstDelimiter( const AnsiString& delimiters ) const
 {
 	SetDelimiter( delimiters );
 
-	for( register Int32 i =0; i < FLength ; i++ )
+	for( Int32 i =0; i < FLength ; i++ )
 	     if( DelimiterLUT[ (UInt8)*( StrBuffer + i) ] == 1 )
 	    	 return i;
 	return -1;
 }
 //---------------------------------------------------------------------------
-Int32 AnsiString::LastDelimiter( const AnsiString& delimiters ) const throw()
+Int32 AnsiString::LastDelimiter( const AnsiString& delimiters ) const
 {
 	SetDelimiter( delimiters );
 
-	for( register Int32 i = FLength - 1; i >= 0; i-- )
+	for( Int32 i = FLength - 1; i >= 0; i-- )
 		 if( DelimiterLUT[ (UInt8)*( StrBuffer + i) ] == 1)
 	     	 return i;
 	return -1;
@@ -538,18 +538,18 @@ AnsiString AnsiString::UpperCase() const
 	{
 		ret.StrBuffer = ret.InlineBuffer;
 		ret.FCapacity = SSO_SIZE - 1;
-		register UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
-		register UInt8 *StrPtr = (UInt8*)StrBuffer;
-		for( register Int16 i = 0; i < FLength; i++ )
+		UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
+		UInt8 *StrPtr = (UInt8*)StrBuffer;
+		for( Int16 i = 0; i < FLength; i++ )
 			*( Ptr++ ) = toupper( *( StrPtr++ ) );
 		*Ptr = 0;
 	}
 	else
 	{
 		UInt8* temp = new UInt8[ FLength + 1 ];
-		register UInt8 *Ptr    = temp;
-		register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
-		for( register Int16 i = 0; i < FLength; i++ )
+		UInt8 *Ptr    = temp;
+		UInt8 *StrPtr = ( UInt8* ) StrBuffer;
+		for( Int16 i = 0; i < FLength; i++ )
 			*( Ptr++ ) = toupper( *( StrPtr++ ) );
 		*Ptr = 0;
 		ret.StrBuffer = ( char* ) temp;
@@ -654,11 +654,11 @@ AnsiString& AnsiString::PadThis( Int32 PadLength, char PadChar, bool PadRight )
 	}
 }
 //---------------------------------------------------------------------------
-AnsiString& AnsiString::UpperThis( void ) throw()
+AnsiString& AnsiString::UpperThis( void )
 {
-	register UInt8* Ptr = ( UInt8* )StrBuffer;
+	UInt8* Ptr = ( UInt8* )StrBuffer;
 
-	for( register Int16 i = 0; i < FLength; i++ )
+	for( Int16 i = 0; i < FLength; i++ )
 	{
 		*Ptr = toupper( *Ptr );
 		Ptr++;
@@ -666,11 +666,11 @@ AnsiString& AnsiString::UpperThis( void ) throw()
 	return *this;
 }
 //---------------------------------------------------------------------------
-AnsiString& AnsiString::LowerThis( void ) throw()
+AnsiString& AnsiString::LowerThis( void )
 {
-	register UInt8* Ptr = ( UInt8* )StrBuffer;
+	UInt8* Ptr = ( UInt8* )StrBuffer;
 
-	for( register Int16 i = 0; i < FLength; i++ )
+	for( Int16 i = 0; i < FLength; i++ )
 	{
 		*Ptr = tolower( *Ptr );
 		Ptr++;
@@ -678,12 +678,12 @@ AnsiString& AnsiString::LowerThis( void ) throw()
 	return *this;
 }
 //---------------------------------------------------------------------------
-void AnsiString::AnsiStrToLower( char* str ) throw()
+void AnsiString::AnsiStrToLower( char* str )
 {
 	AnsiStrToLower(str, str);
 }
 //---------------------------------------------------------------------------
-void AnsiString::AnsiStrToLower( char* dst, const char* src ) throw()
+void AnsiString::AnsiStrToLower( char* dst, const char* src )
 {
 	UInt8* SrcPtr = (UInt8*)src;
 	UInt8* DstPtr = (UInt8*)dst;
@@ -712,18 +712,18 @@ AnsiString AnsiString::LowerCase() const
 	{
 		ret.StrBuffer = ret.InlineBuffer;
 		ret.FCapacity = SSO_SIZE - 1;
-		register UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
-		register UInt8 *StrPtr = (UInt8*)StrBuffer;
-		for( register Int16 i = 0; i < FLength; i++ )
+		UInt8 *Ptr    = (UInt8*)ret.InlineBuffer;
+		UInt8 *StrPtr = (UInt8*)StrBuffer;
+		for( Int16 i = 0; i < FLength; i++ )
 			*( Ptr++ ) = tolower( *( StrPtr++ ) );
 		*Ptr = 0;
 	}
 	else
 	{
 		UInt8* temp = new UInt8[ FLength + 1 ];
-		register UInt8 *Ptr    = temp;
-		register UInt8 *StrPtr = ( UInt8* ) StrBuffer;
-		for( register Int16 i = 0; i < FLength; i++ )
+		UInt8 *Ptr    = temp;
+		UInt8 *StrPtr = ( UInt8* ) StrBuffer;
+		for( Int16 i = 0; i < FLength; i++ )
 			*( Ptr++ ) = tolower( *( StrPtr++ ) );
 		*Ptr = 0;
 		ret.StrBuffer = ( char* ) temp;
@@ -812,7 +812,7 @@ AnsiString  AnsiString::SubLast( UInt16 count) const
 	return AnsiString( StrBuffer + Index );
 }
 //---------------------------------------------------------------------------
-bool AnsiString::EndWith(const char* EndingStr) const throw()
+bool AnsiString::EndWith(const char* EndingStr) const
 {
 	if ( EndingStr )
 	{
@@ -823,7 +823,7 @@ bool AnsiString::EndWith(const char* EndingStr) const throw()
 	return false;
 }
 //---------------------------------------------------------------------------
-bool AnsiString::EndWithIC(const char* EndingStr) const throw()
+bool AnsiString::EndWithIC(const char* EndingStr) const
 {
 	if ( EndingStr )
 	{
@@ -846,7 +846,7 @@ AnsiString::operator size_t() const
 	return hashval;
 }
 //---------------------------------------------------------------------------
-char& AnsiString::operator [](const int idx)  throw()
+char& AnsiString::operator [](const int idx)
 {
 	static char dummy = '\0';
 	if( StrBuffer != NULL && idx >= 0 && idx < FLength )
@@ -854,7 +854,7 @@ char& AnsiString::operator [](const int idx)  throw()
 	return dummy;
 }
 //---------------------------------------------------------------------------
-const char AnsiString::operator [] (const int idx) const  throw()
+const char AnsiString::operator [] (const int idx) const
 {
 	if( StrBuffer != NULL && idx >= 0 && idx < FLength )
 		return StrBuffer[idx];
@@ -941,7 +941,7 @@ AnsiString& AnsiString::operator =( const char* rhs )
     return *this;
 }
 //---------------------------------------------------------------------------
-AnsiString& AnsiString::operator =( const AnsiString& rhs ) throw()
+AnsiString& AnsiString::operator =( const AnsiString& rhs )
 {
     if( this != &rhs )
     {
@@ -1109,7 +1109,7 @@ void AnsiString::TrimLeft( char TrimCh  )
     	UInt16  Pos = 0;
 	    char    ch;
 
-    	for( register UInt16 i = 0; i< FLength; i++ )
+    	for( UInt16 i = 0; i< FLength; i++ )
 		{
 		    ch = *(StrBuffer + i);
 			if( ch == '\t' ||
@@ -1137,7 +1137,7 @@ void AnsiString::TrimRight( char TrimCh )
     	UInt16  Pos = 0;
 		char    ch;
 
-   		for( register Int32 i = FLength - 1; i >= 0; i-- )
+   		for( Int32 i = FLength - 1; i >= 0; i-- )
 		{
 			ch = *(StrBuffer + i);
 			if( ch == ' '  || ///< Space
@@ -1270,9 +1270,9 @@ Int32 AnsiString::StrToInt32( const char* str, int len )
 //---------------------------------------------------------------------------
 size_t StrLCpy( char *dst, const char *src, size_t siz )
 {
-	register char *d = dst;
-	register const char *s = src;
-	register size_t n = siz;
+	char *d = dst;
+	const char *s = src;
+	size_t n = siz;
 
 	/* Copy as many bytes as will fit */
 	if (n != 0 && --n != 0) {

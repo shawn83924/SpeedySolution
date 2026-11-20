@@ -862,8 +862,8 @@ void GetTimeString( AnsiString& TimeNow , BOOL WithSep )
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 inline void TimeString( char* Buffer , int h, int m,int s, int ms, BOOL WithSep, BOOL Useus )
 {
-    register char* Ptr;
-    register int i, tmpval;
+    char* Ptr;
+    int i, tmpval;
     int msus;
     
     if( Useus == TRUE )
@@ -949,8 +949,8 @@ inline void FIXTimeString( char* Buffer , int Y, int M, int D, int h, int m,int 
 {
 ///<   YYYYMMDD-HH:MM:SS.mmm
 ///<          9+       9+  3     
-    register char* Ptr;
-    register int i, tmpval;
+    char* Ptr;
+    int i, tmpval;
     const int DateTimeL = 18;
     const int msus = 3; ///< ms 3 digis   
     
@@ -1225,8 +1225,8 @@ void GetHHMMSS( AnsiString& TimeNow )
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 inline void TimeString( char* Buffer , int h, int m,int s )
 {
-    register char* Ptr;
-    register int i, tmpval;
+    char* Ptr;
+    int i, tmpval;
     
     Ptr = Buffer + 5;
     //*Ptr-- = 0; //< NULL
@@ -2054,7 +2054,7 @@ void BinaryToHexString( const UInt8*     Binary,   ///[in]
     Result.SetLength( Length * 2 );
     char*    HexStr = (char*)Result.c_str();
     UInt8    AByte;
-    register int i,j = 0;
+    int i,j = 0;
 
     for( i = 0; i < Length; i++ )
     {
@@ -2086,7 +2086,7 @@ BOOL HexStringToBinary( const UFC::AnsiString& Str, ///[In]
     if( BinLen <= Length )
     {
         const char* HexStr = (char*)Str.c_str();
-        register int i, j = 0;
+        int i, j = 0;
 
         for( i = 0; i < BinLen; i++ )
         {
@@ -2157,8 +2157,8 @@ int GetCPUs( void )
 IntToStr::IntToStr( Int32 value )
 {    
     bool IsNegative = (value < 0)? true: false;
-    register char* ptr = FBuffer + 10;    
-    register int tmp_value;
+    char* ptr = FBuffer + 10;    
+    int tmp_value;
         
     do 
     {
@@ -2177,8 +2177,8 @@ IntToStr::IntToStr( Int32 value )
 IntToStr::IntToStr( Int32 value, int digi, bool PadZero )
 {
     bool IsNegative = (value < 0)? true: false;
-    register char* ptr = FBuffer + 10;    
-    register int tmp_value;
+    char* ptr = FBuffer + 10;    
+    int tmp_value;
     char FillChar;
     
     if( digi > 10 )
@@ -2224,8 +2224,8 @@ int IntToStr::Length( void )
 //---------------------------------------------------------------------------
 UIntToStr::UIntToStr( UInt32 value )
 {    
-    register char* ptr = FBuffer + 10;///< seek to the end of the buffer.    
-    register UInt32 tmp_value;
+    char* ptr = FBuffer + 10;///< seek to the end of the buffer.    
+    UInt32 tmp_value;
         
     do 
     {
@@ -2240,8 +2240,8 @@ UIntToStr::UIntToStr( UInt32 value )
 //---------------------------------------------------------------------------
 UIntToStr::UIntToStr( UInt32 value, int digi, bool PadZero )
 {
-    register char* ptr = FBuffer + 10;    
-    register UInt32 tmp_value;
+    char* ptr = FBuffer + 10;    
+    UInt32 tmp_value;
     char FillChar;
     
     if( digi > 10 )
@@ -2282,8 +2282,8 @@ DoubleToStr::DoubleToStr( double Num )
     Int64 IntValue   = (Int64)Num;
     Int64 IntDecimal = (Int64)(fabs(Num - (double)IntValue)*1000000.0); ///< default 6
     bool  IsNegative = (Num < 0.0 )? true: false;
-    register char* ptr = FBuffer + 30;
-    register Int64 tmp_value;
+    char* ptr = FBuffer + 30;
+    Int64 tmp_value;
 
     if( IntValue > 1000000000000000LL || IntValue < -1000000000000000LL )
     {
@@ -2322,8 +2322,8 @@ DoubleToStr::DoubleToStr( double Num, int Width, int Precision,  bool PadZero )
     if( Precision > 9 ) Precision = 9;
     Int64 IntDecimal = (Int64)(fabs(Num - static_cast<double>(IntValue)) * kPow10[Precision]);
     bool  IsNegative = (Num < 0.0 )? true: false;
-    register char* ptr = FBuffer + 30;
-    register Int64 tmp_value;
+    char* ptr = FBuffer + 30;
+    Int64 tmp_value;
     char FillChar;
 
     if( IntValue > 1000000000000000LL || IntValue < -1000000000000000LL )
@@ -2387,8 +2387,8 @@ int DoubleToStr::Length( void )
 Int64ToStr::Int64ToStr( Int64 value )
 {    
     bool IsNegative = (value < 0)? true: false;
-    register char* ptr = FBuffer + 21;    
-    register long long tmp_value;
+    char* ptr = FBuffer + 21;    
+    long long tmp_value;
         
     do 
     {
@@ -2407,8 +2407,8 @@ Int64ToStr::Int64ToStr( Int64 value )
 Int64ToStr::Int64ToStr( Int64 value, int digi, bool PadZero )
 {
     bool IsNegative = (value < 0)? true: false;
-    register char* ptr = FBuffer + 21;    
-    register long long tmp_value;
+    char* ptr = FBuffer + 21;    
+    long long tmp_value;
     char FillChar;
     
     if( digi > 19 )

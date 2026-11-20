@@ -9,7 +9,7 @@ DataStoreException::DataStoreException( void )
 
 }
 //---------------------------------------------------------------------------
-DataStoreException::~DataStoreException( void ) throw()
+DataStoreException::~DataStoreException( void ) UFC_NOEXCEPT
 {
 
 }
@@ -35,7 +35,7 @@ void DataStoreException::Throw( const char* FormatStr, ... )
 	throw( *this );
 }
 //---------------------------------------------------------------------------
-const char* DataStoreException::what( void ) const throw()
+const char* DataStoreException::what( void ) const UFC_NOEXCEPT
 {
 	return FMessage.c_str();
 }

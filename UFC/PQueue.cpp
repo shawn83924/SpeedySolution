@@ -206,7 +206,7 @@ BOOL PQueue::Recv( UQueueData& Data, UFC::PLongList& MTypes, const int TimeoutSe
     UFC::BufferedLog::DebugPrintf( UFC::dlInformation, " Begin Dequeue %d MTypes.", MTypes.ItemCount() );
     do
     {
-        for( register int i = 0; i < MTypes.ItemCount(); i++ ) 
+        for( int i = 0; i < MTypes.ItemCount(); i++ ) 
         {
             if( (Result = msgrcv( FQueueID,(void*)Data.FData, Data.FSize, MTypes[ i ], IPC_NOWAIT|MSG_NOERROR)) < 0 ) 
             {   ///< Get message from queue failed.
@@ -245,7 +245,7 @@ BOOL PQueue::Recv( UQueueData& Data, UFC::PLongList& MTypes )
 {
     Int32 Result;
     
-    for( register int i = 0; i < MTypes.ItemCount(); i++ ) 
+    for( int i = 0; i < MTypes.ItemCount(); i++ ) 
     {
         if( (Result = msgrcv( FQueueID,(void*)Data.FData, Data.FSize, MTypes[ i ], IPC_NOWAIT|MSG_NOERROR)) < 0 ) 
         {   ///< Get message from queue failed.
@@ -318,7 +318,7 @@ bool PQueue::Open( long QueueKey, bool /*CreateNew*/ )
             FBody    = (QBody*)( FHeader + FMaximunMessageCount );
             if( NeedToInitial ) 
             {
-                for( register long i = 0; i < FMaximunMessageCount; i++ ) 
+                for( long i = 0; i < FMaximunMessageCount; i++ ) 
                 {
                     QHeader* pHeader = FHeader + i;
                     pHeader->type    = 0;
@@ -355,7 +355,7 @@ void PQueue::Send( UQueueData& Data )
     try 
     {
         FMutex.WaitFor( FMutexTimeout );
-        for( register int i = 0; i < FMaximunMessageCount; i++ ) 
+        for( int i = 0; i < FMaximunMessageCount; i++ ) 
         {
             if( FHeader[i].size < 0 ) 
             {
@@ -421,7 +421,7 @@ BOOL PQueue::CopyQueueData( UQueueData& Data )
     QBody*   pBody;
     
     CheckMessageType( dataType, maxType, minType );
-    for( register int i = 0; i < FMaximunMessageCount; i++ ) 
+    for( int i = 0; i < FMaximunMessageCount; i++ ) 
     {
         pHeader = FHeader + i;
         if( pHeader->size >= 0 ) 
@@ -522,7 +522,7 @@ UInt16 PQueue::Count()
 {
     UInt16 DataCount = 0;
     
-    for( register int i = 0; i < FMaximunMessageCount; i++ ) 
+    for( int i = 0; i < FMaximunMessageCount; i++ ) 
     {
         if( FHeader[i].size > 0 )
             DataCount ++;

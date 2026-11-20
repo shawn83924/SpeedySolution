@@ -282,7 +282,7 @@ bool PMPMCQueue<T>::pop( unsigned int MType, T** Data )
 template <class T>
 bool PMPMCQueue<T>::pop( T** Data )
 {
-    for( register unsigned int i = 0; i < FMTypeMax; i++ ) 
+    for( unsigned int i = 0; i < FMTypeMax; i++ ) 
     {
         if( pop( i, Data ) == true )        
             return true;
@@ -295,7 +295,7 @@ bool PMPMCQueue<T>::pop( T** Data )
 template <class T>
 bool PMPMCQueue<T>::pop( UFC::PLongList& MTypes, T** Data )
 {    
-    for( register int i = 0; i < MTypes.ItemCount(); i++ ) 
+    for( int i = 0; i < MTypes.ItemCount(); i++ ) 
     {                            
         if( pop( MTypes[ i ], Data ) == true )
             return true;        
@@ -322,7 +322,7 @@ bool PMPMCQueue<T>::pop( UFC::PLongList& MTypes, T** Data, const int TimeoutSec 
         {            
             for( int j = 0; j < DeQTimes; j++ ) ///< loops equals to GMinSleepUS
             {
-                for( register int i = 0; i < MTypes.ItemCount(); i++ ) 
+                for( int i = 0; i < MTypes.ItemCount(); i++ ) 
                 {                            
                     if( FInterrupt == true  ) ///< Interrupt by User
                     {
@@ -422,7 +422,7 @@ bool LFQueue<T>::pop(  T** Data, const int TimeoutSec )
     {        
         for( int j = 0; j < 300; j++ )
         {
-            for( register int i = 0; i < 10; i++ ) 
+            for( int i = 0; i < 10; i++ ) 
             {            
                 if( FQueue.pop((void**) Data ) )
                 {

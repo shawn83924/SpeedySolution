@@ -86,7 +86,7 @@ public:
     void Attach( const AnsiString& Name, Int32 Count );
     void Attach( UInt32 ID, Int32 Count );
     ~PArray( );
-    T& operator []( int idx ) throw( IndexOutOfBoundException  );
+    T& operator []( int idx );
     T* Buffer() { return FData; }
     int GetUpperBound( void ) { return (FCount - 1); }
 };
@@ -128,7 +128,7 @@ void PArray<T>::Attach( const AnsiString& Name, Int32 Count )
 						FILE_ATTRIBUTE_NORMAL,             // file attributes
 						NULL))== INVALID_HANDLE_VALUE)     // no template
 		throw( ShareMenException( -1 ));
-	if(( FFileMap = CreateFileMapping( FFile, NULL, PAGE_READWRITE, 0, FCount* sizeof(T), Name.c_str() ))== INVALID_HANDLE_VALUE)
+	if(( FFileMap = CreateFileMappingA( FFile, NULL, PAGE_READWRITE, 0, FCount* sizeof(T), Name.c_str() ))== INVALID_HANDLE_VALUE)
 		throw( ShareMenException( -2 ));
 	if((FData = (T*)MapViewOfFile( FFileMap, FILE_MAP_ALL_ACCESS, 0, 0, FCount* sizeof(T) )) == NULL )
 		throw( ShareMenException( -3 ));
@@ -151,7 +151,7 @@ void PArray<T>::Attach( UInt32 ID, Int32 Count )
 						FILE_ATTRIBUTE_NORMAL,             // file attributes
 						NULL))== INVALID_HANDLE_VALUE)     // no template
 		throw( ShareMenException( -1 ));
-	if(( FFileMap = CreateFileMapping( FFile, NULL, PAGE_READWRITE, 0, FCount* sizeof(T), Name.c_str() ))== INVALID_HANDLE_VALUE)
+	if(( FFileMap = CreateFileMappingA( FFile, NULL, PAGE_READWRITE, 0, FCount* sizeof(T), Name.c_str() ))== INVALID_HANDLE_VALUE)
 		throw( ShareMenException( -2 ));
 	if((FData = (T*)MapViewOfFile( FFileMap, FILE_MAP_ALL_ACCESS, 0, 0, FCount* sizeof(T) )) == NULL )
 		throw( ShareMenException( -3 ));
@@ -170,7 +170,7 @@ PArray<T>::~PArray( )
 }
 //---------------------------------------------------------------------------
 template <class T>
-T& PArray<T>::operator []( int index ) throw( IndexOutOfBoundException )
+T& PArray<T>::operator []( int index )
 {
     if( index < 0 || index >= FCount )
         throw IndexOutOfBoundException( index );

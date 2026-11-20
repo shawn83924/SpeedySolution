@@ -48,7 +48,7 @@ MDSBinaryObj::~MDSBinaryObj()
 	}
 }
 //------------------------------------------------------------------------------------------------------------------------
-Int32 MDSBinaryObj::Compare( const MDSBinaryObj& rhs ) const throw()
+Int32 MDSBinaryObj::Compare( const MDSBinaryObj& rhs ) const
 {
 	if ( rhs.FBuffer && rhs.FSize )
 		return memcmp( FBuffer, rhs.FBuffer, FSize );

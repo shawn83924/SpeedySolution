@@ -557,7 +557,7 @@ void MApp::TriggerOnMessage( DataMessage* MsgHeader )
         
         if( (Subscribers = FindSubscriber( Subject, Key ))!= NULL)
         {
-            for( register int i = 0; i < Subscribers->ItemCount(); i++ )
+            for( int i = 0; i < Subscribers->ItemCount(); i++ )
             {
                 try
                 {

@@ -29,7 +29,7 @@ BOOL Section::ValueExists( const UFC::AnsiString& Name )
 void Section::DeleteValue( const UFC::AnsiString& Name )
 {
     FNameValues.DeleteByKey( Name );
-    for( register Int32 i = 0; i < FNames.ItemCount();i++ )
+    for( Int32 i = 0; i < FNames.ItemCount();i++ )
     {
          if( FNames[i] == Name )
          {
@@ -263,7 +263,7 @@ Section* UiniFile::FindSection( const UFC::AnsiString& SectionName )
 //--------------------------------------------------------------------------------------------
 Int32 UiniFile::FindIndex( const UFC::AnsiString& SectionName )
 {
-    for( register int i = 0; i < FSections.ItemCount(); i++ )
+    for( int i = 0; i < FSections.ItemCount(); i++ )
     {
         Section* SearchSection = FSections.GetItem( i );
         if( SearchSection->GetSectionName() == SectionName )
@@ -289,7 +289,7 @@ BOOL UiniFile::DeleteSection( const UFC::AnsiString& SectionName )
     if( SearchSection == NULL )
         return FALSE;
     FSectionMap.DeleteByKey( SectionName );
-    for( register int i = 0; i < FSections.ItemCount(); i++ )
+    for( int i = 0; i < FSections.ItemCount(); i++ )
     {
         if( FSections.GetItem( i ) == SearchSection )
         {
@@ -348,7 +348,7 @@ void UiniFile::SetValue( const UFC::AnsiString& SectionName, const UFC::AnsiStri
 //--------------------------------------------------------------------------------------------
 void UiniFile::SaveToStream( PStream* Stream )
 {
-	for( register int i = 0; i < FSections.ItemCount(); i++ )
+	for( int i = 0; i < FSections.ItemCount(); i++ )
 		 FSections.GetItem( i )->SaveToStream( Stream  );
 	UFC::BufferedLog::Printf( " [UiniFile::SaveToStream] %d Sections saved.", FSections.ItemCount() );
 }

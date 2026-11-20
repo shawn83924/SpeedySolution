@@ -93,7 +93,7 @@ TFieldDataType TFixedFormat::ReadDataType( Section* pSection )
 //---------------------------------------------------------------------------
 void TFixedFormat::LoadFieldSetting( UiniFile* pIniFile )
 {
-    for( register Int32 i = 0; i < pIniFile->SectionCount(); i++ )
+    for( Int32 i = 0; i < pIniFile->SectionCount(); i++ )
     {
       	Section* pSection = pIniFile->GetSection(i);
         if( pSection != NULL )
@@ -122,7 +122,7 @@ bool TFixedFormat::Parse( const char* inBUFF, int Size, TRecord* outREC )
         if( FieldCount == outREC->GetFieldCount() )
         {
             TFieldOffset* pFieldOffset;
-    	    for( register Int32 i = 0; i < FieldCount; i++ )
+    	    for( Int32 i = 0; i < FieldCount; i++ )
             {
                 pFieldOffset = FFieldOffset.GetItem(i);
                 if( ( pFieldOffset->FStartAt + pFieldOffset->FSize) <= Size )
@@ -161,7 +161,7 @@ AnsiString TFixedFormat::Render( TRecord* inREC )
             TFieldOffset* pFieldOffset;
             AnsiString FieldValue;
 
-            for( register Int32 i = 0; i < FieldCount; i++ )
+            for( Int32 i = 0; i < FieldCount; i++ )
             {
                 pFieldOffset = FFieldOffset.GetItem(i);
                 if( (pFieldOffset->FStartAt + pFieldOffset->FSize) <= FLineLength )

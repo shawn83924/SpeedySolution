@@ -57,7 +57,7 @@ UException::UException( AnsiString ErrStr, int ErrNo )
 #endif
 }
 //--------------------------------------------------------------------------------------------------------------------
-const char* UException::what() const throw()
+const char* UException::what() const UFC_NOEXCEPT
 {
 	return FErrMsg.c_str();
 }

@@ -23,6 +23,9 @@ typedef enum
             
 } RequestResult;
 //----------------------------------------------------------------------------------------------------------------------
+extern const UFC::AnsiString SYSTEM_BUILDDATE_QUERY;
+extern const UFC::AnsiString SYSTEM_BUILDDATE_REPLY;
+//----------------------------------------------------------------------------------------------------------------------
 // Class MonitorListener
 // Interface to monitoring MBus process.
 //----------------------------------------------------------------------------------------------------------------------
@@ -141,8 +144,11 @@ private:
         UFC::PHashMap<UFC::AnsiString,ThroughputCtrl*>    FMaxRequest;  
         UFC::PHashMap<UFC::AnsiString,ResponseData*>      FRequestEvents;      
         UFC::PCriticalSection                             FMapLock;
-        UFC::PCriticalSection                             FUIDLock;          
-        ResponseHandler                                   FResponseListener;  
+        UFC::PCriticalSection                             FUIDLock;
+        ResponseHandler                                   FResponseListener;
+        ///< The build date lives in a table in Sigo.cpp, not in a data member: adding a member
+        ///< changes sizeof(MessageObject) and breaks binaries built against the old header.
+        void InitMessageObject( MApp::MAppProperties& AppProps, UFCType::Int32 Port, const UFC::AnsiString& BuildDate );
         void         AddReqEvent( const UFC::AnsiString& ReqID, ResponseData* );
         void         DeleteReqEvent( const UFC::AnsiString& ReqID );        
         void         UniqueReqID( UFC::AnsiString& ReqID  );
@@ -157,6 +163,7 @@ private: // Functions for dependency process monitoring.
         void CheckStat( MTree* Data );
         void OnStatChange( BOOL IsOnline, MTree* Data );
         void OnKill( MTree* Data );
+        void ReplyBuildDate( MTree* Data );
 private: // Implement MessageListener
         virtual void OnMigoMessage( const UFC::AnsiString& Subject, const UFC::AnsiString& Key,  MTree* ) ;
 private: // Implement MAppListener
@@ -172,8 +179,15 @@ public:
      * @param Description:
      * @param Port: MBus service port.( Default: MAPP_DEF_PORT )
      */
-	MessageObject( UFC::AnsiString AppName, UFC::AnsiString Version,UFC::AnsiString Description, UFCType::Int32 Port = MApp::MAPP_DEF_PORT );
+	MessageObject( UFC::AnsiString AppName, UFC::AnsiString Version,UFC::AnsiString Description, UFCType::Int32 Port = MApp::MAPP_DEF_PORT, UFC::AnsiString BuildDate = __DATE__ " " __TIME__ );
+    MessageObject( UFC::AnsiString AppName, UFC::AnsiString BuildDate = __DATE__ " " __TIME__ );
+#ifdef MIGO_SIGO_LEGACY_CTORS
+    ///< Pre-BuildDate constructor symbols, defined in Sigo.cpp only, so binaries built against
+    ///< the old Sigo.h still resolve against this library. Hidden from every other file so new
+    ///< builds pick the overloads above (with the caller's __DATE__/__TIME__) unambiguously.
+    MessageObject( UFC::AnsiString AppName, UFC::AnsiString Version, UFC::AnsiString Description, UFCType::Int32 Port );
     MessageObject( UFC::AnsiString AppName );
+#endif
     /**
      * Destructor for Migo Object.
      */

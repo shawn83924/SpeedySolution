@@ -13,8 +13,8 @@ private:
 	UFC::AnsiString FMessage;
 public:
 	MDSException( void );
-	virtual ~MDSException( void ) throw();
-	virtual const char* what( void ) const throw();
+	virtual ~MDSException( void ) UFC_NOEXCEPT;
+	virtual const char* what( void ) const UFC_NOEXCEPT;
 public:
 	void Throw( const char* FormatStr, ... );
 };
@@ -23,28 +23,28 @@ class MDSInitialFailException : public MDSException
 {
 public:
 	MDSInitialFailException( void ) {}
-	virtual ~MDSInitialFailException( void ) throw() {}
+	virtual ~MDSInitialFailException( void ) UFC_NOEXCEPT {}
 };
 //------------------------------------------------------------------------------------------------------------------------
 class MDSColumnNotFoundException : public MDSException
 {
 public:
 	MDSColumnNotFoundException( void ) {}
-	virtual ~MDSColumnNotFoundException( void ) throw() {}
+	virtual ~MDSColumnNotFoundException( void ) UFC_NOEXCEPT {}
 };
 //------------------------------------------------------------------------------------------------------------------------
 class MDSFileNotFoundException : public MDSException
 {
 public:
 	MDSFileNotFoundException( void ) {}
-	virtual ~MDSFileNotFoundException( void ) throw() {}
+	virtual ~MDSFileNotFoundException( void ) UFC_NOEXCEPT {}
 };
 //------------------------------------------------------------------------------------------------------------------------
 class MDSLengthErrorException : public MDSException
 {
 public:
 	MDSLengthErrorException( void ) {}
-	virtual ~MDSLengthErrorException( void ) throw() {}
+	virtual ~MDSLengthErrorException( void ) UFC_NOEXCEPT {}
 };
 //------------------------------------------------------------------------------------------------------------------------
 } ///< namespace MDS

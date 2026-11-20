@@ -5,13 +5,14 @@
 #include "PInt32.h"
 #include "iniFile.h"
 #include <iostream>
+#include <new>
 //------------------------------------------------------------------------------
-#if defined(_WIN32) && !defined(__BORLANDC__)   // C++Builder (Win32/Win64) 的 RTL 已提供 stpcpy
+#if defined(_WIN32) && !defined(__BORLANDC__)   // The C++Builder (Win32/Win64) RTL already provides stpcpy
 static char* stpcpy(char* dst, const char* src)
 {
     while ((*dst++ = *src++) != '\0')
         ;
-    return dst - 1;   // 指向 NUL
+    return dst - 1;   // points to the terminating NUL
 }
 #endif
 //------------------------------------------------------------------------------
@@ -348,7 +349,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1 )
     if( str != NULL && str1 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
         TextBuf = stpcpy(TextBuf, str);
@@ -370,7 +371,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2 
     if( str != NULL && str1 != NULL && str2 != NULL)
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -393,7 +394,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -417,7 +418,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -442,7 +443,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -468,7 +469,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -495,7 +496,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -523,7 +524,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -552,7 +553,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL)
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -582,7 +583,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -613,7 +614,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -645,7 +646,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -678,7 +679,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -712,7 +713,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -747,7 +748,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -783,7 +784,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -820,7 +821,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL && str17 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -858,7 +859,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL && str17 != NULL && str18 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -897,7 +898,7 @@ UInt16 BufferedLog::fprint( const char* str, const char* str1, const char* str2,
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL && str17 != NULL && str18 != NULL && str19 != NULL )
     {        
         UInt16 CharCount;
-        register char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char* TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         TextBuf = stpcpy(TextBuf, str);
@@ -936,7 +937,7 @@ Int32 BufferedLog::AddPrefix( const UFC::AnsiString& Perfix )
         PLockObject Lock( BufferedLogData::FBufferCS );
 
         ///< Try to find an existing prefix string.
-        for( register int i = 0; i < BufferedLogData::FPreFixList.ItemCount(); i ++ )
+        for( int i = 0; i < BufferedLogData::FPreFixList.ItemCount(); i ++ )
         {
                 if( Perfix == BufferedLogData::FPreFixList.GetItem( i ) )
                         return i;
@@ -946,6 +947,44 @@ Int32 BufferedLog::AddPrefix( const UFC::AnsiString& Perfix )
         return BufferedLogData::FPreFixList.ItemCount() - 1;
     }
     return 0;
+}
+//---------------------------------------------------------------------------
+static void WriteSTRBufferLog( Int32 Offset, Int32 CharCount, BOOL ToStdout )
+{
+    Int32 Kept = BufferedLogData::FBufferSize - Offset - 1;
+    if( CharCount <= Kept )
+    {
+        if( BufferedLogData::FLogObject != NULL )
+            BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
+        if( ToStdout == TRUE )
+            printf( "%s\n", BufferedLogData::FSTRBuffer );
+        return;
+    }
+    char        Notice[ 128 ];
+    Int32       NoticeLen = snprintf( Notice, sizeof(Notice), "...[LOG TRUNCATED: original %d bytes, kept %d, dropped %d]", CharCount, Kept, CharCount - Kept );
+    Int32       LogLen = Offset + Kept;
+    const char* LogStr = BufferedLogData::FSTRBuffer;
+    char*       Out = new (std::nothrow) char[ LogLen + NoticeLen + 1 ];
+    if( Out != NULL )
+    {
+        memcpy( Out, BufferedLogData::FSTRBuffer, LogLen );
+        memcpy( Out + LogLen, Notice, NoticeLen + 1 );
+        LogStr = Out;
+        LogLen += NoticeLen;
+    }
+    try
+    {
+        if( BufferedLogData::FLogObject != NULL )
+            BufferedLogData::FLogObject->WriteString( LogStr, LogLen );
+        if( ToStdout == TRUE )
+            printf( "%s\n", LogStr );
+    }
+    catch( ... )
+    {
+        delete [] Out;
+        throw;
+    }
+    delete [] Out;
 }
 //---------------------------------------------------------------------------
 UInt16 BufferedLog::Printf( const char* FormatStr, ... )
@@ -990,11 +1029,10 @@ UInt16 BufferedLog::Printf( const char* FormatStr, ... )
 
         if( CharCount <= 0 )
             throw( UFC::Exception( " vsnprintf failed" ));
-        if( BufferedLogData::FLogObject != NULL )
-            BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
     #ifndef _WIN32
-        if( BufferedLogData::FToStdout == TRUE )
-            printf( "%s\n", BufferedLogData::FSTRBuffer );
+        WriteSTRBufferLog( Offset, CharCount, BufferedLogData::FToStdout );
+    #else
+        WriteSTRBufferLog( Offset, CharCount, FALSE );
     #endif
         return CharCount;
     }
@@ -1054,11 +1092,10 @@ UInt16 BufferedLog::DebugPrintf( const char* FormatStr, ... )
 		va_end( va );
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
-		if( BufferedLogData::FLogObject != NULL )
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
 	#ifndef _WIN32
-		if( BufferedLogData::FToStdout == TRUE )
-			printf( "%s\n", BufferedLogData::FSTRBuffer );
+		WriteSTRBufferLog( Offset, CharCount, BufferedLogData::FToStdout );
+	#else
+		WriteSTRBufferLog( Offset, CharCount, FALSE );
 	#endif
 		return CharCount;
 	}
@@ -1116,10 +1153,7 @@ UInt16 BufferedLog::DebugPrintf( Int32 Level, const char* FormatStr, ... )
 		va_end( va );
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
-		if( BufferedLogData::FLogObject != NULL )
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
-		if( BufferedLogData::FToStdout == TRUE )
-			printf( "%s\n", BufferedLogData::FSTRBuffer );
+		WriteSTRBufferLog( Offset, CharCount, BufferedLogData::FToStdout );
 		return CharCount;
 	}
 	else
@@ -1159,10 +1193,7 @@ UInt16 BufferedLog::DebugPrintf( Int32 Level, Int32 PrefixIndex, const char* For
 		va_end( va );
 		if( CharCount <= 0 )
 			throw( UFC::Exception( " vsnprintf failed" ));
-		if( BufferedLogData::FLogObject != NULL ) ///< Log object exists.
-			BufferedLogData::FLogObject->WriteString( (const char*)BufferedLogData::FSTRBuffer, Offset + CharCount );
-		if( BufferedLogData::FToStdout == TRUE )
-			printf( "%s\n", BufferedLogData::FSTRBuffer );
+		WriteSTRBufferLog( Offset, CharCount, BufferedLogData::FToStdout );
 		return CharCount;
 	}
 	else
@@ -1206,7 +1237,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1 )
     if( str != NULL && str1 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );        
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1229,7 +1260,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2 )
     if( str != NULL && str1 != NULL && str2 != NULL)
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1254,7 +1285,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1281,7 +1312,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1310,7 +1341,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1341,7 +1372,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1374,7 +1405,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1409,7 +1440,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1446,7 +1477,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL)
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1485,7 +1516,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1526,7 +1557,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1569,7 +1600,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1614,7 +1645,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1661,7 +1692,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1710,7 +1741,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1761,7 +1792,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1814,7 +1845,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL && str17 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );
@@ -1869,7 +1900,7 @@ UInt16 BufferedLog::print( const char* str, const char* str1, const char* str2, 
     if( str != NULL && str1 != NULL && str2 != NULL && str3 != NULL && str4 != NULL && str5 != NULL && str6 != NULL && str7 != NULL && str8 != NULL && str9 != NULL && str10 != NULL && str11 != NULL && str12 != NULL && str13 != NULL && str14 != NULL && str15 != NULL && str16 != NULL && str17 != NULL && str18 != NULL )
     {        
         UInt16 CharCount;
-        register char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
+        char*  TextBuf = Buffer + BufferedLogData::FTimeStrLen;
         
         GetTimestamp( Buffer );
         while ( ( *TextBuf++ = *str++ ) != 0 );

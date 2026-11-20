@@ -72,6 +72,7 @@ const int MBUS_MSG_MAX = 1048576;
 extern UFC::AnsiString ADMIN_SUBJECT;
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 using UFCType::UInt8;
+class DataMessagePool;   ///< Optional pool for the MBus order hot path (see below).
 class MigoHeader
 {
 protected:
@@ -95,11 +96,15 @@ public:
 private:
     static MigoHeader* ProcessProxyProtocol( UFC::UInt8* Data, UFC::PClientSocket* Socket );
     static MigoHeader* ProcessHeaderSizeMessage( UFCType::Int32 Act, UFCType::Int32 MsgID, UFCType::Int32 SenderID );
-    static MigoHeader* ProcessDataMessage( UFCType::Int32 Act, UFCType::Int32 MsgID, UFCType::Int32 SenderID, UFCType::Int32 Size , UFC::PClientSocket* Socket );
+    static MigoHeader* ProcessDataMessage( UFCType::Int32 Act, UFCType::Int32 MsgID, UFCType::Int32 SenderID, UFCType::Int32 Size , UFC::PClientSocket* Socket, DataMessagePool* Pool = NULL );
     static MigoHeader* ProcessDataMessage( UFCType::Int32 Act, UFCType::Int32 MsgID, UFCType::Int32 SenderID, UFCType::Int32 Size , UFC::PStream* Stream );
     static MigoHeader* CreateMessageFromStream( UFCType::Int32 Act, UFCType::Int32 MsgID, UFCType::Int32 SenderID, UFCType::Int32 Size , UFC::MemoryStream* MemStream );
 public:
-    static MigoHeader* CreateFromSocket( UFC::PClientSocket* Socket, UFCType::UInt32& RcvSize  );
+    ///< Legacy 2-arg overload kept as a distinct symbol so binaries built against
+    ///< the old header keep resolving against libUFC (no ABI break); forwards Pool=NULL.
+    static MigoHeader* CreateFromSocket( UFC::PClientSocket* Socket, UFCType::UInt32& RcvSize );
+    ///< Pool is opt-in: when non-NULL, ACK_MESSAGE payloads reuse a pooled DataMessage.
+    static MigoHeader* CreateFromSocket( UFC::PClientSocket* Socket, UFCType::UInt32& RcvSize, DataMessagePool* Pool );
     static MigoHeader* CreateFromStream( UFC::PStream* Stream, UFCType::UInt32& RcvSize );
     static UFCType::Int32       HeaderChecksum( UFCType::Int32 Ack, UFCType::Int32 Size, UFCType::Int32 MessageID ) { return (Ack + Size + MessageID); }
 public:
@@ -191,6 +196,25 @@ public:
     const MString& getKey( void ) { return FKey; }
 };
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+///< Zero-alloc extraction of the fixed order schema from a DataMessage's serialized
+///< MTree, bypassing getData()'s per-field MNode/hashmap/string allocation. ORDER/ID
+///< point into the message buffer (valid while the DataMessage lives). Stock reads
+///< ORDER/NID/ID/GROUP/PeerIP; futures also OFFHOUR. Absent fields keep has*=false (matches
+///< MTree::get returning false). See DataMessage::ScanOrderFields.
+struct FastOrderFields
+{
+    const char* Order;   int OrderLen;   bool HasOrder;
+    const char* ID;      int IDLen;      bool HasID;
+    int         NID;                     bool HasNID;
+    int         Group;                   bool HasGroup;
+    bool        OffHour;                 bool HasOffHour;
+    bool        HasStrategy;  ///< touch/stop order (STRATEGY field present) -> caller must use the getData path
+    const char* PeerIP;  int PeerIPLen;  bool HasPeerIP;   ///< client IP written by the sender (order log / ODS)
+    FastOrderFields() : Order(0),OrderLen(0),HasOrder(false), ID(0),IDLen(0),HasID(false),
+                        NID(0),HasNID(false), Group(0),HasGroup(false), OffHour(false),HasOffHour(false),
+                        HasStrategy(false), PeerIP(0),PeerIPLen(0),HasPeerIP(false) {}
+};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class DataMessage : public MigoHeader
 {
 private:
@@ -202,20 +226,47 @@ private:
     UFCType::Int32     FFD;
 public:
     DataMessage( UFCType::Int32 ID, UFCType::Int32 SenderID, UFC::MemoryStream* DataStream );
+    ///< Order hot path: read the payload straight from the socket into FStream,
+    ///< skipping the intermediate stack MemoryStream + copy-construct.
+    DataMessage( UFCType::Int32 ID, UFCType::Int32 SenderID, UFCType::Int32 Size, UFC::PClientSocket* Socket );
     DataMessage( UFCType::Int32 ID, const MString &Subject, const MString &Key, MTree &Data );
     DataMessage( DataMessage& Src );
+    DataMessage( void );   ///< Empty object for pool preallocation; populate with InitFromSocket().
+    ///< Repopulate a recycled object from the socket, reusing FStream's buffer when it fits.
+    void InitFromSocket( UFCType::Int32 ID, UFCType::Int32 SenderID, UFCType::Int32 Size, UFC::PClientSocket* Socket );
     virtual void SaveToStream( UFC::PStream* Stream );
 public:
     const MString& getSubject( void ) { return FSubject; }
     const MString& getKey( void )     { return FKey; }
     void  getData( MTree& Data );
+    ///< Fast, zero-alloc scan of the serialized MTree for the order fields (see
+    ///< FastOrderFields). Returns true if the payload parsed cleanly. Byte-equivalent
+    ///< to reading the same fields via getData; used on the MBus order hot path.
+    bool  ScanOrderFields( FastOrderFields& Out );
     static void MessageToStream( UFCType::Int32 ID, const MString &Subject, const MString &Key, MTree &Data, UFC::MemoryStream* );
     static void MessageToSocket( UFCType::Int32 ID, const MString &Subject, const MString &Key, MTree &Data, UFC::PClientSocket* Socket );	
 public:
     void SetIPAddress( const MString& IP ) { FIPAddress = IP; }
     void SetFD( UFCType::Int32 FD )	   { FFD = FD; }
     const MString& GetIPAddress( void )	   { return FIPAddress; }
-    UFCType::Int32 GetFD( void )	   { return FFD; }	
+    UFCType::Int32 GetFD( void )	   { return FFD; }
+};
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//  Thread-safe pool of live DataMessage objects for the MBus order hot path.
+//  Only usable where a message's create->use->delete is confined to one thread
+//  within one call (e.g. MBusServer::OnClientWrite). Recycled objects keep their
+//  FStream buffer, so a warm pool serves orders with zero allocation.
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+class DataMessagePool
+{
+private:
+    UFC::PtrQueue<DataMessage> FFree;   ///< internal critical section makes borrow/return thread-safe
+public:
+    DataMessagePool( UFCType::Int32 Prealloc = 0 );
+    ~DataMessagePool();
+    ///< Borrow an object and populate it from the socket. Never returns NULL (falls back to new).
+    DataMessage* Acquire( UFCType::Int32 ID, UFCType::Int32 SenderID, UFCType::Int32 Size, UFC::PClientSocket* Socket );
+    void         Release( DataMessage* Msg );   ///< Return to the pool (delete if the pool is full).
 };
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 class AdminMessage : public MigoHeader

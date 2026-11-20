@@ -30,8 +30,8 @@ public:
 	//Exception( const wchar_t* ErrStr ):Message( ErrStr ){}
         Exception( const UFC::AnsiString& ErrStr ){ strncpy( Message, ErrStr.c_str(), ERR_MSG_MAX ); }
         Exception( void ) { Message[ 0 ] = 0; }
-	virtual ~Exception() throw(){}
-	virtual const char *what()  const throw()
+	virtual ~Exception() UFC_NOEXCEPT{}
+	virtual const char *what()  const UFC_NOEXCEPT
 	{
             return Message;
 	}
