@@ -14,6 +14,7 @@
 #include "SimTFXMain.h"
 #include <ComCtrls.hpp>
 #include "cspin.h"
+#include "UsersForm.h"
 //---------------------------------------------------------------------------
 class TAccountForm : public TForm
 {
@@ -131,6 +132,9 @@ __published:	// IDE-managed Components
 	TCSpinEdit *ThroughputSpinEdit;
 	TLabel *Label26;
 	TCheckBox *ModifyPasswordCheckBox;
+	TEdit *UsersEdit;
+	TBitBtn *UsersBitBtn;
+	TLabel *UserLabel;
     void __fastcall FormShow(TObject *Sender);
     void __fastcall IPCheckBoxClick(TObject *Sender);
     void __fastcall OKBtnClick(TObject *Sender);
@@ -160,6 +164,7 @@ __published:	// IDE-managed Components
 	void __fastcall OHOIDGenGroupClick(TObject *Sender);
 	void __fastcall OffHourCheckBoxClick(TObject *Sender);
 	void __fastcall TSETermsComboBoxChange(TObject *Sender);
+	void __fastcall UsersBitBtnClick(TObject *Sender);
 
 
 private:	// User declarations

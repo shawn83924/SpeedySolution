@@ -109,6 +109,10 @@ resourcestring
   MAIN_MODIFY_ACCOUNT_OK               = 'The account has been successfully modified.';///修改帳號成功';
   MAIN_MODIFY_PASSWORD_NO_RIGHTS       = 'The server has no right to modify passwords.';///此主機無權限修改密碼';
   MAIN_MODIFY_PASSWORD_OK              = 'The password has been successfully modified.';///修改密碼成功';
+  MAIN_MODIFY_PASSWORD_FAIL            = 'Failed to modify the password.';///修改密碼失敗';
+  MAIN_MODIFY_PASSWORD_SAME_PREV2      = 'The new password cannot be the same as the previous 2 passwords.';///新密碼不可與前兩次密碼相同';
+  MAIN_MODIFY_PASSWORD_ALREADY_EXISTS  = 'The account has already existed.';///帳號已存在';
+  MAIN_MODIFY_PASSWORD_NOT_ADMIN       = 'Only administrators can modify passwords.';///非管理者,無權限修改密碼';
 
   MAIN_NO_RESPONSE_CHECK_AGENT_MANAGER = 'No response received. Please check if SpeedyManager and SpeedyAgent operate properly.';///無回應,請確定伺服器上SpeedyManager及SpeedyAgent運作正常.';
   MAIN_NO_RESPONSE_CHECK_SPEEDYAGENT   = 'No response received. Please check if SpeedyManager operates properly.';///指令無回應,請確定伺服器上SpeedyManager運作正常.';

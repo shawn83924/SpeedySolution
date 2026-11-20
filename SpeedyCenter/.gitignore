@@ -1,0 +1,41 @@
+# Build output (per configuration)
+Debug/
+Release/
+Debug_obj/
+Release_obj/
+Win32/
+Win64/
+
+# Integrated Translation Environment output (auto-regenerated from the main .dfm/.dpr on build)
+CHS/
+CHT/
+ENU/
+
+# IDE backup / autosave / recovery
+__history/
+__recovery/
+
+# Compiler / linker intermediate & generated files
+*.obj
+*.tds
+*.map
+*.dcu
+*.dcp
+*.bpl
+*.exe
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.drc
+*.res
+*.stat
+*.~*
+
+# IDE user-specific settings (machine-local, not shared with the team)
+*.cbproj.local
+*.groupproj.local
+*.identcache
+*.tvsconfig
+*.tvsclosedfiles
+*.dsk
