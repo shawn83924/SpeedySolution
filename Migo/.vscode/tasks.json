@@ -1,0 +1,104 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (Solaris_Debug)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=Solaris_Debug",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean (Solaris_Debug)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=Solaris_Debug",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build (Solaris_Release)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=Solaris_Release",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean (Solaris_Release)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=Solaris_Release",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "build (AIX_Debug)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=AIX_Debug",
+                "build"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean (AIX_Debug)",
+            "type": "shell",
+            "command": "make",
+            "args": [
+                "CONF=AIX_Debug",
+                "clean"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="90">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>MApp.h</itemPath>
+      <itemPath>MComponent.h</itemPath>
+      <itemPath>MException.h</itemPath>
+      <itemPath>MNode.h</itemPath>
+      <itemPath>MSubscriber.h</itemPath>
+      <itemPath>MTree.h</itemPath>
+      <itemPath>Maverick.h</itemPath>
+      <itemPath>MigoHeader.h</itemPath>
+      <itemPath>Sigo.h</itemPath>
+      <itemPath>SubjectDB.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>MApp.cpp</itemPath>
+      <itemPath>MComponent.cpp</itemPath>
+      <itemPath>MException.cpp</itemPath>
+      <itemPath>MNode.cpp</itemPath>
+      <itemPath>MSubscriber.cpp</itemPath>
+      <itemPath>MTree.cpp</itemPath>
+      <itemPath>MigoHeader.cpp</itemPath>
+      <itemPath>Sigo.cpp</itemPath>
+      <itemPath>SubjectDB.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false">
+      <itemPath>Makefile_Migo.mk</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <projectmakefile>Makefile_Migo.mk</projectmakefile>
+  <confs>
+    <conf name="Solaris_Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <commandLine>-pthreads -fPIC</commandLine>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/Migo.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="MApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MComponent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MSubscriber.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Maverick.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MigoHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MigoHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sigo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SubjectDB.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SubjectDB.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Solaris_Release" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+          <commandLine>-pthreads -fPIC</commandLine>
+          <preprocessorList>
+            <Elem>__SOLARIS</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <archiverTool>
+          <output>/MBus/lib/Migo.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="MApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MComponent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MSubscriber.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Maverick.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MigoHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MigoHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sigo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SubjectDB.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SubjectDB.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="AIX_Debug" type="3">
+      <toolsSet>
+        <compilerSet>GNU|GNU</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <warningLevel>2</warningLevel>
+        </cTool>
+        <ccTool>
+          <commandLine>-pthread</commandLine>
+          <preprocessorList>
+            <Elem>__AIX</Elem>
+          </preprocessorList>
+          <warningLevel>2</warningLevel>
+        </ccTool>
+        <archiverTool>
+          <output>/MBus/lib/Migo.a</output>
+        </archiverTool>
+      </compileType>
+      <item path="MApp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MApp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MComponent.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MComponent.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MException.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MNode.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MNode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MSubscriber.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MSubscriber.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MTree.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MTree.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Maverick.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="MigoHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="MigoHeader.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Sigo.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Sigo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SubjectDB.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SubjectDB.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

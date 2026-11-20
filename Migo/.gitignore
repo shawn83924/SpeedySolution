@@ -1,0 +1,48 @@
+# NetBeans / make build output
+build/
+dist/
+nbproject/private/
+.dep.inc
+
+# Object files and dependency files
+*.o
+*.o.d
+*.d
+*.obj
+*.a
+*.lib
+*.so
+*.so.*
+*.exe
+*.dll
+*.pdb
+*.ilk
+
+# Embarcadero C++Builder / RAD Studio
+__history/
+__recovery/
+*.~*
+*.local
+*.identcache
+*.dsk
+*.stat
+*.tds
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.map
+
+# Visual Studio / VS Code
+.vs/
+*.user
+*.suo
+.vscode/ipch/
+.vscode/browse.vc.db*
+
+# Editor and OS files
+*~
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
