@@ -23,7 +23,7 @@ __fastcall TTagForm::TTagForm(TComponent* Owner)
 void __fastcall TTagForm::ReplaceChar( const AnsiString& Msg, char From, char To )
 {
    char *CharPtr = Msg.c_str();
-   for( register int i = 0;i < Msg.Length(); i++ )
+   for( int i = 0;i < Msg.Length(); i++ )
    {
        if( CharPtr[i] == From )
            CharPtr[i] = To;

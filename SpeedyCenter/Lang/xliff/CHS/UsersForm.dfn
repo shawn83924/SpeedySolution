@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="UsersForm.dfm" source-language="zh-TW" target-language="zh-CN" datatype="delphiform" tool="Build-LangResources.ps1">
+    <body>
+      <trans-unit id="O:UsersList.O:UsersListView.Columns[0].Caption" resname="O:UsersList.O:UsersListView.Columns[0].Caption">
+        <source>'使用者'</source>
+      </trans-unit>
+      <trans-unit id="O:UsersList.O:BtnPanel.O:OKBtn.Caption" resname="O:UsersList.O:BtnPanel.O:OKBtn.Caption">
+        <source>'確定'</source>
+      </trans-unit>
+      <trans-unit id="O:UsersList.O:BtnPanel.O:CancelBtn.Caption" resname="O:UsersList.O:BtnPanel.O:CancelBtn.Caption">
+        <source>'取消'</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

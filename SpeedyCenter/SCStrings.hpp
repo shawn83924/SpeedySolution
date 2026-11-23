@@ -1,16 +1,18 @@
 ﻿// CodeGear C++Builder
-// Copyright (c) 1995, 2017 by Embarcadero Technologies, Inc.
+// Copyright (c) 1995, 2026 by Embarcadero Technologies, Inc.
 // All rights reserved
 
-// (DO NOT EDIT: machine generated header) 'SCStrings.pas' rev: 32.00 (Windows)
+// (DO NOT EDIT: machine generated header) 'SCStrings.pas' rev: 37.00 (Windows)
 
-#ifndef ScstringsHPP
-#define ScstringsHPP
+#ifndef SCStringsHPP
+#define SCStringsHPP
 
 #pragma delphiheader begin
 #pragma option push
+#if defined(__BORLANDC__) && !defined(__clang__)
 #pragma option -w-      // All warnings off
 #pragma option -Vx      // Zero-length empty class member 
+#endif
 #pragma pack(push,8)
 #include <System.hpp>
 #include <SysInit.hpp>
@@ -708,4 +710,4 @@ using namespace Scstrings;
 
 #pragma delphiheader end.
 //-- end unit ----------------------------------------------------------------
-#endif	// ScstringsHPP
+#endif	// SCStringsHPP

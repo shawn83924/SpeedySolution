@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\NewUser.dfm" source-language="zh-TW" target-language="en-US" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\NewUser.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">45051.7905555556</prop>
+        <prop prop-type="OrigDateTime">45051.7812731481</prop>
+        <prop prop-type="XlatDateTime">40455.8303472222</prop>
+        <prop prop-type="Translated">12</prop>
+        <prop prop-type="UnTranslated">126</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:NewUserForm.Left" resname="O:NewUserForm.Left">
+        <source>484</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Top" resname="O:NewUserForm.Top">
+        <source>186</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.BorderStyle" resname="O:NewUserForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Caption" resname="O:NewUserForm.Caption">
+        <source>'新增使用者'</source>
+        <target>'New User'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716435</prop><prop prop-type="Status">1</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.ClientHeight" resname="O:NewUserForm.ClientHeight">
+        <source>231</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.ClientWidth" resname="O:NewUserForm.ClientWidth">
+        <source>329</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Color" resname="O:NewUserForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Font.Charset" resname="O:NewUserForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Font.Color" resname="O:NewUserForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Font.Height" resname="O:NewUserForm.Font.Height">
+        <source>-17</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Font.Name" resname="O:NewUserForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Font.Style" resname="O:NewUserForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.OldCreateOrder" resname="O:NewUserForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Position" resname="O:NewUserForm.Position">
+        <source>poMainFormCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.Scaled" resname="O:NewUserForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.OnShow" resname="O:NewUserForm.OnShow">
+        <source>FormShow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.PixelsPerInch" resname="O:NewUserForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.TextHeight" resname="O:NewUserForm.TextHeight">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TNewUserForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.Left" resname="O:NewUserForm.O:IDPanel.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.Top" resname="O:NewUserForm.O:IDPanel.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.Width" resname="O:NewUserForm.O:IDPanel.Width">
+        <source>329</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.Height" resname="O:NewUserForm.O:IDPanel.Height">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.Align" resname="O:NewUserForm.O:IDPanel.Align">
+        <source>alTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.BevelOuter" resname="O:NewUserForm.O:IDPanel.BevelOuter">
+        <source>bvNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.TabOrder" resname="O:NewUserForm.O:IDPanel.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Left" resname="O:NewUserForm.O:IDPanel.O:Label1.Left">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079716898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Top" resname="O:NewUserForm.O:IDPanel.O:Label1.Top">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Width" resname="O:NewUserForm.O:IDPanel.O:Label1.Width">
+        <source>85</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Height" resname="O:NewUserForm.O:IDPanel.O:Label1.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Alignment" resname="O:NewUserForm.O:IDPanel.O:Label1.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.AutoSize" resname="O:NewUserForm.O:IDPanel.O:Label1.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:Label1.Caption" resname="O:NewUserForm.O:IDPanel.O:Label1.Caption">
+        <source>'帳號'</source>
+        <target>'ID'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">1</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.Left" resname="O:NewUserForm.O:IDPanel.O:IDEdit.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.Top" resname="O:NewUserForm.O:IDPanel.O:IDEdit.Top">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.Width" resname="O:NewUserForm.O:IDPanel.O:IDEdit.Width">
+        <source>168</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.Height" resname="O:NewUserForm.O:IDPanel.O:IDEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.ImeMode" resname="O:NewUserForm.O:IDPanel.O:IDEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:IDPanel.O:IDEdit.TabOrder" resname="O:NewUserForm.O:IDPanel.O:IDEdit.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.Left" resname="O:NewUserForm.O:PwdPanel.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.Top" resname="O:NewUserForm.O:PwdPanel.Top">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.Width" resname="O:NewUserForm.O:PwdPanel.Width">
+        <source>329</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.Height" resname="O:NewUserForm.O:PwdPanel.Height">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.Align" resname="O:NewUserForm.O:PwdPanel.Align">
+        <source>alTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.BevelOuter" resname="O:NewUserForm.O:PwdPanel.BevelOuter">
+        <source>bvNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.TabOrder" resname="O:NewUserForm.O:PwdPanel.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Left" resname="O:NewUserForm.O:PwdPanel.O:Label2.Left">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Top" resname="O:NewUserForm.O:PwdPanel.O:Label2.Top">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Width" resname="O:NewUserForm.O:PwdPanel.O:Label2.Width">
+        <source>85</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Height" resname="O:NewUserForm.O:PwdPanel.O:Label2.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Alignment" resname="O:NewUserForm.O:PwdPanel.O:Label2.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.AutoSize" resname="O:NewUserForm.O:PwdPanel.O:Label2.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label2.Caption" resname="O:NewUserForm.O:PwdPanel.O:Label2.Caption">
+        <source>'密碼'</source>
+        <target>'Password'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">1</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Left" resname="O:NewUserForm.O:PwdPanel.O:Label3.Left">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Top" resname="O:NewUserForm.O:PwdPanel.O:Label3.Top">
+        <source>41</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Width" resname="O:NewUserForm.O:PwdPanel.O:Label3.Width">
+        <source>83</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Height" resname="O:NewUserForm.O:PwdPanel.O:Label3.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Alignment" resname="O:NewUserForm.O:PwdPanel.O:Label3.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.AutoSize" resname="O:NewUserForm.O:PwdPanel.O:Label3.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:Label3.Caption" resname="O:NewUserForm.O:PwdPanel.O:Label3.Caption">
+        <source>'確認密碼'</source>
+        <target>'Confirm'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">1</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Left" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Top" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Top">
+        <source>38</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Width" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Width">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Height" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.ImeMode" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.PasswordChar" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.PasswordChar">
+        <source>'*'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.TabOrder" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Text" resname="O:NewUserForm.O:PwdPanel.O:PwdConfirmEdit.Text">
+        <source>''</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7905692361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.Left" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.Top" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.Top">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.Width" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.Width">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.Height" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.ImeMode" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.ImeMode">
+        <source>imSAlpha</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.PasswordChar" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.PasswordChar">
+        <source>'*'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079717824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.TabOrder" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:PwdPanel.O:PwdEdit.Text" resname="O:NewUserForm.O:PwdPanel.O:PwdEdit.Text">
+        <source>''</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7905692361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TMaskEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.Left" resname="O:NewUserForm.O:AttrPanel.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.Top" resname="O:NewUserForm.O:AttrPanel.Top">
+        <source>109</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971794</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.Width" resname="O:NewUserForm.O:AttrPanel.Width">
+        <source>329</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.Height" resname="O:NewUserForm.O:AttrPanel.Height">
+        <source>74</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.Align" resname="O:NewUserForm.O:AttrPanel.Align">
+        <source>alTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.BevelOuter" resname="O:NewUserForm.O:AttrPanel.BevelOuter">
+        <source>bvNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.TabOrder" resname="O:NewUserForm.O:AttrPanel.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Left" resname="O:NewUserForm.O:AttrPanel.O:Label4.Left">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718056</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Top" resname="O:NewUserForm.O:AttrPanel.O:Label4.Top">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Width" resname="O:NewUserForm.O:AttrPanel.O:Label4.Width">
+        <source>85</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Height" resname="O:NewUserForm.O:AttrPanel.O:Label4.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Alignment" resname="O:NewUserForm.O:AttrPanel.O:Label4.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.AutoSize" resname="O:NewUserForm.O:AttrPanel.O:Label4.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label4.Caption" resname="O:NewUserForm.O:AttrPanel.O:Label4.Caption">
+        <source>'權限'</source>
+        <target>'Type'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">1</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Left" resname="O:NewUserForm.O:AttrPanel.O:Label5.Left">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Top" resname="O:NewUserForm.O:AttrPanel.O:Label5.Top">
+        <source>40</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718171</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Width" resname="O:NewUserForm.O:AttrPanel.O:Label5.Width">
+        <source>85</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Height" resname="O:NewUserForm.O:AttrPanel.O:Label5.Height">
+        <source>21</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Alignment" resname="O:NewUserForm.O:AttrPanel.O:Label5.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.AutoSize" resname="O:NewUserForm.O:AttrPanel.O:Label5.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.6220715278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:Label5.Caption" resname="O:NewUserForm.O:AttrPanel.O:Label5.Caption">
+        <source>'狀態'</source>
+        <target>'Status'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">1</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Left" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Top" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Top">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Width" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Width">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718287</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Height" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Style" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.ItemIndex" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.TabOrder" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718403</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Text" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Text">
+        <source>'正常'</source>
+        <target>'Normal'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718519</prop><prop prop-type="Status">1</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[0]" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[0]">
+        <source>'正常'</source>
+        <target>'Normal'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718519</prop><prop prop-type="Status">1</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[1]" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[1]">
+        <source>'鎖住'</source>
+        <target>'Locked'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718519</prop><prop prop-type="Status">1</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[2]" resname="O:NewUserForm.O:AttrPanel.O:StateComboBox.Items.Strings[2]">
+        <source>'密碼過期'</source>
+        <target>'Password Expired'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718519</prop><prop prop-type="Status">1</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Left" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Left">
+        <source>112</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718519</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Top" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Top">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Width" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Width">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Height" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Style" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718634</prop><prop prop-type="Status">0</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:AttrPanel.O:GroupComboBox.TabOrder" resname="O:NewUserForm.O:AttrPanel.O:GroupComboBox.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.Left" resname="O:NewUserForm.O:BtnPanel.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.Top" resname="O:NewUserForm.O:BtnPanel.Top">
+        <source>183</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.Width" resname="O:NewUserForm.O:BtnPanel.Width">
+        <source>329</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.Height" resname="O:NewUserForm.O:BtnPanel.Height">
+        <source>54</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.Align" resname="O:NewUserForm.O:BtnPanel.Align">
+        <source>alTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907971875</prop><prop prop-type="Status">0</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.BevelOuter" resname="O:NewUserForm.O:BtnPanel.BevelOuter">
+        <source>bvNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.TabOrder" resname="O:NewUserForm.O:BtnPanel.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079718866</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TPanel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Left" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Left">
+        <source>63</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Top" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Top">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Width" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Height" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Caption" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Caption">
+        <source>'確定'</source>
+        <target>'OK'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965857</prop><prop prop-type="Status">1</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Default" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.Glyph.Data" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965857</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.NumGlyphs" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.TabOrder" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:OKBtn.OnClick" resname="O:NewUserForm.O:BtnPanel.O:OKBtn.OnClick">
+        <source>OKBtnClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">129</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Left" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Left">
+        <source>167</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">130</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Top" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Top">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">131</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Width" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673965972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">132</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Height" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673966088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">133</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Caption" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <target>'Cancel'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673966088</prop><prop prop-type="Status">1</prop><prop prop-type="Order">134</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.Kind" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673966088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">135</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.NumGlyphs" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">45051.7905692361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">136</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:NewUserForm.O:BtnPanel.O:CancelBtn.TabOrder" resname="O:NewUserForm.O:BtnPanel.O:CancelBtn.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40665.8673967014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">137</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

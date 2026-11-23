@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
-#include "reinit.hpp"
+#include "LangRes.hpp"
 #include "SCStrings.hpp"
 //---------------------------------------------------------------------------
 #include <Vcl.Styles.hpp>
@@ -47,7 +47,7 @@ USEFORM("UsersForm.cpp", UsersList);
 //---------------------------------------------------------------------------
 LCID FCurrentLCID;
 //---------------------------------------------------------------------------
-WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
 	try
 	{
@@ -74,6 +74,9 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->CreateForm(__classid(TMessageForm), &MessageForm);
 		Application->CreateForm(__classid(TThroughputForm), &ThroughputForm);
 		Application->CreateForm(__classid(TUsersList), &UsersList);
+		// The language was loaded by TMDIForm (the first form); translate the forms created
+		// after it now, before any of them is used (LangRes.pas).
+		Langres::TranslateScreen();
 		Application->Run();
 	}
 	catch( Exception &exception )

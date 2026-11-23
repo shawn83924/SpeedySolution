@@ -149,7 +149,7 @@ String __fastcall TServerGroupForm::GetServersNameString( void )
 	String     Names;
 	TListItem* Server;
 
-	Names.printf( L"%s:", GroupNameEdit->Text );
+	Names.printf( L"%s:", GroupNameEdit->Text.c_str() );
 	for( int i = 0; i < GroupServerListView->Items->Count; i ++ )
 	{
 		Server = GroupServerListView->Items->Item[i];

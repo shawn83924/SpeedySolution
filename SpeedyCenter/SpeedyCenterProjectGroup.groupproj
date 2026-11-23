@@ -15,15 +15,6 @@
         <Projects Include="SpeedyCenter.cbproj">
             <Dependencies/>
         </Projects>
-        <Projects Include="CHS\SpeedyCenter_CHS.bdsproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="CHT\SpeedyCenter_CHT.bdsproj">
-            <Dependencies/>
-        </Projects>
-        <Projects Include="ENU\SpeedyCenter_ENU.bdsproj">
-            <Dependencies/>
-        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -68,41 +59,14 @@
     <Target Name="SpeedyCenter:Make">
         <MSBuild Projects="SpeedyCenter.cbproj" Targets="Make"/>
     </Target>
-    <Target Name="SpeedyCenter_CHS">
-        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj"/>
-    </Target>
-    <Target Name="SpeedyCenter_CHS:Clean">
-        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SpeedyCenter_CHS:Make">
-        <MSBuild Projects="CHS\SpeedyCenter_CHS.bdsproj" Targets="Make"/>
-    </Target>
-    <Target Name="SpeedyCenter_CHT">
-        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj"/>
-    </Target>
-    <Target Name="SpeedyCenter_CHT:Clean">
-        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SpeedyCenter_CHT:Make">
-        <MSBuild Projects="CHT\SpeedyCenter_CHT.bdsproj" Targets="Make"/>
-    </Target>
-    <Target Name="SpeedyCenter_ENU">
-        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj"/>
-    </Target>
-    <Target Name="SpeedyCenter_ENU:Clean">
-        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj" Targets="Clean"/>
-    </Target>
-    <Target Name="SpeedyCenter_ENU:Make">
-        <MSBuild Projects="ENU\SpeedyCenter_ENU.bdsproj" Targets="Make"/>
-    </Target>
     <Target Name="Build">
-        <CallTarget Targets="UFC;MDComponent;MBusComponent;SpeedyCenter;SpeedyCenter_CHS;SpeedyCenter_CHT;SpeedyCenter_ENU"/>
+        <CallTarget Targets="UFC;MDComponent;MBusComponent;SpeedyCenter"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="UFC:Clean;MDComponent:Clean;MBusComponent:Clean;SpeedyCenter:Clean;SpeedyCenter_CHS:Clean;SpeedyCenter_CHT:Clean;SpeedyCenter_ENU:Clean"/>
+        <CallTarget Targets="UFC:Clean;MDComponent:Clean;MBusComponent:Clean;SpeedyCenter:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="UFC:Make;MDComponent:Make;MBusComponent:Make;SpeedyCenter:Make;SpeedyCenter_CHS:Make;SpeedyCenter_CHT:Make;SpeedyCenter_ENU:Make"/>
+        <CallTarget Targets="UFC:Make;MDComponent:Make;MBusComponent:Make;SpeedyCenter:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

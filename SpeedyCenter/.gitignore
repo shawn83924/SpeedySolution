@@ -6,10 +6,14 @@ Release_obj/
 Win32/
 Win64/
 
-# Integrated Translation Environment output (auto-regenerated from the main .dfm/.dpr on build)
-CHS/
-CHT/
-ENU/
+# Legacy ITE (Translation Manager) folders - replaced by Lang/ (C++Builder 13 has no ITE).
+# Translations now live in Lang/xliff/ and ARE versioned.
+/CHS/
+/CHT/
+/ENU/
+
+# Reports of Lang/Build-LangFiles.ps1 (the language files themselves go next to the exe)
+Lang/gen/
 
 # IDE backup / autosave / recovery
 __history/

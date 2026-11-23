@@ -1,27 +1,33 @@
 object MDIForm: TMDIForm
   Left = 0
   Top = 0
+  Margins.Left = 2
+  Margins.Top = 2
+  Margins.Right = 2
+  Margins.Bottom = 2
   Caption = 'Speedy Center'
-  ClientHeight = 926
-  ClientWidth = 1504
+  ClientHeight = 741
+  ClientWidth = 1202
   Color = clBtnHighlight
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -15
+  Font.Height = -12
   Font.Name = 'Tahoma'
   Font.Style = []
   FormStyle = fsMDIForm
-  OldCreateOrder = False
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnShow = FormShow
-  PixelsPerInch = 120
-  TextHeight = 18
+  TextHeight = 14
   object ToolBar: TToolBar
     Left = 0
     Top = 0
-    Width = 1504
-    Height = 38
+    Width = 1202
+    Height = 40
+    Margins.Left = 2
+    Margins.Top = 2
+    Margins.Right = 2
+    Margins.Bottom = 2
     ButtonHeight = 38
     ButtonWidth = 75
     Caption = 'ToolBar'
@@ -30,7 +36,7 @@ object MDIForm: TMDIForm
     DrawingStyle = dsGradient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clNavy
-    Font.Height = -16
+    Font.Height = -13
     Font.Name = 'Arial'
     Font.Style = []
     HotImages = ToolImageList
@@ -46,6 +52,10 @@ object MDIForm: TMDIForm
       Left = 0
       Top = 0
       Hint = #26032#22686#35222#31383
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'NewFormToolButton'
       ImageIndex = 7
       OnClick = NewFormToolButtonClick
@@ -53,128 +63,180 @@ object MDIForm: TMDIForm
     object SeparatorButton: TToolButton
       Left = 40
       Top = 0
-      Width = 8
+      Width = 6
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'SeparatorButton'
       ImageIndex = 10
       Style = tbsSeparator
     end
     object LogonButton: TToolButton
-      Left = 48
+      Left = 46
       Top = 0
       Hint = #30331#20837
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'LogonButton'
       ImageIndex = 0
       OnClick = LogonButtonClick
     end
     object LogoutButton: TToolButton
-      Left = 88
+      Left = 86
       Top = 0
       Hint = #30331#20986
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'LogoutButton'
       Enabled = False
       ImageIndex = 1
       OnClick = LogoutButtonClick
     end
     object SettingButton: TToolButton
-      Left = 128
+      Left = 126
       Top = 0
       Hint = #35373#23450
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'SettingButton'
       ImageIndex = 2
       OnClick = SettingButtonClick
     end
     object ChangePasswdButton: TToolButton
-      Left = 168
+      Left = 166
       Top = 0
       Hint = #20462#25913#23494#30908
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Enabled = False
       ImageIndex = 6
       OnClick = ChangePasswdButtonClick
     end
     object SeparatorButton1: TToolButton
-      Left = 208
+      Left = 206
       Top = 0
-      Width = 10
+      Width = 8
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'SeparatorButton1'
       ImageIndex = 3
       Style = tbsSeparator
     end
     object EventLogToolButton: TToolButton
-      Left = 218
+      Left = 214
       Top = 0
       Hint = #20107#20214#31807
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'EventLogToolButton'
       ImageIndex = 3
       OnClick = EventLogToolButtonClick
     end
     object CheckSystemToolButton: TToolButton
-      Left = 258
+      Left = 254
       Top = 0
       Hint = #31995#32113#27298#26597
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'CheckSystemToolButton'
       ImageIndex = 10
       OnClick = CheckSystemToolButtonClick
     end
     object AboutButton: TToolButton
-      Left = 298
+      Left = 294
       Top = 0
       Hint = #38364#26044'SpeedyCenter'
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'AboutToolButton'
       ImageIndex = 4
       OnClick = AboutToolButtonClick
     end
     object SeparatorButton3: TToolButton
-      Left = 338
+      Left = 334
       Top = 0
-      Width = 8
+      Width = 7
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'SeparatorButton3'
       ImageIndex = 9
       Style = tbsSeparator
     end
     object MinimizeToolButton: TToolButton
-      Left = 346
+      Left = 341
       Top = 0
       Hint = #26368#23567#21270
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'MinimizeToolButton'
       ImageIndex = 5
       OnClick = ApplicationEventsMinimize
     end
     object CascadeButton: TToolButton
-      Left = 386
+      Left = 381
       Top = 0
       Hint = #37325#30090#39023#31034
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'CasecadeButton'
       ImageIndex = 8
       OnClick = CascadeButtonClick
     end
     object TileToolButton: TToolButton
-      Left = 426
+      Left = 421
       Top = 0
       Hint = #20006#25490#39023#31034
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       Caption = 'TileToolButton'
       ImageIndex = 9
       OnClick = TileToolButtonClick
     end
     object ClockButton: TToolButton
-      Left = 466
+      Left = 461
       Top = 0
+      Margins.Left = 2
+      Margins.Top = 2
+      Margins.Right = 2
+      Margins.Bottom = 2
       AutoSize = True
       Style = tbsTextButton
     end
   end
   object ServerTabSet: TTabSet
     Left = 0
-    Top = 892
-    Width = 1504
-    Height = 34
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Top = 714
+    Width = 1202
+    Height = 27
     Align = alBottom
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -18
+    Font.Height = -14
     Font.Name = 'Arial'
     Font.Style = []
     Images = ImageList
@@ -191,10 +253,10 @@ object MDIForm: TMDIForm
   object ToolImageList: TImageList
     Height = 32
     Width = 32
-    Left = 368
-    Top = 48
+    Left = 294
+    Top = 38
     Bitmap = {
-      494C01010B000D003C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B000D00040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1788,10 +1850,10 @@ object MDIForm: TMDIForm
   object GrayToolImageList: TImageList
     Height = 32
     Width = 32
-    Left = 280
-    Top = 48
+    Left = 224
+    Top = 38
     Bitmap = {
-      494C01010B000D003C0020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B000D00040020002000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3431,16 +3493,16 @@ object MDIForm: TMDIForm
       0000C0010000C0010000E0030000E3E30000F7F70000F7F70000FFFF0000}
     PopupMenu = TrayPopupMenu
     OnDoubleClick = SysTrayIconDoubleClick
-    Left = 296
-    Top = 120
+    Left = 237
+    Top = 96
   end
   object ImageList: TImageList
     Height = 24
     Width = 24
-    Left = 200
-    Top = 48
+    Left = 160
+    Top = 38
     Bitmap = {
-      494C0101050009003C0018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000900040018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4042,8 +4104,8 @@ object MDIForm: TMDIForm
       000000000000}
   end
   object TrayPopupMenu: TPopupMenu
-    Left = 131
-    Top = 47
+    Left = 105
+    Top = 38
     object RestoreMenuItem: TMenuItem
       Caption = #36996#21407
       OnClick = SysTrayIconDoubleClick
@@ -4061,18 +4123,18 @@ object MDIForm: TMDIForm
     end
   end
   object XPManifest: TXPManifest
-    Left = 136
-    Top = 120
+    Left = 109
+    Top = 96
   end
   object ApplicationEvents: TApplicationEvents
     OnMinimize = ApplicationEventsMinimize
-    Left = 40
-    Top = 120
+    Left = 32
+    Top = 96
   end
   object TabPopupMenu: TPopupMenu
     AutoPopup = False
-    Left = 216
-    Top = 120
+    Left = 173
+    Top = 96
     object CascadeMenuItem: TMenuItem
       Caption = #37325#30090#39023#31034
       OnClick = CascadeButtonClick
@@ -4090,7 +4152,7 @@ object MDIForm: TMDIForm
     Enabled = False
     Interval = 800
     OnTimer = FormShowTimerTimer
-    Left = 40
-    Top = 48
+    Left = 32
+    Top = 38
   end
 end

@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\StarWaveFrame.dfm" source-language="zh-TW" target-language="en-US" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\StarWaveFrame.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">40938.9819675926</prop>
+        <prop prop-type="OrigDateTime">40938.9818287037</prop>
+        <prop prop-type="XlatDateTime">40936.6629398148</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">63</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:SWFrame.Left" resname="O:SWFrame.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TSWFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.Top" resname="O:SWFrame.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TSWFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.Width" resname="O:SWFrame.Width">
+        <source>580</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TSWFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.Height" resname="O:SWFrame.Height">
+        <source>209</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TSWFrame</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.TabOrder" resname="O:SWFrame.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TSWFrame</prop><prop prop-type="Localize">0</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Left" resname="O:SWFrame.O:ValueListEditor.Left">
+        <source>199</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Top" resname="O:SWFrame.O:ValueListEditor.Top">
+        <source>36</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Width" resname="O:SWFrame.O:ValueListEditor.Width">
+        <source>373</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Height" resname="O:SWFrame.O:ValueListEditor.Height">
+        <source>163</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Margins.Left" resname="O:SWFrame.O:ValueListEditor.Margins.Left">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Margins.Top" resname="O:SWFrame.O:ValueListEditor.Margins.Top">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Margins.Right" resname="O:SWFrame.O:ValueListEditor.Margins.Right">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Margins.Bottom" resname="O:SWFrame.O:ValueListEditor.Margins.Bottom">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.BorderStyle" resname="O:SWFrame.O:ValueListEditor.BorderStyle">
+        <source>bsNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Ctl3D" resname="O:SWFrame.O:ValueListEditor.Ctl3D">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.DefaultColWidth" resname="O:SWFrame.O:ValueListEditor.DefaultColWidth">
+        <source>135</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.DefaultDrawing" resname="O:SWFrame.O:ValueListEditor.DefaultDrawing">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.DefaultRowHeight" resname="O:SWFrame.O:ValueListEditor.DefaultRowHeight">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.DisplayOptions" resname="O:SWFrame.O:ValueListEditor.DisplayOptions">
+        <source>[doAutoColResize, doKeyColFixed]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.DoubleBuffered" resname="O:SWFrame.O:ValueListEditor.DoubleBuffered">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620023</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Enabled" resname="O:SWFrame.O:ValueListEditor.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.FixedColor" resname="O:SWFrame.O:ValueListEditor.FixedColor">
+        <source>clSilver</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Font.Charset" resname="O:SWFrame.O:ValueListEditor.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Font.Color" resname="O:SWFrame.O:ValueListEditor.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Font.Height" resname="O:SWFrame.O:ValueListEditor.Font.Height">
+        <source>-16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Font.Name" resname="O:SWFrame.O:ValueListEditor.Font.Name">
+        <source>'Arial'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Font.Style" resname="O:SWFrame.O:ValueListEditor.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Options" resname="O:SWFrame.O:ValueListEditor.Options">
+        <source>[goFixedHorzLine, goHorzLine, goRowSelect, goThumbTracking]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ParentColor" resname="O:SWFrame.O:ValueListEditor.ParentColor">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ParentCtl3D" resname="O:SWFrame.O:ValueListEditor.ParentCtl3D">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ParentDoubleBuffered" resname="O:SWFrame.O:ValueListEditor.ParentDoubleBuffered">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.7140620139</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ParentFont" resname="O:SWFrame.O:ValueListEditor.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ScrollBars" resname="O:SWFrame.O:ValueListEditor.ScrollBars">
+        <source>ssNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[0]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[0]">
+        <source>'Bandwidth='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[1]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[1]">
+        <source>'UDP Count='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[2]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[2]">
+        <source>'UDP Recv='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[3]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[3]">
+        <source>'TCP Output='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[4]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[4]">
+        <source>'MarketData Queue='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[5]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[5]">
+        <source>'Command Queue='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.Strings.Strings[6]" resname="O:SWFrame.O:ValueListEditor.Strings.Strings[6]">
+        <source>'Connections='</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.TabOrder" resname="O:SWFrame.O:ValueListEditor.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.OnDrawCell" resname="O:SWFrame.O:ValueListEditor.OnDrawCell">
+        <source>ValueListEditorDrawCell</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40938.6892979282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ColWidths[0]" resname="O:SWFrame.O:ValueListEditor.ColWidths[0]">
+        <source>135</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40938.6892979282</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:ValueListEditor.ColWidths[1]" resname="O:SWFrame.O:ValueListEditor.ColWidths[1]">
+        <source>236</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TValueListEditor</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.Left" resname="O:SWFrame.O:PerformanceGauge.Left">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.Top" resname="O:SWFrame.O:PerformanceGauge.Top">
+        <source>36</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.Width" resname="O:SWFrame.O:PerformanceGauge.Width">
+        <source>188</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.Height" resname="O:SWFrame.O:PerformanceGauge.Height">
+        <source>161</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.698315162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.DrawFill" resname="O:SWFrame.O:PerformanceGauge.DrawFill">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40938.623425544</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.MaxValue" resname="O:SWFrame.O:PerformanceGauge.MaxValue">
+        <source>1000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.GridColor" resname="O:SWFrame.O:PerformanceGauge.GridColor">
+        <source>clGreen</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:PerformanceGauge.LineColor" resname="O:SWFrame.O:PerformanceGauge.LineColor">
+        <source>clYellow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TPerformanceGauge</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Left" resname="O:SWFrame.O:TitleStaticText.Left">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Top" resname="O:SWFrame.O:TitleStaticText.Top">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Width" resname="O:SWFrame.O:TitleStaticText.Width">
+        <source>209</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Height" resname="O:SWFrame.O:TitleStaticText.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Caption" resname="O:SWFrame.O:TitleStaticText.Caption">
+        <source>'StarWave@MDUbuntu'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Font.Charset" resname="O:SWFrame.O:TitleStaticText.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Font.Color" resname="O:SWFrame.O:TitleStaticText.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Font.Height" resname="O:SWFrame.O:TitleStaticText.Font.Height">
+        <source>-19</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Font.Name" resname="O:SWFrame.O:TitleStaticText.Font.Name">
+        <source>'Arial'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.Font.Style" resname="O:SWFrame.O:TitleStaticText.Font.Style">
+        <source>[fsBold]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.ParentFont" resname="O:SWFrame.O:TitleStaticText.ParentFont">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SWFrame.O:TitleStaticText.TabOrder" resname="O:SWFrame.O:TitleStaticText.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40936.6983151852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TStaticText</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

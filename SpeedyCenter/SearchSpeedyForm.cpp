@@ -81,7 +81,7 @@ void __fastcall TSearchForm::TimeoutTimerTimer(TObject *Sender)
 		String Msg;
 
 		CancelBtnClick( this );
-		Msg.printf( Scstrings_MAIN_SPEEDYAGENT_NOT_EXIST.c_str(), String(FWaitHost) );
+		Msg.printf( Scstrings_MAIN_SPEEDYAGENT_NOT_EXIST.c_str(), String(FWaitHost).c_str() );
 		ShowMessage( Msg );
 	}
 }

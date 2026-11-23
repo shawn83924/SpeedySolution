@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\ChangeSessionStatus.dfm" source-language="zh-TW" target-language="zh-TW" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\ChangeSessionStatus.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">41964.8905092593</prop>
+        <prop prop-type="OrigDateTime">41964.875462963</prop>
+        <prop prop-type="XlatDateTime">41964.8697222222</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">47</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:ChangeSessionStatusForm.Left" resname="O:ChangeSessionStatusForm.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Top" resname="O:ChangeSessionStatusForm.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.BorderIcons" resname="O:ChangeSessionStatusForm.BorderIcons">
+        <source>[biSystemMenu]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.BorderStyle" resname="O:ChangeSessionStatusForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Caption" resname="O:ChangeSessionStatusForm.Caption">
+        <source>'ChangeSessionStatusForm'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.ClientHeight" resname="O:ChangeSessionStatusForm.ClientHeight">
+        <source>181</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.ClientWidth" resname="O:ChangeSessionStatusForm.ClientWidth">
+        <source>221</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Color" resname="O:ChangeSessionStatusForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Font.Charset" resname="O:ChangeSessionStatusForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Font.Color" resname="O:ChangeSessionStatusForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Font.Height" resname="O:ChangeSessionStatusForm.Font.Height">
+        <source>-13</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Font.Name" resname="O:ChangeSessionStatusForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Font.Style" resname="O:ChangeSessionStatusForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503356</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.OldCreateOrder" resname="O:ChangeSessionStatusForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Position" resname="O:ChangeSessionStatusForm.Position">
+        <source>poScreenCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8905277894</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.Scaled" resname="O:ChangeSessionStatusForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.PixelsPerInch" resname="O:ChangeSessionStatusForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.TextHeight" resname="O:ChangeSessionStatusForm.TextHeight">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TChangeSessionStatusForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Left" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Left">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Top" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Top">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Width" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Width">
+        <source>201</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Height" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Height">
+        <source>130</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Caption" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Caption">
+        <source>'盤別狀態'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.ItemIndex" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[0]" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[0]">
+        <source>'盤前'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[1]" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[1]">
+        <source>'試單'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[2]" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[2]">
+        <source>'盤中'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[3]" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.Items.Strings[3]">
+        <source>'收盤'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:StatusGroupBox.TabOrder" resname="O:ChangeSessionStatusForm.O:StatusGroupBox.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Left" resname="O:ChangeSessionStatusForm.O:OkBtn.Left">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Top" resname="O:ChangeSessionStatusForm.O:OkBtn.Top">
+        <source>143</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Width" resname="O:ChangeSessionStatusForm.O:OkBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Height" resname="O:ChangeSessionStatusForm.O:OkBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Caption" resname="O:ChangeSessionStatusForm.O:OkBtn.Caption">
+        <source>'確定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Default" resname="O:ChangeSessionStatusForm.O:OkBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.Glyph.Data" resname="O:ChangeSessionStatusForm.O:OkBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.ModalResult" resname="O:ChangeSessionStatusForm.O:OkBtn.ModalResult">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.NumGlyphs" resname="O:ChangeSessionStatusForm.O:OkBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:OkBtn.TabOrder" resname="O:ChangeSessionStatusForm.O:OkBtn.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Left" resname="O:ChangeSessionStatusForm.O:CancelBtn.Left">
+        <source>111</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Top" resname="O:ChangeSessionStatusForm.O:CancelBtn.Top">
+        <source>143</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Width" resname="O:ChangeSessionStatusForm.O:CancelBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Height" resname="O:ChangeSessionStatusForm.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Caption" resname="O:ChangeSessionStatusForm.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.Kind" resname="O:ChangeSessionStatusForm.O:CancelBtn.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.NumGlyphs" resname="O:ChangeSessionStatusForm.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:ChangeSessionStatusForm.O:CancelBtn.TabOrder" resname="O:ChangeSessionStatusForm.O:CancelBtn.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41964.8727503472</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

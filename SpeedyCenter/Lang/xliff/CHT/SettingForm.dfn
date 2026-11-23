@@ -1,0 +1,1808 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\SettingForm.dfm" source-language="zh-TW" target-language="zh-TW" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\SettingForm.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">45051.7903935185</prop>
+        <prop prop-type="OrigDateTime">45051.7812731481</prop>
+        <prop prop-type="XlatDateTime">40455.8303472222</prop>
+        <prop prop-type="Translated">0</prop>
+        <prop prop-type="UnTranslated">358</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:FormSetting.Left" resname="O:FormSetting.Left">
+        <source>240</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Top" resname="O:FormSetting.Top">
+        <source>143</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.BorderStyle" resname="O:FormSetting.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Caption" resname="O:FormSetting.Caption">
+        <source>'設定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.ClientHeight" resname="O:FormSetting.ClientHeight">
+        <source>373</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721169</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.ClientWidth" resname="O:FormSetting.ClientWidth">
+        <source>426</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Color" resname="O:FormSetting.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Font.Charset" resname="O:FormSetting.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Font.Color" resname="O:FormSetting.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Font.Height" resname="O:FormSetting.Font.Height">
+        <source>-15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Font.Name" resname="O:FormSetting.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211806</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Font.Style" resname="O:FormSetting.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.OldCreateOrder" resname="O:FormSetting.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Position" resname="O:FormSetting.Position">
+        <source>poScreenCenter</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.PrintScale" resname="O:FormSetting.PrintScale">
+        <source>poNone</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.Scaled" resname="O:FormSetting.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.OnShow" resname="O:FormSetting.OnShow">
+        <source>FormShow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.PixelsPerInch" resname="O:FormSetting.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077211921</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.TextHeight" resname="O:FormSetting.TextHeight">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TFormSetting</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.Left" resname="O:FormSetting.O:PageControl.Left">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.Top" resname="O:FormSetting.O:PageControl.Top">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.Width" resname="O:FormSetting.O:PageControl.Width">
+        <source>426</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.Height" resname="O:FormSetting.O:PageControl.Height">
+        <source>373</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212037</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.ActivePage" resname="O:FormSetting.O:PageControl.ActivePage">
+        <source>TradeMonTabSheet</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212153</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.Align" resname="O:FormSetting.O:PageControl.Align">
+        <source>alClient</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212153</prop><prop prop-type="Status">0</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.TabOrder" resname="O:FormSetting.O:PageControl.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212153</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TPageControl</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.Caption">
+        <source>'基本設定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212153</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Left">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Top">
+        <source>48</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Alignment" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5838205324</prop><prop prop-type="Status">0</prop><prop prop-type="Order">31</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.AutoSize" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5838205324</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:Label6.Caption">
+        <source>'語言'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">33</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808565</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Top">
+        <source>77</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">35</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Width">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.Caption">
+        <source>'修改設定前跳出確認視窗'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.TabOrder" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:WarningCheckBox.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808681</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Top">
+        <source>45</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Width">
+        <source>262</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Style" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.ItemIndex" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808796</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Text" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Text">
+        <source>'中文(繁體)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[0]" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[0]">
+        <source>'中文(繁體)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[1]" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[1]">
+        <source>'中文(簡體)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[2]" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LanComboBox.Items.Strings[2]">
+        <source>'English'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40666.7290808912</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.513822419</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Top">
+        <source>101</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.513822419</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Width">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.513822419</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.513822419</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.Caption">
+        <source>'關閉監控視窗前跳出確認視窗'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.513822419</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.TabOrder" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:CloseConfirmCheckBox.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41344.5138224306</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Top">
+        <source>126</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Width">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.Caption">
+        <source>'強制使用風控程式'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.TabOrder" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:ForceRMCheckBox.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">42842.9615642014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Left" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Left">
+        <source>108</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Top" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Top">
+        <source>151</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Width" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Width">
+        <source>234</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Height" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Caption" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.Caption">
+        <source>'紀錄事件在Log目錄下'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.TabOrder" resname="O:FormSetting.O:PageControl.O:BusTabSheet.O:LogCheckBox.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">43054.8554488773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.Caption">
+        <source>'警示設定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212616</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.ImageIndex" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.ImageIndex">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212731</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212731</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Top">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212731</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212731</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212731</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenLabel.Caption">
+        <source>'斷線警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Top">
+        <source>40</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">82</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">83</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ProcessCrashLabel.Caption">
+        <source>'程式錯誤'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212847</prop><prop prop-type="Status">0</prop><prop prop-type="Order">84</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">85</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Top">
+        <source>68</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">86</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">87</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">88</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">89</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690393</prop><prop prop-type="Status">0</prop><prop prop-type="Order">90</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningLabel.Caption">
+        <source>'訊息警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">91</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077212963</prop><prop prop-type="Status">0</prop><prop prop-type="Order">92</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Top">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">93</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">94</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">95</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">96</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">97</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenSoundButton.OnClick">
+        <source>BrokenSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213079</prop><prop prop-type="Status">0</prop><prop prop-type="Order">98</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">99</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Top">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">100</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">101</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">102</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">103</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213194</prop><prop prop-type="Status">0</prop><prop prop-type="Order">104</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashSoundButton.OnClick">
+        <source>CrashSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">105</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">106</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Top">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">107</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">108</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">109</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721331</prop><prop prop-type="Status">0</prop><prop prop-type="Order">110</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">111</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningSoundButton.OnClick">
+        <source>WarningSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">112</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">113</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Top">
+        <source>96</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">114</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">115</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213426</prop><prop prop-type="Status">0</prop><prop prop-type="Order">116</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">117</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">118</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label2.Caption">
+        <source>'CPU警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">119</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">120</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Top">
+        <source>93</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">121</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">122</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">123</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213542</prop><prop prop-type="Status">0</prop><prop prop-type="Order">124</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">125</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUSoundButton.OnClick">
+        <source>CPUSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">126</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">127</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Top">
+        <source>124</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">128</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">129</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213657</prop><prop prop-type="Status">0</prop><prop prop-type="Order">130</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">131</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">132</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label3.Caption">
+        <source>'記憶體警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">133</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">134</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Top">
+        <source>121</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">135</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">136</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">137</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">138</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213773</prop><prop prop-type="Status">0</prop><prop prop-type="Order">139</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemorySoundButton.OnClick">
+        <source>MemorySoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">140</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">141</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Top">
+        <source>179</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">142</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077213889</prop><prop prop-type="Status">0</prop><prop prop-type="Order">143</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">144</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">145</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40672.5824690509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">146</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label4.Caption">
+        <source>'時差警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">147</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">148</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Top">
+        <source>176</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">149</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">150</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">151</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214005</prop><prop prop-type="Status">0</prop><prop prop-type="Order">152</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">153</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffSoundButton.OnClick">
+        <source>TimeDiffSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">154</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Left">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">155</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Top">
+        <source>152</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">156</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Width">
+        <source>95</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">157</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392708</prop><prop prop-type="Status">0</prop><prop prop-type="Order">158</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Alignment" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Alignment">
+        <source>taRightJustify</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">159</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.AutoSize" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">160</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:Label7.Caption">
+        <source>'空間警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">161</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">162</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Top">
+        <source>149</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">163</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">164</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">165</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">166</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">167</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskSoundButton.OnClick">
+        <source>DiskSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.7909392824</prop><prop prop-type="Status">0</prop><prop prop-type="Order">168</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Left">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">169</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Top">
+        <source>207</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">170</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Width">
+        <source>387</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">171</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Height">
+        <source>58</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721412</prop><prop prop-type="Status">0</prop><prop prop-type="Order">172</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Caption">
+        <source>'警示視窗顯示位置'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">173</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Columns" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Columns">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.984284537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">174</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.ItemIndex" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.ItemIndex">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">175</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Items.Strings[0]" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Items.Strings[0]">
+        <source>'桌面右下'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">176</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">(</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Items.Strings[1]" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.Items.Strings[1]">
+        <source>'桌面中央'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">177</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">)</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:PosRadioGroup.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">178</prop><prop prop-type="Type">TRadioGroup</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214236</prop><prop prop-type="Status">0</prop><prop prop-type="Order">179</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Top">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">180</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">181</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">182</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">183</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:BrokenComboBox.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214352</prop><prop prop-type="Status">0</prop><prop prop-type="Order">184</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">185</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Top">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">186</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">187</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">188</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214468</prop><prop prop-type="Status">0</prop><prop prop-type="Order">189</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CrashComboBox.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">190</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">191</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Top">
+        <source>65</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">192</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">193</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">194</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214583</prop><prop prop-type="Status">0</prop><prop prop-type="Order">195</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:WarningComboBox.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">196</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">197</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Top">
+        <source>93</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">198</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">199</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214699</prop><prop prop-type="Status">0</prop><prop prop-type="Order">200</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">201</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:CPUWarningComboBox.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">202</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">203</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Top">
+        <source>121</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">204</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214815</prop><prop prop-type="Status">0</prop><prop prop-type="Order">205</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">206</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">207</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:MemoryWarningComboBox.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077214931</prop><prop prop-type="Status">0</prop><prop prop-type="Order">208</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">209</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Top">
+        <source>177</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">210</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">211</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">212</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">213</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:TimeDiffWarningComboBox.TabOrder">
+        <source>6</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">214</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Left">
+        <source>104</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">215</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Top">
+        <source>149</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">216</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Width">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">217</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">218</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Style" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">219</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:DiskWarningComboBox.TabOrder">
+        <source>7</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40769.790939294</prop><prop prop-type="Status">0</prop><prop prop-type="Order">220</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Left" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Left">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.984284537</prop><prop prop-type="Status">0</prop><prop prop-type="Order">221</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Top" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Top">
+        <source>266</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.9842845486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">222</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Width" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Width">
+        <source>203</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.9842845486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">223</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Height" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Height">
+        <source>25</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.9842845486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">224</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Caption" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.Caption">
+        <source>'只警示嚴重錯誤'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.9842845486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">225</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.TabOrder" resname="O:FormSetting.O:PageControl.O:WarningTabSheet.O:ErrOnlyCheckBox.TabOrder">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40990.9842845486</prop><prop prop-type="Status">0</prop><prop prop-type="Order">226</prop><prop prop-type="Type">TCheckBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.Caption">
+        <source>'交易監控'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">227</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.ImageIndex" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.ImageIndex">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">228</prop><prop prop-type="Type">TTabSheet</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Left">
+        <source>15</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">229</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Top">
+        <source>216</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">230</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Width">
+        <source>90</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215278</prop><prop prop-type="Status">0</prop><prop prop-type="Order">231</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">232</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label1.Caption">
+        <source>'無交易警示聲'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">233</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Left">
+        <source>383</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">234</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Top">
+        <source>212</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">235</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Width">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">236</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215394</prop><prop prop-type="Status">0</prop><prop prop-type="Order">237</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Flat" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">238</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.Glyph.Data">
+        <source>36040000424D3604000000000000360000002800000010000000100000000100200000000000000400000000000000000000000000000000000000000000000000007A7A7AFF4A4A4AFF5C5C5CFF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000AB7171FFB76767FFAB6A6AFF5E4545FF5B5B5BFF00000000000000000000000000000000828282FF828282FF828282FF000000000000000000000000B27878FF8C4D4DFF915050FFBA6B6BFFEC9595FF5C4545FF717171FF00000000000000007E7E7EFF858585FF585858FF494949FF6E6E6EFF0000000000000000A35858FFB36666FFAE6363FF874A4AFFAE6363FFB57272FF5E5E5EFF00000000848484FFB9B9B9FFBFBFBFFFCCCCCCFF9D9D9DFF404040FF777777FF00000000DE8181FFFFC3C3FFFDA8A8FFC87575FF854848FFC77373FF686868FF7A7A7AFF959595FF9B9B9BFFC4C4C4FFCCCCCCFFCFCFCFFF8A8A8AFF525252FF00000000ECBDBDFFFCE8E8FFFFC1C1FFE38888FF834747FFA66262FF595959FF555555FF655D5DFFA37676FF856868FFB9B9B9FFC2C2C2FFCFCFCFFF4B4B4BFF828282FF00000000ECB8B8FFED9292FFC46E6EFFA75F5FFF88656AFF3D7EB3FF4E4E4EFF615F5FFF7A7575FF807171FF816E6EFFC6C6C6FFBFBFBFFF6A6A6AFF6E6E6EFF00000000000000000000000000000000C68585FF546D8AFF4EB4FFFF414141FF747474FFA9A9A9FF878787FF695E5EFFB2B2B2FFBABABAFF858585FF797979FF00000000000000000000000000000000D58787FF4C6B80FF92F8FFFF547476FF4E4E4EFFC5C5C5FF969696FF585656FF959595FFB2B2B2FF757575FF797979FF00000000000000000000000000000000DA8D8DFF6A777DFF648A9BFF6DC0D9FF3E4447FF4D4D4DFF636363FF5B5B5BFF787878FF959595FF6D6D6DFF00000000000000000000000000000000C58F8FFFD29191FF615D5DFF713C3CFF447B99FF6C7F88FF3B3B3BFF4B4B4BFF585858FF646464FF616161FF0000000000000000000000000000000000000000CE9B9BFFBD7878FFB05B5BFF8E4747FF726363FF0000000000000000838383FF707070FF8C8C8CFF000000000000000000000000000000000000000000000000C58F8FFF9C4E4EFFC26161FFA95959FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000CD9595FF793C3CFFA65858FF00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000C58A8AFFA58686FF000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">239</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.OnClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeSoundButton.OnClick">
+        <source>NoTradeSoundButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">240</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Left">
+        <source>9</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">241</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Top">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">242</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Width">
+        <source>82</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215509</prop><prop prop-type="Status">0</prop><prop prop-type="Order">243</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">244</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Caption">
+        <source>'新增'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">245</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Flat" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">246</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Glyph.Data">
+        <source>E2060000424DE20600000000000062020000280000003000000018000000010008000000000080040000120B0000120B00008B0000008B00000000000000FFFFFF00FE00FE00B27C8100AE7A7F00B7818400B9828500B8818400BA838500B8828400B7818300BD868700C0898900A88181009F7E7E00B98F8C00BA949100AB7E7900AE7F7700AD7F7700C0A39800C9A89900CFAA9700FDFBFA00D4AC9400D9AD9000EBD2BE00EBD3C000DCB18B00FCF6F000FDFAF700FEFDFC00E0B38300F0DBC400F9ECDE00FAF1E700F0D6B700F3DDC200F2DCC200F5E0C600F6E3CC00F7E6D200F7E7D400F7E8D600F8EAD900F8EBDB00F9EEE100F0B25E00EFB15F00EDB56A00EEB77100F4DEC200F5E2C900F6E5CF00F9F0E400FAF3EA00FBF5ED00FCF8F300FCF9F500EDC68E00EECB9700EFCE9D00F0D0A000EFD0A200EFD2A800EED1A700F1D4AB00F1D5AD00F1D6AF00F1D6B100F1D7B300EDCA9500EECC9700EDCB9600EFCD9900EECC9800EFCE9B00EFCF9E00EED1A500FEFEFD00FEFEFE00CBCBCB00CACACA00C9C9C900C8C8C800C7C7C700C6C6C600C5C5C500C3C3C300C1C1C100C0C0C000BEBEBE00BDBDBD00BCBCBC00BABABA00B8B8B800B7B7B700B5B5B500B4B4B400B2B2B200B1B1B100AFAFAF00AEAEAE00ABABAB00AAAAAA00A9A9A900A8A8A800A7A7A700A6A6A600A5A5A500A2A2A200A1A1A100A0A0A0009E9E9E009D9D9D009C9C9C009B9B9B009A9A9A0098989800909090008F8F8F008E8E8E008D8D8D008C8C8C008A8A8A0089898900858585008484840082828200818181007F7F7F007E7E7E007D7D7D007C7C7C007878780076767600757575007474740072727200020202110A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A0A020202020288858585858585858585858585858585858585020202020204252733244643423E4C4A4A4A4A4A4A4A4A07020202020287666465696A6D6D7072737373737373737384020202020204272833264645424E4D4A48484848484A4907020202020287646265666A6B6D6F7173747474747473748402020202020428353433262445424E3E4A484848484A49070202020202876261636566696B6D6F707374747474737484020202020204292A282733264645424E3E4B4848484A4907020202020287605F626465666A6B6D6F70737474747374840202020202042B2D2A28273326464542403E4A48484A49070202020202875F5E5F626465666A6B6D6E707374747374840202020202042D2E2C2928343326464542403E4B484A49070202020202875E5C5E60626365666A6B6D6E7073747374840202020202032E23222C29282733264645424E3E4B4A49070202020202865C5A5D5E60626465666A6B6D6F7073737484020202020205233836222C2A282733262445424E4D4A47070202020202855A585B5D5E5F62646566696B6D6F7173758402020202020837393736222C29282733264644424E3E3C070202020202825956595B5D5E60626465666A6C6D6F70748402020202020B39171D3736222C29282733264645424E3D07020202020281565357595B5D5E60626465666A6B6D6F718402020202020C3A501E1D3736222C29282733264645423F0602020202027F55515457595B5D5E60626465666A6B6D708302020202020C3A504F3A1D3736222C29282733264645400802020202027F5551525557595B5D5E60626465666A6B6E8202020202020F3A50501F3A1D3736222C2928273326464309020202020280555151525557595B5D5E60626465666A6D840202020202103A5050504F3A1D3736222C2928273326410D02020202027F55515151525557595B5D5E60626465666E870202020202103A505050504F3A1D3736222C29281B16140E02020202027F5551515151525557595B5D5E606267787C8A0202020202183A50505050501F1E1D372E222D211514140E020202020277555151515151525457595C5D5E667A7C7C8A0202020202193A5050505050504F3A3838211213131313120202020202775551515151515152555858668889898989880202020202183A505050505050501F3A391B12203130300902020202027755515151515151515255566788797D7E7E840202020202181E50505050505050501F4F1B123B322F090202020202027754515151515151515152526788767B7E84020202020202181E505050505050505050501B123B3209020202020202027754515151515151515151516788767B840202020202020218505050505050505050505021123B0902020202020202027751515151515151515151516688768402020202020202021C1A1B1B1B1B1B1A1A1A1A1A161209020202020202020202786867676767676868686868788884020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">247</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.NumGlyphs" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215625</prop><prop prop-type="Status">0</prop><prop prop-type="Order">248</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Transparent" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.Transparent">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">249</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.OnClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NewAlarmButton.OnClick">
+        <source>NewAlarmButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">250</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Left">
+        <source>91</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">251</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Top">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">252</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Width">
+        <source>82</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">253</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">254</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Caption">
+        <source>'修改'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215741</prop><prop prop-type="Status">0</prop><prop prop-type="Order">255</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Flat" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215856</prop><prop prop-type="Status">0</prop><prop prop-type="Order">256</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Glyph.Data">
+        <source>EE060000424DEE060000000000006E020000280000003000000018000000010008000000000080040000120B0000120B00008E0000008E00000000000000FFFFFF005F5DF700FF00FE00FEFDFD00A4787400996B6600B6847E00B3827C00A87C7700B1817A00AF807900AC7E7800B8877E00BB897D00BF8C7B00C48F790093370C009933000094320300FCF7F400CD967200DBA78100DAAA8700D8AF8E00FBF5F000DDA47000DFA77400D2B49700FAF2EA00FDFCFB00D6B89900F5E5D400F6E7D700F8EADB00F9EFE400DCBE9A00F3DEC600F2DFC900F4E2CD00F4E3CF00F7E9D900F8ECDE00E2C49B00F3DAB800F4DBBB00F4DDBE00F4DEC100F3DEC300EECB9700EFCD9A00EFCE9D00F0D0A100F0D1A300F0D2A700F1D3A900F1D5AC00F1D6AE00F2D6AF00F2D7B200F2D9B500FCFAF700EFCC9700EECC9700ECCB98007C93F4008A9EF3009BACF500ADBBF700CCD5FA00D4DCFA006A81F400728AF300DDE2FB00292E78006169F700F9F9FD00FCFCFD00CACACA00C9C9C900C8C8C800C6C6C600C4C4C400C1C1C100BEBEBE00BDBDBD00BCBCBC00BABABA00B9B9B900B8B8B800B7B7B700B5B5B500B4B4B400B3B3B300B1B1B100B0B0B000AFAFAF00AEAEAE00ADADAD00ACACAC00AAAAAA00A9A9A900A8A8A800A7A7A700A6A6A600A5A5A500A4A4A400A3A3A300A1A1A100A0A0A0009E9E9E009D9D9D009C9C9C009B9B9B0098989800959595009393930092929200909090008F8F8F008E8E8E008D8D8D008C8C8C008B8B8B008A8A8A008888880087878700858585007F7F7F007D7D7D007C7C7C007B7B7B0079797900787878007676760075757500727272007070700066666600404040003D3D3D003C3C3C0003030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030905050505050505050505050505050505050603030303038889898989898989898989898989898989898A03030303030C30252F2C3B38373432323232323232323E06030303030387605F616466696A6D6F6F6F6F6F6F6F6F708A03030303030C26272F2D2C3B383634323F3F3F3F3F3E31060303030303875E5D61636466696B6D6F717171717170718A03030303030C2728272F2D2C3B383634323F3F3F3F3E31060303030303875D5C5D61636466696B6D6F7171717170718A03030303030C282927252F2D3C3B3736343F3F3F3F3E31060303030303875C575D5F616365666A6B6D7171717170718A03030303030C21221212121212123B383634323F3F3E310603030303038759578C8C8C8C8C8C66696B6D6F717170718A03030303030B29231204460248123C3B3836343F3F3E310603030303038657548C4E587D788C6566696B6D717170718A0303030303082A1D1245024102132D3C3B3836343F3E310603030303038456538C5B7D747D8D636566696B6D7170718A03030303030D231912494504414A2F2D2C3B38363432310603030303038254528C555B4E748B61636466696B6D6F718A03030303030D1D14120404044C4A412F2D3C3A373534400603030303038253518C4E4E4E508B74616365676A6C6D718A03030303030E141E121212121211024B432D3C3B37363306030303030381514F8C8C8C8C8C8B7D7C6D6365666A6B6E8A03030303030F3D043D191D232A292041472F2D3C3B383506030303030381504E5052535456575A747A61636566696C8A0303030303103D040414191D232A292127252F2D3C3B3606030303030380504E4E515253545657595D5F616365666B8A0303030303103D041212121212122A222027252F2D2C3906030303030380504E8C8C8C8C8C8C56575A5D5F616364688A0303030303153D04120446024812232A292027252F2D2B06030303030380504E8C4E587D788C5456575A5D5F6163728A0303030303173D041245024102131D232A2920272E241C06030303030379504E8C5B7D747D8D535456575A5D6273768A0303030303173D0412494504414A191D232A22261F1C1C06030303030379504E8C555B4E748B52535456575E7576768A0303030303173D04120404044C4A411919260A0A0A0A0A0A030303030379504E8C4E4E4E508B7452525E8585858585850303030303173D041212121212114B4B44250A171B1A1A07030303030379504E8C8C8C8C8C8B7C7C665F85797E7F7F830303030303183D040404040404044D4248260A311B1B0703030303030377504E4E4E4E4E4E4E4E72785E85717E7E83030303030303183D04040404040404040404260A311B070303030303030377504E4E4E4E4E4E4E4E4E4E5E85717E8303030303030303180404040404040404040404200A31070303030303030303774E4E4E4E4E4E4E4E4E4E4E5A8571830303030303030303161616161616161616161616160A070303030303030303037B7B7B7B7B7B7B7B7B7B7B7B7B858303030303030303</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215856</prop><prop prop-type="Status">0</prop><prop prop-type="Order">257</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.NumGlyphs" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215856</prop><prop prop-type="Status">0</prop><prop prop-type="Order">258</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Transparent" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.Transparent">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215856</prop><prop prop-type="Status">0</prop><prop prop-type="Order">259</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.OnClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:ModifyAlarmButton.OnClick">
+        <source>ModifyAlarmButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215856</prop><prop prop-type="Status">0</prop><prop prop-type="Order">260</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Left">
+        <source>173</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">261</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Top">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">262</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Width">
+        <source>82</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">263</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Height">
+        <source>29</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">264</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Caption">
+        <source>'刪除'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">265</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Flat" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Flat">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077215972</prop><prop prop-type="Status">0</prop><prop prop-type="Order">266</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Glyph.Data" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Glyph.Data">
+        <source>D2040000424DD20400000000000052000000280000003000000018000000010008000000000080040000120B0000120B0000070000000700000000000000FFFFFF00FF00FF000335FA000632DE00656565005B5B5B00020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202040402020202020202020202020202020202020202020202060602020202020202020202020202020202020202020204040402020202020202020202020202020202020202020206060602020204040402020202020202020202020202020404040202020206060602020202020202020202020202020606060202020204040404020202020202020202020204040404020202020206060606020202020202020202020206060606020202020204040404040202020202020202020404040402020202020206060606060202020202020202020606060602020202020202040404040402020202020202040404040202020202020202060606060602020202020202060606060202020202020202020304040404020202020204040404020202020202020202020506060606020202020206060606020202020202020202020202040404040202040404040402020202020202020202020202060606060202060606060602020202020202020202020202020404040404040404040202020202020202020202020202020606060606060606060202020202020202020202020202020204040304030404020202020202020202020202020202020206060506050606020202020202020202020202020202020202040404030402020202020202020202020202020202020202060606050602020202020202020202020202020202020204040304040303020202020202020202020202020202020206060506060505020202020202020202020202020202020404030403030304030202020202020202020202020202020606050605050506050202020202020202020202020202030303040302020303030302020202020202020202020202050505060502020505050502020202020202020202020203030403030202020203030303020202020202020202020205050605050202020205050505020202020202020202020303030303020202020202020303030202020202020202020505050505020202020202020505050202020202020202030303030302020202020202020203030302020202020202050505050502020202020202020205050502020202020203030303030202020202020202020202020302020202020205050505050202020202020202020202020502020202020303030303020202020202020202020202020202020202020505050505020202020202020202020202020202020202020303030302020202020202020202020202020202020202020505050502020202020202020202020202020202020202020303030202020202020202020202020202020202020202020505050202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">267</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.NumGlyphs" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">268</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Transparent" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.Transparent">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">269</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.OnClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:DeleteAlarmButton.OnClick">
+        <source>DeleteAlarmButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">270</prop><prop prop-type="Type">TSpeedButton</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Left">
+        <source>12</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216088</prop><prop prop-type="Status">0</prop><prop prop-type="Order">271</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Top">
+        <source>244</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">272</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Width">
+        <source>330</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">273</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216204</prop><prop prop-type="Status">0</prop><prop prop-type="Order">274</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label5.Caption">
+        <source>'Queue在Server端的委託單超過             筆時警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">275</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Left">
+        <source>140</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">276</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Top">
+        <source>273</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">277</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Width">
+        <source>186</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">278</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Height">
+        <source>18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">279</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:Label8.Caption">
+        <source>'連線ID少於             時警示'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">280</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Left">
+        <source>126</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">281</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Top">
+        <source>212</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">282</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Width">
+        <source>252</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">283</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">284</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Style" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.Style">
+        <source>csDropDownList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216319</prop><prop prop-type="Status">0</prop><prop prop-type="Order">285</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:NoTradeComboBox.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">286</prop><prop prop-type="Type">TComboBox</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">287</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Top">
+        <source>31</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">288</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Width">
+        <source>397</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">289</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Height">
+        <source>178</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216435</prop><prop prop-type="Status">0</prop><prop prop-type="Order">290</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].Caption">
+        <source>'市場'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">291</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">&lt;item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].MaxWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].MaxWidth">
+        <source>70</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">292</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].MinWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].MinWidth">
+        <source>70</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">293</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[0].Width">
+        <source>70</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">294</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].Caption">
+        <source>'開始時間'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">295</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].MaxWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].MaxWidth">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216551</prop><prop prop-type="Status">0</prop><prop prop-type="Order">296</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].MinWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].MinWidth">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">297</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[1].Width">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">298</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].Caption">
+        <source>'結束時間'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">299</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].MaxWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].MaxWidth">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">300</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].MinWidth" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].MinWidth">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">301</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[2].Width">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216667</prop><prop prop-type="Status">0</prop><prop prop-type="Order">302</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[3].Caption" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[3].Caption">
+        <source>'時間(秒)'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">303</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[3].Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.Columns[3].Width">
+        <source>90</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">304</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end&gt;</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ColumnClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ColumnClick">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">305</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ReadOnly" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ReadOnly">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">306</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.RowSelect" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.RowSelect">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">307</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216782</prop><prop prop-type="Status">0</prop><prop prop-type="Order">308</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ViewStyle" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.ViewStyle">
+        <source>vsReport</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">309</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.OnDblClick" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:AlarmListView.OnDblClick">
+        <source>ModifyAlarmButtonClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">310</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Left">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">311</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Top">
+        <source>241</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">312</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Width">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077216898</prop><prop prop-type="Status">0</prop><prop prop-type="Order">313</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">314</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Associate" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Associate">
+        <source>QLimitEdit</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">315</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Min" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Min">
+        <source>20</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">316</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Max" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Max">
+        <source>1000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">317</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Position" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.Position">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">318</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitUpDown.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217014</prop><prop prop-type="Status">0</prop><prop prop-type="Order">319</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Left">
+        <source>219</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">320</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Top">
+        <source>241</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">321</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Width">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">322</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">323</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">324</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Text" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:QLimitEdit.Text">
+        <source>'100'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907721713</prop><prop prop-type="Status">0</prop><prop prop-type="Order">325</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Left">
+        <source>219</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">326</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Top">
+        <source>270</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">327</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Width">
+        <source>37</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">328</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">329</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.TabOrder">
+        <source>4</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">330</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Text" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinEdit.Text">
+        <source>'100'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">331</prop><prop prop-type="Type">TEdit</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Left" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Left">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">332</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Top" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Top">
+        <source>270</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">333</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Width" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Width">
+        <source>20</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">334</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Height" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Height">
+        <source>26</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">335</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Associate" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Associate">
+        <source>CIDMinEdit</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">336</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Min" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Min">
+        <source>10</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">337</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Max" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Max">
+        <source>200</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">338</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Position" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.Position">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">339</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.TabOrder" resname="O:FormSetting.O:PageControl.O:TradeMonTabSheet.O:CIDMinUpDown.TabOrder">
+        <source>5</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41176.9551442593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">340</prop><prop prop-type="Type">TUpDown</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Left" resname="O:FormSetting.O:OkBtn.Left">
+        <source>130</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">341</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Top" resname="O:FormSetting.O:OkBtn.Top">
+        <source>331</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">342</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Width" resname="O:FormSetting.O:OkBtn.Width">
+        <source>77</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">343</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Height" resname="O:FormSetting.O:OkBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">344</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Caption" resname="O:FormSetting.O:OkBtn.Caption">
+        <source>'確定'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217245</prop><prop prop-type="Status">0</prop><prop prop-type="Order">345</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.Kind" resname="O:FormSetting.O:OkBtn.Kind">
+        <source>bkOK</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">346</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.NumGlyphs" resname="O:FormSetting.O:OkBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41911.0436855556</prop><prop prop-type="Status">0</prop><prop prop-type="Order">347</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.TabOrder" resname="O:FormSetting.O:OkBtn.TabOrder">
+        <source>1</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">348</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:OkBtn.OnClick" resname="O:FormSetting.O:OkBtn.OnClick">
+        <source>OkBtnClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">349</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Left" resname="O:FormSetting.O:CancelBtn.Left">
+        <source>213</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217361</prop><prop prop-type="Status">0</prop><prop prop-type="Order">350</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Top" resname="O:FormSetting.O:CancelBtn.Top">
+        <source>331</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">351</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Width" resname="O:FormSetting.O:CancelBtn.Width">
+        <source>77</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">352</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Height" resname="O:FormSetting.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">353</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Caption" resname="O:FormSetting.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">354</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.Kind" resname="O:FormSetting.O:CancelBtn.Kind">
+        <source>bkCancel</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217477</prop><prop prop-type="Status">0</prop><prop prop-type="Order">355</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.NumGlyphs" resname="O:FormSetting.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">41911.0436855671</prop><prop prop-type="Status">0</prop><prop prop-type="Order">356</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:FormSetting.O:CancelBtn.TabOrder" resname="O:FormSetting.O:CancelBtn.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9077217593</prop><prop prop-type="Status">0</prop><prop prop-type="Order">357</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

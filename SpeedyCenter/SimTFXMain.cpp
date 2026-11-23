@@ -691,23 +691,23 @@ void __fastcall TSimTFXForm::AddSettingToListView()
 		 switch( Line->GetSystem())
 		 {
 			case mtFutures: if( Line->IsTCP( ) == true )
-								LineString.printf( Scstrings_MAIN_FUT_TCPIP.c_str(), String(Line->GetBrokerID()), Line->GetPVC() );
+								LineString.printf( Scstrings_MAIN_FUT_TCPIP.c_str(), String(Line->GetBrokerID()).c_str(), Line->GetPVC() );
 							else
-								LineString.printf( Scstrings_MAIN_FUT_X25.c_str(), Line->GetLink(), Line->GetPVC(), String(Line->GetBrokerID()) );
+								LineString.printf( Scstrings_MAIN_FUT_X25.c_str(), Line->GetLink(), Line->GetPVC(), String(Line->GetBrokerID()).c_str() );
 							break;
 			case mtOption:  if( Line->IsTCP( ) == true )
-								LineString.printf( Scstrings_MAIN_OPT_TCPIP.c_str(), String(Line->GetBrokerID()), Line->GetPVC());
+								LineString.printf( Scstrings_MAIN_OPT_TCPIP.c_str(), String(Line->GetBrokerID()).c_str(), Line->GetPVC());
 							else
-								LineString.printf( Scstrings_MAIN_OPT_X25.c_str(), Line->GetLink(), Line->GetPVC(), String(Line->GetBrokerID()) );break;
+								LineString.printf( Scstrings_MAIN_OPT_X25.c_str(), Line->GetLink(), Line->GetPVC(), String(Line->GetBrokerID()).c_str() );break;
 			case mtStock:   if( Line->IsTCP() )
-								LineString.printf( Scstrings_MAIN_TSE_PVC.c_str(), Line->GetLocalPort(), String(Line->GetPVCID().c_str()), String(Line->GetBrokerID().c_str()) );
+								LineString.printf( Scstrings_MAIN_TSE_PVC.c_str(), Line->GetLocalPort(), String(Line->GetPVCID().c_str()).c_str(), String(Line->GetBrokerID().c_str()).c_str() );
 							else
-								LineString.printf( Scstrings_MAIN_TSE_PVC.c_str(), Line->GetLink(), String(Line->GetPVCID().c_str()), String(Line->GetBrokerID().c_str()) );
+								LineString.printf( Scstrings_MAIN_TSE_PVC.c_str(), Line->GetLink(), String(Line->GetPVCID().c_str()).c_str(), String(Line->GetBrokerID().c_str()).c_str() );
 							break;
 			case mtOTC:     if( Line->IsTCP() )
-								LineString.printf( Scstrings_MAIN_OTC_PVC.c_str(), Line->GetLocalPort(), String(Line->GetPVCID().c_str()), String(Line->GetBrokerID().c_str()) );
+								LineString.printf( Scstrings_MAIN_OTC_PVC.c_str(), Line->GetLocalPort(), String(Line->GetPVCID().c_str()).c_str(), String(Line->GetBrokerID().c_str()).c_str() );
 							else
-								LineString.printf( Scstrings_MAIN_OTC_PVC.c_str(), Line->GetLink(), String(Line->GetPVCID().c_str()), String(Line->GetBrokerID().c_str()) );
+								LineString.printf( Scstrings_MAIN_OTC_PVC.c_str(), Line->GetLink(), String(Line->GetPVCID().c_str()).c_str(), String(Line->GetBrokerID().c_str()).c_str() );
 							break;
 		 }
 		 LineComboBox->Items->Add( LineString );
@@ -965,12 +965,12 @@ void __fastcall TSimTFXForm::RequestFIXSessionsState( void )
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::UpdateProcessState( int State, int mult32 )
 {
-	register int Mask = 1;
+	int Mask = 1;
 	int UpdateProcess = FMonitorProcess - (32*mult32);
 
 	if( UpdateProcess > 32 )
 		UpdateProcess = 32;
-	for( register int i = 0; i < UpdateProcess; i++ )
+	for( int i = 0; i < UpdateProcess; i++ )
 	{
 		if( State & Mask )
 			ChangeProcessState( i + mult32*32 , PROCESS_RUNNING );
@@ -982,12 +982,12 @@ void __fastcall TSimTFXForm::UpdateProcessState( int State, int mult32 )
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::UpdateOtherProcessState( int State, int mult32 )
 {
-	register int Mask = 1;
+	int Mask = 1;
 	int UpdateProcess = FMonitorOtherProcess - (32*mult32);
 
 	if( UpdateProcess > 32 )
 		UpdateProcess = 32;
-	for( register int i = 0; i < UpdateProcess; i++ )
+	for( int i = 0; i < UpdateProcess; i++ )
 	{
 		if( State & Mask )
 			ChangeOtherProcessState( i + mult32*32 , PROCESS_RUNNING );
@@ -1132,7 +1132,7 @@ void __fastcall TSimTFXForm::OPLogon( int Days , int Group, MTree *Tree )
 			{
 				String GroupName = FGroupNames->Strings[Group];
 
-				CaptionText.printf( Scstrings_MAIN_LOGON_OK.c_str(), GroupName );
+				CaptionText.printf( Scstrings_MAIN_LOGON_OK.c_str(), GroupName.c_str() );
 			}
 			else
 				CaptionText.printf( Scstrings_MAIN_GROUP_LOGON_OK.c_str(), Group );
@@ -1285,7 +1285,7 @@ void __fastcall TSimTFXForm::OnPVCBroken( TLineInfo*  Line  )
 	if( APCode == 0 || APCode == 4 || APCode == 9  || APCode == 10 )
 	{
 		if( Line->GetSystem() == mtStock || Line->GetSystem() == mtOTC )
-            Message.printf( Scstrings_MAIN_TWSE_ORDER_LINE_BROKEN.c_str(), Line->GetLocalPort(), String( Line->GetPVCID().c_str() ) );
+            Message.printf( Scstrings_MAIN_TWSE_ORDER_LINE_BROKEN.c_str(), Line->GetLocalPort(), String( Line->GetPVCID().c_str() ).c_str() );
 		else
 			Message.printf( Scstrings_MAIN_ORDER_LINE_BROKEN.c_str(), Line->GetLink(), Line->GetPVC() );
 		WarningForm->ShowWarning( FSpeedyHost, Message, FormSetting->GetLineErrorSound() );
@@ -1394,7 +1394,7 @@ void __fastcall TSimTFXForm::UpdateStockPerformance( int OrderSec, int Total, in
    {
 	   if( qcount >= FormSetting->GetQueueLimit() && FTSEQueueCount < qcount )
 	   {
-			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_TSEC, qcount );
+			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_TSEC.c_str(), qcount );
 			WarningForm->ShowWarning( FSpeedyHost, MsgSecStr, FormSetting->GetWarningSound() );
 			WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E02",MsgSecStr );
 	   }
@@ -1431,7 +1431,7 @@ void __fastcall TSimTFXForm::UpdateOTCPerformance( int OrderSec, int Total, int 
    {
 	   if( qcount >= FormSetting->GetQueueLimit() && FOTCQueueCount < qcount )
 	   {
-			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_OTC, qcount );
+			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_OTC.c_str(), qcount );
 			WarningForm->ShowWarning( FSpeedyHost, MsgSecStr, FormSetting->GetWarningSound() );
 			WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E02",MsgSecStr );
 	   }
@@ -1468,7 +1468,7 @@ void __fastcall TSimTFXForm::UpdateOPTPerformance( int OrderSec, int Total, int 
    {
 	   if( qcount >= FormSetting->GetQueueLimit() && FOPTQueueCount < qcount )
 	   {
-			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_OPTIONS, qcount );
+			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_OPTIONS.c_str(), qcount );
 			WarningForm->ShowWarning( FSpeedyHost, MsgSecStr, FormSetting->GetWarningSound() );
 			WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E02",MsgSecStr );
 	   }
@@ -1510,7 +1510,7 @@ void __fastcall TSimTFXForm::UpdateFUTPerformance( int OrderSec, int Total, int 
    {
 	   if( qcount >= FormSetting->GetQueueLimit() && FFUTQueueCount < qcount )
 	   {
-			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_FUTURES, qcount );
+			MsgSecStr.printf( Scstrings_MAIN_QUEUE_WARNING.c_str(),Scstrings_MAIN_FUTURES.c_str(), qcount );
 			WarningForm->ShowWarning( FSpeedyHost, MsgSecStr, FormSetting->GetWarningSound() );
 			WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E02",MsgSecStr );
 	   }
@@ -1546,7 +1546,7 @@ void __fastcall TSimTFXForm::UpdatePVCIOLog( TMemoryStream* Stream )
 		for( int i = 0 ; i < strs->Count; i++ )
 		{
 			AnsiString Str = strs->Strings[ i ];
-			for( register int j = 1 ; j <= Str.Length(); j++ )
+			for( int j = 1 ; j <= Str.Length(); j++ )
 				 if( Str[ j ] == '|' )	 Str[ j ] = ' ';
 			LogListBox->Items->Add( Str );
 		}
@@ -2380,7 +2380,7 @@ void __fastcall TSimTFXForm::FormCloseQuery(TObject *Sender, bool &CanClose)
 
 		if( PageControl->ActivePage == ProxySheet )
 			PageControl->ActivePageIndex = 0;
-		Msg.printf( Scstrings_MAIN_ASK_LOGOUT_BEFORE_EXIT.c_str(), String( FSpeedyHost.c_str()) );
+		Msg.printf( Scstrings_MAIN_ASK_LOGOUT_BEFORE_EXIT.c_str(), String( FSpeedyHost.c_str()).c_str() );
 		if( FormSetting->CloseConfirm( Msg ) == true )
 		{
 			LogoutButtonClick( NULL );
@@ -3204,7 +3204,7 @@ void __fastcall TSimTFXForm::SendFile( const AnsiString& File,const AnsiString& 
 	{
 		String Msg;
 
-		Msg.printf( Scstrings_MAIN_READ_FILE_FAILED.c_str(), String(File) );
+		Msg.printf( Scstrings_MAIN_READ_FILE_FAILED.c_str(), String(File).c_str() );
 		ShowMessage( Msg );
 	}
 }
@@ -3726,7 +3726,7 @@ void __fastcall TSimTFXForm::OnProcessCrashed( int Index )
 		AnsiString Msg;
 
 		Msg.printf("Process:%s crashed!", ProcessName.c_str() );
-		Message.printf( Scstrings_MAIN_PROCESS_CRASHED.c_str(), String(ProcessName.c_str()) );
+		Message.printf( Scstrings_MAIN_PROCESS_CRASHED.c_str(), String(ProcessName.c_str()).c_str() );
 		WriteUserLog( "err", Msg );
 		WarningForm->ShowWarning( FSpeedyHost, Message, FormSetting->GetProcessErrorSound() );
 		WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E01",Message );
@@ -3739,9 +3739,9 @@ void __fastcall TSimTFXForm::OnOtherProcessCrashed( int Index )
 	String Msg;
 	String     ProcessName = FOtherProcessList->Strings[ Index ];
 
-	Msg.printf( L"Process:%s crashed!", ProcessName );
+	Msg.printf( L"Process:%s crashed!", ProcessName.c_str() );
 	WriteUserLog( "err", Msg );
-	Message.printf( Scstrings_MAIN_PROCESS_CRASHED.c_str(), ProcessName );
+	Message.printf( Scstrings_MAIN_PROCESS_CRASHED.c_str(), ProcessName.c_str() );
 	WarningForm->ShowWarning( FSpeedyHost, Message, FormSetting->GetProcessErrorSound() );
 	WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E01",Message );
 }
@@ -3973,7 +3973,7 @@ void __fastcall TSimTFXForm::ProcessListViewMouseDown(TObject *Sender,
 		ListView_GetSubItemRect( ProcessListView->Handle, SelItem->Index, 5,LVIR_BOUNDS,&ItemRect);
 		if( PtInRect( ItemRect, PT ))
 		{
-			Msg.printf( Scstrings_MAIN_PROCESS_START_ASK.c_str(),FProcessList->Strings[ SelItem->Index ]);
+			Msg.printf( Scstrings_MAIN_PROCESS_START_ASK.c_str(),FProcessList->Strings[ SelItem->Index ].c_str());
 			if( FormSetting->Confirm( Msg ) == true )
 			{
 				if( FProcessState[ SelItem->Index ] == PROCESS_RUNNING )
@@ -4179,7 +4179,7 @@ void __fastcall TSimTFXForm::FIXSessionsListViewCustomDrawSubItem(
 				else
 				{
 					DayStr =  Session->GetStartDay().SubString(1,3).UpperCase();
-					DrawText.printf( L"%s:%02d:%02d:%02d", DayStr,StartTime/10000,(StartTime%10000)/100, StartTime%100 );
+					DrawText.printf( L"%s:%02d:%02d:%02d", DayStr.c_str(),StartTime/10000,(StartTime%10000)/100, StartTime%100 );
 				}
 				break;
 		case 9: if( Session->GetEndDay() =="everyday" )
@@ -4187,7 +4187,7 @@ void __fastcall TSimTFXForm::FIXSessionsListViewCustomDrawSubItem(
 				else
 				{
 					DayStr =  Session->GetEndDay().SubString(1,3).UpperCase();
-					DrawText.printf( L"%s:%02d:%02d:%02d", DayStr,EndTime/10000,(EndTime%10000)/100, EndTime%100 );
+					DrawText.printf( L"%s:%02d:%02d:%02d", DayStr.c_str(),EndTime/10000,(EndTime%10000)/100, EndTime%100 );
 				}
 				break;
 	}
@@ -4350,7 +4350,7 @@ void __fastcall TSimTFXForm::NewSessionButtonClick(TObject *Sender)
 		{
 			String   Msg;
 
-			Msg.printf( Scstrings_MAIN_FIX_ADD_FAILED_ALREADY_EXISTS.c_str(),String(NewSession->GetSessionID()) );
+			Msg.printf( Scstrings_MAIN_FIX_ADD_FAILED_ALREADY_EXISTS.c_str(),String(NewSession->GetSessionID()).c_str() );
 			ShowMessage( Msg );
 			delete NewSession;
 		}
@@ -4407,7 +4407,7 @@ void __fastcall TSimTFXForm::DeleteSessionButtonClick(TObject *Sender)
 		TFIXSession* del = (TFIXSession*)FFIXSessions->Objects[ ListViewIndex ];
 		String       Msg;
 
-		Msg.printf( Scstrings_MAIN_FIX_ASK_DELETE_SESSION.c_str(), String( del->GetSessionID() ));
+		Msg.printf( Scstrings_MAIN_FIX_ASK_DELETE_SESSION.c_str(), String( del->GetSessionID() ).c_str());
 		if( MessageDlg( Msg , mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 		{
 			FIXSessionsListView->DeleteSelected();
@@ -4432,7 +4432,7 @@ void __fastcall TSimTFXForm::MakeLineKey( TPVCSettingForm* Setting, AnsiString& 
 	TMarket Market = Setting->GetMarket();
 
 	if( Market == mtOTC || Market == mtStock )
-		Key.printf("%s:%d:%s:%d",Setting->GetFCM(), Setting->GetLink(), Setting->GetPVCID(),(int)Market );
+		Key.printf("%s:%d:%s:%d",Setting->GetFCM().c_str(), Setting->GetLink(), Setting->GetPVCID().c_str(),(int)Market );
 	else
 		Key.printf("%d:%d:%d:%d",Setting->GetLink(), Setting->GetPVC(), (int)Market, (int)Setting->GetIsOffHour() );
 }
@@ -5383,7 +5383,7 @@ void __fastcall TSimTFXForm::MonitorFIXButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TSimTFXForm::ReplaceChar( UFC::AnsiString& FIXMsg )
 {
-	for( register int i = 0;i < FIXMsg.Length(); i++ )
+	for( int i = 0;i < FIXMsg.Length(); i++ )
 	{
 		switch( FIXMsg[i] )
 		{
@@ -6244,7 +6244,7 @@ void __fastcall TSimTFXForm::SystemComboBoxChange(TObject *Sender)
 	FUIUpdateCS->Enter();
 	FDispToAll->Clear();
 	if( SystemComboBox->ItemIndex > 0 )
-		MarketFilter = (TMarket)SystemComboBox->Items->Objects[ SystemComboBox->ItemIndex ];
+		MarketFilter = (TMarket)reinterpret_cast<NativeInt>( SystemComboBox->Items->Objects[ SystemComboBox->ItemIndex ] );
 	else
 		FilterMarket = false;
 	if( BrokerComboBox->ItemIndex > 0 )
@@ -6483,7 +6483,7 @@ void __fastcall TSimTFXForm::OtherProcessListViewMouseDown(TObject *Sender,
 		ListView_GetSubItemRect( OtherProcessListView->Handle, SelItem->Index, 4,LVIR_BOUNDS,&ItemRect);
 		if( PtInRect( ItemRect, PT ))
 		{
-			Msg.printf( Scstrings_MAIN_PROCESS_START_ASK.c_str(), FOtherProcessList->Strings[ SelItem->Index ] );
+			Msg.printf( Scstrings_MAIN_PROCESS_START_ASK.c_str(), FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 			if( FormSetting->Confirm( Msg ) == true )
 			{
 				if( FOtherProcessState[ SelItem->Index ] == PROCESS_RUNNING )
@@ -6496,7 +6496,7 @@ void __fastcall TSimTFXForm::OtherProcessListViewMouseDown(TObject *Sender,
 				{
 					ChangeOtherProcessState( SelItem->Index, PROCESS_STARTING );
 					SendShellCMD( SPEEDY_RUN_PROCESS, SelItem->Index, false );
-					Msg.printf(L"Start Process:%s",FOtherProcessList->Strings[ SelItem->Index ] );
+					Msg.printf(L"Start Process:%s",FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 					WriteUserLog("war",Msg);
 					return;
 				}
@@ -6505,12 +6505,12 @@ void __fastcall TSimTFXForm::OtherProcessListViewMouseDown(TObject *Sender,
 		ListView_GetSubItemRect( OtherProcessListView->Handle, SelItem->Index, 5,LVIR_BOUNDS,&ItemRect);
 		if( PtInRect( ItemRect, PT ))
 		{
-			Msg.printf( Scstrings_MAIN_PROCESS_STOP_ASK.c_str(),FOtherProcessList->Strings[ SelItem->Index ] );
+			Msg.printf( Scstrings_MAIN_PROCESS_STOP_ASK.c_str(),FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 			if( FormSetting->Confirm( Msg ) == true )
 			{
 				if( FOtherProcessState[ SelItem->Index ] == PROCESS_STOPED )
 				{
-					Msg.printf( Scstrings_MAIN_PROCESS_ALREADY_STOPED.c_str(),FOtherProcessList->Strings[ SelItem->Index ] );
+					Msg.printf( Scstrings_MAIN_PROCESS_ALREADY_STOPED.c_str(),FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 					ShowMessage( Msg );
 					return;
 				}
@@ -6518,7 +6518,7 @@ void __fastcall TSimTFXForm::OtherProcessListViewMouseDown(TObject *Sender,
 				{
 					ChangeOtherProcessState( SelItem->Index, PROCESS_STOPING );
 					SendShellCMD( SPEEDY_KILL_PROCESS, SelItem->Index , false);
-					Msg.printf(L"Stop Process:%s",FOtherProcessList->Strings[ SelItem->Index ] );
+					Msg.printf(L"Stop Process:%s",FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 					WriteUserLog("war",Msg);
 					return;
 				}
@@ -6532,7 +6532,7 @@ void __fastcall TSimTFXForm::OtherProcessListViewMouseDown(TObject *Sender,
 			{
 				ChangeOtherProcessState( SelItem->Index, PROCESS_RESTARTING );
 				SendShellCMD( SPEEDY_RESTART_PROCESS, SelItem->Index, false );
-				Msg.printf( L"Restart Process:%s",FOtherProcessList->Strings[ SelItem->Index ] );
+				Msg.printf( L"Restart Process:%s",FOtherProcessList->Strings[ SelItem->Index ].c_str() );
 				WriteUserLog("war",Msg);
 				return;
 			}
@@ -6670,7 +6670,7 @@ void __fastcall TSimTFXForm::UpdateAEStatus( MTree* Tree )
 					AEName      = Strs->Strings[ 0 ];
 					Locked      = (bool)Strs->Strings[ 1 ].ToInt();
 					Connections = Strs->Strings[ 2 ].ToInt();
-					for( register int j= 0; j < AccountsListView->Items->Count; j++ )
+					for( int j= 0; j < AccountsListView->Items->Count; j++ )
 					{
 						Item = AccountsListView->Items->Item[j];
 						if( Item->Caption == AEName )
@@ -6686,7 +6686,7 @@ void __fastcall TSimTFXForm::UpdateAEStatus( MTree* Tree )
 							{
 								String Msg;
 
-								Msg.printf( L"API User[%s] disconnected.", AEName );
+								Msg.printf( L"API User[%s] disconnected.", AEName.c_str() );
 								WarningForm->LogError( FSpeedyHost, FSpeedyHostIP,"E06",Msg );
 							}
 							break;
@@ -6859,7 +6859,7 @@ void __fastcall TSimTFXForm::PVCLogTimerTimer(TObject *Sender)
 				for( int j=0;j< FPVCLogList->Count; j ++ )
 				{
 					AnsiString Data = FPVCLogList->Strings[ j ];
-					for( register int i =1 ; i <= Data.Length(); i++ )
+					for( int i =1 ; i <= Data.Length(); i++ )
 					 if( Data[ i ] == '|' )
 						 Data[ i ] = ' ';
 					LogListBox->Items->Add( Data );
@@ -7114,7 +7114,7 @@ void __fastcall TSimTFXForm::ToolButtonClick(TObject *Sender)
 		{
 			String Msg;
 
-			Msg.printf( Scstrings_MAIN_MONITOR_ANOTHER_SVR_ASK.c_str(), ServerBtn->Caption );
+			Msg.printf( Scstrings_MAIN_MONITOR_ANOTHER_SVR_ASK.c_str(), ServerBtn->Caption.c_str() );
 			if( MessageDlg( Msg, mtConfirmation, TMsgDlgButtons() << mbOK<<mbCancel, 0) == mrOk )
 			{
 				String NewHost = ServerBtn->Caption;
@@ -7140,10 +7140,10 @@ bool __fastcall TSimTFXForm::RequestCancelAll( bool IsOptions, bool IsOffHour, S
 			if( AnsiAccount.Length() > 0 ) ///< Cancel by Account ?
 			{
 				Data.append( "Account", AnsiAccount.c_str() );
-				Msg.printf( Scstrings_MAIN_CALCEL_OPT_ALL_BY_ACCOUNT.c_str(),String(FUser),String(UFC::Hostname), String(AnsiAccount) );
+				Msg.printf( Scstrings_MAIN_CALCEL_OPT_ALL_BY_ACCOUNT.c_str(),String(FUser).c_str(),String(UFC::Hostname).c_str(), String(AnsiAccount).c_str() );
 			}
 			else
-				Msg.printf( Scstrings_MAIN_CALCEL_ALL_OPT_ORDERS.c_str(),String(FUser),String(UFC::Hostname) );
+				Msg.printf( Scstrings_MAIN_CALCEL_ALL_OPT_ORDERS.c_str(),String(FUser).c_str(),String(UFC::Hostname).c_str() );
 		}
 		else
 		{
@@ -7151,10 +7151,10 @@ bool __fastcall TSimTFXForm::RequestCancelAll( bool IsOptions, bool IsOffHour, S
 			if( AnsiAccount.Length() > 0 ) ///< Cancel by Account ?
 			{
 				Data.append( "Account", AnsiAccount.c_str() );
-				Msg.printf( Scstrings_MAIN_CALCEL_FUT_ALL_BY_ACCOUNT.c_str(),String(FUser),String(UFC::Hostname),String(AnsiAccount));
+				Msg.printf( Scstrings_MAIN_CALCEL_FUT_ALL_BY_ACCOUNT.c_str(),String(FUser).c_str(),String(UFC::Hostname).c_str(),String(AnsiAccount).c_str());
 			}
 			else
-				Msg.printf( Scstrings_MAIN_CALCEL_ALL_FUT_ORDERS.c_str(),String(FUser),String(UFC::Hostname) );
+				Msg.printf( Scstrings_MAIN_CALCEL_ALL_FUT_ORDERS.c_str(),String(FUser).c_str(),String(UFC::Hostname).c_str() );
 		}
 		Data.append( "HOST", FSpeedyHost.c_str() );
 		Data.append( "OFFHOUR", (int)IsOffHour );
@@ -7563,7 +7563,7 @@ void __fastcall TSimTFXForm::EODItemClick(TObject *Sender)
 		TLineInfo* Line = (TLineInfo*)LineListBox->Items->Objects[ LineListBox->ItemIndex ];
 		String Msg;
 
-		Msg.printf( L"%s %s ?", Scstrings_MAIN_FIX_ASK_END_OF_DAY, String(Line->GetPVCID().c_str()) );
+		Msg.printf( L"%s %s ?", Scstrings_MAIN_FIX_ASK_END_OF_DAY.c_str(), String(Line->GetPVCID().c_str()).c_str() );
 		if( MessageDlg( Msg, mtConfirmation, TMsgDlgButtons() << mbOK<<mbCancel, 0) == mrOk )
 		{
 			MTree Data;
@@ -7679,7 +7679,7 @@ void __fastcall TSimTFXForm::TSENormalTextClick(TObject *Sender)
 				{
 					String Msg;
 
-					Msg.printf( L"是否要切換%s%%s盤別狀態成%s?", Market, Session, NewStatus );
+					Msg.printf( L"是否要切換%s%%s盤別狀態成%s?", Market.c_str(), Session.c_str(), NewStatus.c_str() );
 					if( MessageDlg( Msg, mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 					{
 						MTree Data;
@@ -7783,7 +7783,7 @@ void __fastcall TSimTFXForm::LoadRule( int index )
 
 			NewItem->SubItems->Add( Ex );
 			NewItem->SubItems->Add( MarketName( Market[j]) );
-			Name.printf( "%s.%s",Ex,Market[j] );
+			Name.printf( "%s.%s",Ex.c_str(),Market[j] );
 			if( ini.GetValue( "Exchange", Name.c_str(), Value) == true )
 				NewItem->SubItems->Add( Value.c_str());
 			else
@@ -7934,7 +7934,7 @@ bool __fastcall TSimTFXForm::CheckExceptionProdID( void )
 				SelItem->SubItems->Strings[2] == ExceptionProdForm->ProdIDEdit->Text )
 			{
 				String Msg;
-				Msg.printf( L"[%s][%s][%s]已經存在",ExceptionProdForm->ExComboBox->Text,ExceptionProdForm->MarketComboBox->Text,ExceptionProdForm->ProdIDEdit->Text );
+				Msg.printf( L"[%s][%s][%s]已經存在",ExceptionProdForm->ExComboBox->Text.c_str(),ExceptionProdForm->MarketComboBox->Text.c_str(),ExceptionProdForm->ProdIDEdit->Text.c_str() );
 				MessageDlg( Msg, mtWarning, TMsgDlgButtons() << mbOK , 0 );
 				return false;
 			}
@@ -7995,9 +7995,9 @@ void __fastcall TSimTFXForm::DelExRuleButtonClick(TObject *Sender)
 	if( SelItem != NULL )
 	{
 		String Msg;
-		Msg.printf( L"確定要刪除[%s][%s][%s]?",	SelItem->SubItems->Strings[0],
-												SelItem->SubItems->Strings[1],
-												SelItem->SubItems->Strings[2]);
+		Msg.printf( L"確定要刪除[%s][%s][%s]?",	SelItem->SubItems->Strings[0].c_str(),
+												SelItem->SubItems->Strings[1].c_str(),
+												SelItem->SubItems->Strings[2].c_str());
 		if( MessageDlg( Msg, mtWarning, TMsgDlgButtons() << mbOK << mbCancel, 0 ) == mrOk )
 		{
 			RuleExListView->Items->Delete( SelItem->Index );
@@ -8336,7 +8336,7 @@ void __fastcall TSimTFXForm::APISettingButtonClick(TObject *Sender)
 {
 	String Title;
 
-	Title.printf( L"API 編輯者:%s", FUser );
+	Title.printf( L"API 編輯者:%s", String( FUser ).c_str() );
 	APISettingForm->Caption = Title;
 	if( APISettingForm->ShowModal() == mrOk )
 	{
@@ -8364,7 +8364,7 @@ void __fastcall TSimTFXForm::MenuItem1Click(TObject *Sender)
 {
 	TListItem* Item;
 
-	for( register int j= 0; j < APILockedListView->Items->Count; j++ )
+	for( int j= 0; j < APILockedListView->Items->Count; j++ )
 	{
 		Item = APILockedListView->Items->Item[j];
 		if( Item->Checked == true )

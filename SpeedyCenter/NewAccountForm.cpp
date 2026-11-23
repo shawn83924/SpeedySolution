@@ -1359,7 +1359,7 @@ bool __fastcall TAccountForm::CheckOIDOverlap( const UFC::AnsiString& CheckAE, i
 					ErrAE = L"下午盤共用櫃號";
 				else
 					ErrAE = String( OverlapAE.c_str() );
-				Msg.printf( Scstrings_MAIN_AE_ORDERID_RANGE_OVERLAP.c_str(),ErrAE );
+				Msg.printf( Scstrings_MAIN_AE_ORDERID_RANGE_OVERLAP.c_str(),ErrAE.c_str() );
 				ShowMessage( Msg );
 				return false;
 			}
@@ -1519,7 +1519,7 @@ void __fastcall TAccountForm::OKBtnClick(TObject *Sender)
 				{
 					String Msg;
 
-					Msg.printf( Scstrings_MAIN_AE_TSEC_ORDERID_RANGE_OVERLAP.c_str(),String(iniSection->GetSectionName().c_str()) );
+					Msg.printf( Scstrings_MAIN_AE_TSEC_ORDERID_RANGE_OVERLAP.c_str(),String(iniSection->GetSectionName().c_str()).c_str() );
 					ShowMessage( Msg );
 					return;
 				}

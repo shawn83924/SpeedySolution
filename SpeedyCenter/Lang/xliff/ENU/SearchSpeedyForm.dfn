@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file original="C:\src\SpeedyCenter\SearchSpeedyForm.dfm" source-language="zh-TW" target-language="en-US" datatype="delphiform" tool="ETM v10.0" ts="C:\src\SpeedyCenter\SearchSpeedyForm.dfm">
+    <header>
+      <prop-group name="ITEHeaderProp">
+        <prop prop-type="Version">9.0</prop>
+        <prop prop-type="SelfDateTime">44032.8938888889</prop>
+        <prop prop-type="OrigDateTime">44032.8927546296</prop>
+        <prop prop-type="XlatDateTime">40455.8303472222</prop>
+        <prop prop-type="Translated">7</prop>
+        <prop prop-type="UnTranslated">75</prop>
+      </prop-group>
+    </header>
+    <body>
+      <trans-unit id="O:SearchForm.Left" resname="O:SearchForm.Left">
+        <source>310</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">0</prop><prop prop-type="Order">0</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Top" resname="O:SearchForm.Top">
+        <source>169</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">0</prop><prop prop-type="Order">1</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.BorderStyle" resname="O:SearchForm.BorderStyle">
+        <source>bsDialog</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">0</prop><prop prop-type="Order">2</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Caption" resname="O:SearchForm.Caption">
+        <source>'搜尋Speedy主機'</source>
+        <target>'Search Speedy Servers'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">1</prop><prop prop-type="Order">3</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.ClientHeight" resname="O:SearchForm.ClientHeight">
+        <source>308</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">0</prop><prop prop-type="Order">4</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.ClientWidth" resname="O:SearchForm.ClientWidth">
+        <source>506</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750463</prop><prop prop-type="Status">0</prop><prop prop-type="Order">5</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Color" resname="O:SearchForm.Color">
+        <source>clBtnFace</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">6</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Font.Charset" resname="O:SearchForm.Font.Charset">
+        <source>DEFAULT_CHARSET</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">7</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Font.Color" resname="O:SearchForm.Font.Color">
+        <source>clWindowText</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">8</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Font.Height" resname="O:SearchForm.Font.Height">
+        <source>-18</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">9</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Font.Name" resname="O:SearchForm.Font.Name">
+        <source>'Tahoma'</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">10</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Font.Style" resname="O:SearchForm.Font.Style">
+        <source>[]</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750579</prop><prop prop-type="Status">0</prop><prop prop-type="Order">11</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.FormStyle" resname="O:SearchForm.FormStyle">
+        <source>fsStayOnTop</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">12</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.OldCreateOrder" resname="O:SearchForm.OldCreateOrder">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">13</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Position" resname="O:SearchForm.Position">
+        <source>poDefault</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">14</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.Scaled" resname="O:SearchForm.Scaled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">15</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.OnShow" resname="O:SearchForm.OnShow">
+        <source>FormShow</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">16</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.PixelsPerInch" resname="O:SearchForm.PixelsPerInch">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750694</prop><prop prop-type="Status">0</prop><prop prop-type="Order">17</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.TextHeight" resname="O:SearchForm.TextHeight">
+        <source>22</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">18</prop><prop prop-type="Type">TSearchForm</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Left" resname="O:SearchForm.O:DetectLabel.Left">
+        <source>181</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">19</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Top" resname="O:SearchForm.O:DetectLabel.Top">
+        <source>255</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">20</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Width" resname="O:SearchForm.O:DetectLabel.Width">
+        <source>149</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">21</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Height" resname="O:SearchForm.O:DetectLabel.Height">
+        <source>20</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">22</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.AutoSize" resname="O:SearchForm.O:DetectLabel.AutoSize">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975081</prop><prop prop-type="Status">0</prop><prop prop-type="Order">23</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Caption" resname="O:SearchForm.O:DetectLabel.Caption">
+        <source>'偵測Speedy中...'</source>
+        <target>'Searching...'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">1</prop><prop prop-type="Order">24</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:DetectLabel.Visible" resname="O:SearchForm.O:DetectLabel.Visible">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">25</prop><prop prop-type="Type">TLabel</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Left" resname="O:SearchForm.O:ServerListView.Left">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">26</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Top" resname="O:SearchForm.O:ServerListView.Top">
+        <source>8</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">27</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Width" resname="O:SearchForm.O:ServerListView.Width">
+        <source>489</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">28</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Height" resname="O:SearchForm.O:ServerListView.Height">
+        <source>241</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">29</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Color" resname="O:SearchForm.O:ServerListView.Color">
+        <source>clWhite</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079750926</prop><prop prop-type="Status">0</prop><prop prop-type="Order">30</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[0].Caption" resname="O:SearchForm.O:ServerListView.Columns[0].Caption">
+        <source>'主機名稱'</source>
+        <target>'Host Name'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">1</prop><prop prop-type="Order">31</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">&lt;item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[0].Width" resname="O:SearchForm.O:ServerListView.Columns[0].Width">
+        <source>280</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">0</prop><prop prop-type="Order">32</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[1].Caption" resname="O:SearchForm.O:ServerListView.Columns[1].Caption">
+        <source>'版本'</source>
+        <target>'Version'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">1</prop><prop prop-type="Order">33</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[1].Width" resname="O:SearchForm.O:ServerListView.Columns[1].Width">
+        <source>80</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">0</prop><prop prop-type="Order">34</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[2].Caption" resname="O:SearchForm.O:ServerListView.Columns[2].Caption">
+        <source>'授權到期日'</source>
+        <target>'Expired Date'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">1</prop><prop prop-type="Order">35</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">item</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.Columns[2].Width" resname="O:SearchForm.O:ServerListView.Columns[2].Width">
+        <source>120</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751042</prop><prop prop-type="Status">0</prop><prop prop-type="Order">36</prop><prop prop-type="Type">C:TListView</prop><prop prop-type="Localize">1</prop><prop prop-type="Close">end&gt;</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.ColumnClick" resname="O:SearchForm.O:ServerListView.ColumnClick">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751157</prop><prop prop-type="Status">0</prop><prop prop-type="Order">37</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.ReadOnly" resname="O:SearchForm.O:ServerListView.ReadOnly">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751157</prop><prop prop-type="Status">0</prop><prop prop-type="Order">38</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.RowSelect" resname="O:SearchForm.O:ServerListView.RowSelect">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751157</prop><prop prop-type="Status">0</prop><prop prop-type="Order">39</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.SmallImages" resname="O:SearchForm.O:ServerListView.SmallImages">
+        <source>SimTFXForm.ImageList</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751157</prop><prop prop-type="Status">0</prop><prop prop-type="Order">40</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.TabOrder" resname="O:SearchForm.O:ServerListView.TabOrder">
+        <source>0</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751157</prop><prop prop-type="Status">0</prop><prop prop-type="Order">41</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.ViewStyle" resname="O:SearchForm.O:ServerListView.ViewStyle">
+        <source>vsReport</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">42</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:ServerListView.OnDblClick" resname="O:SearchForm.O:ServerListView.OnDblClick">
+        <source>ServerListViewDblClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">43</prop><prop prop-type="Type">TListView</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Left" resname="O:SearchForm.O:Marquee.Left">
+        <source>145</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">44</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Top" resname="O:SearchForm.O:Marquee.Top">
+        <source>283</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">45</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Width" resname="O:SearchForm.O:Marquee.Width">
+        <source>221</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751273</prop><prop prop-type="Status">0</prop><prop prop-type="Order">46</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Height" resname="O:SearchForm.O:Marquee.Height">
+        <source>16</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">47</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Visible" resname="O:SearchForm.O:Marquee.Visible">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">48</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.Graph.Data" resname="O:SearchForm.O:Marquee.Graph.Data">
+        <source>26020000424D26020000000000009E000000280000001C0000000E000000010008000000000088010000120B0000120B00001A0000001A00000000000000FFFFFF00B26D4500F1A87F00F0A77E00FDB48B00FCB38A00FFC4A200FFD3BA00FFE3D300D7916800D6906700E39D7400E29C7300FFC4A100FFD3B900FEFEFE00F5F5F500EBEBEB00E2E2E200E1E1E100D8D8D800CECECE00C5C5C500C4C4C400BBBBBB0017171717171717171717171717020A0A0A0A0A0A0A0A0A0A0A0A0A02161616161616161616161616020C0C0C0C0C0C0C0C0C0C0C0C0C02161515151515151515151515020303030303030303030303030302151513131313131313131313020505050505050505050505050502131313121212121212121212020707070707070707070707070702121212121111111111111111020808080808080808080808080802111111111110101010101010020909090909090909090909090902101010101010111111111111020F0F0F0F0F0F0F0F0F0F0F0F0F02111111111111111212121212020E0E0E0E0E0E0E0E0E0E0E0E0E02121212121212121214141414020606060606060606060606060602141414141414141414151515020404040404040404040404040402151515151515151515151616020D0D0D0D0D0D0D0D0D0D0D0D0D02161616161616161616161618020B0B0B0B0B0B0B0B0B0B0B0B0B0218181818181818181818181802020202020202020202020202020219191919191919191919191919</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">49</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.ScrollDelay" resname="O:SearchForm.O:Marquee.ScrollDelay">
+        <source>100</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">50</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:Marquee.ScrollPixel" resname="O:SearchForm.O:Marquee.ScrollPixel">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">51</prop><prop prop-type="Type">TGraphMarquee</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Left" resname="O:SearchForm.O:CancelBtn.Left">
+        <source>255</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751389</prop><prop prop-type="Status">0</prop><prop prop-type="Order">52</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Top" resname="O:SearchForm.O:CancelBtn.Top">
+        <source>263</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">53</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Width" resname="O:SearchForm.O:CancelBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">54</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Height" resname="O:SearchForm.O:CancelBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">55</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Cancel" resname="O:SearchForm.O:CancelBtn.Cancel">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">56</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Caption" resname="O:SearchForm.O:CancelBtn.Caption">
+        <source>'取消'</source>
+        <target>'Cancel'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">1</prop><prop prop-type="Order">57</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.Glyph.Data" resname="O:SearchForm.O:CancelBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333333333333333333333333333000033338833333333333333333F3333333333330000333911833333983333333388F333333F333300003339111833391183333338F38F333F88F33300003339111183911118333338F338F3F8338F3300003333911118111118333338F3338F833338F3000033333911111111833333338F33383333F8330000333333911111183333333338F333333F833300003333333111118333333333338F3333383333000033333339111183333333333338F33383333300003333339111118333333333333833338F333300003333391118111833333333338333338F333300003333911183911183333333383338F338F333000033339118333911183333338F33838F338F33000033333913333391113333338FF83338F338F300003333333333333919333333388333338FFF83000033333333333333333333333333333338883300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751505</prop><prop prop-type="Status">0</prop><prop prop-type="Order">58</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.NumGlyphs" resname="O:SearchForm.O:CancelBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">59</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.TabOrder" resname="O:SearchForm.O:CancelBtn.TabOrder">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">60</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:CancelBtn.OnClick" resname="O:SearchForm.O:CancelBtn.OnClick">
+        <source>CancelBtnClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">61</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Left" resname="O:SearchForm.O:OkBtn.Left">
+        <source>151</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">62</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Top" resname="O:SearchForm.O:OkBtn.Top">
+        <source>263</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.907975162</prop><prop prop-type="Status">0</prop><prop prop-type="Order">63</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Width" resname="O:SearchForm.O:OkBtn.Width">
+        <source>97</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">64</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Height" resname="O:SearchForm.O:OkBtn.Height">
+        <source>32</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">65</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Caption" resname="O:SearchForm.O:OkBtn.Caption">
+        <source>'確定'</source>
+        <target>'OK'</target>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751736</prop><prop prop-type="Status">1</prop><prop prop-type="Order">66</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Default" resname="O:SearchForm.O:OkBtn.Default">
+        <source>True</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">67</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.Glyph.Data" resname="O:SearchForm.O:OkBtn.Glyph.Data">
+        <source>DE010000424DDE01000000000000760000002800000024000000120000000100040000000000680100000000000000000000100000000000000000000000000080000080000000808000800000008000800080800000C0C0C000808080000000FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF003333333333333333333333333333333333330000333333333333333333333333F3333333333300003333344333333333333333388F3333333333000033334224333333333333338338F3333333330000333422224333333333333833338F3333333300003342222224333333333383333338F3333333000034222A22224333333338F338F3338F33333300003222A3A2224333333338F3838F338F33333300003A2A333A222433333338F83338F338F33333000033A33333A222433333338333338F338F33330000333333333A222433333333333338F338F33300003333333333A222433333333333338F338F33000033333333333A222433333333333338F338F30000333333333333A222433333333333338F338F00003333333333333A224333333333333338F38F000033333333333333A223333333333333338F830000333333333333333A3333333333333333383300003333333333333333333333333333333333330000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751736</prop><prop prop-type="Status">0</prop><prop prop-type="Order">68</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop><prop prop-type="Open">{</prop><prop prop-type="Close">}</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.NumGlyphs" resname="O:SearchForm.O:OkBtn.NumGlyphs">
+        <source>2</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">69</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.TabOrder" resname="O:SearchForm.O:OkBtn.TabOrder">
+        <source>3</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">70</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:OkBtn.OnClick" resname="O:SearchForm.O:OkBtn.OnClick">
+        <source>ServerListViewDblClick</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">71</prop><prop prop-type="Type">TBitBtn</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:PublishTimer.Enabled" resname="O:SearchForm.O:PublishTimer.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">72</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:PublishTimer.Interval" resname="O:SearchForm.O:PublishTimer.Interval">
+        <source>500</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751852</prop><prop prop-type="Status">0</prop><prop prop-type="Order">73</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:PublishTimer.OnTimer" resname="O:SearchForm.O:PublishTimer.OnTimer">
+        <source>PublishTimerTimer</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">74</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:PublishTimer.Left" resname="O:SearchForm.O:PublishTimer.Left">
+        <source>24</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">75</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:PublishTimer.Top" resname="O:SearchForm.O:PublishTimer.Top">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">76</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:TimeoutTimer.Enabled" resname="O:SearchForm.O:TimeoutTimer.Enabled">
+        <source>False</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">77</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:TimeoutTimer.Interval" resname="O:SearchForm.O:TimeoutTimer.Interval">
+        <source>5000</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">78</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:TimeoutTimer.OnTimer" resname="O:SearchForm.O:TimeoutTimer.OnTimer">
+        <source>TimeoutTimerTimer</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079751968</prop><prop prop-type="Status">0</prop><prop prop-type="Order">79</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:TimeoutTimer.Left" resname="O:SearchForm.O:TimeoutTimer.Left">
+        <source>88</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079752083</prop><prop prop-type="Status">0</prop><prop prop-type="Order">80</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+      <trans-unit id="O:SearchForm.O:TimeoutTimer.Top" resname="O:SearchForm.O:TimeoutTimer.Top">
+        <source>256</source>
+        <prop-group name="ITEFieldProp">
+        <prop prop-type="Created">40659.9079752083</prop><prop prop-type="Status">0</prop><prop prop-type="Order">81</prop><prop prop-type="Type">TTimer</prop><prop prop-type="Localize">1</prop></prop-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

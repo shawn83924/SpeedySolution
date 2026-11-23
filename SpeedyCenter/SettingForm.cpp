@@ -4,7 +4,6 @@
 #pragma hdrstop
 #include "SettingForm.h"
 #include "AlarmForm.h"
-#include "reinit.hpp"
 #include "SCStrings.hpp"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)

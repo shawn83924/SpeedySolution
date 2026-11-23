@@ -8,7 +8,7 @@
 #include "SpeedyServerForm.h"
 #include "SimTFXMain.h"
 #include "SCStrings.hpp"
-#include "reinit.hpp"
+#include "LangRes.hpp"
 #include <Registry.hpp>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -32,8 +32,9 @@ __fastcall TMDIForm::TMDIForm(TComponent* Owner)
 ,FCloseAll( false )
 {
 	LoadLanguage( );
-	if( LoadNewResourceModule( FCurrentLCID ) )
-		ReinitializeForms();
+	// Translations from SpeedyCenter.<lang> (LangRes.pas): applied to the forms that exist
+	// now and to every form / frame created later.
+	Langres::LoadTranslation( FCurrentLCID );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMDIForm::LoadAutoLogon( void )
