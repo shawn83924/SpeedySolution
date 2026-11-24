@@ -3740,8 +3740,8 @@ void __fastcall TOrderBookList::WndProc( TMessage &Msg )
 				return;
 			break;
 		case WM_LBUTTONUP:
-            if(FOrderByOneClick == false)
-				return;
+			// 一律交給 VCL 處理：雙擊下單時 WM_LBUTTONDBLCLK 會 SetCapture，
+			// 若吃掉 WM_LBUTTONUP 會導致 MouseCapture 無法釋放，其他 UI 無法點擊
 			break;
 		case WM_LBUTTONDBLCLK:
 			if(FOrderByOneClick == true)
@@ -3752,8 +3752,7 @@ void __fastcall TOrderBookList::WndProc( TMessage &Msg )
 				return;
 			break;
 		case WM_RBUTTONUP:
-			if(FOrderByOneClick == false)
-				return;
+			// 一律交給 VCL 處理，確保滑鼠狀態正常結束
 			break;
 		case WM_RBUTTONDBLCLK:
             if(FOrderByOneClick == true)
