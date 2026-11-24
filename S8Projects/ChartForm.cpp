@@ -584,7 +584,7 @@ void __fastcall TLineChartForm::LoadProperties( const String& Profile )
 	SkyLandToggleSwitch->State = (g_Config.GetDesktopInteger(ProfileDir,"ShowSkyLand", false )== true)?tssOn:tssOff;
 	PivotSwitch->State         = (g_Config.GetDesktopInteger(ProfileDir,"ShowPivot", false )== true)?tssOn:tssOff;
 	DeviationTrackBar->Position  = g_Config.GetDesktopInteger(ProfileDir,"PivotDeviation", 2 );
-	PxGridRadioGroup->ItemIndex  = g_Config.GetDesktopInteger(ProfileDir,"PxGridType", 0 );
+	PxGridRadioGroup->ItemIndex  = g_Config.GetDesktopInteger(ProfileDir,"PxGridType", 1 );
 	TimeGridComboBox->ItemIndex  = g_Config.GetDesktopInteger(ProfileDir,"TimeGridType", 3 );
 	PxGridUpDown->Position       = g_Config.GetDesktopInteger(ProfileDir,"PxGridTicks", 10 );
 	LineColorBox->Selected       = (TColor)g_Config.GetIntegerProperty(ProfileDir,"DrawLineColor", clCream );
