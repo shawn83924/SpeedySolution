@@ -46,7 +46,6 @@ __published:	// IDE-managed Components
 	TMenuItem *QueryMenuItem;
 	TCGauge *ProgressBar;
 	TGraphButton *WidthFitButton;
-	TMenuItem *ReplaceMenuItem;
 	TButton *QueryButton;
 	TEdit *edtPrice;
 	TEdit *edtSymbol;
