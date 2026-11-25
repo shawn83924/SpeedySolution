@@ -447,11 +447,6 @@ bool __fastcall TOrderStore_OCO::OrderingOCO(
 	double Price,
 	UFCType::Int64& NID)
 {
-	int holdPosition = 	GetHoldPosition( Ex, Sym);
-	//if side is sell and OrderQty bigger than position, return
-	if( Side == nsOrderMessageDefine::sSell && OrderQty > holdPosition )
-		return false;
-
 	PositionEffectEnum pe = nsOrderMessageDefine::peAuto;
 	char twseOrdType = '0';
 
