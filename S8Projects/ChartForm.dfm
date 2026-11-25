@@ -68,6 +68,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -96,6 +97,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -19
@@ -125,6 +127,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
       FontAttrib.SelectedFontColor = 14515260
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -155,6 +158,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
       FontAttrib.SelectedFontColor = 14515260
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -185,6 +189,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
       FontAttrib.SelectedFontColor = 14515260
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -215,6 +220,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
       FontAttrib.SelectedFontColor = 14515260
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -245,6 +251,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
       FontAttrib.SelectedFontColor = 14515260
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -15
@@ -274,6 +281,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -13
@@ -302,6 +310,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -13
@@ -330,6 +339,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clCream
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clCream
       FontAttrib.CaptionFont.Height = -13
@@ -358,6 +368,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -386,6 +397,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -414,6 +426,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -441,6 +454,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = DEFAULT_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -469,6 +483,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -497,6 +512,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -526,6 +542,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -554,6 +571,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -582,6 +600,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -610,6 +629,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -668,6 +688,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -19
@@ -718,6 +739,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -746,6 +768,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -774,6 +797,7 @@ object LineChartForm: TLineChartForm
       FontAttrib.FontColor = clWhite
       FontAttrib.HighlightFontColor = clWhite
       FontAttrib.HighlightShadowColor = clSilver
+      FontAttrib.DisabledFontColor = clGrayText
       FontAttrib.CaptionFont.Charset = ANSI_CHARSET
       FontAttrib.CaptionFont.Color = clWhite
       FontAttrib.CaptionFont.Height = -17
@@ -1573,10 +1597,6 @@ object LineChartForm: TLineChartForm
       object AOETabSheet: TTabSheet
         Caption = #36914#38542
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object BOXLabel: TLabel
           Left = 10
           Top = 547
@@ -1983,7 +2003,7 @@ object LineChartForm: TLineChartForm
           Left = 148
           Top = 225
           Width = 132
-          Height = 22
+          Height = 31
           Margins.Left = 4
           Margins.Top = 4
           Margins.Right = 4
@@ -2132,7 +2152,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 208
     Bitmap = {
-      494C010104000800580220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010104000800600220002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000004000000001002000000000000080
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3202,7 +3222,7 @@ object LineChartForm: TLineChartForm
     Left = 368
     Top = 280
     Bitmap = {
-      494C010103004C01740219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010103004C017C0219001900FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000640000001900000001002000000000001027
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

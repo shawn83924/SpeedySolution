@@ -259,6 +259,10 @@ object MainForm: TMainForm
           Margins.Bottom = 7
           Caption = #19968#33324#35373#23450
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object NormalSettingLabel: TLabel
             Left = 69
             Top = 28
@@ -7591,6 +7595,10 @@ object MainForm: TMainForm
           ImageIndex = 2
           TabVisible = False
           OnMouseDown = TabHotKeyMouseDown
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object HotkeySettingLabel: TLabel
             Left = 69
             Top = 28
@@ -34847,6 +34855,10 @@ object MainForm: TMainForm
           ParentDoubleBuffered = False
           ParentFont = False
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object LoginLabel: TLabel
             Left = 69
             Top = 28
@@ -39257,7 +39269,7 @@ object MainForm: TMainForm
               Left = 62
               Top = 67
               Width = 506
-              Height = 60
+              Height = 31
               Margins.Left = 7
               Margins.Top = 7
               Margins.Right = 7
@@ -39290,7 +39302,7 @@ object MainForm: TMainForm
               Left = 62
               Top = 179
               Width = 506
-              Height = 60
+              Height = 31
               Margins.Left = 7
               Margins.Top = 7
               Margins.Right = 7
@@ -39328,6 +39340,10 @@ object MainForm: TMainForm
           Caption = #21830#21697#27298#35222
           ImageIndex = 3
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSysInfo: TTabSheet
           Margins.Left = 6
@@ -39343,6 +39359,10 @@ object MainForm: TMainForm
           ImageIndex = 4
           ParentFont = False
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label7: TLabel
             Left = 69
             Top = 28
@@ -40684,6 +40704,10 @@ object MainForm: TMainForm
           ImageIndex = 5
           TabVisible = False
           OnResize = TabSheetLoadingResize
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object ProgressPanel: TPanel
             Left = 256
             Top = 320
@@ -40768,6 +40792,10 @@ object MainForm: TMainForm
           DoubleBuffered = True
           ParentDoubleBuffered = False
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSheet2: TTabSheet
           Margins.Left = 7
@@ -40777,6 +40805,10 @@ object MainForm: TMainForm
           Caption = #36984#25799#27402
           ImageIndex = 1
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSheet3: TTabSheet
           Margins.Left = 7
@@ -40786,6 +40818,10 @@ object MainForm: TMainForm
           Caption = #25105#30340#26700#38754
           ImageIndex = 2
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSheet4: TTabSheet
           Margins.Left = 7
@@ -40795,6 +40831,10 @@ object MainForm: TMainForm
           Caption = 'TabSheet4'
           ImageIndex = 3
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object TabSheet5: TTabSheet
           Margins.Left = 7
@@ -40804,6 +40844,10 @@ object MainForm: TMainForm
           Caption = 'TabSheet5'
           ImageIndex = 4
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
         end
         object WebTabSheet: TTabSheet
           Margins.Left = 7
@@ -40813,6 +40857,10 @@ object MainForm: TMainForm
           Caption = 'WebTabSheet'
           ImageIndex = 5
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object WebBrowser: TWebBrowser
             Left = 0
             Top = 0

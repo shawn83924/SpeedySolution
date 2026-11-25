@@ -253,11 +253,11 @@ void __fastcall TMainForm::OSNotSupport( const AnsiString& OSStr )
 }
 //---------------------------------------------------------------------------
 float __fastcall TMainForm::ProcSpeedCalc()
-{
-	wchar_t Buffer[_MAX_PATH];
-	DWORD BufSize = _MAX_PATH;
-	DWORD dwMHz = _MAX_PATH;
-	HKEY hKey;
+{	///< Clock measured by Windows at boot ( about the base clock, no turbo ). Returns 0 when unavailable.
+	DWORD Type    = 0;
+	DWORD dwMHz   = 0;
+	DWORD BufSize = sizeof(DWORD);
+	HKEY  hKey;
 
 	// open the key where the proc speed is hidden:
 	long lError = RegOpenKeyEx(HKEY_LOCAL_MACHINE,
@@ -267,15 +267,77 @@ float __fastcall TMainForm::ProcSpeedCalc()
 						&hKey);
 
 	if( lError != ERROR_SUCCESS )
-		return 1.0;
+		return 0.0;
 	// query the key:
-	RegQueryValueEx(hKey, L"~MHz", NULL, NULL, (LPBYTE) &dwMHz, &BufSize);
+	lError = RegQueryValueEx(hKey, L"~MHz", NULL, &Type, (LPBYTE) &dwMHz, &BufSize);
+	RegCloseKey( hKey );
+	if( lError != ERROR_SUCCESS || Type != REG_DWORD || dwMHz == 0 )
+		return 0.0;
 	return (double)dwMHz/1000.0;
+}
+//---------------------------------------------------------------------------
+///< Get the real OS version.
+///< GetVersionEx() depends on the app manifest: without a Windows 10 supportedOS entry it reports
+///< 6.2 ( Windows 8 ) on Windows 10/11. RtlGetVersion() in ntdll always returns the real version.
+static bool GetRealOSVersion( OSVERSIONINFOEXW& osvi )
+{
+	typedef LONG (WINAPI *TRtlGetVersion)( OSVERSIONINFOEXW* );
+
+	ZeroMemory( &osvi, sizeof(OSVERSIONINFOEXW) );
+	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEXW);
+
+	HMODULE hNtDll = GetModuleHandleW( L"ntdll.dll" );
+	if( hNtDll != NULL )
+	{
+		TRtlGetVersion RtlGetVer = (TRtlGetVersion)GetProcAddress( hNtDll, "RtlGetVersion" );
+		if( RtlGetVer != NULL && RtlGetVer( &osvi ) == 0 ) ///< 0 = STATUS_SUCCESS
+			return true;
+	}
+	return GetVersionExW( (OSVERSIONINFOW*)&osvi ) != 0;
+}
+//---------------------------------------------------------------------------
+///< Map version info to a product name.
+///< Windows 11 / Server 2019+ still report 10.0, they are told apart by build number.
+static String GetOSName( const OSVERSIONINFOEXW& osvi )
+{
+	bool IsWorkstation = ( osvi.wProductType == VER_NT_WORKSTATION );
+
+	switch( osvi.dwMajorVersion )
+	{
+		case 4:	return L"Windows NT";
+		case 5:
+			switch( osvi.dwMinorVersion )
+			{
+				case 0: return L"Windows 2000";
+				case 1: return L"Windows XP";
+				case 2: return ( GetSystemMetrics(SM_SERVERR2) != 0 ) ? L"Windows Server 2003 R2" : L"Windows Server 2003";
+			}
+			break;
+		case 6:
+			switch( osvi.dwMinorVersion )
+			{
+				case 0: return IsWorkstation ? L"Windows Vista" : L"Windows Server 2008";
+				case 1: return IsWorkstation ? L"Windows 7"     : L"Windows Server 2008 R2";
+				case 2: return IsWorkstation ? L"Windows 8"     : L"Windows Server 2012";
+				case 3: return IsWorkstation ? L"Windows 8.1"   : L"Windows Server 2012 R2";
+			}
+			break;
+		case 10:
+			if( osvi.dwMinorVersion != 0 )
+				break;
+			if( IsWorkstation )
+				return ( osvi.dwBuildNumber >= 22000 ) ? L"Windows 11" : L"Windows 10";
+			if( osvi.dwBuildNumber >= 26100 ) return L"Windows Server 2025";
+			if( osvi.dwBuildNumber >= 20348 ) return L"Windows Server 2022";
+			if( osvi.dwBuildNumber >= 17763 ) return L"Windows Server 2019";
+			return L"Windows Server 2016";
+	}
+	return L"Windows";
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::PrintLogHeader( void )
 {
-	OSVERSIONINFOEX osvi;
+	OSVERSIONINFOEXW osvi;
 	MEMORYSTATUSEX  statex;
 	SYSTEM_INFO     si;
 	String          ErrMsg;
@@ -288,71 +350,13 @@ void __fastcall TMainForm::PrintLogHeader( void )
 	UFC::BufferedLog::Printf( "    %s Version:%d.%d.%d.%d ", Mdcomponentstrings_MD_SpeedyUnify_AppName, AppVer/1000000,	(AppVer%1000000)/10000, (AppVer%10000)/100, AppVer%100);
 	UFC::BufferedLog::Printf( "                                                                 ");
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
-	ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
-	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	if( GetVersionEx((OSVERSIONINFO *)&osvi) != 0 )
+	if( GetRealOSVersion( osvi ) == true )
 	{
-			AnsiString OSStr;
+			AnsiString OSStr = GetOSName( osvi );
 
-			if(	osvi.dwMajorVersion == 4 ) ///< 4.X Windows NT
-			{
-				OSStr = "Windows NT";
+			if( osvi.dwMajorVersion <= 5 ) ///< Windows NT/2000/XP/2003
 				OSNotSupport( OSStr );
-			}
-			else if( osvi.dwMajorVersion == 5 )  ///< 5.X Windows XP/2000/2003
-			{
-				switch( osvi.dwMinorVersion )
-				{
-					case 0: OSStr = "Windows 2000";break;
-					case 1: OSStr = "Windows XP";break;
-					case 2: if( GetSystemMetrics(SM_SERVERR2) != 0 )
-								OSStr = "Windows Server 2003 R2";
-							else
-								OSStr = "Windows Server 2003";
-							break;
-				}
-				OSNotSupport( OSStr );
-			}
-			else if( osvi.dwMajorVersion == 6 )  ///< 6.X  Vista/Windows 7/8/Windows Server 2008/2012
-			{
-				if( osvi.dwMinorVersion == 0 )
-				switch( osvi.dwMinorVersion )
-				{
-					case 0:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows Vista";
-							else
-								OSStr = L"Windows Server 2008";
-							break;
-					case 1:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 7";
-							else
-								OSStr = L"Windows Server 2008 R2";
-							break;
-					case 2: if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 8";
-							else
-								OSStr = L"Windows Server 2012";
-							break;
-					case 3: if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 8.1";
-							else
-								OSStr = L"Windows Server 2012 R2";
-							break;
-				}
-			}
-			else if( osvi.dwMajorVersion == 10 )  ///< 10.X Windows 10/Windows Server 2016
-			{
-				if( osvi.dwMinorVersion == 0 )
-				switch( osvi.dwMinorVersion )
-				{
-					case 0:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 10";
-							else
-								OSStr = L"Windows Server 2016";
-							break;
-				}
-			}
-			UFC::BufferedLog::Printf( "    Windows version %d.%d", osvi.dwMajorVersion, osvi.dwMinorVersion );
+			UFC::BufferedLog::Printf( "    Windows version %d.%d.%d", osvi.dwMajorVersion, osvi.dwMinorVersion, osvi.dwBuildNumber );
 			UFC::BufferedLog::Printf( "    %s (Service Pack:%d)", OSStr.c_str(), osvi.wServicePackMajor );
 	}
 	statex.dwLength = sizeof (statex);
@@ -368,7 +372,7 @@ void __fastcall TMainForm::PrintLogHeader( void )
 			 ErrMsg.printf( L"注意!您的記憶體只剩[%dMB]可能會影響交易速度!建議關閉不必要程式.", FreeMem );
 		 TUnifyDlgs::MessageDialog( Mdcomponentstrings_MD_SpeedyUnify_AppName, ErrMsg );
 	}
-	if( GHz < 3.0 ) ///< less than 2.5 GHz memory
+	if( GHz > 0.0 && GHz < 3.0 ) ///< less than 3.0 GHz ( 0 = unavailable, don't warn )
 	{
 		 int Today = FormatDateTime( L"yyyymmdd", Date() ).ToInt();
 		 if( g_Config.GetIntegerProperty( "Setting", "CPUWarningDate", 0 ) != Today ) ///< 每天只提示一次
@@ -382,7 +386,10 @@ void __fastcall TMainForm::PrintLogHeader( void )
 	UFC::BufferedLog::Printf( "                                                                 ");
 	UFC::BufferedLog::Printf( "    主機記憶體: %d MB", TotalMem );
 	UFC::BufferedLog::Printf( "    可用記憶體: %d MB", FreeMem );
-	UFC::BufferedLog::Printf( "       CPU時脈: %0.2f GHz", GHz );
+	if( GHz > 0.0 )
+		UFC::BufferedLog::Printf( "       CPU時脈: %0.2f GHz", GHz );
+	else
+		UFC::BufferedLog::Printf( "       CPU時脈: 無法取得" );
 	UFC::BufferedLog::Printf( "  _______________________________________________________________");
 }
 //---------------------------------------------------------------------------
@@ -2068,18 +2075,20 @@ void __fastcall TMainForm::OrderStoreNewOrder(TObject *Sender, const UnicodeStri
 		  int Qty, OrderTypeEnum OrderType, TimeInForceEnum TimeInForce, PositionEffectEnum PositionEffect,
 		  bool &IsAccept)
 {
-	if( NewConfirmSwitch->Selected == true )
+	if(NewConfirmSwitch->Selected == false)
 	{
-		String Msg;
-
-		if( Side == sBuy )
-			Msg.printf( L"要買[%s] %d@%0.3f 嗎?", Symbol, Qty, Px );
-		else
-			Msg.printf( L"要賣[%s] %d@%0.3f 嗎?", Symbol, Qty, Px );
-		IsAccept = TUnifyDlgs::AskYesNoDialog( L"新單確認", Msg );
-	}
-	else
 		IsAccept = true;
+		return;
+	}
+
+	String Msg;
+	String SideText = ( Side == sBuy ) ? L"<c=red>買</c>" : L"<c=green>賣</c>";
+
+	if( OrderType == otMarket ) ///< Market order has no price ( Px == 0 ), don't show it.
+		Msg.printf( L"要以市價%s[%s] %d 口嗎?", SideText.c_str(), Symbol.c_str(), Qty );
+	else
+		Msg.printf( L"要以限價%s[%s] %d@%0.3f 嗎?", SideText.c_str(), Symbol.c_str(), Qty, Px );
+	IsAccept = TUnifyDlgs::AskYesNoColorDialog( L"新單確認", Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::StopOrderChange( TObject* Sender, const String& Exchange, const String& StopSymbol, double StopPrice,
@@ -2104,7 +2113,7 @@ void __fastcall TMainForm::OrderStoreCancelByOrderID(TObject *Sender, const Unic
 	{
 		String Msg;
 
-		Msg.printf( L"要刪除委託單[%s]嗎?", OrderID );
+		Msg.printf( L"要刪除委託單[%s]嗎?", OrderID.c_str() );
 		IsAccept = TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
 	}
 	else
@@ -2118,12 +2127,13 @@ void __fastcall TMainForm::OrderStoreCancelBySymbolPrice(TObject *Sender, const 
 	if( CancelConfirmSwitch->Selected == true )
 	{
 		String Msg;
+		String SideText = ( Side == sBuy ) ? L"<c=red>買單</c>" : L"<c=green>賣單</c>";
 
-		if( Side == sBuy )
-			Msg.printf( L"要刪除[%s] 買單 @%0.3f 嗎?", Symbol.c_str(), Price );
+		if( Price == 0.0 ) ///< Price 0.0 means market orders, don't show price.
+			Msg.printf( L"要刪除[%s] 市價%s嗎?", Symbol.c_str(), SideText.c_str() );
 		else
-			Msg.printf( L"要刪除[%s] 賣單 @%0.3f 嗎?", Symbol.c_str(), Price );
-		IsAccept = TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
+			Msg.printf( L"要刪除[%s] 限價%s @%0.3f 嗎?", Symbol.c_str(), SideText.c_str(), Price );
+		IsAccept = TUnifyDlgs::AskYesNoColorDialog( L"刪單確認", Msg );
 	}
 	else
 		IsAccept = true;
@@ -2138,13 +2148,13 @@ bool __fastcall TMainForm::ConfirmCancelAll( const String& Symbol, TCancelSide S
 	String SideText;
 	switch( Side )
 	{
-		case csBuy:  SideText = L"全部買單"; break;
-		case csSell: SideText = L"全部賣單"; break;
-		default:     SideText = L"全部買賣單"; break;
+		case csBuy:  SideText = L"全部<c=red>買單</c>"; break;
+		case csSell: SideText = L"全部<c=green>賣單</c>"; break;
+		default:     SideText = L"全部<c=red>買</c><c=green>賣</c>單"; break;
 	}
 	String Msg;
 	Msg.printf( L"要刪除[%s] %s嗎? (共 %d 個價位)", Symbol.c_str(), SideText.c_str(), Count );
-	return TUnifyDlgs::AskYesNoDialog( L"刪單確認", Msg );
+	return TUnifyDlgs::AskYesNoColorDialog( L"刪單確認", Msg );
 }
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::OrderStoreRejectedReply(TObject *Sender)
@@ -2729,11 +2739,7 @@ void __fastcall TMainForm::LightRadioButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SetChartBKColor(bool checkLightButton)
 {
-	if(checkLightButton)
-		g_Config.SetIntegerProperty("Setting","ChartBKColor", TColorRec::White);
-	else
-		g_Config.SetIntegerProperty("Setting","ChartBKColor", TColorRec::Black);
-
+	TLineChartForm::SaveDefaultColor(checkLightButton);
 	ContractViewerForm->LoadChartColor( NULL );
 }
 //---------------------------------------------------------------------------
@@ -2851,7 +2857,7 @@ void __fastcall TMainForm::InfoOKButtonClick(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TMainForm::SystemInfo( void )
 {
-	OSVERSIONINFOEX osvi;
+	OSVERSIONINFOEXW osvi;
 	MEMORYSTATUSEX  statex;
 	SYSTEM_INFO     si;
 	String          ErrMsg,Msg;
@@ -2864,73 +2870,13 @@ void __fastcall TMainForm::SystemInfo( void )
 	SUVerLabel->Caption = Msg;
 	///< OS Version
 	ZeroMemory(&si, sizeof(SYSTEM_INFO));
-	ZeroMemory(&osvi, sizeof(OSVERSIONINFOEX));
-	osvi.dwOSVersionInfoSize = sizeof(OSVERSIONINFOEX);
-	if( GetVersionEx((OSVERSIONINFO *)&osvi) != 0 )
+	if( GetRealOSVersion( osvi ) == true )
 	{
-			String OSStr;
+			String OSStr = GetOSName( osvi );
 
-			if(	osvi.dwMajorVersion == 4 ) ///< 4.X Windows NT
-			{
-				OSStr = L"Windows NT";
-				OSLabel->Font->Color = clRed;
-			}
-			else if( osvi.dwMajorVersion == 5 )  ///< 5.X Windows XP/2000/2003
-			{
-				switch( osvi.dwMinorVersion )
-				{
-					case 0: OSStr = L"Windows 2000";break;
-					case 1: OSStr = L"Windows XP";break;
-					case 2: if( GetSystemMetrics(SM_SERVERR2) != 0 )
-								OSStr = L"Windows Server 2003 R2";
-							else
-								OSStr = L"Windows Server 2003";
-							break;
-				}
-				OSLabel->Font->Color = clRed;
-			}
-			else if( osvi.dwMajorVersion == 6 )  ///< 6.X  Vista/Windows 7/8/Windows Server 2008/2012
-			{
-				if( osvi.dwMinorVersion == 0 )
-				switch( osvi.dwMinorVersion )
-				{
-					case 0:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows Vista";
-							else
-								OSStr = L"Windows Server 2008";
-							break;
-					case 1:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 7";
-							else
-								OSStr = L"Windows Server 2008 R2";
-							break;
-					case 2: if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 8";
-							else
-								OSStr = L"Windows Server 2012";
-							break;
-					case 3: if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 8.1";
-							else
-								OSStr = L"Windows Server 2012 R2";
-							break;
-				}
-				OSLabel->Font->Color = clBlack;
-			}
-			else if( osvi.dwMajorVersion == 10 )  ///< 10.X Windows 10/Windows Server 2016
-			{
-				if( osvi.dwMinorVersion == 0 )
-				switch( osvi.dwMinorVersion )
-				{
-					case 0:	if( osvi.wProductType == VER_NT_WORKSTATION )
-								OSStr = L"Windows 10";
-							else
-								OSStr = L"Windows Server 2016";
-							break;
-				}
-				OSLabel->Font->Color = clBlack;
-			}
-			Msg.printf( L"%s 版本: %d.%d", OSStr, osvi.dwMajorVersion, osvi.dwMinorVersion );
+			///< Windows NT/2000/XP/2003 are not supported.
+			OSLabel->Font->Color = ( osvi.dwMajorVersion <= 5 ) ? clRed : clBlack;
+			Msg.printf( L"%s 版本: %d.%d (Build %d)", OSStr.c_str(), osvi.dwMajorVersion, osvi.dwMinorVersion, osvi.dwBuildNumber );
 			OSLabel->Caption = Msg;
 	}
 	else
@@ -2939,14 +2885,22 @@ void __fastcall TMainForm::SystemInfo( void )
 		OSLabel->Caption = L"Windows 版本: 無法取得相關資訊";
 	}
 	///< CPU Clock
-	Msg.printf( L"CPU 時脈: %0.2fGHz", GHz );
-	CPUClockLabel->Caption = Msg;
-	if( GHz < 2.0 ) ///< less than 2.0 GHz memory
+	if( GHz <= 0.0 ) ///< Unavailable
+	{
+		CPUClockLabel->Caption = L"CPU 時脈: 無法取得相關資訊";
 		CPUClockLabel->Font->Color = clRed;
-	else if( GHz >= 2.0 && GHz < 3.0 )
-		CPUClockLabel->Font->Color = clBlack;
+	}
 	else
-		CPUClockLabel->Font->Color = clGreen;
+	{
+		Msg.printf( L"CPU 時脈: %0.2fGHz", GHz );
+		CPUClockLabel->Caption = Msg;
+		if( GHz < 2.0 ) ///< less than 2.0 GHz
+			CPUClockLabel->Font->Color = clRed;
+		else if( GHz < 3.0 )
+			CPUClockLabel->Font->Color = clBlack;
+		else
+			CPUClockLabel->Font->Color = clGreen;
+	}
 	///< Memory
 	statex.dwLength = sizeof (statex);
 	GlobalMemoryStatusEx (&statex);
@@ -2989,7 +2943,22 @@ void __fastcall TMainForm::SystemInfo( void )
 	}
 	TradeServerLabel->Caption = Msg;
 
-	Msg.printf( L"對外IP: %s", gUser.ClientIP );
+	///< Public IP: "ClientIP" returned by the trade server at logon ( the IP the server sees ).
+	///< Only read it after logon, GetLocalIP() needs a live adapter/connection.
+	String LocalIP;
+
+	if( gOrderStore != NULL && gOrderStore->IsLogon() == true )
+		LocalIP = gOrderStore->LocalIP;
+	if( LocalIP.IsEmpty() == false )
+	{
+		Msg.printf( L"對外IP: %s", LocalIP.c_str() );
+		GWIPLabel->Font->Color = clBlack;
+	}
+	else
+	{
+		Msg = L"對外IP: 尚未連接交易主機";
+		GWIPLabel->Font->Color = clRed;
+	}
 	GWIPLabel->Caption = Msg;
 	///< Network
 	if( FMDRTTDataList->Count < 10 )

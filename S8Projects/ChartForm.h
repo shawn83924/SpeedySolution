@@ -309,6 +309,7 @@ public:		// User declarations
 	void __fastcall SaveStopSetting( void );
 	void __fastcall LoadColor( void );
 	void __fastcall SaveColor( void );
+	static void __fastcall SaveDefaultColor( bool IsLight );
 	void __fastcall LoadSetting( void );
 	void __fastcall AOEFunction( const String& Exchange, const String& Symbol );
 	void __fastcall LoadProperties( const String& Profile );

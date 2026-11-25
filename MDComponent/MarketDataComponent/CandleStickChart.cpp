@@ -502,7 +502,7 @@ void __fastcall TCandleStickChart::SetSymbol( BasicInformation* Info )
 		FViewPortX        = FViewPortX = FLastIndex * FCandleWidth - FViewPortWidth / 2 ;
 		FViewPortY        = 0;
 		BullPxStr.printf( L"%.*f", FDigit, FInfo->GetBullPrice() );
-		FYAxisOffset = FBuffer->Canvas->TextWidth( BullPxStr ) * 1.2 ;
+		FYAxisOffset = FBuffer->Canvas->TextWidth( BullPxStr ) * 1.5 ;
 		FXAxisOffset = FBuffer->Canvas->TextHeight( BullPxStr );
 		if( FPriceHint != NULL )
 			FPriceHint->SetMaxWidth( BullPxStr );
@@ -528,7 +528,7 @@ void __fastcall TCandleStickChart::SetTickEx( double MaxPx, double MinPx )
 	FVirtualHeight = FTickList->ItemCount() * FPixelsPerTick;
 	CheckViewPortSize();
 	BullPxStr.printf( L"%.*f", FDigit, MaxPx );
-	FYAxisOffset = FBuffer->Canvas->TextWidth( BullPxStr ) * 1.2;
+	FYAxisOffset = FBuffer->Canvas->TextWidth( BullPxStr ) * 1.5;
 	FXAxisOffset = FBuffer->Canvas->TextHeight( BullPxStr );
 
 	Constraints->MinHeight = FXAxisOffset;

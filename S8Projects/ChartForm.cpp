@@ -1002,19 +1002,9 @@ void __fastcall TLineChartForm::Px3ComboBoxChange(TObject *Sender)
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::DefColorButtonClick(TObject *Sender)
 {
-	int DorL = !(bool)g_Config.GetBoolProperty( "Setting","Skin", true );
-
-	CandleStickChart->Color     = ChartColor[DorL];
-	CandleStickChart->TextColor	= ChartTextColor[DorL];
-	CandleStickChart->GridColor	= ChartGridColor[DorL];
-	CandleStickChart->CandleLineColor = CandleLineColor[DorL];
-	CandleStickChart->BullColor = BullColor[DorL];
-	CandleStickChart->BearColor = BearColor[DorL];
-	CandleStickChart->MAColor1  = MAColor1[DorL];
-	CandleStickChart->MAColor2  = MAColor2[DorL];
-	CandleStickChart->MAColor3  = MAColor3[DorL];
-	SaveColor( );
-	ContractViewerForm->LoadChartColor( NULL );
+	SaveDefaultColor( g_Config.GetBoolProperty( "Setting","Skin", true ) );
+	LoadColor( );   // 讀回設定，同步更新下拉框並重繪
+	ContractViewerForm->LoadChartColor( this );   // 通知其他 K 線圖重新載入
 }
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::ChartBKColorBoxChange(TObject *Sender)
@@ -1137,6 +1127,25 @@ void __fastcall TLineChartForm::SaveColor( void )
 	g_Config.SetIntegerProperty("Setting","MA2Color", CandleStickChart->MAColor2 );
 	g_Config.SetIntegerProperty("Setting","MA3Color", CandleStickChart->MAColor3 );
 	g_Config.SetIntegerProperty("Setting","SectionLineColor", CandleStickChart->SectionLineColor );
+    g_Config.Save();
+}
+//---------------------------------------------------------------------------
+/// 依主題將整套預設圖表配色寫入設定檔（預設顏色按鈕與切換主題共用）
+void __fastcall TLineChartForm::SaveDefaultColor( bool IsLight )
+{
+	int DorL = IsLight ? 0 : 1;
+
+	g_Config.SetIntegerProperty("Setting","ChartBKColor",     ChartColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","ChartFontColor",   ChartTextColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","ChartBullColor",   BullColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","ChartBearColor",   BearColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","ChartGridColor",   ChartGridColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","ChartKLineColor",  CandleLineColor[DorL] );
+	g_Config.SetIntegerProperty("Setting","MA1Color",         MAColor1[DorL] );
+	g_Config.SetIntegerProperty("Setting","MA2Color",         MAColor2[DorL] );
+	g_Config.SetIntegerProperty("Setting","MA3Color",         MAColor3[DorL] );
+	g_Config.SetIntegerProperty("Setting","SectionLineColor", clOlive );
+	g_Config.Save();
 }
 //---------------------------------------------------------------------------
 void __fastcall TLineChartForm::SetVisible( bool IsVisible )
