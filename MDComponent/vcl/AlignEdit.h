@@ -33,6 +33,11 @@ private:
 	TNotifyEvent FOnChange;
 	TInputFilterFlags FInputFilter;
 	bool FFilteringText;
+	bool FMaskEnabled;          // 隱碼功能開關
+	int FMaskVisibleLength;     // 開頭可明碼顯示的字數
+	WideChar FMaskChar;         // 隱碼字元
+	UnicodeString FRealText;    // 隱碼模式下的實際文字
+	UnicodeString FDisplayText; // 隱碼模式下目前顯示於編輯框的文字
 
 	UnicodeString __fastcall GetText(void);
 	void __fastcall SetText(const UnicodeString Value);
@@ -64,6 +69,14 @@ private:
 	void __fastcall EditorKeyPress(TObject *Sender, System::WideChar &Key);
 	void __fastcall SetInputFilter(TInputFilterFlags Value);
 	bool __fastcall IsCharAllowed(WideChar Ch);
+	UnicodeString __fastcall FilterText(const UnicodeString Value);
+	void __fastcall SetMaskEnabled(bool Value);
+	void __fastcall SetMaskVisibleLength(int Value);
+	void __fastcall SetMaskChar(WideChar Value);
+	UnicodeString __fastcall BuildMaskedText(const UnicodeString Value);
+	void __fastcall RefreshMaskedDisplay(int CaretPos);
+	void __fastcall HandleMaskedChange(void);
+	void __fastcall UpdateHeightAndNotify(void);
 protected:
 	virtual void __fastcall CreateWnd(void);
 	DYNAMIC void __fastcall Resize(void);
@@ -92,6 +105,9 @@ __published:
 	__property TEditVertAlign VertAlign = { read = FVertAlign, write = SetVertAlign, default = vaTop };
 	__property TNotifyEvent OnChange = { read = FOnChange, write = FOnChange };
 	__property TInputFilterFlags InputFilter = { read = FInputFilter, write = SetInputFilter, default = 0x1F };
+	__property bool MaskEnabled = { read = FMaskEnabled, write = SetMaskEnabled, default = false };
+	__property int MaskVisibleLength = { read = FMaskVisibleLength, write = SetMaskVisibleLength, default = 3 };
+	__property WideChar MaskChar = { read = FMaskChar, write = SetMaskChar, default = 42 }; // '*'
 
 	__property Align;
 	__property Anchors;

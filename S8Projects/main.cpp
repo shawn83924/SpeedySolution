@@ -1677,16 +1677,6 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 			FFutAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TAIFEX", 0 );
 			FTseAccIndex   = g_Config.GetDesktopInteger( L"SpeedyUnify\\ExAccount", "TWSE", 0 );
 
-			if( User->FuturesAccountCount() > 0 )
-			{
-				if( User->FuturesAccountCount() <= FFutAccIndex )
-					FFutAccIndex = 0;
-				TAccountInfo* FutAcc = User->FuturesAccount( FFutAccIndex );
-				OrderStore->Account  = FutAcc->Account;
-				OrderStore->BrokerID = FutAcc->BrokerID;
-				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
-				gUser.AccountType = hatTAIFEX;
-			}
 			if( User->StockAccountCount() > 0 )
 			{
 				if( User->StockAccountCount() <= FTseAccIndex )
@@ -1696,6 +1686,16 @@ void __fastcall TMainForm::LoginButtonClick(TObject *Sender)
 				OrderStore->TWSEBrokerID  = StocAcc->BrokerID;
 				FLoginUserStr.printf( L"證券帳號:%s %s",OrderStore->TWSEAccount, User->GetName() );
 				gUser.AccountType = hatTWSE;
+			}
+			if( User->FuturesAccountCount() > 0 )
+			{
+				if( User->FuturesAccountCount() <= FFutAccIndex )
+					FFutAccIndex = 0;
+				TAccountInfo* FutAcc = User->FuturesAccount( FFutAccIndex );
+				OrderStore->Account  = FutAcc->Account;
+				OrderStore->BrokerID = FutAcc->BrokerID;
+				FLoginUserStr.printf( L"期貨帳號:%s %s",OrderStore->Account, User->GetName() );
+				gUser.AccountType = hatTAIFEX;
 			}
 			if( User->FuturesAccountCount() > 0 && User->StockAccountCount() > 0 )
 				gUser.AccountType = hatBoth;

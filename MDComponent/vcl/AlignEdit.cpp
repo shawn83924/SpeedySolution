@@ -32,6 +32,11 @@ __fastcall TAlignEdit::TAlignEdit(TComponent* Owner)
 	FOnChange = NULL;
 	FInputFilter = TInputFilterFlags() << iffLetters << iffDigits << iffSpace << iffChinese << iffSpecial;
 	FFilteringText = false;
+	FMaskEnabled = false;
+	FMaskVisibleLength = 3;
+	FMaskChar = L'*';
+	FRealText = L"";
+	FDisplayText = L"";
 
 	StyleElements = TStyleElements();
 	ParentColor = false;
@@ -179,6 +184,8 @@ void __fastcall TAlignEdit::ImageChanged(TObject *)
 //---------------------------------------------------------------------------
 UnicodeString __fastcall TAlignEdit::GetText(void)
 {
+	if (FMaskEnabled)
+		return FRealText;
 	if (FEditor == NULL)
 		return L"";
 	return FEditor->Text;
@@ -186,8 +193,20 @@ UnicodeString __fastcall TAlignEdit::GetText(void)
 //---------------------------------------------------------------------------
 void __fastcall TAlignEdit::SetText(const UnicodeString Value)
 {
-	if (FEditor != NULL)
-		FEditor->Text = Value;
+	if (FEditor == NULL)
+		return;
+
+	if (FMaskEnabled)
+	{
+		if (FRealText == Value)
+			return;
+		FRealText = Value;
+		RefreshMaskedDisplay(FRealText.Length());
+		UpdateHeightAndNotify();
+		return;
+	}
+
+	FEditor->Text = Value;
 }
 //---------------------------------------------------------------------------
 WideChar __fastcall TAlignEdit::GetPasswordChar(void)
@@ -374,15 +393,18 @@ void __fastcall TAlignEdit::EditorClick(TObject *)
 //---------------------------------------------------------------------------
 void __fastcall TAlignEdit::EditorChange(TObject *)
 {
-	if (!FFilteringText && FEditor != NULL)
+	// 內部改寫編輯框文字時觸發的巢狀事件，由外層統一處理
+	if (FFilteringText || FEditor == NULL)
+		return;
+
+	if (FMaskEnabled)
+	{
+		HandleMaskedChange();
+	}
+	else
 	{
 		UnicodeString src = FEditor->Text;
-		UnicodeString cleaned;
-		for (int i = 1; i <= src.Length(); i++)
-		{
-			if (IsCharAllowed(src[i]))
-				cleaned += src[i];
-		}
+		UnicodeString cleaned = FilterText(src);
 
 		if (cleaned != src)
 		{
@@ -395,6 +417,11 @@ void __fastcall TAlignEdit::EditorChange(TObject *)
 		}
 	}
 
+	UpdateHeightAndNotify();
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::UpdateHeightAndNotify(void)
+{
 	if (FEditor != NULL && FEditor->HandleAllocated())
 	{
 		HDC dc = GetDC(FEditor->Handle);
@@ -443,6 +470,135 @@ void __fastcall TAlignEdit::EditorKeyPress(TObject *, System::WideChar &Key)
 void __fastcall TAlignEdit::SetInputFilter(TInputFilterFlags Value)
 {
 	FInputFilter = Value;
+}
+//---------------------------------------------------------------------------
+UnicodeString __fastcall TAlignEdit::FilterText(const UnicodeString Value)
+{
+	UnicodeString cleaned;
+	for (int i = 1; i <= Value.Length(); i++)
+	{
+		if (IsCharAllowed(Value[i]))
+			cleaned += Value[i];
+	}
+	return cleaned;
+}
+//---------------------------------------------------------------------------
+// 隱碼功能
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::SetMaskEnabled(bool Value)
+{
+	if (FMaskEnabled == Value)
+		return;
+
+	if (FEditor == NULL)
+	{
+		FMaskEnabled = Value;
+		return;
+	}
+
+	int caretPos = FEditor->SelStart;
+	if (Value)
+	{
+		// 開啟：以目前編輯框內容作為實際文字，改為顯示隱碼
+		FRealText = FEditor->Text;
+		FMaskEnabled = true;
+		RefreshMaskedDisplay(caretPos);
+	}
+	else
+	{
+		// 關閉：還原實際文字
+		FMaskEnabled = false;
+		FFilteringText = true;
+		FEditor->Text = FRealText;
+		FEditor->SelStart = std::min(caretPos, FRealText.Length());
+		FFilteringText = false;
+		FRealText = L"";
+		FDisplayText = L"";
+	}
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::SetMaskVisibleLength(int Value)
+{
+	if (Value < 0)
+		Value = 0;
+
+	if (FMaskVisibleLength == Value)
+		return;
+
+	FMaskVisibleLength = Value;
+	if (FMaskEnabled && FEditor != NULL)
+		RefreshMaskedDisplay(FEditor->SelStart);
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::SetMaskChar(WideChar Value)
+{
+	if (Value == 0)
+		Value = L'*';
+
+	if (FMaskChar == Value)
+		return;
+
+	FMaskChar = Value;
+	if (FMaskEnabled && FEditor != NULL)
+		RefreshMaskedDisplay(FEditor->SelStart);
+}
+//---------------------------------------------------------------------------
+UnicodeString __fastcall TAlignEdit::BuildMaskedText(const UnicodeString Value)
+{
+	int len = Value.Length();
+	if (len <= FMaskVisibleLength)
+		return Value;
+
+	return Value.SubString(1, FMaskVisibleLength) + UnicodeString::StringOfChar(FMaskChar, len - FMaskVisibleLength);
+}
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::RefreshMaskedDisplay(int CaretPos)
+{
+	if (FEditor == NULL)
+		return;
+
+	FDisplayText = BuildMaskedText(FRealText);
+
+	FFilteringText = true;
+	if (FEditor->Text != FDisplayText)
+		FEditor->Text = FDisplayText;
+	FEditor->SelStart = std::max(0, std::min(CaretPos, FDisplayText.Length()));
+	FFilteringText = false;
+
+	// 編輯框的 Undo 緩衝區存的是顯示文字，復原後會與實際文字不同步，故清除
+	if (FEditor->HandleAllocated())
+		SendMessage(FEditor->Handle, EM_EMPTYUNDOBUFFER, 0, 0);
+}
+//---------------------------------------------------------------------------
+// 比對編輯前後的顯示文字，找出被刪除與新插入的區段，再套用到實際文字
+//---------------------------------------------------------------------------
+void __fastcall TAlignEdit::HandleMaskedChange(void)
+{
+	const UnicodeString oldDisp = FDisplayText;
+	const UnicodeString newDisp = FEditor->Text;
+	const int oldLen = oldDisp.Length();
+	const int newLen = newDisp.Length();
+	const int caretPos = FEditor->SelStart; // 編輯後游標位於插入區段的尾端
+
+	// 共同後綴：游標之後的文字不會被本次編輯改變
+	int commonSuffix = 0;
+	const int maxCommon = std::min(oldLen, newLen);
+	while (commonSuffix < maxCommon &&
+		   oldDisp[oldLen - commonSuffix] == newDisp[newLen - commonSuffix])
+		commonSuffix++;
+	int suffix = std::min(commonSuffix, std::max(0, newLen - caretPos));
+
+	// 共同前綴（不可與後綴重疊）
+	int prefixLimit = std::min(oldLen, newLen) - suffix;
+	int prefix = 0;
+	while (prefix < prefixLimit && oldDisp[prefix + 1] == newDisp[prefix + 1])
+		prefix++;
+
+	UnicodeString inserted = FilterText(newDisp.SubString(prefix + 1, newLen - suffix - prefix));
+
+	FRealText = FRealText.SubString(1, prefix) + inserted + FRealText.SubString(oldLen - suffix + 1, oldLen);
+
+	RefreshMaskedDisplay(prefix + inserted.Length());
 }
 //---------------------------------------------------------------------------
 void __fastcall TAlignEdit::WndProc(TMessage &Msg)
