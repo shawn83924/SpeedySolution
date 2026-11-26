@@ -450,7 +450,7 @@ private:
 	int  __fastcall GetDataXPos( int Index, int X );
 	void __fastcall ShowTimeHint( int X, int Y, const UFC::AnsiString& Time );
 	void __fastcall ShowPriceHint( int X, int Y, const String& PxStr );
-	void __fastcall ShowOrdereHint( int Y );
+	void __fastcall ShowOrdereHint( int X, int Y );
 	void __fastcall ShowDataHint( TPoint& ScreenPx, TRect& ScreenRect, int Index, const UFC::AnsiString& Time );
 	void __fastcall ShowInfoHint( int X, int Y, TPoint& ScreenPx );
 	void __fastcall HideInfoHint( void );

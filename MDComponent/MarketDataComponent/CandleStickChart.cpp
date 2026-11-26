@@ -1401,7 +1401,10 @@ void __fastcall TCandleStickChart::SetShowQtyBar( int ShowQtyBar )
 //---------------------------------------------------------------------------
 int __fastcall TCandleStickChart::YPosToTick( int Y )
 {
-	int CurrTick = (FViewPortY + Y/FViewPortToControlY )/FPixelsPerTick + 1;
+	///< Tick i is drawn at Y = ( i * FPixelsPerTick - FViewPortY ) * FViewPortToControlY,
+	///< so map Y back to the NEAREST tick (round), not truncate + 1 which was off by up to one tick.
+	double TickPos  = ( FViewPortY + Y / FViewPortToControlY ) / FPixelsPerTick;
+	int    CurrTick = (int)( TickPos >= 0 ? TickPos + 0.5 : TickPos - 0.5 );
 
 	if( CurrTick < 0 )
 		CurrTick = 0;
@@ -1842,7 +1845,7 @@ void __fastcall TCandleStickChart::MouseMove( Classes::TShiftState Shift, int X,
 					{
 						SetCursor( TCursor( 6 ), crDefault );
 						ShowInfoHint(  X, Y, ScreenPx );
-						ShowOrdereHint( Y );
+						ShowOrdereHint( X, Y );
 						EraseCross( false );
 						FCursorType = ctCross;
 						DrawCross( X, Y ); ///< Draw new cross line
@@ -1857,7 +1860,7 @@ void __fastcall TCandleStickChart::MouseMove( Classes::TShiftState Shift, int X,
 			if( FEditMode == false )
 			{
 				SetCursor( crHandPoint, crDefault );
-				ShowOrdereHint( Y );
+				ShowOrdereHint( X, Y );
 			}
 			else
 			{
@@ -1896,7 +1899,10 @@ void __fastcall TCandleStickChart::MouseDown( Controls::TMouseButton Button, Cla
 		if( FPriceRect.Contains( DownPoint ) && FEditMode == false  ) ///< Place Order
 		{
 			 nsOrderMessageDefine::SideEnum Side = sBuy;
-			 double OrderPx = YPosToPrice( Y );
+			 int    AlignedY = Y;
+
+			 AlignmentCheck( X, AlignedY ); ///< Use the same price shown in the order hint.
+			 double OrderPx = YPosToPrice( AlignedY );
 
 			if( X > Width - FYAxisOffset/2 )
 				Side = sSell;
@@ -2232,20 +2238,22 @@ void __fastcall TCandleStickChart::ShowPriceHint( int X, int Y, const String& Px
 		FPriceHint->SetVisible();
 }
 //---------------------------------------------------------------------------
-void __fastcall TCandleStickChart::ShowOrdereHint( int Y )
+void __fastcall TCandleStickChart::ShowOrdereHint( int X, int Y )
 {
-	int    X = Width - FYAxisOffset;
-	TPoint Pt = ClientToScreen( TPoint(X,Y) );
+	AlignmentCheck( X, Y ); ///< Same snapping as the cross line / left price hint ( ShowInfoHint, DrawCross ).
+
+	int    H = FXAxisOffset + FXAxisOffset/2;
+	TPoint Pt = ClientToScreen( TPoint( Width - FYAxisOffset, Y ) );
 	String PxStr, Str;
 
 	if( FOrderHint == NULL )
 	{
 		FOrderHint = new TOrderHint( this, Font );
-		FOrderHint->Init( FYAxisOffset, FXAxisOffset + FXAxisOffset/2 );
+		FOrderHint->Init( FYAxisOffset, H );
 	}
 	YPosToPrice( Y, PxStr );
 	FOrderHint->SetString( PxStr );
-	FOrderHint->SetPosition( Pt.x, Pt.y - FXAxisOffset / 2 );
+	FOrderHint->SetPosition( Pt.x, Pt.y - H / 2 ); ///< Center the box on the mouse Y so the text sits on the hovered price.
 	if( FOrderHint->Visible == true )
 		FOrderHint->Paint();
 	else
